@@ -41,8 +41,6 @@ discovery/
   next-version-brief.md
 ```
 
-Do not put discovery artifacts under `.hermes/` unless the human explicitly requests it. Discovery knowledge belongs to the project, not to one agent runtime.
-
 ## Two discovery modes
 
 Choose the mode before creating or updating artifacts.
