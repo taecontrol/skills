@@ -4,7 +4,7 @@ Reusable agent skills maintained by Taecontrol.
 
 ## Skills
 
-- [`discovery`](./skills/discovery/SKILL.md) — Manual-first workflow for turning vague software product ideas or poorly understood MVPs/codebases into Discovery Briefs through fog-of-war exploration.
+- [`discovery`](./skills/discovery/SKILL.md) — Manual-first workflow for turning vague software product ideas or poorly understood MVPs/codebases into evidence-backed Discovery Briefs through fog-of-war exploration.
 
 ## Install with skills.sh / npx skills
 
@@ -34,9 +34,20 @@ npx skills add taecontrol/skills --list
 skills/
   discovery/
     SKILL.md
+    references/
+      existing-product-discovery.md
+      new-product-discovery.md
+      ticket-types.md
+    templates/
+      current-state-map.md
+      discovery-brief.md
+      discovery-ticket.md
+      evidence-log.md
+      exploration-map.md
+      next-version-brief.md
 ```
 
-Each skill is a folder containing a `SKILL.md` file with YAML frontmatter and Markdown instructions.
+`SKILL.md` stays small and routes agents to the one mode/reference/template they need for the current discovery pass.
 
 ## Local validation
 
