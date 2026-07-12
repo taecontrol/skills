@@ -1,22 +1,24 @@
 ---
 name: discovery
-description: "Discovery: turn vague product ideas, requirements, or existing codebase fog into evidence-backed repository artifacts before planning, refactoring, or implementation."
+description: "Execute one sharp software discovery question with evidence before specification, planning, refactoring, or implementation. Use for an approved Mission Discovery ticket or when a human directly invokes discovery for a vague product idea, requirement, or existing codebase."
 license: MIT
 ---
 
 # Discovery
 
-Manual-first skill for turning product or codebase fog into repository-owned discovery artifacts.
+Discovery reduces one material uncertainty with evidence. It can execute an approved Discovery ticket inside a Mission or run as a standalone collaborative exploration when no Mission is active.
 
-Discovery is not implementation planning. Discovery reduces uncertainty until a responsible next move is visible.
+Discovery does not own the software lifecycle. It does not authorize product decisions, downstream deliverables, implementation, validation, or the next frontier.
 
 ## Core rules
 
 - Convert fog into questions before requirements.
 - Convert vices into evidence before refactors.
-- Work one unknown at a time; one discovery ticket should answer one sharp question.
-- Keep discovery tickets separate from implementation tickets.
-- Store durable discovery knowledge as Markdown in the project repository.
+- Work one sharp unknown at a time.
+- Keep discovery separate from implementation.
+- Preserve durable evidence as Markdown in the repository when the result must survive the session.
+- When Mission is active, use its map, authority, and ticket protocol; do not create a parallel discovery lifecycle.
+- Return material answers for human review rather than silently treating them as accepted decisions.
 
 ## Progressive disclosure map
 
@@ -24,16 +26,50 @@ Load only the file needed for the current branch:
 
 | Need | Load |
 |---|---|
+| Existing Mission Discovery ticket | Load the Mission skill's `references/ticket-protocol.md` when that sibling skill is installed; otherwise use the approved ticket fields and return contract below without inventing Mission progression. |
 | Vague idea, stakeholder request, new product concept | `references/new-product-discovery.md` |
-| Existing MVP, codebase, internal tool, inherited system, unclear behavior, debt, bugs, ops risk | `references/existing-product-discovery.md` |
-| Creating a ticket and choosing its type | `references/ticket-types.md` |
-| Creating or repairing an artifact | The matching file in `templates/` |
+| Existing MVP, codebase, internal tool, inherited system, unclear behavior, debt, bugs, or ops risk | `references/existing-product-discovery.md` |
+| Standalone ticket type selection | `references/ticket-types.md` |
+| Creating or repairing a standalone artifact | The matching file in `templates/` |
 
-Do not load both mode references unless the work genuinely spans both a new product and an existing system.
+Do not load both product-mode references unless the question genuinely spans a new product and an existing system.
 
-## Default repository structure
+## 1. Orient and choose the collaboration branch
 
-Create this structure at the repository root when it does not already exist:
+Locate the repository root, inspect existing Mission and Discovery artifacts, and preserve the raw request without cleaning uncertainty into requirements.
+
+Choose exactly one branch:
+
+### Mission-managed Discovery
+
+Use when Mission has provided one approved Discovery ticket.
+
+- Load the Mission ticket protocol.
+- Confirm the ticket is `Active` and contains one sharp question, scope, non-goals, dependencies, and acceptance/evidence criteria.
+- Treat the Mission map and ticket as the navigation source of truth.
+- Do not create `discovery/discovery-brief.md`, a second exploration map, or a parallel Discovery ticket. Put durable evidence in the active Mission ticket or an explicitly authorized supporting artifact; any durable child ticket must use the Mission ticket protocol.
+- If the ticket is not ready, return the missing fields or blocker to Mission rather than inventing them.
+
+Completion criterion: the active ticket's authority and evidence boundary are clear before investigation begins.
+
+### Standalone collaborative Discovery
+
+Use when no Mission is managing the work and the current request explicitly asks to reduce product or codebase uncertainty before downstream work.
+
+- Choose **New Product Discovery** or **Existing Product Discovery**.
+- Load only the matching mode reference.
+- Start with a small visible map of destination, known territory, assumptions, fog, frontier, and decisions.
+- Use the tracked artifact structure below only when durable evidence, multiple sessions/explorers, blockers, or handoff justify it.
+
+Completion criterion: the human can see the question being explored, why it matters, and the current boundary.
+
+## 2. Choose artifact weight
+
+Artifact weight and collaboration mode are separate choices. Do not manufacture files merely because templates exist.
+
+For a lightweight, same-session question, keep the map and evidence concise in the active Mission ticket or standalone interaction.
+
+For tracked standalone Discovery, use:
 
 ```text
 discovery/
@@ -44,143 +80,107 @@ discovery/
   archive/
 ```
 
-Existing Product Discovery may also use:
+Existing Product Discovery may additionally use `current-state-map.md` and `next-version-brief.md`.
 
-```text
-discovery/
-  current-state-map.md
-  next-version-brief.md
-```
+If creating tracked artifacts, copy only the matching files from `templates/`, replace placeholders, and update existing files instead of overwriting prior work.
 
-Template source files live in this skill under `templates/`. Target artifacts live in the project under `discovery/`.
+Completion criterion: every artifact has an active evidence, coordination, or handoff purpose.
 
-## Workflow
+## 3. Frame one sharp question
 
-### 1. Locate the project root and existing discovery state
+For Mission-managed work, use the approved ticket as written. Do not broaden it.
 
-Prefer the Git repository root. If there is no Git repository, use the current project directory.
+For standalone work:
 
-Before writing, inspect whether `discovery/` already exists. If it exists, read the current artifacts before adding files or tickets.
+1. Convert one sharp unknown into a Discovery ticket when durable tracking is useful; otherwise state it directly on the visible map.
+2. Leave vague unknowns as fog rather than pretending they are executable tickets.
+3. Ask the human to select the material frontier when more than one defensible question exists.
 
-Completion criterion: the project root is known, and existing discovery artifacts have either been read or confirmed absent.
+A ready question identifies:
 
-### 2. Choose exactly one discovery mode
+- the decision or risk it informs;
+- scope and nearby non-goals;
+- the evidence that would make the answer useful;
+- any access, dependency, or human input required.
 
-Choose the branch before creating or updating artifacts:
+Completion criterion: one question can be answered in a focused pass without making an unapproved product, scope, risk, or architecture decision.
 
-- **New Product Discovery** — the input is a vague idea, requirement, stakeholder request, or product concept.
-- **Existing Product Discovery** — the input is an existing MVP, codebase, internal tool, inherited product, or working system with unclear behavior, debt, bugs, operational risk, or vague improvement requests.
+## 4. Gather evidence
 
-After choosing, load only the matching mode file from `references/` and follow it for mode-specific questions, artifacts, and checkpoints.
+Work only the selected question. Mechanical reads, searches, probes, and reproducible experiments may proceed without performative approval when they stay inside scope.
 
-Completion criterion: the selected mode is recorded in `discovery/discovery-brief.md` and `discovery/exploration-map.md`.
+Record:
 
-### 3. Seed or update the core artifacts
+- answer supported by evidence;
+- evidence paths, commands, observations, sources, or experiment output;
+- confidence: Low, Medium, or High;
+- remaining uncertainty;
+- candidate follow-up questions or newly exposed fog.
 
-If an artifact is missing, copy the matching template from `templates/` into the project and replace placeholders. If it exists, update it instead of overwriting human or agent work.
+Stop and return a blocker when required access or stakeholder input cannot be obtained. Stop and surface a Candidate ticket when the work reveals a new risk class, migration, persistent state machine, cross-store recovery concern, destructive data risk, or a second independent outcome.
 
-Core templates:
+Completion criterion: the answer is traceable to evidence, and uncertainty is visible rather than compressed into confidence language.
 
-- `templates/discovery-brief.md` -> `discovery/discovery-brief.md`
-- `templates/exploration-map.md` -> `discovery/exploration-map.md`
-- `templates/evidence-log.md` -> `discovery/evidence-log.md`
+## 5. Return control
 
-Existing-product templates, loaded only when that mode needs them:
+### Mission-managed return
 
-- `templates/current-state-map.md` -> `discovery/current-state-map.md`
-- `templates/next-version-brief.md` -> `discovery/next-version-brief.md`
+Move the ticket to `Review` and return:
 
-Completion criterion: the core artifacts exist, preserve raw input, and clearly mark known, assumed, unknown, decided, and rejected items.
+- result / proposed decision;
+- evidence;
+- confidence;
+- remaining uncertainty;
+- proposed map updates: known territory, decisions awaiting Mission Control, fog removed/added, Candidate tickets, and gate impact.
 
-### 4. Convert fog into discovery tickets
+Do not close the material ticket, update a proposed answer into an accepted Mission decision, activate another ticket, or create downstream Deliverables.
 
-Create Markdown tickets under `discovery/tickets/` using `templates/discovery-ticket.md`.
+Completion criterion: Mission Control can judge what was learned and how the map would change without reconstructing the work from chat.
 
-Naming format:
+### Standalone return
 
-```text
-discovery/tickets/001-short-question-slug.md
-```
+Update any tracked synthesis artifacts justified by the work, show the visible map, and ask the human which frontier to select next. A Discovery answer still does not authorize a PRD, design, plan, refactor, implementation, or validation pass.
 
-A ticket is ready when the question is sharp enough to answer in one focused session. If the question is still too vague, leave it in `Not-yet-specified fog` inside `exploration-map.md`.
+Completion criterion: durable evidence is current, the next frontier remains a human choice, and no lifecycle phase was silently chained.
 
-Completion criterion: every sharp unknown is represented as a ticket, and every vague unknown remains in the map as fog.
+## Readiness checkpoint
 
-### 5. Work one ticket at a time
+When the current question resolves enough fog or progress stalls, evaluate:
 
-Pick one open, unblocked ticket. Do not work several independent tickets in one pass unless they are trivial and tightly coupled.
+- Can the product or system context be described without faking certainty?
+- Are the intended outcome, affected user/workflow, scope, constraints, and success signal visible?
+- Are the biggest assumptions and risks explicit?
+- Could a fresh implementation agent proceed without inventing material product or architecture decisions?
+- Could an independent QA agent decide pass/fail without asking the implementer what they intended?
 
-Before working, mark it `Status: In Progress`.
-
-After working, record in the ticket:
-
-- answer or decision
-- evidence
-- confidence level
-- remaining uncertainty
-- new tickets surfaced
-- brief/map updates made
-
-Completion criterion: the ticket is either closed with evidence or explicitly left open with the blocker recorded.
-
-### 6. Update synthesis after every closed ticket
-
-After closing a ticket, update the durable synthesis artifacts:
-
-- `discovery/discovery-brief.md` for product understanding
-- `discovery/exploration-map.md` for frontier, fog, and decisions
-- `discovery/evidence-log.md` for raw evidence pointers
-- `discovery/current-state-map.md` for existing products when relevant
-- `discovery/next-version-brief.md` only when an improvement direction has enough evidence
-
-Completion criterion: no important answer lives only inside a closed ticket.
-
-### 7. Run the Fog-of-War checkpoint
-
-Run this checkpoint when the brief feels actionable or progress stalls:
-
-- Can we describe the product or system without faking certainty?
-- Do we know who feels the pain?
-- Do we know the current workflow or desired workflow?
-- Do we know what success would look like?
-- Are the biggest assumptions visible?
-- Are the biggest risks visible?
-- Is the fog low enough for the next responsible move?
-
-Record one current decision:
+Return one proposed outcome:
 
 - `Continue discovery`
-- `Shape V1 / write PRD`
-- `Create next-version brief`
-- `Prototype`
-- `Technical spike`
-- `Stabilize / harden`
-- `Refactor with scope`
+- `Prototype / technical spike`
+- `Narrow or split mission`
+- `Ready to shape`
 - `Park or kill`
 
-Completion criterion: the checkpoint decision is recorded in `discovery/exploration-map.md` and `discovery/discovery-brief.md`.
+In Mission, this is a recommendation and proposed gate impact for Mission Control. Standalone, record it on the visible map. `Ready to shape` does not create or authorize downstream artifacts.
 
 ## Working rules for agents
 
-- If discovery artifacts do not exist, create the default `discovery/` structure directly when this skill is invoked.
-- Do not ask for permission to create the default structure after the skill was manually invoked.
-- Ask for missing access or stakeholder input only when the next ticket cannot be answered by available tools.
-- Keep ticket names human-readable.
-- Prefer Markdown links to files, commits, screenshots, docs, prototypes, logs, and commands.
-- Do not bury durable decisions in chat; write them into repository artifacts.
-- Keep raw notes in `evidence-log.md` or ticket work logs; keep `discovery-brief.md` concise.
-- Archive obsolete tickets under `discovery/archive/` instead of deleting them when their history matters.
+- Honor the repository's existing transport, branch, artifact, and instruction conventions before writing.
+- Ask for missing access or stakeholder input only when tools cannot retrieve the evidence.
+- Prefer Markdown links to files, commits, screenshots, docs, logs, and reproducible commands.
+- Keep raw evidence in the active ticket or evidence log; keep synthesis concise.
+- Archive obsolete standalone tickets when their history matters.
+- Do not bury durable evidence or accepted decisions only in chat.
 
 ## Completion checklist
 
-A discovery pass is complete when:
+A Discovery pass is complete when:
 
-- [ ] The repository has a `discovery/` folder with the core Markdown artifacts.
-- [ ] The Discovery Brief states the mode: new product or existing product.
-- [ ] The raw vague input is preserved.
-- [ ] Unknowns are separated into tickets or not-yet-specified fog.
-- [ ] At least one frontier ticket is ready to work.
-- [ ] Closed tickets have evidence and confidence levels.
-- [ ] The brief/map were updated after closed tickets.
-- [ ] The Fog-of-War checkpoint records the current decision.
-- [ ] No implementation plan, PRD, refactor, or build recommendation is presented as final without evidence from discovery.
+- [ ] It belongs to one bounded question and one collaboration branch.
+- [ ] Raw input is distinguishable from evidence, assumptions, and decisions.
+- [ ] The answer cites evidence and states confidence and remaining uncertainty.
+- [ ] New sharp work is proposed as a Candidate; vague work remains fog.
+- [ ] Mission-managed work is in `Review` with a proposed map delta.
+- [ ] Standalone tracked artifacts, if justified, are current.
+- [ ] No material decision was silently accepted.
+- [ ] No downstream Deliverable, implementation, validation, or next frontier was activated automatically.

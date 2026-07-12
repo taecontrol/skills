@@ -37,7 +37,7 @@ Use [`../templates/ticket.md`](../templates/ticket.md) when a separate file is w
 | Active | Current authorized work. | Mission Control selects a material frontier; agent may activate mechanical child tasks. |
 | Blocked | Cannot proceed; blocker and unblock condition are explicit. | Active owner. |
 | Review | Result exists; required authority has not accepted it. | Active owner. |
-| Closed | Result/evidence accepted at the ticket's authority level. | Mission Control for material decisions/deliverables; agent for non-material Task work. |
+| Closed | Result/evidence accepted at the ticket's authority level. | Mission Control for every material ticket; agent for non-material Task work. |
 | Abandoned | Intentionally stopped with rationale and map impact. | Mission Control for material work; owner for non-material Task work. |
 
 Only one material ticket is Active unless Mission Control explicitly authorizes parallel frontier work.
@@ -46,7 +46,7 @@ Only one material ticket is Active unless Mission Control explicitly authorizes 
 
 ### Discovery
 
-Answers one uncertainty with evidence. The executor may move it to Review, but a material answer becomes a mission decision only after Mission Control accepts it.
+Answers one uncertainty with evidence. The executor may move it to Review, but Mission Control accepts and closes material Discovery work; its answer becomes a mission decision only after that acceptance.
 
 ### Decision
 
@@ -58,11 +58,11 @@ Creates or amends exactly one named durable artifact, or an explicitly approved 
 
 ### Execution
 
-Implements one approved slice. It cannot amend its own outcome, scope, architecture, or acceptance criteria. Deviations return to Review or open a Candidate Decision ticket.
+Implements one approved slice. It cannot amend its own outcome, scope, architecture, or acceptance criteria. Deviations return to Review or open a Candidate Decision ticket. Mission Control accepts and closes material Execution work after reviewing its evidence and any independent validation required by the ticket.
 
 ### Validation
 
-Produces independent evidence and a verdict. The validator does not accept or close the mission.
+Produces independent evidence and a verdict. The validator moves the ticket to Review; Mission Control accepts and closes material Validation work. The validator does not accept or close the mission.
 
 ### Task
 

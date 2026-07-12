@@ -5,7 +5,7 @@ Reusable agent skills maintained by Taecontrol.
 ## Skills
 
 - [`mission`](./skills/mission/SKILL.md) — Human-controlled lifecycle for navigating one bounded intervention through a visible map and one active material frontier ticket.
-- [`discovery`](./skills/discovery/SKILL.md) — Manual-first workflow for turning vague software product ideas or poorly understood MVPs/codebases into evidence-backed Discovery Briefs through fog-of-war exploration.
+- [`discovery`](./skills/discovery/SKILL.md) — Evidence-first executor for one sharp uncertainty, either as an approved Mission ticket or a standalone collaborative exploration.
 
 Install the collaborative pair:
 

@@ -18,7 +18,7 @@
 
 ## Frontier
 
-<!-- Exactly one active material ticket, or one proposed Candidate when awaiting selection. -->
+<!-- Show exactly one current material ticket in Ready, Active, or Review; when none exists, show one proposed Candidate awaiting Mission Control selection. -->
 
 - [ ] `tickets/NNN-example.md` — Candidate / Ready / Active / Review — <question or outcome>
 

@@ -15,5 +15,5 @@ Use one ticket type per discovery ticket. Add a custom type only when none fit.
 | `operational-recon` | Deployment, environments, logs, jobs, backups, or ownership are unclear | Ops map and risk list |
 | `pain-validation` | Reported pain may be anecdotal or misdiagnosed | Evidence of frequency, severity, affected users |
 | `risk-containment` | Touching the system may break critical behavior | Do-not-touch zones, safe probes, rollback notes |
-| `decision` | Evidence is enough and a choice must be made | Decision, rationale, tradeoffs, consequences |
+| `decision` | Evidence is sufficient to recommend a choice for human acceptance | Proposed decision, rationale, tradeoffs, consequences |
 | `task` | Manual setup is required before discovery can continue | Completed setup or precise human checklist |

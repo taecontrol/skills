@@ -8,6 +8,14 @@ New Product Discovery / Existing Product Discovery
 
 <!-- What this discovery effort is trying to make clear enough to decide. -->
 
+## Known territory
+
+<!-- Evidence-backed facts relevant to this discovery question. -->
+
+## Assumptions
+
+<!-- Beliefs not yet verified; do not mix them with known territory. -->
+
 ## Notes
 
 <!-- Constraints, collaboration rules, repository links, access notes. -->
@@ -16,9 +24,13 @@ New Product Discovery / Existing Product Discovery
 
 - <link to ticket> — <one-line decision>
 
-## Frontier: open unblocked tickets
+## Frontier: Candidate tickets awaiting selection
 
 - [ ] `tickets/001-example.md` — <question>
+
+## Active ticket
+
+- <one human-selected ticket or none>
 
 ## Blocked tickets
 
