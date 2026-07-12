@@ -97,12 +97,14 @@ A ticket result never authorizes the next lifecycle phase. Discovery does not au
 
 Each material ticket is an independently resumable unit of work and uses a fresh execution session by default. Session isolation limits context bleed, makes the ticket contract testable by a fresh agent, and gives Mission Control a deliberate repository checkpoint.
 
-Authorization has two dimensions:
+Progression has two dimensions:
 
 1. **Ticket authorization** moves the selected ticket to Active.
 2. **Session-continuation authorization** permits working that ticket—or a following ticket—in the current session.
 
-Do not infer the second from the first. Once the immediately preceding proposal satisfies the Ready contract, “yes,” “activate it,” “approved,” or “go ahead” authorizes only the ticket transition unless Mission Control explicitly says to continue/work it **in this same session**. A vague Candidate cannot skip Ready; a bare confirmation before its contract is clear selects it for clarification, not activation. After default activation, persist the Active ticket and handoff, state that execution should resume in a fresh session, and stop.
+Mission Control may grant both dimensions in one contextual instruction. Do not infer same-session execution from ticket approval alone: once the immediately preceding proposal satisfies the Ready contract, “yes,” “activate it,” “approved,” or “go ahead” authorizes only the ticket transition. After default activation, persist the Active ticket and handoff, state that execution should resume in a fresh session, and stop.
+
+At a ticket disposition checkpoint, interpret ordinary language semantically rather than requiring a formula. “Continue here,” “let's do the next one here,” or equivalent language selects the one unambiguous proposed frontier and authorizes its execution in the current session. If its Ready contract can be completed mechanically from accepted mission artifacts and the visible proposal, write it, mark it Active, and work it without asking again. If a material scope, risk, dependency, or acceptance choice is genuinely missing, ask only that substantive question; do not ask Mission Control to approve agent-authored ticket prose or repeat a permission already given.
 
 When a material ticket reaches Review or is Closed, do not create a durable next-ticket artifact, activate a next ticket, or start its work. Report:
 
@@ -111,9 +113,9 @@ When a material ticket reaches Review or is Closed, do not create a durable next
 - changed/untracked files, tests, and whether the work is committed;
 - one proposed next frontier as an existing Candidate or a lightweight inactive map entry.
 
-Then stop at a **ticket disposition checkpoint**. Mission Control chooses among review/revision, committing the ticket changes, pausing, starting the specifically named proposed next ticket in a fresh session, or explicitly continuing that named ticket in the current session. If Mission Control requests a commit, commit only the accepted ticket scope and return to the checkpoint; committing does not activate the next ticket.
+Then stop at a **ticket disposition checkpoint**. Mission Control chooses among review/revision, committing the ticket changes, pausing, starting the unambiguous proposed next ticket in a fresh session, or explicitly continuing it in the current session. If Mission Control requests a commit, commit only the accepted ticket scope and return to the checkpoint; committing does not activate the next ticket. A later “continue here” acts on the still-visible proposed frontier without another activation ceremony.
 
-Same-session continuation is an exception, not a sticky mission setting. It applies only to the specifically named next ticket and must be granted again at the following checkpoint.
+Same-session continuation is an exception, not a sticky mission setting. It applies only to the unambiguous next frontier selected at that checkpoint and must be granted again at the following checkpoint.
 
 ## Durable versus lightweight tickets
 
