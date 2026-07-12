@@ -85,12 +85,35 @@ When unsure, treat the transition as material and show it on the map.
 1. Agent shows the current map and proposes one Candidate frontier.
 2. Mission Control selects or amends it.
 3. Ticket becomes Ready only when scope and evidence are clear, then Active.
-4. Owner works mechanical subtasks without expanding the ticket.
-5. Owner returns result, evidence, remaining uncertainty, and map delta; ticket becomes Review.
-6. Required authority accepts, rejects, splits, blocks, or abandons it.
-7. Map updates before another material ticket is activated.
+4. Agent writes enough durable ticket/map context for a fresh executor and stops. The material ticket runs in a fresh session by default.
+5. Owner works mechanical subtasks without expanding the ticket.
+6. Owner returns result, evidence, remaining uncertainty, map delta, and worktree disposition; ticket becomes Review and the session stops at the ticket checkpoint.
+7. Required authority accepts, rejects, splits, blocks, or abandons it.
+8. Map updates before another material ticket is activated.
 
 A ticket result never authorizes the next lifecycle phase. Discovery does not authorize deliverables; a deliverable does not authorize the next deliverable; a plan does not authorize implementation; QA does not accept the mission.
+
+## Session isolation and ticket disposition
+
+Each material ticket is an independently resumable unit of work and uses a fresh execution session by default. Session isolation limits context bleed, makes the ticket contract testable by a fresh agent, and gives Mission Control a deliberate repository checkpoint.
+
+Authorization has two dimensions:
+
+1. **Ticket authorization** moves the selected ticket to Active.
+2. **Session-continuation authorization** permits working that ticket—or a following ticket—in the current session.
+
+Do not infer the second from the first. Once the immediately preceding proposal satisfies the Ready contract, “yes,” “activate it,” “approved,” or “go ahead” authorizes only the ticket transition unless Mission Control explicitly says to continue/work it **in this same session**. A vague Candidate cannot skip Ready; a bare confirmation before its contract is clear selects it for clarification, not activation. After default activation, persist the Active ticket and handoff, state that execution should resume in a fresh session, and stop.
+
+When a material ticket reaches Review or is Closed, do not create a durable next-ticket artifact, activate a next ticket, or start its work. Report:
+
+- ticket status and acceptance decision required;
+- result/evidence and map delta;
+- changed/untracked files, tests, and whether the work is committed;
+- one proposed next frontier as an existing Candidate or a lightweight inactive map entry.
+
+Then stop at a **ticket disposition checkpoint**. Mission Control chooses among review/revision, committing the ticket changes, pausing, starting the specifically named proposed next ticket in a fresh session, or explicitly continuing that named ticket in the current session. If Mission Control requests a commit, commit only the accepted ticket scope and return to the checkpoint; committing does not activate the next ticket.
+
+Same-session continuation is an exception, not a sticky mission setting. It applies only to the specifically named next ticket and must be granted again at the following checkpoint.
 
 ## Durable versus lightweight tickets
 

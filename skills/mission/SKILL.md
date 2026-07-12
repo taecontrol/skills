@@ -9,13 +9,13 @@ license: MIT
 
 Mission is the collaborative lifecycle container for one bounded intervention on a persistent product. Mission Control and the agent navigate it together; the skill does not run an autonomous software factory.
 
-The operating rhythm is:
+The default operating rhythm is:
 
 ```text
-show map -> select one frontier -> work one ticket -> return evidence + map delta -> select again
+show map -> activate one ticket -> fresh execution session -> Review -> disposition checkpoint -> stop
 ```
 
-The goal is shared understanding and a well-evidenced outcome, not throughput.
+The goal is shared understanding and a well-evidenced outcome, not throughput. Material tickets are session-isolated by default; continuing into another ticket in the same session requires an explicit Mission Control instruction.
 
 ## Authority boundary
 
@@ -40,11 +40,12 @@ Load [`references/ticket-protocol.md`](references/ticket-protocol.md) before cre
 
 1. Convert a sharp unknown, decision, durable deliverable, execution slice, validation assignment, or blocking setup need into a Candidate ticket. Vague fog remains on the map.
 2. Select the next material ticket with Mission Control. Mark it Ready only when scope, non-goals, dependencies, and acceptance/evidence are clear; then mark it Active.
-3. Work only the active ticket. Mechanical evidence-gathering subtasks may proceed without performative approval, but cannot change the ticket's outcome, scope, risk, or authority.
-4. Return the ticket to Review with its result, evidence, remaining uncertainty, and explicit map delta. Do not open the next material ticket in the same move.
-5. Close the ticket only at its required authority level, update the map, then show the next frontier.
+3. Treat activation and session continuation as separate authorizations. By default, record the Active ticket and a self-contained handoff, then stop so the ticket is executed in a fresh session. A bare confirmation such as “yes,” “activate it,” or “go ahead” authorizes the ticket, not same-session execution.
+4. Work only the active ticket in its execution session. Mechanical evidence-gathering subtasks may proceed without performative approval, but cannot change the ticket's outcome, scope, risk, or authority.
+5. Return the ticket to Review with its result, evidence, remaining uncertainty, explicit map delta, and worktree disposition. Stop at the ticket checkpoint; do not create, activate, or begin another ticket.
+6. Close the ticket only at its required authority level and update the map. Mission Control then chooses whether to review/revise, commit the ticket changes, pause, start the next ticket in a fresh session, or explicitly continue in the current session.
 
-Completion criterion: every material result is visible on the map, and no downstream work began merely because an upstream ticket completed.
+Completion criterion: every material result is visible on the map, the repository can resume from durable artifacts, and no downstream work or same-session ticket began without separate explicit authorization.
 
 ## Route without taking over
 
@@ -57,7 +58,7 @@ Completion criterion: every material result is visible on the map, and no downst
 | Validation | Use an independent context when practical. | Evidence and verdict; Mission Control accepts or rejects it. |
 | Task | Perform bounded setup or mechanical work. | Observable completion or blocker. |
 
-Routing is not progression. After any route returns, stop at the map.
+Routing is not progression. After any route returns, stop at the ticket checkpoint; a new executor or route does not inherit authority to continue the mission.
 
 ## Shape deliverables deliberately
 
@@ -110,6 +111,7 @@ Completion criterion: a fresh session can resume or understand closure from repo
 
 - **Contract theatre:** role labels and polished documents hide that Mission Control never navigated the fog.
 - **Silent chaining:** Discovery completion triggers Spec, Design, Plan, reviewers, or implementation without a new ticket.
+- **Session bleed:** approval or completion of one ticket is treated as permission to execute the next ticket in the same context; use a fresh session unless Mission Control explicitly overrides the boundary.
 - **Ticket bureaucracy:** every command becomes a ticket instead of remaining a mechanical subtask.
 - **Premature completion:** attention moves to downstream phases before the active ticket has evidence and map updates.
 - **Map drift:** decisions live only in chat or ticket details while the visible map remains stale.
