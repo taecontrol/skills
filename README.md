@@ -4,7 +4,14 @@ Reusable agent skills maintained by Taecontrol.
 
 ## Skills
 
+- [`mission`](./skills/mission/SKILL.md) — Human-controlled lifecycle for navigating one bounded intervention through a visible map and one active material frontier ticket.
 - [`discovery`](./skills/discovery/SKILL.md) — Manual-first workflow for turning vague software product ideas or poorly understood MVPs/codebases into evidence-backed Discovery Briefs through fog-of-war exploration.
+
+Install the collaborative pair:
+
+```bash
+npx skills add taecontrol/skills --skill mission --skill discovery
+```
 
 ## Install with skills.sh / npx skills
 
@@ -32,6 +39,14 @@ npx skills add taecontrol/skills --list
 
 ```text
 skills/
+  mission/
+    SKILL.md
+    references/
+      ticket-protocol.md
+    templates/
+      exploration-map.md
+      mission-brief.md
+      ticket.md
   discovery/
     SKILL.md
     references/
@@ -47,7 +62,7 @@ skills/
       next-version-brief.md
 ```
 
-`SKILL.md` stays small and routes agents to the one mode/reference/template they need for the current discovery pass.
+Each `SKILL.md` stays focused on routing and process; branch-specific rules and copyable artifacts use progressive disclosure through `references/` and `templates/`.
 
 ## Local validation
 
