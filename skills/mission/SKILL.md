@@ -53,7 +53,7 @@ Completion criterion: every material result is visible on the map, the repositor
 | --- | --- | --- |
 | Discovery | Invoke the `discovery` skill for one approved ticket. If unavailable, leave the ticket Ready and report the missing executor. | Evidence, confidence, remaining fog, proposed map delta; material answers remain Review until Mission Control decides. |
 | Decision | Work collaboratively; agents provide verified options and trade-offs. | Mission Control decision and consequences. |
-| Deliverable | Create or amend exactly the named artifact after activation. | Artifact, evidence against acceptance criteria, unresolved decisions; status Review. |
+| Deliverable | Create or amend exactly the named artifact after activation. | Artifact, changed-surface evidence against acceptance criteria, unresolved decisions; status Review. Do not run unrelated product suites for a documentation-only deliverable. |
 | Execution | Route to the applicable implementation/TDD skill against the approved baseline. | Code/evidence/deviations; never self-amend scope. |
 | Validation | Use an independent context when practical. | Evidence and verdict; Mission Control accepts or rejects it. |
 | Task | Perform bounded setup or mechanical work. | Observable completion or blocker. |

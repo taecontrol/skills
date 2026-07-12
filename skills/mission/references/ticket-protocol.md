@@ -144,6 +144,16 @@ Do not silently widen the active ticket to absorb it.
 
 ## Review return shape
 
+Verification must be proportional to the active ticket and changed surface:
+
+- Before classifying the change, inspect staged, unstaged, and untracked files. Check whether documentation contains executable examples or feeds a docs/build/release pipeline.
+- For a decision, specification, plan, or Markdown-only deliverable, verify artifact structure, links, traceability to accepted decisions/evidence, internal consistency, and review findings.
+- Do not run the full product test, typecheck, lint, or build suites merely to produce a green verification line when no executable code, configuration, schema, test, dependency, generated artifact, or build-consumed documentation changed.
+- Run an executable suite only when the ticket explicitly requires baseline evidence, an executable example/generated artifact can affect it, or the changed surface can plausibly break it. State that reason with the result.
+- When suites are not relevant, report `Not run — no executable changes` rather than treating an unchanged baseline as evidence that a proposed contract is correct.
+
+A passing unchanged suite proves only that the pre-existing implementation baseline is green; it does not validate new behavior described solely in a proposed artifact.
+
 Every material ticket returns:
 
 ```markdown
