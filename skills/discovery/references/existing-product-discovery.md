@@ -17,7 +17,7 @@ Capture what is claimed without pretending it is true:
 - known constraints and scary areas
 - any immediate operational risk
 
-Completion criterion: the raw input is summarized in `discovery/discovery-brief.md` under `Raw input / what we were told`.
+Completion criterion: the raw input is preserved in the active Mission ticket or visible standalone map; when tracked standalone artifacts are justified, summarize it in `discovery/discovery-brief.md` under `Raw input / what we were told`.
 
 ## Map the system before recommending intervention
 
@@ -32,9 +32,9 @@ Start with the zones that affect the requested decision:
 - Risk containment: what not to touch until understood.
 - Improvement shaping: what responsible next intervention should be.
 
-Use `templates/current-state-map.md` when the current system is unclear enough that the brief alone would become overloaded.
+Use `../templates/current-state-map.md` when the current system is unclear enough that the brief alone would become overloaded.
 
-Use `templates/next-version-brief.md` only after current-state clarity is high enough to shape an evidence-backed next intervention.
+Use `../templates/next-version-brief.md` only when a separately authorized artifact is needed after current-state clarity is high enough to shape an evidence-backed next intervention.
 
 ## Vice classification
 
@@ -65,17 +65,16 @@ Prefer tickets that map one uncertain part of the system:
 - `pain-validation` — reported pain may be anecdotal or misdiagnosed
 - `risk-containment` — touching the system may break critical behavior
 - `technical-spike` — integration, performance, migration, or feasibility is unknown
-- `decision` — evidence is enough and a choice must be made
+- `decision` — evidence is sufficient to recommend a choice for human acceptance
 
-Load `references/ticket-types.md` when choosing among all ticket types.
+Load `ticket-types.md` when choosing among all ticket types.
 
 ## Mode-specific checkpoint
 
-Checkpoint outcomes most common in this mode:
+Propose one of these checkpoint outcomes; none authorizes downstream work:
 
 - `Continue discovery` — product behavior, users, risks, or constraints are still fog.
-- `Create next-version brief` — current-state clarity is high enough to shape the next intervention.
-- `Stabilize / harden` — operational or reliability risk is the responsible next move.
-- `Refactor with scope` — technical debt blocks a known product/system goal.
-- `Technical spike` — feasibility or safety is the central risk.
+- `Prototype / technical spike` — feasibility or safety needs concrete evidence.
+- `Narrow or split mission` — the intervention is not bounded or carries a different risk class.
+- `Ready to shape` — current-state clarity is high enough to propose a separately authorized next intervention.
 - `Park or kill` — the requested intervention is weak, mis-scoped, or not worth the cost.

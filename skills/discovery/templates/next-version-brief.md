@@ -38,7 +38,7 @@
 
 ## Risks and rollback
 
-## Handoff target
+## Proposed handoff target
 
 - [ ] PRD / requirements
 - [ ] Shaped pitch
@@ -46,3 +46,9 @@
 - [ ] Implementation plan
 - [ ] Spike
 - [ ] More discovery
+
+Authorization: Proposed / Accepted / Rejected / Rework requested
+
+Accepted by: <human mission owner or stakeholder>
+
+<!-- Selecting a target recommends the next separately authorized artifact or ticket; it does not create that artifact or begin that phase. -->

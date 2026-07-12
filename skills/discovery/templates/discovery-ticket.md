@@ -2,7 +2,21 @@
 
 ## Status
 
-Open / In Progress / Blocked / Closed / Archived
+Candidate / Ready / Active / Blocked / Review / Closed / Abandoned
+
+A new material ticket starts as `Candidate`. The human selects it before it becomes `Ready` and then `Active`. Material answers move to `Review`; close them only after the human accepts the result.
+
+## Mode
+
+Collaborative / Agent / Human / Independent
+
+## Owner
+
+<person or role>
+
+## Depends on
+
+<tickets, access, decisions, or none>
 
 ## Type
 
@@ -20,6 +34,14 @@ Open / In Progress / Blocked / Closed / Archived
 
 <!-- Relevant brief/map excerpts. -->
 
+## Scope
+
+<!-- Work allowed inside this ticket. -->
+
+## Non-goals
+
+<!-- Nearby work this ticket must not absorb. -->
+
 ## Method
 
 <!-- Grilling, research, interview, prototype, spike, code archaeology, etc. -->
@@ -32,9 +54,9 @@ Open / In Progress / Blocked / Closed / Archived
 
 <!-- Notes while working. Keep raw details here or in evidence-log. -->
 
-## Answer / decision
+## Answer / proposed decision
 
-<!-- Final answer once closed. -->
+<!-- Evidence-backed result. It remains proposed until accepted when material. -->
 
 ## Evidence
 
@@ -47,6 +69,12 @@ Low / Medium / High
 ## Remaining uncertainty
 
 <!-- What is still unknown after this ticket? -->
+
+## Acceptance
+
+Accepted / Rejected / Rework requested / Not yet reviewed
+
+Accepted by: <human mission owner or stakeholder when material>
 
 ## New tickets surfaced
 

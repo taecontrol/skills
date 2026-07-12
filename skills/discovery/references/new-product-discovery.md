@@ -15,7 +15,7 @@ Capture what the human or stakeholder said without pretending it is true:
 - urgency, deadline, or pressure
 - any proposed solution already implied
 
-Completion criterion: the raw input is summarized in `discovery/discovery-brief.md` under `Raw input / what we were told`.
+Completion criterion: the raw input is preserved in the active Mission ticket or visible standalone map; when tracked standalone artifacts are justified, summarize it in `discovery/discovery-brief.md` under `Raw input / what we were told`.
 
 ## Common fog patches
 
@@ -41,18 +41,18 @@ Prefer tickets that answer one decision-making question:
 - `interview` — user/customer pain and workflow evidence
 - `prototype` — concrete artifact to provoke reaction
 - `technical-spike` — feasibility is the central risk
-- `decision` — evidence is enough and a choice must be made
+- `decision` — evidence is sufficient to recommend a choice for human acceptance
 
-Load `references/ticket-types.md` when choosing among all ticket types.
+Load `ticket-types.md` when choosing among all ticket types.
 
 ## Mode-specific checkpoint
 
-Avoid writing requirements until the Discovery Brief can describe the problem, user, outcome, constraints, and risks without fake certainty.
+Avoid writing requirements until the visible synthesis can describe the problem, user, outcome, constraints, and risks without fake certainty.
 
-Checkpoint outcomes most common in this mode:
+Propose one of these checkpoint outcomes; none authorizes downstream work:
 
 - `Continue discovery` — key user/problem/outcome assumptions are still fog.
-- `Shape V1 / write PRD` — enough clarity exists for requirements or shaping.
-- `Prototype` — behavior or UI needs something concrete to react to.
-- `Technical spike` — feasibility is the central risk.
+- `Prototype / technical spike` — behavior, UI, or feasibility needs concrete evidence.
+- `Narrow or split mission` — the candidate intervention is not bounded.
+- `Ready to shape` — enough clarity exists to propose separately authorized deliverables.
 - `Park or kill` — the idea is weak, mis-scoped, or not worth the cost.

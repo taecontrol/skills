@@ -89,16 +89,15 @@ Status: Unknown / Assumed / Known / Decided
 - [ ] Are the biggest risks visible?
 - [ ] Is the fog low enough for the next responsible move?
 
-## Current decision
+## Proposed checkpoint outcome
 
 - [ ] Continue discovery
-- [ ] Shape V1 / write PRD
-- [ ] Create next-version brief
-- [ ] Prototype
-- [ ] Technical spike
-- [ ] Stabilize / harden
-- [ ] Refactor with scope
+- [ ] Prototype / technical spike
+- [ ] Narrow or split mission
+- [ ] Ready to shape
 - [ ] Park or kill
+
+<!-- This is a recommendation until the responsible human accepts it. It does not authorize downstream work. -->
 
 ## Next action
 
