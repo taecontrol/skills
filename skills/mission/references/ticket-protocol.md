@@ -85,12 +85,37 @@ When unsure, treat the transition as material and show it on the map.
 1. Agent shows the current map and proposes one Candidate frontier.
 2. Mission Control selects or amends it.
 3. Ticket becomes Ready only when scope and evidence are clear, then Active.
-4. Owner works mechanical subtasks without expanding the ticket.
-5. Owner returns result, evidence, remaining uncertainty, and map delta; ticket becomes Review.
-6. Required authority accepts, rejects, splits, blocks, or abandons it.
-7. Map updates before another material ticket is activated.
+4. Agent writes enough durable ticket/map context for a fresh executor and stops. The material ticket runs in a fresh session by default.
+5. Owner works mechanical subtasks without expanding the ticket.
+6. Owner returns result, evidence, remaining uncertainty, map delta, and worktree disposition; ticket becomes Review and the session stops at the ticket checkpoint.
+7. Required authority accepts, rejects, splits, blocks, or abandons it.
+8. Map updates before another material ticket is activated.
 
 A ticket result never authorizes the next lifecycle phase. Discovery does not authorize deliverables; a deliverable does not authorize the next deliverable; a plan does not authorize implementation; QA does not accept the mission.
+
+## Session isolation and ticket disposition
+
+Each material ticket is an independently resumable unit of work and uses a fresh execution session by default. Session isolation limits context bleed, makes the ticket contract testable by a fresh agent, and gives Mission Control a deliberate repository checkpoint.
+
+Progression has two dimensions:
+
+1. **Ticket authorization** moves the selected ticket to Active.
+2. **Session-continuation authorization** permits working that ticket—or a following ticket—in the current session.
+
+Mission Control may grant both dimensions in one contextual instruction. Do not infer same-session execution from ticket approval alone: once the immediately preceding proposal satisfies the Ready contract, “yes,” “activate it,” “approved,” or “go ahead” authorizes only the ticket transition. After default activation, persist the Active ticket and handoff, state that execution should resume in a fresh session, and stop.
+
+At a ticket disposition checkpoint, interpret ordinary language semantically rather than requiring a formula. “Continue here,” “let's do the next one here,” or equivalent language selects the one unambiguous proposed frontier and authorizes its execution in the current session. If its Ready contract can be completed mechanically from accepted mission artifacts and the visible proposal, write it, mark it Active, and work it without asking again. If a material scope, risk, dependency, or acceptance choice is genuinely missing, ask only that substantive question; do not ask Mission Control to approve agent-authored ticket prose or repeat a permission already given.
+
+When a material ticket reaches Review or is Closed, do not create a durable next-ticket artifact, activate a next ticket, or start its work. Report:
+
+- ticket status and acceptance decision required;
+- result/evidence and map delta;
+- changed/untracked files, tests, and whether the work is committed;
+- one proposed next frontier as an existing Candidate or a lightweight inactive map entry.
+
+Then stop at a **ticket disposition checkpoint**. Mission Control chooses among review/revision, committing the ticket changes, pausing, starting the unambiguous proposed next ticket in a fresh session, or explicitly continuing it in the current session. If Mission Control requests a commit, commit only the accepted ticket scope and return to the checkpoint; committing does not activate the next ticket. A later “continue here” acts on the still-visible proposed frontier without another activation ceremony.
+
+Same-session continuation is an exception, not a sticky mission setting. It applies only to the unambiguous next frontier selected at that checkpoint and must be granted again at the following checkpoint.
 
 ## Durable versus lightweight tickets
 
@@ -118,6 +143,16 @@ Record each new concern as:
 Do not silently widen the active ticket to absorb it.
 
 ## Review return shape
+
+Verification must be proportional to the active ticket and changed surface:
+
+- Before classifying the change, inspect staged, unstaged, and untracked files. Check whether documentation contains executable examples or feeds a docs/build/release pipeline.
+- For a decision, specification, plan, or Markdown-only deliverable, verify artifact structure, links, traceability to accepted decisions/evidence, internal consistency, and review findings.
+- Do not run the full product test, typecheck, lint, or build suites merely to produce a green verification line when no executable code, configuration, schema, test, dependency, generated artifact, or build-consumed documentation changed.
+- Run an executable suite only when the ticket explicitly requires baseline evidence, an executable example/generated artifact can affect it, or the changed surface can plausibly break it. State that reason with the result.
+- When suites are not relevant, report `Not run — no executable changes` rather than treating an unchanged baseline as evidence that a proposed contract is correct.
+
+A passing unchanged suite proves only that the pre-existing implementation baseline is green; it does not validate new behavior described solely in a proposed artifact.
 
 Every material ticket returns:
 
