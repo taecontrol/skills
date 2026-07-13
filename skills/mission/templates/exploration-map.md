@@ -18,13 +18,13 @@
 
 ## Frontier
 
-<!-- Show exactly one current material ticket in Ready, Active, or Review; when none exists, show one proposed Candidate awaiting Mission Control selection. -->
+<!-- Show exactly one current material work package in Ready, Active, or Review; when none exists, show one proposed Candidate awaiting Mission Control selection. -->
 
-- [ ] `tickets/NNN-example.md` — Candidate / Ready / Active / Review — <question or outcome>
+- [ ] `tickets/NNN-example.md` — Candidate / Ready / Active / Review — <objective>
 
 ## Candidate tickets
 
-<!-- Sharp future questions/deliverables; not authorized. -->
+<!-- Coherent future work packages; not authorized. Keep smaller questions as fog or inside the relevant ticket. -->
 
 - [ ] <ticket or concise candidate>
 
