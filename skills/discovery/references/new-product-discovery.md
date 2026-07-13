@@ -34,7 +34,7 @@ Ticket only the unknowns that matter for the next decision:
 
 ## Good ticket shapes
 
-Prefer tickets that answer one decision-making question:
+Prefer work packages that produce one coherent, independently useful result. Keep coupled decision-driving questions together; split independently useful objectives:
 
 - `grilling` — stakeholder intent, constraints, and no-gos
 - `research` — domain, market, regulation, or comparable products

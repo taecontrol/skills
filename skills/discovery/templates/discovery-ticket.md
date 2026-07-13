@@ -1,4 +1,4 @@
-# Discovery Ticket <number>: <question>
+# Discovery Ticket <number>: <coherent work package>
 
 ## Status
 
@@ -22,9 +22,13 @@ Collaborative / Agent / Human / Independent
 
 <one ticket type>
 
-## Question
+## Objective
 
-<!-- One sharp question this ticket answers. -->
+<!-- The coherent, independently reviewable discovery result this ticket must produce. -->
+
+## Questions / decisions
+
+<!-- Coupled matters that combine into the same result. Omit when unnecessary. -->
 
 ## Why this matters
 
@@ -54,9 +58,9 @@ Collaborative / Agent / Human / Independent
 
 <!-- Notes while working. Keep raw details here or in evidence-log. -->
 
-## Answer / proposed decision
+## Answer / proposed decision set
 
-<!-- Evidence-backed result. It remains proposed until accepted when material. -->
+<!-- Evidence-backed result and any coupled proposed decisions. They remain proposed until accepted when material. -->
 
 ## Evidence
 
@@ -76,9 +80,9 @@ Accepted / Rejected / Rework requested / Not yet reviewed
 
 Accepted by: <human mission owner or stakeholder when material>
 
-## New tickets surfaced
+## New work surfaced
 
-- <ticket path or fog patch>
+- <independent Candidate ticket, related question retained here, or fog patch>
 
 ## Brief/map updates
 

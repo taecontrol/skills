@@ -56,7 +56,7 @@ Only recommend implementation after the vice is tied to evidence and a product/s
 
 ## Good ticket shapes
 
-Prefer tickets that map one uncertain part of the system:
+Prefer work packages that map one coherent, independently useful part of the system. Keep coupled questions together when their evidence combines into that result; split independently useful objectives:
 
 - `product-archaeology` — unclear behavior or workflows
 - `code-archaeology` — unclear architecture, modules, seams, hazards
