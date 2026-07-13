@@ -16,17 +16,19 @@
 
 <!-- In-scope uncertainty not yet sharp enough or selected for work. -->
 
-## Frontier
+## Current frontier
 
-<!-- Show exactly one current material work package in Ready, Active, or Review; when none exists, show one proposed Candidate awaiting Mission Control selection. -->
+<!-- Show exactly one current material work package in Ready, Active, or Review; only when none exists, show one proposed Candidate awaiting Mission Control selection. -->
 
-- [ ] `tickets/NNN-example.md` — Candidate / Ready / Active / Review — <objective>
+- [ ] `tickets/NNN-example.md` — Candidate / Ready / Active / Review — <Kind> / <Type> — <objective>
 
-## Candidate tickets
+## Provisional route / Candidate tickets
 
-<!-- Coherent future work packages; not authorized. Keep smaller questions as fog or inside the relevant ticket. -->
+<!-- Show 2–5 explicitly inactive work packages with Kind/Type, dependency/condition, and confidence when evidence supports that depth. Otherwise write the Route depth line and list only justified candidates. This is orientation, not authorization. -->
 
-- [ ] <ticket or concise candidate>
+Route depth: 2–5 known candidates / unknown — <fog preventing a reliable itinerary>
+
+- [ ] <ticket or concise candidate> — inactive — <Kind> / <Type> — depends on <condition> — likely / conditional / tentative
 
 ## Blocked tickets
 
@@ -59,4 +61,12 @@
 
 ## Next Mission Control question
 
-<!-- One question only, or "None — mission is paused/closed." -->
+<!-- One grouped material question only, or "None — mission is paused/closed." -->
+
+## Immediate next action
+
+<!-- What happens next, by whom, and at which checkpoint. -->
+
+## Recommended next frontier
+
+<!-- One inactive Candidate, why it is next, and what must be true before activation. -->

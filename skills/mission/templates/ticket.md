@@ -1,9 +1,10 @@
 # Ticket NNN: <one coherent work package>
 
-Status: **Candidate**  
+Status: **Candidate**
 Kind: **<choose exactly one: Discovery | Decision | Deliverable | Execution | Validation | Task>**
-Mode: **Collaborative | Agent | Human | Independent**  
-Owner: **<person or role>**  
+Type: **<Discovery catalog type, or concise human-readable operational type>**
+Mode: **Collaborative | Agent | Human | Independent**
+Owner: **<person or role>**
 Depends on: **<tickets or none>**
 
 ## Objective
@@ -35,6 +36,8 @@ Authorized outputs: **<exact members, bounded inclusion rule, or none>**
 ## Acceptance / evidence
 
 <!-- Observable completion criteria and required evidence. -->
+
+<!-- Once Status becomes Active, Objective, Kind, Type, Scope, Authorized outputs, Non-goals, dependencies, and Acceptance/evidence are frozen unless Mission Control explicitly amends them. -->
 
 ## Result / decision set
 
