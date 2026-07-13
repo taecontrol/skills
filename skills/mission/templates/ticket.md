@@ -1,14 +1,18 @@
-# Ticket NNN: <one outcome or one question>
+# Ticket NNN: <one coherent work package>
 
 Status: **Candidate**  
-Kind: **Discovery | Decision | Deliverable | Execution | Validation | Task**  
+Kind: **<choose exactly one: Discovery | Decision | Deliverable | Execution | Validation | Task>**
 Mode: **Collaborative | Agent | Human | Independent**  
 Owner: **<person or role>**  
 Depends on: **<tickets or none>**
 
-## Outcome / question
+## Objective
 
-<!-- One bounded result or one sharp unknown. -->
+<!-- The coherent, independently reviewable result this work package must produce. -->
+
+## Questions / decisions
+
+<!-- Coupled matters that establish the same result or downstream contract. Omit when unnecessary. -->
 
 ## Why now
 
@@ -17,6 +21,8 @@ Depends on: **<tickets or none>**
 ## Scope
 
 <!-- Work allowed inside this ticket. -->
+
+Authorized outputs: **<exact members, bounded inclusion rule, or none>**
 
 ## Non-goals
 
@@ -30,9 +36,9 @@ Depends on: **<tickets or none>**
 
 <!-- Observable completion criteria and required evidence. -->
 
-## Result / decision
+## Result / decision set
 
-<!-- Filled when the ticket reaches Review or Closed. -->
+<!-- Filled when the ticket reaches Review or Closed. Record the coherent result and any accepted decisions. -->
 
 ## Evidence
 

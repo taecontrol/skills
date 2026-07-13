@@ -4,10 +4,12 @@ This is the source of truth for ticket states, authority, and transitions used b
 
 ## Common contract
 
+Each ticket owns one coherent, independently reviewable work package that advances the mission. The ticket has one objective and one governing Kind, but it may resolve multiple coupled questions or decisions when they establish the same downstream contract and are useful and accepted together. Related work may support that Kind; material outputs that require a different route or authority belong in another ticket.
+
 Every durable ticket begins with:
 
 ```markdown
-# Ticket NNN: <one outcome or one question>
+# Ticket NNN: <one coherent work package>
 
 Status: Candidate | Ready | Active | Blocked | Review | Closed | Abandoned
 Kind: Discovery | Decision | Deliverable | Execution | Validation | Task
@@ -18,13 +20,14 @@ Depends on: <tickets or none>
 
 Every ticket answers:
 
-1. **Outcome / question** — one bounded result or one sharp unknown.
-2. **Why now** — decision, gate, or dependency it unlocks.
-3. **Scope / non-goals** — enough to expose expansion.
-4. **Method** — when the approach is not obvious.
-5. **Acceptance / evidence** — observable completion criteria.
-6. **Result / decision** — filled at Review or Closed.
-7. **Map updates** — known territory, fog, decisions, future tickets, or gate changes.
+1. **Objective** — the coherent result this work package must produce.
+2. **Questions / decisions** — the coupled matters it must resolve, when useful.
+3. **Why now** — decision, gate, or dependency it unlocks.
+4. **Scope / authorized outputs / non-goals** — enough to expose expansion; name each substantial artifact or bound the approved artifact set.
+5. **Method** — when the approach is not obvious.
+6. **Acceptance / evidence** — observable completion criteria.
+7. **Result / decision set** — filled at Review or Closed.
+8. **Map updates** — known territory, fog, decisions, future tickets, or gate changes.
 
 Use [`../templates/ticket.md`](../templates/ticket.md) when a separate file is warranted. A lightweight Candidate may remain one line on the map until activated.
 
@@ -46,19 +49,19 @@ Only one material ticket is Active unless Mission Control explicitly authorizes 
 
 ### Discovery
 
-Answers one uncertainty with evidence. The executor may move it to Review, but Mission Control accepts and closes material Discovery work; its answer becomes a mission decision only after that acceptance.
+Produces evidence that resolves one decision-driving uncertainty or a tightly related set that must be understood together. The executor may move it to Review, but Mission Control accepts and closes material Discovery work; its findings become mission decisions only after that acceptance.
 
 ### Decision
 
-Resolves a material choice. Agents verify evidence, compare defensible options, state trade-offs, and recommend. Mission Control owns activation and closure.
+Produces a coherent decision set or accepted contract. Agents verify evidence, compare defensible options, state trade-offs, and recommend. Mission Control owns activation and closure.
 
 ### Deliverable
 
-Creates or amends exactly one named durable artifact, or an explicitly approved combined artifact for a small mission. Mission Control owns activation and acceptance when it fixes product behavior, architecture, execution obligations, validation obligations, or the frozen baseline.
+Creates or amends one independently useful durable artifact or a tightly related set named or explicitly bounded in the Ready ticket and reviewed and accepted together. Mission Control owns activation and acceptance when it fixes product behavior, architecture, execution obligations, validation obligations, or the frozen baseline.
 
 ### Execution
 
-Implements one approved slice. It cannot amend its own outcome, scope, architecture, or acceptance criteria. Deviations return to Review or open a Candidate Decision ticket. Mission Control accepts and closes material Execution work after reviewing its evidence and any independent validation required by the ticket.
+Implements one approved slice. It cannot amend its own objective, scope, architecture, or acceptance criteria. Deviations return to Review or open a Candidate Decision ticket. Mission Control accepts and closes material Execution work after reviewing its evidence and any independent validation required by the ticket.
 
 ### Validation
 
@@ -80,6 +83,30 @@ A ticket is material when it can change any of:
 
 When unsure, treat the transition as material and show it on the map.
 
+Materiality determines authority and visibility, not ticket granularity. Several material decisions may belong to one work package when they are coupled.
+
+## Work-package test
+
+Group questions, decisions, and artifacts in one ticket when they:
+
+- combine into the same downstream contract or independently useful result;
+- depend on substantially the same evidence;
+- constrain one another;
+- share a governing Kind, route, owner, and authority level; and
+- have little value or cannot be accepted sensibly in isolation.
+
+Split work into separate tickets when a part can be scheduled, assigned, accepted, deferred, or implemented independently; requires a different authority or risk treatment; or can block or branch without preventing the rest from being useful.
+
+The number of questions, decisions, artifacts, commands, or files does not determine ticket count.
+
+A finding or decision inside an active ticket never authorizes an unlisted artifact, implementation, validation, or other downstream action. Surface that work as fog or a Candidate ticket unless Mission Control explicitly amends the active ticket before the new work begins.
+
+Examples:
+
+- **Group:** one Decision ticket resolves coupled authentication timeout and refresh-policy choices that form one accepted policy contract.
+- **Group:** one Deliverable ticket updates a named specification and companion rationale when they share one purpose and acceptance decision.
+- **Split:** a Discovery ticket identifies an implementation change; record a Candidate Execution ticket instead of implementing it inside Discovery.
+
 ## Collaborative frontier loop
 
 1. Agent shows the current map and proposes one Candidate frontier.
@@ -95,7 +122,7 @@ A ticket result never authorizes the next lifecycle phase. Discovery does not au
 
 ## Session isolation and ticket disposition
 
-Each material ticket is an independently resumable unit of work and uses a fresh execution session by default. Session isolation limits context bleed, makes the ticket contract testable by a fresh agent, and gives Mission Control a deliberate repository checkpoint.
+Each material work package is an independently resumable unit and uses a fresh execution session by default. Session isolation limits context bleed, makes the ticket contract testable by a fresh agent, and gives Mission Control a deliberate repository checkpoint.
 
 Progression has two dimensions:
 
@@ -119,24 +146,25 @@ Same-session continuation is an exception, not a sticky mission setting. It appl
 
 ## Durable versus lightweight tickets
 
-Keep a Candidate as one map line when it is small, immediate, and has no independent evidence or handoff need. Create a separate file when work:
+Keep a Candidate as one map line until its work package needs a durable contract. Create a separate file when work:
 
 - spans sessions or owners;
 - gathers durable evidence;
 - can block or branch;
 - creates/amends a substantial deliverable;
-- carries a material decision;
+- carries a material objective or decision set needing durable acceptance;
 - needs independent review or reproducibility.
 
 Do not create tickets for individual reads, searches, commands, formatting steps, or other mechanical actions inside an active ticket.
 
 ## Splitting and surfacing new work
 
-Stop and split when an active ticket develops more than one independent outcome/question, crosses its non-goals, changes risk class, or requires an unapproved artifact.
+Stop and split when an active ticket develops an independently useful objective that can be disposed of separately, crosses its non-goals, changes risk class or authority, or requires an unapproved artifact.
 
 Record each new concern as:
 
-- a Candidate ticket if sharp;
+- a Candidate ticket if it forms an independently useful work package;
+- a related question or decision inside the active ticket if it contributes to the same objective;
 - fog if still vague;
 - out of scope/future mission if consciously excluded.
 
@@ -157,9 +185,9 @@ A passing unchanged suite proves only that the pre-existing implementation basel
 Every material ticket returns:
 
 ```markdown
-## Result / decision
+## Result / decision set
 
-<answer, artifact, implementation result, or verdict>
+<coherent answer, accepted contract, artifact set, implementation result, or verdict>
 
 ## Evidence
 

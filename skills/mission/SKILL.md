@@ -1,6 +1,6 @@
 ---
 name: mission
-description: "Open or continue a bounded software mission with a human Mission Control, a visible exploration map, and one active material frontier ticket. Use only when the human explicitly invokes Mission or asks to start, resume, navigate, or close a mission; never auto-chain discovery, deliverables, implementation, review, or gates."
+description: "Open or continue a bounded software mission with a human Mission Control, a visible exploration map, and one active material work package at the frontier. Use only when the human explicitly invokes Mission or asks to start, resume, navigate, or close a mission; never auto-chain discovery, deliverables, implementation, review, or gates."
 disable-model-invocation: true
 license: MIT
 ---
@@ -15,7 +15,7 @@ The default operating rhythm is:
 show map -> activate one ticket -> fresh execution session -> Review -> disposition checkpoint -> stop
 ```
 
-The goal is shared understanding and a well-evidenced outcome, not throughput. Material tickets are session-isolated by default; continuing into another ticket in the same session requires an explicit Mission Control instruction.
+The goal is shared understanding and a well-evidenced outcome, not throughput. A ticket owns one coherent, independently reviewable work package. It has one objective and one governing Kind, and may resolve multiple coupled questions or decisions inside that boundary. Material work packages are session-isolated by default; continuing into another ticket in the same session requires an explicit Mission Control instruction.
 
 ## Authority boundary
 
@@ -23,7 +23,7 @@ The goal is shared understanding and a well-evidenced outcome, not throughput. M
 
 **The agent owns:** repository/evidence inspection, exposing fog, proposing tickets and options, executing mechanical subtasks inside an approved ticket, keeping artifacts current, and stopping when a material boundary is reached.
 
-A human answer authorizes only the question being answered. Never interpret a scope decision as permission to draft downstream artifacts, summon every role, freeze a baseline, or begin implementation.
+A human answer authorizes only the decision or scope explicitly addressed inside the active work package. Never interpret it as permission to expand the package, draft downstream artifacts, summon every role, freeze a baseline, or begin implementation.
 
 ## Start or resume
 
@@ -38,10 +38,10 @@ Completion criterion: Mission Control can explain the destination, current fog, 
 
 Load [`references/ticket-protocol.md`](references/ticket-protocol.md) before creating, activating, reviewing, or closing a ticket.
 
-1. Convert a sharp unknown, decision, durable deliverable, execution slice, validation assignment, or blocking setup need into a Candidate ticket. Vague fog remains on the map.
-2. Select the next material ticket with Mission Control. Mark it Ready only when scope, non-goals, dependencies, and acceptance/evidence are clear; then mark it Active.
+1. Shape a Candidate ticket only when work forms a coherent, independently reviewable package: a discovery objective, decision set, durable deliverable, execution slice, validation assignment, or blocking setup outcome. Keep related questions and decisions inside that package. Vague fog and sharp questions without an independent handoff, evidence, or acceptance need remain on the map or inside the active ticket.
+2. Select the next material work package with Mission Control. Mark its ticket Ready only when the objective, scope, non-goals, dependencies, and acceptance/evidence are clear; then mark it Active.
 3. Treat ticket selection and session choice as distinct decisions that Mission Control may grant together. By default, record the Active ticket and a self-contained handoff, then stop so the ticket is executed in a fresh session. A bare confirmation such as “yes,” “activate it,” or “go ahead” authorizes the ticket, not same-session execution. At a disposition checkpoint, contextual instructions such as “continue here” or “do the next one in this session” both select the unambiguous proposed frontier and authorize same-session execution; do not demand a second procedural confirmation.
-4. Work only the active ticket in its execution session. Mechanical evidence-gathering subtasks may proceed without performative approval, but cannot change the ticket's outcome, scope, risk, or authority.
+4. Work only the active work package in its execution session. Mechanical evidence-gathering subtasks and related questions may proceed without performative approval, but cannot change the ticket's objective, scope, risk, or authority.
 5. Return the ticket to Review with its result, evidence, remaining uncertainty, explicit map delta, and worktree disposition. Stop at the ticket checkpoint; do not create, activate, or begin another ticket.
 6. Close the ticket only at its required authority level and update the map. Mission Control then chooses whether to review/revise, commit the ticket changes, pause, start the next ticket in a fresh session, or explicitly continue in the current session. When the choice is unambiguous, act on it without restating the menu or asking Mission Control to approve agent-authored ticket wording.
 
@@ -53,7 +53,7 @@ Completion criterion: every material result is visible on the map, the repositor
 | --- | --- | --- |
 | Discovery | Invoke the `discovery` skill for one approved ticket. If unavailable, leave the ticket Ready and report the missing executor. | Evidence, confidence, remaining fog, proposed map delta; material answers remain Review until Mission Control decides. |
 | Decision | Work collaboratively; agents provide verified options and trade-offs. | Mission Control decision and consequences. |
-| Deliverable | Create or amend exactly the named artifact after activation. | Artifact, changed-surface evidence against acceptance criteria, unresolved decisions; status Review. Do not run unrelated product suites for a documentation-only deliverable. |
+| Deliverable | Create or amend the named artifact or explicitly bounded, tightly related artifact set after activation. | Artifact set, changed-surface evidence against acceptance criteria, unresolved decisions; status Review. Do not run unrelated product suites for a documentation-only deliverable. |
 | Execution | Route to the applicable implementation/TDD skill against the approved baseline. | Code/evidence/deviations; never self-amend scope. |
 | Validation | Use an independent context when practical. | Evidence and verdict; Mission Control accepts or rejects it. |
 | Task | Perform bounded setup or mechanical work. | Observable completion or blocker. |
@@ -64,10 +64,9 @@ Routing is not progression. After any route returns, stop at the ticket checkpoi
 
 The Mission Brief, Product/Behavior Spec, Technical Design, Implementation Plan, and Validation Plan are conceptually distinct, but none is mandatory merely because a template or lifecycle names it.
 
-- Propose every substantial artifact as a Deliverable ticket.
-- Agree its purpose, readers, dependencies, non-goals, and acceptance evidence before activation.
-- Produce one named artifact per ticket unless Mission Control explicitly approves a combined small-mission deliverable.
-- Split or combine by independent use, not ceremony.
+- Put every substantial artifact inside an approved work package and agree its purpose, readers, dependencies, non-goals, and acceptance evidence before activation. Name each artifact or explicitly bound the approved set.
+- Create a separate Deliverable ticket when the artifact has independent use, ownership, review, or acceptance. A work package may produce multiple tightly related artifacts when they are named or bounded, useful, and accepted together.
+- Split or combine work by independent value and disposition, not by the number of artifacts or questions.
 - Never create the full execution contract automatically after Discovery.
 
 Completion criterion: every artifact exists because an approved ticket required it, not because the agent anticipated a later phase.
@@ -112,7 +111,7 @@ Completion criterion: a fresh session can resume or understand closure from repo
 - **Contract theatre:** role labels and polished documents hide that Mission Control never navigated the fog.
 - **Silent chaining:** Discovery completion triggers Spec, Design, Plan, reviewers, or implementation without a new ticket.
 - **Session bleed:** approval or completion of one ticket is treated as permission to execute the next ticket in the same context; use a fresh session unless Mission Control explicitly overrides the boundary.
-- **Ticket bureaucracy:** every command becomes a ticket instead of remaining a mechanical subtask.
+- **Ticket bureaucracy:** each question, decision, artifact, or command becomes its own ticket instead of belonging to a coherent work package.
 - **Premature completion:** attention moves to downstream phases before the active ticket has evidence and map updates.
 - **Map drift:** decisions live only in chat or ticket details while the visible map remains stale.
 - **Reviewer discovery:** repeated audits append requirements instead of reopening the frontier.
