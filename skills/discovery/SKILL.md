@@ -1,12 +1,12 @@
 ---
 name: discovery
-description: "Execute one sharp software discovery question with evidence before specification, planning, refactoring, or implementation. Use for an approved Mission Discovery ticket or when a human directly invokes discovery for a vague product idea, requirement, or existing codebase."
+description: "Execute one focused software discovery work package with evidence before specification, planning, refactoring, or implementation. Use for an approved Mission Discovery ticket or when a human directly invokes discovery for a vague product idea, requirement, or existing codebase."
 license: MIT
 ---
 
 # Discovery
 
-Discovery reduces one material uncertainty with evidence. It can execute an approved Discovery ticket inside a Mission or run as a standalone collaborative exploration when no Mission is active.
+Discovery reduces one material uncertainty or a tightly related set with evidence. It can execute an approved Discovery work package inside a Mission or run as a standalone collaborative exploration when no Mission is active.
 
 Discovery does not own the software lifecycle. It does not authorize product decisions, downstream deliverables, implementation, validation, or the next frontier.
 
@@ -14,7 +14,7 @@ Discovery does not own the software lifecycle. It does not authorize product dec
 
 - Convert fog into questions before requirements.
 - Convert vices into evidence before refactors.
-- Work one sharp unknown at a time.
+- Work one focused discovery objective at a time; group only unknowns that combine into the same independently useful result.
 - Keep discovery separate from implementation.
 - Preserve durable evidence as Markdown in the repository when the result must survive the session.
 - When Mission is active, use its map, authority, and ticket protocol; do not create a parallel discovery lifecycle.
@@ -45,7 +45,7 @@ Choose exactly one branch:
 Use when Mission has provided one approved Discovery ticket.
 
 - Load the Mission ticket protocol.
-- Confirm the ticket is `Active` and contains one sharp question, scope, non-goals, dependencies, and acceptance/evidence criteria.
+- Confirm the ticket is `Active` and contains one objective, any coupled questions or decisions, scope, non-goals, dependencies, and acceptance/evidence criteria.
 - Treat the Mission map and ticket as the navigation source of truth.
 - Do not create `discovery/discovery-brief.md`, a second exploration map, or a parallel Discovery ticket. Put durable evidence in the active Mission ticket or an explicitly authorized supporting artifact; any durable child ticket must use the Mission ticket protocol.
 - If the ticket is not ready, return the missing fields or blocker to Mission rather than inventing them.
@@ -86,28 +86,29 @@ If creating tracked artifacts, copy only the matching files from `templates/`, r
 
 Completion criterion: every artifact has an active evidence, coordination, or handoff purpose.
 
-## 3. Frame one sharp question
+## 3. Frame one focused objective
 
 For Mission-managed work, use the approved ticket as written. Do not broaden it.
 
 For standalone work:
 
-1. Convert one sharp unknown into a Discovery ticket when durable tracking is useful; otherwise state it directly on the visible map.
+1. Convert one decision-driving unknown or tightly related set into a Discovery work package when durable tracking is useful; otherwise state the objective and questions directly on the visible map.
 2. Leave vague unknowns as fog rather than pretending they are executable tickets.
-3. Ask the human to select the material frontier when more than one defensible question exists.
+3. Ask the human to select the material frontier when more than one independently useful discovery objective exists.
 
-A ready question identifies:
+A ready Discovery work package identifies:
 
 - the decision or risk it informs;
+- the coupled questions that must be answered together;
 - scope and nearby non-goals;
 - the evidence that would make the answer useful;
 - any access, dependency, or human input required.
 
-Completion criterion: one question can be answered in a focused pass without making an unapproved product, scope, risk, or architecture decision.
+Completion criterion: one coherent result can be produced in a focused pass without making an unapproved product, scope, risk, or architecture decision.
 
 ## 4. Gather evidence
 
-Work only the selected question. Mechanical reads, searches, probes, and reproducible experiments may proceed without performative approval when they stay inside scope.
+Work only the selected work package. Mechanical reads, searches, probes, and reproducible experiments may proceed without performative approval when they stay inside scope.
 
 Record:
 
@@ -117,7 +118,7 @@ Record:
 - remaining uncertainty;
 - candidate follow-up questions or newly exposed fog.
 
-Stop and return a blocker when required access or stakeholder input cannot be obtained. Stop and surface a Candidate ticket when the work reveals a new risk class, migration, persistent state machine, cross-store recovery concern, destructive data risk, or a second independent outcome.
+Stop and return a blocker when required access or stakeholder input cannot be obtained. Stop and surface a Candidate ticket when the work reveals a new risk class, migration, persistent state machine, cross-store recovery concern, destructive data risk, or a second independently useful objective.
 
 Completion criterion: the answer is traceable to evidence, and uncertainty is visible rather than compressed into confidence language.
 
@@ -176,10 +177,10 @@ In Mission, this is a recommendation and proposed gate impact for Mission Contro
 
 A Discovery pass is complete when:
 
-- [ ] It belongs to one bounded question and one collaboration branch.
+- [ ] It belongs to one coherent work package and one collaboration branch.
 - [ ] Raw input is distinguishable from evidence, assumptions, and decisions.
 - [ ] The answer cites evidence and states confidence and remaining uncertainty.
-- [ ] New sharp work is proposed as a Candidate; vague work remains fog.
+- [ ] New independently useful work is proposed as a Candidate; related questions stay in the active package and vague work remains fog.
 - [ ] Mission-managed work is in `Review` with a proposed map delta.
 - [ ] Standalone tracked artifacts, if justified, are current.
 - [ ] No material decision was silently accepted.

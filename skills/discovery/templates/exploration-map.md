@@ -10,7 +10,7 @@ New Product Discovery / Existing Product Discovery
 
 ## Known territory
 
-<!-- Evidence-backed facts relevant to this discovery question. -->
+<!-- Evidence-backed facts relevant to this discovery work package. -->
 
 ## Assumptions
 
@@ -26,7 +26,7 @@ New Product Discovery / Existing Product Discovery
 
 ## Frontier: Candidate tickets awaiting selection
 
-- [ ] `tickets/001-example.md` — <question>
+- [ ] `tickets/001-example.md` — <coherent objective>
 
 ## Active ticket
 
