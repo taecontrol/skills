@@ -1,5 +1,9 @@
 # Discovery Ticket <number>: <coherent work package>
 
+## Kind
+
+Discovery
+
 ## Status
 
 Candidate / Ready / Active / Blocked / Review / Closed / Abandoned
@@ -20,7 +24,9 @@ Collaborative / Agent / Human / Independent
 
 ## Type
 
-<one ticket type>
+<choose exactly one from `../references/ticket-types.md`>
+
+The Type must be shown to the human with its expected output and involvement before substantive work begins.
 
 ## Objective
 
@@ -54,6 +60,8 @@ Collaborative / Agent / Human / Independent
 
 <!-- What would count as a useful answer? -->
 
+<!-- Once Active, Type, Objective, Questions/decisions, Scope, Non-goals, dependencies, and Evidence needed are frozen unless the responsible human explicitly amends them. -->
+
 ## Work log
 
 <!-- Notes while working. Keep raw details here or in evidence-log. -->
@@ -83,6 +91,14 @@ Accepted by: <human mission owner or stakeholder when material>
 ## New work surfaced
 
 - <independent Candidate ticket, related question retained here, or fog patch>
+
+## Immediate next action
+
+<!-- What happens next, by whom, and at which checkpoint. -->
+
+## Recommended next frontier
+
+<!-- One inactive Candidate, why it is recommended, and what must be true before activation. -->
 
 ## Brief/map updates
 

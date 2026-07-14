@@ -24,13 +24,19 @@ New Product Discovery / Existing Product Discovery
 
 - <link to ticket> — <one-line decision>
 
-## Frontier: Candidate tickets awaiting selection
+## Current frontier
 
-- [ ] `tickets/001-example.md` — <coherent objective>
+<!-- Show exactly one Discovery ticket in Ready, Active, or Review; only when none exists, show one Candidate awaiting selection. -->
 
-## Active ticket
+- [ ] `tickets/001-example.md` — Candidate / Ready / Active / Review — Discovery / <Type> — <coherent objective>
 
-- <one human-selected ticket or none>
+## Provisional route / Candidate tickets
+
+<!-- Show 2–5 explicitly inactive work packages with Type, dependency/condition, and confidence when evidence supports that depth. Otherwise write the Route depth line and list only justified candidates. This is orientation, not authorization. -->
+
+Route depth: 2–5 known candidates / unknown — <fog preventing a reliable itinerary>
+
+- [ ] <ticket or concise candidate> — inactive — Discovery / <Type> — depends on <condition> — likely / conditional / tentative
 
 ## Blocked tickets
 
@@ -52,3 +58,11 @@ New Product Discovery / Existing Product Discovery
 
 | Date | Decision | Why |
 |---|---|---|
+
+## Immediate next action
+
+<!-- What happens next, by whom, and at which checkpoint. -->
+
+## Recommended next frontier
+
+<!-- One inactive typed Candidate and why it is recommended. -->

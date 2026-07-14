@@ -101,4 +101,8 @@ Status: Unknown / Assumed / Known / Decided
 
 ## Next action
 
-<!-- One concrete next action, owner, expected evidence, and target ticket. -->
+<!-- One concrete immediate action, owner, expected evidence, and target ticket. -->
+
+## Recommended next frontier
+
+<!-- One inactive typed Candidate, why it is recommended, and what must be true before selection. -->
