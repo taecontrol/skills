@@ -104,6 +104,8 @@ When returning a material ticket to Review, lead with:
 
 Link long artifacts after this brief. Never make “review this file” the only instruction.
 
+For a `Decision / Collaborative` ticket, return a **decision-space brief**, not a ballot for accepting the agent's preferred answer. Surface the live options, trade-offs, and pressure points in chat, then use the installed `grilling` skill when Mission Control wants to stress-test the decision. Grilling proceeds one question at a time and waits for Mission Control after each question. Do not write proposed recommendations, rejected alternatives, or map deltas as durable mission truth before the grilling/shared-understanding loop has produced an accepted, amended, split, blocked, or rejected decision; at most record mechanical status/evidence and that a proposal is pending review.
+
 ## Kinds and authority
 
 ### Discovery
