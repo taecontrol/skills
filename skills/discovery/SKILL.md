@@ -59,7 +59,7 @@ Use when no Mission is managing the work and the current request explicitly asks
 
 - Choose **New Product Discovery** or **Existing Product Discovery**.
 - Load only the matching mode reference.
-- Start with a small visible map of destination, known territory, assumptions, fog, one current frontier, decisions, and a provisional route. Show two to five inactive typed candidates when evidence supports them; otherwise state which fog prevents a reliable route depth.
+- Start with a lean visible map: destination, current frontier, decision needed, known-now facts, open fog, and one recommended inactive frontier. Add a deeper 2–5 item route only when evidence genuinely supports it and it helps orientation.
 - Use the tracked artifact structure below only when durable evidence, multiple sessions/explorers, blockers, or handoff justify it.
 
 Completion criterion: the human can see the question being explored, why it matters, and the current boundary.

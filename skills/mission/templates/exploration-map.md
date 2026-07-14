@@ -1,72 +1,50 @@
-# Exploration Map: <mission name>
+# Mission Map: <mission name>
 
-## Destination
+Destination: <one-sentence outcome; link Mission Brief when present>
 
-<!-- Link to the Mission Brief; summarize in one sentence. -->
+Gate: <current gate> — <evidence or blocker>
 
-## Known territory
+Current frontier: <exactly one Ready/Active/Review material work package, or one proposed Candidate when none is current>
 
-<!-- Current evidence-backed facts relevant to this mission. -->
+Decision needed: <one grouped Mission Control question, or `None — <why>`>
 
-## Assumptions
+Recommended next: <one inactive frontier and why it is next>
 
-<!-- Beliefs not yet verified. -->
+## Known now
 
-## Fog
+<!-- 3–7 evidence-backed facts that matter for the current frontier. Link to tickets/artifacts instead of repeating long decisions. -->
 
-<!-- In-scope uncertainty not yet sharp enough or selected for work. -->
+- ...
 
-## Current frontier
+## Open fog
 
-<!-- Show exactly one current material work package in Ready, Active, or Review; only when none exists, show one proposed Candidate awaiting Mission Control selection. -->
+<!-- Uncertainty still affecting navigation. Keep vague concerns here until they become a coherent work package. -->
 
-- [ ] `tickets/NNN-example.md` — Candidate / Ready / Active / Review — <Kind> / <Type> — <objective>
+- ...
 
-## Provisional route / Candidate tickets
+## Closed / accepted
 
-<!-- Show 2–5 explicitly inactive work packages with Kind/Type, dependency/condition, and confidence when evidence supports that depth. Otherwise write the Route depth line and list only justified candidates. This is orientation, not authorization. -->
+<!-- One-line receipts. Put detail in the ticket, ADR, contract, or decision log. -->
 
-Route depth: 2–5 known candidates / unknown — <fog preventing a reliable itinerary>
+- [x] `<ticket/artifact>` — <result/decision and evidence pointer>
 
-- [ ] <ticket or concise candidate> — inactive — <Kind> / <Type> — depends on <condition> — likely / conditional / tentative
+## Inactive candidates / route
 
-## Blocked tickets
+<!-- Optional. Prefer one recommended next frontier above. Add more entries only when evidence genuinely supports a useful itinerary. -->
 
-- [ ] <ticket> — blocked by <condition>
+- [ ] <Candidate> — inactive — <Kind> / <Type> — depends on <condition> — likely / conditional / tentative
 
-## Closed tickets and decisions
-
-- [x] <ticket> — <result/decision and evidence pointer>
-
-## Out of scope / candidate future missions
+## Out of scope / future missions
 
 <!-- Excluded work and why it is not silently part of this mission. -->
 
-## Gates
-
-| Gate | Status | Evidence / blocker |
-| --- | --- | --- |
-| Mission Ready | Pending | |
-| Ready to Shape | Pending | |
-| Ready for Implementation | Pending | |
-| Mission Accepted | Pending | |
+- ...
 
 ## Latest map delta
 
-- Known territory:
+<!-- Short delta from the latest ticket/checkpoint; omit empty categories. -->
+
+- Known:
 - Decisions:
-- Fog removed/added:
-- Candidate tickets:
-- Gate impact:
-
-## Next Mission Control question
-
-<!-- One grouped material question only, or "None — mission is paused/closed." -->
-
-## Immediate next action
-
-<!-- What happens next, by whom, and at which checkpoint. -->
-
-## Recommended next frontier
-
-<!-- One inactive Candidate, why it is next, and what must be true before activation. -->
+- Fog:
+- Gate:

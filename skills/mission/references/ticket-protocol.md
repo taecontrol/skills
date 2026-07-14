@@ -6,29 +6,25 @@ This is the source of truth for ticket states, authority, and transitions used b
 
 Each ticket owns one coherent, independently reviewable work package that advances the mission. The ticket has one objective and one governing Kind, but it may resolve multiple coupled questions or decisions when they establish the same downstream contract and are useful and accepted together. Related work may support that Kind; material outputs that require a different route or authority belong in another ticket.
 
-Every durable ticket begins with:
+Default durable tickets are **index cards**. Start with the smallest contract that prevents ambiguity:
 
 ```markdown
 # Ticket NNN: <one coherent work package>
 
 Status: Candidate | Ready | Active | Blocked | Review | Closed | Abandoned
-Kind: Discovery | Decision | Deliverable | Execution | Validation | Task
-Type: <human-readable operational type>
-Mode: Collaborative | Agent | Human | Independent
+Kind / Type: <Discovery | Decision | Deliverable | Execution | Validation | Task> / <human-readable operational type>
 Owner: <person or role>
 Depends on: <tickets or none>
+
+Objective: <coherent result>
+Scope: <allowed work>
+Non-goals: <nearby work not allowed>
+Acceptance / evidence: <observable completion criteria>
 ```
 
-Every ticket answers:
+At Review, fill `Result`, `Evidence`, `Remaining uncertainty`, and `Map delta`.
 
-1. **Objective** — the coherent result this work package must produce.
-2. **Questions / decisions** — the coupled matters it must resolve, when useful.
-3. **Why now** — decision, gate, or dependency it unlocks.
-4. **Scope / authorized outputs / non-goals** — enough to expose expansion; name each substantial artifact or bound the approved artifact set.
-5. **Method** — when the approach is not obvious.
-6. **Acceptance / evidence** — observable completion criteria.
-7. **Result / decision set** — filled at Review or Closed.
-8. **Map updates** — known territory, fog, decisions, future tickets, or gate changes.
+Add `Mode`, `Questions / decisions`, `Why now`, `Method`, `Authorized outputs`, implementation constraints, or runbooks only when they change behavior, prevent real ambiguity, or support handoff/review. Do not complete sections merely because a template offers them.
 
 `Type` makes the route legible without opening the ticket body:
 
@@ -216,9 +212,9 @@ Candidate and Ready tickets may be shaped. Once a ticket becomes Active, its Obj
 
 ## Provisional route
 
-The exploration map must show two to five likely inactive work packages beyond the frontier when the mission is understandable enough to anticipate them. Each entry states Kind/Type, objective, dependency or condition, and confidence (`likely`, `conditional`, or `tentative`). If evidence does not support that depth, write `Route depth: unknown — <fog preventing a reliable itinerary>` and show only the justified candidate entries.
+Prefer one recommended inactive frontier beyond the current ticket. Add a 2–5 item provisional route only when evidence genuinely supports that itinerary and it helps Mission Control orient. Each optional entry states Kind/Type, objective, dependency or condition, and confidence (`likely`, `conditional`, or `tentative`). If route depth is unknown, say why instead of manufacturing a lifecycle tree.
 
-This route is orientation, not a promise or authorization. Add, remove, reorder, split, or merge entries when evidence changes. Do not manufacture a lifecycle tree merely to reach a count.
+The route is orientation, not a promise or authorization. Add, remove, reorder, split, or merge entries when evidence changes.
 
 ## Durable versus lightweight tickets
 
@@ -258,10 +254,10 @@ Verification must be proportional to the active ticket and changed surface:
 
 A passing unchanged suite proves only that the pre-existing implementation baseline is green; it does not validate new behavior described solely in a proposed artifact.
 
-Every material ticket returns:
+Every material ticket returns a compact review body:
 
 ```markdown
-## Result / decision set
+## Result
 
 <coherent answer, accepted contract, artifact set, implementation result, or verdict>
 
@@ -273,11 +269,13 @@ Every material ticket returns:
 
 <what is still unknown; "None material" is allowed when justified>
 
-## Map updates
+## Map delta
 
-- Known territory:
-- Decisions awaiting/accepted:
-- Fog removed/added:
+- Known:
+- Decisions:
+- Fog:
 - Candidate tickets:
-- Gate impact:
+- Gate:
 ```
+
+Omit empty map-delta categories. Keep detailed logs in the ticket or supporting artifacts, not in the human-facing brief.

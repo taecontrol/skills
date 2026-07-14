@@ -1,60 +1,39 @@
 # Ticket NNN: <one coherent work package>
 
 Status: **Candidate**
-Kind: **<choose exactly one: Discovery | Decision | Deliverable | Execution | Validation | Task>**
-Type: **<Discovery catalog type, or concise human-readable operational type>**
-Mode: **Collaborative | Agent | Human | Independent**
+Kind / Type: **<Discovery | Decision | Deliverable | Execution | Validation | Task> / <operational type>**
 Owner: **<person or role>**
 Depends on: **<tickets or none>**
 
-## Objective
+Objective: <the coherent, independently reviewable result>
 
-<!-- The coherent, independently reviewable result this work package must produce. -->
+Scope:
+- <work allowed inside this ticket>
 
-## Questions / decisions
+Non-goals:
+- <nearby work this ticket must not absorb>
 
-<!-- Coupled matters that establish the same result or downstream contract. Omit when unnecessary. -->
+Acceptance / evidence:
+- <observable completion criteria and required evidence>
 
-## Why now
+<!-- Optional sections: add Questions / decisions, Why now, Method, Authorized outputs, or Implementation constraints only when they change behavior, prevent ambiguity, or support handoff/review. Once Active, Objective, Kind/Type, Scope, Authorized outputs, Non-goals, dependencies, and Acceptance/evidence are frozen unless Mission Control explicitly amends them. -->
 
-<!-- What decision, gate, or dependency this unlocks. -->
+## Result
 
-## Scope
-
-<!-- Work allowed inside this ticket. -->
-
-Authorized outputs: **<exact members, bounded inclusion rule, or none>**
-
-## Non-goals
-
-<!-- Nearby work this ticket must not absorb. -->
-
-## Method
-
-<!-- How the work will be performed; omit when obvious. -->
-
-## Acceptance / evidence
-
-<!-- Observable completion criteria and required evidence. -->
-
-<!-- Once Status becomes Active, Objective, Kind, Type, Scope, Authorized outputs, Non-goals, dependencies, and Acceptance/evidence are frozen unless Mission Control explicitly amends them. -->
-
-## Result / decision set
-
-<!-- Filled when the ticket reaches Review or Closed. Record the coherent result and any accepted decisions. -->
+<filled at Review or Closed>
 
 ## Evidence
 
-<!-- Paths, commands, tests, observations, sources. -->
+<paths, commands, tests, observations, sources>
 
 ## Remaining uncertainty
 
-<!-- What remains unresolved after this ticket. -->
+<what remains unresolved; `None material` is allowed when justified>
 
-## Map updates
+## Map delta
 
-- Known territory:
-- Decisions awaiting/accepted:
-- Fog removed/added:
+- Known:
+- Decisions:
+- Fog:
 - Candidate tickets:
-- Gate impact:
+- Gate:
