@@ -20,7 +20,7 @@ Use this skill for:
 - a Mission `Validation / independent-qa`, `Validation / implementation-review`, or similar ticket;
 - pre-merge review of a completed feature, bug fix, hardening slice, or rework ticket;
 - changes involving APIs, routes, serializers, read models, persistence, attribution, identity, ordering, lifecycle, security-sensitive data, or shared UI;
-- suspicious implementations where tests pass but the model, naming, fidelity, or source of truth may be wrong.
+- suspicious implementations where tests pass but the model, naming, completeness/fidelity label, or source of truth may be wrong.
 
 Do not use it to implement fixes, perform open-ended Discovery, rewrite the contract, or review purely mechanical formatting. If review exposes a missing product or architecture decision, return a finding or Candidate ticket; do not silently decide it.
 
@@ -57,7 +57,7 @@ Review:
 - public behavior at routes/UI/commands/adapters/serializers;
 - error and failure behavior;
 - authorization and data exposure boundaries;
-- filenames, generated artifacts, wire formats, migrations, or persistence changes;
+- file names, generated artifacts, wire formats, migrations, or persistence changes;
 - whether tests actually fail against the old behavior or could ratify the wrong design.
 
 Run or inspect relevant focused tests when practical. If broad CI already passed, still inspect whether focused tests cover the risky semantics.
@@ -71,13 +71,13 @@ Apply this APoSD checklist to the changed surface.
 ### Concepts and names are honest
 
 - One name should not mean two concepts.
-- IDs should reveal their domain: `sessionId`, `transcriptSourceId`, `assignmentId`, `conversationId`, `surfaceId`, and similar concepts must not be collapsed for convenience.
+- IDs should reveal their domain. Authoritative entity IDs, source/read-model IDs, actor IDs, tenant/context IDs, and external-provider IDs must not be collapsed for convenience.
 - If a name is hard to pick or explain simply, inspect whether the abstraction is confused.
 
 ### Interfaces do not overpromise
 
-- Labels such as `faithful`, `complete`, `verified`, `safe`, or `source of truth` must match the weakest part of the evidence.
-- Debugging artifacts must surface limitations rather than hiding them behind optimistic wording.
+- Labels such as `faithful`, `complete`, `verified`, `safe`, `authoritative`, or `source of truth` must match the weakest part of the evidence.
+- Diagnostic artifacts, reports, and generated outputs must surface limitations rather than hiding them behind optimistic wording.
 - Caller-facing APIs should make the common correct use easy and rare cases explicit.
 
 ### Invariants are represented directly

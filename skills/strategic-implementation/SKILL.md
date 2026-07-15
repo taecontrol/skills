@@ -20,7 +20,7 @@ The goal is not architectural ceremony. The goal is code that is easier to under
 
 Use this skill for a Mission `Execution` ticket or standalone implementation when the work changes any of:
 
-- public behavior, APIs, routes, adapters, serializers, read models, filenames, exports, or generated artifacts;
+- public behavior, APIs, routes, adapters, serializers, read models, file naming, downloads, reports, or generated artifacts;
 - persistence, attribution, identity, ordering, lifecycle, authorization, or security boundaries;
 - domain language, invariants, state transitions, error handling, or fidelity/completeness labels;
 - shared modules, components, hooks, helpers, or test seams that future work will reuse.
@@ -96,14 +96,14 @@ After the code is green, do not stop. Re-read the diff and apply the strategic c
 
 ### Information hiding
 
-- Centralize policy for ordering, fidelity, naming, lifecycle, filtering, retries, filename safety, redaction/allowlisting, and fallback rules.
+- Centralize policy for ordering, completeness/fidelity labels, naming, lifecycle, filtering, retries, file-name safety, redaction/allowlisting, and fallback rules.
 - Do not duplicate a read model or serializer policy in a second file unless the ticket explicitly accepts the residual risk.
-- Adapters may format or truncate; they should not redefine domain or debugging truth.
+- Adapters may format, truncate, or serialize; they should not redefine domain truth, diagnostic truth, or business policy.
 
 ### Honest concepts and interfaces
 
-- Use different names for different concepts, especially identifiers such as `sessionId`, `transcriptSourceId`, `userId`, `surfaceId`, and `assignmentId`.
-- Conservative labels beat misleading labels. If any part is approximate, legacy, mixed, inferred, or partial, the interface must say so.
+- Use different names for different concepts. Distinguish authoritative entity IDs, source/read-model IDs, actor IDs, tenant/context IDs, and external-provider IDs instead of collapsing them into a generic `id`.
+- Conservative labels beat misleading labels. If any part is approximate, legacy, mixed, inferred, partial, stale, or externally sourced, the interface must say so.
 - Comments should describe invariants, intent, units, ordering, limitations, or side effects; delete comments that merely repeat code.
 
 ### Boundary validation and errors
