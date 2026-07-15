@@ -120,9 +120,13 @@ Creates or amends one independently useful durable artifact or a tightly related
 
 Implements one approved slice. It cannot amend its own objective, scope, architecture, or acceptance criteria. Deviations return to Review or open a Candidate Decision ticket. Mission Control accepts and closes material Execution work after reviewing its evidence and any independent validation required by the ticket.
 
+For non-trivial implementation, use `strategic-implementation` when installed. The Execution return should include compact design-quality evidence: complexity impact, concepts/interfaces changed, invariants represented directly, policy homes or duplicated policy deferred, and APoSD residual risks. Tests prove behavior; they do not by themselves prove that the design is honest or maintainable.
+
 ### Validation
 
 Produces independent evidence and a verdict. The validator moves the ticket to Review; Mission Control accepts and closes material Validation work. The validator does not accept or close the mission.
+
+For completed implementation, use `implementation-review` when installed. It reviews both contract correctness and strategic design quality from fresh context, including misleading interfaces, leaked policy, shallow modules, hidden invariants, boundary-validation failures, and tests that ratify the wrong design.
 
 ### Task
 
@@ -264,6 +268,15 @@ Every material ticket returns a compact review body:
 ## Evidence
 
 <paths, commands, tests, observations, sources>
+
+<!-- Optional for non-trivial Execution tickets:
+## Design quality evidence
+- Complexity impact:
+- Concepts/interfaces changed:
+- Invariants represented directly:
+- Policy homes / duplicated policy deferred:
+- APoSD residual risks:
+-->
 
 ## Remaining uncertainty
 

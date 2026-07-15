@@ -69,8 +69,8 @@ Completion criterion: every material result is visible on the map, the repositor
 | Discovery | Require a Discovery Type, then invoke the `discovery` skill for one approved ticket. If unavailable, leave the ticket Ready and report the missing executor. | Evidence, confidence, remaining fog, proposed map delta; material answers remain Review until Mission Control decides. |
 | Decision | Work collaboratively; agents provide verified options and trade-offs. | Mission Control decision and consequences. |
 | Deliverable | Create or amend the named artifact or explicitly bounded, tightly related artifact set after activation. | Artifact set, changed-surface evidence against acceptance criteria, unresolved decisions; status Review. Do not run unrelated product suites for a documentation-only deliverable. |
-| Execution | Route to the applicable implementation/TDD skill against the approved baseline. | Code/evidence/deviations; never self-amend scope. |
-| Validation | Use an independent context when practical. | Evidence and verdict; Mission Control accepts or rejects it. |
+| Execution | Route to `strategic-implementation` when installed, or to the applicable implementation/TDD skill against the approved baseline. Non-trivial code changes must return compact design-quality evidence, not only green tests. | Code/evidence/deviations/design-quality evidence; never self-amend scope. |
+| Validation | Use an independent context when practical. For completed implementation, route to `implementation-review` when installed to check both contract correctness and strategic design quality. | Evidence and verdict; Mission Control accepts or rejects it. |
 | Task | Perform bounded setup or mechanical work. | Observable completion or blocker. |
 
 Routing is not progression. After any route returns, stop at the ticket checkpoint; a new executor or route does not inherit authority to continue the mission.
@@ -96,6 +96,8 @@ Gates are Mission Control decisions recorded on the map, not agent status labels
 - **Ready to Shape:** the material frontier is low enough to propose deliverable tickets.
 - **Ready for Implementation:** the approved execution baseline is sufficient for a fresh implementer and independent QA; content readiness is distinct from Git freeze and authorization.
 - **Mission Accepted:** QA evidence has a human-owned verdict and durable learning is promoted.
+
+For implementation-heavy missions, Ready for Implementation should make the expected design-quality evidence visible: the concepts/interfaces affected, invariants that must be represented directly, policy that must have one home, and any APoSD risks that independent validation should check. Keep the details in the Execution ticket or `strategic-implementation`; Mission only records the checkpoint.
 
 At each gate, present evidence, unresolved fog, options, and a recommendation. Wait for Mission Control; do not auto-advance. Prefer a one-line gate statement unless the gate is disputed or the mission is large enough to need a table.
 
