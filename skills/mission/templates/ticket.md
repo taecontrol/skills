@@ -16,7 +16,7 @@ Non-goals:
 Acceptance / evidence:
 - <observable completion criteria and required evidence>
 
-<!-- Optional sections: add Questions / decisions, Why now, Method, Authorized outputs, or Implementation constraints only when they change behavior, prevent ambiguity, or support handoff/review. Once Active, Objective, Kind/Type, Scope, Authorized outputs, Non-goals, dependencies, and Acceptance/evidence are frozen unless Mission Control explicitly amends them. -->
+<!-- Optional sections: add Questions / decisions, Why now, Method, Authorized outputs, Implementation constraints, or Design quality evidence only when they change behavior, prevent ambiguity, or support handoff/review. Once Active, Objective, Kind/Type, Scope, Authorized outputs, Non-goals, dependencies, and Acceptance/evidence are frozen unless Mission Control explicitly amends them. -->
 
 ## Result
 
