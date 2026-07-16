@@ -39,7 +39,7 @@ Use [`../templates/ticket.md`](../templates/ticket.md) when a separate file is w
 
 | State | Meaning | Who may move it |
 | --- | --- | --- |
-| Candidate | Proposed work; not authorized. | Agent or Mission Control may propose. |
+| Candidate | Proposed inactive work; not authorized for execution. The agent may create it proactively when evidence shows a coherent work package. | Agent or Mission Control may propose; no Mission Control permission is required to create or update an inactive Candidate. |
 | Ready | Scope, non-goals, dependencies, and evidence are agreed. | Mission Control for material/Deliverable work; agent for non-material Task work. |
 | Active | Current authorized work. | Mission Control selects a material frontier; agent may activate mechanical child tasks. |
 | Blocked | Cannot proceed; blocker and unblock condition are explicit. | Active owner. |
@@ -51,11 +51,11 @@ Exactly one material ticket is current in `Ready`, `Active`, or `Review`. Parall
 
 ## Human-visible navigation contract
 
-The map and ticket are durable state, not a substitute for conversation. Use these compact shapes rather than reading ticket prose aloud.
+The map and ticket are durable state, not a substitute for conversation. Use these compact shapes rather than reading ticket prose aloud. Each brief must be understandable to someone who does not know Mission vocabulary: open with a short conversational lead-in that explains what is happening, why it matters, and what the next human decision is before relying on ticket IDs, Kind/Type labels, gate names, ADRs, or other shorthand. Do not use a separate `In plain words` field; the explanation should be part of the conversation.
 
 ### Activation briefing
 
-Before substantive execution of an Active material ticket, tell Mission Control:
+Before substantive execution of an Active material ticket, open with a 2-4 sentence conversational lead-in. Explain what we are about to do, why it matters, and what success will let us decide next; define any necessary Mission term in-place. Then tell Mission Control:
 
 ```markdown
 **Mission position:** <current gate and frontier>
@@ -72,7 +72,7 @@ This is an explanation, not a second approval ceremony. If Mission Control alrea
 
 ### Material checkpoint
 
-Do not narrate mechanical work. When something materially changes, report:
+Do not narrate mechanical work. When something materially changes, open with one or two conversational sentences explaining the change and why it matters, then report:
 
 ```markdown
 **Checkpoint**
@@ -86,7 +86,7 @@ Group coupled human questions. Ask only about scope, appetite, policy, risk, pro
 
 ### Review brief
 
-When returning a material ticket to Review, lead with:
+When returning a material ticket to Review, open with a short conversational explanation of what happened, what it means for the product or mission, and what choice Mission Control has now. Then lead with:
 
 ```markdown
 **Ticket returned:** <number> — <Kind> / <Type> — Review
@@ -194,7 +194,7 @@ Mission Control may grant both dimensions in one contextual instruction. Do not 
 
 At a ticket disposition checkpoint, interpret ordinary language semantically rather than requiring a formula. “Continue here,” “let's do the next one here,” or equivalent language selects the one unambiguous proposed frontier and authorizes its execution in the current session. If its Ready contract can be completed mechanically from accepted mission artifacts and the visible proposal, write it, mark it Active, and work it without asking again. If a material scope, risk, dependency, or acceptance choice is genuinely missing, ask only that substantive question; do not ask Mission Control to approve agent-authored ticket prose or repeat a permission already given.
 
-When a material ticket reaches Review or is Closed, do not create a durable next-ticket artifact, activate a next ticket, or start its work. Give the Review brief and report:
+When a material ticket reaches Review or is Closed, do not activate a next ticket or start its work. You may create or update inactive Candidate tickets for evident next frontiers so Mission Control is not left with vague prose. Give the Review brief and report:
 
 - ticket status and acceptance decision required;
 - result/evidence and map delta;
@@ -222,7 +222,7 @@ The route is orientation, not a promise or authorization. Add, remove, reorder, 
 
 ## Durable versus lightweight tickets
 
-Keep a Candidate as one map line until its work package needs a durable contract. Create a separate file when work:
+Keep a Candidate as one map line until its work package benefits from a durable contract. Create a separate file proactively—without asking permission—when work:
 
 - spans sessions or owners;
 - gathers durable evidence;

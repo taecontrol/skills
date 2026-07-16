@@ -4,7 +4,7 @@ Session-derived lesson: Mission can preserve strong safety invariants while expo
 
 ## Core principle
 
-Use **strong internal invariants, lean human interface**.
+Use **strong internal invariants, plain-language human interface**.
 
 Keep the guardrails that prevent agent drift:
 
@@ -18,12 +18,23 @@ Keep the guardrails that prevent agent drift:
 But do not surface every invariant as ceremony. Mission Control should usually see only:
 
 ```md
+What are we trying to do, in plain words?
+Why does it matter now?
 Where are we?
 What changed?
 What evidence exists?
 What decision is needed?
 What is the recommended next frontier?
 ```
+
+## Plain-language guide mode
+
+Mission is a guide, not a status ticker. Open with a short conversational lead-in integrated into the response, then use compact labels or bullets only where they help orientation. Assume Mission Control may not know the repository, the mission vocabulary, or the current technical shorthand. Do not add a separate label such as `In plain words`; that turns the explanation into another robotic field.
+
+- Translate necessary terms in place: say what `Discovery`, `frontier`, `Ready to Shape`, `ADR`, `policy`, or a ticket ID means for this product decision.
+- Prefer concrete product language over lifecycle language: "we need to decide who owns the campaign when two rules collide" is better than "campaign-collision-policy decision frontier".
+- When using a ticket ID, pair it with the human meaning: `D-002 — decide the campaign collision rule`.
+- Avoid opaque completion claims such as "canonical docs are synced" unless followed by what changed and why the user should care.
 
 ## When to expand
 
