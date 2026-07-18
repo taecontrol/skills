@@ -11,7 +11,7 @@ Default durable tickets are **index cards**. Start with the smallest contract th
 ```markdown
 # Ticket NNN: <one coherent work package>
 
-Status: Candidate | Ready | Active | Blocked | Review | Closed | Abandoned
+Status: Ready | Active | Blocked | Review | Closed | Abandoned
 Kind / Type: <Discovery | Decision | Deliverable | Execution | Validation | Task> / <human-readable operational type>
 Owner: <person or role>
 Depends on: <tickets or none>
@@ -33,13 +33,12 @@ Add `Mode`, `Questions / decisions`, `Why now`, `Method`, `Authorized outputs`, 
 
 Kind controls authority and routing; Type explains what the work is. Type never changes a ticket's authority.
 
-Use [`../templates/ticket.md`](../templates/ticket.md) when a separate file is warranted. A lightweight Candidate may remain one line on the map until activated.
+Use [`../templates/ticket.md`](../templates/ticket.md) after Mission Control selects a material frontier. Unselected work remains a concise proposal on the map; it is not a ticket.
 
 ## States
 
 | State | Meaning | Who may move it |
 | --- | --- | --- |
-| Candidate | Proposed inactive work; not authorized for execution. The agent may create it proactively when evidence shows a coherent work package. | Agent or Mission Control may propose; no Mission Control permission is required to create or update an inactive Candidate. |
 | Ready | Scope, non-goals, dependencies, and evidence are agreed. | Mission Control for material/Deliverable work; agent for non-material Task work. |
 | Active | Current authorized work. | Mission Control selects a material frontier; agent may activate mechanical child tasks. |
 | Blocked | Cannot proceed; blocker and unblock condition are explicit. | Active owner. |
@@ -65,7 +64,7 @@ Before substantive execution of an Active material ticket, open with a 2-4 sente
 **I will handle:** <autonomous evidence/work inside scope>
 **I will return early if:** <material decisions, scope/risk change, or blocker>
 **Return checkpoint:** <observable result and status>
-**Likely next frontier:** <one inactive recommendation, conditional when appropriate>
+**Likely next frontier:** <one proposed frontier, conditional when appropriate; not a ticket until selected>
 ```
 
 This is an explanation, not a second approval ceremony. If Mission Control already authorized same-session execution, give the briefing and proceed.
@@ -95,7 +94,7 @@ When returning a material ticket to Review, open with a short conversational exp
 **Evidence:** <compact pointers and verification>
 **What needs Mission Control:** <accept/revise/choose, with recommendation>
 **Immediate next action:** <one action>
-**Recommended next frontier:** <one inactive Candidate and why>
+**Recommended next frontier:** <one proposal and why; not a ticket until selected>
 ```
 
 Link long artifacts after this brief. Never make “review this file” the only instruction.
@@ -118,7 +117,7 @@ Creates or amends one independently useful durable artifact or a tightly related
 
 ### Execution
 
-Implements one approved slice. It cannot amend its own objective, scope, architecture, or acceptance criteria. Deviations return to Review or open a Candidate Decision ticket. Mission Control accepts and closes material Execution work after reviewing its evidence and any independent validation required by the ticket.
+Implements one approved slice. It cannot amend its own objective, scope, architecture, or acceptance criteria. Deviations return to Review and may propose a Decision frontier on the map. Mission Control accepts and closes material Execution work after reviewing its evidence and any independent validation required by the ticket.
 
 For non-trivial implementation, use `strategic-implementation` when installed. The Execution return should include compact design-quality evidence: complexity impact, concepts/interfaces changed, invariants represented directly, policy homes or duplicated policy deferred, and APoSD residual risks. Tests prove behavior; they do not by themselves prove that the design is honest or maintainable.
 
@@ -160,19 +159,19 @@ Split work into separate tickets when a part can be scheduled, assigned, accepte
 
 The number of questions, decisions, artifacts, commands, or files does not determine ticket count.
 
-A finding or decision inside an active ticket never authorizes an unlisted artifact, implementation, validation, or other downstream action. Surface that work as fog or a Candidate ticket unless Mission Control explicitly amends the active ticket before the new work begins.
+A finding or decision inside an active ticket never authorizes an unlisted artifact, implementation, validation, or other downstream action. Surface that work as fog or a proposed frontier on the map unless Mission Control explicitly amends the active ticket before the new work begins.
 
 Examples:
 
 - **Group:** one Decision ticket resolves coupled authentication timeout and refresh-policy choices that form one accepted policy contract.
 - **Group:** one Deliverable ticket updates a named specification and companion rationale when they share one purpose and acceptance decision.
-- **Split:** a Discovery ticket identifies an implementation change; record a Candidate Execution ticket instead of implementing it inside Discovery.
+- **Split:** a Discovery ticket identifies an implementation change; propose an Execution frontier on the map instead of implementing it inside Discovery.
 
 ## Collaborative frontier loop
 
-1. Agent shows the current map and proposes one Candidate frontier.
+1. Agent shows the current map and proposes one frontier without creating a ticket.
 2. Mission Control selects or amends it.
-3. Ticket becomes Ready only when scope and evidence are clear, then Active.
+3. Agent creates the selected ticket as Ready once scope and evidence are clear, then marks it Active.
 4. Agent writes enough durable ticket/map context for a fresh executor, gives the activation briefing, and stops. The material ticket runs in a fresh session by default.
 5. Owner works mechanical subtasks without expanding the ticket; communicate only at material checkpoints.
 6. Owner returns result, evidence, remaining uncertainty, map delta, and worktree disposition; ticket becomes Review and the session stops at the ticket checkpoint.
@@ -194,12 +193,12 @@ Mission Control may grant both dimensions in one contextual instruction. Do not 
 
 At a ticket disposition checkpoint, interpret ordinary language semantically rather than requiring a formula. “Continue here,” “let's do the next one here,” or equivalent language selects the one unambiguous proposed frontier and authorizes its execution in the current session. If its Ready contract can be completed mechanically from accepted mission artifacts and the visible proposal, write it, mark it Active, and work it without asking again. If a material scope, risk, dependency, or acceptance choice is genuinely missing, ask only that substantive question; do not ask Mission Control to approve agent-authored ticket prose or repeat a permission already given.
 
-When a material ticket reaches Review or is Closed, do not activate a next ticket or start its work. You may create or update inactive Candidate tickets for evident next frontiers so Mission Control is not left with vague prose. Give the Review brief and report:
+When a material ticket reaches Review or is Closed, do not create or activate the next ticket or start its work. Record one concise next-frontier proposal on the map so Mission Control is not left with vague prose. Give the Review brief and report:
 
 - ticket status and acceptance decision required;
 - result/evidence and map delta;
 - changed/untracked files, tests, and whether the work is committed;
-- one proposed next frontier as an existing Candidate or a lightweight inactive provisional-route entry.
+- one proposed next frontier as a lightweight map entry, not a ticket.
 
 Then stop at a **ticket disposition checkpoint**. Mission Control chooses among review/revision, committing the ticket changes, pausing, starting the unambiguous proposed next ticket in a fresh session, or explicitly continuing it in the current session. If Mission Control requests a commit, commit only the accepted ticket scope and return to the checkpoint; committing does not activate the next ticket. A later “continue here” acts on the still-visible proposed frontier without another activation ceremony.
 
@@ -207,22 +206,24 @@ Same-session continuation is an exception, not a sticky mission setting. It appl
 
 ## Contract freeze and amendments
 
-Candidate and Ready tickets may be shaped. Once a ticket becomes Active, its Objective, Kind, Type, Scope, Authorized outputs, Non-goals, dependencies, and Acceptance/evidence are frozen.
+Ready tickets may be shaped. Once a ticket becomes Active, its Objective, Kind, Type, Scope, Authorized outputs, Non-goals, dependencies, and Acceptance/evidence are frozen.
 
 - The owner may fill Result, Evidence, Confidence, Remaining uncertainty, Work log, and Map updates as work proceeds.
 - Editorial clarification that does not change authority, output, risk, or pass/fail meaning is allowed and must be visible in the diff.
-- A material change requires Mission Control to amend the Active ticket explicitly or to stop it and create an inactive Candidate.
+- A material change requires Mission Control to amend the Active ticket explicitly or to stop it and return to the map with a replacement frontier proposal. Create the replacement ticket only if Mission Control selects it.
 - Reviewer findings classified as a new material question, risk/appetite change, incomplete system map, or independently useful objective cannot be silently absorbed through patching.
 
 ## Provisional route
 
-Prefer one recommended inactive frontier beyond the current ticket. Add a 2–5 item provisional route only when evidence genuinely supports that itinerary and it helps Mission Control orient. Each optional entry states Kind/Type, objective, dependency or condition, and confidence (`likely`, `conditional`, or `tentative`). If route depth is unknown, say why instead of manufacturing a lifecycle tree.
+Prefer one recommended frontier proposal beyond the current ticket. Add a 2–5 item provisional route only when evidence genuinely supports that itinerary and it helps Mission Control orient. Each optional proposal states Kind/Type, objective, dependency or condition, and confidence (`likely`, `conditional`, or `tentative`). If route depth is unknown, say why instead of manufacturing a lifecycle tree.
 
 The route is orientation, not a promise or authorization. Add, remove, reorder, split, or merge entries when evidence changes.
 
-## Durable versus lightweight tickets
+## When to create a ticket
 
-Keep a Candidate as one map line until its work package benefits from a durable contract. Create a separate file proactively—without asking permission—when work:
+Keep every unselected frontier as a map proposal. Once Mission Control selects a material work package and its contract is clear enough for `Ready`, create its ticket before execution. Every created ticket therefore represents selected work that is expected to run; never create placeholder tickets for possible future work.
+
+Use the index-card contract by default. Expand it only when the work:
 
 - spans sessions or owners;
 - gathers durable evidence;
@@ -239,7 +240,7 @@ Stop and split when an active ticket develops an independently useful objective 
 
 Record each new concern as:
 
-- a Candidate ticket if it forms an independently useful work package;
+- a proposed frontier on the map if it forms an independently useful work package;
 - a related question or decision inside the active ticket if it contributes to the same objective;
 - fog if still vague;
 - out of scope/future mission if consciously excluded.
@@ -287,7 +288,7 @@ Every material ticket returns a compact review body:
 - Known:
 - Decisions:
 - Fog:
-- Candidate tickets:
+- Proposed frontiers:
 - Gate:
 ```
 

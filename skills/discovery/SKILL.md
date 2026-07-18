@@ -47,7 +47,7 @@ Use when Mission has provided one approved Discovery ticket.
 - Load the Mission ticket protocol and Discovery ticket types.
 - Confirm the ticket is `Active`, `Kind: Discovery`, and has exactly one valid Discovery `Type`, one objective, any coupled questions or decisions, scope, non-goals, dependencies, and acceptance/evidence criteria.
 - Treat the Mission map and ticket as the navigation source of truth.
-- Before substantive evidence gathering, give or confirm the Mission activation briefing in plain language: current position, Discovery Type, objective/question, why it matters, expected acceptance evidence, autonomous evidence approach, what human input could interrupt the run, return checkpoint, and likely inactive next frontier.
+- Before substantive evidence gathering, give or confirm the Mission activation briefing in plain language: current position, Discovery Type, objective/question, why it matters, expected acceptance evidence, autonomous evidence approach, what human input could interrupt the run, return checkpoint, and likely next-frontier proposal.
 - Do not create `discovery/discovery-brief.md`, a second exploration map, or a parallel Discovery ticket. Put durable evidence in the active Mission ticket or an explicitly authorized supporting artifact; any durable child ticket must use the Mission ticket protocol.
 - If the ticket is not ready or is not `Kind: Discovery`, return the missing fields or routing blocker to Mission rather than inventing them.
 
@@ -59,7 +59,7 @@ Use when no Mission is managing the work and the current request explicitly asks
 
 - Choose **New Product Discovery** or **Existing Product Discovery**.
 - Load only the matching mode reference.
-- Start with a lean visible map: destination, current frontier, decision needed, known-now facts, open fog, and one recommended inactive frontier. Add a deeper 2–5 item route only when evidence genuinely supports it and it helps orientation.
+- Start with a lean visible map: destination, current frontier, decision needed, known-now facts, open fog, and one recommended frontier proposal. Add a deeper 2–5 item route only when evidence genuinely supports it and it helps orientation.
 - Use the tracked artifact structure below only when durable evidence, multiple sessions/explorers, blockers, or handoff justify it.
 
 Completion criterion: the human can see the question being explored, why it matters, and the current boundary.
@@ -120,9 +120,9 @@ Record:
 - evidence paths, commands, observations, sources, or experiment output;
 - confidence: Low, Medium, or High;
 - remaining uncertainty;
-- candidate follow-up questions or newly exposed fog.
+- proposed follow-up questions or newly exposed fog.
 
-Stop and return a blocker when required access or stakeholder input cannot be obtained. Stop and surface a Candidate ticket when the work reveals a new risk class, migration, persistent state machine, cross-store recovery concern, destructive data risk, or a second independently useful objective.
+Stop and return a blocker when required access or stakeholder input cannot be obtained. Stop and surface a frontier proposal on the map when the work reveals a new risk class, migration, persistent state machine, cross-store recovery concern, destructive data risk, or a second independently useful objective. Do not create its ticket unless Mission Control selects it.
 
 Completion criterion: the answer is traceable to evidence, and uncertainty is visible rather than compressed into confidence language.
 
@@ -136,17 +136,17 @@ Move the ticket to `Review` and return a compact human Review brief before linki
 - plain-language answer or proposed decision;
 - 3–7 important consequences, confidence, and remaining uncertainty;
 - compact evidence and verification pointers;
-- proposed map updates: known territory, decisions awaiting Mission Control, fog removed/added, Candidate tickets, provisional-route changes, and gate impact;
+- proposed map updates: known territory, decisions awaiting Mission Control, fog removed/added, frontier proposals, provisional-route changes, and gate impact;
 - the exact acceptance/revision decision needed from Mission Control, with a recommendation;
-- one immediate next action and one recommended inactive next frontier.
+- one immediate next action and one recommended next-frontier proposal.
 
-Do not close the material ticket, update a proposed answer into an accepted Mission decision, activate another ticket, or create downstream Deliverables. The recommended frontier remains inactive until selected.
+Do not close the material ticket, update a proposed answer into an accepted Mission decision, create or activate another ticket, or create downstream Deliverables. The recommended frontier remains a map proposal until selected.
 
 Completion criterion: Mission Control can judge what was learned and how the map would change without reconstructing the work from chat.
 
 ### Standalone return
 
-Update any tracked synthesis artifacts justified by the work, show the visible map and provisional route, and ask the human which frontier to select next. Lead with the ticket Type, answer, confidence, consequences, remaining fog, immediate next action, and recommended inactive frontier rather than sending the human to a long artifact. A Discovery answer still does not authorize a PRD, design, plan, refactor, implementation, or validation pass.
+Update any tracked synthesis artifacts justified by the work, show the visible map and provisional route, and ask the human which frontier to select next. Lead with the ticket Type, answer, confidence, consequences, remaining fog, immediate next action, and recommended frontier proposal rather than sending the human to a long artifact. A Discovery answer still does not authorize a PRD, design, plan, refactor, implementation, or validation pass.
 
 Completion criterion: durable evidence is current, the next frontier remains a human choice, and no lifecycle phase was silently chained.
 
@@ -188,7 +188,7 @@ A Discovery pass is complete when:
 - [ ] Mission Control received an activation briefing before substantive work and only material checkpoints during execution.
 - [ ] Raw input is distinguishable from evidence, assumptions, and decisions.
 - [ ] The answer cites evidence and states confidence and remaining uncertainty.
-- [ ] New independently useful work is proposed as a Candidate; related questions stay in the active package and vague work remains fog.
+- [ ] New independently useful work is proposed on the map without creating a ticket; related questions stay in the active package and vague work remains fog.
 - [ ] Mission-managed work is in `Review` with a compact Review brief and proposed map/provisional-route delta.
 - [ ] Standalone tracked artifacts, if justified, are current.
 - [ ] No material decision was silently accepted.

@@ -22,7 +22,7 @@ Use this skill for:
 - changes involving APIs, routes, serializers, read models, persistence, attribution, identity, ordering, lifecycle, security-sensitive data, or shared UI;
 - suspicious implementations where tests pass but the model, naming, completeness/fidelity label, or source of truth may be wrong.
 
-Do not use it to implement fixes, perform open-ended Discovery, rewrite the contract, or review purely mechanical formatting. If review exposes a missing product or architecture decision, return a finding or Candidate ticket; do not silently decide it.
+Do not use it to implement fixes, perform open-ended Discovery, rewrite the contract, or review purely mechanical formatting. If review exposes a missing product or architecture decision, return a finding and proposed frontier on the map; do not silently decide it or create its ticket.
 
 ## Review stance
 
@@ -140,7 +140,7 @@ Record but do not block when a finding:
 - suggests consolidation after the current safe slice lands;
 - depends on a product decision Mission Control has not made.
 
-Completion criterion: severity explains why the issue blocks, should be fixed now, or can safely become a future Candidate.
+Completion criterion: severity explains why the issue blocks, should be fixed now, or can safely become a future frontier proposal.
 
 ## 5. Return a Mission-compatible verdict
 
@@ -184,7 +184,7 @@ Completion criterion: Mission Control can decide accept, rework, split, pause, o
 ## Common pitfalls
 
 1. **Style review disguised as design review:** only block issues with concrete contract, debugging, complexity, or safety consequences.
-2. **Reviewer discovery loop:** do not keep expanding requirements. Classify new material questions as Candidate tickets or fog.
+2. **Reviewer discovery loop:** do not keep expanding requirements. Classify new material questions as frontier proposals or fog; do not create tickets before selection.
 3. **Patch plan overreach:** state required design outcomes, but do not prescribe every edit unless the evidence demands a specific fix.
 4. **Ignoring strengths:** preserve good deep modules, centralized policy, and safe boundaries; do not flatten them into generic architecture advice.
 5. **Trusting tests blindly:** tests can encode misleading concepts. Inspect whether the test names and assertions model the right truth.

@@ -4,11 +4,11 @@ Mode: <New Product Discovery | Existing Product Discovery>
 
 Destination: <what this discovery effort is trying to make clear enough to decide>
 
-Current frontier: <exactly one Discovery / Type work package, or one proposed Candidate>
+Current frontier: <exactly one Discovery / Type work package, or one proposed frontier>
 
 Decision needed: <one grouped human question, or `None — <why>`>
 
-Recommended next: <one inactive typed frontier and why it is next>
+Recommended next: <one proposed typed frontier and why it is next; not a ticket until selected>
 
 ## Known now
 
@@ -34,11 +34,11 @@ Recommended next: <one inactive typed frontier and why it is next>
 
 - [x] <ticket/artifact> — <decision/answer and evidence pointer>
 
-## Inactive candidates / route
+## Provisional route
 
 <!-- Optional. Prefer one recommended next frontier above. Add more entries only when evidence genuinely supports a useful itinerary. -->
 
-- [ ] <Candidate> — inactive — Discovery / <Type> — depends on <condition> — likely / conditional / tentative
+- <Proposal> — Discovery / <Type> — depends on <condition> — likely / conditional / tentative
 
 ## Out of scope
 

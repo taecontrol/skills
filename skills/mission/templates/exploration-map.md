@@ -4,11 +4,11 @@ Destination: <one-sentence outcome; link Mission Brief when present>
 
 Gate: <current gate> — <evidence or blocker>
 
-Current frontier: <exactly one Ready/Active/Review material work package, or one proposed Candidate when none is current>
+Current frontier: <exactly one Ready/Active/Review material work package, or one proposed frontier when none is current>
 
 Decision needed: <one grouped Mission Control question, or `None — <why>`>
 
-Recommended next: <one inactive frontier and why it is next>
+Recommended next: <one proposed frontier and why it is next; not a ticket until selected>
 
 ## Known now
 
@@ -28,11 +28,11 @@ Recommended next: <one inactive frontier and why it is next>
 
 - [x] `<ticket/artifact>` — <result/decision and evidence pointer>
 
-## Inactive candidates / route
+## Provisional route
 
 <!-- Optional. Prefer one recommended next frontier above. Add more entries only when evidence genuinely supports a useful itinerary. -->
 
-- [ ] <Candidate> — inactive — <Kind> / <Type> — depends on <condition> — likely / conditional / tentative
+- <Proposal> — <Kind> / <Type> — depends on <condition> — likely / conditional / tentative
 
 ## Out of scope / future missions
 

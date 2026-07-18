@@ -105,4 +105,4 @@ Status: Unknown / Assumed / Known / Decided
 
 ## Recommended next frontier
 
-<!-- One inactive typed Candidate, why it is recommended, and what must be true before selection. -->
+<!-- One typed frontier proposal, why it is recommended, and what must be true before selection. Do not create its ticket until selected. -->

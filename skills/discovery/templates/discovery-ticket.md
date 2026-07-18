@@ -1,6 +1,6 @@
 # Discovery Ticket <number>: <coherent work package>
 
-Status: **Candidate | Ready | Active | Blocked | Review | Closed | Abandoned**
+Status: **Ready | Active | Blocked | Review | Closed | Abandoned**
 Kind / Type: **Discovery / <choose exactly one from `../references/ticket-types.md`>**
 Owner: **<person or role>**
 Depends on: **<tickets, access, decisions, or none>**
@@ -36,7 +36,7 @@ Low / Medium / High
 
 ## New work surfaced
 
-- <independent Candidate ticket, related question retained here, or fog patch>
+- <independent frontier proposal, related question retained here, or fog patch>
 
 ## Map delta
 

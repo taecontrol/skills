@@ -62,7 +62,7 @@ Destination: <one sentence>
 Gate: <current gate and blocker/evidence>
 Current frontier: <one active/review/proposed material work package>
 Decision needed: <one grouped question or none>
-Recommended next: <one inactive next frontier>
+Recommended next: <one proposed next frontier; not a ticket until selected>
 
 ## Known now
 - <3-7 evidence-backed facts that matter now>
@@ -122,7 +122,7 @@ Default review shape:
 **Evidence:** <commands, artifacts, observations, links>
 **Consequences:** <material behavior/risk decisions>
 **Decision for Mission Control:** accept / revise / split / pause
-**Recommended next:** <one inactive frontier>
+**Recommended next:** <one proposed frontier; not a ticket until selected>
 ```
 
 Long artifacts may exist, but chat should lead with the decision brief, not a demand to read files.

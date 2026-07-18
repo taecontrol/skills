@@ -1,6 +1,6 @@
 # Ticket NNN: <one coherent work package>
 
-Status: **Candidate**
+Status: **Ready**
 Kind / Type: **<Discovery | Decision | Deliverable | Execution | Validation | Task> / <operational type>**
 Owner: **<person or role>**
 Depends on: **<tickets or none>**
@@ -35,5 +35,5 @@ Acceptance / evidence:
 - Known:
 - Decisions:
 - Fog:
-- Candidate tickets:
+- Proposed frontiers:
 - Gate:

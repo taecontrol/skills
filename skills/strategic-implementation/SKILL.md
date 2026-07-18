@@ -153,7 +153,7 @@ Include:
 ## Map delta
 - Known:
 - Fog:
-- Candidate tickets:
+- Proposed frontiers:
 - Gate:
 ```
 
