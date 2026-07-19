@@ -1,6 +1,6 @@
 ---
 name: mission
-description: "Open or continue a bounded software mission with a human Mission Control, a visible exploration map, and one active material work package at the frontier. Use only when the human explicitly invokes Mission or asks to start, resume, navigate, or close a mission; never auto-chain discovery, deliverables, implementation, review, or gates."
+description: "Open or continue a bounded software mission with a human Mission Control, a visible exploration map, and one active material work package at the frontier. Use only when the human explicitly invokes Mission or asks to start, resume, navigate, or close a mission; never auto-chain investigation, deliverables, implementation, review, or gates."
 disable-model-invocation: true
 license: MIT
 ---
@@ -30,7 +30,7 @@ A human answer authorizes only the decision or scope explicitly addressed inside
 ## Start or resume
 
 1. Locate the repository root and inspect current branch/worktree state, repository instructions, existing mission directories, and persistent product context before writing. Resume an existing matching mission instead of opening a duplicate.
-2. If the repository vendors Mission, Discovery, or related executor skills, verify which copy the current runtime actually loaded and compare it with the project copy. Do not infer provenance from file presence. If a version mismatch changes ticket fields, routing, authority, or return behavior, report it and synchronize through the canonical skill package before activating material work; leave unrelated dirty mission/product files untouched.
+2. If the repository vendors Mission or related executor skills, verify which copy the current runtime actually loaded and compare it with the project copy. Do not infer provenance from file presence. If a version mismatch changes ticket fields, routing, authority, or return behavior, report it and synchronize through the canonical skill package before activating material work; leave unrelated dirty mission/product files untouched.
 3. When resuming artifacts from the older inactive-ticket protocol, preserve any material context as map proposals and remove the unselected ticket files. Do not reserve a ticket or ID until Mission Control selects that frontier.
 4. If opening a mission, preserve the raw request in a small Mission Brief. Do not clean uncertainty into requirements. Use [`templates/mission-brief.md`](templates/mission-brief.md) selectively.
 5. Create or update one visible map using [`templates/exploration-map.md`](templates/exploration-map.md). Keep it dashboard-sized by default: destination, current gate, current/proposed frontier, decision needed, known-now facts, open fog, accepted closures, and one recommended next frontier. Expand history or route depth only when it materially improves orientation.
@@ -71,7 +71,7 @@ Completion criterion: every material result is visible on the map, the repositor
 
 | Kind | Route | Return to Mission |
 | --- | --- | --- |
-| Discovery | Require a Discovery Type, then invoke the `discovery` skill for one approved ticket. If unavailable, leave the ticket Ready and report the missing executor. | Evidence, confidence, remaining fog, proposed map delta; material answers remain Review until Mission Control decides. |
+| Discovery | Investigate one approved decision-driving uncertainty or tightly coupled set. Use a human-readable Type that names the method, such as `research`, `grilling`, `prototype`, `technical-spike`, or `code-archaeology`. Keep investigation separate from implementation and record sources, commands, observations, confidence, and remaining fog. | Evidence, confidence, remaining fog, proposed map delta; material answers remain Review until Mission Control decides. |
 | Decision | Work collaboratively; agents provide verified options and trade-offs. | Mission Control decision and consequences. |
 | Deliverable | Create or amend the named artifact or explicitly bounded, tightly related artifact set after activation. | Artifact set, changed-surface evidence against acceptance criteria, unresolved decisions; status Review. Do not run unrelated product suites for a documentation-only deliverable. |
 | Execution | Route to `strategic-implementation` when installed, or to the applicable implementation/TDD skill against the approved baseline. Non-trivial code changes must return compact design-quality evidence, not only green tests. | Code/evidence/deviations/design-quality evidence; never self-amend scope. |
@@ -80,7 +80,7 @@ Completion criterion: every material result is visible on the map, the repositor
 
 Routing is not progression. After any route returns, stop at the ticket checkpoint; a new executor or route does not inherit authority to continue the mission.
 
-Do not load or claim to execute Discovery for a Deliverable, Execution, or Validation ticket. Evidence gathering inside those tickets remains a bounded subtask; if it exposes a material unknown needing independent disposition, stop and propose a typed Discovery frontier. Create its ticket only if Mission Control selects it.
+Discovery is a Mission ticket Kind, not a separate lifecycle or generic evidence helper. Do not relabel a Deliverable, Execution, or Validation ticket as Discovery merely because it requires evidence gathering. If that work exposes a material unknown needing independent disposition, stop and propose a typed Discovery frontier. Create its ticket only if Mission Control selects it.
 
 ## Shape deliverables deliberately
 

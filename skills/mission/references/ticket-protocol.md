@@ -1,6 +1,6 @@
 # Shared Mission Ticket Protocol
 
-This is the source of truth for ticket states, authority, and transitions used by the `mission` skill. Executors such as `discovery` must return results through this contract; they do not own mission progression.
+This is the source of truth for ticket states, authority, and transitions used by the `mission` skill. Any routed executor must return results through this contract; it does not own mission progression.
 
 ## Common contract
 
@@ -28,7 +28,7 @@ Add `Mode`, `Questions / decisions`, `Why now`, `Method`, `Authorized outputs`, 
 
 `Type` makes the route legible without opening the ticket body:
 
-- Discovery: use exactly one type from the installed Discovery skill's `references/ticket-types.md`, such as `research`, `grilling`, `prototype`, `technical-spike`, or `code-archaeology`.
+- Discovery: use one concise method label, such as `research`, `grilling`, `prototype`, `technical-spike`, or `code-archaeology`.
 - Other Kinds: use a concise kebab-case label that names the operational shape, such as `technical-design`, `risk-decision`, `schema-migration`, `independent-qa`, or `access-setup`.
 
 Kind controls authority and routing; Type explains what the work is. Type never changes a ticket's authority.

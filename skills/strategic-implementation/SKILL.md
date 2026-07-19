@@ -6,7 +6,7 @@ license: MIT
 
 # Strategic Implementation
 
-Strategic Implementation executes one approved software change while actively reducing long-term complexity. It is the implementation counterpart to Mission and Discovery: Mission controls the frontier, Discovery reduces fog, and this skill turns an accepted contract into code without becoming a tactical tornado.
+Strategic Implementation executes one approved software change while actively reducing long-term complexity. It operates inside Mission's lifecycle: Mission controls the frontier, Discovery tickets reduce fog, and this skill turns an accepted contract into code without becoming a tactical tornado.
 
 The core loop is:
 
