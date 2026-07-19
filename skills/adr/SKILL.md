@@ -203,10 +203,6 @@ Report the created or edited path, the decision captured, any explicit uncertain
 
 Completion criterion: the artifact passes every relevant check, the changed surface is known, and the human can review the actual file rather than a promised draft.
 
-## Foundations
-
-Load [`references/foundations.md`](references/foundations.md) only when maintaining this skill, comparing a disputed project-specific convention, or resolving an ADR-practice question. Routine creation and editing should not pay that context cost.
-
 ## Failure modes
 
 1. **ADR inflation:** every feature or technology choice gets a record. Apply the after-implementation test and document classification first.

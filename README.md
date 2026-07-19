@@ -50,8 +50,6 @@ skills/
     SKILL.md
   adr/
     SKILL.md
-    references/
-      foundations.md
     templates/
       adr.md
 ```
