@@ -7,11 +7,12 @@ Reusable agent skills maintained by Taecontrol.
 - [`mission`](./skills/mission/SKILL.md) — Human-controlled lifecycle with a visible map, provisional route, one active typed frontier, and concise activation/checkpoint/Review briefings.
 - [`strategic-implementation`](./skills/strategic-implementation/SKILL.md) — Executes approved implementation tickets with strategic programming, APoSD refactor evidence, direct invariant representation, and Mission-compatible Review returns.
 - [`implementation-review`](./skills/implementation-review/SKILL.md) — Independently validates implementation against both the accepted contract and APoSD design quality: honest interfaces, hidden policy, deep modules, boundary validation, and semantic tests.
+- [`adr`](./skills/adr/SKILL.md) — Qualifies, investigates, creates, and edits minimal Architecture Decision Records centered on durable rationale rather than implementation detail.
 
 Install the software-factory set:
 
 ```bash
-npx skills add taecontrol/skills --skill mission --skill strategic-implementation --skill implementation-review
+npx skills add taecontrol/skills --skill mission --skill strategic-implementation --skill implementation-review --skill adr
 ```
 
 ## Install with skills.sh / npx skills
@@ -37,6 +38,7 @@ skills/
   mission/
     SKILL.md
     references/
+      lean-mission-interface.md
       ticket-protocol.md
     templates/
       exploration-map.md
@@ -46,6 +48,10 @@ skills/
     SKILL.md
   implementation-review/
     SKILL.md
+  adr/
+    SKILL.md
+    templates/
+      adr.md
 ```
 
 Each `SKILL.md` stays focused on routing and process; branch-specific rules and copyable artifacts use progressive disclosure through `references/` and `templates/`.
