@@ -7,12 +7,19 @@ defaults:
   no_silent_provider_substitution: true
   cross_runtime: explicit_only
   announce_before_delegation: true
-  approval:
-    metered_cost_usd_threshold: 1.00
-    require_for_denied_effort_without_exception: true
-    require_for_provider_switch: true
-    require_for_destructive_or_public_action: true
+  limits:
+    metered_cost_usd_ceiling: 1.00
+    exclude_denied_effort_without_exception: true
+    exclude_unlisted_provider_or_runtime: true
+    exclude_unknown_quota_for_large_runs: true
   telemetry:
+    capture_mode: automatic_or_sampled
+    manual_capture_when: [failed, repaired, escalated, unusual_cost, high_risk, calibration_sample]
+    storage: runtime_logs
+    automatic_mutation:
+      policy: forbidden
+      shared_skill: forbidden
+      seed_evidence: forbidden
     unknown_value: unknown
     prefer_runtime_actuals: true
     retain_benchmark_metric_versions: true
@@ -574,31 +581,24 @@ fallbacks:
   - from: cursor-composer-standard
     to: cursor-composer-fast
     cause: latency
-    approval: false
   - from: codex-luna-high
     to: codex-sol-low
     cause: capability_escalation
-    approval: false
   - from: codex-sol-low
     to: codex-sol-medium
     cause: capability_escalation
-    approval: false
   - from: codex-sol-medium
     to: codex-sol-high
     cause: capability_escalation
-    approval: false
   - from: hermes-luna-high
     to: hermes-sol-low
     cause: capability_escalation
-    approval: false
   - from: hermes-sol-low
     to: hermes-sol-medium
     cause: capability_escalation
-    approval: false
   - from: hermes-sol-medium
     to: hermes-sol-high
     cause: capability_escalation
-    approval: false
 
 telemetry_fields:
   task: [class, ambiguity, verification, risk, scope]

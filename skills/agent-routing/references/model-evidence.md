@@ -1,6 +1,8 @@
 # Seed Model Evidence
 
-This file is a dated evidence snapshot for the default routing examples, not a permanent leaderboard or a runtime availability claim.
+This is a progressive-disclosure reference, not part of the frequent routing path. Do not load it when an existing policy already names the allowed routes, tiers, and cost disclosures. Use it only to bootstrap or revise that policy, investigate disputed evidence, or perform a scheduled refresh.
+
+It is a dated evidence snapshot for the default routing examples, not a permanent leaderboard or a runtime availability claim.
 
 - Snapshot date: 2026-07-20
 - Primary benchmark source: [Artificial Analysis](https://artificialanalysis.ai/)

@@ -40,6 +40,7 @@ Do not use it to choose a deterministic shell command, ordinary tool call, or di
 7. **No blind escalation.** Escalate only after a verifier or observable failure identifies a capability-relevant cause.
 8. **Tier and effort are orthogonal.** T4 does not mean `max`; fast serving does not mean greater intelligence.
 9. **No recursive frontier strategy.** Multi-agent or Ultra-style escalation is an orchestrator strategy, never an effort a delegated child may invoke recursively.
+10. **No routing approval prompts.** A route is already authorized by policy or it is excluded. The route announcement is a notice, not a request for permission; action-level safety rules remain separate.
 
 ## 1. Apply the directness gate
 
@@ -74,7 +75,7 @@ Completion criterion: every dimension that could change the route is known or ex
 
 ## 3. Load policy and available routes
 
-When creating or changing a portable policy, load [`references/policy-schema.md`](references/policy-schema.md) and begin from [`templates/routing-policy.yaml`](templates/routing-policy.yaml). At runtime, inspect the actual tool, authenticated provider, model availability, effort controls, subscription pool, and quota state. Do not infer access from a generic model catalog.
+When creating or changing a durable local or project policy, load [`references/policy-schema.md`](references/policy-schema.md) and begin from [`templates/routing-policy.yaml`](templates/routing-policy.yaml). These are optional authoring assets, not files to create or load for every task. During ordinary routing, inspect the policy already in force plus the actual tool, authenticated provider, model availability, effort controls, subscription pool, and quota state. Do not infer access from a generic model catalog.
 
 Filter candidates in this order:
 
@@ -84,7 +85,7 @@ Filter candidates in this order:
 4. context and tool requirements fit;
 5. remaining quota or budget can support an attempt and its verifier.
 
-If no route survives, report the constraint. Do not fall back through an unapproved relay or provider.
+If no route survives, report the constraint. Do not fall back through an unauthorized relay or provider.
 
 Completion criterion: every candidate considered is executable through a named allowed route, and every excluded candidate has a policy, availability, capability, context, or budget reason.
 
@@ -108,7 +109,7 @@ Apply a capability gate: choose the lowest tier with credible evidence that at l
 4. vendor positioning and documented features;
 5. a provisional hypothesis labeled with low confidence.
 
-Load [`references/model-evidence.md`](references/model-evidence.md) only when selecting among the seed profiles or refreshing their evidence. Do not let a leaderboard override repeated local success on a narrower task class.
+Do not load [`references/model-evidence.md`](references/model-evidence.md) during normal routing when the active policy already assigns profiles and costs. Load it only to bootstrap or revise the policy, investigate disputed evidence, or perform a scheduled evidence refresh. Do not let a leaderboard override repeated local success on a narrower task class.
 
 Completion criterion: the selected tier is justified by the task envelope and evidence, not prestige, habit, or a single aggregate score.
 
@@ -156,13 +157,19 @@ Include:
 - quota impact when available;
 - planned verifier.
 
-Ask for approval only when policy requires it: budget threshold, exceptional provider, denied-by-default effort, destructive risk, or runtime switch. Ordinary allowed delegations should not become approval theater.
+Never pause to ask for routing approval. Announce and run an allowed route. If a budget ceiling, provider rule, effort rule, runtime boundary, or quota rule excludes it, remove it from consideration and choose another allowed route or report that no route is available. Authorization for destructive or public actions belongs to the action's safety policy, not to model routing.
 
 Completion criterion: the human can see what will run, through which paid path, why it is sufficient, and how success will be judged.
 
 ## 7. Verify and classify the result
 
-Run the planned verifier before accepting the result. Then classify the disposition:
+Verification does **not** imply launching another agent. Use the cheapest adequate check:
+
+- for T0 and routine T1 work, prefer deterministic read-back, parsing, exact comparison, targeted tests, or another local tool check;
+- use the coordinator's own rubric for bounded judgment calls;
+- add independent-agent review only when correlated-error risk, weak deterministic verification, or task impact justifies its extra cost.
+
+Run that verifier before accepting the result. Then classify the disposition:
 
 - **accepted:** verifier passes and no material uncertainty remains;
 - **local defect:** bounded error repairable in the same profile;
@@ -172,7 +179,7 @@ Run the planned verifier before accepting the result. Then classify the disposit
 - **capability failure:** reasoning or execution remains inadequate despite a sound brief, route, and verifier;
 - **quota or availability failure:** choose another explicitly allowed route at the same tier when possible.
 
-A plausible answer without verification is not evidence of success. A tool outage is not evidence for a stronger model.
+A plausible answer without an adequate check is not evidence of success. A tool outage is not evidence for a stronger model, and a second agent is not the default verifier.
 
 Completion criterion: the attempt ends with an observable verifier result and one disposition; ambiguous failures are investigated before routing changes.
 
@@ -191,38 +198,13 @@ Do not repeatedly retry a weak profile after evidence shows it is inadequate. Do
 
 Completion criterion: escalation changes the failed dimension, remains inside policy and budget, and records why the previous route was insufficient.
 
-## 9. Record telemetry
+## 9. Learn from telemetry without per-task ceremony
 
-Capture enough data to replace heuristics with local evidence:
+Prefer telemetry the runtime already exposes. Do not create a YAML file, launch a verifier agent, or interrupt the user merely to log every small task. Add a manual record only for failed, repaired, escalated, unusually costly or risky attempts, plus occasional calibration samples. The optional record shape lives in [`references/policy-schema.md`](references/policy-schema.md).
 
-```yaml
-task:
-  class: implementation
-  envelope: {ambiguity: low, verification: deterministic, risk: low}
-route:
-  tier: T1
-  runtime: codex
-  harness: codex-cli
-  provider: openai-codex
-  model: gpt-5.6-luna
-  effort: high
-  serving_mode: standard
-cost:
-  billing_mode: subscription_quota
-  announced_api_equivalent_proxy_usd: 0.09
-  actual_cash_usd: unknown
-  actual_quota_units: unknown
-outcome:
-  verifier: targeted-tests
-  accepted_first_pass: true
-  repairs: 0
-  escalated: false
-  elapsed_seconds: unknown
-```
+Record token, cache, quota, duration, tool, repair, and acceptance fields only when exposed; use `unknown`, never fabricated zeroes. During an explicit policy review, compare acceptance rate and expected accepted cost by task class, exact profile, and runtime. Use relevant repeated evidence to revise the local policy. Never rewrite this shared skill or its seed tiers automatically from telemetry; a human-reviewed change should explain the sample and rationale.
 
-Record actual token, cache, quota, duration, tool, repair, and acceptance fields only when exposed. Do not fabricate zeroes for unavailable telemetry. Periodically compare acceptance rate and expected accepted cost by task class, exact profile, and runtime; promote local evidence over seed heuristics when the sample is relevant.
-
-Completion criterion: the route can be audited from task envelope through final accepted profile, with unknowns represented honestly.
+Completion criterion: useful routing evidence is retained when available without adding work to every small task, and policy changes remain auditable and human-reviewed.
 
 ## Common pitfalls
 

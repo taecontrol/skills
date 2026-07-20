@@ -1,8 +1,8 @@
 # Portable Routing Policy
 
-A routing policy separates capability classification from the tool that can execute it. Keep personal access, subscription, provider, and effort rules in policy data rather than hard-coding them into the routing procedure.
+A routing policy separates capability classification from the tool that can execute it. This reference is for creating or revising an optional durable YAML policy in a local or project configuration. It is not an instruction to generate YAML for every task, and ordinary routing should not reload this file when a policy is already in force.
 
-Begin with [`../templates/routing-policy.yaml`](../templates/routing-policy.yaml) and modify only fields evidenced by the actual runtime.
+When durable policy data is useful, copy [`../templates/routing-policy.yaml`](../templates/routing-policy.yaml) into the chosen local or project configuration and modify only fields evidenced by the actual runtime. The template is a starting point, not an automatically created runtime artifact.
 
 ## Identity model
 
@@ -37,9 +37,9 @@ Do not hide runtime or provider in the capability-profile ID: the same model can
 
 - `deny_unlisted_routes`: closed-world provider access. Recommended `true`.
 - `no_silent_provider_substitution`: a route outage cannot authorize a relay.
-- `cross_runtime`: `explicit_only`, `ask`, or `allowed`.
-- `approval`: budget and exceptional-route rules.
-- `telemetry`: fields exposed by the runtime and where they are stored.
+- `cross_runtime`: `explicit_only` or `allowed`; routing never prompts for permission.
+- `limits`: hard cost, quota, provider, and runtime boundaries. A route outside them is unavailable.
+- `telemetry`: automatic or sampled capture rules, exposed fields, and an explicit sink such as `runtime_logs` or a concrete local/project path.
 
 ### Effort policy
 
@@ -114,17 +114,16 @@ Use one of these values:
 
 Do not convert quota to dollars without a documented conversion. Keep cash, API-equivalent cost, and quota impact as separate fields.
 
-## Approval policy
+## Preauthorization and limits
 
-Approval should be exceptional rather than per-delegation ceremony. Typical triggers:
+Routing never asks the user to approve a selected model. Encode the boundary before execution:
 
-- expected metered cost exceeds a configured threshold;
-- effort is denied by default and an exact exception is not already preapproved;
-- provider or runtime switch is not preapproved;
-- execution is destructive, public, security-sensitive, or financially consequential;
-- quota impact is unknown and the run is expected to be large.
+- if expected metered cost exceeds the configured ceiling, exclude the route;
+- if an effort has no exact policy exception, exclude the route;
+- if a provider or runtime switch is not already allowed, exclude the route;
+- if unknown quota impact is forbidden for large runs, exclude the route.
 
-An allowed ordinary route below thresholds may proceed after its concise route announcement.
+An allowed route may proceed after its concise announcement. If no allowed route survives, report the blocking constraint instead of asking for an exception. Separate action-level safety controls still govern destructive, public, security-sensitive, or financially consequential operations; this routing policy neither grants nor requests that authority.
 
 ## Fallback semantics
 
@@ -140,7 +139,7 @@ A fallback is not a generic ordered list. Apply only entries whose cause matches
 
 ## Telemetry record
 
-Minimum portable record:
+Telemetry is primarily for later review and improvement of the local routing policy. Prefer automatic runtime logs. Do not create a record for every small task; manually capture failures, repairs, escalations, unusual cost or risk, and occasional calibration samples. A minimum portable record, when one is warranted, is:
 
 ```yaml
 timestamp: 2026-07-20T00:00:00Z
@@ -175,7 +174,7 @@ outcome:
   final_profile: gpt-5.6-luna-high
 ```
 
-Use `unknown`, not zero, when the runtime does not expose a value.
+Use `unknown`, not zero, when the runtime does not expose a value. Store records only in the configured runtime-log sink or concrete local/project path. Telemetry may inform an explicit policy review, but collection must never mutate the policy, shared skill, or seed evidence automatically.
 
 ## Policy validation
 
@@ -191,6 +190,8 @@ Before using a policy:
 8. Verify unlisted routes are denied or the policy explicitly accepts an open world.
 9. Verify benchmark evidence includes metric, version or explicit `not-published`, effort match, and harness when applicable.
 10. Verify no non-exact benchmark is stored as an exact score or cost proxy.
-11. Run representative scenarios for T0, each configured tier, route outage, quota exhaustion, bad brief, tool failure, capability failure, and denied provider substitution.
+11. Verify cost, quota, provider, and runtime limits can be evaluated without prompting for routing approval.
+12. Verify telemetry capture is automatic or sampled, names `runtime_logs` or a concrete local/project path, forbids automatic mutation of policy, shared skill, and seed evidence, and does not require a manual record for every task.
+13. Run representative scenarios for T0, each configured tier, route outage, quota exhaustion, bad brief, tool failure, capability failure, and denied provider substitution.
 
 Completion criterion: every possible selected route is both executable and authorized, and every disallowed route remains unreachable through fallbacks.
