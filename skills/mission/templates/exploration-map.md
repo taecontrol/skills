@@ -8,7 +8,7 @@ Current frontier: <exactly one Ready/Active/Review material work package, or one
 
 Decision needed: <one grouped Mission Control question, or `None — <why>`>
 
-Recommended next: <one proposed frontier and why it is next; not a ticket until selected>
+Recommended next: <one proposed frontier and why it is next; state whether Review acceptance will select it for a fresh-session handoff>
 
 ## Known now
 

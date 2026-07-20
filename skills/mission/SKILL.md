@@ -12,10 +12,10 @@ Mission is the collaborative lifecycle container for one bounded intervention on
 The default operating rhythm is:
 
 ```text
-show lean map -> brief one frontier -> activate -> fresh execution session -> lean Review brief -> disposition checkpoint -> stop
+show lean map -> brief one frontier -> activate -> fresh execution session -> lean Review brief -> accept -> optionally activate the predeclared successor -> stop
 ```
 
-The goal is shared understanding and a well-evidenced outcome, not throughput. Mission is a **navigation interface**, not only a repository state machine: Mission Control should understand in ordinary language where the mission is, what kind of work is happening, why it is next, when they will be involved, and what likely follows without opening a ticket file. Use **strong internal invariants, plain-language human interface**: keep the guardrails that prevent agent drift, but guide the human with a cockpit rather than exposing the whole protocol. See [`references/lean-mission-interface.md`](references/lean-mission-interface.md) for the lean default.
+The goal is shared understanding and a well-evidenced outcome, not throughput. Mission is a **navigation interface**, not only a repository state machine: Mission Control should understand in ordinary language where the mission is, what kind of work is happening, why it is next, when they will be involved, and what likely follows without opening a ticket file. Product meaning comes before Mission vocabulary: every material question must be understandable without knowing terms such as `frontier`, `gate`, `semantic fallback`, or a ticket Type. Use **strong internal invariants, plain-language human interface**: keep the guardrails that prevent agent drift, but guide the human with a cockpit rather than exposing the whole protocol. See [`references/lean-mission-interface.md`](references/lean-mission-interface.md) for the lean default.
 
 A ticket owns one coherent, independently reviewable work package. It has one objective, one governing Kind, and a human-readable Type, and may resolve multiple coupled questions or decisions inside that boundary. Material work packages are session-isolated by default; continuing into another ticket in the same session requires an explicit Mission Control instruction.
 
@@ -23,9 +23,9 @@ A ticket owns one coherent, independently reviewable work package. It has one ob
 
 **Mission Control owns:** outcome, appetite, scope, no-gos, material product policy, accepted risk, gates, deliverable authorization, freeze/amendments, mission verdict, and closure.
 
-**The agent owns:** repository/evidence inspection, exposing fog, proposing the next frontier and route options on the map, creating a ticket after Mission Control selects that work package, executing mechanical subtasks inside an approved ticket, keeping artifacts current, and stopping when a material boundary is reached.
+**The agent owns:** repository/evidence inspection, exposing fog, proposing the next frontier and route options on the map, creating a ticket after Mission Control selects that work package (including through a predeclared acceptance handoff), executing mechanical subtasks inside an approved ticket, keeping artifacts current, and stopping when a material boundary is reached.
 
-A human answer authorizes only the decision or scope explicitly addressed inside the active work package. Never interpret it as permission to expand the package, draft downstream artifacts, summon every role, freeze a baseline, or begin implementation.
+A human answer authorizes only the decision or scope explicitly addressed in context. A Review acceptance may also select the one successor whose activation was explicitly predeclared in that Review brief, but never authorizes its execution. Do not otherwise interpret an answer as permission to expand the package, draft downstream artifacts, summon every role, freeze a baseline, or begin implementation.
 
 ## Start or resume
 
@@ -42,15 +42,15 @@ Completion criterion: Mission Control can explain the destination, current fog, 
 
 Use the human-visible briefing, checkpoint, and Review-brief shapes in [`references/ticket-protocol.md`](references/ticket-protocol.md), but keep chat lean and understandable. The ticket file is durable state; it is never the sole user interface. Mission Control should see a cockpit: where we are, what changed, what evidence exists, what decision is needed, and the recommended next frontier.
 
-- Lead navigation responses with a short conversational paragraph when the context is not obvious: what we are trying to learn or change, why it matters, and what will happen next. Do not add a separate label such as `In plain words`; the explanation should feel like normal guidance, not another protocol field.
-- Translate necessary Mission terms in-place the first time they matter in a response. For example: `frontier` = the one work package we are focusing on now; `Ready to Shape` = we know enough to design the next concrete work.
-- Prefer concrete product words over abstract process words. Do not make Mission Control infer meaning from ticket IDs, Kind/Type labels, gate names, ADR names, or phrases like "canonical docs are synced" without saying what that means for the product or decision.
+- Begin every material explanation and question with the concrete product behavior, consequence, or choice in ordinary language. The opening must still make sense if every ticket ID, Kind/Type, gate, and Mission label is removed. Do this before confusion appears, not only after Mission Control asks for simpler terms.
+- Define an unfamiliar technical or Mission term before using it to ask for a decision. If Mission Control says they do not understand, reset the explanation with a concrete example and the product consequence; do not merely restate the term or defend the protocol.
+- Put ticket IDs, Kind/Type labels, gate names, ADR names, and other process metadata after the explanation and only when they improve orientation. Never make Mission Control infer the product meaning from phrases such as "canonical docs are synced," `shadow mode`, or `semantic model call`.
 
-- Before the first substantive tool call for an activated material ticket, state where the mission is, the ticket's Kind/Type and objective, why it is next, the expected acceptance evidence, what the agent will do autonomously, what would require Mission Control, the return checkpoint, and the likely next frontier if successful.
+- Before the first substantive tool call for an activated material ticket, explain the product objective and why it is next, then give only the status, evidence, autonomy boundary, return condition, and likely next frontier that materially aid orientation. Do not mechanically emit every protocol field.
 - During execution, communicate only at material checkpoints: a scope/risk/architecture change, a genuine human decision, a blocker, or transition to Review. Do not narrate routine reads, commands, or formatting.
 - When Mission Control makes a material choice, acknowledge the decision and state its immediate consequence before entering a long autonomous run.
-- At Review, present a compact decision brief before pointing to a long artifact. Never tell Mission Control merely to “review the file.”
-- End every navigation response with one explicit immediate next action and one recommended next-frontier proposal. A proposal is orientation only: it is not a ticket or authorized work until Mission Control selects it.
+- At Review, present a compact decision brief before pointing to a long artifact. Never tell Mission Control merely to “review the file.” When one successor is unambiguous and ready to shape mechanically, state that accepting the current ticket will also activate that successor for a fresh session; acceptance then selects it without a second `agree` ceremony.
+- End every navigation response with one explicit immediate next action and one recommended next-frontier proposal. A proposal is orientation only until Mission Control selects it, either directly or through the predeclared acceptance handoff in [`references/ticket-protocol.md`](references/ticket-protocol.md).
 
 Completion criterion: Mission Control can follow the journey from chat without reading long artifacts, while the repository remains sufficient for a fresh executor.
 
@@ -59,13 +59,13 @@ Completion criterion: Mission Control can follow the journey from chat without r
 Load [`references/ticket-protocol.md`](references/ticket-protocol.md) before creating, activating, reviewing, or closing a ticket.
 
 1. Shape concise frontier proposals on the map when work forms a coherent, independently reviewable package: a discovery objective, decision set, durable deliverable, execution slice, validation assignment, or blocking setup outcome. A proposal states enough Kind/Type, objective, rationale, dependency, and acceptance outline for Mission Control to choose, but it is not a ticket. Keep related questions and decisions inside the proposed package. Vague fog and sharp questions without an independent handoff, evidence, or acceptance need remain as fog or inside the active ticket.
-2. Select the next material work package with Mission Control. Only then create its index-card ticket. Mark it Ready when the objective, scope, non-goals, dependencies, and acceptance/evidence are clear; then mark it Active. Add sections such as Method, Why now, Questions, or detailed Authorized outputs only when they change behavior, prevent ambiguity, or support handoff/review.
+2. Select the next material work package with Mission Control. Selection may be direct or may occur when Mission Control accepts a Review brief that explicitly predeclared one eligible successor. Only then create its index-card ticket. Mark it Ready when the objective, scope, non-goals, dependencies, and acceptance/evidence are clear; then mark it Active. Add sections such as Method, Why now, Questions, or detailed Authorized outputs only when they change behavior, prevent ambiguity, or support handoff/review.
 3. Treat ticket selection and session choice as distinct decisions that Mission Control may grant together. By default, record the Active ticket and a self-contained handoff, give the activation briefing, then stop so the ticket is executed in a fresh session. A bare confirmation such as “yes,” “activate it,” or “go ahead” authorizes the ticket, not same-session execution. At a disposition checkpoint, contextual instructions such as “continue here” or “do the next one in this session” both select the unambiguous proposed frontier and authorize same-session execution; do not demand a second procedural confirmation, but still give the briefing before substantive work.
 4. Work only the active work package in its execution session. Mechanical evidence-gathering subtasks and related questions may proceed without performative approval, but cannot change the ticket's objective, scope, risk, or authority. Once Active, freeze Objective, Kind/Type, Scope, Authorized outputs, Non-goals, dependencies, and Acceptance. Result, Evidence, Confidence, Remaining uncertainty, and Map updates may evolve. A material contract change requires an explicit Mission Control amendment or a return to the map with a new frontier proposal.
-5. Return the ticket to Review with its result, evidence, remaining uncertainty, explicit map delta, and worktree disposition. Stop at the ticket checkpoint; do not activate or begin another ticket. When the next work package is evident, record one concise proposed frontier on the map rather than creating its ticket.
-6. Close the ticket only at its required authority level and update the map and provisional route. Mission Control then chooses whether to review/revise, commit the ticket changes, pause, start the next ticket in a fresh session, or explicitly continue in the current session. When the choice is unambiguous, act on it without restating the menu or asking Mission Control to approve agent-authored ticket wording.
+5. Return the ticket to Review with its result, evidence, remaining uncertainty, explicit map delta, and worktree disposition. Do not activate or begin another ticket before acceptance. When exactly one next work package is evident and its contract can be completed mechanically, record it on the map and predeclare that acceptance will activate it for a fresh session.
+6. Close the ticket only at its required authority level and update the map and provisional route. If Mission Control accepts a ticket after that predeclaration, close it, create and activate the successor, persist a self-contained handoff, and stop; do not ask for `agree` and do not execute the successor in the current session. Otherwise Mission Control chooses whether to revise, commit, pause, select another frontier, or explicitly continue in the current session. When the choice is unambiguous, act without restating a menu or asking Mission Control to approve agent-authored ticket wording.
 
-Completion criterion: every material result is visible on the map, the repository can resume from durable artifacts, and no downstream work or same-session ticket began without an explicit, contextual Mission Control choice.
+Completion criterion: every material result is visible on the map, the repository can resume from durable artifacts, and no downstream execution or same-session ticket began without an explicit, contextual Mission Control choice.
 
 ## Route without taking over
 
@@ -133,7 +133,7 @@ Completion criterion: a fresh session can resume or understand closure from repo
 ## Failure modes
 
 - **Contract theatre:** role labels, polished documents, or long templates hide that Mission Control never navigated the fog. Prefer lean cockpit summaries over exposing the whole protocol.
-- **Silent chaining:** Discovery completion triggers Spec, Design, Plan, reviewers, or implementation without a new ticket.
+- **Silent chaining:** Discovery completion triggers Spec, Design, Plan, reviewers, or implementation without an accepted, bounded successor ticket. Creating and activating one predeclared successor after acceptance is a handoff, not permission to execute it.
 - **Session bleed:** approval or completion of one ticket is treated as permission to execute the next ticket in the same context; use a fresh session unless Mission Control explicitly overrides the boundary.
 - **Ticket bureaucracy:** each question, decision, artifact, or command becomes its own ticket instead of belonging to a coherent work package.
 - **Premature completion:** attention moves to downstream phases before the active ticket has evidence and map updates.
