@@ -1,6 +1,6 @@
 # Lean Mission Interface
 
-Session-derived lesson: Mission can preserve strong safety invariants while exposing a much lighter interface to Mission Control. The protocol should feel like a cockpit, not a legal contract.
+Session-derived lesson: Mission can preserve strong safety invariants while speaking to Mission Control like a concise colleague. The protocol belongs in durable artifacts, not in chat.
 
 ## Core principle
 
@@ -15,27 +15,18 @@ Keep the guardrails that prevent agent drift:
 - map reflects reality;
 - scope/risk changes return to the map.
 
-But do not surface every invariant as ceremony. Mission Control should usually see only:
-
-```md
-What are we trying to do, in plain words?
-Why does it matter now?
-Where are we?
-What changed?
-What evidence exists?
-What decision is needed?
-What is the recommended next frontier?
-```
+Do not surface those invariants as ceremony. Mission Control usually needs only what we are doing, why it matters, what changed, and the one decision or next action.
 
 ## Plain-language guide mode
 
-Mission is a guide, not a status ticker. Begin with the concrete product behavior, consequence, or choice in ordinary language, then use compact labels or bullets only where they help orientation. The opening must remain understandable if every ticket ID, Kind/Type, gate, and Mission term is deleted. Assume Mission Control may not know the repository, the mission vocabulary, or the current technical shorthand. Do not wait for them to request simpler terms, and do not add a separate label such as `In plain words`; the conversation should be plain from the start.
+Mission is a guide, not a status ticker. Use the **minimum sufficient context**: usually 2–5 short sentences without headings or labels. Begin with the concrete product behavior, consequence, or choice. Assume Mission Control may not know the repository, Mission vocabulary, or technical shorthand. The conversation should be plain from the start.
 
 - Translate necessary terms before using them to ask for a decision: say what `Discovery`, `frontier`, `Ready to Shape`, `ADR`, `shadow mode`, `semantic fallback`, or a ticket ID means for this product decision.
 - Prefer concrete product language over lifecycle language: "we need to decide who owns the campaign when two rules collide" is better than "campaign-collision-policy decision frontier".
 - When using a ticket ID, pair it with the human meaning: `D-002 — decide the campaign collision rule`.
 - Avoid opaque completion claims such as "canonical docs are synced" unless followed by what changed and why the user should care.
 - Before a material question, give one concrete example and say what each answer would change. If Mission Control says they do not understand, restart from the example and consequence rather than paraphrasing the same abstraction.
+- Define a genuinely complex term in one short clause when first used. Remove any sentence that does not change understanding, the decision, or the next action.
 
 Question test:
 
@@ -115,6 +106,8 @@ Prefer one recommended next frontier. At Review, if that frontier is unambiguous
 
 Example: `If you accept 002, I will close it and activate 003 — decide how every employee reply appears in the admin dashboard — for a fresh session.` After `accepted`, perform that handoff directly; never reply by asking Mission Control to `agree` again.
 
+Fresh-session example: `/mission Let's work on the next item` means this session is where that item runs. Brief the product objective, create/activate the ticket if needed, and start the work. Do not answer by preparing the ticket and asking for another fresh session. `/mission What's next?` only asks for orientation and does not authorize execution.
+
 Prefer a one-line gate statement:
 
 ```md
@@ -125,15 +118,10 @@ Use a gate table only for large or disputed missions.
 
 ## Review brief
 
-Default review shape:
+Use 2–5 short sentences, not a labeled block. Say what was produced, what it enables, and what accepting it will do. Add one brief verification sentence only when useful. Long artifacts hold the details.
 
-```md
-**Outcome:** <plain result>
-**Evidence:** <commands, artifacts, observations, links>
-**Consequences:** <material behavior/risk decisions>
-**Decision for Mission Control:** accept / revise / split / pause
-**Recommended next:** <one proposed frontier; not a ticket until selected>
-**If accepted:** <close only | close and activate the named successor for a fresh session>
-```
+Example: `We created a safety checklist for understanding employee replies in any language. It prevents unclear AI interpretations from closing or rejecting work. If you accept it, I'll activate the technical design next. Checks passed; no product code changed.`
 
-Long artifacts may exist, but chat should lead with the decision brief, not a demand to read files.
+A request for “a small summary in very simple terms” means the original Review brief failed.
+
+Successor test: when the Review names one recommended next work package, default to activation on acceptance. Use `close only` only for mission completion, an explicit pause, competing frontiers, no single successor, or a named material decision that prevents shaping it. Never use “it remains a proposal” as the reason—that merely restates the state the handoff is meant to resolve.

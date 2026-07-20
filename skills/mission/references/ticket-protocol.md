@@ -50,55 +50,33 @@ Exactly one material ticket is current in `Ready`, `Active`, or `Review`. Parall
 
 ## Human-visible navigation contract
 
-The map and ticket are durable state, not a substitute for conversation. Product meaning must lead; protocol metadata is secondary. Each brief and material question must be understandable to someone who does not know Mission vocabulary: open with the concrete product behavior, consequence, or choice before relying on ticket IDs, Kind/Type labels, gate names, ADRs, technical shorthand, or other process metadata. The opening must stand alone if those labels are removed. Do not use a separate `In plain words` field; the explanation should be the conversation from the start.
+The map and ticket preserve full state; chat uses the **minimum sufficient context**. Write as a natural conversation, not a status report. Default to 2–5 short sentences and roughly 100 words or fewer. Do not use headings, field labels, or repeated status blocks in normal navigation. Use up to three bullets only when separate items genuinely scan better than prose.
+
+Say only what changes Mission Control's understanding, decision, or next action. Start with product meaning. Omit ticket IDs, Kind/Type, gate names, file lists, corpus counts, command results, and worktree details unless they matter to the decision or Mission Control asks. When a complex term is unavoidable, explain it immediately in one short clause using familiar words.
 
 ### Activation briefing
 
-Before substantive execution of an Active material ticket, open with a 2-4 sentence conversational lead-in. Explain in concrete product terms what we are about to do, why it matters, and what success will let us decide next; define any necessary technical or Mission term before using it. Add only the following fields that materially improve orientation rather than mechanically emitting the whole template:
+Before substantive execution, explain what will be done, why it matters now, and what will come back for review. Mention a stop condition only when it is not obvious. Do not recite mission position, ticket metadata, evidence fields, autonomy boundaries, or likely routes as labels.
 
-```markdown
-**Mission position:** <current gate and frontier>
-**Ticket:** <number/title> — <Kind> / <Type>
-**Why now:** <decision, dependency, or risk this unlocks>
-**Expected evidence:** <observable acceptance evidence or artifact>
-**I will handle:** <autonomous evidence/work inside scope>
-**I will return early if:** <material decisions, scope/risk change, or blocker>
-**Return checkpoint:** <observable result and status>
-**Likely next frontier:** <one proposed frontier, conditional when appropriate; not a ticket until selected>
-```
+Example: `We're going to design how buttons, AI interpretation, and confirmations work together. This prevents implementation from inventing safety rules. I'll return with a design for review; no production code will change.`
 
-This is an explanation, not a second approval ceremony. If Mission Control already authorized same-session execution, give the briefing and proceed.
+This is orientation, not another approval ceremony. If Mission Control already authorized execution, say it and proceed.
 
 ### Material checkpoint
 
-Do not narrate mechanical work. When something materially changes, open with one or two conversational sentences explaining the change and why it matters, then report:
+Do not narrate mechanical work. When something materially changes, explain the discovery and consequence in one or two sentences, then ask one plain question if needed. Never print a `Checkpoint` block.
 
-```markdown
-**Checkpoint**
-- Learned:
-- Mission impact:
-- Decision needed: none | <one grouped material question>
-- Next action:
-```
+Example: `We found that some employee replies can bypass transcript storage, so the dashboard may miss them. That needs separate persistence work; should it be the next ticket?`
 
-Group coupled human questions. Ask only about scope, appetite, policy, risk, product intent, access that tools cannot obtain, or competing frontiers—not implementation details the ticket already delegates. Before each question, explain one concrete example and what changes depending on the answer. Do not ask with unexplained abstractions such as `shadow mode`, `semantic fallback`, or `persistence boundary`.
+Ask only about scope, appetite, policy, risk, product intent, unavailable access, or competing next work—not implementation details already delegated. Explain one concrete example before a difficult choice.
 
 ### Review brief
 
-When returning a material ticket to Review, open with a short conversational explanation of what happened, what it means for the product or mission, and what choice Mission Control has now. Then lead with:
+In 2–5 short sentences, say what was produced, why it matters, and what Mission Control should decide. State naturally what acceptance will do. Mention verification or uncommitted work in one brief final sentence only when useful. Link the artifact only if Mission Control may want the detail. Never print the ticket contract back into chat.
 
-```markdown
-**Ticket returned:** <number> — <Kind> / <Type> — Review
-**Outcome:** <plain-language result>
-**Important consequences:** <3–7 decisions, behaviors, or risks>
-**Evidence:** <compact pointers and verification>
-**What needs Mission Control:** <accept/revise/choose, with recommendation>
-**Immediate next action:** <one action>
-**Recommended next frontier:** <one proposal and why; not a ticket until selected>
-**If accepted:** <close only | close and activate the named successor for a fresh session; never execute it here>
-```
+Example: `We created a safety checklist for understanding employee replies in any language. It ensures an unclear AI interpretation cannot close or reject work. It's ready to accept; if you accept it, I'll activate the technical design as the next ticket for a fresh session. Checks passed, and no product code changed.`
 
-Link long artifacts after this brief. Never make “review this file” the only instruction.
+If Mission Control would need to ask for “a small summary in very simple terms,” the Review brief failed. Counts, corpus sizes, release gates, latency, ticket status, file names, and protocol terms belong after the simple meaning—and usually only in the durable artifact.
 
 For a `Decision / Collaborative` ticket, return a **decision-space brief**, not a ballot for accepting the agent's preferred answer. Surface the live options, trade-offs, and pressure points in chat, then use the installed `grilling` skill when Mission Control wants to stress-test the decision. Grilling proceeds one question at a time and waits for Mission Control after each question. Phrase each question first as a product choice with a concrete example and consequence; technical policy names may follow in parentheses when useful. Do not write proposed recommendations, rejected alternatives, or map deltas as durable mission truth before the grilling/shared-understanding loop has produced an accepted, amended, split, blocked, or rejected decision; at most record mechanical status/evidence and that a proposal is pending review.
 
@@ -185,6 +163,8 @@ A ticket result never authorizes the next lifecycle phase. Discovery does not au
 
 Each material work package is an independently resumable unit and uses a fresh execution session by default. Session isolation limits context bleed, makes the ticket contract testable by a fresh agent, and gives Mission Control a deliberate repository checkpoint.
 
+A session opened with an explicit directive to work on, continue, or execute the current/next ticket **is** the fresh execution session. Do not turn one isolation boundary into two sessions merely because the agent must create or activate the ticket after loading the map.
+
 Progression has two dimensions:
 
 1. **Ticket authorization** moves the selected ticket to Active.
@@ -192,26 +172,26 @@ Progression has two dimensions:
 
 Mission Control may grant both dimensions in one contextual instruction. Do not infer same-session execution from ticket approval alone: once the immediately preceding proposal satisfies the Ready contract, “yes,” “activate it,” “approved,” or “go ahead” authorizes only the ticket transition. After default activation, persist the Active ticket and handoff, state that execution should resume in a fresh session, and stop.
 
+At session start or resume, phrases such as “let's work on the next item,” “continue the active ticket,” “resume Ticket 005,” or “execute the next work package” grant both ticket selection and current-session execution when the target is unambiguous. If no ticket exists yet but its Ready contract can be shaped mechanically from the map and accepted artifacts, create it, mark it Active, give the activation briefing, and proceed with substantive work in that same session. Never end such a response with `execute this ticket in a fresh session`. By contrast, “what's next?”, “show me the next item,” or equivalent questions request orientation only.
+
 At a ticket disposition checkpoint, interpret ordinary language semantically rather than requiring a formula. “Continue here,” “let's do the next one here,” or equivalent language selects the one unambiguous proposed frontier and authorizes its execution in the current session. If its Ready contract can be completed mechanically from accepted mission artifacts and the visible proposal, write it, mark it Active, and work it without asking again. If a material scope, risk, dependency, or acceptance choice is genuinely missing, ask only that substantive question; do not ask Mission Control to approve agent-authored ticket prose or repeat a permission already given.
 
-Before a material ticket is accepted in Review, do not create or activate the next ticket or start its work. Record one concise next-frontier proposal on the map so Mission Control is not left with vague prose. Give the Review brief and report:
+Before a material ticket is accepted in Review, do not create or activate the next ticket or start its work. Record the full result, evidence, map delta, worktree state, and one concise next-frontier proposal in durable artifacts. In chat, say only the simple outcome, the decision needed, and what acceptance will activate; mention commit or verification state only when it changes the next action.
 
-- ticket status and acceptance decision required;
-- result/evidence and map delta;
-- changed/untracked files, tests, and whether the work is committed;
-- one proposed next frontier as a lightweight map entry, not yet a ticket;
-- whether acceptance will close only this ticket or also activate that named successor for a fresh session.
-
-Use an **acceptance handoff** only when all of these are true:
+Use an **acceptance handoff** by default when all of these are true:
 
 - the Review brief names exactly one successor and explicitly says that acceptance will activate it for a fresh session;
-- its objective, scope, non-goals, dependencies, and acceptance evidence follow mechanically from accepted artifacts and the visible map;
+- its objective, scope, non-goals, dependencies, and acceptance evidence can be shaped mechanically from accepted artifacts and the visible map;
 - no competing frontier or unresolved material scope, risk, policy, or acceptance choice remains; and
 - activation creates only the ticket and handoff; it does not execute successor work or advance a gate.
+
+`Close only` is permitted only when the mission is ending, Mission Control requested a pause, there is no single recommended successor, frontiers compete, or a named material scope/risk/policy/acceptance decision blocks shaping the successor. State that reason in the Review brief. “The next frontier remains a proposal,” “no implementation is authorized,” or a general preference for caution is not a reason. When one successor is already named and none of those conditions applies, the agent must predeclare and perform the acceptance handoff.
 
 When Mission Control replies `accepted`, `accept`, `approved`, or equivalent without a contrary instruction, close the reviewed ticket and treat that acceptance as selection of the predeclared successor. Create it, mark it Ready and Active, update the map, give a short product-first handoff, and stop for a fresh session. Never ask for a second `agree`. If any eligibility condition is missing, acceptance closes only the current ticket; ask only the substantive missing question rather than requesting procedural confirmation.
 
 At the resulting **ticket disposition checkpoint**, Mission Control may commit, pause, open a fresh session, or explicitly continue in the current session. If Mission Control requests a commit after an acceptance handoff, commit the accepted ticket changes plus the authorized successor ticket/map handoff, but no successor execution. A later “continue here” acts on the Active successor without another activation ceremony.
+
+Do not end on an acknowledgment of an acknowledgment. If a short reply such as `ok` follows a message that left a genuine choice unresolved, do not respond only with “no action taken” or repeat a menu. Ask one concrete question using the recommended action, such as `Commit these accepted changes now?` If no choice remains because the acceptance handoff already activated the successor, acknowledge briefly and stop.
 
 Same-session continuation is an exception, not a sticky mission setting. It applies only to the unambiguous next frontier selected at that checkpoint and must be granted again at the following checkpoint.
 
