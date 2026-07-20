@@ -1,0 +1,608 @@
+version: 1
+
+# Portable example policy. Verify runtime identifiers, subscriptions, and model
+# availability before use. Unlisted routes are denied by default.
+defaults:
+  deny_unlisted_routes: true
+  no_silent_provider_substitution: true
+  cross_runtime: explicit_only
+  announce_before_delegation: true
+  approval:
+    metered_cost_usd_threshold: 1.00
+    require_for_denied_effort_without_exception: true
+    require_for_provider_switch: true
+    require_for_destructive_or_public_action: true
+  telemetry:
+    unknown_value: unknown
+    prefer_runtime_actuals: true
+    retain_benchmark_metric_versions: true
+
+effort_policy:
+  # fixed means the surface exposes no selectable effort; it is not max.
+  allowed: [fixed, low, medium, high]
+  denied: [max, xhigh, extra-high, ultra]
+  exceptions:
+    - profile: kimi-k3-max
+      routes: [moonshot-kimi-k3, hermes-kimi-k3]
+      reason: fixed_or_normal_surface_profile
+
+provider_constraints:
+  openrouter:
+    deny_profile_patterns:
+      - "gpt-5.6-*"
+      - "kimi-*"
+      - "claude-*"
+      - "composer-2.5*"
+      - "grok-4.5*"
+
+profiles:
+  composer-2.5:
+    model: composer-2.5
+    effort: fixed
+    capability_tier: T1
+    task_fit: [bounded-implementation, mechanical-refactor, test-backed-change]
+    evidence_confidence: medium
+    serving_modes:
+      standard:
+        capability_tier: T1
+        quota_impact: low
+      fast:
+        capability_tier: T1
+        quota_impact: high
+        select_when: latency_value_exceeds_extra_quota_burn
+
+  kimi-k2.7-code:
+    model: kimi-k2.7-code
+    effort: fixed
+    capability_tier: T1
+    task_fit: [bounded-implementation, code-editing, explicit-debugging]
+    evidence_confidence: medium
+
+  gpt-5.6-luna-high:
+    model: gpt-5.6-luna
+    effort: high
+    capability_tier: T1
+    task_fit: [bounded-implementation, extraction, explicit-analysis]
+    benchmark:
+      metric: artificial-analysis-intelligence-index
+      benchmark_version: not-published
+      harness: artificial-analysis-general-model-suite
+      effort_match: true
+      score: 46
+      api_equivalent_cost_per_task_usd: 0.09
+      observed: 2026-07-20
+    evidence_confidence: medium
+
+  gpt-5.6-sol-low:
+    model: gpt-5.6-sol
+    effort: low
+    capability_tier: T2
+    task_fit: [substantial-explicit-work, reproducible-debugging, bounded-review]
+    benchmark:
+      metric: artificial-analysis-intelligence-index
+      benchmark_version: not-published
+      harness: artificial-analysis-general-model-suite
+      effort_match: true
+      score: 49
+      api_equivalent_cost_per_task_usd: 0.20
+      observed: 2026-07-20
+    evidence_confidence: medium
+
+  gpt-5.6-sol-medium:
+    model: gpt-5.6-sol
+    effort: medium
+    capability_tier: T3
+    task_fit: [broad-codebase-reasoning, difficult-debugging, technical-planning]
+    benchmark:
+      metric: artificial-analysis-intelligence-index
+      benchmark_version: not-published
+      harness: artificial-analysis-general-model-suite
+      effort_match: true
+      score: 54
+      api_equivalent_cost_per_task_usd: 0.31
+      observed: 2026-07-20
+    evidence_confidence: medium
+
+  grok-4.5-high:
+    model: grok-4.5
+    effort: high
+    capability_tier: T3
+    task_fit: [broad-codebase-reasoning, research, technical-planning]
+    benchmark:
+      metric: artificial-analysis-intelligence-index
+      benchmark_version: not-published
+      harness: artificial-analysis-general-model-suite
+      effort_match: true
+      score: 54
+      api_equivalent_cost_per_task_usd: 0.31
+      observed: 2026-07-20
+    evidence_confidence: medium
+    serving_modes:
+      standard:
+        capability_tier: T3
+        quota_impact: medium
+      fast:
+        capability_tier: T3
+        quota_impact: high
+        select_when: latency_value_exceeds_extra_quota_burn
+
+  gpt-5.6-sol-high:
+    model: gpt-5.6-sol
+    effort: high
+    capability_tier: T4
+    task_fit: [architecture, security, weak-verifier, final-adjudication]
+    benchmark:
+      metric: artificial-analysis-intelligence-index
+      benchmark_version: not-published
+      harness: artificial-analysis-general-model-suite
+      effort_match: true
+      score: 56
+      api_equivalent_cost_per_task_usd: 0.45
+      observed: 2026-07-20
+    evidence_confidence: medium
+
+  kimi-k3-max:
+    model: kimi-k3
+    effort: max
+    capability_tier: T4
+    task_fit: [architecture, hard-reasoning, long-horizon-agentic-work]
+    benchmark:
+      metric: artificial-analysis-intelligence-index
+      benchmark_version: not-published
+      harness: artificial-analysis-general-model-suite
+      effort_match: false
+      score: unknown
+      exact_profile_available: false
+      nearest_reference: kimi-k3-effort-unreported
+      nearest_reference_score: 57
+      nearest_reference_cost_per_task_usd: 0.95
+      observed: 2026-07-20
+    evidence_confidence: low
+    policy_exception_required: true
+
+  claude-fable-5-high:
+    model: claude-fable-5
+    effort: high
+    capability_tier: T4
+    task_fit: [architecture, security, independent-review, final-adjudication]
+    benchmark:
+      metric: artificial-analysis-intelligence-index
+      benchmark_version: not-published
+      harness: artificial-analysis-general-model-suite
+      effort_match: false
+      score: unknown
+      exact_profile_available: false
+      nearest_reference: claude-fable-5-max-with-fallback
+      nearest_reference_score: 60
+      nearest_reference_cost_per_task_usd: 2.75
+      observed: 2026-07-20
+    evidence_confidence: low
+
+  claude-opus-4.8-high:
+    model: claude-opus-4.8
+    effort: high
+    capability_tier: T4
+    task_fit: [architecture, independent-review, contested-synthesis]
+    benchmark:
+      metric: artificial-analysis-intelligence-index
+      benchmark_version: not-published
+      harness: artificial-analysis-general-model-suite
+      effort_match: false
+      score: unknown
+      exact_profile_available: false
+      nearest_reference: claude-opus-4.8-max
+      nearest_reference_score: 56
+      nearest_reference_cost_per_task_usd: 1.80
+      observed: 2026-07-20
+    evidence_confidence: low
+
+cost_disclosures:
+  cursor-composer-standard:
+    billing_mode: subscription_quota
+    cash_estimate_usd: unknown
+    api_equivalent_per_task_usd: 0.07
+    quota_impact: low
+    basis: same_model_serving_historical_harness_reference
+    source: artificial-analysis-composer-article-2026-05-20
+    benchmark_metric: coding-agent-index
+    benchmark_version: not-published
+    benchmark_harness: cursor-cli
+    observed: 2026-05-20
+    methodology_comparable_to_current: false
+    model_match: true
+    serving_mode_match: true
+    harness_match: false
+    exact_route_match: false
+    token_rates_per_mtok_usd: {input: 0.50, output: 2.50}
+
+  cursor-composer-fast:
+    billing_mode: subscription_quota
+    cash_estimate_usd: unknown
+    api_equivalent_per_task_usd: 0.56
+    quota_impact: high
+    basis: same_model_serving_cross_harness_reference
+    source: artificial-analysis-coding-agents
+    benchmark_metric: coding-agent-index
+    benchmark_version: "1.2"
+    benchmark_harness: cursor-cli
+    observed: 2026-07-20
+    model_match: true
+    serving_mode_match: true
+    harness_match: false
+    exact_route_match: false
+    token_rates_per_mtok_usd: {input: 3.00, output: 15.00}
+
+  cursor-grok-fast:
+    billing_mode: subscription_quota
+    cash_estimate_usd: unknown
+    api_equivalent_per_task_usd: unknown
+    quota_impact: high
+    basis: token_rates_only
+    source: cursor-model-pricing
+    exact_route_match: true
+    token_rates_per_mtok_usd: {input: 4.00, output: 18.00}
+
+  openai-luna-high-general-proxy:
+    billing_mode: subscription_quota
+    cash_estimate_usd: unknown
+    api_equivalent_per_task_usd: 0.09
+    quota_impact: unknown
+    basis: exact_model_effort_general_benchmark_proxy
+    source: artificial-analysis-intelligence-index
+    benchmark_version: not-published
+    exact_route_match: false
+
+  openai-sol-low-general-proxy:
+    billing_mode: subscription_quota
+    cash_estimate_usd: unknown
+    api_equivalent_per_task_usd: 0.20
+    quota_impact: unknown
+    basis: exact_model_effort_general_benchmark_proxy
+    source: artificial-analysis-intelligence-index
+    benchmark_version: not-published
+    exact_route_match: false
+
+  openai-sol-medium-general-proxy:
+    billing_mode: subscription_quota
+    cash_estimate_usd: unknown
+    api_equivalent_per_task_usd: 0.31
+    quota_impact: unknown
+    basis: exact_model_effort_general_benchmark_proxy
+    source: artificial-analysis-intelligence-index
+    benchmark_version: not-published
+    exact_route_match: false
+
+  openai-sol-high-general-proxy:
+    billing_mode: subscription_quota
+    cash_estimate_usd: unknown
+    api_equivalent_per_task_usd: 0.45
+    quota_impact: unknown
+    basis: exact_model_effort_general_benchmark_proxy
+    source: artificial-analysis-intelligence-index
+    benchmark_version: not-published
+    exact_route_match: false
+
+  kimi-k2.7-token-proxy:
+    billing_mode: subscription_quota
+    cash_estimate_usd: unknown
+    api_equivalent_per_task_usd: unknown
+    quota_impact: unknown
+    basis: token_rates_only
+    source: artificial-analysis-model-page
+    exact_route_match: false
+    token_rates_per_mtok_usd: {input: 0.95, output: 4.00, blended_reference: 0.70}
+
+  kimi-k3-unreported-effort-reference:
+    billing_mode: subscription_quota
+    cash_estimate_usd: unknown
+    api_equivalent_per_task_usd: unknown
+    reference_per_task_usd: 0.95
+    quota_impact: unknown
+    basis: non_exact_model_reference
+    source: artificial-analysis-intelligence-index
+    benchmark_version: not-published
+    exact_route_match: false
+    mismatch: benchmark_effort_unreported
+
+  claude-fable-high-reference:
+    billing_mode: subscription_quota
+    cash_estimate_usd: unknown
+    api_equivalent_per_task_usd: unknown
+    reference_per_task_usd: 2.75
+    quota_impact: unknown
+    basis: non_exact_max_reference
+    source: artificial-analysis-intelligence-index
+    benchmark_version: not-published
+    exact_route_match: false
+    mismatch: benchmark_max_route_high
+
+  claude-opus-high-reference:
+    billing_mode: subscription_quota
+    cash_estimate_usd: unknown
+    api_equivalent_per_task_usd: unknown
+    reference_per_task_usd: 1.80
+    quota_impact: unknown
+    basis: non_exact_max_reference
+    source: artificial-analysis-intelligence-index
+    benchmark_version: not-published
+    exact_route_match: false
+    mismatch: benchmark_max_route_high
+
+routes:
+  cursor-composer-standard:
+    profile: composer-2.5
+    runtime: cursor
+    harness: cursor-editor-agent
+    provider: cursor
+    runtime_model_id: composer-2.5
+    billing_mode: subscription_quota
+    cost_disclosure: cursor-composer-standard
+    subscription_pool: cursor-first-party
+    serving_mode: standard
+    quota_observability: partial
+    enabled: true
+
+  cursor-composer-fast:
+    profile: composer-2.5
+    runtime: cursor
+    harness: cursor-editor-agent
+    provider: cursor
+    runtime_model_id: composer-2.5-fast
+    billing_mode: subscription_quota
+    cost_disclosure: cursor-composer-fast
+    subscription_pool: cursor-first-party
+    serving_mode: fast
+    quota_observability: partial
+    enabled: true
+
+  cursor-grok-fast:
+    profile: grok-4.5-high
+    runtime: cursor
+    harness: cursor-editor-agent
+    provider: cursor
+    runtime_model_id: grok-4.5-fast
+    billing_mode: subscription_quota
+    cost_disclosure: cursor-grok-fast
+    subscription_pool: cursor-first-party
+    serving_mode: fast
+    quota_observability: partial
+    enabled: true
+
+  codex-luna-high:
+    profile: gpt-5.6-luna-high
+    runtime: codex
+    harness: codex-cli
+    provider: openai-codex
+    runtime_model_id: gpt-5.6-luna
+    billing_mode: subscription_quota
+    cost_disclosure: openai-luna-high-general-proxy
+    subscription_pool: chatgpt
+    serving_mode: standard
+    quota_observability: unknown
+    enabled: true
+
+  codex-sol-low:
+    profile: gpt-5.6-sol-low
+    runtime: codex
+    harness: codex-cli
+    provider: openai-codex
+    runtime_model_id: gpt-5.6-sol
+    billing_mode: subscription_quota
+    cost_disclosure: openai-sol-low-general-proxy
+    subscription_pool: chatgpt
+    serving_mode: standard
+    quota_observability: unknown
+    enabled: true
+
+  codex-sol-medium:
+    profile: gpt-5.6-sol-medium
+    runtime: codex
+    harness: codex-cli
+    provider: openai-codex
+    runtime_model_id: gpt-5.6-sol
+    billing_mode: subscription_quota
+    cost_disclosure: openai-sol-medium-general-proxy
+    subscription_pool: chatgpt
+    serving_mode: standard
+    quota_observability: unknown
+    enabled: true
+
+  codex-sol-high:
+    profile: gpt-5.6-sol-high
+    runtime: codex
+    harness: codex-cli
+    provider: openai-codex
+    runtime_model_id: gpt-5.6-sol
+    billing_mode: subscription_quota
+    cost_disclosure: openai-sol-high-general-proxy
+    subscription_pool: chatgpt
+    serving_mode: standard
+    quota_observability: unknown
+    enabled: true
+
+  moonshot-kimi-k2.7:
+    profile: kimi-k2.7-code
+    runtime: kimi-code
+    harness: kimi-code-cli
+    provider: moonshot
+    runtime_model_id: kimi-k2.7-code
+    billing_mode: subscription_quota
+    cost_disclosure: kimi-k2.7-token-proxy
+    subscription_pool: moonshot
+    serving_mode: standard
+    quota_observability: partial
+    enabled: true
+
+  moonshot-kimi-k3:
+    profile: kimi-k3-max
+    runtime: kimi-code
+    harness: kimi-code-cli
+    provider: moonshot
+    runtime_model_id: kimi-k3
+    billing_mode: subscription_quota
+    cost_disclosure: kimi-k3-unreported-effort-reference
+    subscription_pool: moonshot
+    serving_mode: standard
+    quota_observability: partial
+    enabled: true
+
+  claude-code-fable-high:
+    profile: claude-fable-5-high
+    runtime: claude-code
+    harness: claude-code-cli
+    provider: anthropic
+    runtime_model_id: claude-fable-5
+    billing_mode: subscription_quota
+    cost_disclosure: claude-fable-high-reference
+    subscription_pool: claude
+    serving_mode: standard
+    quota_observability: unknown
+    enabled: true
+
+  claude-code-opus-high:
+    profile: claude-opus-4.8-high
+    runtime: claude-code
+    harness: claude-code-cli
+    provider: anthropic
+    runtime_model_id: claude-opus-4.8
+    billing_mode: subscription_quota
+    cost_disclosure: claude-opus-high-reference
+    subscription_pool: claude
+    serving_mode: standard
+    quota_observability: unknown
+    enabled: true
+
+  hermes-luna-high:
+    profile: gpt-5.6-luna-high
+    runtime: hermes
+    harness: hermes-subagent
+    provider: openai-codex
+    runtime_model_id: gpt-5.6-luna
+    billing_mode: subscription_quota
+    cost_disclosure: openai-luna-high-general-proxy
+    subscription_pool: chatgpt
+    serving_mode: standard
+    quota_observability: unknown
+    enabled: true
+
+  hermes-sol-low:
+    profile: gpt-5.6-sol-low
+    runtime: hermes
+    harness: hermes-subagent
+    provider: openai-codex
+    runtime_model_id: gpt-5.6-sol
+    billing_mode: subscription_quota
+    cost_disclosure: openai-sol-low-general-proxy
+    subscription_pool: chatgpt
+    serving_mode: standard
+    quota_observability: unknown
+    enabled: true
+
+  hermes-sol-medium:
+    profile: gpt-5.6-sol-medium
+    runtime: hermes
+    harness: hermes-subagent
+    provider: openai-codex
+    runtime_model_id: gpt-5.6-sol
+    billing_mode: subscription_quota
+    cost_disclosure: openai-sol-medium-general-proxy
+    subscription_pool: chatgpt
+    serving_mode: standard
+    quota_observability: unknown
+    enabled: true
+
+  hermes-sol-high:
+    profile: gpt-5.6-sol-high
+    runtime: hermes
+    harness: hermes-subagent
+    provider: openai-codex
+    runtime_model_id: gpt-5.6-sol
+    billing_mode: subscription_quota
+    cost_disclosure: openai-sol-high-general-proxy
+    subscription_pool: chatgpt
+    serving_mode: standard
+    quota_observability: unknown
+    enabled: true
+
+  hermes-kimi-k2.7:
+    profile: kimi-k2.7-code
+    runtime: hermes
+    harness: hermes-subagent
+    provider: moonshot
+    runtime_model_id: kimi-k2.7-code
+    billing_mode: subscription_quota
+    cost_disclosure: kimi-k2.7-token-proxy
+    subscription_pool: moonshot
+    serving_mode: standard
+    quota_observability: partial
+    enabled: true
+
+  hermes-kimi-k3:
+    profile: kimi-k3-max
+    runtime: hermes
+    harness: hermes-subagent
+    provider: moonshot
+    runtime_model_id: kimi-k3
+    billing_mode: subscription_quota
+    cost_disclosure: kimi-k3-unreported-effort-reference
+    subscription_pool: moonshot
+    serving_mode: standard
+    quota_observability: partial
+    enabled: true
+
+runtime_ladders:
+  cursor:
+    T1: [cursor-composer-standard, cursor-composer-fast]
+    T3: [cursor-grok-fast]
+  codex:
+    T1: [codex-luna-high]
+    T2: [codex-sol-low]
+    T3: [codex-sol-medium]
+    T4: [codex-sol-high]
+  kimi-code:
+    T1: [moonshot-kimi-k2.7]
+    T4: [moonshot-kimi-k3]
+  claude-code:
+    T4: [claude-code-fable-high, claude-code-opus-high]
+  hermes:
+    T1: [hermes-luna-high, hermes-kimi-k2.7]
+    T2: [hermes-sol-low]
+    T3: [hermes-sol-medium]
+    T4: [hermes-sol-high, hermes-kimi-k3]
+
+fallbacks:
+  - from: cursor-composer-standard
+    to: cursor-composer-fast
+    cause: latency
+    approval: false
+  - from: codex-luna-high
+    to: codex-sol-low
+    cause: capability_escalation
+    approval: false
+  - from: codex-sol-low
+    to: codex-sol-medium
+    cause: capability_escalation
+    approval: false
+  - from: codex-sol-medium
+    to: codex-sol-high
+    cause: capability_escalation
+    approval: false
+  - from: hermes-luna-high
+    to: hermes-sol-low
+    cause: capability_escalation
+    approval: false
+  - from: hermes-sol-low
+    to: hermes-sol-medium
+    cause: capability_escalation
+    approval: false
+  - from: hermes-sol-medium
+    to: hermes-sol-high
+    cause: capability_escalation
+    approval: false
+
+telemetry_fields:
+  task: [class, ambiguity, verification, risk, scope]
+  route: [tier, profile, route_id, runtime, harness, provider, serving_mode]
+  estimate: [cash_usd, api_equivalent_proxy_usd, quota_impact, confidence, source]
+  actual: [cash_usd, quota_units, input_tokens, cached_input_tokens, output_tokens, elapsed_seconds]
+  outcome: [verifier, accepted_first_pass, repairs, escalated, final_profile]
