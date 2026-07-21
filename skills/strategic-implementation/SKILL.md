@@ -147,7 +147,7 @@ For Mission-managed work, keep the Execution ticket `Active` and create a local 
 - Record actual SHAs and preserve the sequence during review. Verify that the base is an ancestor of `C0` and, before each repair handoff, that the previous candidate is an ancestor of the current candidate. Do not amend, rebase away, or silently replace a reviewed candidate. If lineage becomes unreliable, preserve the known SHAs and report it; incremental review is no longer eligible.
 - After acceptance, Mission Control decides whether to keep, reorder, or squash the sequence.
 
-When implementation review returns bounded `implementation-defect` or `repair-regression` findings, resume the same implementer context and route when available, fix only the valid findings, rerun their red-capable evidence, and create `C1` or `C2`. If the next candidate would be `C3`, do not edit or commit another repair: return the finding ledger, which issues existed in `C0`, repair regressions, contract explicitness, and crossed responsibilities to Mission Control for an explicit disposition. Change route only after `agent-routing` classifies the failed dimension; a review round count alone is not capability evidence and cannot bypass the `C3` checkpoint.
+When implementation review returns bounded `implementation-defect` or `repair-regression` findings, resume the same implementer context and canonical profile when available, let `agent-routing` resolve the currently available harness adapter, fix only the valid findings, rerun their red-capable evidence, and create `C1` or `C2`. If the next candidate would be `C3`, do not edit or commit another repair: return the finding ledger, which issues existed in `C0`, repair regressions, contract explicitness, and crossed responsibilities to Mission Control for an explicit disposition. Change canonical profile only after `agent-routing` classifies the failed dimension; a review round count alone is not capability evidence and cannot bypass the `C3` checkpoint.
 
 Return a compact candidate handoff. The Mission owner routes `C0` to `implementation-review` in fresh independent context inside the same ticket. Do not mark the ticket `Review`, close it, push, start use-case QA, or activate the next frontier.
 
@@ -175,6 +175,7 @@ Include:
 - Base commit:
 - Candidate commit and kind: C0 initial | C<n> repair
 - Candidate SHA and verified ancestor:
+- Canonical implementer profile and optional execution-route provenance:
 - Full ticket range: <base>..<candidate>
 - Previous candidate SHA, verified ancestry, and incremental range: <when this is a repair>
 - Highest-risk claims to verify:

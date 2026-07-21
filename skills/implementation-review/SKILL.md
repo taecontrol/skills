@@ -56,6 +56,7 @@ Identify:
 - tests added or changed;
 - implementer-reported deviations, residual risks, and environmental limits.
 - candidate label, base, previous candidate when any, full ticket range, and incremental range.
+- canonical implementer profile and any optional execution-route provenance recorded for audit.
 
 Do not begin from only the implementer summary. If the accepted design or intended diff base cannot be identified, return `Inconclusive` with the missing input.
 
