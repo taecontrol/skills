@@ -17,7 +17,7 @@ direct or delegate -> choose lowest sufficient tier -> announce -> execute -> ve
 1. **Stay direct when delegation adds no material value.** Deterministic tools, single API calls, exact transformations, and small local checks are T0.
 2. **Policy comes before capability.** Use only routes explicitly allowed by the active policy and actually available in the runtime. Never substitute a provider or billing path silently.
 3. **Choose the lowest sufficient tier.** Optimize expected cost per accepted result, including likely repairs, verification, latency, and quota—not token price alone.
-4. **Pass the route explicitly.** Every subagent launch must set the model and any selectable effort/provider/mode. Do not rely on inheritance or resume. If the tool cannot select the route explicitly, use another harness or keep the work in the parent.
+4. **Pass the route explicitly.** Every subagent launch must set the model and any selectable effort/provider/mode. Human UI controls and agent launch controls are separate: a model/effort profile visible to the human is not agent-selectable unless the launch tool exposes it. Do not rely on inheritance or resume. If the tool cannot select the route explicitly, mark it human-only, use another harness, or keep the work in the parent.
 5. **Announce; do not ask.** An allowed route needs a concise notice, not approval. Safety approval for the underlying action remains separate.
 6. **Verify before escalating.** A failed brief, tool, harness, or context is not evidence that the model is too weak.
 7. **Subscriptions are not free.** Report quota impact and an API-equivalent proxy when known; keep unknown values unknown.

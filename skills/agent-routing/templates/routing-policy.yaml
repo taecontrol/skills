@@ -6,6 +6,12 @@ defaults:
   no_silent_provider_substitution: true
   cross_runtime: explicit_only
 
+# Human UI controls and agent launch controls are separate. Do not add a profile
+# to routes or ladders when only the human can select its effort; keep it human-only.
+# Claude Sonnet 5 is intentionally absent from automatic routes: CursorBench 3.2
+# showed its effort curve dominated on cost, tokens, or steps. For explicit human
+# Claude use in Cursor, prefer Opus 4.8 medium/high and verify the selected effort.
+
 # max stays denied except for exact routes listed below.
 effort:
   allowed: [fixed, low, medium, high]
