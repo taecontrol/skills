@@ -8,6 +8,7 @@ Thumbs.db
 *.log
 .tmp/
 tmp/
+.worktrees/
 
 # Dependencies / generated output
 node_modules/
