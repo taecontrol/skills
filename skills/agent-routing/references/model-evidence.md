@@ -51,13 +51,14 @@ Artificial Analysis independently found the same efficiency risk at Sonnet 5/max
 
 ## Routing implications
 
-- Luna/high is T1; Luna/max is T2; Sol/medium and Sol/high provide the meaningful GPT escalation.
-- Terra is omitted because observed Luna and Sol profiles dominate it on intelligence versus cost. Add it only after relevant local evidence.
-- Sol/low is omitted because Luna/max scores higher at nearly the same general benchmark cost.
-- For Cursor coding-agent routes, deny Claude Sonnet 5 automatic selection and fallback. Its effort curve is off the observed cost-quality frontier, and lowering effort does not recover competitiveness.
-- If a human explicitly wants Claude in Cursor, prefer tuning Claude Opus 4.8 at medium or high effort. Keep that profile human-only when the subagent launch surface cannot set effort; UI availability is not agent availability.
-- Treat this as a Cursor coding-route decision, not a universal claim that Sonnet 5 is incapable. Reconsider only after relevant local acceptance/cost evidence or a materially changed harness/model snapshot.
-- Keep model, effort, harness, provider, and serving mode attached to every observation.
+- The approved canonical order is:
+  - T1: Composer 2.5/fast, GPT-5.6 Luna/high, Kimi K2.7 Code/fixed.
+  - T2: GPT-5.6 Terra/high.
+  - T3: GPT-5.6 Sol/medium, GPT-5.6 Luna/max, Claude Opus 4.8/medium, Grok 4.5/high.
+  - T4: GPT-5.6 Sol/high, Kimi K3/max, Claude Opus 4.8/high, Claude Fable 5/high.
+- Claude Sonnet 5 is globally disabled for orchestrated subagent selection and fallback. The supporting efficiency evidence comes from Cursor coding and Artificial Analysis max-effort observations; global scope is an explicit policy decision, not a claim that those benchmarks cover every workload.
+- Same-tier order is an availability chain, not a second capability ladder. A verified capability failure moves to the next tier; an unavailable profile moves to the next profile in its tier.
+- Harnesses resolve canonical model/effort/mode profiles to their own executable identifiers. Keep harness IDs out of portable policy and attach the actual harness, provider, and serving mode to each observation.
 - Prefer accepted local outcomes for the same task class over this seed snapshot.
 - Never compare scores from different metric families directly.
 

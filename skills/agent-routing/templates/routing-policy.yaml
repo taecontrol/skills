@@ -1,116 +1,93 @@
 version: 1
 
-# Portable starting point. Verify route IDs, access, and quota before use.
+scope:
+  operation: orchestrator_subagent_dispatch
+  resolve_against: current_harness
+
 defaults:
-  deny_unlisted_routes: true
+  deny_unlisted_profiles: true
   no_silent_provider_substitution: true
-  cross_runtime: explicit_only
 
-# Human UI controls and agent launch controls are separate. Do not add a profile
-# to routes or ladders when only the human can select its effort; keep it human-only.
-# Claude Sonnet 5 is intentionally absent from automatic routes: CursorBench 3.2
-# showed its effort curve dominated on cost, tokens, or steps. For explicit human
-# Claude use in Cursor, prefer Opus 4.8 medium/high and verify the selected effort.
+providers:
+  denied: [openrouter]
 
-# max stays denied except for exact routes listed below.
+models:
+  disabled:
+    claude-sonnet-5:
+      scope: global
+      applies_to: [selection, fallback]
+      reason: dominated_cost_quality_frontier
+      evidence: references/model-evidence.md#cursorbench-32-coding-agent-evidence
+
 effort:
   allowed: [fixed, low, medium, high]
   denied: [max, xhigh, extra-high, ultra]
-  exceptions:
-    luna-max: [codex-luna-max, hermes-luna-max]
-    kimi-k3-max: [moonshot-kimi-k3, hermes-kimi-k3]
+  exceptions: [luna-max, kimi-k3-max]
 
-# cost_proxy_usd is benchmark/API-equivalent cost per task, not subscription cash.
+selection:
+  start: lowest_sufficient_tier
+  within_tier: first_available
+  next_profile_when: unavailable
+  on_capability_failure: next_tier
+  on_tier_unavailable: next_tier
+  unavailable_when:
+    - absent_from_harness
+    - policy_denied
+    - quota_exhausted
+    - launch_rejected
+
 profiles:
   composer-fast:
     model: composer-2.5
     effort: fixed
-    tier: T1
-    task_fit: [bounded-implementation, mechanical-edit, search]
-    cost_proxy_usd: 0.56
-
-  kimi-k2.7:
-    model: kimi-k2.7-code
-    effort: fixed
-    tier: T1
-    task_fit: [bounded-implementation, code-editing, explicit-debugging]
-    cost_proxy_usd: unknown
+    mode: fast
 
   luna-high:
     model: gpt-5.6-luna
     effort: high
-    tier: T1
-    task_fit: [bounded-analysis, extraction, cheap-verifier]
-    cost_proxy_usd: 0.09
 
-  luna-max:
-    model: gpt-5.6-luna
-    effort: max
-    tier: T2
-    task_fit: [substantial-explicit-work, cost-sensitive-reasoning]
-    cost_proxy_usd: 0.21
+  kimi-k2.7:
+    model: kimi-k2.7-code
+    effort: fixed
 
-  grok-high:
-    model: grok-4.5
+  terra-high:
+    model: gpt-5.6-terra
     effort: high
-    tier: T3
-    task_fit: [investigation, broad-reasoning, parallel-review]
-    cost_proxy_usd: 0.31
 
   sol-medium:
     model: gpt-5.6-sol
     effort: medium
-    tier: T3
-    task_fit: [difficult-debugging, planning, synthesis]
-    cost_proxy_usd: 0.31
+
+  luna-max:
+    model: gpt-5.6-luna
+    effort: max
+
+  opus-medium:
+    model: claude-opus-4.8
+    effort: medium
+
+  grok-high:
+    model: grok-4.5
+    effort: high
 
   sol-high:
     model: gpt-5.6-sol
     effort: high
-    tier: T4
-    task_fit: [orchestration, architecture, security, final-decision]
-    cost_proxy_usd: 0.45
 
   kimi-k3-max:
     model: kimi-k3
     effort: max
-    tier: T4
-    task_fit: [hard-reasoning, long-horizon-agentic-work]
-    cost_proxy_usd: unknown
+
+  opus-high:
+    model: claude-opus-4.8
+    effort: high
 
   fable-high:
     model: claude-fable-5
     effort: high
-    tier: T4
-    task_fit: [ui-ux, public-api, copy, independent-taste-review]
-    cost_proxy_usd: unknown
 
-# Listed routes are enabled. Omission means unavailable.
-routes:
-  cursor-composer-fast: {profile: composer-fast, runtime: cursor, harness: cursor-agent, provider: cursor, model_id: composer-2.5-fast, mode: fast, billing: subscription_quota, pool: cursor-first-party, quota: high}
-  cursor-grok-fast: {profile: grok-high, runtime: cursor, harness: cursor-agent, provider: cursor, model_id: grok-4.5-fast, mode: fast, billing: subscription_quota, pool: cursor-first-party, quota: high}
-
-  codex-luna-high: {profile: luna-high, runtime: codex, harness: codex-cli, provider: openai-codex, model_id: gpt-5.6-luna, mode: standard, billing: subscription_quota, pool: chatgpt, quota: unknown}
-  codex-luna-max: {profile: luna-max, runtime: codex, harness: codex-cli, provider: openai-codex, model_id: gpt-5.6-luna, mode: standard, billing: subscription_quota, pool: chatgpt, quota: unknown}
-  codex-sol-medium: {profile: sol-medium, runtime: codex, harness: codex-cli, provider: openai-codex, model_id: gpt-5.6-sol, mode: standard, billing: subscription_quota, pool: chatgpt, quota: unknown}
-  codex-sol-high: {profile: sol-high, runtime: codex, harness: codex-cli, provider: openai-codex, model_id: gpt-5.6-sol, mode: standard, billing: subscription_quota, pool: chatgpt, quota: unknown}
-
-  moonshot-kimi-k2.7: {profile: kimi-k2.7, runtime: kimi-code, harness: kimi-code-cli, provider: moonshot, model_id: kimi-k2.7-code, mode: standard, billing: subscription_quota, pool: moonshot, quota: partial}
-  moonshot-kimi-k3: {profile: kimi-k3-max, runtime: kimi-code, harness: kimi-code-cli, provider: moonshot, model_id: kimi-k3, mode: standard, billing: subscription_quota, pool: moonshot, quota: partial}
-
-  claude-fable-high: {profile: fable-high, runtime: claude-code, harness: claude-code-cli, provider: anthropic, model_id: claude-fable-5, mode: standard, billing: subscription_quota, pool: claude, quota: unknown}
-
-  hermes-luna-high: {profile: luna-high, runtime: hermes, harness: hermes-cli, provider: openai-codex, model_id: gpt-5.6-luna, mode: standard, billing: subscription_quota, pool: chatgpt, quota: unknown}
-  hermes-luna-max: {profile: luna-max, runtime: hermes, harness: hermes-cli, provider: openai-codex, model_id: gpt-5.6-luna, mode: standard, billing: subscription_quota, pool: chatgpt, quota: unknown}
-  hermes-sol-medium: {profile: sol-medium, runtime: hermes, harness: hermes-cli, provider: openai-codex, model_id: gpt-5.6-sol, mode: standard, billing: subscription_quota, pool: chatgpt, quota: unknown}
-  hermes-sol-high: {profile: sol-high, runtime: hermes, harness: hermes-cli, provider: openai-codex, model_id: gpt-5.6-sol, mode: standard, billing: subscription_quota, pool: chatgpt, quota: unknown}
-  hermes-kimi-k2.7: {profile: kimi-k2.7, runtime: hermes, harness: hermes-cli, provider: moonshot, model_id: kimi-k2.7-code, mode: standard, billing: subscription_quota, pool: moonshot, quota: partial}
-  hermes-kimi-k3: {profile: kimi-k3-max, runtime: hermes, harness: hermes-cli, provider: moonshot, model_id: kimi-k3, mode: standard, billing: subscription_quota, pool: moonshot, quota: partial}
-
-# Ladders express the preferred capability progression; observed failures decide escalation.
-ladders:
-  cursor: {T1: [cursor-composer-fast], T3: [cursor-grok-fast]}
-  codex: {T1: [codex-luna-high], T2: [codex-luna-max], T3: [codex-sol-medium], T4: [codex-sol-high]}
-  kimi-code: {T1: [moonshot-kimi-k2.7], T4: [moonshot-kimi-k3]}
-  claude-code: {T4: [claude-fable-high]}
-  hermes: {T1: [hermes-luna-high, hermes-kimi-k2.7], T2: [hermes-luna-max], T3: [hermes-sol-medium], T4: [hermes-sol-high, hermes-kimi-k3]}
+tiers:
+  T1: [composer-fast, luna-high, kimi-k2.7]
+  T2: [terra-high]
+  T3: [sol-medium, luna-max, opus-medium, grok-high]
+  T4: [sol-high, kimi-k3-max, opus-high, fable-high]
