@@ -57,7 +57,6 @@ skills/
     SKILL.md
     references/
       model-evidence.md
-      policy-schema.md
     templates/
       routing-policy.yaml
 ```
