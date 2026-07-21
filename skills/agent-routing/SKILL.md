@@ -99,16 +99,18 @@ Use the cheapest adequate verifier. Classify the result:
 - **capability failure:** sound brief and tools, inadequate result;
 - **quota/availability failure:** route unavailable.
 
+For an implementation candidate that fails independent review, do not infer `capability failure` from the number of findings or review rounds. First use the review ledger to check whether the missed obligation was explicit, the high-interaction preflight modeled it when applicable, a red-capable verifier existed, and the context, tools, and harness worked. A `contract-gap` or `architecture-gap` is not repaired by buying a stronger model.
+
 Completion criterion: every attempt ends with an observable verifier result and one classification.
 
 ## 7. Escalate narrowly
 
-1. Repair one bounded local defect in the same route.
+1. Return bounded `implementation-defect` or `repair-regression` findings to the same implementer context and route when available.
 2. Fix the brief, tool, or context when that caused the failure.
 3. Try an allowed complementary route in the same tier when family or harness fit is suspect.
 4. Move up one tier only for capability failure or materially increased risk.
 5. Stop at the policy ceiling.
 
-Do not retry a route already shown inadequate. Record useful outcomes through existing runtime telemetry when available; do not add logging ceremony or mutate shared policy automatically.
+Treat capability failure as demonstrated only when the contract, relevant interaction model, context, tools, and verifier were adequate and a bounded repair did not resolve the explicit-obligation failure. Do not retry a route already shown inadequate, and do not change routes merely to reset context. Record useful outcomes through existing runtime telemetry when available; do not add logging ceremony or mutate shared policy automatically.
 
 Completion criterion: escalation changes the failed dimension and stays inside policy.

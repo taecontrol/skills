@@ -8,7 +8,7 @@ license: MIT
 
 Strategic Implementation executes one approved software change while actively reducing long-term complexity. It operates inside Mission's lifecycle: Mission controls the frontier, Discovery tickets reduce fog, and this skill turns an accepted contract into code without becoming a tactical tornado.
 
-The core loop is to orient to the approved ticket, name the design pressure, prove behavior, implement, perform the APoSD refactor, verify, and return an implementation candidate for independent review.
+The core loop is to orient to the approved ticket, name the design pressure, model high-interaction state when present, prove behavior, implement, perform the APoSD refactor, verify, and preserve a reviewable implementation candidate.
 
 The goal is not architectural ceremony. The goal is code that is easier to understand and modify after the ticket than before it.
 
@@ -59,7 +59,21 @@ Before writing production code, state the main design pressure in one short para
 
 If the ticket introduces a new interface or boundary, do a lightweight **design-it-twice** pass: compare two plausible placements or interfaces, choose one, and record the reason. Do not expand this into a separate design document unless Mission Control approved a Deliverable ticket.
 
-Completion criterion: the implementation has a named complexity target, not only a list of files to edit.
+### High-interaction preflight
+
+Before production code, perform a compact state-and-interaction preflight when the change involves concurrency, lifecycle transitions, shared mutable state, ownership transfer, queues or ordering, retries, rollback or recovery, late events, several sources of truth, or a module whose responsibilities must change together. File length alone is not a trigger; hidden interaction and change coupling are.
+
+Record only what applies:
+
+- affected states and invariants;
+- the owner and mutation sites of each state;
+- the serialized entry point, lock, transaction, or other atomic boundary;
+- failure cleanup, rollback/recovery, and late-event behavior;
+- seams or regions that must change together.
+
+If the accepted contract and current code do not support one coherent model, stop before implementation and return a `contract-gap` or `architecture-gap` checkpoint. Do not compensate for a missing model by adding local patches or buying a stronger route.
+
+Completion criterion: the implementation has a named complexity target and, when interaction risk is present, a coherent preflight that a reviewer can falsify.
 
 ## 3. Build with behavioral proof
 
@@ -123,9 +137,18 @@ Before returning, inspect the diff and status:
 
 Completion criterion: verification evidence matches the changed surface, and the worktree disposition is known.
 
-## 6. Return an implementation candidate
+## 6. Preserve and return an implementation candidate
 
-For Mission-managed work, keep the Execution ticket `Active` and return a compact candidate handoff. The Mission owner routes it to `implementation-review` in fresh agent context inside the same ticket. Do not mark the ticket `Review`, close it, commit unless Mission Control requested it, start use-case QA, or activate the next frontier.
+For Mission-managed work, keep the Execution ticket `Active` and create a local candidate commit after the implementation and proportional verification are complete. The first candidate is `C0`; each later coherent repair is `C1`, `C2`, and so on. A candidate commit is a review checkpoint, not human acceptance.
+
+- Commit one coherent candidate or repair, not every mechanical edit.
+- Keep candidate commits local; never push them before Mission Control accepts the worktree disposition.
+- Include only the active ticket's authorized implementation, evidence, and mechanically required mission updates.
+- Preserve the sequence during review. After acceptance, Mission Control decides whether to keep, reorder, or squash it.
+
+When implementation review returns bounded `implementation-defect` or `repair-regression` findings, resume the same implementer context and route when available, fix only the valid findings, rerun their red-capable evidence, and create the next repair candidate. Change route only after `agent-routing` classifies the failed dimension; a review round count alone is not capability evidence.
+
+Return a compact candidate handoff. The Mission owner routes `C0` to `implementation-review` in fresh independent context inside the same ticket. Do not mark the ticket `Review`, close it, push, start use-case QA, or activate the next frontier.
 
 Include:
 
@@ -148,12 +171,16 @@ Include:
 
 ## Reviewer handoff
 - Approved design and contract:
-- Intended base / changed surface:
+- Base commit:
+- Candidate commit and kind: C0 initial | C<n> repair
+- Full ticket range: <base>..<candidate>
+- Previous candidate and incremental range: <when this is a repair>
 - Highest-risk claims to verify:
+- High-interaction preflight: <path/section or not triggered>
 - Known pre-existing failures or environmental limits:
 ```
 
-Completion criterion: a fresh independent reviewer can verify the candidate against the frozen design and contract without trusting the implementer's summary, and the Execution ticket remains Active.
+Completion criterion: the candidate is a local commit with an unambiguous base and review range, a fresh independent reviewer can verify it without trusting the implementer's summary, and the Execution ticket remains Active.
 
 ## Common pitfalls
 
@@ -166,14 +193,17 @@ Completion criterion: a fresh independent reviewer can verify the candidate agai
 7. **Refactor expansion:** using design cleanup to widen the ticket. Stop and return a Mission checkpoint when cleanup changes scope, risk, or acceptance.
 8. **Premature human handoff:** moving the ticket to Review when only the implementation agent has finished. Return a candidate and let the independent implementation review complete the Active ticket.
 9. **QA substitution:** claiming the implementation review proves real use cases end to end. Focused implementation tests support this candidate; a later `use-case-qa` Validation ticket exercises accepted scenarios through the project's QA method.
+10. **Unmodeled interaction:** editing concurrency, lifecycle, rollback, or shared state before identifying ownership, atomicity, cleanup, and late-event behavior. Stop and perform the high-interaction preflight.
+11. **Commit means accepted:** avoiding useful candidate commits or treating them as permission to push. Candidate commits are local review checkpoints; Mission Control still owns acceptance and final history.
 
 ## Completion checklist
 
 - [ ] Active work belongs to one approved Execution boundary.
 - [ ] Main design pressure and affected concepts are named.
+- [ ] High-interaction state, ownership, atomicity, cleanup, rollback, and late events were modeled when triggered.
 - [ ] Behavior is proven at public seams or with reproducible evidence.
 - [ ] APoSD pass checked complexity, module depth, information hiding, honest interfaces, and boundary validation.
 - [ ] Authoritative invariants are represented directly rather than re-derived.
 - [ ] Duplicated policy is removed or recorded as accepted residual risk.
 - [ ] Verification matches the changed surface and worktree status is known.
-- [ ] Mission return is an implementation candidate, the ticket is still `Active`, and the reviewer handoff is self-contained.
+- [ ] Mission return identifies a local candidate commit, base, full range, and any incremental range; the ticket is still `Active`, and the reviewer handoff is self-contained.

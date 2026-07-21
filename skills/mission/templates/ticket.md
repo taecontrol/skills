@@ -26,6 +26,18 @@ Acceptance / evidence:
 
 <paths, commands, tests, observations, sources>
 
+<!-- Required for Execution with independent implementation review. Keep inline when compact or link a dedicated artifact when it grows.
+## Candidate and review ledger
+
+| Candidate | Route | Base / previous | Full / incremental range | Evidence |
+| --- | --- | --- | --- | --- |
+| C0 | <implementer route> | <base> | <base>..<C0> | <tests / handoff> |
+
+| Finding | Origin | Severity | Candidate / round | Status | Evidence | Required outcome |
+| --- | --- | --- | --- | --- | --- | --- |
+| IR-001 | implementation-defect | Blocking | C0 / initial-full | Open | <primary evidence> | <what must become true> |
+-->
+
 ## Remaining uncertainty
 
 <what remains unresolved; `None material` is allowed when justified>

@@ -100,15 +100,15 @@ Creates or amends one independently useful durable artifact or a tightly related
 
 Implements one approved slice. It cannot amend its own objective, scope, architecture, or acceptance criteria. Deviations return to Mission and may propose a Decision frontier on the map. Mission Control accepts and closes material Execution work only after its implementation evidence and required independent implementation verdict are complete.
 
-For non-trivial implementation, use `strategic-implementation` when installed. Its return is an implementation candidate, not a transition to Review. Keep the Execution ticket Active and route that candidate to `implementation-review` in fresh agent context. The reviewer independently checks the diff, tests, approved design, contract, and non-goals; it does not perform the later use-case QA phase.
+For non-trivial implementation, use `strategic-implementation` when installed. Its return is a local candidate commit, not a transition to Review or permission to push. Keep the Execution ticket Active and route `C0` to `implementation-review` in fresh agent context. The reviewer independently checks the full base-to-candidate range, tests, approved design, contract, and non-goals; it does not perform the later use-case QA phase. Corrected candidates normally return incrementally to the same independent reviewer with the candidate ledger and previous-to-current range.
 
 The reviewer returns `Pass`, `Request changes`, or `Inconclusive`:
 
 - `Pass` completes the in-ticket review evidence and permits the Mission owner to move the Execution ticket to Review.
-- `Request changes` keeps the ticket Active for fixes inside the frozen contract, followed by fresh re-review. A finding that changes scope, product policy, architecture, risk, or acceptance returns to the map instead of becoming silent rework.
+- `Request changes` keeps the ticket Active for bounded fixes inside the frozen contract by the same implementer context when available, followed by incremental re-review by the same independent reviewer. A contract or architecture gap, or a finding that changes scope, product policy, risk, or acceptance, returns to the map instead of becoming silent rework.
 - `Inconclusive` keeps the ticket Active or Blocked and names the evidence, access, or decision needed.
 
-The Execution review body includes compact design-quality evidence: complexity impact, concepts/interfaces changed, invariants represented directly, policy homes or duplicated policy deferred, APoSD residual risks, and the independent verdict. Tests prove technical behavior; they do not by themselves prove that the approved design was implemented honestly.
+The Execution review body includes compact design-quality evidence: complexity impact, concepts/interfaces changed, invariants represented directly, policy homes or duplicated policy deferred, APoSD residual risks, candidate lineage, finding ledger, and the independent verdict. Tests prove technical behavior; they do not by themselves prove that the approved design was implemented honestly.
 
 ### Validation
 
@@ -164,7 +164,7 @@ Examples:
 2. Mission Control selects or amends it.
 3. Agent creates the selected ticket as Ready once scope and evidence are clear, then marks it Active.
 4. Agent writes enough durable ticket/map context for a fresh executor, gives the activation briefing, and stops. The material ticket runs in a fresh session by default.
-5. Owner works mechanical subtasks without expanding the ticket; communicate only at material checkpoints. For Execution, the implementer returns a candidate and Mission routes it to a fresh-context implementation reviewer inside the same Active ticket.
+5. Owner works mechanical subtasks without expanding the ticket; communicate only at material checkpoints. For Execution, the implementer preserves a local candidate commit and Mission routes `C0` to a fresh-context implementation reviewer inside the same Active ticket. Repairs normally reuse the implementer and reviewer contexts with incremental commit ranges.
 6. Owner returns result, evidence, remaining uncertainty, map delta, and worktree disposition; the ticket becomes Review only when all required evidence is complete. For Execution, that includes a `Pass` independent implementation verdict. The session then stops at the human ticket checkpoint.
 7. Required authority accepts, rejects, splits, blocks, or abandons it. If the Review brief predeclared one eligible successor, acceptance also selects that successor.
 8. Map updates; an accepted predeclared successor is created and activated for a fresh session, then the current session stops.
@@ -215,6 +215,14 @@ Ready tickets may be shaped. Once a ticket becomes Active, its Objective, Kind, 
 - Editorial clarification that does not change authority, output, risk, or pass/fail meaning is allowed and must be visible in the diff.
 - A material change requires Mission Control to amend the Active ticket explicitly or to stop it and return to the map with a replacement frontier proposal. Create the replacement ticket only if Mission Control selects it.
 - Reviewer findings classified as a new material question, risk/appetite change, incomplete system map, or independently useful objective cannot be silently absorbed through patching.
+
+## Execution candidate lineage and repair loop
+
+Candidate commits are local review checkpoints. `C0` is the first completed candidate; each coherent repair becomes `C1`, `C2`, and so on. They do not close the ticket, authorize a push, or constrain Mission Control's later choice to keep, reorder, or squash the sequence. Every Execution with independent review keeps a compact ledger containing base/candidate SHAs and routes, exact full and incremental ranges, stable finding IDs, origin classification, evidence, required outcome, candidate/round, and status.
+
+The first review is full and fresh from the implementer. Re-reviews normally preserve the same independent reviewer context and focus on the previous-to-current repair range, open findings, and regression evidence while retaining access to the full ticket range. Start another fresh full review only when the repair materially reshapes the candidate, adds a new risk or architecture surface, the reviewer is unavailable, lineage is unreliable, or incremental evidence cannot support a defensible verdict.
+
+Return bounded implementation defects and repair regressions to the same implementer context and route when available. Contract and architecture gaps return to the map immediately. Before authorizing a third repair candidate, Mission must stop for a root-cause checkpoint and Mission Control must choose the disposition; `C3` is never automatic.
 
 ## Provisional route
 

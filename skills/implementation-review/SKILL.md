@@ -39,13 +39,13 @@ Do not use it to implement fixes, perform open-ended Discovery, rewrite the acce
 - **Evidence-led:** cite paths, lines, tests, commands, outputs, and runtime observations.
 - **APoSD-specific:** name the concrete complexity mechanism instead of saying “clean code” or “best practice.”
 - **Severity-calibrated:** block only contract, correctness, safety, or material maintainability failures.
-- **Read-only:** do not modify the candidate. Findings return to the implementer; any corrected candidate requires another fresh-context review.
+- **Read-only:** do not modify the candidate. Findings return to the implementer; the first review is fresh and full, while corrected candidates normally return to the same independent reviewer for incremental verification.
 
 Completion criterion: every material verdict is backed by independently inspected evidence, not taste or implementer claims.
 
 ## 1. Load the frozen contract and candidate
 
-Read the active Execution ticket, accepted product and technical design, relevant decisions, repository instructions, implementation candidate handoff, and intended base. Inspect staged, unstaged, and untracked files and derive the changed surface from the actual diff.
+Read the active Execution ticket, accepted product and technical design, relevant decisions, repository instructions, implementation candidate handoff, candidate ledger, and intended base. Inspect staged, unstaged, and untracked files. Verify that the named candidate commit exists and derive the changed surface from the actual commit range rather than timestamps or summaries.
 
 Identify:
 
@@ -55,10 +55,21 @@ Identify:
 - security, authorization, persistence, migration, or data sensitivity;
 - tests added or changed;
 - implementer-reported deviations, residual risks, and environmental limits.
+- candidate label, base, previous candidate when any, full ticket range, and incremental range.
 
 Do not begin from only the implementer summary. If the accepted design or intended diff base cannot be identified, return `Inconclusive` with the missing input.
 
 Completion criterion: every changed public seam is mapped to a frozen design or contract expectation before judgment begins.
+
+### Select the review mode
+
+- **Initial review:** start in fresh agent context and inspect the full `<base>..<C0>` range, contract, relevant surrounding code, tests, and high-interaction preflight. Independence means deriving the verdict from primary evidence rather than trusting the implementer.
+- **Incremental re-review:** use the same independent reviewer context when available. Inspect the open ledger findings, the complete current candidate, and primarily `<Cprevious>..<Ccurrent>` plus the focused evidence for each repair. Retain access to `<base>..<Ccurrent>` and widen inspection when the repair interacts with another obligation or risk surface.
+- **Fresh full re-review:** restart from `<base>..<Ccurrent>` only when the repair materially reshapes the candidate, introduces a new architecture or risk surface, the prior reviewer is unavailable, the candidate lineage is unreliable, or incremental evidence cannot support a defensible verdict. Record the trigger.
+
+Fresh context separates implementer and reviewer. It does not require reviewer amnesia between repair rounds.
+
+Completion criterion: the review records `initial-full`, `incremental`, or `fresh-full`, the exact commit range, and any fresh-full trigger.
 
 ## 2. Trace implementation to design
 
@@ -125,7 +136,19 @@ Apply the APoSD checks to the changed surface.
 
 Completion criterion: every APoSD finding names the complexity mechanism and the future change, debugging, safety, or correctness cost it creates.
 
-## 5. Calibrate findings
+## 5. Classify and calibrate findings
+
+Maintain a compact durable ledger in the Execution ticket or a linked artifact. Give each finding a stable ID and classify its origin before deciding the repair path:
+
+- `implementation-defect`: an explicit frozen obligation was implemented incorrectly;
+- `contract-gap`: required behavior or evidence is not sufficiently specified by the frozen contract;
+- `architecture-gap`: the accepted system model cannot represent or safely own the required invariant;
+- `repair-regression`: a correction introduced a new defect;
+- `stale-or-invalid`: the claim does not apply to the current candidate or is not supported by primary evidence.
+
+For each prior finding, record `Open`, `Resolved`, `Superseded`, or `Rejected with evidence`. For each new finding during re-review, record whether it existed in `C0` but was detected late, was introduced by the repair, or became visible because the repair changed the inspected surface. Contract and architecture gaps return to Mission; they are not implementation patch instructions.
+
+Completion criterion: every finding has a stable ID, origin, evidence, required outcome, candidate of origin, and current status.
 
 Use three finding classes.
 
@@ -167,7 +190,7 @@ Completion criterion: severity explains why the issue blocks completion, should 
 Return one verdict:
 
 - `Pass`: every material design and contract obligation is `Pass`, so the candidate is eligible to make the Execution ticket human-ready.
-- `Request changes`: bounded implementation defects or fix-now findings remain; the same Execution ticket stays Active for correction and fresh re-review.
+- `Request changes`: bounded implementation defects or repair regressions remain; the same Execution ticket stays Active for correction and incremental re-review by the same independent reviewer when available.
 - `Inconclusive`: any material obligation is `Unverified`, or missing evidence, access, base, design input, or environment prevents a defensible verdict; the ticket stays Active or becomes Blocked.
 
 Use this return shape:
@@ -176,11 +199,20 @@ Use this return shape:
 ## Verdict
 Pass | Request changes | Inconclusive
 
+## Review lineage
+- Mode: initial-full | incremental | fresh-full
+- Base / candidate:
+- Previous candidate / incremental range: <when applicable>
+- Fresh-full trigger: <when applicable>
+
 ## Design and contract trace
 - <obligation>: Pass | Fail | Unverified — <evidence>
 
 ## Blocking findings
-1. <issue>
+1. <stable ID> — <issue>
+   - Origin: implementation-defect | contract-gap | architecture-gap | repair-regression | stale-or-invalid
+   - Introduced/detected: <candidate and round>
+   - Status: Open | Resolved | Superseded | Rejected with evidence
    - Evidence: <paths/lines/tests/commands>
    - Principle: <contract, design, or APoSD rule>
    - Required outcome: <what must become true>
@@ -217,12 +249,16 @@ Completion criterion: Mission can apply the verdict without interpreting ambigui
 5. **Patch-plan overreach:** state required outcomes without prescribing every edit unless one design outcome is forced.
 6. **Trusting tests blindly:** inspect whether names, fixtures, and assertions encode the accepted truth.
 7. **Reviewer self-fix:** changing code destroys the independent read-only checkpoint and hides whether the implementer contract was sufficient.
+8. **Independence as amnesia:** recreating a full context for every repair loses the finding history and repays discovery cost. Keep the reviewer independent from the implementer, but preserve reviewer continuity.
+9. **Unclassified patch loop:** returning every blocker as an implementation edit hides contract and architecture gaps. Classify origin before choosing disposition.
 
 ## Completion checklist
 
-- [ ] Active Execution ticket, accepted design, non-goals, intended base, diff, tests, and relevant paths were inspected.
+- [ ] Active Execution ticket, accepted design, non-goals, candidate lineage, exact commit range, tests, and relevant paths were inspected.
+- [ ] Review mode and any fresh-full trigger were recorded.
 - [ ] Every material design obligation is Pass, Fail, or Unverified with evidence.
 - [ ] Tests were reviewed for semantic correctness, not only pass/fail status.
+- [ ] Every finding has a stable ID, origin, candidate/round, evidence, required outcome, and status in the ledger.
 - [ ] Findings identify contract, design, or APoSD consequences and calibrated severity.
 - [ ] Strengths and residual risks are recorded.
 - [ ] Verdict is `Pass`, `Request changes`, or `Inconclusive`.
