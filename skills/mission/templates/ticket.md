@@ -20,7 +20,7 @@ Acceptance / evidence:
 
 ## Result
 
-<filled at Review or Closed>
+<evolves while Active; complete before Review>
 
 ## Evidence
 
