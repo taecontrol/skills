@@ -90,16 +90,18 @@ Use the cheapest adequate verifier. Classify the result:
 - **capability failure:** sound brief and tools, inadequate result;
 - **availability failure:** profile cannot be launched or quota is exhausted.
 
+For an implementation candidate that fails independent review, do not infer `capability failure` from the number of findings or review rounds. Use the review ledger to check whether the missed obligation was explicit, the high-interaction preflight modeled it when applicable, a red-capable verifier existed, and the context, tools, and harness worked. A `contract-gap` or `architecture-gap` is not repaired by buying a stronger profile.
+
 Completion criterion: every attempt ends with an observable verifier result and one classification.
 
 ## 6. Escalate narrowly
 
-1. Repair one bounded local defect in the same profile.
+1. Return bounded `implementation-defect` or `repair-regression` findings to the same implementer context and profile when available, but never create a third repair candidate without Mission Control's root-cause disposition.
 2. Fix the brief, tool, or context when that caused the failure.
 3. For availability failure, continue to the next profile in the same tier; if none is available, move up one tier.
 4. For capability failure, move up one tier and begin at its first available profile.
 5. Stop at the policy ceiling.
 
-Do not retry a profile already shown incapable and do not use same-tier availability fallback as a hidden capability retry. Record useful outcomes through existing runtime telemetry when available; do not add logging ceremony or mutate shared policy automatically.
+Treat capability failure as demonstrated only when the contract, relevant interaction model, context, tools, and verifier were adequate and a bounded repair did not resolve the explicit-obligation failure. Do not retry a profile already shown incapable, use same-tier availability fallback as a hidden capability retry, or change profiles merely to reset context. Record useful outcomes through existing runtime telemetry when available; do not add logging ceremony or mutate shared policy automatically.
 
 Completion criterion: every fallback or escalation follows the declared order and changes the failed dimension.

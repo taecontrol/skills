@@ -26,6 +26,22 @@ Acceptance / evidence:
 
 <paths, commands, tests, observations, sources>
 
+<!-- Required for Execution with independent implementation review. Keep inline when compact or link a dedicated artifact when it grows.
+## Candidate and review ledger
+
+| Candidate | SHA | Canonical profile | Execution-route provenance | Base / previous SHA | Ancestry verified | Full / incremental range | Evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| C0 | <actual SHA> | <model/effort/mode profile> | <optional harness/provider/billing path> | <base SHA> | Yes / No | <base>..<C0> | <tests / handoff> |
+
+Review mode: `initial-full` | `incremental` | `fresh-full`
+Fresh-full trigger: <material risk / architecture / reviewer unavailable / lineage / evidence, when applicable>
+Root-cause checkpoint disposition: <required before C3, when applicable>
+
+| Finding | Origin | Severity | Candidate / round | Status | Evidence | Required outcome |
+| --- | --- | --- | --- | --- | --- | --- |
+| IR-001 | implementation-defect | Blocking | C0 / initial-full | Open | <primary evidence> | <what must become true> |
+-->
+
 ## Remaining uncertainty
 
 <what remains unresolved; `None material` is allowed when justified>
