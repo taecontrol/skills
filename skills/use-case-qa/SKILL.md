@@ -56,9 +56,49 @@ Completion criterion: the validator can name exactly what behavior, implementati
 
 ## 2. Select the project QA method
 
-QA method is project-specific. Inspect the repository and accepted project documentation for existing simulators, harnesses, fixtures, browser/desktop drivers, API or CLI seams, staging environments, seeded data, observability, and reset procedures. Load [`references/qa-methods.md`](references/qa-methods.md) when selecting or assessing the method.
+QA method is project-specific. It is the adapter between accepted use cases and observable project behavior, not a global lifecycle choice. Inspect the repository and accepted project documentation for existing simulators, harnesses, fixtures, browser/desktop drivers, API or CLI seams, staging environments, seeded data, observability, and reset procedures.
 
-Choose the narrowest available method that provides the fidelity, observability, repeatability, isolation, and safety required by the accepted cases. A domain simulator may be superior to a generic browser when it reproduces the relevant platform protocol and captures deterministic transcripts; a real browser or staging environment may be necessary when UI integration itself is the behavior under test.
+Evaluate candidate methods by what they can actually prove:
+
+1. **Fidelity:** does the method exercise the protocol, UI, integration, timing, identity, and persistence relevant to the case?
+2. **Observability:** can it expose every required outcome and forbidden side effect?
+3. **Repeatability:** can another validator run the same case and obtain comparable evidence?
+4. **Isolation:** can state be reset or uniquely namespaced between cases?
+5. **Safety:** can it avoid unauthorized production, privacy, billing, or destructive effects?
+6. **Availability:** are the environment, credentials, fixtures, and driver usable now?
+7. **Diagnostic value:** can it reveal the earliest divergence when a case fails?
+
+Choose the narrowest available method that satisfies the material criteria. Higher fidelity is not automatically better when it sacrifices repeatability, isolation, or safety. Use more than one method only when no single method can observe every accepted outcome.
+
+### Domain simulator or protocol harness
+
+Use an existing simulator when it faithfully models the external platform, device, event stream, conversation, payment flow, or other domain protocol relevant to the cases. Simulators often provide deterministic reset, rich transcripts, safe failure scenarios, and fast repeated execution.
+
+Identify which production semantics the simulator models and omits. Verify that it exercises the same boundary or adapter required by the case, capture its version, inputs, events, and final state, and never claim real-platform integration from simulator-only evidence. A collaboration-platform simulator may prove delayed replies, actions, identity, and ordering while still requiring a smaller real-client check for rendering or platform authentication.
+
+### Browser or desktop automation
+
+Use browser or desktop automation when rendering, interaction, accessibility, client state, navigation, or cross-surface behavior is material. Record the application build and client version, use stable selectors or accessibility roles where possible, seed identities and data, capture state or network evidence alongside screenshots, and clean up sessions and generated data.
+
+Do not use UI automation as ceremony when an API or simulator proves the accepted behavior more directly and UI integration is outside scope.
+
+### API, CLI, or public service driver
+
+Use an API, CLI, or service driver when behavior is observable through a stable public boundary. Record the exact request or command, identity, environment, response, and persisted effects. Exercise authorization and failure behavior as well as successful payloads, and namespace or remove created data.
+
+### Staging or real integration environment
+
+Use staging or a real integration environment when third-party behavior, deployment configuration, queues, persistence, authentication, or infrastructure cannot be represented faithfully elsewhere. Pin the environment and deployed revision, use test accounts and non-production data where possible, define cleanup or rollback, and distinguish application defects from environment instability.
+
+Production is not the default QA environment. External, billable, destructive, privacy-sensitive, or production effects require explicit authorization and a bounded reversible method.
+
+### Human-assisted procedure
+
+Use human assistance when CAPTCHA, hardware, subjective perception, restricted credentials, or unavailable automation blocks an agent-only method. Separate agent-executable steps from the exact human observation or action required, ask for the minimum intervention at that point, preserve evidence, and resume deterministically. Mark outcomes `Unverified` when the required observation cannot be captured reliably.
+
+### Static or component evidence
+
+Use static inspection, unit tests, and component tests only for setup, diagnosis, or a technical sub-claim. They cannot by themselves pass a use case that requires runtime behavior through a wider seam.
 
 Record one concise method contract in the ticket or approved QA artifact:
 
@@ -70,9 +110,15 @@ Record one concise method contract in the ticket or approved QA artifact:
 - **Evidence capture:** transcripts, screenshots, logs, responses, state snapshots, or artifact paths;
 - **Limits:** behavior the method cannot faithfully validate.
 
-Do not create a new durable QA framework or simulator unless the active ticket authorizes that output. If the existing method cannot validate a material case, report the gap instead of silently replacing runtime QA with unit tests.
+When no available method can observe a required outcome:
 
-Completion criterion: a fresh validator could repeat the method and knows what it can and cannot prove.
+1. Mark the affected case `Unverified`.
+2. State which outcome lacks an oracle or driver.
+3. Identify whether an existing method can be extended mechanically.
+4. If a new simulator, harness, environment, credential, or substantial artifact is required, return a proposed Task, Deliverable, or technical-spike frontier to Mission.
+5. Do not build that capability inside Validation unless its frozen scope already authorizes it.
+
+Completion criterion: a fresh validator could repeat the method, every material case has an observable oracle or named gap, and the method's fidelity limits are explicit.
 
 ## 3. Prepare the case matrix
 

@@ -51,8 +51,6 @@ skills/
     SKILL.md
   use-case-qa/
     SKILL.md
-    references/
-      qa-methods.md
   adr/
     SKILL.md
     templates/
