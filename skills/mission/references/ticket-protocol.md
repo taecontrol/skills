@@ -218,11 +218,11 @@ Ready tickets may be shaped. Once a ticket becomes Active, its Objective, Kind, 
 
 ## Execution candidate lineage and repair loop
 
-Candidate commits are local review checkpoints. `C0` is the first completed candidate; each coherent repair becomes `C1`, `C2`, and so on. They do not close the ticket, authorize a push, or constrain Mission Control's later choice to keep, reorder, or squash the sequence. Every Execution with independent review keeps a compact ledger containing base/candidate SHAs and routes, exact full and incremental ranges, stable finding IDs, origin classification, evidence, required outcome, candidate/round, and status.
+Candidate commits are local review checkpoints. `C0` is the first completed candidate; bounded repairs may produce `C1` and `C2`. They do not close the ticket, authorize a push, or constrain Mission Control's later choice to keep, reorder, or squash the sequence. During review, record actual SHAs, verify that the base is an ancestor of `C0` and each previous candidate is an ancestor of its repair, and never amend, rebase away, or silently replace reviewed evidence. Every Execution with independent review keeps a compact ledger containing base/candidate SHAs and routes, verified ancestry, exact full and incremental ranges, stable finding IDs, origin classification, evidence, required outcome, candidate/round, and status.
 
 The first review is full and fresh from the implementer. Re-reviews normally preserve the same independent reviewer context and focus on the previous-to-current repair range, open findings, and regression evidence while retaining access to the full ticket range. Start another fresh full review only when the repair materially reshapes the candidate, adds a new risk or architecture surface, the reviewer is unavailable, lineage is unreliable, or incremental evidence cannot support a defensible verdict.
 
-Return bounded implementation defects and repair regressions to the same implementer context and route when available. Contract and architecture gaps return to the map immediately. Before authorizing a third repair candidate, Mission must stop for a root-cause checkpoint and Mission Control must choose the disposition; `C3` is never automatic.
+Return bounded implementation defects and repair regressions to the same implementer context and route when available. Contract and architecture gaps return to the map immediately. Unreliable ancestry prohibits incremental review; preserve the known SHAs and use a recorded fresh-full lineage trigger. Before authorizing a third repair candidate, Mission must stop for a root-cause checkpoint and Mission Control must choose the disposition; `C3` is never automatic.
 
 ## Provisional route
 

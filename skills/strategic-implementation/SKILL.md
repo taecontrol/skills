@@ -139,14 +139,15 @@ Completion criterion: verification evidence matches the changed surface, and the
 
 ## 6. Preserve and return an implementation candidate
 
-For Mission-managed work, keep the Execution ticket `Active` and create a local candidate commit after the implementation and proportional verification are complete. The first candidate is `C0`; each later coherent repair is `C1`, `C2`, and so on. A candidate commit is a review checkpoint, not human acceptance.
+For Mission-managed work, keep the Execution ticket `Active` and create a local candidate commit after the implementation and proportional verification are complete. The first candidate is `C0`; bounded repairs may create `C1` and `C2`. Before any `C3`, stop for the Mission root-cause checkpoint described below. A candidate commit is a review checkpoint, not human acceptance.
 
 - Commit one coherent candidate or repair, not every mechanical edit.
 - Keep candidate commits local; never push them before Mission Control accepts the worktree disposition.
 - Include only the active ticket's authorized implementation, evidence, and mechanically required mission updates.
-- Preserve the sequence during review. After acceptance, Mission Control decides whether to keep, reorder, or squash it.
+- Record actual SHAs and preserve the sequence during review. Verify that the base is an ancestor of `C0` and, before each repair handoff, that the previous candidate is an ancestor of the current candidate. Do not amend, rebase away, or silently replace a reviewed candidate. If lineage becomes unreliable, preserve the known SHAs and report it; incremental review is no longer eligible.
+- After acceptance, Mission Control decides whether to keep, reorder, or squash the sequence.
 
-When implementation review returns bounded `implementation-defect` or `repair-regression` findings, resume the same implementer context and route when available, fix only the valid findings, rerun their red-capable evidence, and create the next repair candidate. Change route only after `agent-routing` classifies the failed dimension; a review round count alone is not capability evidence.
+When implementation review returns bounded `implementation-defect` or `repair-regression` findings, resume the same implementer context and route when available, fix only the valid findings, rerun their red-capable evidence, and create `C1` or `C2`. If the next candidate would be `C3`, do not edit or commit another repair: return the finding ledger, which issues existed in `C0`, repair regressions, contract explicitness, and crossed responsibilities to Mission Control for an explicit disposition. Change route only after `agent-routing` classifies the failed dimension; a review round count alone is not capability evidence and cannot bypass the `C3` checkpoint.
 
 Return a compact candidate handoff. The Mission owner routes `C0` to `implementation-review` in fresh independent context inside the same ticket. Do not mark the ticket `Review`, close it, push, start use-case QA, or activate the next frontier.
 
@@ -173,8 +174,9 @@ Include:
 - Approved design and contract:
 - Base commit:
 - Candidate commit and kind: C0 initial | C<n> repair
+- Candidate SHA and verified ancestor:
 - Full ticket range: <base>..<candidate>
-- Previous candidate and incremental range: <when this is a repair>
+- Previous candidate SHA, verified ancestry, and incremental range: <when this is a repair>
 - Highest-risk claims to verify:
 - High-interaction preflight: <path/section or not triggered>
 - Known pre-existing failures or environmental limits:

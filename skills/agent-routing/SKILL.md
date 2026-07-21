@@ -105,7 +105,7 @@ Completion criterion: every attempt ends with an observable verifier result and 
 
 ## 7. Escalate narrowly
 
-1. Return bounded `implementation-defect` or `repair-regression` findings to the same implementer context and route when available.
+1. Return bounded `implementation-defect` or `repair-regression` findings to the same implementer context and route when available, but never create a third repair candidate without Mission Control's root-cause disposition.
 2. Fix the brief, tool, or context when that caused the failure.
 3. Try an allowed complementary route in the same tier when family or harness fit is suspect.
 4. Move up one tier only for capability failure or materially increased risk.

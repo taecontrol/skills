@@ -29,9 +29,13 @@ Acceptance / evidence:
 <!-- Required for Execution with independent implementation review. Keep inline when compact or link a dedicated artifact when it grows.
 ## Candidate and review ledger
 
-| Candidate | Route | Base / previous | Full / incremental range | Evidence |
-| --- | --- | --- | --- | --- |
-| C0 | <implementer route> | <base> | <base>..<C0> | <tests / handoff> |
+| Candidate | SHA | Route | Base / previous SHA | Ancestry verified | Full / incremental range | Evidence |
+| --- | --- | --- | --- | --- | --- | --- |
+| C0 | <actual SHA> | <implementer route> | <base SHA> | Yes / No | <base>..<C0> | <tests / handoff> |
+
+Review mode: `initial-full` | `incremental` | `fresh-full`
+Fresh-full trigger: <material risk / architecture / reviewer unavailable / lineage / evidence, when applicable>
+Root-cause checkpoint disposition: <required before C3, when applicable>
 
 | Finding | Origin | Severity | Candidate / round | Status | Evidence | Required outcome |
 | --- | --- | --- | --- | --- | --- | --- |

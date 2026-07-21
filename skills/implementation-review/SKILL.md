@@ -1,6 +1,6 @@
 ---
 name: implementation-review
-description: "Use when a completed implementation candidate needs an independent fresh-context review against its approved design, execution contract, non-goals, tests, and strategic design quality before it is ready for human review."
+description: "Use when a completed implementation candidate needs an independent review against its approved design, execution contract, non-goals, tests, and strategic design quality before human review. Starts fresh and full for C0; normally reuses the same reviewer context incrementally for repairs."
 license: MIT
 ---
 
@@ -8,7 +8,7 @@ license: MIT
 
 Implementation Review is the independent completion check inside a software implementation work package. It verifies that the implementation agent built the approved design honestly and coherently; it does not replace later QA of real use cases.
 
-For Mission-managed work, the implementation ticket remains `Active` while this review runs. The reviewer uses fresh agent context, returns a verdict to the Mission owner, and never accepts the ticket on Mission Control's behalf.
+For Mission-managed work, the implementation ticket remains `Active` while this review runs. The reviewer starts fresh from the implementer for `C0`, normally keeps reviewer continuity for repairs, returns a verdict to the Mission owner, and never accepts the ticket on Mission Control's behalf.
 
 ## Boundary with use-case QA
 
@@ -45,7 +45,7 @@ Completion criterion: every material verdict is backed by independently inspecte
 
 ## 1. Load the frozen contract and candidate
 
-Read the active Execution ticket, accepted product and technical design, relevant decisions, repository instructions, implementation candidate handoff, candidate ledger, and intended base. Inspect staged, unstaged, and untracked files. Verify that the named candidate commit exists and derive the changed surface from the actual commit range rather than timestamps or summaries.
+Read the active Execution ticket, accepted product and technical design, relevant decisions, repository instructions, implementation candidate handoff, candidate ledger, and intended base. Inspect staged, unstaged, and untracked files. Verify that the named candidate commit and actual SHAs exist. Before initial review, verify that the base is an ancestor of `C0`; before incremental review, verify that the previous candidate is an ancestor of the current candidate. Derive the changed surface from the verified commit range rather than timestamps or summaries.
 
 Identify:
 
@@ -65,7 +65,7 @@ Completion criterion: every changed public seam is mapped to a frozen design or 
 
 - **Initial review:** start in fresh agent context and inspect the full `<base>..<C0>` range, contract, relevant surrounding code, tests, and high-interaction preflight. Independence means deriving the verdict from primary evidence rather than trusting the implementer.
 - **Incremental re-review:** use the same independent reviewer context when available. Inspect the open ledger findings, the complete current candidate, and primarily `<Cprevious>..<Ccurrent>` plus the focused evidence for each repair. Retain access to `<base>..<Ccurrent>` and widen inspection when the repair interacts with another obligation or risk surface.
-- **Fresh full re-review:** restart from `<base>..<Ccurrent>` only when the repair materially reshapes the candidate, introduces a new architecture or risk surface, the prior reviewer is unavailable, the candidate lineage is unreliable, or incremental evidence cannot support a defensible verdict. Record the trigger.
+- **Fresh full re-review:** restart from `<base>..<Ccurrent>` only when the repair materially reshapes the candidate, introduces a new architecture or risk surface, the prior reviewer is unavailable, the candidate lineage is unreliable, or incremental evidence cannot support a defensible verdict. Record the trigger. When lineage is unreliable, preserve the last known candidate SHAs as evidence and prohibit incremental review rather than silently accepting a rewritten range.
 
 Fresh context separates implementer and reviewer. It does not require reviewer amnesia between repair rounds.
 
@@ -191,7 +191,7 @@ Return one verdict:
 
 - `Pass`: every material design and contract obligation is `Pass`, so the candidate is eligible to make the Execution ticket human-ready.
 - `Request changes`: bounded implementation defects or repair regressions remain; the same Execution ticket stays Active for correction and incremental re-review by the same independent reviewer when available.
-- `Inconclusive`: any material obligation is `Unverified`, or missing evidence, access, base, design input, or environment prevents a defensible verdict; the ticket stays Active or becomes Blocked.
+- `Inconclusive`: any material obligation is `Unverified`, a `contract-gap` or `architecture-gap` makes the frozen input insufficient, or missing evidence, access, base, lineage, design input, or environment prevents a defensible verdict; the ticket stays Active or becomes Blocked and no repair candidate is authorized for the gap.
 
 Use this return shape:
 
@@ -233,7 +233,7 @@ Pass | Request changes | Inconclusive
 - <limits; explicitly exclude later use-case QA>
 
 ## Execution ticket disposition
-- Keep Active for rework | Keep Active/Block for missing evidence | Eligible for Mission Review
+- Keep Active for bounded rework | Return to Mission/map checkpoint — no repair candidate authorized | Keep Active/Block for missing evidence | Eligible for Mission Review
 ```
 
 The reviewer does not modify code, change the ticket to Review, close it, activate QA, or accept the mission. The Mission owner applies the disposition, updates durable evidence, and presents a human Review brief only after `Pass`.
