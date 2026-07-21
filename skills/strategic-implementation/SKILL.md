@@ -8,11 +8,7 @@ license: MIT
 
 Strategic Implementation executes one approved software change while actively reducing long-term complexity. It operates inside Mission's lifecycle: Mission controls the frontier, Discovery tickets reduce fog, and this skill turns an accepted contract into code without becoming a tactical tornado.
 
-The core loop is:
-
-```text
-orient to approved ticket -> design checkpoint -> test/prove behavior -> implement -> APoSD refactor -> verify -> return to Mission Review
-```
+The core loop is to orient to the approved ticket, name the design pressure, prove behavior, implement, perform the APoSD refactor, verify, and return an implementation candidate for independent review.
 
 The goal is not architectural ceremony. The goal is code that is easier to understand and modify after the ticket than before it.
 
@@ -127,9 +123,9 @@ Before returning, inspect the diff and status:
 
 Completion criterion: verification evidence matches the changed surface, and the worktree disposition is known.
 
-## 6. Return to Mission Review
+## 6. Return an implementation candidate
 
-For Mission-managed work, update the ticket to `Review` and return a compact brief. Do not close the ticket, commit unless Mission Control requested it, start validation, or activate the next frontier.
+For Mission-managed work, keep the Execution ticket `Active` and return a compact candidate handoff. The Mission owner routes it to `implementation-review` in fresh agent context inside the same ticket. Do not mark the ticket `Review`, close it, commit unless Mission Control requested it, start use-case QA, or activate the next frontier.
 
 Include:
 
@@ -150,24 +146,26 @@ Include:
 ## Remaining uncertainty
 <unknowns and deferred advisories>
 
-## Map delta
-- Known:
-- Fog:
-- Proposed frontiers:
-- Gate:
+## Reviewer handoff
+- Approved design and contract:
+- Intended base / changed surface:
+- Highest-risk claims to verify:
+- Known pre-existing failures or environmental limits:
 ```
 
-Completion criterion: Mission Control and an independent reviewer can judge behavior, evidence, and design risk without reconstructing intent from chat.
+Completion criterion: a fresh independent reviewer can verify the candidate against the frozen design and contract without trusting the implementer's summary, and the Execution ticket remains Active.
 
 ## Common pitfalls
 
-1. **Green tactical code:** tests pass, but policy is duplicated, concepts are vague, and the next change is harder. Fix during the APoSD pass before declaring Review.
+1. **Green tactical code:** tests pass, but policy is duplicated, concepts are vague, and the next change is harder. Fix during the APoSD pass before returning the implementation candidate.
 2. **Review-as-design:** waiting for an independent reviewer to discover obvious design issues. The implementer owns the first strategic pass.
 3. **Concept overloading:** one label means two things. Split the model or rename the artifact before tests fossilize the confusion.
 4. **Re-derived truth:** authoritative IDs or invariants are available upstream but dropped and guessed later. Preserve the fact directly.
 5. **Interface optimism:** labels such as `faithful`, `complete`, `safe`, or `verified` hide partial or approximate evidence. Use conservative names and explicit caveats.
 6. **Boundary casting:** casting unknown metadata into trusted types. Validate centrally and degrade optional detail.
 7. **Refactor expansion:** using design cleanup to widen the ticket. Stop and return a Mission checkpoint when cleanup changes scope, risk, or acceptance.
+8. **Premature human handoff:** moving the ticket to Review when only the implementation agent has finished. Return a candidate and let the independent implementation review complete the Active ticket.
+9. **QA substitution:** claiming the implementation review proves real use cases end to end. Focused implementation tests support this candidate; a later `use-case-qa` Validation ticket exercises accepted scenarios through the project's QA method.
 
 ## Completion checklist
 
@@ -178,4 +176,4 @@ Completion criterion: Mission Control and an independent reviewer can judge beha
 - [ ] Authoritative invariants are represented directly rather than re-derived.
 - [ ] Duplicated policy is removed or recorded as accepted residual risk.
 - [ ] Verification matches the changed surface and worktree status is known.
-- [ ] Mission return is `Review`, with design quality evidence and no silent next frontier.
+- [ ] Mission return is an implementation candidate, the ticket is still `Active`, and the reviewer handoff is self-contained.

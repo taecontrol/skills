@@ -6,6 +6,8 @@ This is the source of truth for ticket states, authority, and transitions used b
 
 Each ticket owns one coherent, independently reviewable work package that advances the mission. The ticket has one objective and one governing Kind, but it may resolve multiple coupled questions or decisions when they establish the same downstream contract and are useful and accepted together. Related work may support that Kind; material outputs that require a different route or authority belong in another ticket.
 
+An independent check is not automatically a separate Validation ticket. Fresh-context implementation review is completion evidence inside an Execution ticket because it judges whether that implementation honored its approved design and contract. Use-case QA is a separate Validation work package because it exercises accepted behavior through a project-specific runtime method and has its own evidence and disposition.
+
 Default durable tickets are **index cards**. Start with the smallest contract that prevents ambiguity:
 
 ```markdown
@@ -22,7 +24,7 @@ Non-goals: <nearby work not allowed>
 Acceptance / evidence: <observable completion criteria>
 ```
 
-At Review, fill `Result`, `Evidence`, `Remaining uncertainty`, and `Map delta`.
+`Result`, `Evidence`, `Remaining uncertainty`, and `Map delta` may evolve while Active as owners and in-ticket reviewers return. Complete them before moving the ticket to Review.
 
 Add `Mode`, `Questions / decisions`, `Why now`, `Method`, `Authorized outputs`, implementation constraints, or runbooks only when they change behavior, prevent real ambiguity, or support handoff/review. Do not complete sections merely because a template offers them.
 
@@ -42,7 +44,7 @@ Use [`../templates/ticket.md`](../templates/ticket.md) after Mission Control sel
 | Ready | Scope, non-goals, dependencies, and evidence are agreed. | Mission Control for material/Deliverable work; agent for non-material Task work. |
 | Active | Current authorized work. | Mission Control selects a material frontier; agent may activate mechanical child tasks. |
 | Blocked | Cannot proceed; blocker and unblock condition are explicit. | Active owner. |
-| Review | Result exists; required authority has not accepted it. | Active owner. |
+| Review | The complete work package, including any required in-ticket independent review, is ready for Mission Control; required authority has not accepted it. | Active owner after completion evidence is satisfied. |
 | Closed | Result/evidence accepted at the ticket's authority level. | Mission Control for every material ticket; agent for non-material Task work. |
 | Abandoned | Intentionally stopped with rationale and map impact. | Mission Control for material work; owner for non-material Task work. |
 
@@ -96,15 +98,25 @@ Creates or amends one independently useful durable artifact or a tightly related
 
 ### Execution
 
-Implements one approved slice. It cannot amend its own objective, scope, architecture, or acceptance criteria. Deviations return to Review and may propose a Decision frontier on the map. Mission Control accepts and closes material Execution work after reviewing its evidence and any independent validation required by the ticket.
+Implements one approved slice. It cannot amend its own objective, scope, architecture, or acceptance criteria. Deviations return to Mission and may propose a Decision frontier on the map. Mission Control accepts and closes material Execution work only after its implementation evidence and required independent implementation verdict are complete.
 
-For non-trivial implementation, use `strategic-implementation` when installed. The Execution return should include compact design-quality evidence: complexity impact, concepts/interfaces changed, invariants represented directly, policy homes or duplicated policy deferred, and APoSD residual risks. Tests prove behavior; they do not by themselves prove that the design is honest or maintainable.
+For non-trivial implementation, use `strategic-implementation` when installed. Its return is an implementation candidate, not a transition to Review. Keep the Execution ticket Active and route that candidate to `implementation-review` in fresh agent context. The reviewer independently checks the diff, tests, approved design, contract, and non-goals; it does not perform the later use-case QA phase.
+
+The reviewer returns `Pass`, `Request changes`, or `Inconclusive`:
+
+- `Pass` completes the in-ticket review evidence and permits the Mission owner to move the Execution ticket to Review.
+- `Request changes` keeps the ticket Active for fixes inside the frozen contract, followed by fresh re-review. A finding that changes scope, product policy, architecture, risk, or acceptance returns to the map instead of becoming silent rework.
+- `Inconclusive` keeps the ticket Active or Blocked and names the evidence, access, or decision needed.
+
+The Execution review body includes compact design-quality evidence: complexity impact, concepts/interfaces changed, invariants represented directly, policy homes or duplicated policy deferred, APoSD residual risks, and the independent verdict. Tests prove technical behavior; they do not by themselves prove that the approved design was implemented honestly.
 
 ### Validation
 
-Produces independent evidence and a verdict. The validator moves the ticket to Review; Mission Control accepts and closes material Validation work. The validator does not accept or close the mission.
+Exercises accepted use cases and produces independent behavioral evidence and a verdict. Validation is a separate material ticket after the implementation it depends on is accepted. The validator moves the Validation ticket to Review; Mission Control accepts and closes it. The validator does not accept or close the mission.
 
-For completed implementation, use `implementation-review` when installed. It reviews both contract correctness and strategic design quality from fresh context, including misleading interfaces, leaked policy, shallow modules, hidden invariants, boundary-validation failures, and tests that ratify the wrong design.
+For behavior-changing design, accepted use cases are required design evidence: each case records enough preconditions, action, and observable outcome to constrain the solution and later judge it. Genuinely non-behavioral work does not need artificial cases. Validation consumes the accepted baseline rather than inventing success semantics after implementation. It may add exploratory cases, but labels them separately so new discoveries do not silently rewrite the accepted baseline.
+
+For use-case validation, use `use-case-qa` when installed. Its execution method is project-specific and must be named in the ticket: a simulator or domain harness, browser/desktop automation, API or CLI driver, staging environment, human-assisted procedure, or another observable seam. The skill chooses from capabilities evidenced in the project; it never assumes that one harness exists everywhere.
 
 ### Task
 
@@ -152,8 +164,8 @@ Examples:
 2. Mission Control selects or amends it.
 3. Agent creates the selected ticket as Ready once scope and evidence are clear, then marks it Active.
 4. Agent writes enough durable ticket/map context for a fresh executor, gives the activation briefing, and stops. The material ticket runs in a fresh session by default.
-5. Owner works mechanical subtasks without expanding the ticket; communicate only at material checkpoints.
-6. Owner returns result, evidence, remaining uncertainty, map delta, and worktree disposition; ticket becomes Review and the session stops at the ticket checkpoint.
+5. Owner works mechanical subtasks without expanding the ticket; communicate only at material checkpoints. For Execution, the implementer returns a candidate and Mission routes it to a fresh-context implementation reviewer inside the same Active ticket.
+6. Owner returns result, evidence, remaining uncertainty, map delta, and worktree disposition; the ticket becomes Review only when all required evidence is complete. For Execution, that includes a `Pass` independent implementation verdict. The session then stops at the human ticket checkpoint.
 7. Required authority accepts, rejects, splits, blocks, or abandons it. If the Review brief predeclared one eligible successor, acceptance also selects that successor.
 8. Map updates; an accepted predeclared successor is created and activated for a fresh session, then the current session stops.
 
@@ -176,7 +188,7 @@ At session start or resume, phrases such as “let's work on the next item,” �
 
 At a ticket disposition checkpoint, interpret ordinary language semantically rather than requiring a formula. “Continue here,” “let's do the next one here,” or equivalent language selects the one unambiguous proposed frontier and authorizes its execution in the current session. If its Ready contract can be completed mechanically from accepted mission artifacts and the visible proposal, write it, mark it Active, and work it without asking again. If a material scope, risk, dependency, or acceptance choice is genuinely missing, ask only that substantive question; do not ask Mission Control to approve agent-authored ticket prose or repeat a permission already given.
 
-Before a material ticket is accepted in Review, do not create or activate the next ticket or start its work. Record the full result, evidence, map delta, worktree state, and one concise next-frontier proposal in durable artifacts. In chat, say only the simple outcome, the decision needed, and what acceptance will activate; mention commit or verification state only when it changes the next action.
+Before a material ticket is accepted in Review, do not create or activate the next ticket or start its work. An in-ticket implementation reviewer is not a next frontier: it is required completion evidence for the still-Active Execution ticket. Record the full result, evidence, map delta, worktree state, and one concise next-frontier proposal in durable artifacts. In chat, say only the simple outcome, the decision needed, and what acceptance will activate; mention commit or verification state only when it changes the next action.
 
 Use an **acceptance handoff** by default when all of these are true:
 
@@ -260,6 +272,8 @@ Every material ticket returns a compact review body:
 ## Evidence
 
 <paths, commands, tests, observations, sources>
+
+<!-- For Execution, include the independent implementation-review verdict and its evidence. -->
 
 <!-- Optional for non-trivial Execution tickets:
 ## Design quality evidence

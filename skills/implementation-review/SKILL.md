@@ -1,162 +1,189 @@
 ---
 name: implementation-review
-description: "Use when independently reviewing a completed software implementation, especially a Mission Validation ticket, for both contract correctness and strategic design quality. Applies A Philosophy of Software Design to find misleading interfaces, leaked policy, shallow modules, hidden invariants, boundary-validation failures, and tests that ratify the wrong design."
+description: "Use when a completed implementation candidate needs an independent fresh-context review against its approved design, execution contract, non-goals, tests, and strategic design quality before it is ready for human review."
 license: MIT
 ---
 
 # Implementation Review
 
-Implementation Review is an independent validation pass for completed implementation work. It asks two questions at the same time:
+Implementation Review is the independent completion check inside a software implementation work package. It verifies that the implementation agent built the approved design honestly and coherently; it does not replace later QA of real use cases.
 
-1. **Contract:** does the implementation satisfy the approved ticket, product contract, and non-goals?
-2. **Strategic design:** did the implementation reduce or preserve long-term understandability, or did it merely make tests pass?
+For Mission-managed work, the implementation ticket remains `Active` while this review runs. The reviewer uses fresh agent context, returns a verdict to the Mission owner, and never accepts the ticket on Mission Control's behalf.
 
-Use this skill as the review counterpart to `strategic-implementation`. The implementer owns the first design pass; this reviewer verifies it from fresh context and returns a verdict to Mission Control.
+## Boundary with use-case QA
+
+Keep these controls distinct:
+
+- **Implementation review:** inspect the candidate against the approved design, contract, scope, non-goals, diff, code paths, and technical tests. It belongs inside the active Execution ticket.
+- **Use-case QA:** exercise accepted scenarios through an observable project-specific method such as a simulator, browser harness, API driver, staging environment, or human-assisted procedure. It belongs in a later, separate Validation ticket and should use `use-case-qa` when installed.
+
+Focused tests may be run during implementation review to verify a code claim. That evidence does not prove the full product use cases have passed QA.
+
+Completion criterion: the reviewer can state which control is being performed and does not claim evidence from one as evidence for the other.
 
 ## When to use
 
 Use this skill for:
 
-- a Mission `Validation / independent-qa`, `Validation / implementation-review`, or similar ticket;
-- pre-merge review of a completed feature, bug fix, hardening slice, or rework ticket;
+- a candidate returned by `strategic-implementation` inside an active Mission Execution ticket;
+- pre-human or pre-merge review of a completed feature, bug fix, hardening slice, or rework candidate;
 - changes involving APIs, routes, serializers, read models, persistence, attribution, identity, ordering, lifecycle, security-sensitive data, or shared UI;
-- suspicious implementations where tests pass but the model, naming, completeness/fidelity label, or source of truth may be wrong.
+- suspicious implementations where tests pass but the model, naming, completeness label, invariant, or source of truth may be wrong.
 
-Do not use it to implement fixes, perform open-ended Discovery, rewrite the contract, or review purely mechanical formatting. If review exposes a missing product or architecture decision, return a finding and proposed frontier on the map; do not silently decide it or create its ticket.
+Do not use it to implement fixes, perform open-ended Discovery, rewrite the accepted design, or execute the later use-case QA phase. If the review exposes a missing product or architecture decision, return a finding and Mission checkpoint rather than silently deciding it.
 
 ## Review stance
 
-- Be independent: inspect the diff, tests, contract, and relevant code paths rather than trusting the implementer summary.
-- Be evidence-led: cite file paths, lines, tests, commands, outputs, docs, or runtime observations.
-- Be APoSD-specific: do not say “clean code” or “best practice” without naming the complexity mechanism.
-- Be severity-calibrated: block only issues that can mislead users, violate the contract, leak policy, corrupt data, bypass security, or make future changes unsafe.
-- Do not fix code during review unless the active ticket explicitly authorizes reviewer fixes.
+- **Independent:** inspect primary evidence rather than trusting the implementer's summary.
+- **Design-traceable:** compare the code to the accepted design decisions, interfaces, invariants, and non-goals.
+- **Evidence-led:** cite paths, lines, tests, commands, outputs, and runtime observations.
+- **APoSD-specific:** name the concrete complexity mechanism instead of saying “clean code” or “best practice.”
+- **Severity-calibrated:** block only contract, correctness, safety, or material maintainability failures.
+- **Read-only:** do not modify the candidate. Findings return to the implementer; any corrected candidate requires another fresh-context review.
 
-Completion criterion: every material verdict is backed by inspected evidence, not taste.
+Completion criterion: every material verdict is backed by independently inspected evidence, not taste or implementer claims.
 
-## 1. Load the contract and changed surface
+## 1. Load the frozen contract and candidate
 
-Read the active Mission ticket or review request, accepted decisions, relevant specs, implementation summary, and repository instructions. Inspect the worktree and diff against the intended base.
+Read the active Execution ticket, accepted product and technical design, relevant decisions, repository instructions, implementation candidate handoff, and intended base. Inspect staged, unstaged, and untracked files and derive the changed surface from the actual diff.
 
 Identify:
 
+- required design decisions, interfaces, invariants, and acceptance evidence;
+- scope and non-goals;
 - modified files and public seams;
-- expected behavior and non-goals;
-- security/data sensitivity;
+- security, authorization, persistence, migration, or data sensitivity;
 - tests added or changed;
-- any design quality evidence returned by the implementer.
+- implementer-reported deviations, residual risks, and environmental limits.
 
-Completion criterion: the review has a concrete contract and file surface before judging design.
+Do not begin from only the implementer summary. If the accepted design or intended diff base cannot be identified, return `Inconclusive` with the missing input.
 
-## 2. Verify contract correctness
+Completion criterion: every changed public seam is mapped to a frozen design or contract expectation before judgment begins.
 
-Check whether the implementation does what was approved and avoids what was excluded.
+## 2. Trace implementation to design
 
-Review:
+Check whether the code represents the approved solution rather than a nearby behavior that happens to satisfy selected tests.
 
-- public behavior at routes/UI/commands/adapters/serializers;
-- error and failure behavior;
-- authorization and data exposure boundaries;
-- file names, generated artifacts, wire formats, migrations, or persistence changes;
-- whether tests actually fail against the old behavior or could ratify the wrong design.
+For each material design obligation, classify it as `Pass`, `Fail`, or `Unverified` and inspect:
 
-Run or inspect relevant focused tests when practical. If broad CI already passed, still inspect whether focused tests cover the risky semantics.
+- whether the intended concepts exist with honest names and boundaries;
+- whether important invariants are represented directly;
+- whether authoritative facts remain authoritative across persistence and adapters;
+- whether state transitions and lifecycle ownership match the design;
+- whether policy has one implementation home;
+- whether errors, fallback behavior, and degraded states follow the contract;
+- whether non-goals remained unchanged;
+- whether any deviation changes product behavior, architecture, risk, or acceptance.
 
-Completion criterion: each required behavior is Pass, Fail, or Unverified with a concrete reason.
+A local omission inside the frozen contract can be `Request changes`. A missing decision or scope expansion returns to Mission; the reviewer must not manufacture a new design.
 
-## 3. Review strategic design quality
+Completion criterion: every material design obligation has a disposition and evidence, with deviations separated from ordinary implementation defects.
 
-Apply this APoSD checklist to the changed surface.
+## 3. Verify technical behavior and tests
 
-### Concepts and names are honest
+Inspect whether the implementation's tests prove the intended technical semantics:
 
-- One name should not mean two concepts.
-- IDs should reveal their domain. Authoritative entity IDs, source/read-model IDs, actor IDs, tenant/context IDs, and external-provider IDs must not be collapsed for convenience.
-- If a name is hard to pick or explain simply, inspect whether the abstraction is confused.
+- assertions target public seams, domain transitions, or boundaries that matter;
+- new tests would fail against the previous behavior or a plausible broken implementation;
+- failure, authorization, malformed-input, and persistence behavior are covered when relevant;
+- mocks and test-only helpers do not bypass the policy being claimed;
+- test names and fixtures use the accepted domain concepts;
+- broad green suites are not treated as proof of an untested design obligation.
 
-### Interfaces do not overpromise
+Run the narrowest focused tests needed to verify reviewer claims. Reuse trustworthy CI evidence for broad suites where appropriate, but record what was inspected versus rerun. A focused runtime reproduction may verify a technical implementation claim, but it must not be classified as accepted-use-case QA or substitute for the later Validation ticket.
 
-- Labels such as `faithful`, `complete`, `verified`, `safe`, `authoritative`, or `source of truth` must match the weakest part of the evidence.
-- Diagnostic artifacts, reports, and generated outputs must surface limitations rather than hiding them behind optimistic wording.
-- Caller-facing APIs should make the common correct use easy and rare cases explicit.
+Completion criterion: each required technical behavior is supported by meaningful evidence or explicitly marked `Unverified`.
 
-### Invariants are represented directly
+## 4. Review strategic design quality
 
-- If an authoritative fact exists upstream, the implementation should propagate it rather than drop and re-query or infer it later.
-- Persistence and domain models should represent important invariants instead of relying on coincidence, ordering, naming, or ambient context.
+Apply the APoSD checks to the changed surface.
 
-### Policy has one home
+### Concepts and interfaces are honest
 
-- Ordering, filtering, lifecycle, fidelity, naming, fallback, allowlisting, sanitization, retries, and boundary validation should not be duplicated across read models, routes, serializers, tests, and UI.
-- Duplication is especially serious when two copies can drift silently or already differ.
-- Adapters may format, truncate, or serialize; they should not redefine core policy.
+- One name does not collapse distinct domain concepts.
+- Authoritative IDs, source/read-model IDs, actor IDs, tenant IDs, and provider IDs remain distinguishable.
+- Labels such as `complete`, `verified`, `safe`, or `authoritative` match the weakest evidence.
+- Caller-facing APIs make the common correct use easy and exceptional behavior explicit.
 
-### Modules are deep enough
+### Invariants and policy have one home
 
-- New modules should hide complexity behind a small interface.
-- Shallow wrappers, pass-through methods, and layer stacks that forward the same parameters usually indicate weak responsibility boundaries.
-- A more complex implementation can be acceptable if it substantially simplifies callers.
+- Important invariants are represented in domain and persistence models rather than inferred from order, naming, or ambient context.
+- Ordering, filtering, lifecycle, fidelity, fallback, retries, sanitization, and boundary validation are not redefined across handlers, adapters, serializers, tests, and UI.
+- Adapters format and serialize without redefining domain truth.
 
-### Boundaries validate unknown data
+### Modules hide complexity
 
-- Unknown JSON, metadata, external payloads, and legacy persisted shapes must be parsed into safe types at the boundary.
-- Optional diagnostics or enrichment should degrade or be omitted when malformed unless the contract explicitly says the whole operation must fail.
-- Exception surfaces are part of the interface; avoid needless failure modes.
+- New modules hide meaningful complexity behind a small interface.
+- Shallow wrappers and pass-through layers have a real responsibility or are removed.
+- Added implementation complexity substantially simplifies callers or future changes.
 
-Completion criterion: APoSD findings name the concrete complexity mechanism and affected future change or debugging risk.
+### Unknown boundaries are validated
 
-## 4. Calibrate severity
+- Unknown JSON, metadata, provider payloads, and legacy persisted shapes are parsed into safe types at a clear boundary.
+- Malformed optional diagnostics or enrichment degrade safely unless the contract requires hard failure.
+- Exception surfaces do not grow without a contract reason.
 
-Use these categories.
+Completion criterion: every APoSD finding names the complexity mechanism and the future change, debugging, safety, or correctness cost it creates.
+
+## 5. Calibrate findings
+
+Use three finding classes.
 
 ### Blocking
 
-Request changes when a finding:
+Return `Request changes` when a finding:
 
-- makes the artifact, API, UI, or generated output misleading;
-- violates an accepted contract, non-goal, authorization boundary, or data-safety rule;
-- can attribute data to the wrong entity, source, session, user, tenant, or lifecycle state;
-- stores or exports incorrect truth because an invariant is inferred rather than represented;
-- duplicates core policy where drift can change behavior or already has changed behavior;
+- violates the approved design, contract, non-goal, authorization boundary, or data-safety rule;
+- makes an API, UI, artifact, or diagnostic claim misleading;
+- can attribute data to the wrong entity, source, user, tenant, or lifecycle state;
+- stores or exports incorrect truth because an invariant is inferred;
+- duplicates core policy where drift can change behavior;
 - lets malformed optional boundary data abort a required core workflow;
-- has tests that explicitly ratify the wrong semantics.
+- has tests that ratify the wrong semantics.
 
 ### Fix-now
 
-Request local cleanup before acceptance when a finding:
+Request bounded cleanup before human Review when a finding:
 
-- creates shallow wrappers or pass-through layers around new code;
-- spreads a naming, formatting, fallback, or validation rule into multiple places;
-- adds vague names or comments around central concepts;
+- creates a shallow wrapper or pass-through layer in the new code;
+- spreads a naming, fallback, formatting, or validation rule;
+- adds vague names around a central concept;
 - adds unnecessary configuration, exceptions, or caller-managed sequencing;
-- leaves a small APoSD issue that is inside the ticket scope and cheap to fix.
+- is inside the frozen scope, cheap to fix, and would otherwise leave avoidable complexity.
 
 ### Advisory
 
-Record but do not block when a finding:
+Record without blocking when a finding:
 
 - improves maintainability but would widen the approved ticket;
-- concerns rare edge behavior that is honest, visible, and non-destructive;
-- suggests consolidation after the current safe slice lands;
+- concerns rare behavior that is honest, visible, and non-destructive;
+- suggests later consolidation after the safe slice lands;
 - depends on a product decision Mission Control has not made.
 
-Completion criterion: severity explains why the issue blocks, should be fixed now, or can safely become a future frontier proposal.
+Completion criterion: severity explains why the issue blocks completion, should be fixed before human Review, or belongs outside the ticket.
 
-## 5. Return a Mission-compatible verdict
+## 6. Return the in-ticket verdict
 
-For Mission-managed validation, move the validation ticket to `Review` and return the verdict. Do not close the implementation ticket or mission; Mission Control owns acceptance.
+Return one verdict:
 
-Use this shape:
+- `Pass`: every material design and contract obligation is `Pass`, so the candidate is eligible to make the Execution ticket human-ready.
+- `Request changes`: bounded implementation defects or fix-now findings remain; the same Execution ticket stays Active for correction and fresh re-review.
+- `Inconclusive`: any material obligation is `Unverified`, or missing evidence, access, base, design input, or environment prevents a defensible verdict; the ticket stays Active or becomes Blocked.
+
+Use this return shape:
 
 ```markdown
 ## Verdict
 Pass | Request changes | Inconclusive
 
+## Design and contract trace
+- <obligation>: Pass | Fail | Unverified — <evidence>
+
 ## Blocking findings
 1. <issue>
    - Evidence: <paths/lines/tests/commands>
-   - Principle: <APoSD or contract rule>
-   - Required fix: <behavioral/design outcome, not a full patch plan>
+   - Principle: <contract, design, or APoSD rule>
+   - Required outcome: <what must become true>
 
 ## Fix-now findings
 ...
@@ -165,37 +192,38 @@ Pass | Request changes | Inconclusive
 ...
 
 ## Strengths
-- <important good design choices worth preserving>
+- <design choices worth preserving>
 
 ## Verification
-- <commands run, tests inspected, CI evidence, diff/status inspected>
+- <diff/status inspected, tests inspected or run, runtime observations>
 
 ## Not verified
-- <limits of review>
+- <limits; explicitly exclude later use-case QA>
 
-## Mission return
-- Implementation ticket impact:
-- Proposed map delta:
-- Recommended next frontier:
+## Execution ticket disposition
+- Keep Active for rework | Keep Active/Block for missing evidence | Eligible for Mission Review
 ```
 
-Completion criterion: Mission Control can decide accept, rework, split, pause, or close from the review brief alone.
+The reviewer does not modify code, change the ticket to Review, close it, activate QA, or accept the mission. The Mission owner applies the disposition, updates durable evidence, and presents a human Review brief only after `Pass`.
+
+Completion criterion: Mission can apply the verdict without interpreting ambiguity, and no later QA claim is implied.
 
 ## Common pitfalls
 
-1. **Style review disguised as design review:** only block issues with concrete contract, debugging, complexity, or safety consequences.
-2. **Reviewer discovery loop:** do not keep expanding requirements. Classify new material questions as frontier proposals or fog; do not create tickets before selection.
-3. **Patch plan overreach:** state required design outcomes, but do not prescribe every edit unless the evidence demands a specific fix.
-4. **Ignoring strengths:** preserve good deep modules, centralized policy, and safe boundaries; do not flatten them into generic architecture advice.
-5. **Trusting tests blindly:** tests can encode misleading concepts. Inspect whether the test names and assertions model the right truth.
-6. **Late APoSD only:** if findings are basic implementation design issues, recommend strengthening the upstream `strategic-implementation` pass.
+1. **Human Review too early:** the implementer finishes and the ticket moves to Review before this independent verdict. Keep it Active.
+2. **QA substitution:** focused tests and design inspection are reported as proof that accepted use cases work end to end. Reserve that claim for `use-case-qa`.
+3. **Style review disguised as design review:** only block issues with concrete contract, debugging, complexity, or safety consequences.
+4. **Reviewer discovery loop:** new product or architecture questions become findings and map proposals, not silently appended requirements.
+5. **Patch-plan overreach:** state required outcomes without prescribing every edit unless one design outcome is forced.
+6. **Trusting tests blindly:** inspect whether names, fixtures, and assertions encode the accepted truth.
+7. **Reviewer self-fix:** changing code destroys the independent read-only checkpoint and hides whether the implementer contract was sufficient.
 
 ## Completion checklist
 
-- [ ] Contract, non-goals, diff, tests, and relevant code paths were inspected.
-- [ ] Findings are labeled Contract, APoSD, or Both in substance, even if not in a table.
-- [ ] Every blocking finding cites evidence and a principle.
-- [ ] Tests are reviewed for semantic correctness, not only pass/fail status.
+- [ ] Active Execution ticket, accepted design, non-goals, intended base, diff, tests, and relevant paths were inspected.
+- [ ] Every material design obligation is Pass, Fail, or Unverified with evidence.
+- [ ] Tests were reviewed for semantic correctness, not only pass/fail status.
+- [ ] Findings identify contract, design, or APoSD consequences and calibrated severity.
 - [ ] Strengths and residual risks are recorded.
-- [ ] Verdict is Pass, Request changes, or Inconclusive.
-- [ ] Mission return does not accept the mission or activate the next frontier.
+- [ ] Verdict is `Pass`, `Request changes`, or `Inconclusive`.
+- [ ] The return keeps implementation review inside Execution and makes no use-case QA claim.

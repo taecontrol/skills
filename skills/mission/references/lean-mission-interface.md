@@ -104,6 +104,8 @@ Add `Why now`, `Method`, `Questions / decisions`, `Authorized outputs`, or detai
 
 Prefer one recommended next frontier. At Review, if that frontier is unambiguous and its ticket contract follows mechanically from accepted work, state: `If you accept this ticket, I will close it and activate <next work> for a fresh session.` The acceptance is then the selection; do not ask for a second confirmation. Activation is only a handoff, never permission to execute the next ticket in the current session. Add a 2-5 item provisional route only when evidence genuinely supports that itinerary and it helps Mission Control orient.
 
+For implementation, do not present the human Review brief when only the implementation agent has finished. Keep the Execution ticket Active through fresh-context `implementation-review`; after `Pass`, present it to Mission Control. A later use-case QA assignment is a separate Validation ticket whose method comes from project capabilities and whose cases trace to accepted design behavior.
+
 Example: `If you accept 002, I will close it and activate 003 — decide how every employee reply appears in the admin dashboard — for a fresh session.` After `accepted`, perform that handoff directly; never reply by asking Mission Control to `agree` again.
 
 Fresh-session example: `/mission Let's work on the next item` means this session is where that item runs. Brief the product objective, create/activate the ticket if needed, and start the work. Do not answer by preparing the ticket and asking for another fresh session. `/mission What's next?` only asks for orientation and does not authorize execution.
