@@ -50,11 +50,15 @@ Use [`../templates/ticket.md`](../templates/ticket.md) after Mission Control sel
 
 Exactly one material ticket is current in `Ready`, `Active`, or `Review`. Parallel mechanical child tasks may run inside that ticket, but Mission Control cannot authorize a second material frontier without first returning the current ticket to a non-current disposition.
 
+**Selection** chooses a frozen-enough ticket contract, **activation** makes it the current authorized work, and **execution** performs mutations in an authorized session. A contextual instruction may grant all three; recording one never implies the others unless the instruction says so.
+
 ## Human-visible navigation contract
 
 The map and ticket preserve full state; chat uses the **minimum sufficient context**. Write as a natural conversation, not a status report. Default to 2–5 short sentences and roughly 100 words or fewer. Do not use headings, field labels, or repeated status blocks in normal navigation. Use up to three bullets only when separate items genuinely scan better than prose.
 
 Say only what changes Mission Control's understanding, decision, or next action. Start with product meaning. Omit ticket IDs, Kind/Type, gate names, file lists, corpus counts, command results, and worktree details unless they matter to the decision or Mission Control asks. When a complex term is unavoidable, explain it immediately in one short clause using familiar words.
+
+When asked to create a whole future ticket chain, explain naturally that the route will stay visible on the map while only the selected next package becomes a durable ticket. Materialize all only when Mission Control has individually selected every package and each contract is stable enough to freeze.
 
 ### Activation briefing
 
@@ -118,6 +122,12 @@ For behavior-changing design, accepted use cases are required design evidence: e
 
 For use-case validation, use `use-case-qa` when installed. Its execution method is project-specific and must be named in the ticket: a simulator or domain harness, browser/desktop automation, API or CLI driver, staging environment, human-assisted procedure, or another observable seam. The skill chooses from capabilities evidenced in the project; it never assumes that one harness exists everywhere.
 
+Before a costly Validation is Ready, its plan maps every accepted obligation to the narrowest faithful boundary and oracle owner, identifies what remains for native/end-to-end execution, and estimates setup/build/install, startup, and invocation cost. Consolidate coherent journeys without combining case IDs, verdicts, or evidence. A plan that routes every obligation through UI despite faithful lower boundaries is not Ready.
+
+On `Fail`, keep the first verdict and its evidence immutable while read-only diagnosis bounds affected cases by shared cause or system boundary. Mission proposes coherent repair packages from those groups rather than creating a ticket per finding. Product repair is a new Execution package, followed after acceptance by a fresh Validation whose result is appended rather than replacing the first verdict.
+
+A purely mechanical evidence-infrastructure defect may use a proportional in-ticket repair path when it changes neither the system under test nor oracle semantics. Keep Validation Active or Blocked; use a separate repair owner and commit, independent review, then a fresh validator session for revalidation. The original validator cannot approve the repair or erase the first result. A change to product behavior, oracle meaning, scope, or material risk takes the normal Execution path.
+
 ### Task
 
 Performs bounded setup or mechanical work with no material decision. Agents may manage its lifecycle inside an approved material ticket.
@@ -167,7 +177,7 @@ Examples:
 5. Owner works mechanical subtasks without expanding the ticket; communicate only at material checkpoints. For Execution, the implementer preserves a local candidate commit and Mission routes `C0` to a fresh-context implementation reviewer inside the same Active ticket. Repairs normally reuse the implementer and reviewer contexts with incremental commit ranges.
 6. Owner returns result, evidence, remaining uncertainty, map delta, and worktree disposition; the ticket becomes Review only when all required evidence is complete. For Execution, that includes a `Pass` independent implementation verdict. The session then stops at the human ticket checkpoint.
 7. Required authority accepts, rejects, splits, blocks, or abandons it. If the Review brief predeclared one eligible successor, acceptance also selects that successor.
-8. Map updates; an accepted predeclared successor is created and activated for a fresh session, then the current session stops.
+8. Map updates; an accepted predeclared successor is created and activated for a fresh session. The current session stops unless the accepting instruction also authorized creating or using that fresh session.
 
 A ticket result never authorizes the next lifecycle phase. Discovery does not authorize deliverables; a deliverable does not authorize the next deliverable; a plan does not authorize implementation; QA does not accept the mission.
 
@@ -177,16 +187,19 @@ Each material work package is an independently resumable unit and uses a fresh e
 
 A session opened with an explicit directive to work on, continue, or execute the current/next ticket **is** the fresh execution session. Do not turn one isolation boundary into two sessions merely because the agent must create or activate the ticket after loading the map.
 
-Progression has two dimensions:
+Progression has three dimensions:
 
-1. **Ticket authorization** moves the selected ticket to Active.
-2. **Session-continuation authorization** permits working that ticket—or a following ticket—in the current session.
+1. **Selection** chooses the next material contract.
+2. **Activation** moves that selected ticket to Active.
+3. **Execution-session authorization** permits mutation in the current or a named fresh session.
 
-Mission Control may grant both dimensions in one contextual instruction. Do not infer same-session execution from ticket approval alone: once the immediately preceding proposal satisfies the Ready contract, “yes,” “activate it,” “approved,” or “go ahead” authorizes only the ticket transition. After default activation, persist the Active ticket and handoff, state that execution should resume in a fresh session, and stop.
+Mission Control may grant any or all three in one contextual instruction. Do not infer same-session execution from ticket approval alone: once the immediately preceding proposal satisfies the Ready contract, “yes,” “activate it,” “approved,” or “go ahead” authorizes only selection and activation. After default activation, persist the Active ticket and handoff, state that execution should resume in a fresh session, and stop.
 
 At session start or resume, phrases such as “let's work on the next item,” “continue the active ticket,” “resume Ticket 005,” or “execute the next work package” grant both ticket selection and current-session execution when the target is unambiguous. If no ticket exists yet but its Ready contract can be shaped mechanically from the map and accepted artifacts, create it, mark it Active, give the activation briefing, and proceed with substantive work in that same session. Never end such a response with `execute this ticket in a fresh session`. By contrast, “what's next?”, “show me the next item,” or equivalent questions request orientation only.
 
 At a ticket disposition checkpoint, interpret ordinary language semantically rather than requiring a formula. “Continue here,” “let's do the next one here,” or equivalent language selects the one unambiguous proposed frontier and authorizes its execution in the current session. If its Ready contract can be completed mechanically from accepted mission artifacts and the visible proposal, write it, mark it Active, and work it without asking again. If a material scope, risk, dependency, or acceptance choice is genuinely missing, ask only that substantive question; do not ask Mission Control to approve agent-authored ticket prose or repeat a permission already given.
+
+Likewise, a contextual instruction such as “accept/close this, commit the handoff, and continue the next item in a new task” authorizes the complete unambiguous transition: accept and close the reviewed ticket, select and activate the successor, persist and commit the result plus successor handoff, then create or use the fresh session and execute it there. Do not leave the successor merely Ready, execute it in the closing session, or request a redundant confirmation.
 
 Before a material ticket is accepted in Review, do not create or activate the next ticket or start its work. An in-ticket implementation reviewer is not a next frontier: it is required completion evidence for the still-Active Execution ticket. Record the full result, evidence, map delta, worktree state, and one concise next-frontier proposal in durable artifacts. In chat, say only the simple outcome, the decision needed, and what acceptance will activate; mention commit or verification state only when it changes the next action.
 
@@ -201,11 +214,13 @@ Use an **acceptance handoff** by default when all of these are true:
 
 When Mission Control replies `accepted`, `accept`, `approved`, or equivalent without a contrary instruction, close the reviewed ticket and treat that acceptance as selection of the predeclared successor. Create it, mark it Ready and Active, update the map, give a short product-first handoff, and stop for a fresh session. Never ask for a second `agree`. If any eligibility condition is missing, acceptance closes only the current ticket; ask only the substantive missing question rather than requesting procedural confirmation.
 
-At the resulting **ticket disposition checkpoint**, Mission Control may commit, pause, open a fresh session, or explicitly continue in the current session. If Mission Control requests a commit after an acceptance handoff, commit the accepted ticket changes plus the authorized successor ticket/map handoff, but no successor execution. A later “continue here” acts on the Active successor without another activation ceremony.
+At the resulting **ticket disposition checkpoint**, Mission Control may commit, pause, open a fresh session, or explicitly continue in the current session. If Mission Control requests a commit after an acceptance handoff, commit the accepted ticket changes plus the authorized successor ticket/map handoff, but no successor execution in that worktree. A later “continue here” acts on the Active successor without another activation ceremony; an already authorized fresh-session transition starts it there.
 
 Do not end on an acknowledgment of an acknowledgment. If a short reply such as `ok` follows a message that left a genuine choice unresolved, do not respond only with “no action taken” or repeat a menu. Ask one concrete question using the recommended action, such as `Commit these accepted changes now?` If no choice remains because the acceptance handoff already activated the successor, acknowledge briefly and stop.
 
 Same-session continuation is an exception, not a sticky mission setting. It applies only to the unambiguous next frontier selected at that checkpoint and must be granted again at the following checkpoint.
+
+When work will resume in another session on the same repository, the closing session intentionally commits its durable result and self-contained handoff unless Mission Control explicitly requests another disposition. Leave no shared worktree with ambiguous uncommitted handoff state. Material mutation has one writer per worktree; concurrent writers use separate worktrees and reconcile through explicit commits.
 
 ## Contract freeze and amendments
 
@@ -218,11 +233,11 @@ Ready tickets may be shaped. Once a ticket becomes Active, its Objective, Kind, 
 
 ## Execution candidate lineage and repair loop
 
-Candidate commits are local review checkpoints. `C0` is the first completed candidate; bounded repairs may produce `C1` and `C2`. They do not close the ticket, authorize a push, or constrain Mission Control's later choice to keep, reorder, or squash the sequence. During review, record actual SHAs, verify that the base is an ancestor of `C0` and each previous candidate is an ancestor of its repair, and never amend, rebase away, or silently replace reviewed evidence. Every Execution with independent review keeps a compact ledger containing base/candidate SHAs, canonical implementer profiles, optional execution-route provenance, verified ancestry, exact full and incremental ranges, stable finding IDs, origin classification, evidence, required outcome, candidate/round, and status.
+Candidate commits are formal review checkpoints. `C0` is the first eligible candidate; bounded repairs may produce `C1` and `C2`. Diagnostic edits and test runs before a formal committed handoff do not consume candidate labels. Candidates do not close the ticket, authorize a push, or constrain Mission Control's later choice to keep, reorder, or squash the sequence. During review, record actual SHAs, verify that the base is an ancestor of `C0` and each previous candidate is an ancestor of its repair, and never amend, rebase away, or silently replace reviewed evidence. Every Execution with independent review keeps a compact ledger containing base/candidate SHAs, canonical implementer profiles, optional execution-route provenance, verified ancestry, exact full and incremental ranges, stable finding IDs, origin and root-cause classification, contract/preflight/red-verifier answers, evidence, required outcome, candidate/round, and status.
 
 The first review is full and fresh from the implementer. Re-reviews normally preserve the same independent reviewer context and focus on the previous-to-current repair range, open findings, and regression evidence while retaining access to the full ticket range. Start another fresh full review only when the repair materially reshapes the candidate, adds a new risk or architecture surface, the reviewer is unavailable, lineage is unreliable, or incremental evidence cannot support a defensible verdict.
 
-Return bounded implementation defects and repair regressions to the same implementer context and canonical profile when available; `agent-routing` resolves the currently available harness adapter under strict tier policy. Contract and architecture gaps return to the map immediately. Unreliable ancestry prohibits incremental review; preserve the known SHAs and use a recorded fresh-full lineage trigger. Before authorizing a third repair candidate, Mission must stop for a root-cause checkpoint and Mission Control must choose the disposition; `C3` is never automatic.
+Return bounded implementation defects and repair regressions to the same implementer context and canonical profile when available; `agent-routing` resolves the currently available harness adapter under strict tier policy. Contract and architecture gaps return to the map immediately. Unreliable ancestry prohibits incremental review; preserve the known SHAs and use a recorded fresh-full lineage trigger. Before authorizing a third repair candidate, persist a root-cause section grouping findings by cause/boundary, identifying C0 misses and repair regressions, and recording contract explicitness, preflight detectability, red-verifier availability, and crossed responsibilities. Mission Control's explicit disposition is required before another formal candidate; read-only diagnosis remains eligible without creating `C3`.
 
 ## Provisional route
 
@@ -230,9 +245,11 @@ Prefer one recommended frontier proposal beyond the current ticket. Add a 2–5 
 
 The route is orientation, not a promise or authorization. Add, remove, reorder, split, or merge entries when evidence changes.
 
+While open, the map passes its dashboard check when it has exactly one current frontier, 3–7 known-now facts, one recommended next frontier, and accepted history only as one-line receipts linked to tickets, ADRs, or accepted artifacts. A paused or closed map names that disposition instead of inventing a frontier. Move narrative chronology and durable rationale to the linked sources.
+
 ## When to create a ticket
 
-Keep every unselected frontier as a map proposal. Once Mission Control selects a material work package and its contract is clear enough for `Ready`, create its ticket before execution. Every created ticket therefore represents selected work that is expected to run; never create placeholder tickets for possible future work.
+Keep every unselected frontier as a map proposal. A request to “create all” changes presentation, not selection authority: only individually selected, freeze-ready packages become tickets. Once Mission Control selects a material work package and its contract is clear enough for `Ready`, create its ticket before execution. Every created ticket therefore represents selected work that is expected to run.
 
 Use the index-card contract by default. Expand it only when the work:
 

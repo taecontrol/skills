@@ -67,6 +67,7 @@ Evaluate candidate methods by what they can actually prove:
 5. **Safety:** can it avoid unauthorized production, privacy, billing, or destructive effects?
 6. **Availability:** are the environment, credentials, fixtures, and driver usable now?
 7. **Diagnostic value:** can it reveal the earliest divergence when a case fails?
+8. **Cost:** what setup, build, install, startup, and per-invocation work does the method require?
 
 Choose the narrowest available method that satisfies the material criteria. Higher fidelity is not automatically better when it sacrifices repeatability, isolation, or safety. Use more than one method only when no single method can observe every accepted outcome.
 
@@ -108,6 +109,7 @@ Record one concise method contract in the ticket or approved QA artifact:
 - **Isolation/reset:** how cases avoid contaminating one another;
 - **Oracles:** observable signals that determine Pass or Fail;
 - **Evidence capture:** transcripts, screenshots, logs, responses, state snapshots, or artifact paths;
+- **Cost:** setup/build/install, startup, and estimated invocation count;
 - **Limits:** behavior the method cannot faithfully validate.
 
 When no available method can observe a required outcome:
@@ -118,11 +120,19 @@ When no available method can observe a required outcome:
 4. If a new simulator, harness, environment, credential, or substantial artifact is required, return a proposed Task, Deliverable, or technical-spike frontier to Mission.
 5. Do not build that capability inside Validation unless its frozen scope already authorizes it.
 
-Completion criterion: a fresh validator could repeat the method, every material case has an observable oracle or named gap, and the method's fidelity limits are explicit.
+Completion criterion: a fresh validator could repeat the method, every material obligation has an observable oracle or named gap, and the method's fidelity limits and invocation costs are explicit.
 
 ## 3. Prepare the case matrix
 
-Create a compact execution matrix from the accepted baseline without duplicating the source's full prose. For each case record:
+Before writing driver steps, create the coverage matrix:
+
+| Accepted obligation | Narrowest faithful boundary / oracle owner | Evidence contribution | Native / end-to-end gap |
+| --- | --- | --- | --- |
+| ... | ... | ... | ... |
+
+Assign each verdict-bearing assertion to one oracle owner. A case may add evidence from several layers, but those layers contribute to the owner rather than duplicating or weakening its oracle. Use native or end-to-end execution only for the gaps that narrower faithful boundaries cannot prove.
+
+Then create a compact execution matrix from the accepted baseline without duplicating the source's full prose. For each case record:
 
 - case ID and source link;
 - method or driver step;
@@ -133,13 +143,17 @@ Create a compact execution matrix from the accepted baseline without duplicating
 
 Include accepted happy paths, failure paths, permissions, lifecycle transitions, delayed or repeated actions, and cross-surface effects only when they belong to the approved cases. Order cases to minimize irreversible state and make reset failures visible.
 
+Use the cost estimate to consolidate cases into coherent journeys when they share expensive setup or startup. Preserve each case ID, oracle, verdict, and evidence destination independently; a shared journey is an execution optimization, not a combined verdict.
+
 Before execution, verify that test identities and fixtures cannot affect real users or production data unless explicitly authorized. Redact secrets and unnecessary personal data from captured evidence.
 
-Completion criterion: every in-scope accepted case has an executable row or a named method gap.
+Completion criterion: every accepted obligation has one faithful oracle owner, and every in-scope case has an executable row or named gap with independently judgeable evidence.
 
 ## 4. Execute accepted cases
 
 Run each case through the selected public or domain-observable seam. Reset or re-seed state between cases as defined by the method contract. Capture evidence at the moment of observation rather than reconstructing it from memory.
+
+When cleanup is material, verify `zero residual` with an inventory or audit that discovers remaining state independently of the identifiers used by the cleanup routine. Exercise at least one applicable failure path through cleanup/recovery. When the harness supports durable evidence, confirm terminal verdict and evidence persist after cleanup or process restart.
 
 Classify each case:
 
@@ -150,7 +164,7 @@ Classify each case:
 
 A retry may diagnose flakiness but must not erase the first failure. Record attempt count, state differences, and timing where nondeterminism matters. Do not weaken an oracle because the current implementation behaves differently.
 
-Completion criterion: every planned case has a status, direct evidence, and reproducible observations or a precise blocker.
+Completion criterion: every planned case has a status, direct evidence, and reproducible observations or a precise blocker; applicable cleanup has an independent residual audit and failure-path evidence.
 
 ## 5. Probe regressions and exploratory risks
 
@@ -168,7 +182,7 @@ Completion criterion: nearby risk is checked proportionally and new discoveries 
 
 ## 6. Diagnose without repairing
 
-For failed or unverified cases, gather enough evidence to make the failure actionable:
+Preserve the first case verdict and evidence before diagnosis. For failed or unverified cases, gather enough read-only evidence to make the failure actionable:
 
 - earliest observable divergence from the expected path;
 - environment, identity, fixture, and state involved;
@@ -176,9 +190,11 @@ For failed or unverified cases, gather enough evidence to make the failure actio
 - whether the result is reproducible;
 - likely layer or boundary, clearly labeled as hypothesis.
 
-Do not patch product code, rewrite use cases, or create a test harness during QA unless the ticket explicitly authorizes that work. A diagnosis supports disposition; it does not turn Validation into Execution or Discovery.
+Group related cases into the smallest defensible cause sets by shared root cause or system boundary, while retaining each case verdict. Return that bounded grouping to Mission so one coherent repair package can address coupled failures.
 
-Completion criterion: each failure can be reproduced or has an explicit evidence limitation, without unauthorized repair work.
+The validator does not patch the system under test or rewrite use cases. For a purely mechanical evidence-infrastructure defect already authorized by the frozen boundary, record the defect for a separate repair owner and commit, independent review, and fresh validator session; otherwise return the missing capability to Mission. Diagnosis supports disposition without turning Validation into product Execution or open-ended Discovery.
+
+Completion criterion: each failure retains its first verdict, can be reproduced or has an explicit evidence limitation, and belongs to a bounded cause/boundary group without product repair.
 
 ## 7. Return the Validation verdict
 
@@ -199,7 +215,13 @@ Pass | Fail | Inconclusive
 - Driver and environment:
 - Isolation/reset:
 - Oracles:
+- Cost estimate:
 - Method limits:
+
+## Obligation coverage
+| Obligation | Boundary / oracle owner | Evidence contribution | Native / end-to-end gap |
+| --- | --- | --- | --- |
+| ... | ... | ... | ... |
 
 ## Accepted use cases
 | Case | Status | Observation | Evidence |
@@ -213,10 +235,17 @@ Pass | Fail | Inconclusive
 - <new risk or fog, clearly outside the accepted baseline>
 
 ## Failures and diagnosis
-1. <case and earliest divergence>
+1. <cause/boundary group and affected case IDs>
+   - First verdicts:
+   - Earliest divergence:
    - Reproduction:
    - Evidence:
    - Likely layer (hypothesis):
+
+## Cleanup audit
+- Independent inventory:
+- Failure path:
+- Terminal evidence persistence:
 
 ## Not verified
 - <cases or outcomes the method could not prove>
@@ -227,7 +256,7 @@ Pass | Fail | Inconclusive
 - Recommended disposition:
 ```
 
-Move the Validation ticket to `Review` with the report and evidence. Do not accept the implementation, close the mission, or start fixes. Mission Control decides whether to accept QA, authorize rework, change the method, split a finding, or stop.
+Move the Validation ticket to `Review` with the report and evidence. A mechanical evidence-infrastructure defect may instead keep it `Active` or `Blocked` for the authorized separate-owner repair path, while preserving the initial run and verdict. Do not accept the implementation, close the mission, or start product fixes. Mission Control decides whether to accept QA, authorize rework, change the method, group a repair package, or stop.
 
 Completion criterion: Mission Control can judge each accepted use case and the overall verdict without trusting a green suite summary.
 
@@ -242,13 +271,15 @@ Completion criterion: Mission Control can judge each accepted use case and the o
 7. **QA repair loop:** the validator edits code or redesigns behavior. Return evidence and let Mission authorize the next work package.
 8. **Exploration rewrites scope:** newly discovered cases become retrospective acceptance requirements. Label them exploratory and return them to the map.
 9. **Evidence without an oracle:** screenshots or logs exist but do not show why the case passed. Tie every artifact to an expected observable outcome.
-
 ## Completion checklist
 
 - [ ] Active Validation ticket, accepted use-case source, implementation target, and authority boundaries were loaded.
-- [ ] QA method was discovered from project capabilities and recorded with limits, reset, oracles, and evidence capture.
+- [ ] Every accepted obligation maps to its narrowest faithful boundary/oracle owner, evidence contribution, and native/end-to-end gap.
+- [ ] QA method was discovered from project capabilities and recorded with limits, reset, oracles, cost, and evidence capture.
+- [ ] Expensive setup and invocations were consolidated into coherent journeys without combining case IDs, verdicts, or evidence.
 - [ ] Every in-scope accepted case is Pass, Fail, Blocked, or Unverified with direct evidence.
 - [ ] Baseline, regression, and exploratory results remain separate.
-- [ ] Failures identify the earliest divergence and reproducible context without unauthorized fixes.
+- [ ] Applicable cleanup has an independent residual audit, failure-path coverage, and durable terminal evidence when supported.
+- [ ] Failures preserve the first verdict and return bounded cause/boundary groups without modifying the system under test.
 - [ ] Verdict is `Pass`, `Fail`, or `Inconclusive`.
-- [ ] Validation moved to Review without accepting the mission or activating rework.
+- [ ] Validation returned to Review, or remained Active/Blocked only for the authorized evidence-infrastructure repair path; it did not accept the mission or activate product rework.
