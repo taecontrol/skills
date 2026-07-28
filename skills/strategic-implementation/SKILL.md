@@ -8,7 +8,7 @@ license: MIT
 
 Strategic Implementation executes one approved software change while actively reducing long-term complexity. It operates inside Mission's lifecycle: Mission controls the frontier, Discovery tickets reduce fog, and this skill turns an accepted contract into code without becoming a tactical tornado.
 
-The core loop is to orient to the approved ticket, name the design pressure, model high-interaction state when present, prove behavior, implement, perform the APoSD refactor, verify, and preserve a reviewable implementation candidate.
+The core loop is to orient to the approved ticket, name the design pressure, model high-interaction state when present, prove behavior, implement, perform the APoSD refactor, verify C0 eligibility, and preserve a reviewable implementation candidate.
 
 The goal is not architectural ceremony. The goal is code that is easier to understand and modify after the ticket than before it.
 
@@ -63,17 +63,17 @@ If the ticket introduces a new interface or boundary, do a lightweight **design-
 
 Before production code, perform a compact state-and-interaction preflight when the change involves concurrency, lifecycle transitions, shared mutable state, ownership transfer, queues or ordering, retries, rollback or recovery, late events, several sources of truth, or a module whose responsibilities must change together. File length alone is not a trigger; hidden interaction and change coupling are.
 
-Record only what applies:
+Record a compact, falsifiable preflight for each applicable state or resource:
 
-- affected states and invariants;
-- the owner and mutation sites of each state;
-- the serialized entry point, lock, transaction, or other atomic boundary;
-- failure cleanup, rollback/recovery, and late-event behavior;
-- seams or regions that must change together.
+| State/resource and invariant | Single owner | Mutation entry point / atomic boundary | Fencing or correlation | Late-event behavior | Cleanup / recovery |
+| --- | --- | --- | --- | --- | --- |
+| ... | ... | ... | ... | ... | ... |
+
+For every applicable concurrency, retry, ownership, late-event, or cleanup risk, name the negative test or reproducible probe that would expose a broken model. Mark a column `N/A — <reason>` rather than leaving uncertainty implicit.
 
 If the accepted contract and current code do not support one coherent model, stop before implementation and return a `contract-gap` or `architecture-gap` checkpoint. Do not compensate for a missing model by adding local patches or buying a stronger route.
 
-Completion criterion: the implementation has a named complexity target and, when interaction risk is present, a coherent preflight that a reviewer can falsify.
+Completion criterion: the implementation has a named complexity target and, when interaction risk is present, every applicable preflight column and negative probe has a falsifiable entry.
 
 ## 3. Build with behavioral proof
 
@@ -86,7 +86,9 @@ Prefer tests at public seams:
 - boundary validation for unknown external/persisted data;
 - failure behavior, not only happy paths.
 
-Completion criterion: the new behavior has executable or reproducible evidence, and the evidence would fail against the old behavior or broken design.
+For bootstrap, migration, time-dependent, or persistent-state changes, add both fresh-state and preserved-state evidence when either path can behave differently. State why one path is immaterial when only one applies.
+
+Completion criterion: the new behavior has executable or reproducible evidence that would fail against the old behavior or a plausible broken design, including applicable negative and fresh/preserved-state paths.
 
 ## 4. Perform the APoSD refactor pass
 
@@ -137,17 +139,32 @@ Before returning, inspect the diff and status:
 
 Completion criterion: verification evidence matches the changed surface, and the worktree disposition is known.
 
-## 6. Preserve and return an implementation candidate
+## 6. Pass the C0 eligibility gate
+
+Before creating the first formal candidate, map every material Acceptance obligation:
+
+| Obligation | Faithful boundary / oracle | Red-capable or adversarial evidence | Green evidence | State |
+| --- | --- | --- | --- | --- |
+| ... | ... | ... | ... | Pass / Fail / Unverified |
+
+The narrowest faithful boundary owns the oracle; broader suites may contribute evidence without replacing it. `Red-capable` means the check failed against the old behavior or can distinguish a plausible broken implementation; use adversarial evidence when authorization, malformed input, ordering, concurrency, recovery, or another hostile condition is material. A broad green suite is supporting evidence, never a substitute for an obligation row.
+
+`Fail` returns to implementation. `Unverified` returns a checkpoint naming the missing oracle, environment, authority, or contract decision; it is not eligible for C0.
+
+Completion criterion: every material Acceptance obligation is `Pass` with a faithful oracle, applicable red/adversarial evidence, and current green evidence.
+
+## 7. Preserve and return an implementation candidate
 
 For Mission-managed work, keep the Execution ticket `Active` and create a local candidate commit after the implementation and proportional verification are complete. The first candidate is `C0`; bounded repairs may create `C1` and `C2`. Before any `C3`, stop for the Mission root-cause checkpoint described below. A candidate commit is a review checkpoint, not human acceptance.
 
 - Commit one coherent candidate or repair, not every mechanical edit.
+- Treat local edits and test runs before a committed handoff as diagnostic iterations. Candidate labels count only formal, review-eligible commits; do not spend `C1` or `C2` on an incomplete diagnosis.
 - Keep candidate commits local; never push them before Mission Control accepts the worktree disposition.
 - Include only the active ticket's authorized implementation, evidence, and mechanically required mission updates.
 - Record actual SHAs and preserve the sequence during review. Verify that the base is an ancestor of `C0` and, before each repair handoff, that the previous candidate is an ancestor of the current candidate. Do not amend, rebase away, or silently replace a reviewed candidate. If lineage becomes unreliable, preserve the known SHAs and report it; incremental review is no longer eligible.
 - After acceptance, Mission Control decides whether to keep, reorder, or squash the sequence.
 
-When implementation review returns bounded `implementation-defect` or `repair-regression` findings, resume the same implementer context and canonical profile when available, let `agent-routing` resolve the currently available harness adapter, fix only the valid findings, rerun their red-capable evidence, and create `C1` or `C2`. If the next candidate would be `C3`, do not edit or commit another repair: return the finding ledger, which issues existed in `C0`, repair regressions, contract explicitness, and crossed responsibilities to Mission Control for an explicit disposition. Change canonical profile only after `agent-routing` classifies the failed dimension; a review round count alone is not capability evidence and cannot bypass the `C3` checkpoint.
+When implementation review returns bounded `implementation-defect` or `repair-regression` findings, resume the same implementer context and canonical profile when available, let `agent-routing` resolve the currently available harness adapter, fix only the valid findings, rerun their red-capable evidence, and create `C1` or `C2`. Before another formal candidate would become `C3`, persist a root-cause section that groups open findings by cause or boundary and records which existed in `C0`, which repairs regressed, whether the contract and preflight exposed each obligation, and which responsibilities were crossed. Another formal candidate requires Mission Control's explicit recorded disposition; diagnostic read-only work may continue without consuming a candidate label. Change canonical profile only after `agent-routing` classifies the failed dimension; a round count alone is not capability evidence.
 
 Return a compact candidate handoff. The Mission owner routes `C0` to `implementation-review` in fresh independent context inside the same ticket. Do not mark the ticket `Review`, close it, push, start use-case QA, or activate the next frontier.
 
@@ -159,6 +176,9 @@ Include:
 
 ## Evidence
 <tests, commands, inspected files, screenshots/logs as relevant>
+
+## C0 eligibility
+<completed obligation matrix from the C0 eligibility gate>
 
 ## Design quality evidence
 - Complexity impact:
@@ -183,7 +203,7 @@ Include:
 - Known pre-existing failures or environmental limits:
 ```
 
-Completion criterion: the candidate is a local commit with an unambiguous base and review range, a fresh independent reviewer can verify it without trusting the implementer's summary, and the Execution ticket remains Active.
+Completion criterion: the candidate is a local commit whose eligibility matrix is entirely `Pass`, with an unambiguous base and review range; a fresh independent reviewer can verify it without trusting the implementer's summary, and the Execution ticket remains Active.
 
 ## Common pitfalls
 
@@ -198,15 +218,15 @@ Completion criterion: the candidate is a local commit with an unambiguous base a
 9. **QA substitution:** claiming the implementation review proves real use cases end to end. Focused implementation tests support this candidate; a later `use-case-qa` Validation ticket exercises accepted scenarios through the project's QA method.
 10. **Unmodeled interaction:** editing concurrency, lifecycle, rollback, or shared state before identifying ownership, atomicity, cleanup, and late-event behavior. Stop and perform the high-interaction preflight.
 11. **Commit means accepted:** avoiding useful candidate commits or treating them as permission to push. Candidate commits are local review checkpoints; Mission Control still owns acceptance and final history.
-
 ## Completion checklist
 
 - [ ] Active work belongs to one approved Execution boundary.
 - [ ] Main design pressure and affected concepts are named.
-- [ ] High-interaction state, ownership, atomicity, cleanup, rollback, and late events were modeled when triggered.
-- [ ] Behavior is proven at public seams or with reproducible evidence.
+- [ ] High-interaction state/resources, ownership, atomicity, fencing/correlation, cleanup/recovery, late events, and applicable negative probes were modeled.
+- [ ] Behavior is proven at faithful seams, including applicable fresh-state and preserved-state paths.
 - [ ] APoSD pass checked complexity, module depth, information hiding, honest interfaces, and boundary validation.
 - [ ] Authoritative invariants are represented directly rather than re-derived.
 - [ ] Duplicated policy is removed or recorded as accepted residual risk.
+- [ ] Every material Acceptance obligation is `Pass` in the C0 eligibility matrix; none is `Unverified`.
 - [ ] Verification matches the changed surface and worktree status is known.
 - [ ] Mission return identifies a local candidate commit, base, full range, and any incremental range; the ticket is still `Active`, and the reviewer handoff is self-contained.

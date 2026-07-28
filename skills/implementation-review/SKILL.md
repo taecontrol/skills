@@ -53,7 +53,7 @@ Identify:
 - scope and non-goals;
 - modified files and public seams;
 - security, authorization, persistence, migration, or data sensitivity;
-- tests added or changed;
+- tests added or changed, including the C0 obligation matrix and red-capable evidence;
 - implementer-reported deviations, residual risks, and environmental limits.
 - candidate label, base, previous candidate when any, full ticket range, and incremental range.
 - canonical implementer profile and any optional execution-route provenance recorded for audit.
@@ -147,9 +147,16 @@ Maintain a compact durable ledger in the Execution ticket or a linked artifact. 
 - `repair-regression`: a correction introduced a new defect;
 - `stale-or-invalid`: the claim does not apply to the current candidate or is not supported by primary evidence.
 
-For each prior finding, record `Open`, `Resolved`, `Superseded`, or `Rejected with evidence`. For each new finding during re-review, record whether it existed in `C0` but was detected late, was introduced by the repair, or became visible because the repair changed the inspected surface. Contract and architecture gaps return to Mission; they are not implementation patch instructions.
+For each prior finding, record `Open`, `Resolved`, `Superseded`, or `Rejected with evidence`. For each new finding during re-review, record whether it existed in `C0` but was detected late, was introduced by the repair, or became visible because the repair changed the inspected surface. Also record:
 
-Completion criterion: every finding has a stable ID, origin, evidence, required outcome, candidate of origin, and current status.
+- whether the failed obligation was explicit in the frozen contract;
+- whether the high-interaction preflight should have exposed it;
+- whether a red-capable verifier existed before C0; and
+- root cause: `contract`, `implementation`, `test-design`, `environment`, or `repair-regression`.
+
+Contract and architecture gaps return to Mission; they are not implementation patch instructions.
+
+Completion criterion: every finding has a stable ID, origin, root cause, contract/preflight/red-verifier answers, evidence, required outcome, candidate of origin, and current status.
 
 Use three finding classes.
 
@@ -212,6 +219,10 @@ Pass | Request changes | Inconclusive
 ## Blocking findings
 1. <stable ID> — <issue>
    - Origin: implementation-defect | contract-gap | architecture-gap | repair-regression | stale-or-invalid
+   - Root cause: contract | implementation | test-design | environment | repair-regression
+   - Contract explicit: Yes | No — <source or gap>
+   - Preflight should detect: Yes | No | N/A — <reason>
+   - Red-capable verifier before C0: Yes | No — <evidence or gap>
    - Introduced/detected: <candidate and round>
    - Status: Open | Resolved | Superseded | Rejected with evidence
    - Evidence: <paths/lines/tests/commands>
@@ -233,9 +244,14 @@ Pass | Request changes | Inconclusive
 ## Not verified
 - <limits; explicitly exclude later use-case QA>
 
+## Process feedback
+- None systemic | <repeated/systemic pattern>: <concise recommendation for the contract, preflight, verifier, environment, or skill>
+
 ## Execution ticket disposition
 - Keep Active for bounded rework | Return to Mission/map checkpoint — no repair candidate authorized | Keep Active/Block for missing evidence | Eligible for Mission Review
 ```
+
+Use `None systemic` when no pattern recurs. Otherwise keep `Process feedback` to normally no more than three bullets. It informs future contracts and skills but never changes finding severity or the technical verdict.
 
 The reviewer does not modify code, change the ticket to Review, close it, activate QA, or accept the mission. The Mission owner applies the disposition, updates durable evidence, and presents a human Review brief only after `Pass`.
 
@@ -252,15 +268,15 @@ Completion criterion: Mission can apply the verdict without interpreting ambigui
 7. **Reviewer self-fix:** changing code destroys the independent read-only checkpoint and hides whether the implementer contract was sufficient.
 8. **Independence as amnesia:** recreating a full context for every repair loses the finding history and repays discovery cost. Keep the reviewer independent from the implementer, but preserve reviewer continuity.
 9. **Unclassified patch loop:** returning every blocker as an implementation edit hides contract and architecture gaps. Classify origin before choosing disposition.
-
 ## Completion checklist
 
 - [ ] Active Execution ticket, accepted design, non-goals, candidate lineage, exact commit range, tests, and relevant paths were inspected.
 - [ ] Review mode and any fresh-full trigger were recorded.
 - [ ] Every material design obligation is Pass, Fail, or Unverified with evidence.
 - [ ] Tests were reviewed for semantic correctness, not only pass/fail status.
-- [ ] Every finding has a stable ID, origin, candidate/round, evidence, required outcome, and status in the ledger.
+- [ ] Every finding has a stable ID, origin, root cause, contract/preflight/red-verifier answers, candidate/round, evidence, required outcome, and status.
 - [ ] Findings identify contract, design, or APoSD consequences and calibrated severity.
 - [ ] Strengths and residual risks are recorded.
 - [ ] Verdict is `Pass`, `Request changes`, or `Inconclusive`.
+- [ ] Repeated/systemic patterns produce concise process feedback; isolated findings do not inflate it.
 - [ ] The return keeps implementation review inside Execution and makes no use-case QA claim.
