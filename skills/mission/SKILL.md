@@ -116,7 +116,7 @@ Stop the active ticket and return to the map when work reveals a new risk class,
 
 A reviewer confirms a shaped result; it is not the discovery engine. Record findings in the Execution ledger as `implementation-defect`, `contract-gap`, `architecture-gap`, `repair-regression`, or `stale-or-invalid`. Contract or architecture gaps return to the map immediately instead of becoming patch instructions. Bounded implementation defects and repair regressions may return to the same implementer and reviewer contexts.
 
-Before a third repair candidate, stop for a mandatory root-cause checkpoint even if the remaining findings appear local. Show which findings existed in `C0`, which repairs introduced regressions, whether the frozen contract made each obligation explicit, and whether repairs cross new responsibilities. Mission Control decides whether to authorize one more bounded repair, reopen Shape/Decision, split the ticket, change the architecture or canonical profile for demonstrated capability failure, block, or abandon. Never create `C3` automatically.
+Before a third repair candidate, stop for a mandatory root-cause checkpoint even if the remaining findings appear local. Show which findings existed in `C0`, which repairs introduced regressions, whether the frozen contract made each obligation explicit, and whether repairs cross new responsibilities. Mission Control decides whether to authorize one more bounded repair, reopen Shape/Decision, split the ticket, change the architecture or selected profile for demonstrated capability failure, block, or abandon. Never create `C3` automatically.
 
 Completion criterion: scope or risk changes are visible frontier proposals or Mission Control decisions, never silent additions to the active ticket.
 
