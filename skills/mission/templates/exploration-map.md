@@ -4,11 +4,11 @@ Destination: <one-sentence outcome; link Mission Brief when present>
 
 Gate: <current gate> — <evidence or blocker>
 
-Current frontier: <exactly one Ready/Active/Review material work package, or one proposed frontier when none is current>
+Current frontier: <one Ready/Active/Review material work package, or one explicitly approved parallel group; use one proposal when none is current>
 
 Decision needed: <one grouped Mission Control question, or `None — <why>`>
 
-Recommended next: <one proposed frontier and why it is next; state whether Review acceptance will select it for a fresh-session handoff>
+Recommended next: <the smallest justified successor set and why; use one ticket when uncertain, or a dependency-aware sequence/parallel group when already clear; state exactly what Review acceptance will activate or dispatch>
 
 ## Known now
 
@@ -30,9 +30,9 @@ Recommended next: <one proposed frontier and why it is next; state whether Revie
 
 ## Provisional route
 
-<!-- Optional. Prefer one recommended next frontier above. Add more entries only when evidence genuinely supports a useful itinerary. -->
+<!-- Optional. Prefer the smallest justified successor set above. Add more entries only when evidence genuinely supports a useful itinerary. -->
 
-- <Proposal> — <Kind> / <Type> — depends on <condition> — likely / conditional / tentative
+- <Proposal or Planned ticket> — <Kind> / <Type> — depends on <condition> — sequential / parallel candidate — likely / conditional / tentative
 
 ## Out of scope / future missions
 
@@ -47,4 +47,5 @@ Recommended next: <one proposed frontier and why it is next; state whether Revie
 - Known:
 - Decisions:
 - Fog:
+- Proposed / Planned:
 - Gate:

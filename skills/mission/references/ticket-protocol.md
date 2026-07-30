@@ -1,325 +1,166 @@
-# Shared Mission Ticket Protocol
+# Mission Ticket Lifecycle
 
-This is the source of truth for ticket states, authority, and transitions used by the `mission` skill. Any routed executor must return results through this contract; it does not own mission progression.
+This is the single source of truth for ticket authority, states, transitions, successors, and parallel work.
 
-## Common contract
+## Contents
 
-Each ticket owns one coherent, independently reviewable work package that advances the mission. The ticket has one objective and one governing Kind, but it may resolve multiple coupled questions or decisions when they establish the same downstream contract and are useful and accepted together. Related work may support that Kind; material outputs that require a different route or authority belong in another ticket.
+- [Ticket contract](#ticket-contract)
+- [Authority and states](#authority-and-states)
+- [Work-package boundary](#work-package-boundary)
+- [Planning successors](#planning-successors)
+- [Parallel groups](#parallel-groups)
+- [Activation and execution context](#activation-and-execution-context)
+- [Contract freeze](#contract-freeze)
+- [Review and acceptance handoff](#review-and-acceptance-handoff)
+- [Gates and closure](#gates-and-closure)
+- [Review return](#review-return)
 
-An independent check is not automatically a separate Validation ticket. Fresh-context implementation review is completion evidence inside an Execution ticket because it judges whether that implementation honored its approved design and contract. Use-case QA is a separate Validation work package because it exercises accepted behavior through a project-specific runtime method and has its own evidence and disposition.
+## Ticket contract
 
-Default durable tickets are **index cards**. Start with the smallest contract that prevents ambiguity:
+Create the index card from [`../templates/ticket.md`](../templates/ticket.md); that template is the field-level source of truth. Complete `Result`, `Evidence`, `Remaining uncertainty`, `Next tickets`, and `Map delta` before Review. Add Method, Questions, Authorized outputs, implementation constraints, or a runbook only when they change execution or acceptance.
 
-```markdown
-# Ticket NNN: <one coherent work package>
+## Authority and states
 
-Status: Ready | Active | Blocked | Review | Closed | Abandoned
-Kind / Type: <Discovery | Decision | Deliverable | Execution | Validation | Task> / <human-readable operational type>
-Owner: <person or role>
-Depends on: <tickets or none>
+Mission Control selects, amends, accepts, abandons, or closes every material ticket. Agents may manage non-material Tasks inside approved work.
 
-Objective: <coherent result>
-Scope: <allowed work>
-Non-goals: <nearby work not allowed>
-Acceptance / evidence: <observable completion criteria>
-```
+| State | Meaning |
+| --- | --- |
+| Planned | Clear future contract preserved while context is fresh; no execution authority. |
+| Ready | Objective, boundaries, dependencies, collaboration, and evidence are agreed. |
+| Active | Approved work currently executing. |
+| Blocked | The blocker and unblock condition are explicit. |
+| Review | Required evidence and in-ticket reviews are complete; human disposition remains. |
+| Closed | Accepted at the ticket's authority level. |
+| Abandoned | Intentionally stopped with rationale and map impact. |
 
-`Result`, `Evidence`, `Remaining uncertainty`, and `Map delta` may evolve while Active as owners and in-ticket reviewers return. Complete them before moving the ticket to Review.
+Keep one material ticket in Ready, Active, or Review by default. Several Active material tickets must belong to one approved parallel group and remain independently reviewable.
 
-Add `Mode`, `Questions / decisions`, `Why now`, `Method`, `Authorized outputs`, implementation constraints, or runbooks only when they change behavior, prevent real ambiguity, or support handoff/review. Do not complete sections merely because a template offers them.
+## Work-package boundary
 
-`Type` makes the route legible without opening the ticket body:
+Group questions, decisions, and artifacts when they combine into one useful result, share evidence and authority, constrain one another, and cannot be accepted sensibly in isolation.
 
-- Discovery: use one concise method label, such as `research`, `grilling`, `prototype`, `technical-spike`, or `code-archaeology`.
-- Other Kinds: use a concise kebab-case label that names the operational shape, such as `technical-design`, `risk-decision`, `schema-migration`, `independent-qa`, or `access-setup`.
+Split when a part can be scheduled, assigned, accepted, deferred, or implemented independently; requires a different risk or authority treatment; or can branch without preventing the rest from being useful. Ticket count follows independent value, not file, command, question, or artifact count.
 
-Kind controls authority and routing; Type explains what the work is. Type never changes a ticket's authority.
+Treat a ticket as material when it can change mission outcome, scope, public behavior, business rules, authorization, architecture, persistence, security, migration, rollback, accepted risk, the execution baseline, or acceptance evidence.
 
-Use [`../templates/ticket.md`](../templates/ticket.md) after Mission Control selects a material frontier. Unselected work remains a concise proposal on the map; it is not a ticket.
+A finding inside Active work may update evidence and proposed successors. It does not authorize an unlisted artifact, implementation, validation, or descendant ticket.
 
-## States
+## Planning successors
 
-| State | Meaning | Who may move it |
-| --- | --- | --- |
-| Ready | Scope, non-goals, dependencies, and evidence are agreed. | Mission Control for material/Deliverable work; agent for non-material Task work. |
-| Active | Current authorized work. | Mission Control selects a material frontier; agent may activate mechanical child tasks. |
-| Blocked | Cannot proceed; blocker and unblock condition are explicit. | Active owner. |
-| Review | The complete work package, including any required in-ticket independent review, is ready for Mission Control; required authority has not accepted it. | Active owner after completion evidence is satisfied. |
-| Closed | Result/evidence accepted at the ticket's authority level. | Mission Control for every material ticket; agent for non-material Task work. |
-| Abandoned | Intentionally stopped with rationale and map impact. | Mission Control for material work; owner for non-material Task work. |
+End every material ticket with the next ticket or tickets supported by evidence:
 
-Exactly one material ticket is current in `Ready`, `Active`, or `Review`. Parallel mechanical child tasks may run inside that ticket, but Mission Control cannot authorize a second material frontier without first returning the current ticket to a non-current disposition.
+- Keep only one next ticket when fog remains.
+- Shape several Planned tickets when their objectives and dependencies are already clear and preserving the current context prevents loss.
+- Record a sequence when one result feeds another.
+- Record a parallel candidate only when the independence test below passes.
 
-**Selection** chooses a frozen-enough ticket contract, **activation** makes it the current authorized work, and **execution** performs mutations in an authorized session. A contextual instruction may grant all three; recording one never implies the others unless the instruction says so.
+Planned tickets may be refined until selected. Creating one is documentation, not activation.
 
-## Human-visible navigation contract
+## Parallel groups
 
-The map and ticket preserve full state; chat uses the **minimum sufficient context**. Write as a natural conversation, not a status report. Default to 2–5 short sentences and roughly 100 words or fewer. Do not use headings, field labels, or repeated status blocks in normal navigation. Use up to three bullets only when separate items genuinely scan better than prose.
+Activate a parallel group only when every member:
 
-Say only what changes Mission Control's understanding, decision, or next action. Start with product meaning. Omit ticket IDs, Kind/Type, gate names, file lists, corpus counts, command results, and worktree details unless they matter to the decision or Mission Control asks. When a complex term is unavoidable, explain it immediately in one short clause using familiar words.
+- has an independently useful objective and acceptance decision;
+- has no unresolved input or policy dependency on another member;
+- can isolate repository edits, environments, data, credentials, and external side effects;
+- owns a distinct evidence surface rather than rereading the same corpus;
+- names dependencies and the eventual synthesis or integration owner; and
+- provides enough latency or coverage benefit to justify coordination and token cost.
 
-When asked to create a whole future ticket chain, explain naturally that the route will stay visible on the map while only the selected next package becomes a durable ticket. Materialize all only when Mission Control has individually selected every package and each contract is stable enough to freeze.
+Before authorization, explain the members, dependencies, Mission Control involvement, isolation, and synthesis point. A Review brief may state that acceptance will activate and dispatch the exact group. That acceptance supplies authority without another confirmation; it does not authorize descendants.
 
-### Activation briefing
+Dispatch each member in fresh isolated context. Keep its contract and Review independent. Give each worktree one material writer; concurrent writers use separate worktrees and reconcile through explicit commits. Surface a shared material decision before any affected member continues.
 
-Before substantive execution, explain what will be done, why it matters now, and what will come back for review. Mention a stop condition only when it is not obvious. Do not recite mission position, ticket metadata, evidence fields, autonomy boundaries, or likely routes as labels.
+## Activation and execution context
 
-Example: `We're going to design how buttons, AI interpretation, and confirmations work together. This prevents implementation from inventing safety rules. I'll return with a design for review; no production code will change.`
+Keep three transitions distinct:
 
-This is orientation, not another approval ceremony. If Mission Control already authorized execution, say it and proceed.
+1. **Selection** chooses the material contract.
+2. **Activation** makes the selected ticket current authorized work.
+3. **Execution authorization** permits mutation in the current or named fresh session.
 
-### Material checkpoint
+Mission Control may grant any or all three in one contextual instruction.
 
-Do not narrate mechanical work. When something materially changes, explain the discovery and consequence in one or two sentences, then ask one plain question if needed. Never print a `Checkpoint` block.
+- A bare `yes`, `activate it`, or equivalent selects and activates the immediately proposed Ready contract. Persist its handoff and stop for a fresh session.
+- An explicit session directive such as `continue the active ticket` or `work on the next item here` authorizes execution of the unambiguous target in that session. Brief and begin; do not request another fresh session.
+- A predeclared parallel acceptance selects, activates, and dispatches the named group into fresh isolated contexts.
+- A question such as `what is next?` requests orientation only.
+- A compound instruction such as `accept this, commit the handoff, and continue the next item in a new task` authorizes that whole unambiguous transition. Close, activate, persist and commit the handoff, then execute in the fresh session.
 
-Example: `We found that some employee replies can bypass transcript storage, so the dashboard may miss them. That needs separate persistence work; should it be the next ticket?`
+Same-session continuation applies to one named successor and expires at its next disposition. Parallel authorization applies only to the named group. When work resumes in another session on the same repository, commit the durable result and self-contained handoff unless Mission Control requests another disposition.
 
-Ask only about scope, appetite, policy, risk, product intent, unavailable access, or competing next work—not implementation details already delegated. Explain one concrete example before a difficult choice.
+## Contract freeze
 
-### Review brief
+Before Active, shape Objective, Kind/Type, Scope, Authorized outputs, Non-goals, dependencies, Collaboration, and Acceptance/evidence. Freeze them on activation.
 
-In 2–5 short sentences, say what was produced, why it matters, and what Mission Control should decide. State naturally what acceptance will do. Mention verification or uncommitted work in one brief final sentence only when useful. Link the artifact only if Mission Control may want the detail. Never print the ticket contract back into chat.
+While Active, evolve Result, Evidence, confidence, Remaining uncertainty, work logs, Next tickets, and Map delta. Permit editorial clarification only when it does not change authority, risk, output, or pass/fail meaning.
 
-Example: `We created a safety checklist for understanding employee replies in any language. It ensures an unclear AI interpretation cannot close or reject work. It's ready to accept; if you accept it, I'll activate the technical design as the next ticket for a fresh session. Checks passed, and no product code changed.`
+Return a material change to Mission Control for explicit amendment or replacement. Keep the current ticket Active or Blocked until disposition; never absorb a new risk class, migration, persistent state machine, destructive data action, cross-store recovery problem, or independently useful objective silently.
 
-If Mission Control would need to ask for “a small summary in very simple terms,” the Review brief failed. Counts, corpus sizes, release gates, latency, ticket status, file names, and protocol terms belong after the simple meaning—and usually only in the durable artifact.
+## Review and acceptance handoff
 
-For a `Decision / Collaborative` ticket, return a **decision-space brief**, not a ballot for accepting the agent's preferred answer. Surface the live options, trade-offs, and pressure points in chat, then use the installed `grilling` skill when Mission Control wants to stress-test the decision. Grilling proceeds one question at a time and waits for Mission Control after each question. Phrase each question first as a product choice with a concrete example and consequence; technical policy names may follow in parentheses when useful. Do not write proposed recommendations, rejected alternatives, or map deltas as durable mission truth before the grilling/shared-understanding loop has produced an accepted, amended, split, blocked, or rejected decision; at most record mechanical status/evidence and that a proposal is pending review.
+Move to Review only when the selected profile's evidence and required in-ticket review are complete. Explain what was produced, why it matters, what remains uncertain, and exactly what acceptance will do.
 
-## Kinds and authority
+Use an acceptance handoff when:
 
-### Discovery
+- the Review brief names the exact successor or successor set;
+- every contract and dependency follows from accepted evidence;
+- no competing frontier or material scope, policy, risk, or acceptance choice remains; and
+- any parallel group passes the independence test.
 
-Produces evidence that resolves one decision-driving uncertainty or a tightly related set that must be understood together. The executor may move it to Review, but Mission Control accepts and closes material Discovery work; its findings become mission decisions only after that acceptance.
+On acceptance:
 
-### Decision
+1. Close the reviewed ticket and update the map.
+2. Create or transition the predeclared successors.
+3. Activate dependency-free work; leave later sequential work Planned.
+4. For one successor, persist its fresh-session handoff and stop unless the same instruction authorized execution elsewhere.
+5. For a predeclared parallel group, brief and dispatch its members immediately.
 
-Produces a coherent decision set or accepted contract. Agents verify evidence, compare defensible options, state trade-offs, and recommend. Mission Control owns activation and closure.
+Use close-only when the mission ends, Mission Control requests a pause, frontiers compete, evidence supports no clear successor set, or a named material decision blocks shaping it.
 
-### Deliverable
+## Gates and closure
 
-Creates or amends one independently useful durable artifact or a tightly related set named or explicitly bounded in the Ready ticket and reviewed and accepted together. Mission Control owns activation and acceptance when it fixes product behavior, architecture, execution obligations, validation obligations, or the frozen baseline.
+Gates are Mission Control decisions recorded on the map:
 
-### Execution
+- **Mission Ready:** intent is clear enough to identify the uncertainty that matters.
+- **Ready to Shape:** fog is low enough to shape useful deliverables.
+- **Ready for Implementation:** accepted behavior and design are sufficient for a fresh implementer and independent QA.
+- **Mission Accepted:** Validation evidence has a human-owned verdict and durable learning is promoted.
 
-Implements one approved slice. It cannot amend its own objective, scope, architecture, or acceptance criteria. Deviations return to Mission and may propose a Decision frontier on the map. Mission Control accepts and closes material Execution work only after its implementation evidence and required independent implementation verdict are complete.
+At a gate, present evidence, unresolved fog, defensible options, and a recommendation. Advance only on Mission Control's decision.
 
-For non-trivial implementation, use `strategic-implementation` when installed. Its return is a local candidate commit, not a transition to Review or permission to push. Keep the Execution ticket Active and route `C0` to `implementation-review` in fresh agent context. The reviewer independently checks the full base-to-candidate range, tests, approved design, contract, and non-goals; it does not perform the later use-case QA phase. Corrected candidates normally return incrementally to the same independent reviewer with the candidate ledger and previous-to-current range.
+Keep the open map dashboard-sized: one current frontier or approved parallel group, 3–7 known-now facts, the smallest justified successor set, and accepted history as one-line receipts linked to durable sources.
 
-The reviewer returns `Pass`, `Request changes`, or `Inconclusive`:
+Close as Accepted, Rejected, Rework Required, Inconclusive, Reframed, Abandoned, or another explicit verdict. Promote durable current truth and give every temporary resource an explicit disposition.
 
-- `Pass` completes the in-ticket review evidence and permits the Mission owner to move the Execution ticket to Review.
-- `Request changes` keeps the ticket Active for bounded fixes inside the frozen contract by the same implementer context when available, followed by incremental re-review by the same independent reviewer. A contract or architecture gap, or a finding that changes scope, product policy, risk, or acceptance, returns to the map instead of becoming silent rework.
-- `Inconclusive` keeps the ticket Active or Blocked and names the evidence, access, or decision needed.
+## Review return
 
-The Execution review body includes compact design-quality evidence: complexity impact, concepts/interfaces changed, invariants represented directly, policy homes or duplicated policy deferred, APoSD residual risks, candidate lineage, finding ledger, and the independent verdict. Tests prove technical behavior; they do not by themselves prove that the approved design was implemented honestly.
-
-### Validation
-
-Exercises accepted use cases and produces independent behavioral evidence and a verdict. Validation is a separate material ticket after the implementation it depends on is accepted. The validator moves the Validation ticket to Review; Mission Control accepts and closes it. The validator does not accept or close the mission.
-
-For behavior-changing design, accepted use cases are required design evidence: each case records enough preconditions, action, and observable outcome to constrain the solution and later judge it. Genuinely non-behavioral work does not need artificial cases. Validation consumes the accepted baseline rather than inventing success semantics after implementation. It may add exploratory cases, but labels them separately so new discoveries do not silently rewrite the accepted baseline.
-
-For use-case validation, use `use-case-qa` when installed. Its execution method is project-specific and must be named in the ticket: a simulator or domain harness, browser/desktop automation, API or CLI driver, staging environment, human-assisted procedure, or another observable seam. The skill chooses from capabilities evidenced in the project; it never assumes that one harness exists everywhere.
-
-Before a costly Validation is Ready, its plan maps every accepted obligation to the narrowest faithful boundary and oracle owner, identifies what remains for native/end-to-end execution, and estimates setup/build/install, startup, and invocation cost. Consolidate coherent journeys without combining case IDs, verdicts, or evidence. A plan that routes every obligation through UI despite faithful lower boundaries is not Ready.
-
-On `Fail`, keep the first verdict and its evidence immutable while read-only diagnosis bounds affected cases by shared cause or system boundary. Mission proposes coherent repair packages from those groups rather than creating a ticket per finding. Product repair is a new Execution package, followed after acceptance by a fresh Validation whose result is appended rather than replacing the first verdict.
-
-A purely mechanical evidence-infrastructure defect may use a proportional in-ticket repair path when it changes neither the system under test nor oracle semantics. Keep Validation Active or Blocked; use a separate repair owner and commit, independent review, then a fresh validator session for revalidation. The original validator cannot approve the repair or erase the first result. A change to product behavior, oracle meaning, scope, or material risk takes the normal Execution path.
-
-### Task
-
-Performs bounded setup or mechanical work with no material decision. Agents may manage its lifecycle inside an approved material ticket.
-
-## Materiality test
-
-A ticket is material when it can change any of:
-
-- mission outcome, appetite, scope, no-gos, or success signal;
-- public behavior, business rule, authorization, ownership, or accepted risk;
-- architecture, persistence, security, migration, rollback, or operations;
-- execution-contract baseline or evidence required for acceptance;
-- mission verdict, reframe, abandonment, or closure.
-
-When unsure, treat the transition as material and show it on the map.
-
-Materiality determines authority and visibility, not ticket granularity. Several material decisions may belong to one work package when they are coupled.
-
-## Work-package test
-
-Group questions, decisions, and artifacts in one ticket when they:
-
-- combine into the same downstream contract or independently useful result;
-- depend on substantially the same evidence;
-- constrain one another;
-- share a governing Kind, route, owner, and authority level; and
-- have little value or cannot be accepted sensibly in isolation.
-
-Split work into separate tickets when a part can be scheduled, assigned, accepted, deferred, or implemented independently; requires a different authority or risk treatment; or can block or branch without preventing the rest from being useful.
-
-The number of questions, decisions, artifacts, commands, or files does not determine ticket count.
-
-A finding or decision inside an active ticket never authorizes an unlisted artifact, implementation, validation, or other downstream action. Surface that work as fog or a proposed frontier on the map unless Mission Control explicitly amends the active ticket before the new work begins.
-
-Examples:
-
-- **Group:** one Decision ticket resolves coupled authentication timeout and refresh-policy choices that form one accepted policy contract.
-- **Group:** one Deliverable ticket updates a named specification and companion rationale when they share one purpose and acceptance decision.
-- **Split:** a Discovery ticket identifies an implementation change; propose an Execution frontier on the map instead of implementing it inside Discovery.
-
-## Collaborative frontier loop
-
-1. Agent shows the current map and proposes one frontier without creating a ticket.
-2. Mission Control selects or amends it.
-3. Agent creates the selected ticket as Ready once scope and evidence are clear, then marks it Active.
-4. Agent writes enough durable ticket/map context for a fresh executor, gives the activation briefing, and stops. The material ticket runs in a fresh session by default.
-5. Owner works mechanical subtasks without expanding the ticket; communicate only at material checkpoints. For Execution, the implementer preserves a local candidate commit and Mission routes `C0` to a fresh-context implementation reviewer inside the same Active ticket. Repairs normally reuse the implementer and reviewer contexts with incremental commit ranges.
-6. Owner returns result, evidence, remaining uncertainty, map delta, and worktree disposition; the ticket becomes Review only when all required evidence is complete. For Execution, that includes a `Pass` independent implementation verdict. The session then stops at the human ticket checkpoint.
-7. Required authority accepts, rejects, splits, blocks, or abandons it. If the Review brief predeclared one eligible successor, acceptance also selects that successor.
-8. Map updates; an accepted predeclared successor is created and activated for a fresh session. The current session stops unless the accepting instruction also authorized creating or using that fresh session.
-
-A ticket result never authorizes the next lifecycle phase. Discovery does not authorize deliverables; a deliverable does not authorize the next deliverable; a plan does not authorize implementation; QA does not accept the mission.
-
-## Session isolation and ticket disposition
-
-Each material work package is an independently resumable unit and uses a fresh execution session by default. Session isolation limits context bleed, makes the ticket contract testable by a fresh agent, and gives Mission Control a deliberate repository checkpoint.
-
-A session opened with an explicit directive to work on, continue, or execute the current/next ticket **is** the fresh execution session. Do not turn one isolation boundary into two sessions merely because the agent must create or activate the ticket after loading the map.
-
-Progression has three dimensions:
-
-1. **Selection** chooses the next material contract.
-2. **Activation** moves that selected ticket to Active.
-3. **Execution-session authorization** permits mutation in the current or a named fresh session.
-
-Mission Control may grant any or all three in one contextual instruction. Do not infer same-session execution from ticket approval alone: once the immediately preceding proposal satisfies the Ready contract, “yes,” “activate it,” “approved,” or “go ahead” authorizes only selection and activation. After default activation, persist the Active ticket and handoff, state that execution should resume in a fresh session, and stop.
-
-At session start or resume, phrases such as “let's work on the next item,” “continue the active ticket,” “resume Ticket 005,” or “execute the next work package” grant both ticket selection and current-session execution when the target is unambiguous. If no ticket exists yet but its Ready contract can be shaped mechanically from the map and accepted artifacts, create it, mark it Active, give the activation briefing, and proceed with substantive work in that same session. Never end such a response with `execute this ticket in a fresh session`. By contrast, “what's next?”, “show me the next item,” or equivalent questions request orientation only.
-
-At a ticket disposition checkpoint, interpret ordinary language semantically rather than requiring a formula. “Continue here,” “let's do the next one here,” or equivalent language selects the one unambiguous proposed frontier and authorizes its execution in the current session. If its Ready contract can be completed mechanically from accepted mission artifacts and the visible proposal, write it, mark it Active, and work it without asking again. If a material scope, risk, dependency, or acceptance choice is genuinely missing, ask only that substantive question; do not ask Mission Control to approve agent-authored ticket prose or repeat a permission already given.
-
-Likewise, a contextual instruction such as “accept/close this, commit the handoff, and continue the next item in a new task” authorizes the complete unambiguous transition: accept and close the reviewed ticket, select and activate the successor, persist and commit the result plus successor handoff, then create or use the fresh session and execute it there. Do not leave the successor merely Ready, execute it in the closing session, or request a redundant confirmation.
-
-Before a material ticket is accepted in Review, do not create or activate the next ticket or start its work. An in-ticket implementation reviewer is not a next frontier: it is required completion evidence for the still-Active Execution ticket. Record the full result, evidence, map delta, worktree state, and one concise next-frontier proposal in durable artifacts. In chat, say only the simple outcome, the decision needed, and what acceptance will activate; mention commit or verification state only when it changes the next action.
-
-Use an **acceptance handoff** by default when all of these are true:
-
-- the Review brief names exactly one successor and explicitly says that acceptance will activate it for a fresh session;
-- its objective, scope, non-goals, dependencies, and acceptance evidence can be shaped mechanically from accepted artifacts and the visible map;
-- no competing frontier or unresolved material scope, risk, policy, or acceptance choice remains; and
-- activation creates only the ticket and handoff; it does not execute successor work or advance a gate.
-
-`Close only` is permitted only when the mission is ending, Mission Control requested a pause, there is no single recommended successor, frontiers compete, or a named material scope/risk/policy/acceptance decision blocks shaping the successor. State that reason in the Review brief. “The next frontier remains a proposal,” “no implementation is authorized,” or a general preference for caution is not a reason. When one successor is already named and none of those conditions applies, the agent must predeclare and perform the acceptance handoff.
-
-When Mission Control replies `accepted`, `accept`, `approved`, or equivalent without a contrary instruction, close the reviewed ticket and treat that acceptance as selection of the predeclared successor. Create it, mark it Ready and Active, update the map, give a short product-first handoff, and stop for a fresh session. Never ask for a second `agree`. If any eligibility condition is missing, acceptance closes only the current ticket; ask only the substantive missing question rather than requesting procedural confirmation.
-
-At the resulting **ticket disposition checkpoint**, Mission Control may commit, pause, open a fresh session, or explicitly continue in the current session. If Mission Control requests a commit after an acceptance handoff, commit the accepted ticket changes plus the authorized successor ticket/map handoff, but no successor execution in that worktree. A later “continue here” acts on the Active successor without another activation ceremony; an already authorized fresh-session transition starts it there.
-
-Do not end on an acknowledgment of an acknowledgment. If a short reply such as `ok` follows a message that left a genuine choice unresolved, do not respond only with “no action taken” or repeat a menu. Ask one concrete question using the recommended action, such as `Commit these accepted changes now?` If no choice remains because the acceptance handoff already activated the successor, acknowledge briefly and stop.
-
-Same-session continuation is an exception, not a sticky mission setting. It applies only to the unambiguous next frontier selected at that checkpoint and must be granted again at the following checkpoint.
-
-When work will resume in another session on the same repository, the closing session intentionally commits its durable result and self-contained handoff unless Mission Control explicitly requests another disposition. Leave no shared worktree with ambiguous uncommitted handoff state. Material mutation has one writer per worktree; concurrent writers use separate worktrees and reconcile through explicit commits.
-
-## Contract freeze and amendments
-
-Ready tickets may be shaped. Once a ticket becomes Active, its Objective, Kind, Type, Scope, Authorized outputs, Non-goals, dependencies, and Acceptance/evidence are frozen.
-
-- The owner may fill Result, Evidence, Confidence, Remaining uncertainty, Work log, and Map updates as work proceeds.
-- Editorial clarification that does not change authority, output, risk, or pass/fail meaning is allowed and must be visible in the diff.
-- A material change requires Mission Control to amend the Active ticket explicitly or to stop it and return to the map with a replacement frontier proposal. Create the replacement ticket only if Mission Control selects it.
-- Reviewer findings classified as a new material question, risk/appetite change, incomplete system map, or independently useful objective cannot be silently absorbed through patching.
-
-## Execution candidate lineage and repair loop
-
-Candidate commits are formal review checkpoints. `C0` is the first eligible candidate; bounded repairs may produce `C1` and `C2`. Diagnostic edits and test runs before a formal committed handoff do not consume candidate labels. Candidates do not close the ticket, authorize a push, or constrain Mission Control's later choice to keep, reorder, or squash the sequence. During review, record actual SHAs, verify that the base is an ancestor of `C0` and each previous candidate is an ancestor of its repair, and never amend, rebase away, or silently replace reviewed evidence. Every Execution with independent review keeps a compact ledger containing base/candidate SHAs, canonical implementer profiles, optional execution-route provenance, verified ancestry, exact full and incremental ranges, stable finding IDs, origin and root-cause classification, contract/preflight/red-verifier answers, evidence, required outcome, candidate/round, and status.
-
-The first review is full and fresh from the implementer. Re-reviews normally preserve the same independent reviewer context and focus on the previous-to-current repair range, open findings, and regression evidence while retaining access to the full ticket range. Start another fresh full review only when the repair materially reshapes the candidate, adds a new risk or architecture surface, the reviewer is unavailable, lineage is unreliable, or incremental evidence cannot support a defensible verdict.
-
-Return bounded implementation defects and repair regressions to the same implementer context and selected profile when available; `agent-routing` resolves project policy against the active launch tool. Contract and architecture gaps return to the map immediately. Unreliable ancestry prohibits incremental review; preserve the known SHAs and use a recorded fresh-full lineage trigger. Before authorizing a third repair candidate, persist a root-cause section grouping findings by cause/boundary, identifying C0 misses and repair regressions, and recording contract explicitness, preflight detectability, red-verifier availability, and crossed responsibilities. Mission Control's explicit disposition is required before another formal candidate; read-only diagnosis remains eligible without creating `C3`.
-
-## Provisional route
-
-Prefer one recommended frontier proposal beyond the current ticket. Add a 2–5 item provisional route only when evidence genuinely supports that itinerary and it helps Mission Control orient. Each optional proposal states Kind/Type, objective, dependency or condition, and confidence (`likely`, `conditional`, or `tentative`). If route depth is unknown, say why instead of manufacturing a lifecycle tree.
-
-The route is orientation, not a promise or authorization. Add, remove, reorder, split, or merge entries when evidence changes.
-
-While open, the map passes its dashboard check when it has exactly one current frontier, 3–7 known-now facts, one recommended next frontier, and accepted history only as one-line receipts linked to tickets, ADRs, or accepted artifacts. A paused or closed map names that disposition instead of inventing a frontier. Move narrative chronology and durable rationale to the linked sources.
-
-## When to create a ticket
-
-Keep every unselected frontier as a map proposal. A request to “create all” changes presentation, not selection authority: only individually selected, freeze-ready packages become tickets. Once Mission Control selects a material work package and its contract is clear enough for `Ready`, create its ticket before execution. Every created ticket therefore represents selected work that is expected to run.
-
-Use the index-card contract by default. Expand it only when the work:
-
-- spans sessions or owners;
-- gathers durable evidence;
-- can block or branch;
-- creates/amends a substantial deliverable;
-- carries a material objective or decision set needing durable acceptance;
-- needs independent review or reproducibility.
-
-Do not create tickets for individual reads, searches, commands, formatting steps, or other mechanical actions inside an active ticket.
-
-## Splitting and surfacing new work
-
-Stop and split when an active ticket develops an independently useful objective that can be disposed of separately, crosses its non-goals, changes risk class or authority, or requires an unapproved artifact.
-
-Record each new concern as:
-
-- a proposed frontier on the map if it forms an independently useful work package;
-- a related question or decision inside the active ticket if it contributes to the same objective;
-- fog if still vague;
-- out of scope/future mission if consciously excluded.
-
-Do not silently widen the active ticket to absorb it.
-
-## Review return shape
-
-Verification must be proportional to the active ticket and changed surface:
-
-- Before classifying the change, inspect staged, unstaged, and untracked files. Check whether documentation contains executable examples or feeds a docs/build/release pipeline.
-- For a decision, specification, plan, or Markdown-only deliverable, verify artifact structure, links, traceability to accepted decisions/evidence, internal consistency, and review findings.
-- Do not run the full product test, typecheck, lint, or build suites merely to produce a green verification line when no executable code, configuration, schema, test, dependency, generated artifact, or build-consumed documentation changed.
-- Run an executable suite only when the ticket explicitly requires baseline evidence, an executable example/generated artifact can affect it, or the changed surface can plausibly break it. State that reason with the result.
-- When suites are not relevant, report `Not run — no executable changes` rather than treating an unchanged baseline as evidence that a proposed contract is correct.
-
-A passing unchanged suite proves only that the pre-existing implementation baseline is green; it does not validate new behavior described solely in a proposed artifact.
-
-Every material ticket returns a compact review body:
+Verification must match the changed surface. For non-executable decisions or documents, check structure, links, traceability, internal consistency, and review findings. Run product suites only when executable code, configuration, schema, dependencies, generated artifacts, build-consumed documentation, or an explicit baseline obligation can be affected. Report unavailable or irrelevant suites honestly.
 
 ```markdown
 ## Result
 
-<coherent answer, accepted contract, artifact set, implementation result, or verdict>
+<coherent answer, confirmed decision, artifact, reviewed candidate, or verdict>
 
 ## Evidence
 
-<paths, commands, tests, observations, sources>
-
-<!-- For Execution, include the independent implementation-review verdict and its evidence. -->
-
-<!-- Optional for non-trivial Execution tickets:
-## Design quality evidence
-- Complexity impact:
-- Concepts/interfaces changed:
-- Invariants represented directly:
-- Policy homes / duplicated policy deferred:
-- APoSD residual risks:
--->
+<paths, commands, tests, observations, or sources>
 
 ## Remaining uncertainty
 
-<what is still unknown; "None material" is allowed when justified>
+<what remains unresolved; "None material" when justified>
+
+## Next tickets
+
+<one ticket while fog remains, or a dependency-aware sequence/parallel set>
 
 ## Map delta
 
 - Known:
 - Decisions:
 - Fog:
-- Proposed frontiers:
+- Proposed or Planned:
 - Gate:
 ```
 
-Omit empty map-delta categories. Keep detailed logs in the ticket or supporting artifacts, not in the human-facing brief.
+Keep detailed logs in the ticket or supporting artifact. In chat, return only the product meaning, decision, and predeclared handoff.
