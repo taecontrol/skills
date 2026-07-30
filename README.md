@@ -40,7 +40,9 @@ skills/
   mission/
     SKILL.md
     references/
-      lean-mission-interface.md
+      collaborative-tickets.md
+      delivery-tickets.md
+      discovery-tickets.md
       ticket-protocol.md
     templates/
       exploration-map.md
