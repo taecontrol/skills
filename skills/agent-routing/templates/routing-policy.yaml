@@ -1,9 +1,0 @@
-tiers:
-  T1:
-    - model: first-preference
-      effort: low
-    - model: second-preference
-      effort: medium
-  T2: []
-  T3: []
-  T4: []

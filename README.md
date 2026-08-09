@@ -4,17 +4,20 @@ Reusable agent skills maintained by Taecontrol.
 
 ## Skills
 
-- [`mission`](./skills/mission/SKILL.md) — Human-controlled lifecycle with a visible map, provisional route, one active typed frontier, and concise activation/checkpoint/Review briefings.
-- [`strategic-implementation`](./skills/strategic-implementation/SKILL.md) — Executes approved implementation tickets with strategic programming, APoSD refactor evidence, direct invariant representation, and a fresh-reviewer handoff.
-- [`implementation-review`](./skills/implementation-review/SKILL.md) — Independently checks an implementation candidate against its accepted design, contract, tests, and APoSD quality inside the same Execution ticket.
-- [`use-case-qa`](./skills/use-case-qa/SKILL.md) — Validates accepted use cases in a separate Mission Validation ticket through the simulator, browser, API, CLI, staging, or assisted method available in each project.
-- [`adr`](./skills/adr/SKILL.md) — Qualifies, investigates, creates, and edits minimal Architecture Decision Records centered on durable rationale rather than implementation detail.
-- [`agent-routing`](./skills/agent-routing/SKILL.md) — Selects the first available model profile from an optional project policy and changes tier only after a verified capability failure.
+- [`shape-goal`](./skills/shape-goal/SKILL.md) — Turns an ambiguous request or large initiative into one human-approved goal with observable proof, explicit boundaries, and freedom over implementation.
+- [`strategic-programming`](./skills/strategic-programming/SKILL.md) — Implements non-trivial changes with deep modules, information hiding, honest concepts, and behavioral proof.
+- [`implementation-review`](./skills/implementation-review/SKILL.md) — Independently judges a completed change against its accepted outcome and the `strategic-programming` standard.
+- [`use-case-qa`](./skills/use-case-qa/SKILL.md) — Validates accepted user journeys through observable product seams.
+- [`adr`](./skills/adr/SKILL.md) — Preserves durable architectural rationale in minimal decision records.
 
-Install the software-factory set:
+Deprecated:
+
+- [`mission`](./skills/mission/SKILL.md) — Migrates an existing Mission cockpit into the goal-based workflow; it no longer manages new work.
+
+Install the active set:
 
 ```bash
-npx skills add taecontrol/skills --skill mission --skill strategic-implementation --skill implementation-review --skill use-case-qa --skill adr --skill agent-routing
+npx skills add taecontrol/skills --skill shape-goal --skill strategic-programming --skill implementation-review --skill use-case-qa --skill adr
 ```
 
 ## Install with skills.sh / npx skills
@@ -37,18 +40,15 @@ npx skills add taecontrol/skills --list
 
 ```text
 skills/
+  shape-goal/
+    SKILL.md
+    agents/
+      openai.yaml
   mission/
     SKILL.md
-    references/
-      collaborative-tickets.md
-      delivery-tickets.md
-      discovery-tickets.md
-      ticket-protocol.md
-    templates/
-      exploration-map.md
-      mission-brief.md
-      ticket.md
-  strategic-implementation/
+    agents/
+      openai.yaml
+  strategic-programming/
     SKILL.md
   implementation-review/
     SKILL.md
@@ -58,13 +58,7 @@ skills/
     SKILL.md
     templates/
       adr.md
-  agent-routing/
-    SKILL.md
-    templates/
-      routing-policy.yaml
 ```
-
-Each `SKILL.md` stays focused on routing and process; branch-specific rules and copyable artifacts use progressive disclosure through `references/` and `templates/`.
 
 ## Local validation
 

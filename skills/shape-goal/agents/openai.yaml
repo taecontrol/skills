@@ -1,0 +1,6 @@
+interface:
+  display_name: "Shape Goal"
+  short_description: "Turn ambiguity into an executable goal"
+  default_prompt: "Use $shape-goal to turn this idea into a clear, testable goal."
+policy:
+  allow_implicit_invocation: false
