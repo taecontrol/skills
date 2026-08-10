@@ -1,6 +1,0 @@
-interface:
-  display_name: "Mission (Deprecated)"
-  short_description: "Migrate a Mission into a goal contract"
-  default_prompt: "Use $mission to migrate this legacy Mission into the goal-based workflow."
-policy:
-  allow_implicit_invocation: false

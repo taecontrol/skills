@@ -1,0 +1,6 @@
+interface:
+  display_name: "Pursue Goal"
+  short_description: "Drive durable goals through clear checkpoints"
+  default_prompt: "Use $pursue-goal to define and pursue this objective with me."
+policy:
+  allow_implicit_invocation: false

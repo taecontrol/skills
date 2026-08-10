@@ -4,20 +4,16 @@ Reusable agent skills maintained by Taecontrol.
 
 ## Skills
 
-- [`shape-goal`](./skills/shape-goal/SKILL.md) — Turns an ambiguous request or large initiative into one human-approved goal with observable proof, explicit boundaries, and freedom over implementation.
+- [`pursue-goal`](./skills/pursue-goal/SKILL.md) — Pursues a durable goal through collaborative requirements, checkpoint deliverables, autonomous execution, and temporary project-local progress.
 - [`strategic-programming`](./skills/strategic-programming/SKILL.md) — Implements non-trivial changes with deep modules, information hiding, honest concepts, and behavioral proof.
 - [`implementation-review`](./skills/implementation-review/SKILL.md) — Independently judges a completed change against its accepted outcome and the `strategic-programming` standard.
 - [`use-case-qa`](./skills/use-case-qa/SKILL.md) — Validates accepted user journeys through observable product seams.
 - [`adr`](./skills/adr/SKILL.md) — Preserves durable architectural rationale in minimal decision records.
 
-Deprecated:
-
-- [`mission`](./skills/mission/SKILL.md) — Migrates an existing Mission cockpit into the goal-based workflow; it no longer manages new work.
-
 Install the active set:
 
 ```bash
-npx skills add taecontrol/skills --skill shape-goal --skill strategic-programming --skill implementation-review --skill use-case-qa --skill adr
+npx skills add taecontrol/skills --skill pursue-goal --skill strategic-programming --skill implementation-review --skill use-case-qa --skill adr
 ```
 
 ## Install with skills.sh / npx skills
@@ -40,11 +36,7 @@ npx skills add taecontrol/skills --list
 
 ```text
 skills/
-  shape-goal/
-    SKILL.md
-    agents/
-      openai.yaml
-  mission/
+  pursue-goal/
     SKILL.md
     agents/
       openai.yaml
