@@ -4,7 +4,7 @@ Reusable agent skills maintained by Taecontrol.
 
 ## Skills
 
-- [`pursue-goal`](./skills/pursue-goal/SKILL.md) — Pursues a durable goal through collaborative requirements, checkpoint deliverables, autonomous execution, and temporary project-local progress.
+- [`pursue-goal`](./skills/pursue-goal/SKILL.md) — Defines goals collaboratively, keeps a living checkpoint plan, and gates one-checkpoint sessions on accepted requirements, boundaries, design, architecture, and validation.
 - [`strategic-programming`](./skills/strategic-programming/SKILL.md) — Implements non-trivial changes with deep modules, information hiding, honest concepts, and behavioral proof.
 - [`implementation-review`](./skills/implementation-review/SKILL.md) — Independently judges a completed change against its accepted outcome and the `strategic-programming` standard.
 - [`use-case-qa`](./skills/use-case-qa/SKILL.md) — Validates accepted user journeys through observable product seams.
