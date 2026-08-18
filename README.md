@@ -10,11 +10,12 @@ Reusable agent skills maintained by Taecontrol.
 - [`use-case-qa`](./skills/use-case-qa/SKILL.md) — Validates accepted user journeys through observable product seams.
 - [`adr`](./skills/adr/SKILL.md) — Preserves durable architectural rationale in minimal decision records.
 - [`developer-documentation-style`](./skills/developer-documentation-style/SKILL.md) — Writes clear, direct developer documentation without chatbot prose.
+- [`ui-ux-design`](./skills/ui-ux-design/SKILL.md) — Designs and reviews task-first web, iOS, and Android interfaces with platform-native behavior, visual craft, accessibility, and rendered evidence.
 
 Install the active set:
 
 ```bash
-npx skills add taecontrol/skills --skill pursue-goal --skill strategic-programming --skill implementation-review --skill use-case-qa --skill adr --skill developer-documentation-style
+npx skills add taecontrol/skills --skill pursue-goal --skill strategic-programming --skill implementation-review --skill use-case-qa --skill adr --skill developer-documentation-style --skill ui-ux-design
 ```
 
 ## Install with skills.sh / npx skills
@@ -53,6 +54,18 @@ skills/
       adr.md
   developer-documentation-style/
     SKILL.md
+  ui-ux-design/
+    SKILL.md
+    references/
+      interaction-foundations.md
+      visual-craft.md
+      web.md
+      ios.md
+      android.md
+      verification.md
+      sources.md
+    templates/
+      design-brief.md
 ```
 
 ## Local validation
