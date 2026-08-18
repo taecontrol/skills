@@ -69,7 +69,6 @@ skills/
       design-brief.md
   gh-stack/
     SKILL.md
-    LICENSE.github-gh-stack
     references/
       stack-design.md
       commands.md

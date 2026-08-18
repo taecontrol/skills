@@ -355,4 +355,5 @@ Open only the branch-specific reference needed:
 
 This skill adapts the official `github/gh-stack` agent skill and documentation from
 <https://github.com/github/gh-stack> at revision `ab00aa4a3f2dddc51aa65849c68b391a1b079311`.
-The upstream MIT license is included in `LICENSE.github-gh-stack`.
+The upstream project is available under its
+[MIT license](https://github.com/github/gh-stack/blob/main/LICENSE).
