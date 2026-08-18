@@ -11,11 +11,12 @@ Reusable agent skills maintained by Taecontrol.
 - [`adr`](./skills/adr/SKILL.md) — Preserves durable architectural rationale in minimal decision records.
 - [`developer-documentation-style`](./skills/developer-documentation-style/SKILL.md) — Writes clear, direct developer documentation without chatbot prose.
 - [`ui-ux-design`](./skills/ui-ux-design/SKILL.md) — Designs and reviews task-first web, iOS, and Android interfaces with platform-native behavior, visual craft, accessibility, and rendered evidence.
+- [`gh-stack`](./skills/gh-stack/SKILL.md) — Creates and manages stacked GitHub pull requests with agent-safe `gh stack` workflows.
 
 Install the active set:
 
 ```bash
-npx skills add taecontrol/skills --skill pursue-goal --skill strategic-programming --skill implementation-review --skill use-case-qa --skill adr --skill developer-documentation-style --skill ui-ux-design
+npx skills add taecontrol/skills --skill pursue-goal --skill strategic-programming --skill implementation-review --skill use-case-qa --skill adr --skill developer-documentation-style --skill ui-ux-design --skill gh-stack
 ```
 
 ## Install with skills.sh / npx skills
@@ -66,6 +67,12 @@ skills/
       sources.md
     templates/
       design-brief.md
+  gh-stack/
+    SKILL.md
+    references/
+      stack-design.md
+      commands.md
+      troubleshooting.md
 ```
 
 ## Local validation
