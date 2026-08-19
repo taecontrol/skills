@@ -28,12 +28,12 @@ For every checkpoint create one canonical map record containing its ID, type, qu
 
 Completion criterion: every proposed checkpoint has a judgeable result and justified dependencies, while every known unknown has a checkpoint or an explicit human-decision disposition.
 
-## 3. Accept, persist, and stop
+## 3. Accept, persist, commit, and stop
 
 Read back the complete foundation and initial map as one coherent proposal. Wait for explicit human acceptance and incorporate requested changes until acceptance is unambiguous.
 
-After acceptance, create or update the cockpit using the shape in `SKILL.md`. Persist the accepted foundation, map, evidence pointers, the first accepted checkpoint ID, and an exact next-session prompt. This write is mandatory before ending the session.
+After acceptance, create or update the cockpit using the shape in `SKILL.md`. Persist the accepted foundation, map, evidence pointers, the first accepted checkpoint ID, and an exact next-session prompt. This write is mandatory before ending the session. Treat that acceptance as acceptance of the foundation disposition and follow the automatic commit procedure in `SKILL.md` without requesting separate commit permission.
 
-End the conversation after the cockpit is verified. Product implementation, prototypes, spikes, and the first checkpoint belong to their own fresh sessions.
+End the conversation after the cockpit and commit are verified. Product implementation, prototypes, spikes, and the first checkpoint belong to their own fresh sessions.
 
-Completion criterion: the cockpit contains the explicitly accepted foundation and living map, names at most one accepted current checkpoint, includes its fresh-session prompt, and no checkpoint was executed during foundation work.
+Completion criterion: the cockpit contains the explicitly accepted foundation and living map, names at most one accepted current checkpoint, includes its fresh-session prompt, the session-owned changes are committed, and no checkpoint was executed during foundation work.

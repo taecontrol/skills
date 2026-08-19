@@ -16,6 +16,6 @@ Completion criterion: every question inside the accepted checkpoint contract is 
 
 Show the complete deliverable, not only its latest increment. Walk the human through requirements, boundaries, flows, applicable UI/UX or architecture, tradeoffs, and planned proof. Wait for explicit acceptance and record the response beside the artifact's evidence pointer.
 
-Update the checkpoint status and follow the handoff in `SKILL.md`. End the conversation after one checkpoint disposition.
+Update the checkpoint status, complete the handoff, and follow the automatic commit procedure in `SKILL.md` without requesting separate commit permission. End the conversation after reporting the one checkpoint disposition and commit.
 
-Completion criterion: the accepted artifact and human response are linked from the checkpoint map, residual uncertainty is explicit, and no delivery or later checkpoint was executed.
+Completion criterion: the accepted artifact and human response are linked from the checkpoint map, residual uncertainty is explicit, the accepted session-owned changes are committed, and no delivery or later checkpoint was executed.
