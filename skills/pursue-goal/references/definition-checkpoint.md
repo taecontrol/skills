@@ -1,21 +1,34 @@
-# Definition checkpoint
+# Adaptive discovery
 
-Run this branch only after the human explicitly accepts the current checkpoint contract in `SKILL.md`. Use it for grilling, research, functional flows, prototypes, UI/UX, technical spikes, architecture, or validation design.
+Use this procedure when the current frontier contains a discoverable uncertainty: a repository fact, external fact, empirical feasibility, product behavior, state model, architecture choice, defect cause, or specialist risk that prevents a decision or judgeable vertical slice. It replaces a mandatory definition checkpoint.
 
-## 1. Resolve the checkpoint
+## Bound one question
 
-Choose the technique that makes the named uncertainty judgeable. Discover facts autonomously; put material decisions to the human one at a time with a recommendation and its principal consequence. Use tangible artifacts and concrete journeys, including relevant alternate, error, empty, loading, permission, and edge states.
+Create a dispatch with only the information needed to make exploration judgeable:
 
-Keep prototypes and technical spikes isolated and disposable. Their deliverable is evidence or a design decision, never production behavior.
+- the single question or uncertainty;
+- why it blocks or could materially change the next decision;
+- known constraints, accepted decisions, and evidence pointers;
+- the observation, artifact, or verdict that will answer it; and
+- an explicit cost, time, or scope bound when exploration could expand indefinitely.
 
-When new evidence reveals future work, update the living map with the human. Add, split, remove, or reorder checkpoints without executing another checkpoint. If the evidence materially changes the current contract, present the revised contract and wait for explicit acceptance before continuing this checkpoint.
+Select a capability that matches the question: research for discoverable facts; a spike for empirical feasibility; a prototype for product, interaction, or state comparison; architecture design for consequential seams; diagnosis for an observed failure; or a domain-specific specialist for a named risk. Skills are selected capabilities, not permanent mandatory roles.
 
-Completion criterion: every question inside the accepted checkpoint contract is resolved in its artifact or recorded as an explicit residual unknown with an accepted disposition.
+## Receive and route evidence
 
-## 2. Accept the definition
+Require the specialist to return compact primary evidence, limits, surprises, a verdict, and a recommendation. Persist a durable artifact only when the result will remain useful after the question is settled. Update the goal map with the evidence and route change.
 
-Show the complete deliverable, not only its latest increment. Walk the human through requirements, boundaries, flows, applicable UI/UX or architecture, tradeoffs, and planned proof. Wait for explicit acceptance and record the response beside the artifact's evidence pointer.
+Then decide from the new frontier:
 
-Update the checkpoint status, complete the handoff, and follow the automatic commit procedure in `SKILL.md`. End the conversation after reporting the one checkpoint disposition and commit.
+- another independent uncertainty remains: dispatch the next bounded discovery action;
+- a human-owned material decision is now ready: return to Coordinator synchronization;
+- a vertical slice is judgeable: synchronize its concise playback and enter production delivery;
+- the evidence establishes a blocker: record its owner and exact unblock condition.
 
-Completion criterion: the accepted artifact and human response are linked from the checkpoint map, residual uncertainty is explicit, the automatic commit procedure completes, and no delivery or later checkpoint was executed.
+Discovery can iterate without predicting the remaining route. It may proceed while unrelated human decisions are pending, but it must not silently resolve a human-owned material decision.
+
+## Keep discovery separate from production
+
+Discovery code, fixtures, and prototypes are disposable by default. Preserve the question, evidence, verdict, and useful constraints; do not treat exploratory code as production. Promotion requires an explicit accepted decision and entry through the complete Implementer → Cleaner → Verifier → Product Validator lifecycle. Prior discovery evidence informs that lifecycle but never replaces its gates or independent judgment.
+
+Completion criterion: the question has a bounded evidence-backed disposition, the map records its effect on the frontier, and the next route is discovery, synchronization, production delivery, or a concrete blocker.

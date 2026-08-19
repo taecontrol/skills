@@ -1,23 +1,21 @@
-# Closure checkpoint
+# Optional closure guidance
 
-Run this branch only after the human explicitly accepts the closure contract in `SKILL.md` and every prerequisite checkpoint is complete.
+Use this procedure only after completed slices already establish the goal's observable outcome. Closure is optional coordination work, not a mandatory checkpoint, fresh session, or result-acceptance gate.
 
-## 1. Accept final proof
+## Reconcile durable truth
 
-Present the complete outcome, final observable proof, residual risks, and remaining exclusions. Wait for explicit human acceptance before cleanup.
+Inspect the goal map, completed commits, evidence, residual risks, and canonical repository documentation. Promote a fact only when the temporary map is its sole useful owner. Keep each durable product, architecture, operational, and validation fact in its normal canonical home, with one authoritative owner.
 
-When the human rejects the proof or identifies a gap, record the gap and agree on the required definition or delivery checkpoint. Add its complete canonical contract to the living map, obtain explicit human acceptance, set it as `Current checkpoint`, write its fresh-session prompt, and end the closure conversation without cleanup.
+A cleanup or promotion that changes runtime behavior, a public contract, protected configuration, generated behavior, or validation semantics is production work. Give it its own accepted vertical slice and complete lifecycle. Coordination-only archive, link, or bookkeeping work must not alter the validated delivery surface.
 
-Completion criterion: the cockpit either links the final proof and the human's unambiguous acceptance, or records one accepted gap-closing checkpoint and ends closure with a fresh-session handoff.
+## Archive or retain the map
 
-## 2. Promote durable truth
+Retain a compact goal map when it remains useful for maintenance, audit, or future route recovery. Archive it according to repository convention when its evidence is represented canonically elsewhere. Do not delete evidence merely because the goal is complete.
 
-Promote temporary product, architecture, design, operational, and validation truth into canonical code, tests, documentation, ADRs, design systems, or runbooks. Update durable references that still point into the temporary cockpit. Verify the final system and canonical documentation resolve independently of `docs/goals/<goal-slug>/`.
+If a final proof exposes a gap, record the evidence and route it through adaptive discovery or synchronization. Do not silently reduce the outcome or create an unvalidated cleanup patch.
 
-Completion criterion: every durable truth has one canonical owner and every durable reference resolves without the cockpit.
+## External authority remains separate
 
-## 3. Clean and verify
+A focused local commit does not authorize push, pull-request publication, merge, deployment, paid activity, destructive cleanup, or production mutation. Obtain authority for each external effect from the applicable project policy.
 
-Remove the goal directory and goal-specific temporary evidence. Re-run checks capable of detecting broken references or missing promoted artifacts. Follow the automatic commit procedure in `SKILL.md`, then report the accepted outcome, final evidence, residual risk, cleanup result, and commit.
-
-Completion criterion: temporary goal artifacts are absent, post-cleanup checks pass, and the automatic commit procedure completes.
+Completion criterion: canonical truth has one owner, retained or archived coordination evidence remains recoverable, behavior-affecting work is validated as a slice, and any external action has separate authority.

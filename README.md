@@ -11,19 +11,45 @@ Reusable agent skills maintained by Taecontrol.
 
 ## Skills
 
-- [`pursue-goal`](./skills/pursue-goal/SKILL.md) — Defines goals collaboratively, keeps a living checkpoint plan, and gates one-checkpoint sessions on accepted requirements, boundaries, design, architecture, and validation.
-- [`strategic-programming`](./skills/strategic-programming/SKILL.md) — Implements non-trivial changes with deep modules, information hiding, honest concepts, and behavioral proof.
-- [`implementation-review`](./skills/implementation-review/SKILL.md) — Independently judges a completed change against its accepted outcome and the `strategic-programming` standard.
-- [`use-case-qa`](./skills/use-case-qa/SKILL.md) — Validates accepted user journeys through observable product seams.
-- [`adr`](./skills/adr/SKILL.md) — Preserves durable architectural rationale in minimal decision records.
-- [`developer-documentation-style`](./skills/developer-documentation-style/SKILL.md) — Writes clear, direct developer documentation without chatbot prose.
-- [`ui-ux-design`](./skills/ui-ux-design/SKILL.md) — Designs and reviews task-first web, iOS, and Android interfaces with platform-native behavior, visual craft, accessibility, and rendered evidence.
-- [`gh-stack`](./skills/gh-stack/SKILL.md) — Creates and manages stacked GitHub pull requests with agent-safe `gh stack` workflows.
+This branch contains the complete Factory v0.1 role and capability set. Copied installs and focused Coordinator-routing scenarios pass; treat it as pilot-ready, not production-proven.
 
-Install the active set:
+### Factory coordination and production
+
+- [`pursue-goal`](./skills/pursue-goal/SKILL.md) — Coordinates adaptive discovery and verified vertical-slice delivery.
+- [`cleaner`](./skills/cleaner/SKILL.md) — Repairs and hardens accepted candidates before independent verification.
+- [`strategic-programming`](./skills/strategic-programming/SKILL.md) — Applies deep design, invariants, and behavioral proof to non-trivial changes.
+- [`implementation-review`](./skills/implementation-review/SKILL.md) — Implements the independent read-only Verifier role.
+- [`use-case-qa`](./skills/use-case-qa/SKILL.md) — Implements the independent Product Validator role.
+- [`tdd`](./skills/tdd/SKILL.md) — Provides an optional, empirically evaluated test-driven implementation strategy.
+
+### Communication and discovery
+
+- [`grilling`](./skills/grilling/SKILL.md) — Interviews the complete current decision frontier in numbered rounds.
+- [`wait-what`](./skills/wait-what/SKILL.md) — Re-explains a message naturally in Spanish or English without advancing the work.
+- [`unslop`](./skills/unslop/SKILL.md) — Removes AI filler from human-facing prose while preserving technical fidelity.
+- [`writing-for-agents`](./skills/writing-for-agents/SKILL.md) — Authors portable skills, agent rules, profiles, and handoff contracts.
+- [`research`](./skills/research/SKILL.md) — Investigates bounded questions against authoritative sources.
+- [`spike`](./skills/spike/SKILL.md) — Runs bounded technical feasibility experiments with real execution evidence.
+- [`prototype`](./skills/prototype/SKILL.md) — Builds disposable product, state, interaction, or UI experiments.
+- [`diagnosing-bugs`](./skills/diagnosing-bugs/SKILL.md) — Produces a red loop, minimal reproduction, and supported root-cause evidence before repair.
+- [`domain-modeling`](./skills/domain-modeling/SKILL.md) — Discovers terms and invariants and persists only accepted meanings.
+- [`codebase-design`](./skills/codebase-design/SKILL.md) — Supplies the shared deep-module and seam vocabulary.
+- [`architecture-design`](./skills/architecture-design/SKILL.md) — Develops alternatives for consequential architecture questions and returns the decision frontier.
+- [`improve-codebase-architecture`](./skills/improve-codebase-architecture/SKILL.md) — Scans a bounded area for evidenced deepening opportunities.
+
+### Operations and supporting skills
+
+- [`wizard`](./skills/wizard/SKILL.md) — Guides authorized human-only operations without receiving secrets.
+- [`adr`](./skills/adr/SKILL.md) — Preserves durable architectural rationale in minimal decision records.
+- [`developer-documentation-style`](./skills/developer-documentation-style/SKILL.md) — Writes direct developer documentation without chatbot prose.
+- [`ui-ux-design`](./skills/ui-ux-design/SKILL.md) — Designs and reviews task-first web, iOS, and Android interfaces.
+- [`gh-stack`](./skills/gh-stack/SKILL.md) — Creates and manages stacked GitHub pull requests.
+
+Install the pilot Factory set:
 
 ```bash
-npx skills add taecontrol/skills --skill pursue-goal --skill strategic-programming --skill implementation-review --skill use-case-qa --skill adr --skill developer-documentation-style --skill ui-ux-design --skill gh-stack
+npx skills add taecontrol/skills \
+  --skill pursue-goal cleaner strategic-programming implementation-review use-case-qa tdd grilling wait-what unslop writing-for-agents research spike prototype diagnosing-bugs domain-modeling codebase-design architecture-design improve-codebase-architecture wizard adr developer-documentation-style ui-ux-design gh-stack
 ```
 
 ## Install with skills.sh / npx skills
@@ -46,49 +72,21 @@ npx skills add taecontrol/skills --list
 
 ```text
 skills/
-  pursue-goal/
+  <skill-name>/
     SKILL.md
-    agents/
-      openai.yaml
-  strategic-programming/
-    SKILL.md
-  implementation-review/
-    SKILL.md
-  use-case-qa/
-    SKILL.md
-  adr/
-    SKILL.md
-    templates/
-      adr.md
-  developer-documentation-style/
-    SKILL.md
-  ui-ux-design/
-    SKILL.md
-    references/
-      interaction-foundations.md
-      visual-craft.md
-      web.md
-      ios.md
-      android.md
-      verification.md
-      sources.md
-    templates/
-      design-brief.md
-  gh-stack/
-    SKILL.md
-    references/
-      stack-design.md
-      commands.md
-      troubleshooting.md
+    references/   # optional branch-specific guidance
+    templates/    # optional copyable artifacts
+    scripts/      # optional deterministic helpers
+    agents/       # optional runtime adapter metadata
+
+docs/
+  software-factory-v0.1.md
+  software-factory-v0.1-skill-library.md
+  software-factory-v0.1-skill-migration.md
+  software-factory-flow.html
 ```
 
-## Local validation
-
-From this repository:
-
-```bash
-npx skills add . --list
-```
+Each skill directory is independently installable. Required links, notices, and support files stay inside that directory.
 
 ## License
 

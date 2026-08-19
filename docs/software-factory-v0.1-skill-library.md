@@ -40,9 +40,10 @@ The canonical implementations live in `taecontrol/skills`. Upstream skills are d
 | `tdd` | `mattpocock/skills:skills/engineering/tdd/SKILL.md` | Experimental strategy adaptation |
 | `wizard` | `mattpocock/skills:skills/engineering/wizard/SKILL.md` | Material portability and authorization adaptation |
 | `unslop` | `cursor/plugins:pstack/skills/unslop/SKILL.md` | Material language and artifact-scope adaptation |
-| `spike` | No distributable upstream baseline | Taecontrol-authored from the Factory contract; the installed Hermes skill was consulted only and no text is incorporated until its provenance is pinned |
-| `architecture-design` | No single upstream package | Taecontrol-authored composition of canonical Factory capabilities |
+| `spike` | No distributable upstream baseline | Taecontrol-authored from the Factory contract; no upstream text incorporated |
+| `architecture-design` | No single upstream package | Taecontrol-authored composition of local Factory design and domain minimums, optionally enriched by available canonical capabilities |
 | `adr` | Existing Taecontrol canonical skill | Existing package, not an adaptation in this effort |
+| `cleaner` | No distributable upstream baseline | Taecontrol-authored Factory write-role capability |
 
 Every Matt path in this table uses revision `885e2ca4d842d139e9aef4e48d366c63cb1b8013`. The Unslop path uses revision `60c641e4fad674784b30abcf9f8915dea39df38d`.
 
@@ -73,6 +74,7 @@ Every Matt path in this table uses revision `885e2ca4d842d139e9aef4e48d366c63cb1
 | Deep-module vocabulary | `codebase-design` | Shared design reference | Loaded by design, Cleaner, and Verifier when applicable |
 | Consequential architecture design | `architecture-design` | Composite discovery | Coordinator-selected for expensive-to-reverse design questions |
 | Architecture opportunity scan | `improve-codebase-architecture` | Composite discovery | Human- or Coordinator-selected for demonstrated friction |
+| Candidate repair and hardening | `cleaner` | Production delivery | Coordinator-selected after implementation or a repairable independent finding |
 | Test-first implementation strategy | `tdd` | Production delivery experiment | Project-profile or human-selected |
 | Human-only procedural assistance | `wizard` | Operations adapter | Coordinator-selected when the agent cannot perform a required step |
 | Durable architecture rationale | `adr` | Optional accepted-decision recording | Coordinator-selected after rationale is accepted |
@@ -207,7 +209,7 @@ Required contract:
 
 Spike code is disposable by default. Preserve the verdict and useful evidence. Promotion requires an explicit decision and the complete production delivery loop.
 
-This skill may use the existing Hermes `spike` procedure as a second design input. Its final canonical package must follow Factory artifact and authority rules.
+Its final canonical package must follow Factory artifact and authority rules.
 
 ### `prototype`
 
@@ -292,7 +294,7 @@ This Taecontrol-authored composite skill handles new consequential architecture 
 Required contract:
 
 1. Name the expensive-to-reverse question and why current evidence cannot settle it.
-2. Load `codebase-design` for module and interface vocabulary and `domain-modeling` when domain concepts or invariants are changing.
+2. Establish the local minimum for the question: module and interface vocabulary, plus affected domain concepts and invariants. When independently available, load `codebase-design` and `domain-modeling` only to enrich that local minimum; correctness does not depend on either sibling skill or filesystem path.
 3. Inspect existing code, accepted decisions, and project constraints before proposing shapes.
 4. Dispatch research, a spike, or a prototype when an empirical uncertainty cannot be resolved on paper.
 5. Compare at least two plausible shapes when the decision is consequential and alternatives are real.
@@ -328,10 +330,10 @@ Treat this as a composite discovery skill:
 1. Inspect a bounded area selected from user direction or demonstrated change friction.
 2. Dispatch a read-only explorer.
 3. Produce a verified visual report outside the repository unless the user requests persistence.
-4. Return the selected candidate's proposed decision frontier and evidence to the Coordinator.
-5. The Coordinator invokes `grilling` and owns human synchronization and acceptance.
-6. Use `domain-modeling` and `codebase-design` when the decision needs them.
-7. Return the Coordinator-recorded architecture direction or explicit decision not to proceed.
+4. Use `domain-modeling` and `codebase-design` only when available and useful to enrich the investigation.
+5. Return the selected candidate's proposed decision frontier and evidence to the Coordinator, then stop.
+
+After that return, the Coordinator separately owns human synchronization, invokes `grilling` when needed, and records the resulting direction or decision not to proceed.
 
 Do not mutate production code. An accepted refactor becomes its own production vertical slice and enters the complete delivery loop.
 
@@ -383,31 +385,36 @@ Candidate measures:
 
 The wizard must not bypass the Factory's authorization rules. It helps the human perform an authorized action; it does not grant authority for that action.
 
-## Initial implementation waves
+## Factory integration state and dependency waves
 
-### Wave 1: communication and coordination
+The feature branch contains the Taecontrol-authored `cleaner` and the migrations of `pursue-goal` to Coordinator, `implementation-review` to Verifier, and `use-case-qa` to Product Validator. Copied single-skill installation and focused Coordinator-routing scenarios pass for this branch. The Factory is ready for a bounded pilot, not yet proven by a real production delivery.
+
+### Wave 1: delivery-loop prerequisites
+
+- `cleaner`;
+- Coordinator in `pursue-goal`;
+- Verifier in `implementation-review`;
+- Product Validator in `use-case-qa`.
+
+### Wave 2: communication, coordination, and discovery primitives
 
 - `grilling`;
 - bilingual `wait-what`;
 - adapted `unslop`;
 - `writing-for-agents`;
-- Coordinator integration in `pursue-goal`.
-
-### Wave 2: discovery primitives
-
 - `research`;
 - `spike`;
 - `prototype`;
 - `diagnosing-bugs`;
 - `domain-modeling`;
-- `codebase-design`.
+- `codebase-design`;
 - `architecture-design`.
 
 ### Wave 3: composite and optional capabilities
 
 - `improve-codebase-architecture`;
 - experimental `tdd`;
-- `wizard`.
+- `wizard`;
 - existing `adr` integration.
 
-Implement and verify one wave before adding the next. A skill exists only when its package installs independently, its linked files are present, and a focused behavioral scenario shows that the Coordinator invokes and routes it correctly.
+A skill is ready for Factory routing only when its package is independently installable, linked files and notices are present, and a focused behavioral scenario shows correct Coordinator invocation and routing. This branch meets that package and routing bar. A real bounded pilot must now exercise the production role chain and reveal its actual cost and failure modes.

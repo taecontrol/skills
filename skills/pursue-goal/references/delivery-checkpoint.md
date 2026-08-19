@@ -1,39 +1,41 @@
-# Delivery checkpoint
+# Vertical-slice lifecycle
 
-Use this branch to accept and execute one already-defined delivery checkpoint.
+Use this procedure only for one accepted, judgeable production vertical slice. Acceptance of its concise playback authorizes the full lifecycle through a focused local commit. It does not authorize external effects and does not require result acceptance before commit.
 
-## 1. Accept one delivery start
+```text
+Accepted slice
+→ Implementer
+→ Cleaner and gates
+→ independent Verifier
+→ independent Product Validator
+→ focused local commit and map adaptation
+```
 
-Create a readiness record for the exact delivery scope. For every dimension below, link accepted evidence or mark it inapplicable with a rationale:
+## Inputs and candidate lineage
 
-- **requirements and boundaries:** actors, outcome, included and excluded behavior, constraints, and acceptance criteria;
-- **functional flow:** happy path, relevant alternatives, errors, edge cases, permissions, and meaningful system states;
-- **UI/UX:** interaction, information hierarchy, content, visual states, responsiveness, and accessibility;
-- **code architecture:** responsibilities, boundaries, interfaces, dependencies, data flow and ownership, persistence or migration, failure behavior, and material tradeoffs; and
-- **validation:** mapping from accepted flows and important risks to observable proof, with required environment and test data.
+Every handoff names the goal-map identity, accepted-slice identity, project-profile identity, base revision, immutable candidate identity, protected behavior, applicable gates, and evidence pointers. The Cleaner materializes each candidate reproducibly and records its source or patch digest, included artifacts, generated-output procedure, locks, permitted configuration, fixtures, driver and environment identities, and gate ledger.
 
-Readiness passes only when every dimension has accepted evidence or an accepted inapplicability rationale and zero open material design questions can change the delivery.
+An unlisted workspace artifact, ambient configuration, or secret is outside the candidate. A role rejects superseded identities or an unverifiable materialization.
 
-When ready, add the readiness verdict, evidence pointer, and material caveats to the checkpoint-start proposal defined in `SKILL.md`. Present that concise proposal once. The human's response accepts the contract and readiness and authorizes delivery. Link the response from both records. Keep the exhaustive readiness record in the cockpit and show it when the human requests the detail.
+## Produce and harden
 
-When readiness fails, update the living map with the human to add or reprioritize the required definition checkpoint, write the next-session prompt, and end this conversation. Resolve the gap and delivery in separate fresh sessions.
+1. **Implementer:** implement the smallest coherent end-to-end behavior and focused observable proof. Stop safely and return to Coordinator when evidence challenges a material decision.
+2. **Cleaner:** repair local correctness and design defects, harden error behavior, run every profile-activated affected gate, and freeze a new candidate identity. A required gate is satisfied only by `Pass` or a matching `Pre-authorized disposition`; `Resynchronize` and `Blocked` return to Coordinator or the named owner.
+3. **Verifier:** independently and read-only judges the exact cleaned candidate. `Pass` goes to Product Validator. `Repair` returns automatically to Cleaner with stable findings. `Resynchronize` goes to Coordinator. `Inconclusive` goes to Coordinator with an owner and exact unblock condition.
+4. **Product Validator:** independently validates the same Verifier-passed candidate through real product interfaces. Before every effectful action, it verifies scoped authorization or an approved non-production substitute. `Pass` makes the candidate eligible for commit. `Fail` returns automatically to Cleaner. `Inconclusive` returns to Coordinator with an unblock condition.
 
-Completion criterion: the cockpit links the exhaustive readiness record, the combined start proposal, and one explicit human acceptance covering both; or it records the blocking definition checkpoint and ends delivery before production changes.
+A candidate changed by Cleaner gets a new identity, reruns affected gates, and returns to Verifier before final product validation. The final Product Validator run executes the complete accepted journey set against the final immutable candidate. Targeted journeys may be used during diagnosis but do not replace that final run.
 
-## 2. Deliver the accepted scope
+## Repair and diagnosis
 
-Perform the mechanical coding, specialist work, review, and bounded repair required by the accepted deliverable. Preserve unrelated user changes and keep adjacent checkpoints outside this session.
+Keep a stable ledger for each gate, Verifier finding, and Product Validator failure: identity, candidate, evidence, consequence, authority, status, and disposition. A bounded repair returns to the same independent reviewer or validator when the candidate lineage and risk surface remain reliable.
 
-If execution reveals an unknown that can materially change requirements, boundaries, flow, UI/UX, architecture, contracts, risk, or validation, stop at a safe point. Record the evidence, update the living map with the human, and hand off to a fresh definition session. Resolve ordinary implementation details that are already determined by accepted design autonomously.
+After two unsuccessful repairs for the same stable failure, dispatch a fresh Root-cause Diagnostician. It returns evidence-backed classification: local implementation defect, incoherent design, contract gap, environment or harness blocker, or demonstrated capability mismatch. The Coordinator may authorize another bounded repair only inside accepted decisions and project policy. Model or harness escalation is never automatic; it requires demonstrated capability-mismatch evidence and follows the project profile's routing policy. Reshaping the accepted outcome, changing consequential architecture, increasing material cost, or changing external-effect policy requires re-synchronization.
 
-Run the proof named by the current checkpoint. Keep separately planned integrated QA, user validation, and review in their own checkpoints.
+## Commit and adapt
 
-Completion criterion: the one accepted deliverable exists, every `Done when` item passes, evidence is linked from its map entry, and no later checkpoint was executed.
+When Cleaner gates are satisfied, Verifier passes, and Product Validator passes the complete accepted journeys, record the final candidate and evidence in the goal map. Inspect the staged diff and prove it exactly matches the validated delivery surface, apart from permitted coordination-only bookkeeping that cannot affect behavior. Create one focused local commit containing only slice-owned changes, record its revision, and adapt future slices from evidence.
 
-## 3. Accept, record, commit, and stop
+Do not wait for a second human result acceptance. Push, pull-request publication, merge, deployment, and every other external effect require separate policy and authority.
 
-Present the complete delivered result and its named proof. Wait for explicit human acceptance; requested corrections remain inside this checkpoint and require the affected proof to be rerun.
-
-After acceptance, record the response, update the checkpoint status, complete the handoff, and follow the automatic commit procedure in `SKILL.md`. End the conversation after reporting the one checkpoint disposition and commit.
-
-Completion criterion: the cockpit records accepted delivered evidence, validation, residual risk, and the next fresh-session prompt without relying on conversation memory, and the automatic commit procedure completes.
+Completion criterion: the local commit identifies a final candidate with satisfied gates, a Verifier pass, Product Validator pass for every accepted journey, durable evidence, and no unresolved material decision or hidden blocker.

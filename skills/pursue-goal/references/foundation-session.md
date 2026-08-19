@@ -1,39 +1,33 @@
-# Foundation session
+# Coordinator synchronization
 
-Run this branch only in a fresh conversation with no accepted foundation, or when the human requests material re-grounding. Confine the session to defining the goal and its initial living map.
+Use this procedure for initial orientation, a material decision that is ready for human input, or evidence that challenges an accepted material decision. It is not a mandatory foundation phase and does not require a fresh human-started session.
 
-## 1. Build the shared model
+## Inspect before interviewing
 
-Investigate repository and external facts before asking the human. Separate facts, assumptions, and decisions. Interview the human one material decision at a time, always giving a recommendation and its principal consequence. Walk concrete actor journeys and system changes to expose hidden requirements and boundaries.
+Read repository instructions, product truth, current worktree, project profile, goal map, candidate lineage, and relevant discovery evidence. Separate repository facts, accepted decisions, assumptions, and unknowns. Update durable artifacts only with evidence and decisions that have an authority source.
 
-Resolve:
+If a repository fact, empirical behavior, or feasibility claim can answer an uncertainty, route it to adaptive discovery instead of asking the human.
 
-- outcome and final observable proof;
-- actors, initial end-to-end journeys, and preserved behavior;
-- initial requirements, boundaries, exclusions, and constraints;
-- known unknowns and decisions reserved to the human; and
-- material product, experience, technical, and validation risks.
+## Run the frontier
 
-Completion criterion: every item above is either resolved or recorded as an explicit unknown requiring a checkpoint; none remains an implicit assumption.
+Model the material decision space as a design tree. The frontier contains every unresolved human-owned decision whose prerequisites are settled.
 
-## 2. Build the initial living map
+1. Ask the complete frontier in one numbered round.
+2. For every question, state the decision, a recommendation, and its principal consequence.
+3. Keep questions whose prerequisites remain open out of the round.
+4. Incorporate the human response, update the tree and durable map, then compute the next frontier.
+5. Continue independent discovery on settled branches when useful. Invoke the project's communication-recovery capability only when the user asks for clarification or clearly signals that a round did not land.
 
-Create only checkpoints that reduce a real uncertainty or produce an independently useful result. Classify each as:
+Do not substitute a plan, a checklist, or a specialist preference for an unanswered material decision.
 
-- **definition:** resolves what to build, how it should work, how it should be shaped, or how it will be proven through grilling, research, flows, prototypes, UI/UX, technical spikes, architecture, or validation design;
-- **delivery:** implements or validates an accepted definition; or
-- **closure:** proves the complete outcome and promotes durable truth.
+## Establish profile and map
 
-For every checkpoint create one canonical map record containing its ID, type, question or requirement, dependencies and accepted evidence pointers, deliverable, boundaries, non-goals, observable `Done when`, human collaboration, contract-acceptance pointer, result-evidence pointer, and status. Order only what current knowledge supports. Treat additions, splits, removals, and reordering as normal when later evidence changes the route.
+For a new goal, record the smallest useful project profile and goal map. The profile identifies executable gates, protected surfaces, faithful validation environments, external-effect policy, and harness limits. The map identifies the outcome, accepted decisions, boundaries, evidence, current and possible next slices, risks, blockers, and identities. For re-synchronization, amend only the affected decision and invalidate only evidence affected by it.
 
-Completion criterion: every proposed checkpoint has a judgeable result and justified dependencies, while every known unknown has a checkpoint or an explicit human-decision disposition.
+## Accept a slice only when it is judgeable
 
-## 3. Accept, persist, commit, and stop
+When the relevant frontier is empty and a vertical slice is judgeable, give one concise playback containing its user-visible outcome, included and excluded behavior, protected behavior, consequential accepted choices, and Product Validator proof. Persist the detailed agent contract and the human's acceptance identity. That acceptance authorizes the production lifecycle through focused local commit.
 
-Read back the complete foundation and initial map as one coherent proposal. Wait for explicit human acceptance and incorporate requested changes until acceptance is unambiguous.
+When evidence is still insufficient, record the live question and dispatch bounded discovery. When a material decision is challenged during delivery, preserve the candidate and evidence, re-run the affected frontier, and resume only after the changed decision is accepted.
 
-After acceptance, create or update the cockpit using the shape in `SKILL.md`. Persist the accepted foundation, map, evidence pointers, the first accepted checkpoint ID, and an exact next-session prompt. Treat that response as result acceptance and follow the automatic commit procedure in `SKILL.md`.
-
-End the conversation after the cockpit and commit are verified. Product implementation, prototypes, spikes, and the first checkpoint belong to their own fresh sessions.
-
-Completion criterion: the cockpit contains the explicitly accepted foundation and living map, names at most one accepted current checkpoint, includes its fresh-session prompt, the automatic commit procedure completes, and no checkpoint was executed during foundation work.
+Completion criterion: every material decision is accepted or explicitly remains outside the current slice; the profile and map have identities; and either an accepted judgeable slice exists or the next bounded discovery question is recorded.

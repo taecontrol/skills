@@ -11,7 +11,7 @@ This analysis recommends migration work; it does not claim that the current skil
 | Current artifact | Factory role | Decision |
 | --- | --- | --- |
 | `pursue-goal` | Coordinator and vertical-slice lifecycle | Major rewrite |
-| No current skill | Cleaner | Add a new skill |
+| `cleaner` | Cleaner | Current Taecontrol-authored role; integrate it with the migrated Coordinator, Verifier, and Product Validator |
 | `implementation-review` | Verifier | Keep the package identifier; rewrite its role contract |
 | `use-case-qa` | Product Validator | Keep the package identifier; simplify and rewrite its role contract |
 | `strategic-programming` | Shared Implementer, Cleaner, and Verifier standard | Small role-boundary revision |
@@ -140,9 +140,9 @@ Add references for:
 
 Keep these details behind pointers so the Coordinator skill remains legible.
 
-## New `cleaner` skill
+## `cleaner`
 
-The current skill set has no write-capable role that owns post-implementation repair and strategic cleanup. Add `skills/cleaner/SKILL.md`.
+`skills/cleaner/SKILL.md` is the write-capable role that owns post-implementation repair and strategic cleanup. The remaining delivery-loop migrations must route to it under the contract below.
 
 ### Inputs
 
@@ -169,9 +169,11 @@ The Cleaner may edit code and tests inside accepted material decisions. It may n
 
 ### Outputs
 
-- candidate ready for Verifier;
-- `Resynchronize` with the material decision and evidence;
-- `Blocked` with an exact unblock condition.
+- **Candidate ready for Verifier** only when every required gate is `Pass` or has a valid `Pre-authorized disposition`;
+- **Resynchronize to Coordinator** with the material decision and evidence; or
+- **Blocked to owner** with the owner and exact unblock condition.
+
+These outcomes are mutually exclusive. A `Resynchronize` or `Blocked` gate never dispatches a candidate to the Verifier.
 
 The completion criterion is a repaired, hardened, identifiable candidate with satisfied gates—not a cleanup report.
 
@@ -313,7 +315,7 @@ Manuvra belongs at this adapter layer. Its action-plus-observation response can 
 ## Recommended migration order
 
 1. Accept Factory v0.1 as the source of truth.
-2. Add the Cleaner skill.
+2. Integrate the existing Cleaner contract with the migrated delivery roles.
 3. Rewrite `implementation-review` as the Verifier role while keeping its identifier.
 4. Rewrite `use-case-qa` as the Product Validator role while keeping its identifier.
 5. Add Factory role mapping to `strategic-programming`.

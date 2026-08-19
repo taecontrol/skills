@@ -19,7 +19,7 @@ Version 0.1 records the currently accepted operating model. It is a design basel
 5. **Evidence changes the route.** Plans are provisional. Discovery or delivery evidence may add, remove, split, or reorder future work when it changes the best route.
 6. **Logical roles, portable execution.** Roles are defined by responsibility, authority, input, output, and independence. Harness adapters decide how to realize them.
 7. **Repair over report.** The Cleaner fixes implementation and local design defects within accepted decisions. It does not stop after writing a review report.
-8. **Independent judgment.** The Verifier and Product Validator run in contexts independent from implementation and cleaning. Prompt changes inside the same accumulated context do not satisfy this requirement.
+8. **Independent judgment.** The Verifier and Product Validator run in contexts independent from implementation and cleaning. Product Validator is also independent from Verifier and receives only durable candidate, pass, journey, and evidence records. Prompt changes inside the same accumulated context do not satisfy this requirement.
 9. **Deterministic rules become gates.** If a property can be checked reliably, the project should encode it as an executable gate instead of repeating it as prompt guidance.
 10. **Risk pays for rigor.** Expensive gates target decision-dense or high-consequence code and run at a cadence proportionate to their cost and value.
 11. **External effects have separate authority.** Local completion does not authorize push, pull request publication, merge, deployment, paid operations, destructive operations, or production mutation unless a separate policy grants that authority.
