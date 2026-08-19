@@ -2,6 +2,13 @@
 
 Reusable agent skills maintained by Taecontrol.
 
+## Software Factory design
+
+- [`Software Factory v0.1`](./docs/software-factory-v0.1.md) — Harness-agnostic roles, adaptive discovery, vertical-slice delivery, quality gates, and evidence rules.
+- [`Adaptive Factory flow`](./docs/software-factory-flow.html) — Visual map of Coordinator-directed discovery and delivery loops.
+- [`Factory skill library`](./docs/software-factory-v0.1-skill-library.md) — Canonical capabilities, upstream provenance, adaptation boundaries, and implementation waves.
+- [`Factory v0.1 skill migration`](./docs/software-factory-v0.1-skill-migration.md) — Gap analysis and migration order for the current skills.
+
 ## Skills
 
 - [`pursue-goal`](./skills/pursue-goal/SKILL.md) — Defines goals collaboratively, keeps a living checkpoint plan, and gates one-checkpoint sessions on accepted requirements, boundaries, design, architecture, and validation.
