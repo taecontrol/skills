@@ -28,14 +28,14 @@ Choose exactly one branch and read only its linked file:
 
 - For a new goal or material re-grounding, read and follow [`references/foundation-session.md`](references/foundation-session.md). Keep all checkpoint-execution branches out of this session.
 - For an accepted **definition** checkpoint, accept the checkpoint start below, then read and follow [`references/definition-checkpoint.md`](references/definition-checkpoint.md).
-- For an accepted **delivery** checkpoint, read [`references/delivery-checkpoint.md`](references/delivery-checkpoint.md) and follow its combined checkpoint-contract and readiness start gate. Do not run a separate contract gate first.
+- For an accepted **delivery** checkpoint, read and follow [`references/delivery-checkpoint.md`](references/delivery-checkpoint.md). It adds readiness to the checkpoint start proposal and accepts both in one response.
 - For an accepted **closure** checkpoint, accept the checkpoint start below, then read and follow [`references/closure-checkpoint.md`](references/closure-checkpoint.md).
 
 Each linked branch contains the complete steps and completion criteria for that session. Leave unselected branches unread so their later work cannot pull the current session forward.
 
 ## 3. Accept the checkpoint start
 
-For every non-foundation session, present one concise but complete checkpoint-start proposal from the cockpit's current-checkpoint record:
+For every non-foundation session, build one concise checkpoint-start proposal from the cockpit's complete current-checkpoint record:
 
 - ID, type, and requirement or question;
 - accepted dependency evidence by pointer;
@@ -43,9 +43,9 @@ For every non-foundation session, present one concise but complete checkpoint-st
 - observable `Done when` proof; and
 - exact human collaboration promised in this session.
 
-For delivery, inspect readiness before presenting this proposal. Include its verdict and only material caveats alongside the contract; keep the exhaustive readiness evidence in the cockpit. The same human response accepts both the checkpoint contract and readiness. Never stop for a second readiness presentation or approval.
+For definition and closure, present this proposal and wait for explicit human acceptance. For delivery, enter the selected branch first; it adds readiness to this proposal and owns the single start approval.
 
-Wait for explicit human acceptance of the exact start proposal and record the response in its canonical map entry before execution. When the human changes the proposal, update that entry and present the complete revision for acceptance. When a dependency is missing or delivery is not ready, record the gap and propose the appropriate checkpoint instead of executing the blocked one.
+Record the response in the canonical map entry before execution. When the human changes the proposal, update that entry and present the complete revision. When a dependency is missing, record the gap and propose the checkpoint that resolves it.
 
 Completion criterion: the cockpit links the complete start proposal and an unambiguous human response accepting it; for delivery that single response also accepts the linked readiness record. Otherwise execution has not started.
 
@@ -88,16 +88,17 @@ Record map changes and decision supersessions instead of silently rewriting acce
 
 ## Accepted result and automatic commit
 
-Starting a checkpoint and accepting its result are different decisions. When a branch presents completed work or final proof, wait for explicit human acceptance of that result. Incorporate requested corrections inside the same checkpoint and present the complete result again.
+Checkpoint start approval authorizes execution. Result acceptance authorizes commit. When a branch presents completed work or final proof, wait for explicit human acceptance. Incorporate requested corrections inside the same checkpoint and present the complete result again.
 
-After result acceptance, finish the branch's required cockpit updates and handoff, then commit automatically without asking for separate commit permission:
+After result acceptance, finish the branch's cockpit updates and handoff, then commit automatically:
 
 1. Record the human acceptance beside the result evidence.
-2. Inspect repository status and diff. Stage only files or hunks owned by this session, including its cockpit bookkeeping; never absorb unrelated human changes.
-3. Re-run any proof that the final bookkeeping or corrections could affect, inspect the staged diff, and create one focused commit using the repository's commit conventions.
-4. Report the commit ID with the checkpoint disposition. Do not amend, push, or start another checkpoint unless separately authorized.
+2. Inspect repository status and diff. Stage only files or hunks owned by this session, including its cockpit bookkeeping.
+3. Re-run any proof affected by final corrections or bookkeeping.
+4. Inspect the staged diff and create one focused commit using the repository's conventions.
+5. Report the commit ID with the checkpoint disposition. Stop after the commit. Pushing, amending, and starting another checkpoint require separate authorization.
 
-When the session produces no committable repository change, record and report that fact instead of creating an empty commit. A commit failure is a blocker to report and repair, not a reason to ask whether the accepted work should be committed.
+When the session produces no repository change, record and report that fact instead of creating an empty commit. Diagnose and repair commit failures. If the failure remains blocked, report the exact error and leave the disposition blocked.
 
 Completion criterion: every accepted, repository-changing disposition ends in a verified focused commit containing only session-owned changes, or an explicit recorded blocker.
 

@@ -1,8 +1,8 @@
 # Delivery checkpoint
 
-Use this branch to inspect and present the start of a delivery checkpoint, then to implement or validate its already-defined scope after the human accepts the single combined start proposal.
+Use this branch to accept and execute one already-defined delivery checkpoint.
 
-## 1. Accept one combined start gate
+## 1. Accept one delivery start
 
 Create a readiness record for the exact delivery scope. For every dimension below, link accepted evidence or mark it inapplicable with a rationale:
 
@@ -14,7 +14,7 @@ Create a readiness record for the exact delivery scope. For every dimension belo
 
 Readiness passes only when every dimension has accepted evidence or an accepted inapplicability rationale and zero open material design questions can change the delivery.
 
-When ready, present one concise start proposal that combines the complete checkpoint contract required by `SKILL.md` with the readiness verdict. Cite the readiness record and mention only caveats material to the human's decision. Wait once for explicit human acceptance; that response accepts both contract and readiness and authorizes delivery. Record the response beside both records. Do not present the exhaustive readiness record or ask for a second readiness approval unless the human requests the detail.
+When ready, add the readiness verdict, evidence pointer, and material caveats to the checkpoint-start proposal defined in `SKILL.md`. Present that concise proposal once. The human's response accepts the contract and readiness and authorizes delivery. Link the response from both records. Keep the exhaustive readiness record in the cockpit and show it when the human requests the detail.
 
 When readiness fails, update the living map with the human to add or reprioritize the required definition checkpoint, write the next-session prompt, and end this conversation. Resolve the gap and delivery in separate fresh sessions.
 
@@ -34,6 +34,6 @@ Completion criterion: the one accepted deliverable exists, every `Done when` ite
 
 Present the complete delivered result and its named proof. Wait for explicit human acceptance; requested corrections remain inside this checkpoint and require the affected proof to be rerun.
 
-After acceptance, record the response, update the checkpoint status, complete the handoff, and follow the automatic commit procedure in `SKILL.md` without requesting separate commit permission. End the conversation after reporting the one checkpoint disposition and commit.
+After acceptance, record the response, update the checkpoint status, complete the handoff, and follow the automatic commit procedure in `SKILL.md`. End the conversation after reporting the one checkpoint disposition and commit.
 
-Completion criterion: the cockpit records accepted delivered evidence, validation, residual risk, and the next fresh-session prompt without relying on conversation memory, and the accepted session-owned changes are committed.
+Completion criterion: the cockpit records accepted delivered evidence, validation, residual risk, and the next fresh-session prompt without relying on conversation memory, and the automatic commit procedure completes.

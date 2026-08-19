@@ -18,6 +18,6 @@ Completion criterion: every durable truth has one canonical owner and every dura
 
 ## 3. Clean and verify
 
-Remove the goal directory and goal-specific temporary evidence. Re-run checks capable of detecting broken references or missing promoted artifacts. Follow the automatic commit procedure in `SKILL.md` without requesting separate commit permission, then report the accepted outcome, final evidence, residual risk, cleanup result, and commit.
+Remove the goal directory and goal-specific temporary evidence. Re-run checks capable of detecting broken references or missing promoted artifacts. Follow the automatic commit procedure in `SKILL.md`, then report the accepted outcome, final evidence, residual risk, cleanup result, and commit.
 
-Completion criterion: temporary goal artifacts are absent, post-cleanup checks pass, and the accepted session-owned changes are committed.
+Completion criterion: temporary goal artifacts are absent, post-cleanup checks pass, and the automatic commit procedure completes.
