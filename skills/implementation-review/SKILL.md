@@ -1,87 +1,37 @@
 ---
 name: implementation-review
-description: Review a completed software change independently against its accepted outcome, boundaries, tests, strategic design quality, and primary code evidence before merge or human acceptance. Requires the strategic-programming skill.
+description: Independently and read-only verify an immutable Factory candidate against its accepted slice, project-profile gates, and strategic design obligations.
 ---
 
-# Implementation Review
+# Verifier
 
-Judge whether a completed change fulfills its contract honestly and coherently. Work read-only and derive the verdict from primary evidence.
+Independently judge one cleaned immutable candidate. The installation name remains `implementation-review`; the Factory role is Verifier. Work read-only. Return evidence and a route, never a patch.
 
-Entry condition: run the initial review in a fresh subagent or task containing the contract, repository location, and exact review target. When invoked in the implementer's context, dispatch that handoff and end the local review attempt. Bounded repairs return to the same independent reviewer context; a materially reshaped design or risk surface starts another fresh full review.
+## Establish the review
 
-## 1. Establish the review surface
+Use a context independent from Implementer and Cleaner. Require the exact goal-map, accepted-slice or acceptance, and project-profile identities; base revision; immutable candidate identity with reproducible materialization or digest; candidate gate ledger; evidence pointers; and claimed pre-authorized dispositions. Reject superseded input.
 
-Read the Goal Contract or accepted request, repository instructions, relevant decisions, intended base and diff, current worktree, and reported verification. Derive the changed surface from the repository rather than the implementer's summary.
+Return `Inconclusive` when you cannot establish the contract, candidate, changed surface, or independent context.
 
-Map every changed public seam to an outcome, proof obligation, boundary, or protected behavior. Return `Inconclusive` when the contract or changed surface cannot be identified.
+## Trace obligations
 
-Completion criterion: every changed public seam has a contract disposition before judgment begins.
+Apply strategic review: trace whether the candidate gives each policy and invariant one clear owner, keeps consequential complexity behind an understandable seam, preserves identity and dependency boundaries, and supplies proof that can expose a plausible defect. Inspect the accepted slice, protected behavior, repository instructions, profile, candidate materialization, worktree, and repository-derived diff. Trace every material obligation, protected behavior, public seam, failure mode, and required gate to primary code, test, or gate evidence.
 
-## 2. Trace code to the contract
+Run a focused check when the profile requires independent execution or saved evidence is insufficient. A broad green summary does not replace obligation-level proof. Judge behavior at a faithful seam, preserved identities and invariants, accepted degraded states, ownership and dependency direction, and proof that could expose the old behavior or a plausible defect. Leave product journeys to Product Validator.
 
-Load `$strategic-programming` before tracing the code and apply its complete design standard to the changed surface. Return `Inconclusive` when that required reference is unavailable.
+## Keep a finding ledger
 
-For each material obligation, record `Pass`, `Fail`, or `Unverified` and inspect whether:
+Give every finding a stable ID. Record candidate, location, evidence, consequence, required outcome, authority, route, status, and one origin: `implementation-defect`, `contract-gap`, `architecture-gap`, `repair-regression`, or `stale-or-invalid`.
 
-- the intended behavior exists at the faithful seam;
-- boundaries and reserved decisions remain intact;
-- protected behavior and data remain safe;
-- authoritative facts, identities, and invariants survive persistence and adapters;
-- errors and degraded states match the accepted behavior;
-- tests would catch the old behavior or a plausible defect rather than merely ratify the implementation.
+A defect within accepted decisions is `Repair`. A missing or contradictory accepted decision, public-contract change, or consequential architecture question is `Resynchronize`. Missing evidence, access, materialization, environment, or independence is `Inconclusive` with an owner and exact unblock condition. Advisory findings may remain on `Pass` only when they are outside the slice and do not undermine it.
 
-Run focused checks needed to verify reviewer claims. Treat broad green suites as supporting evidence. Keep product use-case execution for `use-case-qa`.
+On bounded re-review, preserve finding IDs and statuses: `Open`, `Resolved`, `Superseded`, `Rejected with evidence`, or `Stale-or-invalid`. Inspect the incremental range and affected seams. Use a fresh full review when the design or risk surface materially changed, lineage is unreliable, or the prior Verifier is unavailable.
 
-A design finding names the complexity mechanism and its concrete maintenance, debugging, safety, or correctness cost.
+## Return exactly one outcome
 
-Completion criterion: every material obligation has primary evidence or an explicit verification gap.
+- `Pass -> Product Validator`: every material obligation passes, each required gate passes or has a valid profile disposition, and only advisory findings remain.
+- `Repair -> Cleaner`: repairable defects remain within accepted decisions.
+- `Resynchronize -> Coordinator`: a contract or consequential architecture gap needs human synchronization.
+- `Inconclusive -> Coordinator`: name the owner and exact unblock condition for the evidence, access, environment, materialization, or independence gap.
 
-## 3. Calibrate findings
-
-Give each finding a stable ID, precise location, evidence, consequence, and required outcome. State the outcome a repair must achieve while leaving implementation choices open.
-
-- **Blocking:** violates the accepted outcome, boundary, authorization, safety, data truth, or a material invariant.
-- **Fix-now:** leaves avoidable design complexity inside the accepted boundary and is proportionate to correct before acceptance.
-- **Advisory:** useful improvement whose cost or scope belongs outside the current goal.
-
-Classify missing or contradictory intent as a `contract gap`, an unrepresentable invariant as an `architecture gap`, and incorrect realization of clear intent as an `implementation defect`. Contract and architecture gaps require a human decision rather than a patch prescription.
-
-On re-review, retain finding IDs and mark each `Resolved`, `Open`, `Superseded`, or `Rejected with evidence`. Inspect the repair and any surface it can affect.
-
-Completion criterion: severity follows demonstrated consequence, and every non-pass finding identifies the authority needed next.
-
-## 4. Return the verdict
-
-Return one verdict:
-
-- `Pass`: every material obligation passed; open findings are Advisory only.
-- `Request changes`: an open Blocking or Fix-now implementation finding is repairable inside the contract.
-- `Inconclusive`: a contract, architecture, evidence, access, environment, or review-surface gap prevents judgment or requires a human decision.
-
-Use this compact shape:
-
-```markdown
-## Verdict
-Pass | Request changes | Inconclusive
-
-## Contract trace
-| Obligation | Status | Evidence |
-| --- | --- | --- |
-
-## Findings
-1. <ID> — Blocking | Fix-now | Advisory — <location>
-   - Evidence:
-   - Consequence:
-   - Required outcome:
-   - Authority: executor | human decision
-
-## Verification
-<inspected and executed evidence>
-
-## Not verified
-<material limits>
-```
-
-Return findings to the caller; repairs and use-case QA run in their own contexts.
-
-Completion criterion: the caller can act on every finding and reproduce the verdict without trusting the reviewer summary.
+Report the exact identities, outcome, obligation and gate evidence, finding ledger, checks run, and any unblock condition. Completion criterion: the Coordinator can reproduce a candidate-specific route to Product Validator, Cleaner, or synchronization.

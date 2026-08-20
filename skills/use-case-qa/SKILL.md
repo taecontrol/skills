@@ -1,98 +1,38 @@
 ---
 name: use-case-qa
-description: Validate accepted user journeys against a completed system through observable product seams and return reproducible per-case evidence.
+description: Independently validate accepted Factory journeys through real product interfaces against one Verifier-passed immutable candidate.
 ---
 
-# Use-Case QA
+# Product Validator
 
-Exercise accepted behavior through the product seam that can actually prove it.
+Use the product to prove accepted journeys for one exact candidate. The installation name remains `use-case-qa`; the Factory role is Product Validator. Work read-only. Do not repair production code.
 
-Entry condition: run QA in a fresh subagent or task containing a compact contract, accepted cases, repository location, and exact system under test. When invoked from implementation or review context, dispatch that handoff and end the local QA attempt.
+## Establish the validation
 
-## 1. Fix the baseline
+Use a fresh context independent from Implementer, Cleaner, and Verifier. Carry durable accepted inputs and evidence, not the Verifier's reasoning. Require the exact goal-map, accepted-slice or acceptance, and project-profile identities; base revision; immutable candidate identity; same-candidate Verifier `Pass`; and accepted journeys.
 
-Read the Goal Contract or accepted use cases, build or revision under test, environment constraints, and authorization for external, billable, destructive, privacy-sensitive, or production effects.
+Each journey needs an actor, starting state, action, required observable result, forbidden result, permitted driver and environment, identity and test data, reset or isolation method, and evidence capture. Reject superseded identities. Return `Inconclusive` if a journey lacks a judgment criterion, the driver cannot preserve material semantics, or a same-candidate Verifier pass is absent.
 
-Each baseline case needs an actor, starting state, action, observable outcome, and relevant forbidden outcome. Preserve accepted meaning; label newly discovered scenarios `Exploratory`.
+## Choose a real method
 
-Return `Inconclusive` when the target is ambiguous, a material case lacks an oracle, or a required side effect lacks authority.
+Inspect available browser, desktop, API, CLI, simulator, staging, fixture, observability, and reset facilities. Use the narrowest real product interface that preserves the journey's material semantics. Record system and candidate, driver and environment, identities and data, isolation or reset, observations, evidence, and fidelity limits.
 
-Completion criterion: every planned case traces to accepted behavior and has a judgeable expected outcome.
+Tests and static inspection may aid diagnosis but do not prove a journey unless they are its accepted real product interface. Keep accepted journeys separate from regression and exploratory probes.
 
-## 2. Choose the narrowest faithful oracle
+## Authorize effects before acting
 
-Inspect the project's existing simulator, browser or desktop driver, API, CLI, harness, staging environment, fixtures, observability, and reset procedures. Choose the cheapest method that preserves the semantics material to the case.
+Before an action with an external, billable, destructive, privacy-sensitive, or production effect, require either scoped authorization for that effect and environment or an approved non-production or simulated substitute that preserves material semantics. Without one, do not act. Return `Inconclusive` with the required grant or substitute. Slice acceptance and local commit do not grant effect authority.
 
-Record a compact method contract:
+## Run and route journeys
 
-- exact system under test;
-- driver and environment;
-- identities and data;
-- isolation or reset;
-- verdict-bearing oracles;
-- evidence capture;
-- fidelity limits.
+Run every accepted journey against the exact Verifier-passed candidate. Capture observations when the driver allows it. Preserve the first failure and earliest divergence. Reset or namespace state as the method requires. Mark each journey `Pass`, `Fail`, or `Inconclusive` with direct evidence. A failure has an absent, incorrect, unsafe, or forbidden result. An inconclusive result names the concrete limitation and unblock condition.
 
-Use several methods only when one cannot observe all accepted outcomes. Static inspection and component tests may diagnose or support a sub-claim; a use case passes through its required observable seam.
+A changed candidate must return through Cleaner and Verifier. Before commit, rerun the complete accepted journey set against the final candidate. Diagnostic journeys during repair do not replace it.
 
-When a faithful driver or environment requires substantial research, prototyping, or a technical spike, commission a separate fresh-context discovery goal. Its durable artifact returns conclusions, evidence pointers, and limits; the validator reads that compact artifact rather than its exploration history. When dispatch is unavailable, return `Inconclusive` with the bounded discovery goal.
+Return exactly one outcome:
 
-Completion criterion: another validator can repeat the method, and every material outcome has an oracle or named gap.
+- `Pass -> Coordinator commit readiness`: every accepted journey passes on the final candidate.
+- `Fail -> Cleaner`: provide the journey, earliest divergence, reproduction, candidate identity, and evidence for automatic repair.
+- `Inconclusive -> Coordinator`: name the owner and exact unblock condition or material ambiguity.
 
-## 3. Execute the cases
-
-Create one compact matrix without copying the source prose:
-
-| Case | Driver | Expected observation | Status | Observation | Evidence |
-| --- | --- | --- | --- | --- | --- |
-
-Run cases through the selected seam. Capture evidence at observation time and reset or namespace state as the method contract requires. Consolidate cases into journeys when they share expensive setup while preserving independent oracles and verdicts.
-
-Classify each case:
-
-- `Pass`: every required outcome occurred and no forbidden outcome occurred.
-- `Fail`: a required outcome was absent, incorrect, unsafe, or contradicted.
-- `Blocked`: a named access or environment condition prevented execution and has a concrete unblock condition.
-- `Unverified`: execution could not expose a required outcome.
-
-Preserve the first failure when retries diagnose instability. Record attempts, timing, and state differences when they matter. When cleanup matters, verify residual state with an independent inventory rather than the cleanup routine's own identifiers.
-
-Completion criterion: every baseline case has a status, direct evidence, and a reproducible observation or precise blocker.
-
-## 4. Probe and diagnose
-
-After the baseline, run only regression and exploratory checks justified by the changed surface and residual risk. Keep three evidence sets distinct:
-
-- **Baseline:** decides acceptance.
-- **Regression:** protects adjacent established behavior.
-- **Exploratory:** exposes new uncertainty without rewriting the baseline.
-
-For failures, preserve the verdict and gather the earliest divergence, environment, identity, state, reproduction, evidence, and likely boundary. Label causal explanations as hypotheses. Preserve the system under test; return repairs to a separate execution context.
-
-Completion criterion: each failure is actionable without turning validation into implementation or product redesign.
-
-## 5. Return the verdict
-
-Return `Fail` when any baseline case demonstrates failure, even when other cases are blocked or unverified. Otherwise return `Pass` when all baseline cases pass, or `Inconclusive` when blocked or unverified cases prevent a pass.
-
-```markdown
-## Verdict
-Pass | Fail | Inconclusive
-
-## Method
-- System, driver, environment, reset, oracles, limits
-
-## Baseline cases
-<completed baseline matrix from Step 3>
-
-## Regression and exploratory evidence
-<kept separate>
-
-## Failures
-- <case, earliest divergence, reproduction, evidence, likely boundary>
-
-## Not verified
-<gaps and concrete unblock conditions>
-```
-
-Completion criterion: the human can judge every accepted case from direct evidence without inferring behavior from code or a green-suite summary.
+Report the exact identities, Verifier pass, method, journey evidence, any separate regression evidence, and failure or unblock condition. Completion criterion: the Coordinator can route the exact candidate from direct product evidence without inferring behavior from code or a technical suite.

@@ -1,21 +1,17 @@
-# Definition checkpoint
+# Adaptive discovery
 
-Run this branch only after the human explicitly accepts the current checkpoint contract in `SKILL.md`. Use it for grilling, research, functional flows, prototypes, UI/UX, technical spikes, architecture, or validation design.
+Use this when a discoverable uncertainty blocks a decision or a judgeable slice. Discovery is driven by the current question, not a fixed phase.
 
-## 1. Resolve the checkpoint
+## Dispatch one bounded question
 
-Choose the technique that makes the named uncertainty judgeable. Discover facts autonomously; put material decisions to the human one at a time with a recommendation and its principal consequence. Use tangible artifacts and concrete journeys, including relevant alternate, error, empty, loading, permission, and edge states.
+State the question, why it matters, known constraints and accepted decisions, the evidence that will answer it, and a cost, time, or scope limit if it might expand. Choose the capability that fits: research for facts, spike for feasibility, prototype for product or state comparison, architecture design for consequential seams, diagnosis for a failure, or a specialist for a named risk.
 
-Keep prototypes and technical spikes isolated and disposable. Their deliverable is evidence or a design decision, never production behavior.
+Require primary evidence, limits, surprises, a verdict, and a recommendation. Keep a durable artifact only when it will remain useful after the question is settled. Update the goal map with evidence and the route change.
 
-When new evidence reveals future work, update the living map with the human. Add, split, remove, or reorder checkpoints without executing another checkpoint. If the evidence materially changes the current contract, present the revised contract and wait for explicit acceptance before continuing this checkpoint.
+## Route the result
 
-Completion criterion: every question inside the accepted checkpoint contract is resolved in its artifact or recorded as an explicit residual unknown with an accepted disposition.
+From the new frontier, dispatch another bounded question, return to human synchronization, accept a judgeable slice, or record a blocker with its owner and exact unblock condition. Discovery may run while unrelated human decisions are pending. It must not silently settle a human-owned material decision.
 
-## 2. Accept the definition
+Discovery code, fixtures, and prototypes are disposable by default. Production use requires an accepted slice and the full Implementer, Cleaner, Verifier, and Product Validator lifecycle. Discovery evidence informs that work but never replaces its gates or independent judgment.
 
-Show the complete deliverable, not only its latest increment. Walk the human through requirements, boundaries, flows, applicable UI/UX or architecture, tradeoffs, and planned proof. Wait for explicit acceptance and record the response beside the artifact's evidence pointer.
-
-Update the checkpoint status, complete the handoff, and follow the automatic commit procedure in `SKILL.md`. End the conversation after reporting the one checkpoint disposition and commit.
-
-Completion criterion: the accepted artifact and human response are linked from the checkpoint map, residual uncertainty is explicit, the automatic commit procedure completes, and no delivery or later checkpoint was executed.
+Completion criterion: the question has an evidence-backed disposition, the map records its frontier effect, and the next route is explicit.

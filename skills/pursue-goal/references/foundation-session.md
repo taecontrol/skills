@@ -1,39 +1,25 @@
-# Foundation session
+# Coordinator synchronization
 
-Run this branch only in a fresh conversation with no accepted foundation, or when the human requests material re-grounding. Confine the session to defining the goal and its initial living map.
+Use this for initial orientation, a human-owned material decision, or evidence that challenges an accepted material decision.
 
-## 1. Build the shared model
+## Establish durable truth
 
-Investigate repository and external facts before asking the human. Separate facts, assumptions, and decisions. Interview the human one material decision at a time, always giving a recommendation and its principal consequence. Walk concrete actor journeys and system changes to expose hidden requirements and boundaries.
+Inspect repository instructions, product truth, the worktree, profile, map, candidate lineage, and discovery evidence. Record only facts and decisions with an authority source. Route repository facts, feasibility, and empirical behavior to discovery rather than asking the human.
 
-Resolve:
+For a new goal, create the smallest useful project profile and goal map in the repository's established location. If none exists, use a compact project-local location such as `docs/goals/<goal-slug>/`.
 
-- outcome and final observable proof;
-- actors, initial end-to-end journeys, and preserved behavior;
-- initial requirements, boundaries, exclusions, and constraints;
-- known unknowns and decisions reserved to the human; and
-- material product, experience, technical, and validation risks.
+The profile has a versioned identity and records executable gates, protected surfaces, faithful product drivers and environments, architecture constraints, Git and external-effect policy, harness limits, and gate dispositions. The map has its own identity and records the outcome and observable proof, accepted material decisions and rationale, boundaries, evidence, current slice, evidence-supported future slices, risks, blockers, route changes, and the current immutable candidate identity. A policy change invalidates only affected evidence.
 
-Completion criterion: every item above is either resolved or recorded as an explicit unknown requiring a checkpoint; none remains an implicit assumption.
+## Ask the material frontier
 
-## 2. Build the initial living map
+Model human-owned decisions as a design tree. Ask every currently answerable unresolved decision in one numbered round. For each, give a recommendation and its main consequence. Keep dependent questions out until their prerequisites are settled.
 
-Create only checkpoints that reduce a real uncertainty or produce an independently useful result. Classify each as:
+After a response, update the map and compute the next frontier. Continue bounded discovery on settled branches when useful. Do not replace an unanswered material decision with a plan or specialist preference.
 
-- **definition:** resolves what to build, how it should work, how it should be shaped, or how it will be proven through grilling, research, flows, prototypes, UI/UX, technical spikes, architecture, or validation design;
-- **delivery:** implements or validates an accepted definition; or
-- **closure:** proves the complete outcome and promotes durable truth.
+## Accept a judgeable slice
 
-For every checkpoint create one canonical map record containing its ID, type, question or requirement, dependencies and accepted evidence pointers, deliverable, boundaries, non-goals, observable `Done when`, human collaboration, contract-acceptance pointer, result-evidence pointer, and status. Order only what current knowledge supports. Treat additions, splits, removals, and reordering as normal when later evidence changes the route.
+When the relevant frontier is empty, play back only the slice's user-visible outcome, included and excluded behavior, protected behavior, consequential accepted choices, and Product Validator proof. Persist the detailed agent contract and acceptance identity. That acceptance authorizes the production lifecycle through focused local commit.
 
-Completion criterion: every proposed checkpoint has a judgeable result and justified dependencies, while every known unknown has a checkpoint or an explicit human-decision disposition.
+If the slice is not judgeable, record the blocking question and route discovery. If delivery evidence challenges a material decision, preserve the candidate and evidence, re-synchronize that decision, and resume only after acceptance.
 
-## 3. Accept, persist, commit, and stop
-
-Read back the complete foundation and initial map as one coherent proposal. Wait for explicit human acceptance and incorporate requested changes until acceptance is unambiguous.
-
-After acceptance, create or update the cockpit using the shape in `SKILL.md`. Persist the accepted foundation, map, evidence pointers, the first accepted checkpoint ID, and an exact next-session prompt. Treat that response as result acceptance and follow the automatic commit procedure in `SKILL.md`.
-
-End the conversation after the cockpit and commit are verified. Product implementation, prototypes, spikes, and the first checkpoint belong to their own fresh sessions.
-
-Completion criterion: the cockpit contains the explicitly accepted foundation and living map, names at most one accepted current checkpoint, includes its fresh-session prompt, the automatic commit procedure completes, and no checkpoint was executed during foundation work.
+Completion criterion: each material decision is accepted or explicitly outside the slice, profile and map identities exist, and the next route is an accepted slice or a bounded discovery question.

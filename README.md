@@ -2,26 +2,16 @@
 
 Reusable agent skills maintained by Taecontrol.
 
-## Skills
+## Install
 
-- [`pursue-goal`](./skills/pursue-goal/SKILL.md) — Defines goals collaboratively, keeps a living checkpoint plan, and gates one-checkpoint sessions on accepted requirements, boundaries, design, architecture, and validation.
-- [`strategic-programming`](./skills/strategic-programming/SKILL.md) — Implements non-trivial changes with deep modules, information hiding, honest concepts, and behavioral proof.
-- [`implementation-review`](./skills/implementation-review/SKILL.md) — Independently judges a completed change against its accepted outcome and the `strategic-programming` standard.
-- [`use-case-qa`](./skills/use-case-qa/SKILL.md) — Validates accepted user journeys through observable product seams.
-- [`adr`](./skills/adr/SKILL.md) — Preserves durable architectural rationale in minimal decision records.
-- [`developer-documentation-style`](./skills/developer-documentation-style/SKILL.md) — Writes clear, direct developer documentation without chatbot prose.
-- [`ui-ux-design`](./skills/ui-ux-design/SKILL.md) — Designs and reviews task-first web, iOS, and Android interfaces with platform-native behavior, visual craft, accessibility, and rendered evidence.
-- [`gh-stack`](./skills/gh-stack/SKILL.md) — Creates and manages stacked GitHub pull requests with agent-safe `gh stack` workflows.
-
-Install the active set:
+Install the Factory core:
 
 ```bash
-npx skills add taecontrol/skills --skill pursue-goal --skill strategic-programming --skill implementation-review --skill use-case-qa --skill adr --skill developer-documentation-style --skill ui-ux-design --skill gh-stack
+npx skills add taecontrol/skills \
+  --skill pursue-goal cleaner strategic-programming implementation-review use-case-qa grilling wait-what unslop research spike prototype diagnosing-bugs adr
 ```
 
-## Install with skills.sh / npx skills
-
-Install all skills from this repository:
+Install every skill:
 
 ```bash
 npx skills add taecontrol/skills
@@ -33,56 +23,37 @@ List available skills without installing:
 npx skills add taecontrol/skills --list
 ```
 
-> Note: the skills.sh website indexes public GitHub repositories. The `npx skills` CLI can install from local paths and git URLs, but private GitHub repository installs may require authenticated git access from the machine running the command.
+Private repositories require authenticated Git access on the installing machine.
 
-## Repository layout
+## Factory core
 
-```text
-skills/
-  pursue-goal/
-    SKILL.md
-    agents/
-      openai.yaml
-  strategic-programming/
-    SKILL.md
-  implementation-review/
-    SKILL.md
-  use-case-qa/
-    SKILL.md
-  adr/
-    SKILL.md
-    templates/
-      adr.md
-  developer-documentation-style/
-    SKILL.md
-  ui-ux-design/
-    SKILL.md
-    references/
-      interaction-foundations.md
-      visual-craft.md
-      web.md
-      ios.md
-      android.md
-      verification.md
-      sources.md
-    templates/
-      design-brief.md
-  gh-stack/
-    SKILL.md
-    references/
-      stack-design.md
-      commands.md
-      troubleshooting.md
-```
+- [`pursue-goal`](./skills/pursue-goal/SKILL.md) — Coordinates adaptive discovery and verified vertical-slice delivery.
+- [`cleaner`](./skills/cleaner/SKILL.md) — Repairs and hardens accepted candidates before independent verification.
+- [`strategic-programming`](./skills/strategic-programming/SKILL.md) — Applies deep design, invariants, and behavioral proof to non-trivial changes.
+- [`implementation-review`](./skills/implementation-review/SKILL.md) — Independently verifies completed implementation.
+- [`use-case-qa`](./skills/use-case-qa/SKILL.md) — Validates accepted journeys through observable product seams.
+- [`grilling`](./skills/grilling/SKILL.md) — Interviews the complete current decision frontier.
+- [`wait-what`](./skills/wait-what/SKILL.md) — Re-explains a message without advancing the work.
+- [`unslop`](./skills/unslop/SKILL.md) — Removes AI filler while preserving technical fidelity.
+- [`research`](./skills/research/SKILL.md) — Investigates bounded questions against authoritative sources.
+- [`spike`](./skills/spike/SKILL.md) — Runs bounded technical feasibility experiments.
+- [`prototype`](./skills/prototype/SKILL.md) — Builds disposable product, state, interaction, or UI experiments.
+- [`diagnosing-bugs`](./skills/diagnosing-bugs/SKILL.md) — Establishes a reproduction and supported root cause before repair.
+- [`adr`](./skills/adr/SKILL.md) — Preserves consequential architectural rationale.
 
-## Local validation
+## Optional strategies and specialists
 
-From this repository:
+- [`tdd`](./skills/tdd/SKILL.md) — Provides an optional test-driven implementation strategy.
+- [`writing-for-agents`](./skills/writing-for-agents/SKILL.md) — Authors portable skills, agent rules, profiles, and handoffs.
+- [`domain-modeling`](./skills/domain-modeling/SKILL.md) — Discovers terms and invariants and persists accepted meanings.
+- [`architecture-design`](./skills/architecture-design/SKILL.md) — Develops alternatives for consequential architecture questions.
+- [`wizard`](./skills/wizard/SKILL.md) — Guides authorized human-only operations without receiving secrets.
+- [`developer-documentation-style`](./skills/developer-documentation-style/SKILL.md) — Writes direct developer documentation.
+- [`ui-ux-design`](./skills/ui-ux-design/SKILL.md) — Designs and reviews task-first web, iOS, and Android interfaces.
+- [`gh-stack`](./skills/gh-stack/SKILL.md) — Creates and manages stacked GitHub pull requests.
 
-```bash
-npx skills add . --list
-```
+Each skill directory is independently installable and contains its own required references, templates, and scripts.
 
 ## License
 
-MIT
+MIT. See [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md) for third-party attributions.
