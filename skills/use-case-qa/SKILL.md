@@ -5,91 +5,34 @@ description: Independently validate accepted Factory journeys through real produ
 
 # Product Validator
 
-Independently use the product to prove the accepted journeys for one exact candidate. This package keeps the `use-case-qa` identifier for compatibility; its public role is **Product Validator**. It is read-only and does not repair production code.
+Use the product to prove accepted journeys for one exact candidate. The installation name remains `use-case-qa`; the Factory role is Product Validator. Work read-only. Do not repair production code.
 
-## Entry contract
+## Establish the validation
 
-Run final validation in a fresh context independent from Implementer, Cleaner, and Verifier. Carry only durable accepted inputs and evidence, not the Verifier's reasoning context. Require these exact inputs:
+Use a fresh context independent from Implementer, Cleaner, and Verifier. Carry durable accepted inputs and evidence, not the Verifier's reasoning. Require the exact goal-map, accepted-slice or acceptance, and project-profile identities; base revision; immutable candidate identity; same-candidate Verifier `Pass`; and accepted journeys.
 
-- goal-map identity and accepted-slice identity or acceptance identity;
-- project-profile identity;
-- base revision and immutable candidate identity;
-- a `Pass` result from Verifier for that same candidate identity;
-- accepted journeys, each with actor, starting state, action, required observable result, and forbidden result;
-- permitted driver, environment, identity, test data, reset or isolation procedure, and evidence capture; and
-- scoped authorization for any external, billable, destructive, privacy-sensitive, or production effect.
+Each journey needs an actor, starting state, action, required observable result, forbidden result, permitted driver and environment, identity and test data, reset or isolation method, and evidence capture. Reject superseded identities. Return `Inconclusive` if a journey lacks a judgment criterion, the driver cannot preserve material semantics, or a same-candidate Verifier pass is absent.
 
-Reject superseded identities. Return `Inconclusive` if the candidate lacks a same-candidate Verifier pass, a material journey has no judgment criterion, the driver cannot preserve material product semantics, or required authority is absent.
+## Choose a real method
 
-Completion criterion: another validator can identify the exact candidate, journeys, method, and authority being judged without relying on conversation history.
+Inspect available browser, desktop, API, CLI, simulator, staging, fixture, observability, and reset facilities. Use the narrowest real product interface that preserves the journey's material semantics. Record system and candidate, driver and environment, identities and data, isolation or reset, observations, evidence, and fidelity limits.
 
-## Establish the validation method
-
-Inspect available browser, desktop, API, CLI, simulator, staging, fixture, observability, and reset facilities. Select the narrowest real product interface that preserves the semantics material to each journey. Record only repeatable details: system and candidate, driver and environment, identities and data, isolation or reset, observable results, evidence capture, and fidelity limits.
-
-Static inspection and automated tests may support diagnosis but do not prove an accepted journey unless they are the accepted real product interface. Keep accepted journeys distinct from regression and exploratory probes.
+Tests and static inspection may aid diagnosis but do not prove a journey unless they are its accepted real product interface. Keep accepted journeys separate from regression and exploratory probes.
 
 ## Authorize effects before acting
 
-Before every journey action that can create an external, billable, destructive, privacy-sensitive, or production effect, verify one of the following for that specific effect and environment:
+Before an action with an external, billable, destructive, privacy-sensitive, or production effect, require either scoped authorization for that effect and environment or an approved non-production or simulated substitute that preserves material semantics. Without one, do not act. Return `Inconclusive` with the required grant or substitute. Slice acceptance and local commit do not grant effect authority.
 
-- explicit scoped authorization naming the effect and environment; or
-- an approved non-production or simulated substitute that preserves the material semantics.
+## Run and route journeys
 
-Without either, do not perform the action. Return `Inconclusive` before acting and name the required grant or substitute. Journey acceptance and a local commit do not grant external-effect authority.
+Run every accepted journey against the exact Verifier-passed candidate. Capture observations when the driver allows it. Preserve the first failure and earliest divergence. Reset or namespace state as the method requires. Mark each journey `Pass`, `Fail`, or `Inconclusive` with direct evidence. A failure has an absent, incorrect, unsafe, or forbidden result. An inconclusive result names the concrete limitation and unblock condition.
 
-## Execute final journeys
-
-Run every accepted journey against the exact Verifier-passed candidate. Capture each action with its resulting observation when the driver permits it. Preserve the first failure and earliest divergence; reset or namespace state as the validation method requires.
-
-Use a compact evidence matrix:
-
-| Journey | Candidate and driver | Required and forbidden result | Status | Observation and evidence |
-| --- | --- | --- | --- | --- |
-
-Classify a journey as `Pass`, `Fail`, or `Inconclusive`. A `Fail` has an absent, incorrect, unsafe, or forbidden result. An `Inconclusive` has a concrete unobservable, access, environment, authority, or driver limitation and unblock condition.
-
-Targeted diagnostic journeys may run during repair, but before commit the complete accepted journey set must pass against the final immutable candidate. A changed candidate must re-enter Cleaner and Verifier before that final run.
-
-## Return one Factory outcome
+A changed candidate must return through Cleaner and Verifier. Before commit, rerun the complete accepted journey set against the final candidate. Diagnostic journeys during repair do not replace it.
 
 Return exactly one outcome:
 
-- **Pass → Coordinator commit readiness:** every accepted journey passes on the final candidate. The candidate is eligible for the Coordinator's focused local-commit check and map adaptation.
-- **Fail → Cleaner:** preserve journey, earliest divergence, reproduction, candidate identity, and direct evidence for automatic repair routing.
-- **Inconclusive → Coordinator:** name the owner and exact unblock condition or material ambiguity. Do not approximate an independent context or unauthorized effect.
+- `Pass -> Coordinator commit readiness`: every accepted journey passes on the final candidate.
+- `Fail -> Cleaner`: provide the journey, earliest divergence, reproduction, candidate identity, and evidence for automatic repair.
+- `Inconclusive -> Coordinator`: name the owner and exact unblock condition or material ambiguity.
 
-```markdown
-## Identity
-- Goal map:
-- Accepted slice:
-- Project profile:
-- Base revision:
-- Candidate:
-- Verifier pass:
-
-## Outcome
-Pass → Coordinator commit readiness | Fail → Cleaner | Inconclusive → Coordinator
-
-## Validation method
-- Driver, environment, identity, data, reset, evidence capture, fidelity limits
-
-## Accepted journeys
-<completed evidence matrix>
-
-## Regression and exploratory evidence
-<kept separate from accepted journeys>
-
-## Failures or unblock condition
-- <journey, earliest divergence, reproduction, evidence, owner, route>
-```
-
-Completion criterion: the Coordinator can route the exact candidate from direct product evidence without inferring behavior from code or a green technical suite.
-
-## Provenance
-
-- Canonical package: `use-case-qa` in `https://github.com/taecontrol/skills.git`.
-- Source commit: `d7cef91264450e72ad28f396fbed28c3d2e22d2e`.
-- Source basis: `docs/software-factory-v0.1.md` and `docs/software-factory-v0.1-skill-migration.md` at that commit.
-- Incorporation mode: Taecontrol-authored evolution of the existing package; no external skill text copied in this migration.
-- Taecontrol changes: keeps the installation identifier while replacing use-case QA terminology with the independent Product Validator contract, same-candidate Verifier prerequisite, final accepted-journey execution, per-effect authorization, and automatic Factory routing.
+Report the exact identities, Verifier pass, method, journey evidence, any separate regression evidence, and failure or unblock condition. Completion criterion: the Coordinator can route the exact candidate from direct product evidence without inferring behavior from code or a technical suite.

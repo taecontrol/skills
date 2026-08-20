@@ -3,70 +3,38 @@ name: strategic-programming
 description: Strategic programming reference for Factory implementation, cleaning, and verification when invariants, boundaries, persistence, APIs, concurrency, security, or shared interfaces make green tests insufficient.
 ---
 
-# Strategic Programming
+# Strategic programming
 
-Judge design quality by whether the change leaves the system easier to understand and modify.
+Judge a change by whether it leaves the system easier to understand and modify.
 
 ## Factory role mapping
 
-Use this as a shared standard; it does not replace Factory authority or lifecycle routing.
+This is a shared design standard. It does not change Factory authority or lifecycle routing.
 
-- **Coordinator** records accepted consequential decisions, protected behavior, and the validation path. It routes material uncertainty to discovery or human synchronization.
-- **Implementer** creates the initial accepted vertical behavior and focused observable proof.
-- **Cleaner** repairs local correctness and strategic design defects, runs applicable gates, and freezes the candidate for independent judgment.
-- **Verifier** judges that immutable candidate independently and read-only against the accepted contract, gate evidence, and this design standard.
-- **Product Validator** proves accepted journeys through a real product interface. It does not infer product correctness from code or technical gates.
+- Coordinator records accepted consequential decisions, protected behavior, and the validation path. It routes material uncertainty to discovery or human synchronization.
+- Implementer creates the accepted vertical behavior and focused observable proof.
+- Cleaner repairs local correctness and design defects, freezes the candidate, then runs applicable gates against it.
+- Verifier independently and read-only judges that candidate against the accepted contract, gate evidence, and this standard.
+- Product Validator proves accepted journeys through a real product interface. Code and technical gates do not replace this judgment.
 
-A role that finds evidence challenging user-visible behavior, scope, sensitive policy, a public contract, or expensive-to-reverse architecture returns it to Coordinator synchronization rather than silently changing it.
+Evidence that challenges user-visible behavior, scope, sensitive policy, a public contract, or costly-to-reverse architecture returns to Coordinator synchronization.
 
-## Design pressure
+## Apply design pressure
 
-Before production edits, name the central invariant or policy, its authoritative source, its owner, and which callers should remain unaware of the hard detail.
+Before production edits, name the central invariant or policy, its authoritative source, its owner, and the callers that should not carry its hard detail.
 
-For a consequential interface, boundary, ownership model, persistence model, or other expensive-to-reverse seam, **design it twice**: compare two plausible shapes and choose the one that hides more complexity with fewer caller obligations. Do not require alternatives for routine internal and reversible choices; resolve those locally.
+For a consequential interface, boundary, ownership model, persistence model, or other costly-to-reverse seam, design it twice. Compare two plausible shapes and choose the one that hides more complexity with fewer caller obligations. Resolve routine reversible choices locally.
 
-## Interaction model
+When shared mutable state, concurrency, ordering, retries, ownership transfer, lifecycle, rollback, or recovery matters, define the owner and mutation or atomic boundary, correlation or fencing, late and repeated events, cleanup and recovery, and a negative probe that can expose a broken model. A missing model is a contract or architecture gap.
 
-When shared mutable state, concurrency, ordering, retries, ownership transfer, lifecycle, rollback, or recovery is material, establish one coherent model covering every applicable dimension:
+## Prove behavior
 
-- owner and mutation or atomic boundary;
-- correlation or fencing mechanism;
-- late and repeated event behavior;
-- cleanup and recovery behavior; and
-- a negative probe capable of exposing a broken model.
+Map every observable obligation to its narrowest faithful seam. Use a red-capable test or reproduction that fails on the old behavior or a plausible defect, then keep current green evidence. Cover failure, authorization, malformed input, migration, and fresh versus preserved state when they change the result. An equivalent before-and-after reproduction may replace strict test-first work when needed.
 
-A missing coherent model is a contract or architecture gap, not an invitation for local patches.
+## Inspect the design
 
-## Behavioral proof
+Prefer deep modules with small interfaces, one home for each policy, honest names and types for distinct identities and states, authoritative facts over reconstructed signals, and boundary parsing that turns unknown external or persisted data into safe application types.
 
-Map each observable obligation to its narrowest faithful seam. Use a red-capable test or reproduction that fails on the old behavior or a plausible defect, then preserve current green evidence.
+After focused proof is green, inspect for change amplification, caller knowledge of hidden detail, and policies or failure behavior without an obvious home. Write roles fix defects within accepted decisions and record broader work as residual risk with its concrete cost. Verifier reports the evidence and consequence without changing the candidate.
 
-Cover failure, authorization, malformed input, migration, and fresh-versus-preserved state when they can change the result. An equivalent before/after reproduction can replace strict test-first work when necessary.
-
-## Deep design
-
-- **Deep modules:** hide substantial complexity behind small interfaces; make the common correct use easy.
-- **Information hiding:** give each policy and design decision one implementation home.
-- **Honest concepts:** keep distinct identities, sources, lifecycle states, fidelity levels, and failure modes distinct in names and types.
-- **Direct invariants:** preserve authoritative facts instead of reconstructing them from weaker signals.
-- **Boundary parsing:** convert unknown external or persisted data into safe application types at one boundary; let malformed optional detail degrade without breaking core behavior.
-
-## Strategic pass
-
-After focused proof is green, reread the diff for:
-
-- **Change amplification:** one conceptual change requires unrelated edits.
-- **Cognitive load:** callers or maintainers must know hidden detail.
-- **Unknown unknowns:** policy, invariants, or failure behavior have no obvious home.
-
-During implementation or cleaning, fix symptoms inside accepted decisions and record broader cleanup as residual risk with its concrete future cost. During verification, report each symptom with evidence and consequence while preserving the reviewed candidate unchanged.
-
-Completion criterion: every material obligation has discriminating evidence; every applicable interaction dimension is modeled; every consequential choice received proportional design pressure; and every material complexity symptom is fixed by the write roles or reported by the Verifier with evidence and consequence.
-
-## Provenance
-
-- Canonical package: `strategic-programming` in `https://github.com/taecontrol/skills.git`.
-- Source commit: `d7cef91264450e72ad28f396fbed28c3d2e22d2e`.
-- Source basis: `docs/software-factory-v0.1.md` and `docs/software-factory-v0.1-skill-migration.md` at that commit.
-- Incorporation mode: Taecontrol-authored evolution of the existing package; no external skill text copied in this migration.
-- Taecontrol changes: adds explicit Coordinator, Implementer, Cleaner, Verifier, and Product Validator role mapping; scopes design-it-twice to consequential choices; and separates write-role cleanup from read-only independent judgment.
+Completion criterion: each material obligation has discriminating evidence, each applicable interaction dimension has a model, consequential choices received proportional design pressure, and material complexity defects are fixed or reported with evidence and consequence.

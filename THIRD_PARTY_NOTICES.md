@@ -1,7 +1,39 @@
-MIT License
+# Third-party notices
+
+The repository contains adapted material from these MIT-licensed sources. This file is for maintainers and distribution; skills do not load it during execution.
+
+## Matt Pocock skills
+
+Source: https://github.com/mattpocock/skills
+Revision used: `885e2ca4d842d139e9aef4e48d366c63cb1b8013`
+
+Adapted skills:
+
+- `grilling`
+- `wait-what`
+- `writing-for-agents`
+- `research`
+- `prototype`
+- `diagnosing-bugs`
+- `domain-modeling`
+- `codebase-design`
+- `improve-codebase-architecture`
+- `tdd`
+- `wizard`
 
 Copyright (c) 2026 Matt Pocock
-Copyright (c) 2026 Taecontrol
+
+## pstack Unslop
+
+Source: https://github.com/cursor/plugins/tree/main/pstack
+Revision used: `60c641e4fad674784b30abcf9f8915dea39df38d`
+
+Adapted skill: `unslop`
+Author declared by the source plugin: Lauren Tan
+
+Copyright (c) 2026 Lauren Tan
+
+## MIT license
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

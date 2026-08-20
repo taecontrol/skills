@@ -1,33 +1,25 @@
 # Coordinator synchronization
 
-Use this procedure for initial orientation, a material decision that is ready for human input, or evidence that challenges an accepted material decision. It is not a mandatory foundation phase and does not require a fresh human-started session.
+Use this for initial orientation, a human-owned material decision, or evidence that challenges an accepted material decision.
 
-## Inspect before interviewing
+## Establish durable truth
 
-Read repository instructions, product truth, current worktree, project profile, goal map, candidate lineage, and relevant discovery evidence. Separate repository facts, accepted decisions, assumptions, and unknowns. Update durable artifacts only with evidence and decisions that have an authority source.
+Inspect repository instructions, product truth, the worktree, profile, map, candidate lineage, and discovery evidence. Record only facts and decisions with an authority source. Route repository facts, feasibility, and empirical behavior to discovery rather than asking the human.
 
-If a repository fact, empirical behavior, or feasibility claim can answer an uncertainty, route it to adaptive discovery instead of asking the human.
+For a new goal, create the smallest useful project profile and goal map in the repository's established location. If none exists, use a compact project-local location such as `docs/goals/<goal-slug>/`.
 
-## Run the frontier
+The profile has a versioned identity and records executable gates, protected surfaces, faithful product drivers and environments, architecture constraints, Git and external-effect policy, harness limits, and gate dispositions. The map has its own identity and records the outcome and observable proof, accepted material decisions and rationale, boundaries, evidence, current slice, evidence-supported future slices, risks, blockers, route changes, and the current immutable candidate identity. A policy change invalidates only affected evidence.
 
-Model the material decision space as a design tree. The frontier contains every unresolved human-owned decision whose prerequisites are settled.
+## Ask the material frontier
 
-1. Ask the complete frontier in one numbered round.
-2. For every question, state the decision, a recommendation, and its principal consequence.
-3. Keep questions whose prerequisites remain open out of the round.
-4. Incorporate the human response, update the tree and durable map, then compute the next frontier.
-5. Continue independent discovery on settled branches when useful. Invoke the project's communication-recovery capability only when the user asks for clarification or clearly signals that a round did not land.
+Model human-owned decisions as a design tree. Ask every currently answerable unresolved decision in one numbered round. For each, give a recommendation and its main consequence. Keep dependent questions out until their prerequisites are settled.
 
-Do not substitute a plan, a checklist, or a specialist preference for an unanswered material decision.
+After a response, update the map and compute the next frontier. Continue bounded discovery on settled branches when useful. Do not replace an unanswered material decision with a plan or specialist preference.
 
-## Establish profile and map
+## Accept a judgeable slice
 
-For a new goal, record the smallest useful project profile and goal map. The profile identifies executable gates, protected surfaces, faithful validation environments, external-effect policy, and harness limits. The map identifies the outcome, accepted decisions, boundaries, evidence, current and possible next slices, risks, blockers, and identities. For re-synchronization, amend only the affected decision and invalidate only evidence affected by it.
+When the relevant frontier is empty, play back only the slice's user-visible outcome, included and excluded behavior, protected behavior, consequential accepted choices, and Product Validator proof. Persist the detailed agent contract and acceptance identity. That acceptance authorizes the production lifecycle through focused local commit.
 
-## Accept a slice only when it is judgeable
+If the slice is not judgeable, record the blocking question and route discovery. If delivery evidence challenges a material decision, preserve the candidate and evidence, re-synchronize that decision, and resume only after acceptance.
 
-When the relevant frontier is empty and a vertical slice is judgeable, give one concise playback containing its user-visible outcome, included and excluded behavior, protected behavior, consequential accepted choices, and Product Validator proof. Persist the detailed agent contract and the human's acceptance identity. That acceptance authorizes the production lifecycle through focused local commit.
-
-When evidence is still insufficient, record the live question and dispatch bounded discovery. When a material decision is challenged during delivery, preserve the candidate and evidence, re-run the affected frontier, and resume only after the changed decision is accepted.
-
-Completion criterion: every material decision is accepted or explicitly remains outside the current slice; the profile and map have identities; and either an accepted judgeable slice exists or the next bounded discovery question is recorded.
+Completion criterion: each material decision is accepted or explicitly outside the slice, profile and map identities exist, and the next route is an accepted slice or a bounded discovery question.

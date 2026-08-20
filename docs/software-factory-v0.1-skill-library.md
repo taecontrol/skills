@@ -4,59 +4,16 @@
 
 This document defines the canonical skill capabilities that implement [`Software Factory v0.1`](./software-factory-v0.1.md). Skills are selected by the Coordinator from the current question or responsibility. They are not mandatory phases and do not determine the complete route in advance.
 
-The canonical implementations live in `taecontrol/skills`. Upstream skills are design inputs, not runtime dependencies. Each adapted skill preserves attribution, records its source revision, and changes behavior where the Factory contract requires it.
-
-## Upstream baselines
-
-### Matt Pocock skills
-
-- Repository: `https://github.com/mattpocock/skills`
-- Baseline revision: `885e2ca4d842d139e9aef4e48d366c63cb1b8013`
-- License: MIT
-- Copyright: Matt Pocock, 2026
-
-### Unslop
-
-- Repository: `https://github.com/cursor/plugins`
-- Plugin: `pstack`
-- Baseline revision: `60c641e4fad674784b30abcf9f8915dea39df38d`
-- Plugin version: `0.14.1`
-- License declared by plugin: MIT
-- Author declared by plugin: Lauren Tan
-
-### Package provenance map
-
-| Canonical skill | Upstream baseline path | Baseline disposition |
-| --- | --- | --- |
-| `grilling` | `mattpocock/skills:skills/productivity/grilling/SKILL.md` | Material adaptation with frontier behavior preserved |
-| `wait-what` | `mattpocock/skills:skills/productivity/wait-what/SKILL.md` | Material bilingual adaptation |
-| `writing-for-agents` | `mattpocock/skills:skills/productivity/writing-for-agents/SKILL.md` | Existing adaptation; reconcile against pinned baseline |
-| `research` | `mattpocock/skills:skills/engineering/research/SKILL.md` | Material artifact-policy adaptation |
-| `prototype` | `mattpocock/skills:skills/engineering/prototype/SKILL.md` | Material Factory integration adaptation |
-| `diagnosing-bugs` | `mattpocock/skills:skills/engineering/diagnosing-bugs/SKILL.md` | Material authority and handoff adaptation |
-| `domain-modeling` | `mattpocock/skills:skills/engineering/domain-modeling/SKILL.md` | Material persistence and authority adaptation |
-| `codebase-design` | `mattpocock/skills:skills/engineering/codebase-design/SKILL.md` | Existing adaptation; reconcile against pinned baseline |
-| `improve-codebase-architecture` | `mattpocock/skills:skills/engineering/improve-codebase-architecture/SKILL.md` | Material portability and Factory routing adaptation |
-| `tdd` | `mattpocock/skills:skills/engineering/tdd/SKILL.md` | Experimental strategy adaptation |
-| `wizard` | `mattpocock/skills:skills/engineering/wizard/SKILL.md` | Material portability and authorization adaptation |
-| `unslop` | `cursor/plugins:pstack/skills/unslop/SKILL.md` | Material language and artifact-scope adaptation |
-| `spike` | No distributable upstream baseline | Taecontrol-authored from the Factory contract; no upstream text incorporated |
-| `architecture-design` | No single upstream package | Taecontrol-authored composition of local Factory design and domain minimums, optionally enriched by available canonical capabilities |
-| `adr` | Existing Taecontrol canonical skill | Existing package, not an adaptation in this effort |
-| `cleaner` | No distributable upstream baseline | Taecontrol-authored Factory write-role capability |
-
-Every Matt path in this table uses revision `885e2ca4d842d139e9aef4e48d366c63cb1b8013`. The Unslop path uses revision `60c641e4fad674784b30abcf9f8915dea39df38d`.
+The canonical implementations live in `taecontrol/skills`. Third-party attribution and license text live in [`THIRD_PARTY_NOTICES.md`](../THIRD_PARTY_NOTICES.md), outside the skill packages and their execution context.
 
 ## Packaging rules
 
 1. Keep each skill independently installable.
 2. Preserve familiar upstream names unless a different name prevents a real contract collision.
-3. Add a package-level provenance record naming the canonical skill, upstream repository, immutable revision, exact source paths, license disposition, whether text was copied, materially adapted, or only consulted, and the Taecontrol-specific changes.
-4. Include the applicable MIT notice when the adaptation contains a substantial portion of upstream text. A consulted source with no incorporated text is recorded as design provenance without implying copied authorship.
-5. Keep Factory authority and routing in `pursue-goal`; specialist skills own procedures, not global orchestration.
-6. Make project locations and artifact conventions configurable or discoverable. Do not hard-code `CONTEXT.md`, ADR paths, issue trackers, or Claude-specific commands as universal requirements.
-7. Return compact evidence to the Coordinator. Persist a discovery artifact only when it will remain useful after the current question is settled.
-8. Use progressive disclosure for branch-specific procedures and bulky examples.
+3. Keep Factory authority and routing in `pursue-goal`; specialist skills own procedures, not global orchestration.
+4. Make project locations and artifact conventions configurable or discoverable. Do not hard-code `CONTEXT.md`, ADR paths, issue trackers, or harness-specific commands as universal requirements.
+5. Return compact evidence to the Coordinator. Persist a discovery artifact only when it will remain useful after the current question is settled.
+6. Use progressive disclosure for branch-specific procedures and bulky examples.
 
 ## Capability taxonomy
 

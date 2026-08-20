@@ -86,8 +86,10 @@ docs/
   software-factory-flow.html
 ```
 
-Each skill directory is independently installable. Required links, notices, and support files stay inside that directory.
+Each skill directory is independently installable. Required links and support files stay inside that directory.
 
 ## License
 
 MIT
+
+Third-party notices: [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md).

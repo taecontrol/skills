@@ -1,21 +1,13 @@
 # Optional closure guidance
 
-Use this procedure only after completed slices already establish the goal's observable outcome. Closure is optional coordination work, not a mandatory checkpoint, fresh session, or result-acceptance gate.
+Use this only after completed slices prove the goal's observable outcome. Closure is optional. It is not a result-acceptance gate.
 
-## Reconcile durable truth
+Inspect the goal map, commits, evidence, residual risks, and canonical repository documentation. Move a fact out of the map only when the map is its sole useful owner. Keep product, architecture, operations, and validation truth in their normal canonical home with one owner.
 
-Inspect the goal map, completed commits, evidence, residual risks, and canonical repository documentation. Promote a fact only when the temporary map is its sole useful owner. Keep each durable product, architecture, operational, and validation fact in its normal canonical home, with one authoritative owner.
+Any cleanup or promotion that changes runtime behavior, a public contract, protected configuration, generated behavior, or validation semantics is a new production slice. Archive, link, and coordination bookkeeping must not alter the validated delivery surface.
 
-A cleanup or promotion that changes runtime behavior, a public contract, protected configuration, generated behavior, or validation semantics is production work. Give it its own accepted vertical slice and complete lifecycle. Coordination-only archive, link, or bookkeeping work must not alter the validated delivery surface.
+Retain a compact map when it helps maintenance, audit, or route recovery. Otherwise archive it by repository convention without deleting recoverable evidence. If final proof exposes a gap, route it to discovery or synchronization.
 
-## Archive or retain the map
+A local commit does not authorize external effects. Apply the project policy and obtain authority for each push, pull request, merge, deployment, paid activity, destructive cleanup, or production mutation.
 
-Retain a compact goal map when it remains useful for maintenance, audit, or future route recovery. Archive it according to repository convention when its evidence is represented canonically elsewhere. Do not delete evidence merely because the goal is complete.
-
-If a final proof exposes a gap, record the evidence and route it through adaptive discovery or synchronization. Do not silently reduce the outcome or create an unvalidated cleanup patch.
-
-## External authority remains separate
-
-A focused local commit does not authorize push, pull-request publication, merge, deployment, paid activity, destructive cleanup, or production mutation. Obtain authority for each external effect from the applicable project policy.
-
-Completion criterion: canonical truth has one owner, retained or archived coordination evidence remains recoverable, behavior-affecting work is validated as a slice, and any external action has separate authority.
+Completion criterion: canonical truth has one owner, coordination evidence remains recoverable, behavior-affecting work has its own validated slice, and every external action has separate authority.
