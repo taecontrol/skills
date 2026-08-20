@@ -16,8 +16,6 @@ Adapted skills:
 - `prototype`
 - `diagnosing-bugs`
 - `domain-modeling`
-- `codebase-design`
-- `improve-codebase-architecture`
 - `tdd`
 - `wizard`
 
