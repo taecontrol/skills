@@ -6,7 +6,7 @@ Use this for initial orientation, a human-owned material decision, or evidence t
 
 Inspect repository instructions, product truth, the worktree, profile, map, candidate lineage, and discovery evidence. Record only facts and decisions with an authority source. Route repository facts, feasibility, and empirical behavior to discovery rather than asking the human.
 
-For a new goal, create the smallest useful project profile and goal map in the repository's established location. If none exists, use a compact project-local location such as `docs/goals/<goal-slug>/`.
+For a new goal, create the smallest useful project profile and goal map in the repository's established location. If none exists, use `.goals/<goal-slug>/` at the repository root.
 
 The profile has a versioned identity and records executable gates, protected surfaces, faithful product drivers and environments, architecture constraints, Git and external-effect policy, harness limits, and gate dispositions. The map has its own identity and records the outcome and observable proof, accepted material decisions and rationale, boundaries, evidence, current slice, evidence-supported future slices, risks, blockers, route changes, and the current immutable candidate identity. A policy change invalidates only affected evidence.
 
