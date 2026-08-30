@@ -4,7 +4,7 @@ Use this when a discoverable uncertainty blocks a decision or a judgeable slice.
 
 ## Dispatch one bounded question
 
-State the question, why it matters, known constraints and accepted decisions, the evidence that will answer it, and a cost, time, or scope limit if it might expand. Choose the capability that fits: research for facts, spike for feasibility, prototype for product or state comparison, architecture design for consequential seams, diagnosis for a failure, or a specialist for a named risk.
+State the question, why it matters, known constraints and accepted decisions, the evidence that will answer it, and a cost, time, or scope limit if it might expand. Choose the capability that fits: research for facts, spike for feasibility, prototype for product or state comparison, architecture design for consequential seams, diagnosis for a failure, or a specialist for a named risk. When available, use `javascript-react-patterns` for a bounded JavaScript or React design, composition, rendering, or performance choice; route a costly-to-reverse seam through architecture design and use the pattern skill as supporting evidence rather than decision authority.
 
 Require primary evidence, limits, surprises, a verdict, and a recommendation. Keep a durable artifact only when it will remain useful after the question is settled. Update the goal map with evidence and the route change.
 
