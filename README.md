@@ -51,6 +51,7 @@ Private repositories require authenticated Git access on the installing machine.
 
 - [`tdd`](./skills/tdd/SKILL.md) — Provides an optional test-driven implementation strategy.
 - [`writing-for-agents`](./skills/writing-for-agents/SKILL.md) — Authors portable skills, agent rules, profiles, and handoffs.
+- [`agents-md`](./skills/agents-md/SKILL.md) — Interviews a human to create portable project instructions across coding harnesses.
 - [`domain-modeling`](./skills/domain-modeling/SKILL.md) — Discovers terms and invariants and persists accepted meanings.
 - [`architecture-design`](./skills/architecture-design/SKILL.md) — Develops alternatives for consequential architecture questions.
 - [`wizard`](./skills/wizard/SKILL.md) — Guides authorized human-only operations without receiving secrets.

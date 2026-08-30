@@ -1,0 +1,6 @@
+interface:
+  display_name: "AGENTS.md Interview"
+  short_description: "Interview and draft portable agent instructions"
+  default_prompt: "Use $agents-md to interview me and create or revise this project’s portable agent instructions."
+policy:
+  allow_implicit_invocation: false
