@@ -2,7 +2,7 @@
 
 Use this branch for websites and browser applications. WCAG 2.2 AA is the default accessibility floor; WAI tutorials and the ARIA Authoring Practices Guide are implementation guidance, not additional conformance standards.
 
-Trace every applicable WCAG 2.2 AA criterion across the changed full page and complete process. The checks below are a working inventory, not the whole standard. Do not call a component, screenshot, or clean automated scan “WCAG conformant.”
+Trace applicable WCAG 2.2 AA criteria across the changed surface and every affected journey seam. Reserve exhaustive full-page and complete-process tracing for a WCAG conformance claim or a process-level change. For a bounded change, verify its direct and adjacent effects and name broader conformance as unverified. The checks below are a working inventory, not the whole standard. Do not call a component, screenshot, or clean automated scan “WCAG conformant.”
 
 ## Semantic, native-first structure
 

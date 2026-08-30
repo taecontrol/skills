@@ -1,6 +1,6 @@
 ---
 name: ui-ux-design
-description: Design or review task-first web, iOS, and Android interfaces with platform-native behavior, visual craft, accessibility, and rendered evidence.
+description: "Design or review task-first web, iOS, and Android interfaces with grounded art direction, platform-native behavior, accessibility, and rendered evidence."
 ---
 
 # UI/UX Design
@@ -16,6 +16,7 @@ This skill does not prove usability through model judgment. Heuristic review and
 - Use target-platform conventions. Shared product semantics do not require identical web, iOS, and Android shells.
 - Treat accessibility as a quality floor. Use WCAG 2.2 AA for web; use the native platform accessibility APIs and conventions for iOS and Android.
 - Review the running interface. Source inspection, a green build, a component story, or one happy-path screenshot is not UI/UX completion.
+- Treat references as vocabulary, not authority. Extract applicable grammar without copying branded composition, assets, copy, or trade dress.
 - Label assumptions. Do not present an expert critique as user research or an aesthetic preference as a usability fact.
 
 ## 1. Fix the design authority and scope
@@ -27,6 +28,13 @@ Choose the mode:
 - **Create or materially redesign:** establish the experience and visual direction before implementation.
 - **Implement an approved design:** preserve its observable intent and record any necessary deviation.
 - **Review:** inspect the changed or named surface without silently redesigning the product.
+
+Record the visual-authority state separately:
+
+- **Approved language controls:** preserve it; visual exploration is not permitted unless the user explicitly reopens the direction.
+- **References exist, direction unresolved:** analyze their applicable grammar, then compare materially different directions.
+- **No direction exists:** ground and compare new directions from product evidence rather than a fashionable default.
+- **Review only:** critique against the controlling evidence without manufacturing a replacement direction.
 
 Choose the track separately from the mode:
 
@@ -48,7 +56,7 @@ Resolve conflicting guidance in this order:
 
 Use [`templates/design-brief.md`](templates/design-brief.md) as a working checklist. Do not create a durable brief file unless the user or repository workflow requests one.
 
-Completion criterion: the mode, track, target surfaces, affected user tasks, controlling design authority, exact review target when applicable, existing system to preserve, and material unknowns are explicit.
+Completion criterion: the mode, track, target surfaces, affected user tasks, controlling design evidence, whether exploration is permitted, exact review target when applicable, existing system to preserve, and material unknowns are explicit.
 
 ## 2. Specify the experience before styling
 
@@ -56,6 +64,7 @@ For every affected task, define:
 
 - user and use context;
 - job, entry point, and judgeable success outcome;
+- product category, desired character, information density, and trust or risk level;
 - information hierarchy and primary, secondary, and destructive actions;
 - navigation, back, cancel, edit, retry, and resume behavior;
 - required content and realistic extremes;
@@ -77,6 +86,7 @@ Completion criterion: every affected task has a complete state and recovery mode
 ## 3. Select only the relevant design references
 
 - Read [`references/visual-craft.md`](references/visual-craft.md) when creating or materially changing hierarchy, layout, typography, color, density, depth, imagery, or motion.
+- Read [`references/art-direction.md`](references/art-direction.md) when a new or materially changed visual direction is unresolved. It contains the self-contained reference, variant, rendering, and comparison method.
 - Read [`references/web.md`](references/web.md) for websites and web applications.
 - Read [`references/ios.md`](references/ios.md) for iOS or iPadOS.
 - Read [`references/android.md`](references/android.md) for Android phones, tablets, foldables, or desktop-windowed Android.
@@ -84,7 +94,7 @@ Completion criterion: every affected task has a complete state and recovery mode
 - Read [`references/verification.md`](references/verification.md) before signoff or when reviewing an existing implementation.
 - Use [`references/sources.md`](references/sources.md) to inspect the authority or live version of a rule; do not load every external source by default.
 
-Completion criterion: every target surface has one applicable platform branch, and no irrelevant branch is shaping the design.
+Completion criterion: every target surface has one applicable platform branch, unresolved art direction has relevant annotated references, and no irrelevant branch or fashionable reference is shaping the design.
 
 ## 4. Commit to one coherent direction
 
@@ -103,9 +113,11 @@ The signature and rejected-defaults exercise applies only when establishing a ne
 
 For an existing product, derive the direction from its accepted system rather than inventing a parallel one. Use representative content immediately; placeholder copy conceals wrapping, density, empty-state, and localization failures.
 
-Present the direction for human acceptance before implementation when it changes brand expression, navigation, information architecture, a high-risk flow, or another consequential product decision. When this condition applies, stop and wait for explicit acceptance or point to existing accepted repository evidence; silence is not acceptance. Do not add ceremony for a bounded implementation of an already approved design.
+When material visual uncertainty remains, follow [`references/art-direction.md`](references/art-direction.md): create two or three variants with different design positions, render them with the same representative content, state, and viewport or device, compare their visible trade-offs, and recommend one. Different accent colors are not different directions. Do not create variants for an approved direction, a review-only task, or a small bounded change.
 
-Completion criterion: every material visual choice traces to product evidence, platform fit, or a stated and reviewable rationale.
+Present the direction for human acceptance before production implementation when the direction was unresolved or it changes brand expression, navigation, information architecture, a high-risk flow, or another consequential product decision. When this condition applies, stop and wait for explicit acceptance or point to existing accepted repository evidence; silence is not acceptance. Do not add ceremony for a bounded implementation of an already approved design.
+
+Completion criterion: every material visual choice traces to product evidence, platform fit, or a stated and reviewable rationale; when exploration was required, the accepted direction wins through inspected comparative evidence rather than generation order.
 
 ## 5. Build the complete surface
 
@@ -124,7 +136,7 @@ Completion criterion: the running implementation covers every applicable state a
 
 ## 6. Verify behavior, semantics, and pixels
 
-This step applies to implementation and review tracks. For design-only work, verify internal consistency, authority traceability, state coverage, platform decisions, and judgeable acceptance criteria instead of inventing rendered evidence.
+This step applies to implementation and review tracks. For design-only work that proposes a visual direction, inspect a faithful rendered mockup as required by Step 4; a design contract without a render can establish decisions but cannot establish visual quality.
 
 Use the narrowest faithful running environment. Build an evidence matrix from the affected tasks and states; do not apply a ceremonial fixed device list when it adds no coverage.
 
@@ -134,9 +146,9 @@ Verify three independent dimensions:
 2. **Semantics and accessibility:** inspect the DOM/accessibility tree or native accessibility representation; test keyboard or switch-style navigation, focus, labels, announcements, text scaling, contrast, touch targets, and reduced motion as applicable.
 3. **Visual result:** capture named screenshots at the viewport, window, device, theme, text scale, and state where each visual claim matters; inspect hierarchy, grouping, alignment, typography, overflow, density, and platform fit.
 
-A screenshot cannot prove semantics or usability. An automated accessibility scan cannot prove useful labels, logical focus, or a coherent task. Use both deterministic and judgment-based evidence.
+A screenshot cannot prove semantics or usability. An automated accessibility scan cannot prove useful labels, logical focus, or a coherent task. Use both deterministic and judgment-based evidence. If faithful rendering is unavailable, state `Visual quality unverified` and do not describe the result as polished, refined, or visually complete.
 
-For a material UI change, send the accepted brief, exact changed surface, and running target to a fresh independent reviewer before signoff. Keep end-to-end use-case acceptance separate when the project has a dedicated QA workflow.
+For a material UI change, when the environment supports a fresh independent reviewer, send that reviewer the accepted brief, controlling references, compared variants when applicable, exact changed surface, named renders, and running target before signoff. When no independent reviewer is available, report `Independent review not performed` and do not imply independent verification. Keep end-to-end use-case acceptance separate when the project has a dedicated QA workflow.
 
 Completion criterion: every acceptance behavior has direct running evidence, every material visual claim has a reviewed render, accessibility checks include manual interaction, and unresolved gaps are named.
 
@@ -145,6 +157,8 @@ Completion criterion: every acceptance behavior has direct running evidence, eve
 For design-only work, report:
 
 - accepted task, state, platform, accessibility, and visual decisions;
+- reference rationale, compared directions, recommendation, and acceptance when exploration applied;
+- rendered evidence or the explicit `Visual quality unverified` limitation;
 - assumptions and human acceptance evidence;
 - judgeable implementation acceptance criteria;
 - exact implementation handoff and boundaries.
@@ -157,24 +171,7 @@ For implementation, report:
 - rendered, behavioral, and accessibility evidence;
 - assumptions, deviations, and remaining uncertainty.
 
-For completed-change review or a named-surface audit, state which review track applies, then use:
-
-```markdown
-## Verdict
-Pass | Request changes | Inconclusive
-
-## Task and platform trace
-| Task or state | Platform | Status | Evidence |
-
-## Findings
-1. <ID> — Blocking | Fix-now | Advisory — <surface>
-   - Evidence:
-   - User consequence:
-   - Required outcome:
-
-## Verified
-## Not verified
-```
+For completed-change review or a named-surface audit, state which review track applies, then use the canonical [`references/verification.md`](references/verification.md) review output.
 
 `Pass` requires direct evidence for every material obligation. Use `Request changes` for demonstrated defects inside the accepted design boundary. Use `Inconclusive` when missing product intent, user evidence, access, or a faithful environment prevents judgment.
 
@@ -183,6 +180,7 @@ Pass | Request changes | Inconclusive
 - **Refactoring UI as the whole discipline:** it is an excellent visual-craft layer, not a substitute for UX research, accessibility, content, platform behavior, or state design.
 - **Mobile as narrow web:** redesign navigation, action placement, input, system integration, and adaptive behavior for the platform and available window.
 - **Generated design-system cargo cult:** do not persist large token sets, palettes, or component inventories before the product demonstrates a need.
+- **Brand-catalog cloning:** a famous product's exact palette, type scale, radii, composition, or assets are its identity, not a shortcut to taste. Extract only justified grammar and keep product-specific expression original.
 - **Screenshot worship:** pixel fidelity can coexist with broken focus, semantics, recovery, performance, and task flow.
 - **Heuristic certainty:** Nielsen-style critique identifies plausible risks; it does not prove how representative users behave.
 - **Anti-pattern absolutism:** gradients, cards, serif type, dark themes, glass, dense tables, and animation are not inherently wrong. They are wrong when they are ungrounded, inconsistent, inaccessible, or harmful to the task.

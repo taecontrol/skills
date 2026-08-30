@@ -13,6 +13,8 @@ Cover the happy path, every changed rule, realistic content extremes, and applic
 
 Name screenshots by route or screen, state, viewport or device, theme or text scale when relevant, and revision. Capture the state where the claim matters; a final success screen cannot prove an error, focus, or pending state.
 
+When comparing design variants, use the same representative content, state, viewport or device, theme, text scale, and fidelity. A comparison cannot distinguish direction from execution quality when these conditions drift.
+
 ## 2. Verify independent dimensions
 
 ### Behavior
@@ -56,6 +58,8 @@ Inspect named renders for:
 - clipping, overflow, occlusion, layout shift, and unsafe-area behavior;
 - fidelity to approved designs and coherence with adjacent product surfaces.
 
+For unresolved art direction, compare the named renders side by side when possible. State what each communicates, where hierarchy works, where it looks generic or excessive, what is missing, who it best serves, and its main trade-off. Recommend a direction without assigning a universal taste score.
+
 Prefer viewport or device screenshots for signoff. Full-page composites can hide sticky, focus, viewport, and timing defects; use them as secondary debugging artifacts.
 
 ## 3. Critique against authority
@@ -90,16 +94,17 @@ Three focused visual revision loops are a useful cost boundary for an unresolved
 
 ## 5. Independent review
 
-For material UI work, hand a fresh reviewer:
+For material UI work, when the environment supports a fresh reviewer, hand them:
 
 - accepted task and design brief;
 - controlling product and platform evidence;
+- annotated references, compared directions, and human acceptance when applicable;
 - exact diff or changed surface;
 - running target and environment;
-- evidence matrix and captured artifacts;
+- evidence matrix and named renders or captured artifacts;
 - known limitations.
 
-The reviewer works read-only, traces every material obligation to evidence, and returns `Pass`, `Request changes`, or `Inconclusive`. Repairs return to the implementer; accepted use-case QA remains a separate activity when the project defines it.
+The reviewer works read-only, traces every material obligation to evidence, and returns `Pass`, `Request changes`, or `Inconclusive`. Repairs return to the implementer; accepted use-case QA remains a separate activity when the project defines it. If no independent reviewer is available, report `Independent review not performed`; self-review does not become independent evidence by relabeling it.
 
 ## Review output
 
@@ -109,6 +114,7 @@ Pass | Request changes | Inconclusive
 
 ## Evidence reviewed
 - Product/design authority:
+- References and compared directions:
 - Running target:
 - Tasks and states:
 - Screenshots:
@@ -127,5 +133,7 @@ Pass | Request changes | Inconclusive
 ## Not verified
 <material gaps and concrete unblock conditions>
 ```
+
+When a faithful render is unavailable, use `Inconclusive` for visual claims and state `Visual quality unverified`; source validity or a successful build does not remove that limitation.
 
 Completion criterion: the verdict is reproducible from direct running evidence, every material obligation has a disposition, and aesthetic judgment is separated from accessibility conformance, platform correctness, and user evidence.
