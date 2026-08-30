@@ -31,6 +31,15 @@ Author declared by the source plugin: Lauren Tan
 
 Copyright (c) 2026 Lauren Tan
 
+## Patterns.dev skills
+
+Source: https://github.com/PatternsDev/skills
+Revision used: `48bf58a488cd210bcfad280b09c3a00403964d9d`
+
+Adapted material: the pattern catalog and reference cards in `javascript-react-patterns`
+License declared by each source skill: MIT
+Author metadata declared by the source skills: patterns.dev
+
 ## MIT license
 
 Permission is hereby granted, free of charge, to any person obtaining a copy

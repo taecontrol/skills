@@ -17,6 +17,12 @@ Install every skill:
 npx skills add taecontrol/skills
 ```
 
+Add the progressively disclosed JavaScript and React pattern specialist to a Factory installation:
+
+```bash
+npx skills add taecontrol/skills --skill javascript-react-patterns
+```
+
 List available skills without installing:
 
 ```bash
@@ -50,6 +56,7 @@ Private repositories require authenticated Git access on the installing machine.
 - [`wizard`](./skills/wizard/SKILL.md) — Guides authorized human-only operations without receiving secrets.
 - [`developer-documentation-style`](./skills/developer-documentation-style/SKILL.md) — Writes direct developer documentation.
 - [`ui-ux-design`](./skills/ui-ux-design/SKILL.md) — Designs and reviews task-first web, iOS, and Android interfaces.
+- [`javascript-react-patterns`](./skills/javascript-react-patterns/SKILL.md) — Selects JavaScript and modern function-component React patterns through references loaded on demand.
 - [`gh-stack`](./skills/gh-stack/SKILL.md) — Creates and manages stacked GitHub pull requests.
 
 Each skill directory is independently installable and contains its own required references, templates, and scripts.
