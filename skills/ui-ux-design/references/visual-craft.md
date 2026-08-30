@@ -18,7 +18,7 @@ For greenfield work, define:
 
 For a quiet, conventional, or task-dense product, `none justified` is a valid result for either item. Do not manufacture ornament or performative design prose to satisfy the checklist.
 
-Use controlled variants to compare consequential directions. Do not reroll random full designs until one looks attractive.
+For a consequential unresolved direction, use the reference, variant, and comparative-critique method in [`art-direction.md`](art-direction.md). Do not reroll random full designs until one looks attractive.
 
 ## Hierarchy
 

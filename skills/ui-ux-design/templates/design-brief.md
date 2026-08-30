@@ -6,13 +6,19 @@ Use this as a working checklist. Persist it only when the user or repository wor
 
 - User and context:
 - Job to be done:
+- Product category:
 - Entry point:
 - Primary success behavior:
+- Desired character:
+- Information density and scanning needs:
+- Trust, sensitivity, and consequence of error:
 - Non-goals:
 - Risk and research disposition:
 
 ## Design authority
 
+- Authority state: approved language / references but unresolved / no direction / review only
+- Is visual exploration permitted?:
 - Accepted requirements or designs:
 - Existing tokens, components, patterns, and content language:
 - User or product evidence:
@@ -22,6 +28,16 @@ Use this as a working checklist. Persist it only when the user or repository wor
   - inspiration only;
   - anti-reference.
 - Assumptions needing acceptance:
+
+## Reference analysis when direction is unresolved
+
+For each selected reference:
+
+- Relevant surface and reason:
+- Authority: approved target / behavioral reference / inspiration / anti-reference
+- Applicable grammar: typography / density / layout / hierarchy / navigation / surfaces / color roles / data / icons / motion / feedback
+- Adopt and product reason:
+- Reject and conflict reason:
 
 ## Information and interaction
 
@@ -52,6 +68,15 @@ Use this as a working checklist. Persist it only when the user or repository wor
 - Signature element, if justified:
 - Generic defaults to reject and replacements:
 
+## Variant comparison when uncertainty is material
+
+- Constant content, state, viewport or device, theme, and fidelity:
+- Named directions and material difference:
+- Named renders:
+- Visible strengths, generic or excessive choices, missing emphasis, best-fit context, and main trade-off:
+- Recommended direction and rationale:
+- Human acceptance or unresolved decision:
+
 ## Platform
 
 - Target surfaces:
@@ -73,6 +98,7 @@ Use this as a working checklist. Persist it only when the user or repository wor
 - Required task and recovery cases:
 - Required viewports, windows, or devices:
 - Required screenshots and states:
+- Comparative renders when applicable:
 - Automated checks:
 - Manual interaction and assistive-technology checks:
 - Independent review disposition:
