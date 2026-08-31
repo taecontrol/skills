@@ -31,6 +31,8 @@ When shared mutable state, concurrency, ordering, retries, ownership transfer, l
 
 Map every observable obligation to its narrowest faithful seam. Use a red-capable test or reproduction that fails on the old behavior or a plausible defect, then keep current green evidence. Cover failure, authorization, malformed input, migration, and fresh versus preserved state when they change the result. An equivalent before-and-after reproduction may replace strict test-first work when needed.
 
+Treat tautological tests as invalid proof. An expectation is not independent when it repeats the production algorithm, copies production logic into the test, asserts a value against itself, or accepts current output merely because it is current. Derive expected results from an accepted contract, worked example, known-good fixture, external oracle, or another source that can disagree with the implementation. Remove tests that cannot expose a plausible defect, and avoid repeated coverage at several seams unless each test protects a distinct behavior or failure mode.
+
 ## Inspect the design
 
 Treat a function, class, package, or tier-spanning slice as a module when it has an interface and implementation. Name the interface obligations and the seam where behavior can vary. Prefer deep modules: small interfaces that hide substantial behavior and give callers leverage and locality. Put seams only where variation is real; one adapter is hypothetical, while two demonstrate variation.
@@ -41,4 +43,4 @@ Prefer one home for each policy, honest names and types for distinct identities 
 
 After focused proof is green, inspect for change amplification, caller knowledge of hidden detail, and policies or failure behavior without an obvious home. Write roles fix defects within accepted decisions and record broader work as residual risk with its concrete cost. Verifier reports the evidence and consequence without changing the candidate.
 
-Completion criterion: each material obligation has discriminating evidence, each applicable interaction dimension has a model, consequential choices received proportional design pressure, and material complexity defects are fixed or reported with evidence and consequence.
+Completion criterion: each material obligation has independent, discriminating evidence, each applicable interaction dimension has a model, consequential choices received proportional design pressure, and material complexity defects are fixed or reported with evidence and consequence.

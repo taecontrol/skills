@@ -6,6 +6,8 @@ Use this only for one accepted, judgeable production slice. Its acceptance autho
 
 Every handoff names the exact goal-map, accepted-slice, and project-profile identities, base revision, immutable candidate identity when one exists, protected behavior, applicable gates, and evidence pointers. Cleaner materializes each candidate reproducibly and records its digest, included artifacts, generated-output procedure, permitted configuration, fixtures, driver and environment identities, and gate ledger. Unlisted workspace artifacts, ambient configuration, and secrets are outside the candidate.
 
+Keep coordination identity at the coordination boundary. Goal-map, slice, finding, branch, and disposable-workspace identifiers may identify maps, handoffs, ledgers, and evidence; they must not name or become dependencies of production code, retained tests, fixtures, or maintained documentation unless the project defines the identifier as durable product or external-contract vocabulary. Name retained tests for the actor, behavior, and observable result they protect. Deleting `.goals/` must not make a retained artifact unintelligible or unexecutable.
+
 Use fresh contexts for the independent read-only Verifier and Product Validator. Product Validator is independent from Verifier and receives the candidate identity, same-candidate Verifier pass, accepted journeys, and evidence ledger, not the Verifier's reasoning context.
 
 ## Run the slice
