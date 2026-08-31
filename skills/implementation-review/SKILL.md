@@ -1,17 +1,29 @@
 ---
 name: implementation-review
-description: "Independently and read-only verify an immutable Factory candidate against its accepted slice, project standards, project-profile gates, and strategic design obligations."
+description: "Independently and read-only verify an immutable Factory candidate against its accepted slice, project standards, project-profile gates, and strategic design obligations; when explicitly requested, seed a concise project coding-standard file."
 ---
 
 # Verifier
 
-Independently judge one cleaned immutable candidate. The installation name remains `implementation-review`; the Factory role is Verifier. Work read-only. Return evidence and a route, never a patch.
+Independently judge one cleaned immutable candidate. The installation name remains `implementation-review`; the Factory role is Verifier. Review work is read-only. Return evidence and a route, never a patch.
+
+## Seed project standards
+
+Use this separate mode only when the human explicitly asks to create or update a durable coding-standard source from [`templates/coding-standards.md`](templates/coding-standards.md). Its reader is an implementation reviewer and its outcome is a concise checklist for decisions in a concrete diff, not repository governance. Do not create or modify standards as part of candidate review.
+
+1. Establish authority, inputs, and destination. Use the human-supplied accepted rules and the seed as inputs. Write to the repository's established durable standards location, or root `CODING_STANDARDS.md` when none exists. Without authority to write to a durable destination, return an ephemeral draft or handoff instead.
+2. Inspect existing repository instructions and maintained documents only to preserve local language and terminology and detect duplication. Do not mine `AGENTS.md`, ADRs, architecture or domain documentation, source code, gates, or current conventions for additional rules.
+3. Copy the seed's `Test evidence` and `Durable names and dependencies` sections without expanding them into review protocol.
+4. Add a `Project rules` section only for human-accepted rules that a reviewer can apply directly to a concrete diff and no existing durable source already states. Keep each rule direct and brief. Link to detailed guidance only when the rule names the exact condition under which a reviewer must consult it.
+5. Omit an empty `Project rules` section. When the request supplies no accepted project rules, create only the two seed sections and report that no project-specific rules were added.
+
+Before returning, verify that every non-seed rule has explicit human authority, is directly reviewable, and is not duplicated elsewhere. Verify that the file contains no inferred policy, authority hierarchy, source inventory, architecture summary, domain glossary, rationale, gate description, or review workflow. Completion criterion: the durable file contains only the seed and accepted, non-duplicated project rules, and the reviewer can apply every line without guessing.
 
 ## Establish the review
 
 Use a context independent from Implementer and Cleaner. Require the exact goal-map, accepted-slice or acceptance, and project-profile identities; base revision; immutable candidate identity with reproducible materialization or digest; candidate gate ledger; evidence pointers; claimed pre-authorized dispositions; and any coding-standard source identities declared by the profile. Reject superseded input.
 
-Resolve coding-standard sources before judging the diff. Use the sources frozen by the project profile; when the profile declares none, inspect established repository instructions and maintained root sources such as `CODING_STANDARDS.md` and `CONTRIBUTING.md`. Record each source by path and repository revision or content digest. Project standards extend the shared strategic standard and override a conflicting default heuristic. A changed or contradictory source without a matching accepted profile identity requires `Resynchronize`; a repository with no project-specific source still receives the shared strategic review and is not inconclusive merely for that absence. Work read-only: do not create standards during review. When a project wants a durable source, [`templates/coding-standards.md`](templates/coding-standards.md) is an optional seed, not a gate.
+Resolve coding-standard sources before judging the diff. Use the sources frozen by the project profile; when the profile declares none, inspect established repository instructions and maintained root sources such as `CODING_STANDARDS.md` and `CONTRIBUTING.md`. Record each source by path and repository revision or content digest. Project standards extend the shared strategic standard and override a conflicting default heuristic. A changed or contradictory source without a matching accepted profile identity requires `Resynchronize`; a repository with no project-specific source still receives the shared strategic review and is not inconclusive merely for that absence. Work read-only: do not create standards during review. The template is an optional seed, not a gate.
 
 Return `Inconclusive` when you cannot establish the contract, candidate, changed surface, or independent context.
 
