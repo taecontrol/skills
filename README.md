@@ -8,7 +8,7 @@ Install the Factory core:
 
 ```bash
 npx skills add taecontrol/skills \
-  --skill pursue-goal cleaner strategic-programming implementation-review use-case-qa grilling wait-what unslop research spike prototype diagnosing-bugs adr
+  --skill pursue-goal cleaner strategic-programming implementation-review use-case-qa verification-adapter grilling wait-what unslop research spike prototype diagnosing-bugs adr
 ```
 
 Install every skill:
@@ -38,6 +38,7 @@ Private repositories require authenticated Git access on the installing machine.
 - [`strategic-programming`](./skills/strategic-programming/SKILL.md) — Applies deep design, invariants, and behavioral proof to non-trivial changes.
 - [`implementation-review`](./skills/implementation-review/SKILL.md) — Independently verifies completed implementation.
 - [`use-case-qa`](./skills/use-case-qa/SKILL.md) — Validates accepted journeys through observable product seams.
+- [`verification-adapter`](./skills/verification-adapter/SKILL.md) — Creates or reconciles a project's local verification CLI and Feature Map for independent product validation.
 - [`grilling`](./skills/grilling/SKILL.md) — Interviews the complete current decision frontier.
 - [`wait-what`](./skills/wait-what/SKILL.md) — Re-explains a message without advancing the work.
 - [`unslop`](./skills/unslop/SKILL.md) — Removes AI filler while preserving technical fidelity.

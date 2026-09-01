@@ -8,11 +8,13 @@ Every handoff names the exact goal-map, accepted-slice, and project-profile iden
 
 Keep coordination identity at the coordination boundary. Goal-map, slice, finding, branch, and disposable-workspace identifiers may identify maps, handoffs, ledgers, and evidence; they must not name or become dependencies of production code, retained tests, fixtures, or maintained documentation unless the project defines the identifier as durable product or external-contract vocabulary. Name retained tests for the actor, behavior, and observable result they protect. Deleting `.goals/` must not make a retained artifact unintelligible or unexecutable.
 
+When accepted journeys require product-specific launch, control, isolation, observation, or evidence behavior that the project cannot currently provide, name that missing behavior as a capability gap. Route creation or repair with `verification-adapter` as accepted production work before Product Validation. Do not ask Product Validator to improvise retained driver code while independently judging the candidate. The project's adapter makes the product operable and observable; it does not decide acceptance or create accepted requirements.
+
 Use fresh contexts for the independent read-only Verifier and Product Validator. Product Validator is independent from Verifier and receives the candidate identity, same-candidate Verifier pass, accepted journeys, and evidence ledger, not the Verifier's reasoning context.
 
 ## Run the slice
 
-1. Implementer writes the smallest coherent end-to-end behavior and focused observable proof. Material evidence returns to Coordinator.
+1. Implementer writes the smallest coherent end-to-end behavior and focused observable proof. When the accepted slice includes a named product-control capability gap, Implementer creates or reconciles the project-local verification CLI and Feature Map in the same candidate. Material evidence returns to Coordinator.
 2. Cleaner repairs local correctness and design defects, handles errors, freezes a new candidate, and runs every affected profile gate against that identity. A gate passes only with `Pass` or its matching pre-authorized disposition. `Resynchronize` and `Blocked` return to Coordinator or the named owner.
 3. Verifier judges the exact cleaned candidate. `Pass` goes to Product Validator. `Repair` goes automatically to Cleaner. `Resynchronize` goes to Coordinator. `Inconclusive` goes to Coordinator with an owner and exact unblock condition.
 4. Product Validator exercises every accepted journey through a real product interface on the same Verifier-passed candidate. Before an external, billable, destructive, privacy-sensitive, or production effect, it requires scoped authorization or an approved non-production substitute that preserves material semantics. `Pass` makes the candidate eligible for commit. `Fail` goes automatically to Cleaner. `Inconclusive` goes to Coordinator with an unblock condition.

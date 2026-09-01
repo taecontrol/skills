@@ -17,7 +17,11 @@ Each journey needs an actor, starting state, action, required observable result,
 
 Inspect available browser, desktop, API, CLI, simulator, staging, fixture, observability, and reset facilities. Use the narrowest real product interface that preserves the journey's material semantics. Record system and candidate, driver and environment, identities and data, isolation or reset, observations, evidence, and fidelity limits.
 
+When a same-candidate project-local verification adapter is available, run its `doctor` equivalent before the journey and require expected versus observed candidate, adapter, Feature Map, target, environment, data, and run identities to agree. Select the relevant Feature Map recipe, but derive the judgment criteria from the accepted journey. Exercise every accepted user entry point through its named real surface, inspect direct artifacts and integrity metadata, and confirm persistent effects through a separate faithful read-only seam. Treat unsupported, stale, unknown, timed-out, or ambiguous adapter results as `Inconclusive` unless direct product evidence independently proves `Fail`. Never convert adapter control success into `Pass`.
+
 Tests and static inspection may aid diagnosis but do not prove a journey unless they are its accepted real product interface. Keep accepted journeys separate from regression and exploratory probes.
+
+If a required adapter capability is missing or unsafe, return `Inconclusive` with the exact capability gap. Do not create or retain driver code while judging the candidate; route that work through the Coordinator.
 
 ## Authorize effects before acting
 
