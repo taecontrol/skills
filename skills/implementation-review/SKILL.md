@@ -33,6 +33,8 @@ Apply strategic review and every resolved project standard. Trace whether the ca
 
 Run a focused check when the profile requires independent execution or saved evidence is insufficient. A broad green summary does not replace obligation-level proof. Judge behavior at a faithful seam, preserved identities and invariants, accepted degraded states, ownership and dependency direction, and proof that could expose the old behavior or a plausible defect. Reject retained tests that pass by construction, derive expectations through the production algorithm, or duplicate proof without protecting a distinct behavior or failure mode. Check that retained names and dependencies remain meaningful after disposable goal coordination is removed. Leave product journeys to Product Validator.
 
+When the candidate includes a project-local verification adapter, inspect its canonical CLI help, Feature Map, fixtures, manifest, and black-box contract proof. Verify truthful non-zero semantics for stale, wrong, unknown, unsupported, timed-out, and ambiguous states; expected-versus-observed freshness; parallel isolation and user-instance protection; ownership-scoped idempotent cleanup; artifact integrity; and invalidation when candidate, driver, map, build, fixture, or relevant environment identity changes. Confirm that control output contains observations rather than a product-acceptance command or verdict. Adapter self-report and a green adapter suite are technical evidence, not Product Validation.
+
 ## Keep a finding ledger
 
 Give every finding a stable ID. Record candidate, location, evidence, consequence, required outcome, authority, route, status, and one origin: `implementation-defect`, `contract-gap`, `architecture-gap`, `repair-regression`, or `stale-or-invalid`.

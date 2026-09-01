@@ -31,6 +31,21 @@ Author declared by the source plugin: Lauren Tan
 
 Copyright (c) 2026 Lauren Tan
 
+## pstack verification skill materials
+
+Source: https://github.com/cursor/plugins/tree/b9ddc83c32972210b8a94d389130713e8eed346e/pstack
+Revision used: `b9ddc83c32972210b8a94d389130713e8eed346e` (pstack 0.14.5)
+
+Adapted material:
+
+- project-local verification-skill creation structure from `skills/create-verification-skill/SKILL.md`;
+- verification-skill reconciliation workflow from `skills/maintain-verification-skill/SKILL.md`; and
+- Feature Map organization from the pstack verification materials.
+
+Copyright (c) 2026 Lauren Tan
+
+The source is licensed under the MIT terms reproduced below.
+
 ## Patterns.dev skills
 
 Source: https://github.com/PatternsDev/skills
