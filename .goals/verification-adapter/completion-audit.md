@@ -8,7 +8,8 @@
 - Candidate ledger: `.goals/verification-adapter/candidate-ledger.md`
 - Verifier ledger: `.goals/verification-adapter/verifier-ledger.md`
 - Product Validation ledger: `.goals/verification-adapter/product-validation-ledger.md`
-- Audit status: candidate complete and eligible for focused local commit; post-commit clean-checkout gate pending.
+- Audit status: complete.
+- Delivery commit: `b61306092a8b7d9070bf8e9a1cead799f40969d2`.
 
 ## Scope and deliverables
 
@@ -25,7 +26,7 @@
 | Preserve Cleaner → Verifier → Product Validator authority mechanically. | Conditional role edits; no acceptance command; three rejected-candidate lineages; same-candidate Verifier pass; fresh-context Product Validator pass. | Proven |
 | CLI emits observations/artifacts but no acceptance oracle. | Canonical help and source scans; control-only result semantics; Product Validator alone issued `Pass`. | Proven |
 | Factory documentation and install instructions include the capability. | `README.md` Factory core install/catalog plus conditional edits to delivery, Cleaner, Verifier, and Product Validator contracts. | Proven |
-| Applicable tests, linters, and validation pass. | 17/17 black-box tests; help, compile, links/frontmatter, diff, coordination, process, manual journey, and digest gates pass. Profile documents that no repository linter/formatter exists. Final clean-checkout rerun remains the last post-commit gate. | Pending final clean checkout |
+| Applicable tests, linters, and validation pass. | 17/17 black-box tests; help, compile, links/frontmatter, diff, coordination, process, manual journey, and digest gates pass. Profile documents that no repository linter/formatter exists. An isolated clone detached at delivery commit `b613060` repeated the full suite, help, compile, diff hygiene, process scan, and manifest-based digest reproduction. | Proven |
 | Attribution/licensing obligations are satisfied. | `THIRD_PARTY_NOTICES.md` names pstack 0.14.5, pinned SHA, adapted surfaces, copyright, and MIT terms. No wording from the unlicensed fictional sample was copied. | Proven |
 
 ## Required executable proof
@@ -61,7 +62,8 @@
 - `git diff --check`: `Pass`.
 - Candidate digest reproduction: `6403d5c0020dccd14343636bd567eb11ad94be75dc6e0ea6f323ee67b94e20ca`.
 - Fixture process scan: none present.
+- Clean checkout at `b613060`: 17/17 suite `Pass`; help, compile, diff hygiene, process scan, and candidate digest `6403d5c0…` reproduction `Pass`.
 
-## Remaining completion action
+## Closure
 
-Inspect and commit the exact staged candidate plus coordination-only evidence. Then materialize the commit in a clean detached worktree, rerun the full suite and hygiene gates there, record the commit revision and result, and leave no unresolved requirement or workspace mutation.
+Every issue #30 acceptance criterion and named executable case has direct candidate, Verifier, and Product Validation evidence. The delivery surface is committed locally, the clean-checkout gate passes, no finding or blocker remains, and no external action was taken.

@@ -1,11 +1,11 @@
 # Goal map: verification-adapter
 
-- Goal-map identity: `verification-adapter-map-v10`
+- Goal-map identity: `verification-adapter-map-v11`
 - Project profile: `verification-adapter-profile-v1`
 - Base revision: `755c150e3d765643e0641281dd540ea08fa1ad17`
 - Current immutable candidate: `verification-adapter-candidate-sha256-6403d5c0020dccd14343636bd567eb11ad94be75dc6e0ea6f323ee67b94e20ca`
 - Current accepted slice: `verification-adapter-slice-v1`
-- Status: delivery
+- Status: complete
 
 ## Outcome and observable proof
 
@@ -119,7 +119,7 @@ Product Validator proof:
 
 ## Current route
 
-Audit the final candidate against every issue #30 requirement, inspect the staged diff, and create one focused local commit containing the verified 20-file candidate plus permitted coordination-only evidence.
+Goal complete. The verified delivery surface is committed locally at `b613060` (`feat(verification): add project-local adapter workflow`). No push, pull request, merge, deploy, or publication was performed or authorized.
 
 ## Candidate and gate evidence
 
@@ -146,16 +146,19 @@ Audit the final candidate against every issue #30 requirement, inspect the stage
 - Fresh-context Product Validator outcome: `Pass -> Coordinator commit readiness` on the exact same candidate.
 - Product journey evidence: `.goals/verification-adapter/product-validation-ledger.md`.
 - Final accepted journey: fresh copy and isolated run; exact `doctor`; baseline `0`; public product-CLI mutation to `73`; restart generation `1 → 2`; public and independent persistent views both `73`; five canonical artifacts/checksums verified before and after cleanup; evidence preserved; second cleanup idempotent; runtime and process absent; candidate digest unchanged.
+- Delivery commit: `b61306092a8b7d9070bf8e9a1cead799f40969d2`.
+- Clean-checkout gate: local isolated clone detached at `b613060`; 17/17 tests, canonical help, compile, diff hygiene, zero process residue, and manifest-based candidate digest reproduction all `Pass`.
 
 ## Evidence-supported future slices
 
-- None. The proposed slice is intentionally end-to-end because the specialist contract, executable proof, and conditional role integration are not independently judgeable when separated.
+- None required for issue #30. Browser, GUI, mobile, desktop, external pilots, and any future shared abstraction remain separate decisions and slices.
 
 ## Risks and blockers
 
 - Risk: documentation-only assertions could satisfy text checks while failing operational behavior.
 - Risk: the fixture could accidentally establish a universal implementation rather than demonstrate a project-local contract.
 - Risk: self-reported evidence could blur product acceptance authority.
+- Residual fidelity limit: executable proof covers the documented local CLI/localhost fixture, not browser, GUI, mobile, desktop, external pilots, or production environments; these were explicitly outside the accepted slice.
 - Blockers: none.
 
 ## Superseded input
