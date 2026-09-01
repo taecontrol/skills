@@ -1,8 +1,10 @@
 # Completion audit: verification adapter
 
-- Goal map: `verification-adapter-map-v10`
+- Audit input goal map: `verification-adapter-map-v10`
+- Closure goal map: `verification-adapter-map-v12`
 - Accepted slice: `verification-adapter-slice-v1`
-- Project profile: `verification-adapter-profile-v1`
+- Delivery project profile: `verification-adapter-profile-v1`
+- Current project profile: `verification-adapter-profile-v2`
 - Base revision: `755c150e3d765643e0641281dd540ea08fa1ad17`
 - Final candidate: `verification-adapter-candidate-sha256-6403d5c0020dccd14343636bd567eb11ad94be75dc6e0ea6f323ee67b94e20ca`
 - Candidate ledger: `.goals/verification-adapter/candidate-ledger.md`
@@ -15,7 +17,7 @@
 
 | Requirement | Authoritative evidence | Disposition |
 | --- | --- | --- |
-| Independently installable `verification-adapter` follows repository skill conventions. | `skills/verification-adapter/SKILL.md` has conservative frontmatter, an 80-line operational flow, local progressive references, and a self-contained fixture; `README.md` installs and catalogs it in Factory core. | Proven |
+| Independently installable `verification-adapter` follows repository skill conventions. | `skills/verification-adapter/SKILL.md` has conservative frontmatter, a compact operational flow, local progressive references, and a self-contained fixture; `README.md` installs and catalogs it in Factory core. | Proven |
 | Create or reconcile a project-owned CLI and Feature Map without a universal runtime. | Main skill first extends the local owner or creates the smallest native package; `fixture/README.md` explicitly forbids treating the sample as a runtime/template. | Proven |
 | Cover identity, freshness, lifecycle, product control, isolation, evidence, and ownership-safe cleanup. | `references/cli-contract.md`, `references/evidence-contract.md`, and the executable fixture CLI/tests. | Proven |
 | Bind evidence to candidate, adapter, Feature Map, build, environment, target, data store, run, and owner identities. | Evidence contract; manifest gate; Cleaner materialization ledger; fresh Product Validation manifest. | Proven |

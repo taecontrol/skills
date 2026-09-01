@@ -1,6 +1,7 @@
 # Project profile: verification-adapter
 
-- Profile identity: `verification-adapter-profile-v1`
+- Profile identity: `verification-adapter-profile-v2`
+- Supersedes: `verification-adapter-profile-v1`
 - Repository: `taecontrol/skills`
 - Base revision: `755c150e3d765643e0641281dd540ea08fa1ad17`
 - Recorded: `2026-09-01`
@@ -15,7 +16,9 @@
 ## Executable gates and harness limits
 
 - No project-level package manifest, test runner, formatter, or linter is present at the base revision.
-- Gate discovery remains open: the accepted implementation must add or identify executable validation proportional to the new fixture and skill contract.
+- The independently installable fixture owns its black-box gate: from `skills/verification-adapter/fixture`, run `python3 -m unittest discover -s tests -v`.
+- Additional gates are canonical CLI help, Python compilation, package links/frontmatter, patch hygiene, coordination-boundary scan, process cleanup, candidate digest reproduction, independent Verifier review, and fresh-context Product Validation.
+- No separate lint or formatting gate applies because the repository still has no maintained linter or formatter configuration.
 - The deliverable must remain harness-agnostic and independently installable; it cannot rely on Cursor-only paths, APIs, or invocation.
 
 ## Protected surfaces and architecture constraints

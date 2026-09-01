@@ -1,7 +1,7 @@
 # Goal map: verification-adapter
 
-- Goal-map identity: `verification-adapter-map-v11`
-- Project profile: `verification-adapter-profile-v1`
+- Goal-map identity: `verification-adapter-map-v12`
+- Project profile: `verification-adapter-profile-v2`
 - Base revision: `755c150e3d765643e0641281dd540ea08fa1ad17`
 - Current immutable candidate: `verification-adapter-candidate-sha256-6403d5c0020dccd14343636bd567eb11ad94be75dc6e0ea6f323ee67b94e20ca`
 - Current accepted slice: `verification-adapter-slice-v1`
@@ -123,29 +123,13 @@ Goal complete. The verified delivery surface is committed locally at `b613060` (
 
 ## Candidate and gate evidence
 
-- Cleaner outcome: `Ready`.
-- Candidate identity: `verification-adapter-candidate-sha256-92d03e4ba797edbe6cfaccae617806b824accf6bcacfaf3067292b3bcc2e2b99`.
-- Materialization and gate ledger: `.goals/verification-adapter/candidate-ledger.md`.
-- Included surface: 20 production, test, fixture, role-contract, catalog, and attribution files; coordination artifacts excluded.
-- Cleaner repaired eight local findings covering content-derived identity, truthful exercised-feature recording, stopped-run ownership, PID/service binding, observation freshness, failed-launch cleanup, capability redaction, and executable documentation.
-- Gates: 14/14 black-box tests, canonical help, fresh operational journey, compile check, package links/frontmatter, patch hygiene, coordination-boundary scan, process cleanup, and digest reproduction all `Pass`.
-- Independent Verifier outcome on this candidate: `Repair -> Cleaner`.
-- Verifier ledger: `.goals/verification-adapter/verifier-ledger.md`.
-- Open `VER-001`: `verify-evidence` accepted a manifest whose observation referenced an artifact removed from both disk and the artifact record.
-- Open `VER-002`: malformed readiness JSON escaped the post-spawn termination guard and could leave the child alive after runtime cleanup.
-- Cleaner repair outcome: `Ready` with new candidate `verification-adapter-candidate-sha256-c3346828467a483c44c63b84f4b60b97e8a2da1a7ce669bdb48c397c53a46836`; parent candidate `92d03e4b…` remains rejected and uncommitted.
-- `VER-001` repair: strict schema-v1 validation now enforces complete shape, namespaces, uniqueness, and observation-to-artifact/feature referential integrity; dangling and missing-field probes fail closed.
-- `VER-002` repair: every post-spawn readiness/identity failure now terminates and reaps the direct child; a live malformed-readiness stub proves its PID is gone on return.
-- Current gates: 16/16 black-box tests and the full help, journey, compile, link, diff, coordination, process, and digest gates pass; independent re-verification remains required.
-- Independent re-verification: `VER-001` and `VER-002` resolved on candidate `c3346828…`.
-- New `VER-003`: manifest artifact paths accepted absolute/noncanonical aliases and enforced uniqueness on raw strings, allowing two records to resolve to the same file. Require relative canonical paths, canonical-identity uniqueness, and a black-box negative probe.
-- Cleaner `VER-003` repair outcome: `Ready` with new candidate `verification-adapter-candidate-sha256-6403d5c0020dccd14343636bd567eb11ad94be75dc6e0ea6f323ee67b94e20ca`.
-- Repair enforces relative canonical POSIX paths beneath the exact run evidence namespace, rejects absolute and dot/noncanonical forms, deduplicates resolved identities including symlink aliases, and applies the same parser to observations.
-- Current gates: 17/17 black-box tests plus full help, journey, compile, link, diff, coordination, process, and digest gates pass.
-- Independent Verifier outcome: `Pass -> Product Validator` on exact candidate `6403d5c0…`; all `VER-001`, `VER-002`, and `VER-003` are `Resolved` and no findings remain open.
-- Fresh-context Product Validator outcome: `Pass -> Coordinator commit readiness` on the exact same candidate.
-- Product journey evidence: `.goals/verification-adapter/product-validation-ledger.md`.
-- Final accepted journey: fresh copy and isolated run; exact `doctor`; baseline `0`; public product-CLI mutation to `73`; restart generation `1 → 2`; public and independent persistent views both `73`; five canonical artifacts/checksums verified before and after cleanup; evidence preserved; second cleanup idempotent; runtime and process absent; candidate digest unchanged.
+- Current candidate: `verification-adapter-candidate-sha256-6403d5c0020dccd14343636bd567eb11ad94be75dc6e0ea6f323ee67b94e20ca`.
+- Included surface: 20 production, test, fixture, role-contract, catalog, and attribution files; coordination artifacts are excluded.
+- Candidate lineage and Cleaner gates: `.goals/verification-adapter/candidate-ledger.md`.
+- Independent finding lineage: `.goals/verification-adapter/verifier-ledger.md`. Rejected candidates `92d03e4b…` and `c3346828…` were never committed; `VER-001`, `VER-002`, and `VER-003` are resolved on the current candidate.
+- Current gates: 17/17 black-box tests plus canonical help, fresh journey, compile, links/frontmatter, patch hygiene, coordination scan, process cleanup, and digest reproduction all `Pass`.
+- Independent Verifier outcome: `Pass -> Product Validator` on the current candidate with no open finding.
+- Fresh-context Product Validator outcome: `Pass -> Coordinator commit readiness` on the same candidate. Direct journey evidence is in `.goals/verification-adapter/product-validation-ledger.md`.
 - Delivery commit: `b61306092a8b7d9070bf8e9a1cead799f40969d2`.
 - Clean-checkout gate: local isolated clone detached at `b613060`; 17/17 tests, canonical help, compile, diff hygiene, zero process residue, and manifest-based candidate digest reproduction all `Pass`.
 
@@ -153,11 +137,11 @@ Goal complete. The verified delivery surface is committed locally at `b613060` (
 
 - None required for issue #30. Browser, GUI, mobile, desktop, external pilots, and any future shared abstraction remain separate decisions and slices.
 
-## Risks and blockers
+## Mitigated risks and residual limit
 
-- Risk: documentation-only assertions could satisfy text checks while failing operational behavior.
-- Risk: the fixture could accidentally establish a universal implementation rather than demonstrate a project-local contract.
-- Risk: self-reported evidence could blur product acceptance authority.
+- Executable black-box proof prevents documentation-only acceptance.
+- The fixture is explicitly project-local contract proof, not an installable runtime or shared framework.
+- Independent Verifier and Product Validator outcomes prevent adapter self-report from deciding acceptance.
 - Residual fidelity limit: executable proof covers the documented local CLI/localhost fixture, not browser, GUI, mobile, desktop, external pilots, or production environments; these were explicitly outside the accepted slice.
 - Blockers: none.
 
