@@ -24,6 +24,8 @@ Completion criterion: every active slice has a ready dependency state, isolated 
 
 Give one Slice Owner the current coordination envelope. Add protected behavior, design and contract pointers, gates, accepted journeys, commit boundary, and evidence destination.
 
+Use `factory-supervision` to place and supervise the Slice Owner. The Slice Owner uses it again when an internal role crosses an agent or harness boundary. The supervision adapter executes the route defined here; it does not choose lifecycle transitions or acquire either owner's authority.
+
 The Slice Owner owns delivery routing inside that boundary. It selects the agents, models, or fresh contexts that perform implementation, cleaning, technical verification, product validation, diagnosis, and repair. The Coordinator must not assign those internal roles or require approval between their routine transitions.
 
 Role independence still applies:

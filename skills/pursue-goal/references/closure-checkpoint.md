@@ -16,6 +16,8 @@ Completion criterion: the integrated candidate is reproducible, contains exactly
 
 The Coordinator dispatches one Goal Validation Owner with the current coordination envelope, accepted combined obligations and journeys, integration gates, isolated validation workspace and resources, and evidence destination. That owner selects the fresh Verifier and Product Validator contexts and runs the validation assignment without changing the candidate or accepted contract.
 
+Use `factory-supervision` to place, observe, settle, and clean up the Goal Validation Owner and its fresh validation contexts. The adapter cannot change the accepted disposition or route a failed candidate on the owner's behalf.
+
 Run the accepted integration gates against the integrated candidate. Have an independent Verifier judge the combined obligations and interactions that motivated goal validation. After that same candidate passes, have an independent Product Validator run every accepted cross-slice journey through its named real interface and environment. Product validation may mutate only state owned by its recorded resource lease and authorized journey.
 
 Record each gate, obligation, and journey with direct evidence. The Goal Validation Owner returns exactly one result to the Coordinator:
