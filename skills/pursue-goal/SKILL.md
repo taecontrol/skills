@@ -24,11 +24,15 @@ This phase is mandatory. Its outcome is one human-accepted design package: the d
 
 After design acceptance, read and follow [isolated slice delivery](references/delivery-checkpoint.md). Dispatch each ready slice as one end-to-end assignment to a Slice Owner. The Slice Owner runs the complete Implementer, Cleaner, Verifier, and Product Validator lifecycle and chooses the agents or contexts for those roles. The Coordinator schedules slices, enforces accepted dependencies, concurrency, and resource isolation, and integrates validated commits; it does not direct the slice's internal lifecycle.
 
+Use `factory-supervision` whenever this route crosses an agent, process, workspace, or harness boundary. It handles placement, launch, observation, settlement, and cleanup without acquiring Coordinator or Slice Owner authority.
+
 The default proposed concurrency limit is three. The human may change it before delivery. Never share a mutable workspace, database namespace, simulator or emulator, service instance, port, test account, fixture namespace, or other stateful resource between concurrent slices. Allocate independent resources or serialize the conflicting slices.
 
 ### 3. Goal validation
 
 After all accepted slices are integrated, read and follow [goal validation and closure](references/closure-checkpoint.md). Always perform the phase checkpoint. Run additional same-candidate verification when the accepted design or delivery evidence requires it; otherwise record why the accepted per-slice evidence is sufficient. Do not silently skip the phase.
+
+Use `factory-supervision` when a separate Goal Validation Owner or fresh validation context performs the accepted assignment.
 
 ## Preserve authority and identity
 

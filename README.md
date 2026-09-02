@@ -8,7 +8,7 @@ Install the Factory core:
 
 ```bash
 npx skills add taecontrol/skills \
-  --skill pursue-goal cleaner strategic-programming implementation-review use-case-qa verification-adapter grilling wait-what unslop research spike prototype diagnosing-bugs adr
+  --skill pursue-goal factory-supervision cleaner strategic-programming implementation-review use-case-qa verification-adapter grilling wait-what unslop research spike prototype diagnosing-bugs adr
 ```
 
 Install every skill:
@@ -34,6 +34,7 @@ Private repositories require authenticated Git access on the installing machine.
 ## Factory core
 
 - [`pursue-goal`](./skills/pursue-goal/SKILL.md) — Coordinates mandatory collaborative design, isolated slice delivery, and goal validation.
+- [`factory-supervision`](./skills/factory-supervision/SKILL.md) — Supervises Factory assignments across agent sessions, workspaces, and harnesses.
 - [`cleaner`](./skills/cleaner/SKILL.md) — Repairs and hardens accepted candidates before independent verification.
 - [`strategic-programming`](./skills/strategic-programming/SKILL.md) — Applies deep design, invariants, and behavioral proof to non-trivial changes.
 - [`implementation-review`](./skills/implementation-review/SKILL.md) — Independently verifies completed implementation.
