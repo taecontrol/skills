@@ -1,36 +1,79 @@
-# Vertical-slice lifecycle
+# Isolated slice delivery
 
-Use this only for one accepted, judgeable production slice. Its acceptance authorizes the lifecycle through a focused local commit, not any external effect.
+Use this only after the human has accepted the complete design baseline, slice batch, concurrency limit, resource plan, and goal-validation disposition. The Coordinator schedules whole slices; a Slice Owner runs each accepted slice end to end.
 
-## Preserve identity and independence
+## Schedule without overlap
 
-Every handoff names the exact goal-map, accepted-slice, and project-profile identities, base revision, immutable candidate identity when one exists, protected behavior, applicable gates, and evidence pointers. Cleaner materializes each candidate reproducibly and records its digest, included artifacts, generated-output procedure, permitted configuration, fixtures, driver and environment identities, and gate ledger. Unlisted workspace artifacts, ambient configuration, and secrets are outside the candidate.
+Confirm the accepted identities and recompute readiness from the dependency graph. A slice is ready only when every required dependency output is integrated or the accepted contract explicitly permits parallel work from the same base.
 
-Keep coordination identity at the coordination boundary. Goal-map, slice, finding, branch, and disposable-workspace identifiers may identify maps, handoffs, ledgers, and evidence; they must not name or become dependencies of production code, retained tests, fixtures, or maintained documentation unless the project defines the identifier as durable product or external-contract vocabulary. Name retained tests for the actor, behavior, and observable result they protect. Deleting `.goals/` must not make a retained artifact unintelligible or unexecutable.
+Maintain at most the accepted number of active Slice Owners. The default proposal is three, not an instruction to exceed proven isolation capacity. Start ready slices from the accepted parallel waves, then adjust scheduling when evidence reveals a dependency or resource conflict. Changing order is allowed when contracts remain intact; changing a slice or design decision requires a revised accepted batch.
 
-When accepted journeys require product-specific launch, control, isolation, observation, or evidence behavior that the project cannot currently provide, name that missing behavior as a capability gap. Route creation or repair with `verification-adapter` as accepted production work before Product Validation. Do not ask Product Validator to improvise retained driver code while independently judging the candidate. The project's adapter makes the product operable and observable; it does not decide acceptance or create accepted requirements.
+Before dispatch, allocate and record:
 
-Use fresh contexts for the independent read-only Verifier and Product Validator. Product Validator is independent from Verifier and receives the candidate identity, same-candidate Verifier pass, accepted journeys, and evidence ledger, not the Verifier's reasoning context.
+- an independent workspace or worktree, branch, and base revision;
+- unique or exclusively leased database instances, schemas, data namespaces, service instances, ports, queues, buckets, caches, fixture roots, temporary directories, test accounts, and other mutable state;
+- one exclusive simulator, emulator, device, browser profile, desktop session, or other stateful driver when it cannot be safely namespaced;
+- build-output and dependency-cache rules that prevent writes from affecting another slice;
+- cleanup ownership, lease duration, and a safe recovery procedure.
 
-## Run the slice
+Never let concurrent slices share mutable state by convention or timing. If a resource cannot be namespaced or leased exclusively, serialize its users. Validate ownership before cleanup and preserve user-owned instances and data.
 
-1. Implementer writes the smallest coherent end-to-end behavior and focused observable proof. When the accepted slice includes a named product-control capability gap, Implementer creates or reconciles the project-local verification CLI and Feature Map in the same candidate. Material evidence returns to Coordinator.
-2. Cleaner repairs local correctness and design defects, handles errors, freezes a new candidate, and runs every affected profile gate against that identity. A gate passes only with `Pass` or its matching pre-authorized disposition. `Resynchronize` and `Blocked` return to Coordinator or the named owner.
-3. Verifier judges the exact cleaned candidate. `Pass` goes to Product Validator. `Repair` goes automatically to Cleaner. `Resynchronize` goes to Coordinator. `Inconclusive` goes to Coordinator with an owner and exact unblock condition.
-4. Product Validator exercises every accepted journey through a real product interface on the same Verifier-passed candidate. Before an external, billable, destructive, privacy-sensitive, or production effect, it requires scoped authorization or an approved non-production substitute that preserves material semantics. `Pass` makes the candidate eligible for commit. `Fail` goes automatically to Cleaner. `Inconclusive` goes to Coordinator with an unblock condition.
+Completion criterion: every active slice has a ready dependency state, isolated workspace, non-conflicting resource lease, and recorded cleanup owner.
 
-A Cleaner change creates a new candidate identity, reruns affected gates, and returns to Verifier. Before commit, Product Validator reruns the complete accepted journey set against the final candidate. Diagnostic journeys do not replace that final run.
+## Dispatch one complete slice
 
-## Repair without automatic escalation
+Give one Slice Owner the current coordination envelope. Add protected behavior, design and contract pointers, gates, accepted journeys, commit boundary, and evidence destination.
 
-Keep a stable ledger for each gate, Verifier finding, and Product Validator failure with its identity, candidate, evidence, consequence, authority, status, and disposition. A bounded repair may return to the same independent reviewer or validator while lineage and risk remain reliable.
+The Slice Owner owns delivery routing inside that boundary. It selects the agents, models, or fresh contexts that perform implementation, cleaning, technical verification, product validation, diagnosis, and repair. The Coordinator must not assign those internal roles or require approval between their routine transitions.
 
-After two unsuccessful repairs of the same stable failure, use a fresh Root-cause Diagnostician. A stable failure is a Verifier finding ID, a Product Validator journey plus earliest divergence, or a gate ID tied to the unmet obligation. Classify it as a local defect, incoherent design, contract gap, environment or harness blocker, or demonstrated capability mismatch. The diagnosis routes work but cannot change a material decision. Model or harness escalation is never automatic. It needs capability-mismatch evidence and follows project-profile routing policy.
+Role independence still applies:
 
-## Commit the validated surface
+- Implementer may not act as the independent Verifier or Product Validator for its own candidate.
+- Cleaner may repair but may not approve the candidate it changed.
+- Verifier is fresh, independent, and read-only.
+- Product Validator is fresh and independent from Implementer, Cleaner, and Verifier. It cannot change the candidate or contract; it may mutate only validation state owned by its recorded resource lease.
 
-When gates are satisfied, Verifier passes, and Product Validator passes every accepted journey, record final evidence in the map. Inspect the staged diff. Create one focused local commit only when it exactly matches the validated delivery surface, except permitted coordination-only bookkeeping that cannot affect behavior. Record the commit revision and update future slices from the evidence. Do not ask for a second human acceptance of the result before this local commit.
+The Slice Owner may report non-blocking progress asynchronously. It interrupts the Coordinator only for `Resynchronize` or `Blocked`, as defined below.
 
-Push, pull-request publication, merge, deployment, paid activity, destructive work, and production mutation each need separate policy and authority.
+Completion criterion: the Slice Owner can run the complete lifecycle without guessing, shared mutable state, or further routing from the Coordinator.
 
-Completion criterion: the local commit identifies the final candidate, satisfied gates, independent Verifier and Product Validator evidence, and no unresolved material decision or hidden blocker.
+## Run the internal lifecycle
+
+1. **Implementer:** create the smallest coherent end-to-end behavior and focused observable proof inside the allocated workspace. When the accepted slice includes a product-control capability gap, create or reconcile the project-local verification CLI and Feature Map through `verification-adapter` in the same candidate.
+2. **Cleaner:** repair local correctness and design defects, materialize an immutable reproducible candidate, and run every affected project-profile gate. Record source or patch digest, base revision, included artifacts, generated-output procedure, dependency locks, permitted configuration, fixtures, driver and environment identities, and gate ledger. Unlisted workspace state, ambient configuration, and secrets are excluded.
+3. **Verifier:** independently judge the exact cleaned candidate through `implementation-review`. `Repair` returns inside the slice to Cleaner. `Pass` advances to Product Validator.
+4. **Product Validator:** exercise every accepted journey through the named real product interface on the same Verifier-passed candidate through `use-case-qa`. `Fail` returns inside the slice to Cleaner. `Pass` makes that candidate eligible for commit.
+
+A Cleaner change creates a new candidate identity, reruns affected gates, and returns to Verifier. Before commit, Product Validator reruns the complete accepted journey set against the final candidate. Diagnostic runs do not replace the final run.
+
+Keep coordination identities at the coordination boundary. Goal-map, slice, finding, branch, and disposable-workspace identifiers may identify handoffs and evidence, but must not become names or dependencies in production code, retained tests, fixtures, or maintained documentation unless the project defines them as durable product vocabulary.
+
+Completion criterion: the final immutable candidate has satisfied gates, an independent Verifier pass, and a Product Validator pass for every accepted slice journey.
+
+## Repair autonomously
+
+Keep stable ledgers for gates, Verifier findings, and Product Validator failures. A stable failure is one gate ID and unmet obligation, one Verifier finding ID, or one Product Validator journey and earliest divergence, all tied to a candidate lineage. Route repairable implementation, test, and local design defects between Cleaner, Verifier, and Product Validator without asking the Coordinator or human for permission.
+
+After two unsuccessful repairs of the same stable failure, invoke `diagnosing-bugs` in a fresh context with a project-profile time or scope bound. If no bound exists, set the smallest bound that can distinguish the recorded hypotheses. Route a diagnosed local defect or reversible implementation-design defect to Cleaner. Route a contract gap, invalid accepted decision, or costly-to-reverse architecture gap to `Resynchronize`. Route a missing environment or harness capability to `Blocked` after the diagnosis reaches its bound and every accepted safe resource or substitute has been attempted. A demonstrated capability mismatch follows the project-profile escalation policy; without an authorized alternative it is `Blocked`.
+
+Return only one terminal outcome:
+
+- `Validated commit`: the final candidate passes the lifecycle and the focused local commit exactly matches its validated surface.
+- `Resynchronize`: evidence challenges user-visible behavior, scope, sensitive policy, a public contract, costly-to-reverse architecture, the accepted slice boundary, or another human-owned material decision. Name the decision, evidence, affected slices, and safe resume condition.
+- `Blocked`: required access, authorization, tool, environment, dependency, isolation, or materialization is unavailable after safe alternatives are exhausted. Name the owner and exact unblock condition.
+
+Failing tests, ordinary implementation choices, Cleaner repairs, Verifier findings, Product Validator failures, and routine diagnostic work are not Coordinator interruptions while they remain repairable within the accepted contract.
+
+## Commit and integrate
+
+After the final Product Validator pass, the Slice Owner inspects the staged diff and creates one focused local commit that exactly matches the validated candidate, except permitted coordination-only bookkeeping that cannot affect behavior. It reports the commit, candidate, evidence, resource cleanup, and residual advisory risks to the Coordinator. It does not push or publish.
+
+The Coordinator records the result and integrates validated slice commits in accepted dependency order. It may perform only a clean mechanical integration that does not edit the validated patch. That integration retains slice evidence only when an explicit impact check confirms that no accepted obligation or resource identity changed.
+
+On any conflict, the Coordinator stops without resolving or editing code and dispatches the affected accepted slice to a Slice Owner on the integrated base. The Slice Owner resolves the conflict inside the accepted contract and reruns the complete internal lifecycle. If the conflict exposes a contract or material design gap, it returns `Resynchronize`.
+
+Pause only a resynchronizing or blocked slice and its dependents. Continue unrelated slices when their design, base assumptions, and resource isolation remain valid.
+
+Push, pull-request publication, merge, deployment, paid activity, destructive work, secret access, and production mutation require separate policy and authority.
+
+Completion criterion: each accepted slice has one integrated validated commit or a precise terminal blocker, resource leases are released safely, and the goal map contains enough identity and evidence to enter goal validation.

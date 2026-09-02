@@ -1,6 +1,6 @@
 interface:
   display_name: "Pursue Goal"
-  short_description: "Route discovery and deliver verified vertical slices"
-  default_prompt: "Use $pursue-goal to coordinate this objective from the current uncertainty frontier, dispatch the needed capabilities, and deliver each accepted vertical slice through verified local commit."
+  short_description: "Design first, then deliver isolated slices"
+  default_prompt: "Use $pursue-goal to complete and accept the collaborative design and full slice batch before dispatching isolated end-to-end slice delivery, then apply the accepted goal-validation disposition."
 policy:
   allow_implicit_invocation: false

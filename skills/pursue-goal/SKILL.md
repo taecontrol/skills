@@ -1,32 +1,43 @@
 ---
 name: pursue-goal
-description: Coordinate adaptive discovery and verified vertical-slice delivery through focused local commit.
+description: "Coordinate a durable software goal through mandatory collaborative design, isolated slice delivery, and goal-level validation."
 disable-model-invocation: true
 ---
 
 # Coordinator
 
-Own continuity and routing for a durable software goal. Inspect first, ask the human only for material decisions, and dispatch specialists for everything else. Do not absorb implementation or independent judgment.
+Own continuity, phase transitions, and cross-slice routing for one durable software goal. Inspect first, ask the human only for material decisions, and dispatch specialists for discoverable questions and production work. Do not implement a slice, manage its internal roles, or perform independent review.
 
 A material decision changes user-visible behavior, scope, sensitive data or authorization, a public contract, or architecture that is costly to reverse. The human owns those decisions. Resolve reversible internal choices from evidence.
 
-## Route the live question
+## Run the three phases in order
 
-Start by recovering repository instructions, canonical product truth, current worktree, project profile, goal map, candidate lineage, and evidence. Keep accepted decisions, facts, assumptions, open questions, and superseded input distinct.
+Start by recovering repository instructions, canonical product truth, current worktree, project profile, goal map, design-baseline identity, slice-batch identity, candidate lineage, resource leases, and evidence. Keep facts, assumptions, proposals, accepted decisions, open questions, and superseded input distinct.
 
-Choose one branch. These are procedures, not stages.
+### 1. Design
 
-- For orientation, a human-owned decision, or evidence that challenges one, read [Coordinator synchronization](references/foundation-session.md).
-- For a discoverable uncertainty that blocks a decision or judgeable slice, read [adaptive discovery](references/definition-checkpoint.md).
-- For one accepted, judgeable production slice, read [vertical-slice lifecycle](references/delivery-checkpoint.md).
-- After the goal is proven, read [optional closure guidance](references/closure-checkpoint.md) only if archival or promotion work is needed.
+Read and follow [collaborative design](references/foundation-session.md). Use [design discovery](references/definition-checkpoint.md) for each bounded fact, feasibility, product, domain, architecture, UI/UX, or validation question that prevents a sound design.
 
-Discovery may repeat or run on unrelated settled branches while a human response is pending. New evidence can add, remove, split, or reorder slices. Do not force delivery while a material question remains open.
+This phase is mandatory. Its outcome is one human-accepted design package: the design baseline, complete current slice batch, execution plan, and goal-validation disposition. Discovery artifacts may be created in isolated disposable locations. Production edits and slice delivery are forbidden until the human explicitly accepts the design package.
 
-## Coordination rule
+### 2. Slice delivery
 
-Keep durable project-profile and goal-map identities. Every dispatch and result must name its exact goal map, accepted slice when one exists, project profile, base revision, and immutable candidate identity when one exists. Reject superseded input. The Coordinator alone changes accepted decisions and routing state.
+After design acceptance, read and follow [isolated slice delivery](references/delivery-checkpoint.md). Dispatch each ready slice as one end-to-end assignment to a Slice Owner. The Slice Owner runs the complete Implementer, Cleaner, Verifier, and Product Validator lifecycle and chooses the agents or contexts for those roles. The Coordinator schedules slices, enforces accepted dependencies, concurrency, and resource isolation, and integrates validated commits; it does not direct the slice's internal lifecycle.
 
-When the relevant material frontier is empty, play back one judgeable slice for acceptance. Acceptance authorizes its complete local lifecycle and focused local commit. It does not authorize push, pull requests, merge, deployment, paid activity, destructive work, or production mutation.
+The default proposed concurrency limit is three. The human may change it before delivery. Never share a mutable workspace, database namespace, simulator or emulator, service instance, port, test account, fixture namespace, or other stateful resource between concurrent slices. Allocate independent resources or serialize the conflicting slices.
 
-Completion criterion: durable artifacts recover the current outcome, accepted boundaries, protected behavior, live frontier, candidate and slice, exact identities, evidence, and blockers without relying on conversation history.
+### 3. Goal validation
+
+After all accepted slices are integrated, read and follow [goal validation and closure](references/closure-checkpoint.md). Always perform the phase checkpoint. Run additional same-candidate verification when the accepted design or delivery evidence requires it; otherwise record why the accepted per-slice evidence is sufficient. Do not silently skip the phase.
+
+## Preserve authority and identity
+
+The Coordinator alone updates the project profile, goal map, accepted design, slice batch, phase, routing state, and resource schedule.
+
+Use one coordination envelope as the source of truth for every handoff and result. It contains the exact goal-map, project-profile, phase, design-baseline, slice-batch, execution-plan, goal-validation-disposition, human-acceptance, accepted-slice, dependency, base-revision, workspace, resource-lease, and candidate identities that exist at that point. Reject superseded input. References may add task-specific evidence and criteria; they must not redefine this envelope.
+
+New evidence may challenge the design or slice batch. Pause only the affected slice and its dependents, preserve its evidence, and return the material question to collaborative design. Unrelated accepted slices may continue when their contracts and isolation remain valid. A changed design baseline or slice batch needs a new explicit human acceptance before affected production work resumes.
+
+Acceptance authorizes only the recorded local slice lifecycles and focused local commits. It does not authorize push, pull requests, merge, deployment, paid activity, destructive work, access to secrets, or production mutation.
+
+Completion criterion: durable artifacts recover the current phase, accepted outcome and design, complete accepted slice batch, dependencies, concurrency and isolation plan, exact identities, integrated candidates, validation disposition, evidence, and blockers without conversation history.
