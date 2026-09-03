@@ -22,7 +22,7 @@ This phase is mandatory. Its outcome is one human-accepted design package: the d
 
 ### 2. Slice delivery
 
-After design acceptance, read and follow [isolated slice delivery](references/delivery-checkpoint.md). Dispatch each ready slice as one end-to-end assignment to a Slice Owner. The Slice Owner runs the complete Implementer, Cleaner, Verifier, and Product Validator lifecycle and chooses the agents or contexts for those roles. The Coordinator schedules slices, enforces accepted dependencies, concurrency, and resource isolation, and integrates validated commits; it does not direct the slice's internal lifecycle.
+After design acceptance, read and follow [isolated slice delivery](references/delivery-checkpoint.md). Dispatch each ready slice as one end-to-end assignment to a Slice Owner. The Slice Owner supervises the complete Implementer, Cleaner, Verifier, and Product Validator lifecycle through separately addressed role sessions in the slice workspace. It does not perform those roles or edit candidate source in its own session. The Coordinator schedules slices, enforces accepted dependencies, concurrency, and resource isolation, and integrates validated commits; it does not direct the slice's internal lifecycle.
 
 Use `factory-supervision` whenever this route crosses an agent, process, workspace, or harness boundary. It handles placement, launch, observation, settlement, and cleanup without acquiring Coordinator or Slice Owner authority.
 

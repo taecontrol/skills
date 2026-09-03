@@ -28,6 +28,10 @@ execution:
   resource-lease: <identity | none>
   harness: <requested harness or permitted set>
   model-and-effort: <requested value | unconstrained>
+  initiating-owner-session: <backend session identity>
+  target-role-session: <backend session identity>
+  prior-role-sessions: <role and backend session identities | none>
+  required-predecessor-result: <role, outcome, and candidate | none>
   allowed-effects: <bounded list>
   forbidden-effects: <bounded list>
 
@@ -133,6 +137,11 @@ requested-harness: <value>
 effective-harness: <value>
 workspace-routing: <backend identity>
 task-or-session-routing: <backend identities>
+initiating-owner-session: <backend session identity>
+target-role: <role>
+target-role-session: <backend session identity>
+prior-role-sessions: <role and backend session identities | none>
+role-separation-check: <passed | failed with reason>
 started-at: <timestamp>
 settled-at: <timestamp | none>
 cleanup-state: <released | retained | possibly live>

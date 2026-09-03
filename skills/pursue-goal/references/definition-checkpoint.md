@@ -4,7 +4,7 @@ Use this inside the design phase when evidence is missing for a sound contract, 
 
 ## Dispatch bounded questions
 
-For each question, state why it matters, known constraints and accepted decisions, the evidence that can answer it, and a time, cost, or scope bound. Dispatch independent questions in parallel when they do not compete for the same environment or depend on each other's result.
+For each question, state why it matters, known constraints and accepted decisions, the evidence that can answer it, and a time, cost, or scope bound. Dispatch independent questions in parallel when they do not compete for the same environment or depend on each other's result. Until mutable outputs are mapped, run commands that install, build, generate, cache, migrate, or write reports serially inside one workspace. Parallelize only work proven read-only or isolated by an explicit output lease.
 
 Choose the capability that fits the uncertainty:
 
