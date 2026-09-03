@@ -13,6 +13,8 @@ The initiating owner keeps its Factory authority:
 
 Supervision transfers work, not authority. A target may report evidence or a prescribed outcome; it may not settle a decision reserved for the initiating owner.
 
+A Slice Owner coordinates internal roles. It may inspect state, author coordination artifacts, route results, and create the final commit when the accepted protocol assigns those actions. It may not edit candidate source, execute an internal role in its own session, or approve work it authored. A result from a session acting under more than one lifecycle role is invalid for that attempt.
+
 ## Required input
 
 Every assignment names:
@@ -23,6 +25,7 @@ Every assignment names:
 - dependency outputs, base revision, workspace identity, resource lease, and candidate identity when one exists;
 - protected behavior, gates, journeys, allowed and forbidden effects, evidence destination, and commit boundary;
 - selected harness and model when prescribed;
+- the initiating-owner session, target-role session, prior role-session identities for the attempt, and the required predecessor result;
 - progress, question, terminal-result, timeout, cancellation, retention, and cleanup routes.
 
 Use `not applicable` for an identity that does not exist at that phase. Do not omit an existing identity or replace a durable identity with a terminal, task, conversation, or process identifier.
@@ -33,11 +36,13 @@ Use the smallest topology that preserves isolation and independence:
 
 1. Reuse the current workspace when it is already the exclusive mutable workspace for the assigned slice.
 2. Allocate one isolated workspace for each concurrently active slice. Record its exact base independently from its parent or display lineage.
-3. Keep all internal roles for one slice in that slice workspace. Run mutating roles sequentially against one candidate lineage.
-4. Start Verifier and Product Validator in separate fresh contexts. Freshness means no inherited reasoning from Implementer, Cleaner, or each other; it does not require another checkout.
+3. Keep all internal roles for one slice in that slice workspace. Run Implementer and Cleaner sequentially in separately addressed sessions against one candidate lineage.
+4. Start Verifier and Product Validator in separate fresh contexts. Freshness means no inherited reasoning from Implementer, Cleaner, Slice Owner, or each other; it does not require another checkout.
 5. Serialize assignments that cannot obtain exclusive mutable resources.
 
 Never create a workspace solely because the target agent is fresh. Never let two active slices share a mutable checkout, database namespace, service instance, port, account, fixture namespace, device, browser profile, or build output.
+
+Before assignment delivery, finish workspace setup and then verify the exact base, full tracked and untracked status, accepted artifact digests, protected lock and configuration files, active role-session identities, and resource leases. Do not assume a new worktree is clean or attribute a change to copying, setup, or the user without evidence. Treat an unexpected setup-created lockfile or protected-file change as a materialization defect. Fix the setup configuration or use an accepted reviewable recovery, then rerun preflight. Do not normalize the change into the candidate.
 
 ## Harness capability check
 

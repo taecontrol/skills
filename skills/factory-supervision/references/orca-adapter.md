@@ -16,7 +16,7 @@ Use structured Orca orchestration for the outer assignment when the initiating o
 - The goal Coordinator may supervise a Goal Validation Owner.
 - A Slice Owner may supervise its internal roles through structured Dispatches only when the runtime proves that another generation is allowed and the accepted execution plan selects that topology.
 
-Otherwise use ordinary Orca agent terminals for internal slice roles. A Slice Owner that is already a supervised worker should default to fresh ordinary terminals in its current slice worktree. It waits for and reads each role result before starting the next lifecycle role.
+Otherwise use ordinary Orca agent terminals for internal slice roles. A Slice Owner that is already a supervised worker must use a separate ordinary terminal for each internal role in its current slice worktree. It waits for, reads, and validates each role result before starting the next lifecycle role. It never performs that role in the Slice Owner terminal.
 
 Do not create a Run, Task, or Dispatch as a capability probe. Do not create structured state and then fall back to an ordinary terminal after a depth rejection. If structured nesting is not proven before state creation, use ordinary terminals from the start. Never change Orca's nested-worker setting without explicit human authorization.
 
@@ -35,9 +35,11 @@ For concurrent slices, the goal Coordinator creates or selects one isolated work
 
 For a single slice already running in the correct worktree, create only a fresh agent terminal. Do not create another worktree.
 
+Let configured setup finish before delivering the assignment. Then inspect the child worktree's base, full status, accepted digests, and protected locks and configuration through [the preflight contract](preflight-contract.md). Do not assume whether Orca, setup commands, or prior state caused a diff. If setup changes a protected lockfile, correct the repository's setup command to use its lock-preserving or frozen installation path, or apply only an accepted reviewable recovery. Rerun preflight before starting candidate work.
+
 Select the worker harness from the accepted execution plan or capability check. Use Orca's installed agent launcher when it expresses the requested harness, model, and effort. Otherwise use the current guide's custom-terminal path. Do not assume Codex because the initiating owner uses Codex; Cursor, Claude Code, and other available harnesses are valid when they satisfy the role contract.
 
-Completion criterion: Orca reports the intended worktree, exact base, effective agent launcher, and one authoritative terminal handle before assignment delivery.
+Completion criterion: Orca reports the intended worktree, exact base, effective agent launcher, one authoritative terminal handle dedicated to the target role, and a passing post-setup preflight before assignment delivery.
 
 ## Deliver and observe
 

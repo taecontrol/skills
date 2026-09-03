@@ -1,6 +1,6 @@
 # Isolated slice delivery
 
-Use this only after the human has accepted the complete design baseline, slice batch, concurrency limit, resource plan, and goal-validation disposition. The Coordinator schedules whole slices; a Slice Owner runs each accepted slice end to end.
+Use this only after the human has accepted the complete design baseline, slice batch, concurrency limit, resource plan, and goal-validation disposition. The Coordinator schedules whole slices; a Slice Owner supervises each accepted slice end to end.
 
 ## Schedule without overlap
 
@@ -26,31 +26,37 @@ Give one Slice Owner the current coordination envelope. Add protected behavior, 
 
 Use `factory-supervision` to place and supervise the Slice Owner. The Slice Owner uses it again when an internal role crosses an agent or harness boundary. The supervision adapter executes the route defined here; it does not choose lifecycle transitions or acquire either owner's authority.
 
-The Slice Owner owns delivery routing inside that boundary. It selects the agents, models, or fresh contexts that perform implementation, cleaning, technical verification, product validation, diagnosis, and repair. The Coordinator must not assign those internal roles or require approval between their routine transitions.
+The Slice Owner owns delivery routing inside that boundary. It selects the agents, models, and separately addressed sessions that perform implementation, cleaning, technical verification, product validation, diagnosis, and repair. The Coordinator must not assign those internal roles or require approval between their routine transitions.
+
+The Slice Owner session is coordination-only. It may create assignments and evidence ledgers, inspect repository and worker state, route results, stage an already frozen candidate when the accepted protocol assigns that step to it, and create the final commit after every required pass. It must not edit candidate source, act as an internal role, or claim an internal role result. Implementer and Cleaner each run in their own addressed sessions. Verifier and Product Validator each run in fresh independent sessions. A session may not claim more than one lifecycle role for the same slice attempt.
+
+Reject the attempt before accepting candidate evidence when the Slice Owner edits candidate source, a role result names another role, two roles use the same session identity, or a required prior-role result is missing. Preserve the workspace and route a new attempt through the correct role session; do not bless the mixed session after the fact.
 
 Role independence still applies:
 
 - Implementer may not act as the independent Verifier or Product Validator for its own candidate.
-- Cleaner may repair but may not approve the candidate it changed.
+- Implementer and Cleaner are separately addressed sessions. Cleaner may repair but may not approve the candidate it changed.
 - Verifier is fresh, independent, and read-only.
 - Product Validator is fresh and independent from Implementer, Cleaner, and Verifier. It cannot change the candidate or contract; it may mutate only validation state owned by its recorded resource lease.
 
 The Slice Owner may report non-blocking progress asynchronously. It interrupts the Coordinator only for `Resynchronize` or `Blocked`, as defined below.
 
-Completion criterion: the Slice Owner can run the complete lifecycle without guessing, shared mutable state, or further routing from the Coordinator.
+Completion criterion: the Slice Owner can supervise the complete lifecycle without guessing, editing candidate source, reusing one session for multiple roles, sharing mutable state, or requiring further routing from the Coordinator.
 
 ## Run the internal lifecycle
 
+Run each applicable numbered role in its recorded session. The Slice Owner waits for and validates one terminal result before starting the next role. A role that changes the candidate invalidates all later-role evidence for the previous candidate.
+
 1. **Implementer:** create the smallest coherent end-to-end behavior and focused observable proof inside the allocated workspace. When the accepted slice includes a product-control capability gap, create or reconcile the project-local verification CLI and Feature Map through `verification-adapter` in the same candidate.
 2. **Cleaner:** repair local correctness and design defects, materialize an immutable reproducible candidate, and run every affected project-profile gate. Record source or patch digest, base revision, included artifacts, generated-output procedure, dependency locks, permitted configuration, fixtures, driver and environment identities, and gate ledger. Unlisted workspace state, ambient configuration, and secrets are excluded.
-3. **Verifier:** independently judge the exact cleaned candidate through `implementation-review`. `Repair` returns inside the slice to Cleaner. `Pass` advances to Product Validator.
-4. **Product Validator:** exercise every accepted journey through the named real product interface on the same Verifier-passed candidate through `use-case-qa`. `Fail` returns inside the slice to Cleaner. `Pass` makes that candidate eligible for commit.
+3. **Verifier:** independently judge the exact cleaned candidate through `implementation-review`. `Repair` returns inside the slice to Cleaner. `Pass` advances to Product Validator when applicable; otherwise it makes the candidate eligible for commit.
+4. **Product Validator, when applicable:** exercise every accepted journey through the named real product interface on the same Verifier-passed candidate through `use-case-qa`. `Fail` returns inside the slice to Cleaner. `Pass` makes that candidate eligible for commit. When the accepted slice records Product Validation as not applicable, preserve that disposition and do not manufacture a journey.
 
-A Cleaner change creates a new candidate identity, reruns affected gates, and returns to Verifier. Before commit, Product Validator reruns the complete accepted journey set against the final candidate. Diagnostic runs do not replace the final run.
+A Cleaner change creates a new candidate identity, reruns affected gates, and returns to Verifier. When Product Validation applies, Product Validator reruns the complete accepted journey set against the final candidate before commit. Diagnostic runs do not replace the final run.
 
 Keep coordination identities at the coordination boundary. Goal-map, slice, finding, branch, and disposable-workspace identifiers may identify handoffs and evidence, but must not become names or dependencies in production code, retained tests, fixtures, or maintained documentation unless the project defines them as durable product vocabulary.
 
-Completion criterion: the final immutable candidate has satisfied gates, an independent Verifier pass, and a Product Validator pass for every accepted slice journey.
+Completion criterion: the final immutable candidate has satisfied gates, an independent Verifier pass, and a Product Validator pass for every accepted slice journey when Product Validation applies.
 
 ## Repair autonomously
 
@@ -68,7 +74,7 @@ Failing tests, ordinary implementation choices, Cleaner repairs, Verifier findin
 
 ## Commit and integrate
 
-After the final Product Validator pass, the Slice Owner inspects the staged diff and creates one focused local commit that exactly matches the validated candidate, except permitted coordination-only bookkeeping that cannot affect behavior. It reports the commit, candidate, evidence, resource cleanup, and residual advisory risks to the Coordinator. It does not push or publish.
+After the final required pass, the Slice Owner inspects the staged diff and creates one focused local commit that exactly matches the validated candidate, except permitted coordination-only bookkeeping that cannot affect behavior. It reports the commit, candidate, evidence, resource cleanup, and residual advisory risks to the Coordinator. It does not push or publish.
 
 The Coordinator records the result and integrates validated slice commits in accepted dependency order. It may perform only a clean mechanical integration that does not edit the validated patch. That integration retains slice evidence only when an explicit impact check confirms that no accepted obligation or resource identity changed.
 

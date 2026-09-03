@@ -12,7 +12,9 @@ Give the profile a versioned identity. Record executable gates, protected surfac
 
 Give the map its own identity. Record the goal outcome and final observable proof, boundaries, protected behavior, facts, assumptions, proposals, accepted decisions and rationale, open questions, design evidence, phase, risks, blockers, design-baseline identity, slice-batch identity, dependency graph, resource plan, integration order, candidate lineage, and goal-validation disposition.
 
-The canonical design package consists of the design baseline, complete slice batch, execution plan, and goal-validation disposition. Store its content in the goal map or versioned artifacts linked from it under the same goal directory, with one owner for each fact. Each component identity must resolve to one exact revision or content digest. The human-acceptance record names those component identities and the accepted concurrency limit; an identity without recoverable content is invalid.
+The canonical design package consists of the design baseline, complete slice batch, execution plan, and goal-validation disposition. Store its content in the goal map or versioned artifacts linked from it under the same goal directory, with one owner for each fact. Each component identity must resolve to one exact revision or SHA-256 digest. The human-acceptance record names those component identities, their exact revisions or digests, and the accepted concurrency limit. Placeholder identities or digests such as `updated after this record` are invalid.
+
+Keep accepted component content immutable. A component may retain a pre-acceptance status header only when the acceptance record explicitly identifies that exact content and states that it changes the component's lifecycle status. The current-state section of the goal map must mark earlier frontiers, proposals, and questions as historical, resolved, or superseded. Before dispatch, recompute every accepted digest and reject a mismatch instead of repairing or merging the package in place.
 
 Completion criterion: the Coordinator can recover the design state, authorities, constraints, and unresolved frontier from durable artifacts alone.
 
@@ -70,4 +72,4 @@ Use `grilling` to close the remaining frontier and obtain explicit human accepta
 
 No production edit, slice dispatch, or delivery work may begin without this acceptance. Acceptance authorizes the recorded local slice lifecycles through focused commits; external effects remain separately controlled.
 
-Completion criterion: the durable map identifies one explicitly accepted design baseline and complete slice batch, the human-selected concurrency limit, the resource and integration plan, and the goal-validation disposition.
+Completion criterion: the durable map identifies one explicitly accepted design baseline and complete slice batch, the human-selected concurrency limit, the resource and integration plan, and the goal-validation disposition; the acceptance record has no placeholder identity or digest; every accepted component still matches it; and no stale section is presented as the current frontier.
