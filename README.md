@@ -61,6 +61,7 @@ Private repositories require authenticated Git access on the installing machine.
 - [`ui-ux-design`](./skills/ui-ux-design/SKILL.md) — Designs and reviews task-first web, iOS, and Android interfaces.
 - [`javascript-react-patterns`](./skills/javascript-react-patterns/SKILL.md) — Selects JavaScript and modern function-component React patterns through references loaded on demand.
 - [`gh-stack`](./skills/gh-stack/SKILL.md) — Creates and manages stacked GitHub pull requests.
+- [`show-me`](./skills/show-me/SKILL.md) — Explains the current topic with concise diagrams, code-shape sketches, and focused HTML artifacts.
 
 Each skill directory is independently installable and contains its own required references, templates, and scripts.
 

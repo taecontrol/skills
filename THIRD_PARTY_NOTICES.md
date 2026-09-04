@@ -46,6 +46,17 @@ Copyright (c) 2026 Lauren Tan
 
 The source is licensed under the MIT terms reproduced below.
 
+## HumanLayer show-me
+
+Source: https://github.com/humanlayer/skills/tree/main/plugins/show-me
+Revision used: `3c2629142c5d437428269b1b722b08c0b87f574d`
+
+Adapted skill: `show-me`
+
+Copyright (c) 2026 HumanLayer
+
+The source is licensed under the MIT terms reproduced below.
+
 ## Patterns.dev skills
 
 Source: https://github.com/PatternsDev/skills
