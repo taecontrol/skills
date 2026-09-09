@@ -13,7 +13,6 @@ Choose the capability that fits the uncertainty:
 - `prototype` for product behavior, interaction, state, or UI comparison;
 - `domain-modeling` for uncertain vocabulary, concept boundaries, and invariants;
 - `architecture-design` for a costly-to-reverse seam or system shape;
-- the design-only track of `ui-ux-design` for affected tasks, flows, states, accessibility, or visual direction;
 - `diagnosing-bugs` for an observed failure whose mechanism is unknown;
 - a named specialist for a bounded technology or risk question.
 

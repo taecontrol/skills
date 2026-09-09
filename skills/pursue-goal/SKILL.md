@@ -18,6 +18,8 @@ Start by recovering repository instructions, canonical product truth, current wo
 
 Read and follow [collaborative design](references/foundation-session.md). Use [design discovery](references/definition-checkpoint.md) for each bounded fact, feasibility, product, domain, architecture, UI/UX, or validation question that prevents a sound design.
 
+Define the outcome proof and regression gates before implementation using the single validation table in collaborative design.
+
 This phase is mandatory. Its outcome is one human-accepted design package: the design baseline, complete current slice batch, execution plan, and goal-validation disposition. Discovery artifacts may be created in isolated disposable locations. Production edits and slice delivery are forbidden until the human explicitly accepts the design package.
 
 ### 2. Slice delivery
@@ -36,7 +38,7 @@ Use `factory-supervision` when a separate Goal Validation Owner or fresh validat
 
 ## Preserve authority and identity
 
-The Coordinator alone updates the project profile, goal map, accepted design, slice batch, phase, routing state, and resource schedule.
+The Coordinator alone updates the project profile, goal map, accepted design, slice batch, phase, routing state, and resource schedule. Keep one compact current-state record pointing to the canonical acceptance, validation table, and slice results. Update it when a slice settles or integrates; do not maintain duplicate completion ledgers or recopy accepted content into status reports.
 
 Use one coordination envelope as the source of truth for every handoff and result. It contains the exact goal-map, project-profile, phase, design-baseline, slice-batch, execution-plan, goal-validation-disposition, human-acceptance, accepted-slice, dependency, base-revision, workspace, resource-lease, and candidate identities that exist at that point. Reject superseded input. References may add task-specific evidence and criteria; they must not redefine this envelope.
 

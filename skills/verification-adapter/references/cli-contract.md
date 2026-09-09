@@ -42,8 +42,8 @@ forged or missing owner prevents process termination and resource deletion.
 ## Product control and observation
 
 Expose only operations required by supported real surfaces: browser semantics,
-desktop accessibility, documented API, CLI/PTY, simulator, or mobile automation.
-Prefer stable public handles such as accessible role/name, registered command ID,
+desktop automation, documented API, CLI/PTY, simulator, or mobile automation.
+Prefer stable public handles such as element ID, registered command ID,
 public route or field, and explicit test ID. Document weaker fallbacks.
 
 Provide inspection before action, user-visible interaction, bounded waits for
