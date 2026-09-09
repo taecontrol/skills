@@ -74,7 +74,7 @@ Sound like a knowledgeable colleague: conversational, respectful, direct, and fo
 
 Completion criterion: the prose uses the simplest accurate language, stable terminology, and no phrase whose main purpose is ceremony or self-display.
 
-## 5. Structure for scanning and accessibility
+## 5. Structure for scanning
 
 - Use sentence case for titles and headings unless the project requires another convention.
 - Make headings describe the content beneath them; avoid generic labels such as "Overview" when a specific heading is available.
@@ -84,9 +84,8 @@ Completion criterion: the prose uses the simplest accurate language, stable term
 - Format code, commands, filenames, paths, parameters, and literal values consistently with the project's markup conventions.
 - Distinguish user-interface labels from surrounding prose consistently.
 - Use unambiguous dates and include a time zone when time can affect the action.
-- Give informative alt text to claim-bearing images. Do not repeat adjacent captions in the alt text.
 
-Completion criterion: a reader can scan the headings and lists, follow links out of context, and access every claim-bearing element without relying on visual styling alone.
+Completion criterion: a reader can scan the headings and lists and follow links out of context.
 
 ## 6. Preserve technical fidelity
 
@@ -141,7 +140,7 @@ Before delivery, confirm all of the following:
 - Actors, actions, terms, links, commands, and expected results are unambiguous.
 - No unsupported claim, invented result, or hidden prerequisite remains.
 - The target language sounds natural rather than translated from English.
-- Headings, lists, code formatting, dates, and images are consistent and accessible.
+- Headings, lists, code formatting, dates, and images are consistent and readable.
 - The final paragraph ends with substance rather than a generic offer, recap, or slogan.
 
 Report material assumptions or unverified technical claims separately from the finished prose. Do not narrate the style pass unless the user asks for an editorial review.

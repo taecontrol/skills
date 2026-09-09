@@ -18,7 +18,7 @@ The Coordinator dispatches one Goal Validation Owner with the current coordinati
 
 Use `factory-supervision` to place, observe, settle, and clean up the Goal Validation Owner and its fresh validation contexts. The adapter cannot change the accepted disposition or route a failed candidate on the owner's behalf.
 
-Run the accepted integration gates against the integrated candidate. Have an independent Verifier judge the combined obligations and interactions that motivated goal validation. When cross-slice journeys apply, have an independent Product Validator run each through its named real interface and environment after that same candidate passes. Product validation may mutate only state owned by its recorded resource lease and authorized journey.
+Use the same validation-table IDs and run only the accepted additional integration gates against the integrated candidate. Carry forward applicable slice evidence; neither a new phase nor a new reviewer requires a duplicate suite. Have an independent Verifier judge the combined obligations and interactions that motivated goal validation. When cross-slice journeys apply, have an independent Product Validator run each through its named real interface and environment after that same candidate passes. Product validation may mutate only state owned by its recorded resource lease and authorized journey.
 
 Record each gate, obligation, and journey with direct evidence. The Goal Validation Owner returns exactly one result to the Coordinator:
 
@@ -39,7 +39,7 @@ Completion criterion: either the exact integrated candidate passes every accepte
 
 ## Prove and close the goal
 
-Compare the accepted goal outcome and final observable proof with the integrated evidence. Report one result:
+Compare the outcome-proof rows of the accepted validation table with the integrated evidence separately from regression-gate results. A passing regression suite or narrower substitute cannot establish an unmeasured goal outcome. Do not invent final checks after the agreed criteria are satisfied. Report one result:
 
 - `Goal proven`: every accepted slice is integrated and the accepted validation disposition is satisfied.
 - `Return to slice delivery`: accepted behavior failed or validated code changed; name the affected slice and evidence.

@@ -13,6 +13,8 @@ Use a fresh context independent from Implementer, Cleaner, and Verifier. Carry d
 
 Each journey needs an actor, starting state, action, required observable result, forbidden result, permitted driver and environment, identity and test data, reset or isolation method, and evidence capture. Reject superseded identities. Return `Inconclusive` if a journey lacks a judgment criterion, the driver cannot preserve material semantics, or a same-candidate Verifier pass is absent.
 
+Use only the assigned accepted gates and journeys. Do not add exploratory campaigns. A missing criterion is an input gap, not permission to invent a stronger acceptance standard.
+
 ## Choose a real method
 
 Inspect available browser, desktop, API, CLI, simulator, staging, fixture, observability, and reset facilities. Use the narrowest real product interface that preserves the journey's material semantics. Use only namespaced resources owned by this validation or an exclusive recorded lease. Never attach to, reset, or clean another slice's or user's mutable state. If faithful isolation is unavailable, return `Inconclusive` rather than sharing by convention or timing. Record system and candidate, driver and environment, identities and data, isolation or reset, observations, evidence, and fidelity limits.
@@ -29,9 +31,9 @@ Before an action with an external, billable, destructive, privacy-sensitive, or 
 
 ## Run and route journeys
 
-Run every accepted journey against the exact Verifier-passed candidate. Capture observations when the driver allows it. Preserve the first failure and earliest divergence. Reset or namespace only owned state as the method requires, then release the lease without deleting evidence or unowned resources. Mark each journey `Pass`, `Fail`, or `Inconclusive` with direct evidence. A failure has an absent, incorrect, unsafe, or forbidden result. An inconclusive result names the concrete limitation and unblock condition.
+For each accepted journey, execute it against the exact Verifier-passed candidate or apply the evidence-reuse rule below. Capture observations when the driver allows it. Preserve the first failure and earliest divergence. Reset or namespace only owned state as the method requires, then release the lease without deleting evidence or unowned resources. Mark each journey `Pass`, `Fail`, or `Inconclusive` with direct evidence. A failure has an absent, incorrect, unsafe, or forbidden result. An inconclusive result names the concrete limitation and unblock condition.
 
-A changed candidate must return through Cleaner and Verifier. Before commit, rerun the complete accepted journey set against the final candidate. Diagnostic journeys during repair do not replace it.
+A changed candidate returns through repair and Verifier. Rerun affected journeys; carry forward prior independent passing journey evidence only when its consumed source, build, driver, data recipe, configuration, and relevant environment inputs remain applicable. Record the original execution identity and applicability reason. Rerun if that cannot be established or the accepted gate explicitly requires a full final run. Diagnostic journeys do not become acceptance evidence by relabeling.
 
 Return exactly one outcome:
 

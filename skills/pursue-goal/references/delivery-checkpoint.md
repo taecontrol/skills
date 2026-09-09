@@ -22,7 +22,7 @@ Completion criterion: every active slice has a ready dependency state, isolated 
 
 ## Dispatch one complete slice
 
-Give one Slice Owner the current coordination envelope. Add protected behavior, design and contract pointers, gates, accepted journeys, commit boundary, and evidence destination.
+Give one Slice Owner the current coordination envelope. Reference protected behavior, design and contract pointers, assigned validation-table gate IDs, commit boundary, and evidence destination. Do not create a second validation plan.
 
 Use `factory-supervision` to place and supervise the Slice Owner. The Slice Owner uses it again when an internal role crosses an agent or harness boundary. The supervision adapter executes the route defined here; it does not choose lifecycle transitions or acquire either owner's authority.
 
@@ -48,11 +48,11 @@ Completion criterion: the Slice Owner can supervise the complete lifecycle witho
 Run each applicable numbered role in its recorded session. The Slice Owner waits for and validates one terminal result before starting the next role. A candidate change requires renewed downstream approval; unaffected gate evidence may carry forward as described below.
 
 1. **Implementer:** create the smallest coherent end-to-end behavior and focused observable proof inside the allocated workspace. When the accepted slice includes a product-control capability gap, create or reconcile the project-local verification CLI and Feature Map through `verification-adapter` in the same candidate. When Cleaner is omitted, materialize the candidate and satisfy the applicable gates before returning `Implemented`.
-2. **Cleaner, when needed:** repair local correctness and design defects, materialize the candidate, and satisfy applicable gates. Use a separate Cleaner for consequential product, security, persistence, concurrency, or validation-driver changes, when the profile requires it, or after `Repair` or product `Fail`. For a bounded low-risk change, the Slice Owner may route a ready Implementer candidate directly to Verifier. This changes preparation ownership, not the independent approval requirement.
+2. **Cleaner, when needed:** repair local correctness and design defects, materialize the candidate, and satisfy applicable gates. Use a separate Cleaner when a concrete preparation or repair need exists, when the accepted profile requires it, or after `Repair` or product `Fail`. Otherwise route a ready Implementer candidate directly to Verifier; the subject area alone does not require another preparation pass. This changes preparation ownership, not the independent approval requirement.
 3. **Verifier:** independently judge the exact materialized candidate through `implementation-review`. Its predecessor is Cleaner `Ready` or Implementer `Implemented` with complete materialization and gate evidence. `Repair` returns inside the slice to Cleaner. `Pass` advances to Product Validator when applicable; otherwise it makes the candidate eligible for commit.
-4. **Product Validator, when applicable:** exercise every accepted journey through the named real product interface on the same Verifier-passed candidate through `use-case-qa`. `Fail` returns inside the slice to Cleaner. `Pass` makes that candidate eligible for commit. When the accepted slice records Product Validation as not applicable, preserve that disposition and do not manufacture a journey.
+4. **Product Validator, when applicable:** establish evidence for every accepted journey through the named real product interface on the same Verifier-passed candidate through `use-case-qa`, using execution or the evidence-reuse rule below. `Fail` returns inside the slice to Cleaner. `Pass` makes that candidate eligible for commit. When the accepted slice records Product Validation as not applicable, preserve that disposition and do not manufacture a journey.
 
-A Cleaner change creates a new candidate identity, reruns affected gates, and returns to Verifier. When Product Validation applies, Product Validator reruns the complete accepted journey set against the final candidate before commit. Diagnostic runs do not replace the final run.
+A Cleaner change creates a new candidate identity, reruns affected gates, and returns to Verifier. When Product Validation applies, rerun journeys whose consumed inputs or exercised behavior changed. The independent Product Validator may carry forward its prior passing evidence with an explicit applicability reason and original execution identity. Rerun when applicability is uncertain or the accepted gate requires a complete final run. Diagnostic runs do not become acceptance evidence by relabeling.
 
 Materialize source with a retained Git tree and base revision, or a complete binary patch with its digest and all new files. Use a private index if needed to preserve the user's staging. Include dependency locks, configuration, fixtures, generated-output procedures, and relevant driver/environment identities in one manifest. A digest alone cannot reconstruct missing content; preserve referenced objects or artifacts through review and integration. Full source copies and per-role snapshots are unnecessary when this representation is reproducible.
 
@@ -64,9 +64,13 @@ Completion criterion: the final immutable candidate has satisfied gates, an inde
 
 ## Repair autonomously
 
-Keep stable ledgers for gates, Verifier findings, and Product Validator failures. A stable failure is one gate ID and unmet obligation, one Verifier finding ID, or one Product Validator journey and earliest divergence, all tied to a candidate lineage. Route repairable implementation, test, and local design defects between Cleaner, Verifier, and Product Validator without asking the Coordinator or human for permission.
+Keep gate results and stable findings in one slice result record referencing the accepted validation table and primary evidence. A stable failure is one gate ID and unmet obligation, one Verifier finding ID, or one Product Validator journey and earliest divergence, all tied to a candidate lineage. Route repairable implementation, test, and local design defects between Cleaner, Verifier, and Product Validator without asking the Coordinator or human for permission.
+
+Classify a failure as product defect, test/driver defect, environment limitation, or invalid criterion before widening repair. Bound tool repair to the capability needed by the accepted gate; further infrastructure work needs an explicit scope decision.
 
 After two unsuccessful repairs of the same stable failure, invoke `diagnosing-bugs` in a fresh context with a project-profile time or scope bound. If no bound exists, set the smallest bound that can distinguish the recorded hypotheses. Route a diagnosed local defect or reversible implementation-design defect to Cleaner. Route a contract gap, invalid accepted decision, or costly-to-reverse architecture gap to `Resynchronize`. Route a missing environment or harness capability to `Blocked` after the diagnosis reaches its bound and every accepted safe resource or substitute has been attempted. A demonstrated capability mismatch follows the project-profile escalation policy; without an authorized alternative it is `Blocked`.
+
+A worker awaiting a bounded diagnosis or owner answer remains paused in the same role and assignment. Record a question, safe resource state, and resume condition; do not emit terminal `Blocked` for that wait. Resume the same worker after the dependency settles, checking only changed assignment, candidate, and resource inputs.
 
 Return only one terminal outcome:
 
@@ -82,7 +86,7 @@ After the final required pass, the Slice Owner inspects the staged diff and crea
 
 The Coordinator records the result and integrates validated slice commits in accepted dependency order. It may perform only a clean mechanical integration that does not edit the validated patch. That integration retains slice evidence only when an explicit impact check confirms that no accepted obligation or resource identity changed.
 
-On any conflict, the Coordinator stops without resolving or editing code and dispatches the affected accepted slice to a Slice Owner on the integrated base. The Slice Owner resolves the conflict inside the accepted contract and reruns the complete internal lifecycle. If the conflict exposes a contract or material design gap, it returns `Resynchronize`.
+On any conflict, the Coordinator stops without resolving or editing code and dispatches the affected accepted slice to a Slice Owner on the integrated base. The Slice Owner resolves the conflict inside the accepted contract and obtains independent review plus affected gates and journeys, retaining unaffected evidence with its applicability reason. If the conflict exposes a contract or material design gap, it returns `Resynchronize`.
 
 Pause only a resynchronizing or blocked slice and its dependents. Continue unrelated slices when their design, base assumptions, and resource isolation remain valid.
 

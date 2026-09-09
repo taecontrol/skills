@@ -10,6 +10,8 @@ candidate through real product surfaces. Create project-owned infrastructure;
 do not install a shared runtime, choose a universal automation technology, or
 decide whether a product journey passes.
 
+Build only the capability required by an accepted gate. First check whether an existing command or bounded manual procedure already provides faithful evidence; if it does, use that path without creating an adapter package. Agree on a bounded capability pilot before expanding infrastructure. Missing unrelated capabilities do not enlarge the goal.
+
 ## Establish the local contract
 
 1. Read repository instructions, the accepted journey, launch and build paths,

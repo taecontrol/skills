@@ -10,7 +10,6 @@ Virtual list (windowing) techniques for rendering large datasets.
 ## Avoid when
 
 - For short lists (under ~100 items) where native rendering is fast enough without virtualization
-- When accessibility requirements demand all list items be in the DOM for screen readers
 - When the list items have unpredictable, content-dependent heights that make virtualization measurements unreliable
 
 ## Apply

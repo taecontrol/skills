@@ -54,7 +54,7 @@ Pointers must resolve inside the target's available filesystem or artifact store
 
 ## Question
 
-Use this for a question that the initiating owner is authorized to answer. It does not settle the assignment.
+Use this for a question that the initiating owner is authorized to answer. It does not settle the assignment. Use it while waiting for a bounded diagnosis or owner answer, retain the same role session, and resume after the dependency settles. Do not emit terminal `Blocked` for this pause.
 
 ```text
 FACTORY QUESTION
@@ -129,7 +129,7 @@ Other roles use their own declared terminal outcomes. Do not translate a failed 
 
 ## Execution receipt
 
-Keep backend routing metadata in a separate execution receipt:
+Keep backend routing metadata once, in an execution receipt or a referenced section of the assignment/result. Do not duplicate it across reports:
 
 ```text
 adapter: <Orca | native harness>
