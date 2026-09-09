@@ -29,7 +29,7 @@ Use [design discovery](definition-checkpoint.md) until every applicable design s
 - use `research`, `spike`, or `prototype` for bounded factual, feasibility, or experiential uncertainty;
 - route accepted consequential rationale to `adr` when the completed code and maintained documentation would not preserve why.
 
-For each capability, record its result or a concrete `Not applicable` reason. Do not use a checklist to manufacture work, but do not treat an unexamined surface as settled. Architecture and UI/UX are production inputs when applicable, not cleanup after slicing.
+Record findings and decisions from applicable capabilities. Omit irrelevant specialists without creating a ledger entry for each installed skill. Architecture and UI/UX are production inputs when applicable, not cleanup after slicing.
 
 Model human-owned decisions as a dependency tree. Ask every currently answerable frontier decision in one numbered round. Give a recommendation and main consequence for each. Keep dependent questions out until their prerequisites are settled. After each response, record the answer and rationale, update the frontier, and continue discovery on independent settled branches. Silence is not acceptance.
 
@@ -49,11 +49,13 @@ Each slice must be a coherent vertical result and record:
 - required workspace, data, accounts, ports, services, simulators or emulators, fixtures, and cleanup ownership;
 - focused local commit boundary and integration order.
 
+Product Validation applies to changed product behavior and validation capabilities used to prove it. For changes confined to tests or prose, with unchanged product, build inputs, runtime configuration, and product driver, record `Not applicable` and use focused technical proof. Judge effects rather than filenames: generated behavior, operational instructions, test infrastructure, and drivers may require real-interface validation. An explicitly accepted journey requirement remains binding until its owner revises it.
+
 Build a dependency and conflict graph. Propose parallel waves from it, with an independent workspace and resource allocation for every concurrently runnable slice. Propose a maximum concurrency based on available isolation capacity; use three when evidence does not justify another value. The human chooses the limit.
 
 Persist the dependency and conflict graph, parallel waves, integration order, resource plan, cleanup ownership, and concurrency limit as the execution plan.
 
-Record the goal-validation disposition as `Required` or `Per-slice evidence sufficient`. Recommend `Required` when combined behavior can introduce risk not exercised by any slice alone, including shared state, migrations, public contracts, cross-slice journeys, platform assembly, or consequential integration order. For `Required`, define the combined journeys, faithful environment, gates, and evidence before delivery. For `Per-slice evidence sufficient`, state why integration creates no additional material behavior to judge.
+Record the goal-validation disposition as `Required` or `Per-slice evidence sufficient`. Default to `Per-slice evidence sufficient` for one slice integrated mechanically with unchanged validation inputs. Recommend `Required` only for a named interaction or environment risk not exercised by slice evidence, such as shared state, migrations, cross-slice journeys, or platform assembly. Define the additional obligations, applicable journeys, environment, and gates before delivery; do not duplicate the slice suite merely to close the goal.
 
 Completion criterion: the batch covers the accepted goal without overlapping ownership, every dependency and resource conflict is explicit, ready slices are independently judgeable, and the validation disposition is evidence-backed.
 

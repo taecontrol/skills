@@ -9,7 +9,7 @@ Judge a change by whether it leaves the system easier to understand and modify.
 
 ## Factory role mapping
 
-This is a shared design standard. It does not change Factory authority or lifecycle routing.
+This is a shared design standard. It does not change Factory authority or lifecycle routing. Apply it when the change raises the design concerns in its description. Reuse accepted invariants and design evidence; do not repeat settled design exercises simply because another role is reviewing the work.
 
 - Coordinator records accepted consequential decisions, protected behavior, and the validation path. It routes material uncertainty to discovery or human synchronization.
 - Implementer creates the accepted vertical behavior and focused observable proof.

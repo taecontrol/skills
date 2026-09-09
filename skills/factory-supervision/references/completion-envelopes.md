@@ -1,6 +1,6 @@
 # Assignment and completion envelopes
 
-Use these schemas across harnesses. A backend may encode them as JSON, structured messages, or plain text, but it must preserve every applicable field and exact Factory outcome.
+Use these schemas across harnesses. A backend may encode them as JSON, structured messages, or plain text. Preserve applicable fields and exact outcomes through one canonical assignment and referenced artifacts, without copying shared identities or rules into every report. Deliver its path and digest with the target role and expected outcome. A terminal message may contain the outcome and result-artifact path and digest; the owner reads that artifact to accept completion.
 
 ## Assignment
 
@@ -72,7 +72,7 @@ Routine implementation choices stay with the assigned role or Slice Owner. A hum
 
 ## Progress
 
-Progress is optional and never substitutes for completion.
+Progress is optional and never substitutes for completion. Report meaningful phase changes or new blockers to the immediate owner; keep routine polling output and report-writing updates out of upstream handoffs.
 
 ```text
 FACTORY PROGRESS

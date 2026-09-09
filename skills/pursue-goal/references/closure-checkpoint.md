@@ -14,11 +14,11 @@ Completion criterion: the integrated candidate is reproducible, contains exactly
 
 ### Required
 
-The Coordinator dispatches one Goal Validation Owner with the current coordination envelope, accepted combined obligations and journeys, integration gates, isolated validation workspace and resources, and evidence destination. That owner selects the fresh Verifier and Product Validator contexts and runs the validation assignment without changing the candidate or accepted contract.
+The Coordinator dispatches one Goal Validation Owner with the current coordination envelope, accepted combined obligations and journeys, integration gates, isolated validation workspace and resources, and evidence destination. That owner selects a fresh Verifier and, when journeys apply, Product Validator context, then runs the validation assignment without changing the candidate or accepted contract.
 
 Use `factory-supervision` to place, observe, settle, and clean up the Goal Validation Owner and its fresh validation contexts. The adapter cannot change the accepted disposition or route a failed candidate on the owner's behalf.
 
-Run the accepted integration gates against the integrated candidate. Have an independent Verifier judge the combined obligations and interactions that motivated goal validation. After that same candidate passes, have an independent Product Validator run every accepted cross-slice journey through its named real interface and environment. Product validation may mutate only state owned by its recorded resource lease and authorized journey.
+Run the accepted integration gates against the integrated candidate. Have an independent Verifier judge the combined obligations and interactions that motivated goal validation. When cross-slice journeys apply, have an independent Product Validator run each through its named real interface and environment after that same candidate passes. Product validation may mutate only state owned by its recorded resource lease and authorized journey.
 
 Record each gate, obligation, and journey with direct evidence. The Goal Validation Owner returns exactly one result to the Coordinator:
 
@@ -31,7 +31,7 @@ The Goal Validation Owner does not modify code, dispatch Cleaner, or dispatch a 
 
 ### Per-slice evidence sufficient
 
-Confirm that every accepted commit is integrated, every integration impact check remains valid, no combined state or interaction was introduced, and delivery evidence did not invalidate the accepted rationale. Record that no additional cross-slice journey was run and cite the accepted reason.
+The Coordinator confirms that every accepted commit is integrated, every integration impact check remains valid, no combined state or interaction was introduced, and delivery evidence did not invalidate the accepted rationale. Reuse the candidate manifest and evidence pointers; no Goal Validation Owner or new review sessions are needed. Record that no additional cross-slice journey was run and cite the accepted reason.
 
 If those conditions no longer hold, do not silently keep the disposition. Return to collaborative design to accept a revised validation contract.
 

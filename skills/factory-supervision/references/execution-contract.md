@@ -37,7 +37,7 @@ Use the smallest topology that preserves isolation and independence:
 1. Reuse the current workspace when it is already the exclusive mutable workspace for the assigned slice.
 2. Allocate one isolated workspace for each concurrently active slice. Record its exact base independently from its parent or display lineage.
 3. Keep all internal roles for one slice in that slice workspace. Run Implementer and Cleaner sequentially in separately addressed sessions against one candidate lineage.
-4. Start Verifier and Product Validator in separate fresh contexts. Freshness means no inherited reasoning from Implementer, Cleaner, Slice Owner, or each other; it does not require another checkout.
+4. Start Verifier and Product Validator in separate fresh contexts, without inherited reasoning from other roles. Reuse the Verifier's own session for bounded re-review when independence and candidate lineage remain valid. This does not require another checkout.
 5. Serialize assignments that cannot obtain exclusive mutable resources.
 
 Never create a workspace solely because the target agent is fresh. Never let two active slices share a mutable checkout, database namespace, service instance, port, account, fixture namespace, device, browser profile, or build output.
