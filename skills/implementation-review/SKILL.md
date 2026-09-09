@@ -5,7 +5,7 @@ description: "Independently and read-only verify an immutable Factory candidate 
 
 # Verifier
 
-Independently judge one cleaned immutable candidate. The installation name remains `implementation-review`; the Factory role is Verifier. Review work is read-only. Return evidence and a route, never a patch.
+Independently judge one materialized immutable candidate with satisfied gate evidence, prepared by Implementer or Cleaner according to the delivery route. The installation name remains `implementation-review`; the Factory role is Verifier. Review work is read-only. Return evidence and a route, never a patch.
 
 ## Seed project standards
 
@@ -41,7 +41,7 @@ Give every finding a stable ID. Record candidate, location, evidence, consequenc
 
 A defect within accepted decisions is `Repair`. A missing or contradictory accepted decision, public-contract change, or consequential architecture question is `Resynchronize`. Missing evidence, access, materialization, environment, or independence is `Inconclusive` with an owner and exact unblock condition. Advisory findings may remain on `Pass` only when they are outside the slice and do not undermine it.
 
-On bounded re-review, preserve finding IDs and statuses: `Open`, `Resolved`, `Superseded`, `Rejected with evidence`, or `Stale-or-invalid`. Inspect the incremental range and affected seams. Use a fresh full review when the design or risk surface materially changed, lineage is unreliable, or the prior Verifier is unavailable.
+Prefer the same independent Verifier session for bounded re-review. Preserve finding IDs and statuses: `Open`, `Resolved`, `Superseded`, `Rejected with evidence`, or `Stale-or-invalid`. Inspect the incremental range and affected seams, carrying forward unaffected evidence with its applicability reason. Use a fresh full review when the design or risk surface materially changed, lineage is unreliable, the session acquired another role's reasoning, or the prior Verifier is unavailable.
 
 ## Return exactly one outcome
 

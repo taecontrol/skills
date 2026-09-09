@@ -31,7 +31,7 @@ If the native harness cannot attach a worker to the required workspace, do not c
 Pass the complete assignment and require the completion-envelope format. Keep every internal role in a separately addressed context. The Slice Owner does not perform role work in its own context:
 
 - Implementer and Cleaner may write only inside the slice workspace and accepted boundary.
-- Verifier and Product Validator are fresh and cannot change the candidate. Product Validator may mutate only validation state owned by its recorded lease.
+- Verifier and Product Validator initially use fresh independent contexts and cannot change the candidate. Retain the Verifier's own context for bounded re-review under `implementation-review`. Product Validator may mutate only validation state owned by its recorded lease.
 - A Goal Validation Owner and its reviewers inspect the immutable integrated candidate without repairing it.
 
 Use the harness's native wait, resume, message, and cancellation operations. Do not poll a guessed transcript path, impersonate another agent, or infer success from process exit alone.
@@ -46,6 +46,6 @@ The goal Coordinator must not launch or supervise a slice's internal roles. Neve
 
 ## Settle
 
-Accept one result envelope, preserve its evidence, and stop or release the worker through the native lifecycle operation. Record any session that cannot be proven stopped and the resources it may still own.
+Accept one result envelope and preserve its evidence. Retain an idle Verifier for bounded re-review, with validation resources released; stop or release other workers through the native lifecycle operation. Record any session that cannot be proven stopped and the resources it may still own.
 
 The goal Coordinator retains responsibility for integrating validated slice commits and safely removing isolated checkouts. A child result does not authorize push, publication, merge, deployment, destructive cleanup, secret access, paid activity, or production mutation.

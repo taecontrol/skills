@@ -23,7 +23,7 @@ Completion criterion: the assignment has one owner, one role, current identities
 ## Preserve the topology
 
 - A fresh agent session is not a fresh workspace.
-- One active slice has one mutable workspace. Its Implementer and Cleaner use that workspace; its fresh Verifier and Product Validator judge the same candidate without creating role-specific mutable workspaces.
+- One active slice has one mutable workspace. Its Implementer and Cleaner use that workspace; its independent Verifier and Product Validator judge the same candidate without creating role-specific mutable workspaces.
 - Concurrent slices use isolated workspaces and non-conflicting resource leases.
 - A Slice Owner supervises its complete internal lifecycle but does not perform an internal role or edit candidate source in its own session. Implementer, Cleaner, Verifier, and Product Validator use separately addressed sessions in the slice workspace. The goal Coordinator schedules and integrates slices but does not assign or supervise their internal roles.
 - A Goal Validation Owner supervises only the accepted read-only combined validation assignment.
@@ -33,17 +33,17 @@ Completion criterion: every mutable actor is attached to the workspace and lease
 
 ## Launch and supervise
 
-1. Start one target session dedicated to that role. Confirm that it is attached to the intended workspace, differs from the initiating owner's session and every other role session in the attempt, and passed post-setup preflight before delivering work. Verifier and Product Validator must also be fresh and independent from prior-role reasoning.
-2. Deliver the coordination envelope, bounded assignment, role skill, allowed effects, evidence destination, question route, terminal result, and cleanup owner. Use the schemas in [completion envelopes](references/completion-envelopes.md); transport metadata must not become durable Factory identity.
-3. Wait through the selected adapter. Route routine role results according to `pursue-goal`; escalate only the `Resynchronize` or `Blocked` conditions that the active Factory route assigns to the initiating owner.
+1. Start one target session dedicated to that role, or resume the same Verifier for a bounded re-review. Confirm its workspace, distinct identity from other roles, and current preflight. Initial Verifier and Product Validator contexts must be fresh; a returning Verifier retains only its own review context and declared evidence.
+2. Deliver the assignment by accessible path and digest, naming the role and expected result. Keep the coordination envelope, evidence pointers, effects, routing, and cleanup owner in that artifact using [completion envelopes](references/completion-envelopes.md). The worker verifies the digest and reads the assignment; do not duplicate it in the launch prompt. Load role instructions and supporting skills only as needed for the assigned obligations.
+3. Wait through the selected adapter. Only the immediate owner monitors internal role activity. Prefer completion notifications or blocking waits; when polling is necessary, consume incremental output without replaying transcripts. Route results according to `pursue-goal`; forward phase changes, terminal results, and required escalations rather than routine heartbeats.
 4. Treat timeout, idle state, heartbeat, or visible activity as liveness evidence, not completion. Do not duplicate a live assignment.
-5. Accept exactly one terminal result for each attempt. Reject results with stale identities, the wrong role, the wrong candidate, reused role sessions, missing independence, or undeclared workspace changes. A mixed-role session invalidates the attempt; a later disclaimer does not repair its evidence.
+5. Accept exactly one terminal result for each attempt. Reject results with stale identities, the wrong role or candidate, sessions shared across roles, missing independence, or undeclared workspace changes. A same-role Verifier continuation is valid under the bounded re-review rule. A mixed-role session invalidates the attempt.
 
 Completion criterion: the initiating owner can reproduce who ran the assignment, in which workspace and harness, against which identities, with what result and evidence.
 
 ## Settle and clean up
 
-Settle tracking state before reusing or releasing the session. Preserve inspectable output. Release resources owned by the completed attempt; retain them only when the active route names a reason and cleanup owner.
+Settle tracking state before reusing or releasing the session. Preserve inspectable output. Retain a Verifier session with no active validation resources while its findings are repaired, then resume it for re-review. Release it after the slice settles or a fresh full review is required. Release other resources owned by the completed attempt; retain them only with a named reason and cleanup owner.
 
 Do not remove a slice workspace merely because its worker finished. The goal Coordinator removes or archives it only after validating the result, integrating or explicitly preserving its commit, confirming no unique work remains, and releasing its leases.
 

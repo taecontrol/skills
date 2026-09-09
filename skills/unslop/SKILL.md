@@ -1,6 +1,6 @@
 ---
 name: unslop
-description: Cut AI tells from any writing. Must always apply.
+description: "Remove AI writing patterns when drafting or revising substantial prose, or when the user asks to make text sound more natural."
 disable-model-invocation: true
 ---
 

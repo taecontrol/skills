@@ -59,13 +59,13 @@ For an ordinary terminal:
 - use Orca terminal readiness, read, and send operations from the live guide;
 - treat an idle prompt as a read checkpoint, not proof of success;
 - inspect the envelope and workspace before accepting completion;
-- close only the exact role terminal after preserving its result.
+- after preserving the result, retain an idle Verifier terminal for bounded re-review or close the exact terminal when its role is complete.
 
 Do not monitor an ordinary full handoff as though it were a Dispatch. Do not accept terminal prose as `worker_done` for structured tracking.
 
 ## Integrate and clean up
 
-The Slice Owner settles and closes its internal role terminals after preserving their results. It leaves its slice worktree intact for the goal Coordinator.
+The Slice Owner settles each attempt after preserving its result. It may retain an idle Verifier terminal for bounded re-review; close it when the slice settles or a fresh full review is needed. Other completed role terminals are closed. The slice worktree stays intact for the goal Coordinator.
 
 The goal Coordinator validates the Slice Owner result, settles the Dispatch, integrates only as allowed by `pursue-goal`, runs the required impact check, and then removes or archives the slice worktree. Before removal, confirm that the commit is integrated or explicitly preserved, no unique changes remain, and every owned resource lease is released.
 

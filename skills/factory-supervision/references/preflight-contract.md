@@ -99,6 +99,6 @@ python3 <factory-supervision-skill>/scripts/validate_preflight.py <manifest.json
 
 The command exits zero only when required fields exist, accepted digests match, the workspace is at the declared base, dirty paths exactly match the declared set, protected files match, and role-session identities are unique. Keep the manifest and output in the assignment evidence.
 
-The adapter must still confirm through its runtime that the recorded target session exists in the declared workspace and that Verifier and Product Validator are fresh. A passing file check cannot prove those runtime facts.
+The adapter must still confirm through its runtime that the target exists in the declared workspace and preserves role independence. Initial Verifier and Product Validator sessions are fresh; bounded Verifier re-review may reuse its dedicated session. Record that session once in `role_sessions`; reference its prior review alongside the required Cleaner predecessor result. A passing file check cannot prove those runtime facts.
 
 Completion criterion: setup is complete, every accepted byte and protected workspace input matches its recorded identity, all current workspace changes are declared, the target uses one dedicated session, and the adapter has confirmed the runtime facts the helper cannot observe.
