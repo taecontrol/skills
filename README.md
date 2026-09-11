@@ -8,7 +8,7 @@ Install the Factory core:
 
 ```bash
 npx skills add taecontrol/skills \
-  --skill pursue-goal factory-supervision cleaner strategic-programming implementation-review use-case-qa verification-adapter grilling wait-what unslop research spike prototype diagnosing-bugs adr
+  --skill pursue-goal factory-supervision cleaner strategic-programming implementation-review use-case-qa verification-adapter grilling wait-what unslop research spike prototype diagnosing-bugs adr architect arena how why teach
 ```
 
 Install every skill:
@@ -33,7 +33,7 @@ Private repositories require authenticated Git access on the installing machine.
 
 ## Factory core
 
-- [`pursue-goal`](./skills/pursue-goal/SKILL.md) — Coordinates mandatory collaborative design, isolated slice delivery, and goal validation.
+- [`pursue-goal`](./skills/pursue-goal/SKILL.md) — Coordinates mandatory Design (SPEC + SLICES) then Delivery and goal validation.
 - [`factory-supervision`](./skills/factory-supervision/SKILL.md) — Supervises Factory assignments across agent sessions, workspaces, and harnesses.
 - [`cleaner`](./skills/cleaner/SKILL.md) — Repairs and hardens accepted candidates before independent verification.
 - [`strategic-programming`](./skills/strategic-programming/SKILL.md) — Applies deep design, invariants, and behavioral proof to non-trivial changes.
@@ -48,6 +48,11 @@ Private repositories require authenticated Git access on the installing machine.
 - [`prototype`](./skills/prototype/SKILL.md) — Builds disposable product, state, interaction, or UI experiments.
 - [`diagnosing-bugs`](./skills/diagnosing-bugs/SKILL.md) — Establishes a reproduction and supported root cause before repair.
 - [`adr`](./skills/adr/SKILL.md) — Preserves consequential architectural rationale.
+- [`architect`](./skills/architect/SKILL.md) — Grounds and sketches system shape with multi-agent arena, then stops for human Agree.
+- [`arena`](./skills/arena/SKILL.md) — Fans out parallel multi-agent candidates and synthesizes one result.
+- [`how`](./skills/how/SKILL.md) — Explains how a subsystem works.
+- [`why`](./skills/why/SKILL.md) — Investigates why code is shaped as it is.
+- [`teach`](./skills/teach/SKILL.md) — Explains work plainly so a person can understand before deciding.
 
 ## Optional strategies and specialists
 

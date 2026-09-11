@@ -7,7 +7,7 @@ Use this after workspace setup and target-session creation but before delivering
 Record one JSON manifest with:
 
 - `assignment`: `assignment`, `attempt`, `initiating_owner`, `target_role`, and `factory_identities`;
-- `accepted_artifacts`: every applicable accepted project profile, design baseline, slice batch, execution plan, goal-validation disposition, human-acceptance record, and any additional identity the assignment treats as immutable, each with `identity`, `path`, and SHA-256 `sha256`;
+- `accepted_artifacts`: every applicable accepted project profile, SPEC, SLICES, execution plan, goal-validation disposition, human-acceptance record, and any additional identity the assignment treats as immutable, each with `identity`, `path`, and SHA-256 `sha256`;
 - `workspace`: absolute `path`, full 40- or 64-character Git object ID as `base_revision`, `materialization_complete`, exact `allowed_dirty_paths`, and protected lock or configuration files with their accepted SHA-256 values;
 - `role_sessions`: the initiating owner, target role, and every earlier internal lifecycle role in the same slice attempt, each with a distinct routing identity.
 
@@ -28,8 +28,8 @@ Example:
       "goal_map": "GM-42-003",
       "project_profile": "PP-42-002",
       "phase": "Delivery",
-      "design_baseline": "DB-42-002",
-      "slice_batch": "SB-42-002",
+      "spec": "SPEC-42-002",
+      "slices": "SLICES-42-002",
       "execution_plan": "EP-42-002",
       "goal_validation": "GV-42-001",
       "human_acceptance": "HA-42-001",
@@ -45,13 +45,13 @@ Example:
       "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     },
     {
-      "identity": "DB-42-002",
-      "path": "../design-baseline-v2.md",
+      "identity": "SPEC-42-002",
+      "path": "../SPEC.md",
       "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
     },
     {
-      "identity": "SB-42-002",
-      "path": "../slice-batch-v2.md",
+      "identity": "SLICES-42-002",
+      "path": "../SLICES.md",
       "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
     },
     {

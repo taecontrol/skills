@@ -9,7 +9,7 @@ Use the product to prove accepted journeys for one exact candidate. The installa
 
 ## Establish the validation
 
-Use a fresh context independent from Implementer, Cleaner, and Verifier. Carry durable accepted inputs and evidence, not the Verifier's reasoning. Require the exact goal-map, design-baseline, slice-batch, accepted-slice or acceptance, project-profile, workspace, and resource-lease identities; base revision; immutable candidate identity; same-candidate Verifier `Pass`; and accepted journeys.
+Use a fresh context independent from Implementer, Cleaner, and Verifier. Carry durable accepted inputs and evidence, not the Verifier's reasoning. Require the exact goal-map, SPEC, SLICES, accepted-slice or acceptance, project-profile, workspace, and resource-lease identities; base revision; immutable candidate identity; same-candidate Verifier `Pass`; and accepted journeys.
 
 Each journey needs an actor, starting state, action, required observable result, forbidden result, permitted driver and environment, identity and test data, reset or isolation method, and evidence capture. Reject superseded identities. Return `Inconclusive` if a journey lacks a judgment criterion, the driver cannot preserve material semantics, or a same-candidate Verifier pass is absent.
 

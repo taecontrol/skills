@@ -1,11 +1,13 @@
 ---
 name: architecture-design
-description: "Develop evidence-backed alternatives for an expensive-to-reverse architecture question and return its decision frontier to the Coordinator."
+description: "Develop evidence-backed alternatives for one expensive-to-reverse architecture question and return its decision frontier to the Coordinator. Use architect when the goal needs a full multi-agent system sketch."
 ---
 
 # Architecture design
 
 Explore one expensive-to-reverse architecture question when current evidence cannot settle it. Return a proposed decision frontier to the Coordinator. Do not edit production code, accept a decision, or create an ADR.
+
+For a whole-system or module-shape sketch with multi-agent alternatives and mandatory human Agree before any code, use `architect` instead. This skill remains the narrow seam-or-decision probe.
 
 ## Process
 

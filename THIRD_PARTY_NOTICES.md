@@ -31,6 +31,23 @@ Author declared by the source plugin: Lauren Tan
 
 Copyright (c) 2026 Lauren Tan
 
+## pstack design and understanding skills
+
+Source: https://github.com/cursor/plugins/tree/main/pstack
+Revision used: `68d834d9ca8f34c375ecb8057bfbcde5396a01f8`
+
+Adapted skills:
+
+- `architect` (Design-only Agree/stop variant; no default implementation)
+- `arena`
+- `how`
+- `why`
+- `teach`
+
+Author declared by the source plugin: Lauren Tan
+
+Copyright (c) 2026 Lauren Tan
+
 ## pstack verification skill materials
 
 Source: https://github.com/cursor/plugins/tree/b9ddc83c32972210b8a94d389130713e8eed346e/pstack

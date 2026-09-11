@@ -1,6 +1,6 @@
 # Isolated slice delivery
 
-Use this only after the human has accepted the complete design baseline, slice batch, concurrency limit, resource plan, and goal-validation disposition. The Coordinator schedules whole slices; a Slice Owner supervises each accepted slice end to end.
+Use this only after the human has accepted `SPEC.md`, `SLICES.md`, the concurrency limit, resource plan, and goal-validation disposition. The Coordinator schedules whole slices; a Slice Owner supervises each accepted slice end to end.
 
 ## Schedule without overlap
 
@@ -22,7 +22,7 @@ Completion criterion: every active slice has a ready dependency state, isolated 
 
 ## Dispatch one complete slice
 
-Give one Slice Owner the current coordination envelope. Reference protected behavior, design and contract pointers, assigned validation-table gate IDs, commit boundary, and evidence destination. Do not create a second validation plan.
+Give one Slice Owner the current coordination envelope. Reference protected behavior, accepted SPEC and SLICES pointers, assigned validation-table gate IDs, commit boundary, and evidence destination. Do not create a second validation plan.
 
 Use `factory-supervision` to place and supervise the Slice Owner. The Slice Owner uses it again when an internal role crosses an agent or harness boundary. The supervision adapter executes the route defined here; it does not choose lifecycle transitions or acquire either owner's authority.
 
