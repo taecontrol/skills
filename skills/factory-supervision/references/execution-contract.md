@@ -20,7 +20,7 @@ A Slice Owner coordinates internal roles. It may inspect state, author coordinat
 Every assignment names:
 
 - initiating owner and target role;
-- goal-map, project-profile, phase, design-baseline, slice-batch, execution-plan, and human-acceptance identities that apply;
+- goal-map, project-profile, phase, SPEC, SLICES, execution-plan, and human-acceptance identities that apply;
 - accepted slice or goal-validation assignment;
 - dependency outputs, base revision, workspace identity, resource lease, and candidate identity when one exists;
 - protected behavior, gates, journeys, allowed and forbidden effects, evidence destination, and commit boundary;

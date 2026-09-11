@@ -15,8 +15,8 @@ factory-identities:
   goal-map: <identity | not applicable>
   project-profile: <identity>
   phase: <identity or name>
-  design-baseline: <identity | not applicable>
-  slice-batch: <identity | not applicable>
+  spec: <identity | not applicable>
+  slices: <identity | not applicable>
   execution-plan: <identity | not applicable>
   human-acceptance: <identity | not applicable>
   accepted-slice: <identity | not applicable>
