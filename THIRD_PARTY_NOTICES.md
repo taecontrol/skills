@@ -10,15 +10,35 @@ Included unchanged:
 
 - `skills/productivity/grilling/SKILL.md`
 - `skills/productivity/grilling/agents/openai.yaml`
+- `skills/productivity/writing-for-agents/SKILL-MECHANICS.md`
+- `skills/productivity/writing-for-agents/agents/openai.yaml`
+
+Adapted only in the frontmatter description:
+
+- `skills/productivity/writing-for-agents/SKILL.md`
 
 Adapted to remove source-specific context conventions and add Spanish-language output:
 
 - `skills/productivity/wait-what/SKILL.md`
 - `skills/productivity/wait-what/agents/openai.yaml`
 
-MIT License
-
 Copyright (c) 2026 Matt Pocock
+
+## pstack Unslop
+
+Source: https://github.com/cursor/plugins/tree/main/pstack/skills/unslop
+
+Revision: `889ec4b68fa5aab0e867dad71ec3fdf386ae48f3`
+
+Adapted only in the frontmatter description:
+
+- `skills/productivity/unslop/SKILL.md`
+
+Copyright (c) 2026 Lauren Tan
+
+## MIT license
+
+MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

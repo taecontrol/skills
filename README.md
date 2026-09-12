@@ -2,10 +2,12 @@
 
 A deliberately small catalog of reusable agent skills maintained by Taecontrol.
 
-The previous set was retired so each skill can be reintroduced only after it proves useful. The catalog currently contains two stable skills:
+The previous set was retired so each skill can be reintroduced only after it proves useful. The catalog currently contains four stable skills:
 
 - [`grilling`](./skills/productivity/grilling/SKILL.md) — Stress-tests a plan, decision, or idea through complete rounds of independent questions.
 - [`wait-what`](./skills/productivity/wait-what/SKILL.md) — Re-pitches an explanation that did not land, in English or Spanish.
+- [`writing-for-agents`](./skills/productivity/writing-for-agents/SKILL.md) — Designs reliable instructions and documentation for agents.
+- [`unslop`](./skills/productivity/unslop/SKILL.md) — Removes AI writing patterns from prose while preserving its meaning and tone.
 
 ## Catalog
 
@@ -44,7 +46,7 @@ npm version patch  # or minor / major
 git push --follow-tags
 ```
 
-`npm version` updates `package.json` and `package-lock.json`, creates a version commit, and tags it. Version `1.0.0` introduced `grilling`; version `1.1.0` adds `wait-what` with English and Spanish recovery.
+`npm version` updates `package.json` and `package-lock.json`, creates a version commit, and tags it. Version `1.0.0` introduced `grilling`; version `1.1.0` added `wait-what` with English and Spanish recovery; version `1.2.0` adds `writing-for-agents` and `unslop`.
 
 ## Install
 
