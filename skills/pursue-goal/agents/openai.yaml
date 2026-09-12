@@ -1,6 +1,0 @@
-interface:
-  display_name: "Pursue Goal"
-  short_description: "Design first, then deliver isolated slices"
-  default_prompt: "Use $pursue-goal to complete Design (plain-language explanation plus accepted SPEC.md and SLICES.md) before isolated slice delivery, then apply the accepted goal-validation disposition at Delivery close."
-policy:
-  allow_implicit_invocation: false
