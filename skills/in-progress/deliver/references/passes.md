@@ -9,6 +9,7 @@ Use these contracts when dispatching the two required write passes for one accep
 - Apply the shared `strategic-programming` standard. At minimum, keep each policy at one clear seam, prefer deep modules and honest boundaries, use the least custom machinery that preserves accepted behavior and safety, and require proof that can disagree with the implementation.
 - Resolve reversible implementation details locally. Return evidence that invalidates accepted behavior, a public contract, sensitive policy, or costly-to-reverse architecture instead of changing it silently.
 - Own every supported defect within the accepted scope. Do not knowingly defer it to the next actor.
+- If a failing gate or observed defect remains causally uncertain after direct inspection, establish a diagnosis under `diagnosing-bugs` before changing production code. Continue in the same pass when repair is already authorized; do not turn an obvious local cause into a formal debugging exercise.
 - Run gates after the pass's final edit—or after review when no edit was needed. Both passes independently run applicable unit tests, the changed-code CRAP check with maximum `8` when configured, and any other affected project gate. Missing project tooling is reported, never invented.
 - Keep the handoff concise: outcome, material design choice, files or seams changed, exact gate commands and results, and a precise blocker or residual risk when one remains. Do not create a ledger or progress file.
 

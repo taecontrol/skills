@@ -25,6 +25,7 @@ Adapted to remove source-specific context conventions and add Spanish-language o
 
 Adapted substantially:
 
+- `skills/in-progress/diagnosing-bugs/SKILL.md` — graduated diagnosis-only loop with artifact-based evidence and no source-specific routing.
 - `skills/in-progress/research/SKILL.md` — parallel independent research and cross-checked synthesis.
 - `skills/in-progress/prototype/SKILL.md` — UI-only exploration through isolated parallel candidates and an independent judge.
 
@@ -42,6 +43,7 @@ Adapted only in the frontmatter description:
 
 Adapted substantially:
 
+- `skills/in-progress/diagnosing-bugs/SKILL.md` — matching-surface reproduction and live or fixed runtime-evidence paths.
 - `skills/in-progress/product-validation/SKILL.md` — direct real-product proof, project-local driver boundary, and independent verdict.
 
 Copyright (c) 2026 Lauren Tan

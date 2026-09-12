@@ -15,6 +15,7 @@ npx skills@latest add taecontrol/skills --skill=<name>
 - **[`architect`](./architect/SKILL.md)** — Design costly-to-reverse technical shapes through grounded alternatives and human agreement.
 - **[`coding-standards`](./coding-standards/SKILL.md)** — Maintain accepted project-specific rules that require judgment during code review.
 - **[`deliver`](./deliver/SKILL.md)** — Deliver accepted slices sequentially through implementation, fresh repair, and independent validation.
+- **[`diagnosing-bugs`](./diagnosing-bugs/SKILL.md)** — Establish root causes from faithful reproductions or distinguishing runtime evidence.
 - **[`domain-language`](./domain-language/SKILL.md)** — Use the project's accepted domain vocabulary consistently throughout active work.
 - **[`how`](./how/SKILL.md)** — Build an evidence-grounded mental model of how a system, problem, or solution works.
 - **[`implementation-spec`](./implementation-spec/SKILL.md)** — Turn accepted design into a temporary, sequential implementation contract.
