@@ -15,12 +15,11 @@ Choose the capability that fits the uncertainty:
 - `spike` for empirical feasibility, integration, performance, or tool behavior;
 - `prototype` for product behavior, interaction, state, or UI comparison;
 - `domain-modeling` for uncertain vocabulary, concept boundaries, and invariants;
-- `architect` for a non-trivial system or module shape (multi-agent sketch, human Agree, no implementation);
-- `architecture-design` for one costly-to-reverse seam when a full architect pass is unnecessary;
+- `architect` for any costly-to-reverse seam or system/module shape (multi-agent arena with cross-judge, human Agree, no implementation);
 - `diagnosing-bugs` for an observed failure whose mechanism is unknown;
 - a named specialist for a bounded technology or risk question.
 
-When available, use `javascript-react-patterns` for a bounded JavaScript or React design, composition, rendering, or performance choice. A costly-to-reverse seam still belongs to `architecture-design` or `architect`; the pattern result is supporting evidence, not decision authority.
+When available, use `javascript-react-patterns` for a bounded JavaScript or React design, composition, rendering, or performance choice. A costly-to-reverse seam still belongs to `architect`; the pattern result is supporting evidence, not decision authority.
 
 Require primary evidence, limits, surprises, a verdict, and a recommendation. Keep a durable artifact only when it remains useful after the decision. Prototypes, spike code, fixtures, and exploratory edits are disposable by default and must remain outside production candidates.
 

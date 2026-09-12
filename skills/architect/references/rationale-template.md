@@ -4,7 +4,7 @@ Prose that ships alongside the sketch. One page. Sentence-case headings. Replace
 
 ## Problem
 
-*What we are trying to do, and what about the existing system or constraints makes the shape non-obvious. Name grounding constraints the design must honor.*
+*The bound architecture question, why evidence cannot settle it, and what about the existing system or constraints makes the shape non-obvious. Name grounding constraints the design must honor.*
 
 ## Usage (caller's view)
 
@@ -16,7 +16,7 @@ Prose that ships alongside the sketch. One page. Sentence-case headings. Replace
 
 ## Synthesis decision
 
-*Filled by arena: base candidate, grafts, rejections.*
+*Filled by arena: base candidate, grafts, rejections, cross-judge verdict.*
 
 ## Tradeoffs accepted
 
