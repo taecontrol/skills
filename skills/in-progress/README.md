@@ -10,4 +10,5 @@ npx skills@latest add taecontrol/skills --skill=<name>
 
 ## Candidates
 
+- **[`how`](./how/SKILL.md)** — Build an evidence-grounded mental model of how a system, problem, or solution works.
 - **[`research`](./research/SKILL.md)** — Investigate a bounded question through parallel independent research and publish one cross-checked Markdown report.

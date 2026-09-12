@@ -1,0 +1,5 @@
+interface:
+  display_name: "How"
+  short_description: "Understand systems, problems, and solutions"
+policy:
+  allow_implicit_invocation: false
