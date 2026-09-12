@@ -42,6 +42,18 @@ Adapted only in the frontmatter description:
 
 Copyright (c) 2026 Lauren Tan
 
+## Ponytail
+
+Source: https://github.com/DietrichGebert/ponytail
+
+Revision: `356918eba965ee1eac64bd3a7f0dd02108350de5`
+
+Adapted substantially:
+
+- `skills/in-progress/strategic-programming/SKILL.md` — least-custom-machinery ladder and safety floor integrated into a broader strategic design standard.
+
+Copyright (c) 2026 DietrichGebert
+
 ## MIT license
 
 MIT License

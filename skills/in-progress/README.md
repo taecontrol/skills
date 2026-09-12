@@ -20,4 +20,5 @@ npx skills@latest add taecontrol/skills --skill=<name>
 - **[`prototype`](./prototype/SKILL.md)** — Compare independent, production-representative UI directions before selecting one.
 - **[`research`](./research/SKILL.md)** — Investigate a bounded question through parallel independent research and publish one cross-checked Markdown report.
 - **[`spike`](./spike/SKILL.md)** — Settle one empirical technical uncertainty through a bounded disposable experiment.
+- **[`strategic-programming`](./strategic-programming/SKILL.md)** — Build maintainable code through grounded design, independent proof, and minimal custom machinery.
 - **[`why`](./why/SKILL.md)** — Recover why existing code, systems, or technical decisions acquired their current shape.
