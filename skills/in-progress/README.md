@@ -8,4 +8,6 @@ Install a candidate explicitly when one exists:
 npx skills@latest add taecontrol/skills --skill=<name>
 ```
 
-None yet.
+## Candidates
+
+- **[`research`](./research/SKILL.md)** — Investigate a bounded question through parallel independent research and publish one cross-checked Markdown report.

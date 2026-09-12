@@ -12,6 +12,7 @@ Included unchanged:
 - `skills/productivity/grilling/agents/openai.yaml`
 - `skills/productivity/writing-for-agents/SKILL-MECHANICS.md`
 - `skills/productivity/writing-for-agents/agents/openai.yaml`
+- `skills/in-progress/research/agents/openai.yaml`
 
 Adapted only in the frontmatter description:
 
@@ -21,6 +22,10 @@ Adapted to remove source-specific context conventions and add Spanish-language o
 
 - `skills/productivity/wait-what/SKILL.md`
 - `skills/productivity/wait-what/agents/openai.yaml`
+
+Adapted substantially for parallel independent research and cross-checked synthesis:
+
+- `skills/in-progress/research/SKILL.md`
 
 Copyright (c) 2026 Matt Pocock
 
