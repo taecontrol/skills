@@ -1,0 +1,6 @@
+interface:
+  display_name: "Product Validation"
+  short_description: "Prove accepted journeys through the real product"
+
+policy:
+  allow_implicit_invocation: true

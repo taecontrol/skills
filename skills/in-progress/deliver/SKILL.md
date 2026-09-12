@@ -32,7 +32,7 @@ When the Finisher is green, inspect that the resulting diff belongs to the activ
 After all slices are committed:
 
 - run the full-project technical gates required by the accepted specification and executable project configuration, including the full-project CRAP maximum of `8` only when its tool and command are configured;
-- dispatch a fresh read-only Product Validator to exercise the representative journey defined by the specification through the real product interface and report observable evidence;
+- dispatch a fresh read-only Product Validator under the `product-validation` contract to exercise the representative journey defined by the specification through the real product interface and report observable evidence;
 - route an in-scope defect to a fresh Finisher under the integrated-repair contract, run the affected gates, and create a focused repair commit; then rerun invalidated full-project and product evidence;
 - resynchronize instead of repairing when a finding changes accepted behavior, scope, public contracts, sensitive policy, or costly-to-reverse architecture.
 

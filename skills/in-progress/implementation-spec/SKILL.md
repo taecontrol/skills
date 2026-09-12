@@ -50,7 +50,7 @@ Do not add progress checkboxes, owners, current-slice markers, timestamps beyond
 - **Missing CRAP configuration:** if the project defines no CRAP tool or command, state that both checks are omitted and why. This absence alone does not make the specification `Not ready`. Do not invent or install a calculator. An explicit project exception must include its accepted rationale.
 - **Coding standards:** reference applicable reviewer-judged project rules and map them to slice acceptance evidence without duplicating their source.
 - **Project gates:** carry any additional applicable commands, thresholds, environments, and dispositions from accepted executable project configuration without weakening them.
-- **Product validation:** define the final representative journey, environment, data, actions, and observable result. It runs only after all slices are integrated; slice-level technical evidence does not replace it.
+- **Product validation:** define the final representative journey's actor, starting state, action, required observable result, materially forbidden result when applicable, environment, identity and data, isolation or reset, cleanup boundary, and expected evidence. It runs only after all slices are integrated; slice-level technical evidence does not replace it.
 
 ## Lifecycle
 

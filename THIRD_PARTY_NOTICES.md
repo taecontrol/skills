@@ -30,15 +30,19 @@ Adapted substantially:
 
 Copyright (c) 2026 Matt Pocock
 
-## pstack Unslop
+## pstack
 
-Source: https://github.com/cursor/plugins/tree/main/pstack/skills/unslop
+Source: https://github.com/cursor/plugins/tree/main/pstack
 
 Revision: `889ec4b68fa5aab0e867dad71ec3fdf386ae48f3`
 
 Adapted only in the frontmatter description:
 
 - `skills/productivity/unslop/SKILL.md`
+
+Adapted substantially:
+
+- `skills/in-progress/product-validation/SKILL.md` — direct real-product proof, project-local driver boundary, and independent verdict.
 
 Copyright (c) 2026 Lauren Tan
 
