@@ -11,6 +11,7 @@ npx skills@latest add taecontrol/skills --skill=<name>
 ## Candidates
 
 - **[`adr`](./adr/SKILL.md)** — Preserve the rationale of consequential architecture decisions without duplicating implementation design.
+- **[`agents-md`](./agents-md/SKILL.md)** — Maintain a project's durable intent and proven operational guidance for coding agents.
 - **[`architect`](./architect/SKILL.md)** — Design costly-to-reverse technical shapes through grounded alternatives and human agreement.
 - **[`coding-standards`](./coding-standards/SKILL.md)** — Maintain accepted project-specific rules that require judgment during code review.
 - **[`domain-language`](./domain-language/SKILL.md)** — Use the project's accepted domain vocabulary consistently throughout active work.

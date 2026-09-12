@@ -1,6 +1,7 @@
 ---
 name: coding-standards
 description: "Create, audit, or update a project's durable review standards. Use explicitly when accepted, project-specific coding rules require human judgment and cannot be enforced reliably by tooling."
+disable-model-invocation: true
 ---
 
 # Coding standards

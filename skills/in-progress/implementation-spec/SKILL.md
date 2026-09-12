@@ -1,6 +1,7 @@
 ---
 name: implementation-spec
 description: "Create an accepted, temporary implementation specification from settled software design before implementation begins. Use explicitly when the work needs a strictly ordered sequence of vertical slices and concrete validation evidence."
+disable-model-invocation: true
 ---
 
 # Implementation spec

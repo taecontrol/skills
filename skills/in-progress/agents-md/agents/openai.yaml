@@ -1,0 +1,6 @@
+interface:
+  display_name: "Agents.md"
+  short_description: "Maintain durable project guidance for agents"
+
+policy:
+  allow_implicit_invocation: false
