@@ -16,14 +16,14 @@ Own one costly-to-reverse design question from grounding through human agreement
 5. **Run the arena.** Read [arena.md](references/arena.md) and [design-quality.md](references/design-quality.md). Dispatch at least two fresh, independent candidates with the same grounded brief, then a fresh cross-judge. Require structurally distinct shapes, not cosmetic variations. Read every candidate, choose a base from evidence rather than votes, and graft only ideas that preserve one coherent design. If two usable candidates and an independent judge cannot run, return `Inconclusive` instead of silently weakening the process.
 6. **Synthesize.** Read [deliverable.md](references/deliverable.md). Build one proposed decision package containing the question and bound; evidence and limits; accepted domain meaning and bounded assumptions; caller-first usage; owners, interfaces, data and control flow; complexity hidden by each consequential boundary; alternatives and tradeoffs; synthesis decision; open risks; and validation path. Keep reversible implementation choices unset and keep this proposed synthesis temporary until agreement.
 7. **Agree.** Explain the package in plain language so the human need not read candidate artifacts. Show what callers do, what each boundary owns and hides, what lost and why, and what remains uncertain. Pause for explicit agreement. Treat pushback as new evidence: re-bound and rerun the affected work rather than patching an obsolete shape.
-8. **Materialize and stop.** After agreement, incorporate the accepted feedback and write one durable Markdown deliverable with status `Accepted`. If the repository already has a canonical design artifact, update only its architecture section instead of creating a competing source of truth. Return the exact path or path and heading that implementation must consume, then stop without beginning implementation.
+8. **Materialize and stop.** After agreement, incorporate the accepted feedback and write one implementation-lifetime Markdown brief with status `Accepted`. If the repository intentionally maintains a canonical architecture artifact, update only its architecture section instead of creating a competing source of truth. Otherwise, keep the brief as a temporary implementation input. Return the exact path or path and heading that implementation must consume, name any accepted rationale likely to remain invisible after implementation as an ADR candidate, then stop without beginning implementation or creating another artifact.
 
 ## Authority and boundaries
 
 - Investigate, propose, and synthesize; the human accepts material domain meaning and architecture.
-- Do not modify production code or start implementation. Persist the final design only after the relevant human agreement; writing that accepted deliverable is part of this skill's required result.
+- Do not modify production code or start implementation. Persist the final design only after the relevant human agreement; writing the accepted implementation brief is part of this skill's required result.
 - Do not manufacture architecture to justify the invocation. Report settled, reversible, or out-of-scope questions directly.
-- Keep candidate and judge work temporary. Preserve only the accepted synthesis as the durable implementation source.
+- Keep candidate and judge work temporary. Preserve only the accepted synthesis for implementation; do not treat it as permanent architecture documentation by default.
 
 ## Outcomes
 
@@ -34,4 +34,4 @@ Own one costly-to-reverse design question from grounding through human agreement
 
 ## Completion criteria
 
-The user can accept or reject one grounded shape from the caller's point of view; every material invariant has an owner, every consequential boundary hides identifiable complexity, alternatives received independent comparison, uncertainty remains explicit, and no implementation began. An `Agreed` outcome also has one durable accepted design whose exact location and implementation obligations are recoverable without conversation history.
+The user can accept or reject one grounded shape from the caller's point of view; every material invariant has an owner, every consequential boundary hides identifiable complexity, alternatives received independent comparison, uncertainty remains explicit, and no implementation began. An `Agreed` outcome also has one accepted implementation brief whose exact location, obligations, and expected retirement point are recoverable without conversation history.

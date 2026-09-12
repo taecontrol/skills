@@ -46,7 +46,7 @@ npm version patch  # or minor / major
 git push --follow-tags
 ```
 
-`npm version` updates `package.json` and `package-lock.json`, creates a version commit, and tags it. Version `1.0.0` introduced `grilling`; version `1.1.0` added `wait-what` with English and Spanish recovery; version `1.2.0` added `writing-for-agents` and `unslop`; version `1.3.0` added the first public beta of `research`; version `1.4.0` added the first public beta of `how`; version `1.5.0` added the first public beta of `why`; version `1.6.0` added the first public beta of `architect`; version `1.7.0` adds the first public beta of `domain-language`.
+`npm version` updates `package.json` and `package-lock.json`, creates a version commit, and tags it. Version `1.0.0` introduced `grilling`; version `1.1.0` added `wait-what` with English and Spanish recovery; version `1.2.0` added `writing-for-agents` and `unslop`; version `1.3.0` added the first public beta of `research`; version `1.4.0` added the first public beta of `how`; version `1.5.0` added the first public beta of `why`; version `1.6.0` added the first public beta of `architect`; version `1.7.0` added the first public beta of `domain-language`; version `1.7.1` makes the accepted architecture brief temporary by default and reserves ADRs for durable rationale.
 
 ## Install
 
