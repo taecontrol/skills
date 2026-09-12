@@ -1,0 +1,6 @@
+interface:
+  display_name: "Skill Guide"
+  short_description: "Learn which skill to use and when"
+
+policy:
+  allow_implicit_invocation: false
