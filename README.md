@@ -48,7 +48,7 @@ Private repositories require authenticated Git access on the installing machine.
 - [`prototype`](./skills/prototype/SKILL.md) — Builds disposable product, state, interaction, or UI experiments.
 - [`diagnosing-bugs`](./skills/diagnosing-bugs/SKILL.md) — Establishes a reproduction and supported root cause before repair.
 - [`adr`](./skills/adr/SKILL.md) — Preserves consequential architectural rationale.
-- [`architect`](./skills/architect/SKILL.md) — Grounds and sketches system shape with multi-agent arena, then stops for human Agree.
+- [`architect`](./skills/architect/SKILL.md) — Designs costly-to-reverse architecture (seam or system shape) via multi-agent arena with cross-judge, then stops for human Agree.
 - [`arena`](./skills/arena/SKILL.md) — Fans out parallel multi-agent candidates and synthesizes one result.
 - [`how`](./skills/how/SKILL.md) — Explains how a subsystem works.
 - [`why`](./skills/why/SKILL.md) — Investigates why code is shaped as it is.
@@ -60,7 +60,6 @@ Private repositories require authenticated Git access on the installing machine.
 - [`writing-for-agents`](./skills/writing-for-agents/SKILL.md) — Authors portable skills, agent rules, profiles, and handoffs.
 - [`agents-md`](./skills/agents-md/SKILL.md) — Interviews a human to create portable project instructions across coding harnesses.
 - [`domain-modeling`](./skills/domain-modeling/SKILL.md) — Discovers terms and invariants and persists accepted meanings.
-- [`architecture-design`](./skills/architecture-design/SKILL.md) — Develops alternatives for consequential architecture questions.
 - [`wizard`](./skills/wizard/SKILL.md) — Guides authorized human-only operations without receiving secrets.
 - [`developer-documentation-style`](./skills/developer-documentation-style/SKILL.md) — Writes direct developer documentation.
 - [`javascript-react-patterns`](./skills/javascript-react-patterns/SKILL.md) — Selects JavaScript and modern function-component React patterns through references loaded on demand.

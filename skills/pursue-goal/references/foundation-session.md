@@ -37,8 +37,7 @@ Use [design discovery](definition-checkpoint.md) until every applicable design s
 
 - use `grilling` for the human-owned material decision frontier;
 - use `domain-modeling` for uncertain terms, boundaries, and invariants;
-- use `architect` when the goal needs a system or module shape before coding—ground with `how`/`why`, sketch via `arena`, obtain human Agree, and stop without implementing;
-- use `architecture-design` for one expensive-to-reverse seam or decision when a full `architect` pass is unnecessary;
+- use `architect` for any costly-to-reverse seam or system/module shape—ground with `how`/`why`, sketch via multi-agent `arena` with cross-judge, obtain human Agree, and stop without implementing;
 - use `research`, `spike`, or `prototype` for bounded factual, feasibility, experiential, or UI comparison uncertainty;
 - use `show-me` to make structure or flow visible in conversation;
 - route accepted consequential rationale to `adr` when the completed code and maintained documentation would not preserve why.
