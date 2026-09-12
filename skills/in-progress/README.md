@@ -10,6 +10,7 @@ npx skills@latest add taecontrol/skills --skill=<name>
 
 ## Candidates
 
+- **[`architect`](./architect/SKILL.md)** — Design costly-to-reverse technical shapes through grounded alternatives and human agreement.
 - **[`how`](./how/SKILL.md)** — Build an evidence-grounded mental model of how a system, problem, or solution works.
 - **[`research`](./research/SKILL.md)** — Investigate a bounded question through parallel independent research and publish one cross-checked Markdown report.
 - **[`why`](./why/SKILL.md)** — Recover why existing code, systems, or technical decisions acquired their current shape.

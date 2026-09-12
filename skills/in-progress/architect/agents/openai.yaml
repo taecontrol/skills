@@ -1,0 +1,5 @@
+interface:
+  display_name: "Architect"
+  short_description: "Design costly-to-reverse technical shapes"
+policy:
+  allow_implicit_invocation: true
