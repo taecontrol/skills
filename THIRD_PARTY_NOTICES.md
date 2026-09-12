@@ -23,9 +23,10 @@ Adapted to remove source-specific context conventions and add Spanish-language o
 - `skills/productivity/wait-what/SKILL.md`
 - `skills/productivity/wait-what/agents/openai.yaml`
 
-Adapted substantially for parallel independent research and cross-checked synthesis:
+Adapted substantially:
 
-- `skills/in-progress/research/SKILL.md`
+- `skills/in-progress/research/SKILL.md` — parallel independent research and cross-checked synthesis.
+- `skills/in-progress/prototype/SKILL.md` — UI-only exploration through isolated parallel candidates and an independent judge.
 
 Copyright (c) 2026 Matt Pocock
 
