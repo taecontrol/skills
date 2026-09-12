@@ -11,6 +11,11 @@ Included unchanged:
 - `skills/productivity/grilling/SKILL.md`
 - `skills/productivity/grilling/agents/openai.yaml`
 
+Adapted to remove source-specific context conventions and add Spanish-language output:
+
+- `skills/productivity/wait-what/SKILL.md`
+- `skills/productivity/wait-what/agents/openai.yaml`
+
 MIT License
 
 Copyright (c) 2026 Matt Pocock

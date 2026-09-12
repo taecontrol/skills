@@ -1,0 +1,5 @@
+interface:
+  display_name: "Wait What"
+  short_description: "Re-pitch simply in English or Spanish"
+policy:
+  allow_implicit_invocation: false

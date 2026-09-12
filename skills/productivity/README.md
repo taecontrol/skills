@@ -4,7 +4,7 @@ Stable general workflow skills that are not specific to code work.
 
 ## User-invoked
 
-None yet.
+- **[`wait-what`](./wait-what/SKILL.md)** — Re-pitch the previous explanation more simply, in English or Spanish.
 
 ## Model-invoked
 
