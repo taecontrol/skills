@@ -1,0 +1,6 @@
+interface:
+  display_name: "Domain Language"
+  short_description: "Keep project vocabulary consistent"
+
+policy:
+  allow_implicit_invocation: true
