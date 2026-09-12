@@ -1,72 +1,61 @@
 # taecontrol/skills
 
-Reusable agent skills maintained by Taecontrol.
+A deliberately small catalog of reusable agent skills maintained by Taecontrol.
+
+The previous set was retired so each skill can be reintroduced only after it proves useful. The catalog currently contains four stable skills:
+
+- [`grilling`](./skills/productivity/grilling/SKILL.md) — Stress-tests a plan, decision, or idea through complete rounds of independent questions.
+- [`wait-what`](./skills/productivity/wait-what/SKILL.md) — Re-pitches an explanation that did not land, in English or Spanish.
+- [`writing-for-agents`](./skills/productivity/writing-for-agents/SKILL.md) — Designs reliable instructions and documentation for agents.
+- [`unslop`](./skills/productivity/unslop/SKILL.md) — Removes AI writing patterns from prose while preserving its meaning and tone.
+
+## Catalog
+
+Skills are grouped by maturity and purpose, following the conventions used by [mattpocock/skills](https://github.com/mattpocock/skills):
+
+- [`skills/engineering`](./skills/engineering/README.md) — stable skills used regularly for code work.
+- [`skills/productivity`](./skills/productivity/README.md) — stable, general workflow skills.
+- [`skills/in-progress`](./skills/in-progress/README.md) — public beta skills being evaluated before promotion.
+- [`skills/misc`](./skills/misc/README.md) — useful but rarely used skills that are not promoted.
+- [`skills/deprecated`](./skills/deprecated/README.md) — an intentionally empty retirement marker.
+
+Within each stable bucket, its README separates user-invoked skills from model-invoked skills. Each skill remains independently installable and owns its references, scripts, templates, and agent metadata.
+
+## Lifecycle
+
+1. Add a new candidate under `skills/in-progress/<skill-name>/`.
+2. Evaluate it through real use and revise it narrowly from observed failures.
+3. Promote it to `skills/engineering/` or `skills/productivity/` when it is stable and regularly useful.
+4. Put a low-use but still useful skill in `skills/misc/`.
+5. Retire a skill by deleting it. Do not keep an alias or a stale `SKILL.md` in `deprecated/`; name its replacement, or state that none exists, in the commit or release notes. Git preserves the retired implementation.
+
+Update this README and the destination bucket README whenever a skill is promoted, moved, renamed, or retired.
+
+## Versioning
+
+This repository uses Semantic Versioning through `package.json` and Git tags.
+
+- `patch` — compatible fixes or instruction refinements.
+- `minor` — a new skill or a meaningful compatible capability.
+- `major` — removals, renames without aliases, or incompatible behavior changes.
+
+Create a release with npm's built-in version command:
+
+```bash
+npm version patch  # or minor / major
+git push --follow-tags
+```
+
+`npm version` updates `package.json` and `package-lock.json`, creates a version commit, and tags it. Version `1.0.0` introduced `grilling`; version `1.1.0` added `wait-what` with English and Spanish recovery; version `1.2.0` added `writing-for-agents` and `unslop`; version `1.3.0` added the first public beta of `research`; version `1.4.0` added the first public beta of `how`; version `1.5.0` added the first public beta of `why`; version `1.6.0` added the first public beta of `architect`; version `1.7.0` added the first public beta of `domain-language`; version `1.7.1` made the accepted architecture brief temporary by default and reserved ADRs for durable rationale; version `1.8.0` added the first public beta of `adr`; version `1.9.0` added the first public beta of `spike`; version `1.10.0` adds the first public beta of `prototype`.
 
 ## Install
 
-Install the Factory core:
+Once the catalog contains a skill, list or select individual skills with:
 
 ```bash
-npx skills add taecontrol/skills \
-  --skill pursue-goal factory-supervision cleaner strategic-programming implementation-review use-case-qa verification-adapter grilling wait-what unslop research spike prototype diagnosing-bugs adr architect arena how why teach
+npx skills@latest add taecontrol/skills
 ```
-
-Install every skill:
-
-```bash
-npx skills add taecontrol/skills
-```
-
-Add the progressively disclosed JavaScript and React pattern specialist to a Factory installation:
-
-```bash
-npx skills add taecontrol/skills --skill javascript-react-patterns
-```
-
-List available skills without installing:
-
-```bash
-npx skills add taecontrol/skills --list
-```
-
-Private repositories require authenticated Git access on the installing machine.
-
-## Factory core
-
-- [`pursue-goal`](./skills/pursue-goal/SKILL.md) — Coordinates mandatory Design (SPEC + SLICES) then Delivery and goal validation.
-- [`factory-supervision`](./skills/factory-supervision/SKILL.md) — Supervises Factory assignments across agent sessions, workspaces, and harnesses.
-- [`cleaner`](./skills/cleaner/SKILL.md) — Repairs and hardens accepted candidates before independent verification.
-- [`strategic-programming`](./skills/strategic-programming/SKILL.md) — Applies deep design, invariants, and behavioral proof to non-trivial changes.
-- [`implementation-review`](./skills/implementation-review/SKILL.md) — Independently verifies completed implementation.
-- [`use-case-qa`](./skills/use-case-qa/SKILL.md) — Validates accepted journeys through observable product seams.
-- [`verification-adapter`](./skills/verification-adapter/SKILL.md) — Creates or reconciles a project's local verification CLI and Feature Map for independent product validation.
-- [`grilling`](./skills/grilling/SKILL.md) — Interviews and accepts a complete scoped decision frontier.
-- [`wait-what`](./skills/wait-what/SKILL.md) — Re-explains a message without advancing the work.
-- [`unslop`](./skills/unslop/SKILL.md) — Removes AI filler while preserving technical fidelity.
-- [`research`](./skills/research/SKILL.md) — Investigates bounded questions against authoritative sources.
-- [`spike`](./skills/spike/SKILL.md) — Runs bounded technical feasibility experiments.
-- [`prototype`](./skills/prototype/SKILL.md) — Builds disposable product, state, interaction, or UI experiments.
-- [`diagnosing-bugs`](./skills/diagnosing-bugs/SKILL.md) — Establishes a reproduction and supported root cause before repair.
-- [`adr`](./skills/adr/SKILL.md) — Preserves consequential architectural rationale.
-- [`architect`](./skills/architect/SKILL.md) — Designs costly-to-reverse architecture (seam or system shape) via multi-agent arena with cross-judge, then stops for human Agree.
-- [`arena`](./skills/arena/SKILL.md) — Fans out parallel multi-agent candidates and synthesizes one result.
-- [`how`](./skills/how/SKILL.md) — Explains how a subsystem works.
-- [`why`](./skills/why/SKILL.md) — Investigates why code is shaped as it is.
-- [`teach`](./skills/teach/SKILL.md) — Explains work plainly so a person can understand before deciding.
-
-## Optional strategies and specialists
-
-- [`tdd`](./skills/tdd/SKILL.md) — Provides an optional test-driven implementation strategy.
-- [`writing-for-agents`](./skills/writing-for-agents/SKILL.md) — Authors portable skills, agent rules, profiles, and handoffs.
-- [`agents-md`](./skills/agents-md/SKILL.md) — Interviews a human to create portable project instructions across coding harnesses.
-- [`domain-modeling`](./skills/domain-modeling/SKILL.md) — Discovers terms and invariants and persists accepted meanings.
-- [`wizard`](./skills/wizard/SKILL.md) — Guides authorized human-only operations without receiving secrets.
-- [`developer-documentation-style`](./skills/developer-documentation-style/SKILL.md) — Writes direct developer documentation.
-- [`javascript-react-patterns`](./skills/javascript-react-patterns/SKILL.md) — Selects JavaScript and modern function-component React patterns through references loaded on demand.
-- [`show-me`](./skills/show-me/SKILL.md) — Explains the current topic with concise diagrams, code-shape sketches, and focused HTML artifacts.
-
-Each skill directory is independently installable and contains its own required references, templates, and scripts.
 
 ## License
 
-MIT. See [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md) for third-party attributions.
+MIT. See [`LICENSE`](./LICENSE) and [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md).

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Diagnosing Bugs"
+  short_description: "Establish root causes from distinguishing evidence"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Strategic Programming"
+  short_description: "Build maintainable code beyond green tests"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,89 +1,69 @@
 # Third-party notices
 
-The repository contains adapted material from these MIT-licensed sources. This file is for maintainers and distribution; skills do not load it during execution.
-
 ## Matt Pocock skills
 
 Source: https://github.com/mattpocock/skills
-Revision used: `885e2ca4d842d139e9aef4e48d366c63cb1b8013`
 
-Adapted skills:
+Revision: `3cca18b368ae95cdbdebbff572ccafa662551015`
 
-- `grilling`
-- `wait-what`
-- `writing-for-agents`
-- `research`
-- `prototype`
-- `diagnosing-bugs`
-- `domain-modeling`
-- `tdd`
-- `wizard`
+Included unchanged:
+
+- `skills/productivity/grilling/SKILL.md`
+- `skills/productivity/grilling/agents/openai.yaml`
+- `skills/productivity/writing-for-agents/SKILL-MECHANICS.md`
+- `skills/productivity/writing-for-agents/agents/openai.yaml`
+- `skills/in-progress/research/agents/openai.yaml`
+
+Adapted only in the frontmatter description:
+
+- `skills/productivity/writing-for-agents/SKILL.md`
+
+Adapted to remove source-specific context conventions and add Spanish-language output:
+
+- `skills/productivity/wait-what/SKILL.md`
+- `skills/productivity/wait-what/agents/openai.yaml`
+
+Adapted substantially:
+
+- `skills/in-progress/diagnosing-bugs/SKILL.md` — graduated diagnosis-only loop with artifact-based evidence and no source-specific routing.
+- `skills/in-progress/research/SKILL.md` — parallel independent research and cross-checked synthesis.
+- `skills/in-progress/prototype/SKILL.md` — UI-only exploration through isolated parallel candidates and an independent judge.
+- `skills/in-progress/retro/SKILL.md` — evidence-backed portable retrospectives with temporary artifacts and no automatic workflow mutations.
 
 Copyright (c) 2026 Matt Pocock
 
-## pstack Unslop
+## pstack
 
 Source: https://github.com/cursor/plugins/tree/main/pstack
-Revision used: `60c641e4fad674784b30abcf9f8915dea39df38d`
 
-Adapted skill: `unslop`
-Author declared by the source plugin: Lauren Tan
+Revision: `889ec4b68fa5aab0e867dad71ec3fdf386ae48f3`
 
-Copyright (c) 2026 Lauren Tan
+Adapted only in the frontmatter description:
 
-## pstack design and understanding skills
+- `skills/productivity/unslop/SKILL.md`
 
-Source: https://github.com/cursor/plugins/tree/main/pstack
-Revision used: `68d834d9ca8f34c375ecb8057bfbcde5396a01f8`
+Adapted substantially:
 
-Adapted skills:
-
-- `architect` (Design-only Agree/stop variant; no default implementation)
-- `arena`
-- `how`
-- `why`
-- `teach`
-
-Author declared by the source plugin: Lauren Tan
+- `skills/in-progress/diagnosing-bugs/SKILL.md` — matching-surface reproduction and live or fixed runtime-evidence paths.
+- `skills/in-progress/product-validation/SKILL.md` — direct real-product proof, project-local driver boundary, and independent verdict.
 
 Copyright (c) 2026 Lauren Tan
 
-## pstack verification skill materials
+## Ponytail
 
-Source: https://github.com/cursor/plugins/tree/b9ddc83c32972210b8a94d389130713e8eed346e/pstack
-Revision used: `b9ddc83c32972210b8a94d389130713e8eed346e` (pstack 0.14.5)
+Source: https://github.com/DietrichGebert/ponytail
 
-Adapted material:
+Revision: `356918eba965ee1eac64bd3a7f0dd02108350de5`
 
-- project-local verification-skill creation structure from `skills/create-verification-skill/SKILL.md`;
-- verification-skill reconciliation workflow from `skills/maintain-verification-skill/SKILL.md`; and
-- Feature Map organization from the pstack verification materials.
+Adapted substantially:
 
-Copyright (c) 2026 Lauren Tan
+- `skills/in-progress/strategic-programming/SKILL.md` — least-custom-machinery ladder and safety floor integrated into a broader strategic design standard.
 
-The source is licensed under the MIT terms reproduced below.
-
-## HumanLayer show-me
-
-Source: https://github.com/humanlayer/skills/tree/main/plugins/show-me
-Revision used: `3c2629142c5d437428269b1b722b08c0b87f574d`
-
-Adapted skill: `show-me`
-
-Copyright (c) 2026 HumanLayer
-
-The source is licensed under the MIT terms reproduced below.
-
-## Patterns.dev skills
-
-Source: https://github.com/PatternsDev/skills
-Revision used: `48bf58a488cd210bcfad280b09c3a00403964d9d`
-
-Adapted material: the pattern catalog and reference cards in `javascript-react-patterns`
-License declared by each source skill: MIT
-Author metadata declared by the source skills: patterns.dev
+Copyright (c) 2026 DietrichGebert
 
 ## MIT license
+
+MIT License
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

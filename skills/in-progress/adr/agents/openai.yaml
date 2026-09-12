@@ -1,0 +1,6 @@
+interface:
+  display_name: "ADR"
+  short_description: "Preserve durable architecture rationale"
+
+policy:
+  allow_implicit_invocation: true
