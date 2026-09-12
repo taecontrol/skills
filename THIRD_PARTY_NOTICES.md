@@ -28,6 +28,7 @@ Adapted substantially:
 - `skills/in-progress/diagnosing-bugs/SKILL.md` — graduated diagnosis-only loop with artifact-based evidence and no source-specific routing.
 - `skills/in-progress/research/SKILL.md` — parallel independent research and cross-checked synthesis.
 - `skills/in-progress/prototype/SKILL.md` — UI-only exploration through isolated parallel candidates and an independent judge.
+- `skills/in-progress/retro/SKILL.md` — evidence-backed portable retrospectives with temporary artifacts and no automatic workflow mutations.
 
 Copyright (c) 2026 Matt Pocock
 
