@@ -15,4 +15,5 @@ npx skills@latest add taecontrol/skills --skill=<name>
 - **[`domain-language`](./domain-language/SKILL.md)** — Use the project's accepted domain vocabulary consistently throughout active work.
 - **[`how`](./how/SKILL.md)** — Build an evidence-grounded mental model of how a system, problem, or solution works.
 - **[`research`](./research/SKILL.md)** — Investigate a bounded question through parallel independent research and publish one cross-checked Markdown report.
+- **[`spike`](./spike/SKILL.md)** — Settle one empirical technical uncertainty through a bounded disposable experiment.
 - **[`why`](./why/SKILL.md)** — Recover why existing code, systems, or technical decisions acquired their current shape.
