@@ -2,7 +2,9 @@
 
 A deliberately small catalog of reusable agent skills maintained by Taecontrol.
 
-The catalog is currently empty. The previous set was retired so each skill can be reintroduced only after it proves useful.
+The previous set was retired so each skill can be reintroduced only after it proves useful. The catalog currently contains one stable skill:
+
+- [`grilling`](./skills/productivity/grilling/SKILL.md) — Stress-tests a plan, decision, or idea through complete rounds of independent questions.
 
 ## Catalog
 
@@ -22,25 +24,26 @@ Within each stable bucket, its README separates user-invoked skills from model-i
 2. Evaluate it through real use and revise it narrowly from observed failures.
 3. Promote it to `skills/engineering/` or `skills/productivity/` when it is stable and regularly useful.
 4. Put a low-use but still useful skill in `skills/misc/`.
-5. Retire a skill by deleting it. Do not keep an alias or a stale `SKILL.md` in `deprecated/`; name its replacement, or state that none exists, in the removal changeset. Git preserves the retired implementation.
+5. Retire a skill by deleting it. Do not keep an alias or a stale `SKILL.md` in `deprecated/`; name its replacement, or state that none exists, in the commit or release notes. Git preserves the retired implementation.
 
 Update this README and the destination bucket README whenever a skill is promoted, moved, renamed, or retired.
 
 ## Versioning
 
-This repository uses [Changesets](https://github.com/changesets/changesets) and Semantic Versioning.
+This repository uses Semantic Versioning through `package.json` and Git tags.
 
 - `patch` — compatible fixes or instruction refinements.
 - `minor` — a new skill or a meaningful compatible capability.
 - `major` — removals, renames without aliases, or incompatible behavior changes.
 
-Every user-visible change includes a Markdown file in `.changeset/`:
+Create a release with npm's built-in version command:
 
 ```bash
-npm run changeset
+npm version patch  # or minor / major
+git push --follow-tags
 ```
 
-After changesets reach `main`, the release workflow maintains a version PR. Merging that PR updates `package.json` and `CHANGELOG.md`, then creates the matching Git tag.
+`npm version` updates `package.json` and `package-lock.json`, creates a version commit, and tags it. Version `1.0.0` is the first catalog release and contains `grilling`.
 
 ## Install
 
@@ -52,4 +55,4 @@ npx skills@latest add taecontrol/skills
 
 ## License
 
-MIT. See [`LICENSE`](./LICENSE).
+MIT. See [`LICENSE`](./LICENSE) and [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md).

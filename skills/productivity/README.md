@@ -8,4 +8,4 @@ None yet.
 
 ## Model-invoked
 
-None yet.
+- **[`grilling`](./grilling/SKILL.md)** — Grill the user relentlessly about a plan, decision, or idea.
