@@ -13,6 +13,8 @@ Apply the following lenses proportionally. They are quality criteria, not a fixe
 
 Read the accepted implementation input—the user's bounded request or an accepted implementation specification—plus applicable project instructions, coding standards, and executable gate configuration. Trace the real caller, state, and data flow through the affected seam rather than reasoning from the named file alone.
 
+Before editing, make each accepted requirement and protected behavior explicit and map it to planned verification evidence, including obligations that automated gates cannot establish. Reuse an existing specification's coverage; for bounded work, a short outline in the conversation is sufficient. Update the mapping as discovery reveals affected obligations.
+
 Identify the governing invariant or policy, its authoritative source, its owner, and the callers that should not carry its hard detail. Fix a defect at the shared cause when that is the narrowest correct seam; inspect sibling callers before assuming the reported path is the whole problem.
 
 Resolve reversible implementation choices locally. If evidence invalidates accepted behavior, a public contract, sensitive policy, or costly-to-reverse architecture, return that exact gap instead of silently redesigning the work.
@@ -51,6 +53,8 @@ Every pass that claims code is ready owns validation of the state it hands off. 
 ## Finish strategically
 
 Once focused proof is green, inspect the result for change amplification, caller knowledge of hidden detail, duplicated policy, dishonest names or types, avoidable custom machinery, and failure behavior without an obvious home. Repair supported defects within the accepted scope, then rerun affected evidence.
+
+Reconcile the final result against the obligation mapping from grounding. Account for each obligation with observed evidence or an explicit limitation, including those outside automated gate coverage. Resolve known in-scope omissions before claiming completion.
 
 Report an unresolved risk only when fixing it would cross the accepted boundary. Name the evidence, consequence, and decision needed; do not create a speculative follow-up ledger.
 
