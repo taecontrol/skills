@@ -40,9 +40,11 @@ Use these as lenses, not a checklist:
 - tool access, reliability, or economy; and
 - unnecessary instructions, artifacts, roles, or repeated work.
 
-Inspect the actual applicable instruction or skill before attributing a failure to it. When evidence permits, record the version or content actually available during the run and distinguish a skill that was not selected or loaded from one that was loaded but not followed and one whose instructions induced the behavior. Also distinguish a missing rule, conflicting instructions, unavailable information, insufficient authority, an actual product defect, and ordinary one-off model variation. Do not recommend adding prose for behavior an executable check can enforce or for guidance that already exists.
+Inspect the actual applicable instruction or skill before attributing a failure to it. When skill use is under review, include a compact assessment for each relevant skill: version or content available during the run, whether it was loaded, the specific instruction, observed behavior, and diagnosis. Mark unavailable evidence explicitly; current skill text does not establish what the agent had during the run. Distinguish a skill that was not selected or loaded from one that was loaded but not followed and one whose instructions induced the behavior. Also distinguish a missing rule, conflicting instructions, unavailable information, insufficient authority, an actual product defect, and ordinary one-off model variation. Do not recommend adding prose for behavior an executable check can enforce or for guidance that already exists.
 
 A candidate is worth reporting only when evidence connects a recurring or material cost to a changeable part of the working environment. For each candidate, identify the evidence, impact, correct destination, smallest plausible change or experiment, confidence, recurrence signal, and risk of making the workflow worse. Prefer deletion, clarification, better access, or automation over adding another protocol when those address the mechanism.
+
+For a proposed skill change, name the target section and concrete adjustment, and state whether the relevant guidance already exists. If it does, explain how the adjustment addresses activation or compliance rather than duplicating the rule.
 
 `No change recommended` is a valid conclusion when evidence is weak, the event is isolated, the current behavior was appropriate, or the proposed cure would cost more than the observed problem.
 
@@ -69,4 +71,4 @@ Do not edit skills, `AGENTS.md`, coding standards, project configuration, toolin
 
 ## Completion criteria
 
-One temporary Markdown report lets a fresh agent understand what materially happened, what should be preserved, which improvements have evidence, where each improvement belongs, and what remains uncertain—without access to the original transcript and without any workflow change being applied.
+One temporary Markdown report lets a fresh agent understand what materially happened, what should be preserved, which improvements have evidence, where each improvement belongs, and what remains uncertain—without access to the original transcript and without any workflow change being applied. When skill use is under review, the report includes the skill assessment defined above, with evidence gaps explicit.
