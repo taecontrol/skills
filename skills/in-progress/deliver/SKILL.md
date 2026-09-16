@@ -15,6 +15,8 @@ Turn one accepted implementation specification into integrated, validated code. 
 3. Determine the next unfinished slice from the ordered specification and Git evidence. If prior work cannot be mapped safely, ask one focused resynchronization question rather than inventing execution state.
 4. Read [references/passes.md](references/passes.md), then execute exactly one slice at a time. Never dispatch slices in parallel.
 
+Apply subsequent explicit user instructions to the active scope and every dispatch. An already authorized scope change needs no second approval; keep it visible in the handoff and final omissions without turning the specification into a progress log. Ask only for genuinely unresolved changes, and do not restore removed requirements from an older contract.
+
 ## Complete a slice
 
 Dispatch a fresh Implementer with the specification path, the one active slice, the current worktree, and the Implementer contract. It owns the complete vertical outcome, its strategic finish, and its gates. Do not advance from a known failing handoff.
@@ -33,12 +35,22 @@ After all slices are committed:
 
 - run the full-project technical gates required by the accepted specification and executable project configuration, including the full-project CRAP maximum of `8` only when its tool and command are configured;
 - dispatch a fresh read-only Product Validator under the `product-validation` contract to exercise the representative journey defined by the specification through the real product interface and report observable evidence;
-- route an in-scope defect to a fresh Finisher under the integrated-repair contract, run the affected gates, and create a focused repair commit; then rerun invalidated full-project and product evidence;
+- route a demonstrated in-scope product defect to a fresh Finisher under the integrated-repair contract, run the affected gates, and create a focused repair commit; then rerun only evidence invalidated by the change;
 - resynchronize instead of repairing when a finding changes accepted behavior, scope, public contracts, sensitive policy, or costly-to-reverse architecture.
 
 Technical gates do not replace product validation, and product validation does not waive technical failures.
 
-Once all accepted evidence is green, confirm that durable knowledge has an existing maintained owner in code, tests, documentation, an ADR, or the domain glossary. Do not create durable documents as an incidental cleanup step. Delete the implementation specification only when its accepted contract identifies it as temporary and authorizes retirement after delivery; otherwise preserve it and report why. Report the delivered commits, gates, product evidence, omissions, and any accepted residual risk.
+### When validation cannot proceed
+
+Separate a product defect from a failed setup or missing control capability before dispatching a repair. `Inconclusive` is not automatically a product repair assignment. Use the available faithful alternative under `product-validation`, preferring direct computer use or browser use for UI work.
+
+For a setup failure, isolate the earliest failed prerequisite and make only a supported, authorized correction. Verify that prerequisite with a narrow check before resuming the affected path. Another attempt needs new evidence or a verified correction; unchanged retries and speculative repair chains do not advance delivery. Preserve prepared environments and unrelated validation state.
+
+When the method requires building or extending a harness, report the exact unverified behavior and separate that tooling proposal from delivery. Continue work that does not depend on the gap. If no faithful method is available, report incomplete validation rather than silently expanding scope or claiming success. Tooling repairs count as restored capability only when observed; they are not product acceptance evidence.
+
+### Close delivery
+
+Once all evidence required by the current accepted scope is green, confirm that durable knowledge has an existing maintained owner in code, tests, documentation, an ADR, or the domain glossary. Do not create durable documents as an incidental cleanup step. Delete the implementation specification only when its accepted contract identifies it as temporary and authorizes retirement after delivery; otherwise preserve it and report why. Report the delivered commits, gates, product evidence, omissions, and any accepted residual risk.
 
 ## Boundaries
 
@@ -51,4 +63,4 @@ Once all accepted evidence is green, confirm that durable knowledge has an exist
 
 ## Completion criteria
 
-Every slice exists as one coherent local commit after independent Implementer and Finisher gate runs; the integrated repository passes its accepted full-project gates; a fresh Product Validator has proven the representative journey; the specification's accepted retirement contract has been honored; and no known in-scope defect or unresolved authority boundary remains.
+Every slice in the current accepted scope exists as one coherent local commit after the Implementer and Finisher checks, including direct UI and design comparison where applicable; the integrated repository passes its required full-project gates; a fresh Product Validator has proven the representative journey; the specification's accepted retirement contract has been honored; and no known in-scope defect or unresolved authority boundary remains.
