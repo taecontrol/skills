@@ -39,7 +39,7 @@ Add prerequisites, expected output, or a follow-up skill only when they material
 
 ## Preserve the manual boundary
 
-Never invoke another skill, start the recommended work, create a goal or plan, dispatch agents, or modify files. A recommendation is not authorization to act. Stop after giving the user enough guidance to choose and invoke the next capability themselves.
+While the request is advisory, provide guidance without invoking another skill, starting recommended work, dispatching agents, or modifying files. A recommendation alone is not authorization to act. A later explicit instruction to perform work ends the advisory task: follow that instruction under the applicable workflow. In particular, an explicit acceptance of a prepared specification authorizes recording its accepted status; this guide is not a reason to leave it as Draft or require another session.
 
 ## Completion criteria
 

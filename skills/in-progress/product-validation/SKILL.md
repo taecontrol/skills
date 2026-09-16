@@ -7,7 +7,7 @@ description: "Independently validate an accepted product journey through a real 
 
 Use the product to judge whether one accepted journey works. Treat the implementation, acceptance contract, and verification tooling as read-only. Mutate only authorized validation state, and never repair the product while judging it.
 
-For delivery acceptance, run in a fresh context independent from the agents that implemented and finished the code. Trust direct observations, not their summaries or a green technical suite.
+For final delivery acceptance, run in a fresh context independent from the agents that implemented and finished the code. Slice passes may use the method below within their existing roles; they do not claim independent final acceptance. Trust direct observations, not summaries or a green technical suite.
 
 ## Establish the judgment
 
@@ -25,11 +25,13 @@ Return `Inconclusive` with the exact missing decision when a material criterion 
 
 ## Choose a faithful method
 
-Inspect the repository for an existing project verification skill, end-to-end harness, documented procedure, simulator, browser or desktop driver, public API client, CLI runner, device tooling, fixtures, and observable state. Prefer an existing maintained capability. Do not create or maintain a harness or feature map during validation.
+For a graphical product, first use computer use or browser use to operate and observe the actual app in its target runtime. Inspect available controls and the project's launch and data procedures. Exercise the journey directly before considering new E2E automation; an absent automated driver alone is not a blocker. For a product whose accepted interface is an API or CLI, exercise that interface directly.
+
+Existing required automated gates remain applicable, but do not replace direct UI and visual checks. Propose new E2E automation only after direct use establishes the behavior and a concrete repeated regression need justifies its maintenance cost. Building or extending it is separately scoped implementation work. Do not create or repair a harness during validation.
 
 Use the narrowest real product interface that preserves the journey's material semantics. Confirm that the instance, revision, configuration, identity, and data under control are the intended ones; run an existing health or `doctor` check when available. Reject ambiguous or stale targets.
 
-The driver reports actions and observations; the Product Validator derives the verdict from the accepted journey. Never convert a driver's aggregate success or `Pass` label into product acceptance without inspecting the evidence against the accepted criteria.
+The control tool reports actions and observations; the Product Validator derives the verdict from the accepted journey. Never convert a tool's aggregate success or `Pass` label into product acceptance without inspecting the evidence against the accepted criteria.
 
 Source inspection and technical tests may orient or diagnose, but they cannot produce `Pass` for an unexecuted journey unless that technical surface is itself the accepted public product interface. Record any fidelity limit of a simulator or substitute.
 
@@ -47,7 +49,7 @@ Perform the accepted action through the chosen product surface and capture the a
 
 Preserve the first failure and earliest observable divergence for the product revision under test. A retry may distinguish nondeterminism or an environment problem, but a later success on that revision does not erase the original result. After a repair or other revision change, retain the earlier failure as evidence about its original revision and calculate a new verdict from fresh applicable evidence. Do not add exploratory cases or adjacent regression requirements to the acceptance verdict unless the accepted contract includes them.
 
-After any implementation, build, driver, data recipe, configuration, or relevant environment change, rerun every journey whose evidence may no longer apply. Reuse previous evidence only when its applicability can be established directly.
+After a relevant change, identify which observations it invalidates and rerun those paths, including downstream behavior that depends on them. Reuse evidence whose applicability can be established directly; repeat the whole journey only when the change invalidates it as a whole.
 
 ## Return the verdict
 
