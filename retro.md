@@ -1,6 +1,7 @@
 # Retro: Money #9 — plan participation (diseño → entrega)
 
-Fecha del reporte: 2026-09-17  
+Fecha del reporte: 2026-09-17
+
 Idioma: español (corrida del owner)
 
 ## Alcance y evidencia
