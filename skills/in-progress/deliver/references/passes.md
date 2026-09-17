@@ -11,7 +11,7 @@ Use these contracts when dispatching the two required write passes for one accep
 - Resolve reversible implementation details locally. Return evidence that invalidates accepted behavior, a public contract, sensitive policy, or costly-to-reverse architecture instead of changing it silently.
 - Own every supported defect within the accepted scope. Do not knowingly defer it to the next actor.
 - If a failing gate or observed defect remains causally uncertain after direct inspection, establish a diagnosis under `diagnosing-bugs` before changing production code. Continue in the same pass when repair is already authorized; do not turn an obvious local cause into a formal debugging exercise.
-- Run gates after the pass's final edit—or after review when no edit was needed. Both passes independently run applicable unit tests, the changed-code CRAP check with maximum `8` when configured, and any other affected project gate. Missing project tooling is reported, never invented.
+- Run gates after the pass's final edit—or after review when no edit was needed. Both passes independently run applicable unit tests and affected project gates. For CRAP, follow the specification's command, analysis scope, coverage prerequisites, and per-slice disposition under [Validation](../../implementation-spec/SKILL.md#validation). A full-project calculator does not establish that a changed-code check exists. Report an unavailable check without inventing tooling or waiving a required project gate.
 - Keep the handoff concise: outcome, files or seams changed, exact gate commands and results, direct product observations and evidence locations when applicable, and any precise blocker. Do not create a ledger or progress file.
 
 ## UI acceptance within a slice
