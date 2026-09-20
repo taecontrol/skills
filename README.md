@@ -2,12 +2,10 @@
 
 A deliberately small catalog of reusable agent skills maintained by Taecontrol.
 
-The previous set was retired so each skill can be reintroduced only after it proves useful. The catalog currently contains four stable skills:
+The previous set was retired so each skill can be reintroduced only after it proves useful. The catalog contains two stable buckets:
 
-- [`grilling`](./skills/productivity/grilling/SKILL.md) — Stress-tests a plan, decision, or idea through complete rounds of independent questions.
-- [`wait-what`](./skills/productivity/wait-what/SKILL.md) — Re-pitches an explanation that did not land, in English or Spanish.
-- [`writing-for-agents`](./skills/productivity/writing-for-agents/SKILL.md) — Designs reliable instructions and documentation for agents.
-- [`unslop`](./skills/productivity/unslop/SKILL.md) — Removes AI writing patterns from prose while preserving its meaning and tone.
+- [`skills/productivity`](./skills/productivity/README.md) — general workflow skills: [`grilling`](./skills/productivity/grilling/SKILL.md), [`wait-what`](./skills/productivity/wait-what/SKILL.md), [`writing-for-agents`](./skills/productivity/writing-for-agents/SKILL.md), and [`unslop`](./skills/productivity/unslop/SKILL.md).
+- [`skills/engineering`](./skills/engineering/README.md) — the engineering workflow skills, promoted from public beta: [`adr`](./skills/engineering/adr/SKILL.md), [`agents-md`](./skills/engineering/agents-md/SKILL.md), [`architect`](./skills/engineering/architect/SKILL.md), [`coding-standards`](./skills/engineering/coding-standards/SKILL.md), [`deliver`](./skills/engineering/deliver/SKILL.md), [`diagnosing-bugs`](./skills/engineering/diagnosing-bugs/SKILL.md), [`domain-language`](./skills/engineering/domain-language/SKILL.md), [`how`](./skills/engineering/how/SKILL.md), [`implementation-spec`](./skills/engineering/implementation-spec/SKILL.md), [`product-validation`](./skills/engineering/product-validation/SKILL.md), [`prototype`](./skills/engineering/prototype/SKILL.md), [`research`](./skills/engineering/research/SKILL.md), [`retro`](./skills/engineering/retro/SKILL.md), [`skill-guide`](./skills/engineering/skill-guide/SKILL.md), [`spike`](./skills/engineering/spike/SKILL.md), [`strategic-programming`](./skills/engineering/strategic-programming/SKILL.md), and [`why`](./skills/engineering/why/SKILL.md).
 
 ## Catalog
 

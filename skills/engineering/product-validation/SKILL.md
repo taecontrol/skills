@@ -25,7 +25,7 @@ Return `Inconclusive` with the exact missing decision when a material criterion 
 
 ## Choose a faithful method
 
-For a graphical product, first use computer use or browser use to operate and observe the actual app in its target runtime. Inspect available controls and the project's launch and data procedures. Exercise the journey directly before considering new E2E automation; an absent automated driver alone is not a blocker. For a product whose accepted interface is an API or CLI, exercise that interface directly.
+For a graphical product, first operate and observe the actual app in its target runtime. When the Manuvra CLI is available (`manuvra version` succeeds), prefer it for browser journeys: author a JSON job for the accepted journey, run it with `manuvra run`, and derive observations from its evidence manifest. Otherwise use the harness's native computer use or browser use tools. Inspect available controls and the project's launch and data procedures. Exercise the journey directly before considering new E2E automation; an absent automated driver alone is not a blocker. For a product whose accepted interface is an API or CLI, exercise that interface directly.
 
 Existing required automated gates remain applicable, but do not replace direct UI and visual checks. Propose new E2E automation only after direct use establishes the behavior and a concrete repeated regression need justifies its maintenance cost. Building or extending it is separately scoped implementation work. Do not create or repair a harness during validation.
 

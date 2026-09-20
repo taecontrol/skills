@@ -12,7 +12,7 @@ Included unchanged:
 - `skills/productivity/grilling/agents/openai.yaml`
 - `skills/productivity/writing-for-agents/SKILL-MECHANICS.md`
 - `skills/productivity/writing-for-agents/agents/openai.yaml`
-- `skills/in-progress/research/agents/openai.yaml`
+- `skills/engineering/research/agents/openai.yaml`
 
 Adapted only in the frontmatter description:
 
@@ -25,10 +25,10 @@ Adapted to remove source-specific context conventions and add Spanish-language o
 
 Adapted substantially:
 
-- `skills/in-progress/diagnosing-bugs/SKILL.md` — graduated diagnosis-only loop with artifact-based evidence and no source-specific routing.
-- `skills/in-progress/research/SKILL.md` — parallel independent research and cross-checked synthesis.
-- `skills/in-progress/prototype/SKILL.md` — UI-only exploration through isolated parallel candidates and an independent judge.
-- `skills/in-progress/retro/SKILL.md` — evidence-backed portable retrospectives with temporary artifacts and no automatic workflow mutations.
+- `skills/engineering/diagnosing-bugs/SKILL.md` — graduated diagnosis-only loop with artifact-based evidence and no source-specific routing.
+- `skills/engineering/research/SKILL.md` — parallel independent research and cross-checked synthesis.
+- `skills/engineering/prototype/SKILL.md` — UI-only exploration through isolated parallel candidates and an independent judge.
+- `skills/engineering/retro/SKILL.md` — evidence-backed portable retrospectives with temporary artifacts and no automatic workflow mutations.
 
 Copyright (c) 2026 Matt Pocock
 
@@ -44,8 +44,8 @@ Adapted only in the frontmatter description:
 
 Adapted substantially:
 
-- `skills/in-progress/diagnosing-bugs/SKILL.md` — matching-surface reproduction and live or fixed runtime-evidence paths.
-- `skills/in-progress/product-validation/SKILL.md` — direct real-product proof, project-local driver boundary, and independent verdict.
+- `skills/engineering/diagnosing-bugs/SKILL.md` — matching-surface reproduction and live or fixed runtime-evidence paths.
+- `skills/engineering/product-validation/SKILL.md` — direct real-product proof, project-local driver boundary, and independent verdict.
 
 Copyright (c) 2026 Lauren Tan
 
@@ -57,7 +57,7 @@ Revision: `356918eba965ee1eac64bd3a7f0dd02108350de5`
 
 Adapted substantially:
 
-- `skills/in-progress/strategic-programming/SKILL.md` — least-custom-machinery ladder and safety floor integrated into a broader strategic design standard.
+- `skills/engineering/strategic-programming/SKILL.md` — least-custom-machinery ladder and safety floor integrated into a broader strategic design standard.
 
 Copyright (c) 2026 DietrichGebert
 
