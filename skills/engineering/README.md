@@ -4,8 +4,23 @@ Stable skills used regularly for code work.
 
 ## User-invoked
 
-None yet.
+- **[`agents-md`](./agents-md/SKILL.md)** — Maintain a project's durable intent and proven operational guidance for coding agents.
+- **[`coding-standards`](./coding-standards/SKILL.md)** — Maintain accepted project-specific rules that require judgment during code review.
+- **[`deliver`](./deliver/SKILL.md)** — Deliver accepted slices sequentially through implementation, fresh repair, and independent validation.
+- **[`how`](./how/SKILL.md)** — Build an evidence-grounded mental model of how a system, problem, or solution works.
+- **[`implementation-spec`](./implementation-spec/SKILL.md)** — Turn accepted design into a temporary, sequential implementation contract.
+- **[`retro`](./retro/SKILL.md)** — Preserve evidence-backed lessons from an agent run without changing the workflow.
+- **[`skill-guide`](./skill-guide/SKILL.md)** — Explain the available skills and recommend what the user should invoke next.
+- **[`why`](./why/SKILL.md)** — Recover why existing code, systems, or technical decisions acquired their current shape.
 
 ## Model-invoked
 
-None yet.
+- **[`adr`](./adr/SKILL.md)** — Preserve the rationale of consequential architecture decisions without duplicating implementation design.
+- **[`architect`](./architect/SKILL.md)** — Design costly-to-reverse technical shapes through grounded alternatives and human agreement.
+- **[`diagnosing-bugs`](./diagnosing-bugs/SKILL.md)** — Establish root causes from faithful reproductions or distinguishing runtime evidence.
+- **[`domain-language`](./domain-language/SKILL.md)** — Use the project's accepted domain vocabulary consistently throughout active work.
+- **[`product-validation`](./product-validation/SKILL.md)** — Independently prove accepted journeys through real product interfaces.
+- **[`prototype`](./prototype/SKILL.md)** — Compare independent, production-representative UI directions before selecting one.
+- **[`research`](./research/SKILL.md)** — Investigate a bounded question through parallel independent research and publish one cross-checked Markdown report.
+- **[`spike`](./spike/SKILL.md)** — Settle one empirical technical uncertainty through a bounded disposable experiment.
+- **[`strategic-programming`](./strategic-programming/SKILL.md)** — Build maintainable code through grounded design, independent proof, and minimal custom machinery.

@@ -42,7 +42,7 @@ Technical gates do not replace product validation, and product validation does n
 
 ### When validation cannot proceed
 
-Separate a product defect from a failed setup or missing control capability before dispatching a repair. `Inconclusive` is not automatically a product repair assignment. Use the available faithful alternative under `product-validation`, preferring direct computer use or browser use for UI work.
+Separate a product defect from a failed setup or missing control capability before dispatching a repair. `Inconclusive` is not automatically a product repair assignment. Use the available faithful alternative under `product-validation`, preferring Manuvra when its CLI is available (`manuvra version` succeeds) and otherwise the harness's native computer use or browser use tools for UI work.
 
 For a setup failure, isolate the earliest failed prerequisite and make only a supported, authorized correction. Verify that prerequisite with a narrow check before resuming the affected path. Another attempt needs new evidence or a verified correction; unchanged retries and speculative repair chains do not advance delivery. Preserve prepared environments and unrelated validation state.
 
