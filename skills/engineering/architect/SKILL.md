@@ -1,6 +1,6 @@
 ---
 name: architect
-description: "Design a costly-to-reverse technical boundary, ownership model, or system shape when implementation would otherwise lock an unsettled architecture decision. Leave routine, local, and safely reversible choices to implementation."
+description: "Design a costly-to-reverse technical boundary, ownership model, or system shape when implementation would otherwise lock an unsettled architecture decision. Invoke when the user opens an architecture design or architecture-change phase, before dispatching any agent to design one. Leave routine, local, and safely reversible choices to implementation."
 ---
 
 # Architect
