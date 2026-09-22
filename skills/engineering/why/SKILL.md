@@ -1,7 +1,6 @@
 ---
 name: why
 description: "Recover why existing code, systems, or technical decisions acquired their current shape from historical evidence."
-disable-model-invocation: true
 ---
 
 # Why

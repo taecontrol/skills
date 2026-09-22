@@ -1,7 +1,6 @@
 ---
 name: agents-md
 description: "Create, audit, or update portable project instructions that give coding agents durable project intent and proven operational guidance. Use explicitly for AGENTS.md or equivalent agent instruction files, not coding standards or task plans."
-disable-model-invocation: true
 ---
 
 # Agents.md

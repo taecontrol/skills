@@ -1,7 +1,6 @@
 ---
 name: unslop
 description: Revise prose to remove AI writing patterns while preserving meaning and intended tone. Use primarily for human-facing text; on agent instructions, apply only as a final wording pass after writing-for-agents.
-disable-model-invocation: true
 ---
 
 # Unslop

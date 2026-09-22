@@ -1,7 +1,6 @@
 ---
 name: skill-guide
 description: "Explain available skills, compare their boundaries, or recommend what the user should invoke next. User-invoked only; provide guidance and example prompts without invoking, routing, or executing another skill."
-disable-model-invocation: true
 ---
 
 # Skill guide
