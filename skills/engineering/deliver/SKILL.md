@@ -1,7 +1,6 @@
 ---
 name: deliver
 description: "Execute an accepted implementation specification sequentially in the current worktree through implementation, fresh quality repair, technical gates, and final product validation. Use explicitly to deliver already-settled software design; do not use to design the solution or manage parallel worktrees."
-disable-model-invocation: true
 ---
 
 # Deliver

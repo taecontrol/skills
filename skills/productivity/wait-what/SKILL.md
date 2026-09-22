@@ -1,7 +1,6 @@
 ---
 name: wait-what
 description: "Stop. That last message did not land: re-pitch it in English or Spanish."
-disable-model-invocation: true
 ---
 
 Wait, I don't understand where you've got to here. Re-pitch that with enough context for the last message to stand on its own.

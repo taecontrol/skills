@@ -1,7 +1,6 @@
 ---
 name: how
 description: "Build an evidence-grounded mental model of how a system, problem, or solution works."
-disable-model-invocation: true
 ---
 
 # How
