@@ -25,9 +25,15 @@ Return `Inconclusive` with the exact missing decision when a material criterion 
 
 ## Choose a faithful method
 
-For a graphical product, first operate and observe the actual app in its target runtime. When the Manuvra CLI is available (`manuvra version` succeeds), prefer it for browser journeys: author a JSON job for the accepted journey, run it with `manuvra run`, and derive observations from its evidence manifest. Otherwise use the harness's native computer use or browser use tools. Inspect available controls and the project's launch and data procedures. Exercise the journey directly before considering new E2E automation; an absent automated driver alone is not a blocker. For a product whose accepted interface is an API or CLI, exercise that interface directly.
+For a product whose accepted interface is an API or CLI, exercise that interface directly. For a graphical product, operate and observe the actual app in its target runtime with the first usable controller in this order, keeping the reason each earlier one was skipped:
 
-Existing required automated gates remain applicable, but do not replace direct UI and visual checks. Propose new E2E automation only after direct use establishes the behavior and a concrete repeated regression need justifies its maintenance cost. Building or extending it is separately scoped implementation work. Do not create or repair a harness during validation.
+1. **Manuvra.** Run `manuvra version`. When it succeeds, load the `manuvra` skill, confirm its run prerequisites, and run the journey as a Manuvra job.
+2. **Native browser or computer use** provided by your harness.
+3. **A disposable driver:** an uncommitted script using a browser library the project already depends on, run for this validation only, with its reason and fidelity limit recorded. Fixing its own selectors or waits is part of driving the journey; once making it run requires new fixtures, shared helpers, or other reusable harness work, return `Inconclusive` instead.
+
+Inspect the project's launch and data procedures before driving the journey. An absent automated driver alone is not a blocker.
+
+Existing required automated gates remain applicable, but do not replace direct UI and visual checks. Propose new E2E automation only after direct use establishes the behavior and a concrete repeated regression need justifies its maintenance cost. Building or extending reusable automation or a harness is separately scoped implementation work, outside validation.
 
 Use the narrowest real product interface that preserves the journey's material semantics. Confirm that the instance, revision, configuration, identity, and data under control are the intended ones; run an existing health or `doctor` check when available. Reject ambiguous or stale targets.
 
@@ -59,7 +65,7 @@ Return exactly one overall verdict:
 - `Fail`: a required result was absent, incorrect, unsafe, or contradicted by another faithful observation.
 - `Inconclusive`: a missing criterion, authority, driver, environment, isolation boundary, or observable oracle prevents a defensible judgment.
 
-Report the revision, journey, method and fidelity limits, environment and data, observations, evidence locations, cleanup result, and verdict. For `Fail`, include the earliest divergence and shortest faithful reproduction. For `Inconclusive`, name the exact capability, decision, or authority that would unblock judgment.
+Report the revision, journey, controller used and fidelity limits, environment and data, observations, evidence locations, cleanup result, and verdict. For a browser journey, include the Manuvra probe result and the concrete reason each earlier controller was skipped. For `Fail`, include the earliest divergence and shortest faithful reproduction. For `Inconclusive`, name the exact capability, decision, or authority that would unblock judgment.
 
 Return findings to the caller without editing product code, the accepted contract, or verification tooling. Under `deliver`, a `Fail` becomes a bounded integrated repair by a Finisher; changed code invalidates affected evidence and must be validated again.
 

@@ -33,7 +33,7 @@ When the Finisher is green, inspect that the resulting diff belongs to the activ
 After all slices are committed:
 
 - run the full-project technical gates required by the accepted specification and executable project configuration, including the full-project CRAP maximum of `8` only when its tool and command are configured;
-- dispatch a fresh read-only Product Validator under the `product-validation` contract to exercise the representative journey defined by the specification through the real product interface and report observable evidence;
+- dispatch a fresh read-only Product Validator under the `product-validation` contract to exercise the representative journey defined by the specification through the real product interface and report observable evidence; accept its verdict only when the report names the controller used and, for a browser journey, the Manuvra probe result and the reason each earlier controller was skipped, and otherwise return the report for completion;
 - route a demonstrated in-scope product defect to a fresh Finisher under the integrated-repair contract, run the affected gates, and create a focused repair commit; then rerun only evidence invalidated by the change;
 - resynchronize instead of repairing when a finding changes accepted behavior, scope, public contracts, sensitive policy, or costly-to-reverse architecture.
 
@@ -41,7 +41,7 @@ Technical gates do not replace product validation, and product validation does n
 
 ### When validation cannot proceed
 
-Separate a product defect from a failed setup or missing control capability before dispatching a repair. `Inconclusive` is not automatically a product repair assignment. Use the available faithful alternative under `product-validation`, preferring Manuvra when its CLI is available (`manuvra version` succeeds) and otherwise the harness's native computer use or browser use tools for UI work.
+Separate a product defect from a failed setup or missing control capability before dispatching a repair. `Inconclusive` is not automatically a product repair assignment. Continue with the next usable controller in `product-validation`'s [method order](../product-validation/SKILL.md#choose-a-faithful-method).
 
 For a setup failure, isolate the earliest failed prerequisite and make only a supported, authorized correction. Verify that prerequisite with a narrow check before resuming the affected path. Another attempt needs new evidence or a verified correction; unchanged retries and speculative repair chains do not advance delivery. Preserve prepared environments and unrelated validation state.
 
