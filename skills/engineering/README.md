@@ -18,7 +18,7 @@ Stable skills used regularly for code work.
 - **[`how`](./how/SKILL.md)** — Build an evidence-grounded mental model of how a system, problem, or solution works.
 - **[`implementation-spec`](./implementation-spec/SKILL.md)** — Turn accepted design into a temporary, sequential implementation contract.
 - **[`product-validation`](./product-validation/SKILL.md)** — Independently prove accepted journeys through real product interfaces.
-- **[`prototype`](./prototype/SKILL.md)** — Compare independent, production-representative UI directions before selecting one.
+- **[`prototype`](./prototype/SKILL.md)** — Compare production-representative UI directions, or drive a logic model through a shareable HTML demo, before committing to a design.
 - **[`research`](./research/SKILL.md)** — Investigate a bounded question through parallel independent research and publish one cross-checked Markdown report.
 - **[`skill-guide`](./skill-guide/SKILL.md)** — Explain the available skills and recommend what the user should invoke next.
 - **[`spike`](./spike/SKILL.md)** — Settle one empirical technical uncertainty through a bounded disposable experiment.
