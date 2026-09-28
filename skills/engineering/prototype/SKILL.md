@@ -1,16 +1,23 @@
 ---
 name: prototype
-description: "Explore and compare materially different, production-representative UI directions for one screen, component, or short flow through isolated parallel prototypes and an independent judge. Use before committing to a visual or interaction design; do not use for logic-only experiments or production implementation."
+description: "Make a design question tangible before committing to it: compare production-representative UI directions for a screen, component, or short flow, or drive a logic, state, data-shape, API, or CLI model through a shareable HTML demo. Use before committing to a visual, interaction, or behavioral design; not for production implementation."
 ---
 
 # Prototype
 
-Produce disposable UI alternatives that a human can compare and select. Prototype code may be temporary; every presented interface must be credible in its intended product context. This skill explores visual and interaction design, not standalone business logic or state models.
+Produce disposable prototypes that let a human judge a design before it is built. Prototype code may be temporary; everything presented must be credible in its intended product context.
 
-## Process
+## Choose the mode
+
+- **UI mode:** the question is what a screen, component, or short flow should look like or how it should be operated. Follow the process below.
+- **Logic mode:** the question is whether a logic, state, data-shape, API, or CLI behavior model holds up against real cases. Follow [logic mode](references/logic.md).
+
+When the question spans both, settle the model first in Logic mode, then the interface in UI mode.
+
+## UI process
 
 1. **Frame the design question.** State what the prototype must help decide, the intended user, product moment, primary task and action, target platform or viewport, relevant states, protected behavior, and a time, cost, or scope bound. If the direction is already accepted or the request is only a local implementation detail, explain why comparison would add no value and stop.
-2. **Ground the shared truth.** Inspect the current product, rendered baseline, repository, design system, components, terminology, real data shape, and platform conventions that apply. Prefer the real surrounding shell, density, content, and runtime. For a new product, use the product brief and a small number of relevant references without imitating them. Separate observed facts, user choices, assumptions, and freedoms.
+2. **Ground the shared truth.** Inspect the current product, rendered baseline, repository, design system, components, terminology, real data shape, and platform conventions that apply. Prefer the real surrounding shell, density, content, and runtime. When an accepted [feature brief](../../in-progress/feature-brief/SKILL.md) or product brief exists, take the user, problem, and states from it; for a new product, add a small number of relevant references without imitating them. Separate observed facts, user choices, assumptions, and freedoms.
 3. **Freeze one neutral brief.** Give every designer the same user, task, exact content, capabilities, representative data and states, viewport, invariants, allowed changes, forbidden inventions, and evaluation conditions. Keep product truth fixed so the comparison measures design rather than different interpretations of the problem.
 4. **Create independent directions.** Default to three fresh designer agents, preferably from different model families, and never exceed five. Give each an isolated workspace and a non-overlapping exploration territory. Require each designer to state one named thesis, then build, run, render, inspect, and evidence its direction without seeing the other candidates. Each thesis must differ in organizing structure or interaction model and at least one other material axis such as hierarchy, primary affordance, density, disclosure, navigation, reading path, or spatial composition.
 5. **Judge before presentation.** After all candidates finish, dispatch a fresh judge that authored none of them. Give it the shared brief, baseline, complete candidates, and rendered evidence. The judge checks every invariant, forbids invented content or behavior, verifies representative states and runtime fidelity, and compares candidates pairwise for material divergence. Color, typography, radius, shadow, illustration, or copy changes alone do not constitute a distinct direction; if two candidates remain equivalent as rough silhouettes, one must fail.
@@ -18,7 +25,7 @@ Produce disposable UI alternatives that a human can compare and select. Prototyp
 7. **Present for selection.** Show only passing candidates under equivalent viewing conditions. For each, provide its name, thesis, material tradeoffs, rendered evidence, run location or command, and known limitations. The judge may explain compliance and differences but must not select the aesthetic winner. Ask the human to choose one direction, request a specific hybrid, or reject the set.
 8. **Close the prototype.** Preserve an unambiguous visual reference for the selected direction, its relevant states and viewing conditions, and unresolved questions. For a requested hybrid, assemble and show the combined result so its acceptance refers to a visible design. Retain this reference for implementation comparison; delete unselected candidates after preserving decision evidence, or retain them only in their declared isolated discovery location. Stop without implementing the production solution.
 
-## Fidelity rules
+## UI fidelity rules
 
 - Disposable describes lifecycle, not visual quality. Do not present rough, generic, broken, or visibly unfinished UI as an option.
 - Use plausible domain-specific content, including the difficult data ranges and empty, loading, error, long-content, or responsive states material to the question.
@@ -32,6 +39,8 @@ Produce disposable UI alternatives that a human can compare and select. Prototyp
 Selection accepts a direction, not its prototype code. Reusing, copying, or adapting a candidate is separate production work that must be explicitly undertaken through the project's normal design, implementation, review, and verification practices. It inherits no production status or quality claim from the prototype.
 
 ## Completion criteria
+
+Logic mode has its own [completion criteria](references/logic.md#completion-criteria). For UI mode:
 
 - One shared, evidence-grounded brief made the design question and comparison conditions explicit.
 - At least three independent candidates were attempted in isolated workspaces and a fresh judge evaluated their rendered results.
