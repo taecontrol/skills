@@ -18,6 +18,8 @@ Apply subsequent explicit user instructions to the active scope and every dispat
 
 ## Complete a slice
 
+A fresh actor starts from the accepted inputs alone: dispatch it as a new agent, not a fork of your conversation or an agent that holds another slice's or role's context. Close each actor once you accept its handoff. If a dispatch fails on an agent limit, close idle actors and retry; if a fresh actor still cannot be created, stop and report the limit instead of reassigning an existing agent.
+
 Dispatch a fresh Implementer with the specification path, the one active slice, the current worktree, and the Implementer contract. It owns the complete vertical outcome, its strategic finish, and its gates. Do not advance from a known failing handoff.
 
 After the Implementer's green handoff, dispatch a different fresh Finisher with the same accepted inputs and the Finisher contract. The Finisher independently inspects the slice and repository state, repairs supported in-scope defects directly, and runs its own applicable gates against its final result. The Implementer's evidence is context for diagnosis, never a substitute for the Finisher's validation.
@@ -33,8 +35,9 @@ When the Finisher is green, inspect that the resulting diff belongs to the activ
 After all slices are committed:
 
 - run the full-project technical gates required by the accepted specification and executable project configuration, including the full-project CRAP maximum of `8` only when its tool and command are configured;
-- dispatch a fresh read-only Product Validator under the `product-validation` contract to exercise the representative journey defined by the specification through the real product interface and report observable evidence; accept its verdict only when the report names the controller used and, for a browser journey, the Manuvra probe result and the reason each earlier controller was skipped, and otherwise return the report for completion;
-- route a demonstrated in-scope product defect to a fresh Finisher under the integrated-repair contract, run the affected gates, and create a focused repair commit; then rerun only evidence invalidated by the change;
+- dispatch a fresh read-only Integrated Auditor under the [integrated audit](references/passes.md#integrated-audit) contract over the diff from the revision where delivery began to `HEAD`, supplying every scope change and human decision made during delivery;
+- after audit findings are repaired, dispatch a fresh read-only Product Validator under the `product-validation` contract to exercise the representative journey defined by the specification through the real product interface and report observable evidence; accept its verdict only when the report names the controller used and, for a browser journey, the Manuvra probe result and the reason each earlier controller was skipped, and otherwise return the report for completion;
+- route a demonstrated in-scope defect from a gate, the audit, or product validation to a fresh Finisher under the integrated-repair contract, run the affected gates, and create a focused repair commit; then rerun only evidence invalidated by the change;
 - resynchronize instead of repairing when a finding changes accepted behavior, scope, public contracts, sensitive policy, or costly-to-reverse architecture.
 
 Technical gates do not replace product validation, and product validation does not waive technical failures.
@@ -49,7 +52,7 @@ When the method requires building or extending a harness, report the exact unver
 
 ### Close delivery
 
-Once all evidence required by the current accepted scope is green, confirm that durable knowledge has an existing maintained owner in code, tests, documentation, an ADR, or the domain glossary. Do not create durable documents as an incidental cleanup step. Delete the implementation specification only when its accepted contract identifies it as temporary and authorizes retirement after delivery; otherwise preserve it and report why. Report the delivered commits, gates, product evidence, omissions, and any accepted residual risk.
+Once all evidence required by the current accepted scope is green, confirm that durable knowledge has an existing maintained owner in code, tests, documentation, an ADR, or the domain glossary. Do not create durable documents as an incidental cleanup step. Preserve the implementation specification and the accepted design inputs it references, and report their paths: post-delivery review judges the result against them, and temporary ones retire with the worktree. Report the delivered commits, gates, product evidence, omissions, and any accepted residual risk.
 
 ## Boundaries
 
@@ -58,8 +61,8 @@ Once all evidence required by the current accepted scope is green, confirm that 
 - Do not add work outside a slice because it seems useful; only repair defects necessary to satisfy accepted work or protected behavior.
 - Never stage or commit unrelated changes. If active work cannot be separated safely from unrelated changes in the same file, stop and ask rather than committing mixed work.
 - Do not push, publish a pull request, deploy, mutate production, spend money, or perform another external effect without separate authority.
-- Keep the Product Validator read-only. A code change always returns to a finishing pass and invalidates the evidence affected by that change.
+- Keep the Integrated Auditor and Product Validator read-only. A code change always returns to a finishing pass and invalidates the evidence affected by that change.
 
 ## Completion criteria
 
-Every slice in the current accepted scope exists as one coherent local commit after the Implementer and Finisher checks, including direct UI and design comparison where applicable; the integrated repository passes its required full-project gates; a fresh Product Validator has proven the representative journey; the specification's accepted retirement contract has been honored; and no known in-scope defect or unresolved authority boundary remains.
+Every slice in the current accepted scope exists as one coherent local commit after the Implementer and Finisher checks, including direct UI and design comparison where applicable; the integrated repository passes its required full-project gates; a fresh Integrated Auditor's supported findings are repaired; a fresh Product Validator has proven the representative journey; the specification and its accepted inputs remain available for review; and no known in-scope defect or unresolved authority boundary remains.

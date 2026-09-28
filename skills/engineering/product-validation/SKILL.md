@@ -27,7 +27,7 @@ Return `Inconclusive` with the exact missing decision when a material criterion 
 
 For a product whose accepted interface is an API or CLI, exercise that interface directly. For a graphical product, operate and observe the actual app in its target runtime with the first usable controller in this order, keeping the reason each earlier one was skipped:
 
-1. **Manuvra.** Run `manuvra version`. When it succeeds, load the `manuvra` skill, confirm its run prerequisites, and run the journey as a Manuvra job.
+1. **Manuvra.** Run `manuvra version`. When it succeeds, load the `manuvra` skill, confirm its run prerequisites, and run the journey as a Manuvra job. When the caller reports that Manuvra already failed on the same capability in this run, skip it for that capability and record that report as the reason.
 2. **Native browser or computer use** provided by your harness.
 3. **A disposable driver:** an uncommitted script using a browser library the project already depends on, run for this validation only, with its reason and fidelity limit recorded. Fixing its own selectors or waits is part of driving the journey; once making it run requires new fixtures, shared helpers, or other reusable harness work, return `Inconclusive` instead.
 
