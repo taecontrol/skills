@@ -9,7 +9,7 @@ Turn accepted software design into one temporary contract that an implementer ca
 
 ## Process
 
-1. **Establish readiness.** Identify the intended outcome, accepted product and design inputs, protected behavior, repository revision, applicable project instructions, and coding standards. Inspect the current repository rather than relying on conversation alone. If a missing decision could change user-visible behavior, a public contract, important data or security behavior, or costly-to-reverse architecture, return `Not ready` with the exact gap. Do not redesign it inside the specification.
+1. **Establish readiness.** Identify the intended outcome, accepted product and design inputs (including an accepted [feature brief](../../in-progress/feature-brief/SKILL.md) when one exists), protected behavior, repository revision, applicable project instructions, and coding standards. Inspect the current repository rather than relying on conversation alone. If a missing decision could change user-visible behavior, a public contract, important data or security behavior, or costly-to-reverse architecture, return `Not ready` with the exact gap. Do not redesign it inside the specification.
 2. **Choose one temporary location.** Use a path supplied by the user, then an established repository convention for local work artifacts, otherwise `.work/implementation/<change-slug>.md`. Keep the document local and outside version control. Work in the current worktree; do not create or manage worktrees, branches, commits, tracker items, goal directories, or execution state.
 3. **Write the validation contract.** Define the evidence that slices and the completed product must produce, using commands and thresholds from accepted executable project configuration and reviewer-judged obligations from the project's coding standards. Include the rules under [Validation](#validation). Confirm method feasibility against the existing product: launch the intended target and establish control and observation with the proposed method. Reuse directly applicable session evidence. This checks access, not behavior that has yet to be implemented; do not run implementation gates or record their later results in the specification.
 4. **Derive one linear slice sequence.** Number slices in their only permitted execution order. Slice `N` consumes the integrated result of slices `1..N-1`; never define parallel waves, dependency graphs, or alternate execution orders. Map every accepted requirement and protected risk to a slice or final validation, and expose anything intentionally cut.
@@ -23,12 +23,12 @@ Keep one Markdown document with:
 
 - **Status:** `Draft` or `Accepted`.
 - **Outcome and boundary:** observable result, scope, exclusions, and protected behavior.
-- **Accepted inputs:** concise pointers to authoritative designs, ADRs, glossary entries, contracts, prototypes, standards, and repository revision. Do not duplicate them.
+- **Accepted inputs:** concise pointers to feature briefs, authoritative designs, ADRs, glossary entries, contracts, prototypes, standards, and repository revision. Do not duplicate them.
 - **Shared constraints:** only obligations every affected slice must preserve.
 - **Validation contract:** slice evidence and final product evidence, including explicit omissions.
 - **Ordered slices:** the linear sequence defined below.
 - **Assumptions, risks, and cuts:** non-blocking uncertainty, known risk, and intentionally excluded work with reasons.
-- **Retirement:** durable knowledge that must move to code, tests, maintained documentation, an ADR, or the domain glossary before this file is deleted.
+- **Retirement:** durable knowledge that must move to code, tests, maintained documentation, an ADR, or the domain glossary before this file is deleted, including every applicable destination in a feature brief's promotion list; the brief is deleted with this file.
 
 For each slice record:
 
@@ -48,6 +48,7 @@ Do not add progress checkboxes, owners, current-slice markers, timestamps beyond
 - **CRAP index at completion:** with that project configuration, require one full-project CRAP check after the final slice, also with a maximum score of `8`.
 - **Missing CRAP configuration:** if the project defines no CRAP tool or command, state that both checks are omitted and why. This absence alone does not make the specification `Not ready`. Do not invent or install a calculator. An explicit project exception must include its accepted rationale.
 - **Coding standards:** reference applicable reviewer-judged project rules and map them to slice acceptance evidence without duplicating their source.
+- **Feature briefs:** carry a feature brief's critical journeys, representative conditions, and budgets into slice and final evidence. Its implementation-time promotions are accepted requirements, not hidden closing tasks: a missing budget check becomes a ratcheting CI check, a journey marked for regression protection becomes an automated acceptance test, and a success metric ships with its instrumentation and registry entry, each inside the slice whose outcome it protects.
 - **Project gates:** carry any additional applicable commands, thresholds, environments, and dispositions from accepted executable project configuration without weakening them.
 - **Product validation:** use [method selection](../product-validation/SKILL.md#choose-a-faithful-method). Define each slice's available user behavior and material failure/recovery cases, plus the final integrated journey. Name the actor, starting state, actions, required and materially forbidden results, environment, identity and data, isolation, cleanup, and evidence. Map UI slices to the selected visual references for comparison under [UI acceptance](../deliver/references/passes.md#ui-acceptance-within-a-slice). Slice checks precede handoff; final validation checks the integrated journey.
 - **Environment readiness:** distinguish existing control capability from setup or tooling that must be built. Identify required target-environment configuration, credentials, and published data; local fixtures do not establish staging readiness. A missing prerequisite has a named resolution before its first use, or remains an explicit readiness gap. New E2E automation is not a default acceptance requirement or hidden closing task.

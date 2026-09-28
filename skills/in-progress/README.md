@@ -10,4 +10,4 @@ npx skills@latest add taecontrol/skills --skill=<name>
 
 ## Candidates
 
-None right now. The previous candidates were promoted to [`skills/engineering`](../engineering/README.md).
+- **[`feature-brief`](./feature-brief/SKILL.md)** — Shape a problem into an accepted, temporary bet: evidence of need, triage, measurement, critical journeys, representative budgets, and rollout.

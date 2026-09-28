@@ -27,8 +27,9 @@ Adapted substantially:
 
 - `skills/engineering/diagnosing-bugs/SKILL.md` — graduated diagnosis-only loop with artifact-based evidence and no source-specific routing.
 - `skills/engineering/research/SKILL.md` — parallel independent research and cross-checked synthesis.
-- `skills/engineering/prototype/SKILL.md` — UI-only exploration through isolated parallel candidates and an independent judge.
+- `skills/engineering/prototype/SKILL.md` — UI exploration through isolated parallel candidates and an independent judge, plus a routed Logic mode.
 - `skills/engineering/retro/SKILL.md` — evidence-backed portable retrospectives with temporary artifacts and no automatic workflow mutations.
+- `skills/engineering/prototype/references/logic.md` — logic-mode shareable HTML demo, adapted from `skills/engineering/prototype/LOGIC.md` at revision `c55ee46073ed923f86ce59a5eb3b6d895095d1b7`, with a single default direction, grounding, self-run check, and the local production boundary.
 
 Copyright (c) 2026 Matt Pocock
 
