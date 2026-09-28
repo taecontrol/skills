@@ -1,6 +1,6 @@
 # Delivery passes
 
-Use these contracts when dispatching the two required write passes for one accepted slice or a bounded repair after integrated validation. Supply only the active assignment, the specification path, repository location, and any material current-state fact the actor cannot discover locally.
+Use these contracts when dispatching the two required write passes for one accepted slice, the read-only integrated audit, or a bounded repair after integrated validation. Supply only the active assignment, the specification path, repository location, and any material current-state fact the actor cannot discover locally, such as a control-tool limitation already observed in this delivery.
 
 ## Shared contract
 
@@ -26,7 +26,7 @@ The Implementer performs these checks before handoff. The Finisher opens the aut
 
 Produce the complete vertical behavior of the active slice.
 
-Trace the real flow and callers before editing. Implement the accepted outcome, tests, migrations, interface changes, and supporting documentation that belong to the slice. Exercise the behavior through the narrowest faithful seam and cover material failure, authorization, malformed-input, migration, or state-preservation behavior when applicable.
+Trace the real flow and callers before editing. For each protected behavior at risk in the slice, run its characterization proof against the unmodified code first, writing it when the specification names one that does not exist yet, and watch it pass; it stays green through the change unless an accepted obligation changes that behavior. Implement the accepted outcome, tests, migrations, interface changes, and supporting documentation that belong to the slice. Exercise the behavior through the narrowest faithful seam and cover material failure, authorization, malformed-input, migration, or state-preservation behavior when applicable.
 
 After the proof is green, finish strategically: inspect change amplification, leaked implementation detail, duplicated policy, avoidable custom machinery, dishonest names or types, and failure behavior without a clear owner. Repair what the slice supports, then execute the applicable gates against the final state before handoff.
 
@@ -34,15 +34,25 @@ After the proof is green, finish strategically: inspect change amplification, le
 
 Start in a fresh context. The role combines independent quality review and direct repair; it is not a read-only Verifier.
 
-Judge the accepted outcome against the repository and current slice diff before relying on the Implementer's explanation. Look for incomplete behavior, regressions, weak or tautological proof, missed callers, coding-standard violations, misplaced policy, shallow modules, boundary failures, and unnecessary machinery.
+Judge the accepted outcome against the repository and current slice diff before relying on the Implementer's explanation. Look for incomplete behavior, regressions, weak or tautological proof, missed callers, coding-standard violations, misplaced policy, shallow modules, boundary failures, and unnecessary machinery. A test that asserts different protected behavior than the base revision is a regression unless an accepted obligation changes that behavior.
+
+Review past the diff wherever the slice makes a **semantic change**: an existing name, state, or value now holds something different, changes at different times, or comes from a different source. Trace every consumer of it, including code the slice did not touch, and judge each one against the new meaning.
 
 Repair every supported in-scope defect directly. Reinspect the resulting design when a repair changes its shape. If that repair materially reshapes a consequential seam or affects a sensitive boundary, flag the need for another fresh review rather than approving your own new design by default.
 
 Even when no repair is necessary, independently execute the applicable slice gates. Return green only for the final state you actually inspected and validated.
 
+## Integrated audit
+
+Start in a fresh, read-only context. Judge the integrated diff against the accepted specification and the scope changes and human decisions the orchestrator supplies; the specification, not the design alone, is the accepted contract. Slice reviews saw one diff at a time; this audit exists for what crosses them.
+
+Organize the review by invariant: every shared constraint and protected behavior in the specification. For each, enumerate every code path that realizes or depends on it, including code no slice changed, and trace where its inputs come from. Then list each semantic change across slices, as defined for the Finisher, and judge its consumers against the new meaning.
+
+Report each finding with file and line, the violated invariant, and a concrete trace or reproduction that can disagree with the implementation. Report a suspicion without that evidence as uncertain, separate from defects. Return findings; do not edit code.
+
 ## Integrated repair
 
-Use this boundary only when a full-project gate or Product Validator exposes an in-scope defect after all slices are integrated. The failed accepted obligation and its observable evidence replace the active-slice boundary; do not invent or reopen a slice.
+Use this boundary only when a full-project gate, the Integrated Auditor, or the Product Validator exposes an in-scope defect after all slices are integrated. The failed accepted obligation and its observable evidence replace the active-slice boundary; do not invent or reopen a slice.
 
 Setup failures and missing tooling follow [When validation cannot proceed](../SKILL.md#when-validation-cannot-proceed) before a repair is assigned.
 
