@@ -1,6 +1,6 @@
 interface:
   display_name: "Deliver"
-  short_description: "Deliver accepted slices through two quality passes"
+  short_description: "Implement accepted slices, then review, repair, and validate"
 
 policy:
   allow_implicit_invocation: true

@@ -67,7 +67,7 @@ Return exactly one overall verdict:
 
 Report the revision, journey, controller used and fidelity limits, environment and data, observations, evidence locations, cleanup result, and verdict. For a browser journey, include the Manuvra probe result and the concrete reason each earlier controller was skipped. For `Fail`, include the earliest divergence and shortest faithful reproduction. For `Inconclusive`, name the exact capability, decision, or authority that would unblock judgment.
 
-Return findings to the caller without editing product code, the accepted contract, or verification tooling. Under `deliver`, a `Fail` becomes a bounded integrated repair by a Finisher; changed code invalidates affected evidence and must be validated again.
+Return findings to the caller without editing product code, the accepted contract, or verification tooling. Under `deliver`, a `Fail` becomes a bounded integrated repair; changed code invalidates affected evidence and must be validated again.
 
 ## Completion criteria
 

@@ -17,7 +17,7 @@ Maintain one concise project source for rules an independent reviewer must judge
    - requirements, architecture, domain meaning, and durable rationale belong in their maintained sources;
    - task findings and preferences without project authority are not standards.
 4. **Propose the smallest delta.** Show exact additions, revisions, removals, moves to stronger owners, and unresolved conflicts. Prefer deletion when a rule is stale, duplicated, generic, too vague to review, or now enforced automatically. Ask only about material policy choices that available evidence cannot settle.
-5. **Obtain acceptance.** Do not establish or change project policy without explicit human acceptance of the proposed delta. A review, implementation, or retrospective finding may recommend a candidate rule but cannot add it as a side effect.
+5. **Obtain acceptance.** Do not establish or change project policy without explicit human acceptance of the proposed delta. A review, implementation, or retrospective finding may recommend a candidate rule but cannot add it as a side effect. The exception is `deliver`'s recurrence prevention: a delivery may add or revise a general rule that repaired defects in that delivery demonstrate, and its close report presents the rule for review.
 6. **Apply and verify.** Preserve unrelated content and write only the accepted delta. Use a simple `# Coding standards` document with `## Review rules` and, only when needed, `## Exceptions`. Verify that every retained rule has a clear review consequence, every pointer resolves, no stronger executable owner already enforces it, and the repository diff matches the accepted delta.
 
 ## Boundaries
