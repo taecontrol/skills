@@ -11,7 +11,7 @@ Turn one accepted implementation specification into integrated, validated code. 
 
 1. Resolve the specification from a user-supplied path, then an established local-work convention. Require `Status: Accepted`, an applicable repository revision, ordered slices, and a validation contract. Stop with the exact missing input when the document is absent, still a draft, or materially stale.
 2. Read the **accepted inputs**: the specification and every feature brief, design, ADR, prototype, contract, and standard it cites. The specification orders the work; its cited sources define what correct means.
-3. Inspect the current worktree, Git status and history, applicable agent instructions, coding standards, and executable gate configuration. Preserve unrelated user changes. Do not create or switch branches or worktrees.
+3. Inspect the current worktree, Git status and history, applicable agent instructions, coding standards, and executable gate configuration. Preserve unrelated user changes. Do not create or switch branches or worktrees beyond the one exception in [Boundaries](#boundaries).
 4. Determine the next unfinished slice from the ordered specification and Git evidence. If prior work cannot be mapped safely, ask one focused resynchronization question rather than inventing execution state.
 5. Read [references/passes.md](references/passes.md), then implement exactly one slice at a time.
 
@@ -30,16 +30,11 @@ When the slice is green, inspect that the diff belongs to the active slice and p
 After all slices are committed, run this phase to completion on your own; the human judges its outcome in the close report.
 
 1. Run the full-project technical gates required by the accepted specification and executable project configuration, including the full-project CRAP maximum of `8` only when its tool and command are configured.
-2. Dispatch fresh read-only reviewers in parallel under the [integrated review](references/passes.md#integrated-review) contract. Partition by the design's areas so each reviewer holds one area's code and accepted inputs, and add one reviewer for the whole-project lenses: structure, the test suite, and operability. Size the partition to the change; a small delivery may need two reviewers. Give each reviewer the specification path, the paths of every accepted input, the diff range from the revision where delivery began, its assigned area, and every scope change and human decision made during delivery. A reviewer is a new agent, not a fork of your conversation.
-3. Merge the findings. Drop duplicates, verify each uncertain finding yourself or carry it to the report, and rank the defects:
-   1. data loss, security exposure, or a blocked critical journey;
-   2. a violated forbidden result, guarantee, or protected behavior;
-   3. other incorrect behavior, including failure and recovery paths;
-   4. tests to fix or delete;
-   5. structure and standards.
+2. Read the [review contract](references/review.md) and dispatch fresh reviewers in parallel under its partition, including the separate test reviewer, with the inputs it lists.
+3. Merge the findings. Drop duplicates, verify each uncertain finding yourself or carry it to the report, and order the defects by the contract's [rank](references/review.md#rank).
 4. Repair every supported finding in rank order under [integrated repair](references/passes.md#integrated-repair). When the specification contradicts the brief or design it cites without naming the difference as a cut, the cited source wins. When no accepted source settles a finding, choose the option most consistent with the accepted inputs and record the choice for the report. Resynchronize only when the choice would change a public contract, sensitive policy, or costly-to-reverse architecture.
 5. Apply [recurrence prevention](references/passes.md#recurrence-prevention): generalize the repaired defects to their common cause, and add a check or coding standard only when that general form is useful and not already owned.
-6. Dispatch fresh reviewers for every area the repairs touched, over the final state rather than the repair diff, with the repaired findings and the callers of each changed seam. Repeat steps 3–6 until a round finds no new supported defect. When the same finding survives two repairs, stop repairing it and carry it to the report with its evidence.
+6. Dispatch fresh reviewers for every area the repairs touched, over the final state rather than the repair diff, with the repaired findings and the callers of each changed seam, and a fresh test reviewer over every guard, obligation, and test the repairs changed. Repeat steps 3–6 until a round finds no new supported defect. When the same finding survives two repairs, stop repairing it and carry it to the report with its evidence.
 7. Rerun the full-project gates, then dispatch a fresh read-only Product Validator under the `product-validation` contract to exercise the representative journey defined by the specification through the real product interface. Accept its verdict only when the report names the controller used and, for a browser journey, the Manuvra probe result and the reason each earlier controller was skipped; otherwise return the report for completion. A `Fail` is repaired like a review finding, and the evidence it invalidates is rerun.
 
 Close each agent once you accept its result. If a dispatch fails on an agent limit, close idle agents and retry; if the parallel partition still cannot be created, run the areas sequentially. Technical gates do not replace product validation, and product validation does not waive technical failures.
@@ -56,12 +51,12 @@ When the method requires building or extending a harness, report the exact unver
 
 Close as `Delivered` only when all evidence required by the current accepted scope is green. When the human defers product validation or another required check, or it stays `Inconclusive`, still complete the integrated review and its repairs, which need no external authority, and close as `Delivered without validation`, naming each missing piece of evidence. A slice check that ended `Inconclusive` stays an open obligation until final validation covers it or the report names it.
 
-Confirm that durable knowledge has an existing maintained owner in code, tests, documentation, an ADR, or the domain glossary. Do not create durable documents as an incidental cleanup step. Preserve the implementation specification and the accepted inputs it references, and report their paths: post-delivery review judges the result against them, and temporary ones retire with the worktree.
+Confirm that durable knowledge has an existing maintained owner in code, tests, documentation, an ADR, or the domain glossary. Do not create durable documents as an incidental cleanup step. Preserve the implementation specification and the accepted inputs it references, and report their paths: `delivery-review` judges the result against them, and temporary ones retire with the worktree.
 
 Report:
 
 - delivered commits and gate results;
-- review rounds, findings by rank, and how each was repaired;
+- the review partition and rounds, findings by rank, and how each was repaired;
 - decisions you made where accepted sources conflicted or were silent;
 - checks and coding standards added, each with the defects it generalizes, and recommended checks not installed;
 - product evidence;
@@ -70,12 +65,12 @@ Report:
 
 ## Boundaries
 
-- Do not create goal maps, execution ledgers, candidate identifiers, progress files, child worktrees, or parallel slice scheduling.
+- Do not create goal maps, execution ledgers, candidate identifiers, progress files, child worktrees, or parallel slice scheduling. The test reviewer's disposable mutation checkout is the one exception, and it is removed before the reviewer returns.
 - Do not modify the accepted specification to record progress or results.
 - Add only work that accepted slices, repairs of supported findings, or recurrence prevention require.
 - Never stage or commit unrelated changes. If active work cannot be separated safely from unrelated changes in the same file, stop and ask rather than committing mixed work.
 - Do not push, publish a pull request, deploy, mutate production, spend money, or perform another external effect without separate authority.
-- Keep reviewers and the Product Validator read-only. A code change invalidates the evidence it affects.
+- Keep reviewers and the Product Validator read-only on the delivery worktree. A code change invalidates the evidence it affects.
 
 ## Completion criteria
 
