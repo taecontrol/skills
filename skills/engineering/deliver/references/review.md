@@ -33,7 +33,7 @@ Create a disposable checkout of the reviewed revision outside the reviewed workt
 - each guard, policy branch, and failure path the delivery added or changed;
 - each assertion or production value that realizes an accepted obligation: a journey's required or forbidden result, a guarantee, an error code, a success-metric field or label.
 
-For each mutation, run the narrowest suite that claims to cover it and record whether a test goes red, then restore the mutation before the next one. A mutation that stays green is a finding: the claiming test is vacuous, or the obligation has no test. Name the suites you could not run and why. Remove the checkout before returning.
+For each mutation, run the narrowest suite that claims to cover it under a time limit of a few times its unmutated duration, record whether a test goes red, then restore the mutation before the next one. A run that hits the limit counts as red; record it as a timeout. A mutation that stays green is a finding: the claiming test is vacuous, or the obligation has no test. Name the suites you could not run and why. Return every mutation with its target and result alongside the findings. Remove the checkout before returning.
 
 ## Findings
 

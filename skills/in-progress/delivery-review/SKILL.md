@@ -11,9 +11,9 @@ Write the report and response in the user's active language.
 
 ## Establish the target
 
-1. **Resolve the change.** Use the pull request or branch the user names, otherwise the open pull request for the current branch, otherwise the current branch against its base. Record the base, the head revision, and the diff range. When the current worktree is at the head revision with no uncommitted changes, review there. Otherwise create one disposable detached checkout of the head under the system temporary directory, review from it, and remove it before closing.
+1. **Resolve the change.** Use the pull request or branch the user names, otherwise the open pull request for the current branch, otherwise the current branch against its base. Record the base, the head revision, and the diff range. When the current worktree is at the head revision with no uncommitted changes, review there. Otherwise create one disposable detached checkout of the head outside the reviewed worktree, such as under the system temporary directory, review from it, and remove it before closing.
 2. **Resolve the accepted inputs.** Find the implementation specification from the user, the delivery's close report or pull request description, then the repository's convention for local work artifacts. Read it and every brief, design, ADR, prototype, contract, and standard it cites. Without an accepted specification or design, stop and ask for its path: a review with no accepted oracle is a generic code review, outside this skill.
-3. **Collect the delivery record.** Read what the delivery left: its close report, review partition and rounds, repaired findings, decisions where sources conflicted, accepted residual risk, and scope changes and human decisions. Accepted residual risk is reported as known, not as a new finding.
+3. **Collect the delivery record.** Read the close report `deliver` wrote beside the specification, otherwise the pull request description. Take from it the review partition and rounds, the test reviewer's mutations, repaired findings, decisions where sources conflicted, accepted residual risk, and scope changes and human decisions. Accepted residual risk is reported as known, not as a new finding.
 4. **Prepare the gates.** Run the project's test command once yourself and record the exact working invocation, including any environment setup it needs, so every reviewer can run tests.
 
 ## Review
@@ -47,11 +47,15 @@ Lead with the verdict: how many findings block merging (ranks 1–2), and whethe
 
 When the human asks about a finding, answer that question first, in your next message, before any further tool call.
 
+## Repair selected findings
+
+The human starts repair by selecting findings. Load `deliver` and run steps 4–7 of its [Review and repair the integrated result](../../engineering/deliver/SKILL.md#review-and-repair-the-integrated-result) over the selected findings: repair in rank order under [integrated repair](../../engineering/deliver/references/passes.md#integrated-repair), apply recurrence prevention, dispatch fresh reviewers over the areas the repairs touched with the callers of each changed seam, and rerun the full-project gates. A repair left without that re-review repeats the mechanism behind the `introduced by repair` escape. Rerun product validation only when a repair changed code on the specification's representative journey; otherwise report it as skipped with that reason. Add the repair's report, including its re-review rounds, to the delivery's close report.
+
 ## Boundaries
 
-- Keep the reviewed worktree read-only: no edits, commits, stashes, resets, pull request comments, or specification changes. Disposable checkouts are the only mutation, and each is removed before the review closes.
+- During the review, keep the reviewed worktree read-only: no edits, commits, stashes, resets, pull request comments, or specification changes. Disposable checkouts are the only mutation, and each is removed before the review closes.
 - The report is evidence. It changes no skill, instruction, or standard; the escape summary feeds `retro` and a separately authorized change to `deliver`.
-- The review closes with the report. Repair is a separate task the human starts by selecting findings; perform it in rank order under `deliver`'s [integrated repair](../../engineering/deliver/references/passes.md#integrated-repair) contract.
+- The review closes with the report. Repair is a separate task under [Repair selected findings](#repair-selected-findings).
 
 ## Completion criteria
 

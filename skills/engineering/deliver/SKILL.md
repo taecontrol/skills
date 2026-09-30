@@ -53,10 +53,13 @@ Close as `Delivered` only when all evidence required by the current accepted sco
 
 Confirm that durable knowledge has an existing maintained owner in code, tests, documentation, an ADR, or the domain glossary. Do not create durable documents as an incidental cleanup step. Preserve the implementation specification and the accepted inputs it references, and report their paths: `delivery-review` judges the result against them, and temporary ones retire with the worktree.
 
-Report:
+Write the close report once, at close, to a Markdown file beside the specification, such as `<specification>.delivery.md`, and give it in your response. `delivery-review` runs in a later session and reads only what is on disk.
+
+The close report contains:
 
 - delivered commits and gate results;
 - the review partition and rounds, findings by rank, and how each was repaired;
+- the test reviewer's mutations, each with its target and whether a test went red;
 - decisions you made where accepted sources conflicted or were silent;
 - checks and coding standards added, each with the defects it generalizes, and recommended checks not installed;
 - product evidence;
@@ -65,7 +68,7 @@ Report:
 
 ## Boundaries
 
-- Do not create goal maps, execution ledgers, candidate identifiers, progress files, child worktrees, or parallel slice scheduling. The test reviewer's disposable mutation checkout is the one exception, and it is removed before the reviewer returns.
+- Do not create goal maps, execution ledgers, candidate identifiers, progress files, child worktrees, or parallel slice scheduling. The test reviewer's disposable mutation checkout is the one exception, and it is removed before the reviewer returns. The close report is not a progress file: it is written once, at close.
 - Do not modify the accepted specification to record progress or results.
 - Add only work that accepted slices, repairs of supported findings, or recurrence prevention require.
 - Never stage or commit unrelated changes. If active work cannot be separated safely from unrelated changes in the same file, stop and ask rather than committing mixed work.
@@ -74,4 +77,4 @@ Report:
 
 ## Completion criteria
 
-Every slice in the current accepted scope exists as one coherent local commit with green slice gates and slice product checks; the integrated repository passes its required full-project gates; the last round of fresh integrated review found no new supported defect; every check or standard added is general, useful, and not already owned; a fresh Product Validator has proven the representative journey, or the close names the missing validation; the specification and its accepted inputs remain available for review; and no known in-scope defect or unresolved authority boundary remains unreported.
+Every slice in the current accepted scope exists as one coherent local commit with green slice gates and slice product checks; the integrated repository passes its required full-project gates; the last round of fresh integrated review found no new supported defect; every check or standard added is general, useful, and not already owned; a fresh Product Validator has proven the representative journey, or the close names the missing validation; the specification, its accepted inputs, and the close report beside it remain available for review; and no known in-scope defect or unresolved authority boundary remains unreported.
