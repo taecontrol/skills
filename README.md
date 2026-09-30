@@ -50,6 +50,7 @@ git push --follow-tags
 
 Newest first. "Beta" means the skill was added under `skills/in-progress`.
 
+- `1.12.2`: `deliver`'s close report names who accepted each residual risk. `delivery-review` still judges risk the delivery accepted on its own instead of treating it as known. The operability lens also checks gates that depend on a local build of a system tool or browser that differs from CI's.
 - `1.12.1`: `delivery-review` now repairs the findings you select through `deliver`'s full repair loop, including a fresh re-review. `deliver` saves its close report next to the specification. The test reviewer puts a time limit on each mutation.
 - `1.12.0`: adds `delivery-review` (beta). `deliver` and `delivery-review` share one review contract, with a separate test reviewer that runs mutations. `feature-brief` and `implementation-spec` hand costly technical decisions to `architect`.
 - `1.11.0`: promotes the engineering skills to stable and adds `feature-brief` (beta). `deliver` implements each slice with the full design context, then reviews, repairs, and validates the whole result on its own.
