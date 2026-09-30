@@ -1,6 +1,6 @@
 # Delivery passes
 
-Contracts for the delivering agent's slice work and repairs, and for the fresh reviewers it dispatches. A reviewer receives the specification path, the paths of every accepted input, the diff range, its assigned area, and any material current-state fact it cannot discover locally, such as a control-tool limitation already observed in this delivery.
+Contracts for the delivering agent's slice work and repairs. The fresh reviewers it dispatches work under the [review contract](review.md).
 
 ## Shared contract
 
@@ -34,29 +34,11 @@ Before a UI slice is green, exercise its complete available behavior in the runn
 
 Compare the implemented screen with the selected design at equivalent sizes and states. Inspect composition, hierarchy, content, controls, actions, and interaction behavior; retain the reference and actual rendered evidence together. Platform adaptation preserves accepted decisions. Correct material divergence before the slice is green; a changed design requires acceptance. Missing runtime or visual evidence is an explicit gap, not a green slice based on technical tests.
 
-## Integrated review
-
-Start in a fresh, read-only context. Slice work saw one slice at a time and its author is not independent; this review exists for what crosses slices and what the author could not see.
-
-Your oracle is the full set of accepted inputs: the brief's journeys, forbidden results, guarantees, and budgets; the design; the specification; project instructions and coding standards. The specification is derived from its sources. When it contradicts a cited source without naming the difference as a cut, report the contradiction as a defect with the scenario that exposes it.
-
-Your scope is your assigned area across the whole project. Code no slice changed is in scope when it realizes or depends on an invariant of your area. Apply every lens that bears on the area:
-
-- **Outcomes:** each accepted journey, forbidden result, and guarantee the area realizes. Construct the input that would violate each one and trace whether the code allows it.
-- **Invariants:** every shared constraint and protected behavior. Enumerate every code path that realizes or depends on it and trace where its inputs come from.
-- **Beyond the diff:** new behavior against the policy existing code applies to comparable behavior; each semantic change across slices against every consumer, and whether each consumer's behavior is still proven.
-- **Failure and recovery:** each dependency's complete outcome set plus transport failure; process restart or crash while in-memory state gates a user action, a retry, or a recovery; retries, replays, queues, and schedulers that can loop forever, duplicate an effect, or leave work stuck in an intermediate state.
-- **Tests:** tests that stay green when the branch they claim to cover is neutralized; tests and fixtures that pin behavior contradicting the accepted inputs; fixtures too simplified to reproduce the failure they stand for; real sleeps and wall-clock dependence; intermittent tests; assertions weaker than the test name; oversized, duplicated, or redundant tests. Classify each as fix or delete.
-- **Structure:** one concept owned in several places, duplicated policy, dead code and leftovers of intermediate slices, code placed against the design's module boundaries, violations of project instructions or coding standards, temporary-document identifiers in versioned files.
-- **Operability:** gates that pass only in this checkout, such as a dependency on ignored or local-only paths; CI configuration that does not run the new code; documentation that no longer matches behavior; brief budgets without a measurement; authorization gaps, secrets in logs or evidence, and unvalidated input at the trust boundaries the delivery touches.
-
-Report each finding with its lens, file and line, the violated source section or rule, a concrete trace or reproduction that can disagree with the implementation, and whether a deterministic check could have caught its class. Report a suspicion without that evidence as uncertain, separate from defects, and a defect that predates delivery as pre-existing. Return findings; do not edit code.
-
 ## Integrated repair
 
 Repair one supported finding, or a group sharing one seam, after integrated review or a failed full-project gate or product validation. The finding and its evidence replace the active-slice boundary; do not invent or reopen a slice. Setup failures and missing tooling follow [When validation cannot proceed](../SKILL.md#when-validation-cannot-proceed) first.
 
-Fix the cause at its seam, even when that seam crosses code introduced by more than one slice. Add or adjust a test that fails without the repair. When the repair touches a seam other callers use, run or add a characterization proof for each existing caller, or name the accepted change in behavior. For a test finding, fix or delete the test so the suite proves what its names claim. Run the affected focused tests, the changed-code complexity check when configured, and other affected gates, then create one focused commit.
+Fix the cause at its seam, even when that seam crosses code introduced by more than one slice. Add or adjust a test that fails without the repair. When the repair touches a seam other callers use, run or add a characterization proof for each existing caller, or name the accepted change in behavior. For a test finding, fix, delete, or add the test so the suite proves what its names claim and every accepted obligation has a test that goes red without it. Run the affected focused tests, the changed-code complexity check when configured, and other affected gates, then create one focused commit.
 
 ## Recurrence prevention
 

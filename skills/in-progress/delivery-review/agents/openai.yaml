@@ -1,0 +1,6 @@
+interface:
+  display_name: "Delivery Review"
+  short_description: "Review a finished delivery against its accepted design"
+
+policy:
+  allow_implicit_invocation: true
