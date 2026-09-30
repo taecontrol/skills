@@ -44,7 +44,27 @@ npm version patch  # or minor / major
 git push --follow-tags
 ```
 
-`npm version` updates `package.json` and `package-lock.json`, creates a version commit, and tags it. Version `1.0.0` introduced `grilling`; version `1.1.0` added `wait-what` with English and Spanish recovery; version `1.2.0` added `writing-for-agents` and `unslop`; version `1.3.0` added the first public beta of `research`; version `1.4.0` added the first public beta of `how`; version `1.5.0` added the first public beta of `why`; version `1.6.0` added the first public beta of `architect`; version `1.7.0` added the first public beta of `domain-language`; version `1.7.1` made the accepted architecture brief temporary by default and reserved ADRs for durable rationale; version `1.8.0` added the first public beta of `adr`; version `1.9.0` added the first public beta of `spike`; version `1.10.0` added the first public beta of `prototype`; version `1.11.0` promotes the engineering workflow skills, adds the first public beta of `feature-brief`, and makes `deliver` implement slices with the full design context, then review, repair, and validate the integrated result on its own; version `1.12.0` adds the first public beta of `delivery-review`, shares the review contract with `deliver` under a dedicated test reviewer that executes mutations, and routes costly technical decisions from `feature-brief` and `implementation-spec` to `architect`.
+`npm version` updates `package.json` and `package-lock.json`, creates a version commit, and tags it.
+
+### Version history
+
+Newest first. "Beta" means the skill was added under `skills/in-progress`.
+
+- `1.12.1`: `delivery-review` now repairs the findings you select through `deliver`'s full repair loop, including a fresh re-review. `deliver` saves its close report next to the specification. The test reviewer puts a time limit on each mutation.
+- `1.12.0`: adds `delivery-review` (beta). `deliver` and `delivery-review` share one review contract, with a separate test reviewer that runs mutations. `feature-brief` and `implementation-spec` hand costly technical decisions to `architect`.
+- `1.11.0`: promotes the engineering skills to stable and adds `feature-brief` (beta). `deliver` implements each slice with the full design context, then reviews, repairs, and validates the whole result on its own.
+- `1.10.0`: adds `prototype` (beta).
+- `1.9.0`: adds `spike` (beta).
+- `1.8.0`: adds `adr` (beta).
+- `1.7.1`: the accepted architecture brief is temporary by default; ADRs are only for rationale that must last.
+- `1.7.0`: adds `domain-language` (beta).
+- `1.6.0`: adds `architect` (beta).
+- `1.5.0`: adds `why` (beta).
+- `1.4.0`: adds `how` (beta).
+- `1.3.0`: adds `research` (beta).
+- `1.2.0`: adds `writing-for-agents` and `unslop`.
+- `1.1.0`: adds `wait-what`, which re-explains in English or Spanish.
+- `1.0.0`: adds `grilling`.
 
 ## Install
 
