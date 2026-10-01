@@ -12,7 +12,7 @@ Contracts for the delivering agent's slice work and repairs. The fresh reviewers
 - Resolve reversible implementation details locally. Return evidence that invalidates accepted behavior, a public contract, sensitive policy, or costly-to-reverse architecture instead of changing it silently.
 - Name every new file, test, fixture, script key, and document in a versioned location for what it is. Journey labels, slice numbers, and other temporary-document identifiers stay in temporary documents.
 - If a failing gate or observed defect remains causally uncertain after direct inspection, establish a diagnosis under `diagnosing-bugs` before changing production code. A gate that passes only on an unchanged retry is an undiagnosed intermittent failure, not green.
-- Undo a temporary neutralization by reversing that exact edit, or make it in a disposable checkout. Restoring a file from Git, such as with `git checkout -- <file>`, also discards uncommitted work in it.
+- Undo a temporary edit by reversing it; restoring the file from Git also discards its uncommitted work.
 - Run gates after the final edit. For CRAP, follow the specification's command, analysis scope, coverage prerequisites, and per-slice disposition under [Validation](../../implementation-spec/SKILL.md#validation). A full-project calculator does not establish that a changed-code check exists. Report an unavailable check without inventing tooling or waiving a required project gate.
 
 ## Slice
@@ -25,9 +25,9 @@ Reach beyond the diff in both directions. Where the slice adds behavior next to 
 
 Where correctness depends on interacting state, such as concurrent reads and writes against a cache, retries, or form fields that reshape other fields, enumerate the **state space** before implementing: each operation outcome, ordering, or field change against each state it can meet, with the accepted result. The specification's complete outcome sets are the starting point; add the ones the dependency's actual behavior reveals. Derive the tests from that enumeration, so review confirms the state space instead of discovering it path by path.
 
-Implement the accepted outcome, tests, migrations, interface changes, and supporting documentation that belong to the slice. Exercise the behavior through the narrowest faithful seam and cover material failure, authorization, malformed-input, migration, restart, or state-preservation behavior when applicable. Build failure fixtures from the dependency behavior actually observed in spikes, research, or real responses.
+Implement the accepted outcome, tests, migrations, interface changes, and supporting documentation that belong to the slice. Exercise the behavior through the narrowest faithful seam and cover material failure, authorization, malformed-input, migration, restart, or state-preservation behavior when applicable, with inputs built from what was actually observed.
 
-Prove the proof: for each new guard, policy branch, or failure path, neutralize it temporarily and confirm that a test goes red, then restore it. A test that stays green is decoration; strengthen it before handoff.
+Prove the proof: for each new guard, policy branch, or failure path, temporarily apply the credible regression it guards against and confirm that a test goes red. A test that stays green is decoration; strengthen it before handoff.
 
 Then finish strategically: inspect change amplification, leaked implementation detail, duplicated policy, avoidable custom machinery, dishonest names or types, and failure behavior without a clear owner. Repair what the slice supports, then run the applicable gates against the final state.
 
