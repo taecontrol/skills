@@ -11,7 +11,7 @@ The brief owns only what no other skill owns: the problem and its evidence, tria
 
 ## Authority
 
-The human decides the problem framing, the solution direction, the measurement profile, the success metric, the decision threshold, and every cut. Storage, public contracts, migrations, and other costly-to-reverse technical shapes belong to `architect`: record the human's preference about one as a constraint for `architect`, not as a settled design. Find facts yourself: usage data, current performance, affected code, deployment configuration, where compute and data run. Challenge the evidence you are given and label each claim `observed`, `reported`, or `assumed`, including your own: a guarantee you recommend without evidence is `assumed`.
+The human decides the problem framing, the solution direction, the measurement profile, the success metric, the decision threshold, and every cut. Storage, public contracts, migrations, and other costly-to-reverse technical shapes belong to `architect`: record the human's preference about one as a constraint for `architect`, not as a settled design. Challenge the evidence you are given and label each claim `observed`, `reported`, or `assumed`, including your own: a guarantee you recommend without evidence is `assumed`.
 
 ## Process
 

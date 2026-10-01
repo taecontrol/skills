@@ -33,7 +33,7 @@ For a product whose accepted interface is an API or CLI, exercise that interface
 
 Inspect the project's launch and data procedures before driving the journey. An absent automated driver alone is not a blocker.
 
-Existing required automated gates remain applicable, but do not replace direct UI and visual checks. Propose new E2E automation only after direct use establishes the behavior and a concrete repeated regression need justifies its maintenance cost. Building or extending reusable automation or a harness is separately scoped implementation work, outside validation.
+Propose new E2E automation only after direct use establishes the behavior and a concrete repeated regression need justifies its maintenance cost.
 
 Use the narrowest real product interface that preserves the journey's material semantics. Confirm that the instance, revision, configuration, identity, and data under control are the intended ones; run an existing health or `doctor` check when available. Reject ambiguous or stale targets.
 

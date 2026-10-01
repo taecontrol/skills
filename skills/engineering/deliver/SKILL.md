@@ -29,13 +29,13 @@ When the slice is green, inspect that the diff belongs to the active slice and p
 
 After all slices are committed, run this phase to completion on your own; the human judges its outcome in the close report.
 
-1. Run the full-project technical gates required by the accepted specification and executable project configuration, including the full-project CRAP maximum of `8` only when its tool and command are configured.
+1. Run the full-project technical gates required by the accepted specification and executable project configuration.
 2. Read the [review contract](references/review.md) and dispatch fresh reviewers in parallel under its partition, including the separate test reviewer, with the inputs it lists.
 3. Merge the findings. Drop duplicates, verify each uncertain finding yourself or carry it to the report, and order the defects by the contract's [rank](references/review.md#rank).
-4. Repair every supported finding in rank order under [integrated repair](references/passes.md#integrated-repair). When the specification contradicts the brief or design it cites without naming the difference as a cut, the cited source wins. When no accepted source settles a finding, choose the option most consistent with the accepted inputs and record the choice for the report. Resynchronize only when the choice would change a public contract, sensitive policy, or costly-to-reverse architecture.
+4. Repair every supported finding in rank order under [integrated repair](references/passes.md#integrated-repair). When the specification contradicts the brief or design it cites without naming the difference as a cut, the cited source wins. When no accepted source settles a finding, choose the option most consistent with the accepted inputs and record the choice for the report. Resynchronize only when the choice crosses an authority boundary.
 5. Apply [recurrence prevention](references/passes.md#recurrence-prevention): generalize the repaired defects to their common cause, and add a check or coding standard only when that general form is useful and not already owned.
 6. Dispatch fresh reviewers for every area the repairs touched, over the final state rather than the repair diff, with the repaired findings and the callers of each changed seam, and a fresh test reviewer over every guard, obligation, and test the repairs changed. Repeat steps 3–6 until a round finds no new supported defect. When the same finding survives two repairs, stop repairing it and carry it to the report with its evidence.
-7. Rerun the full-project gates, then dispatch a fresh read-only Product Validator under the `product-validation` contract to exercise the representative journey defined by the specification through the real product interface. Accept its verdict only when the report names the controller used and, for a browser journey, the Manuvra probe result and the reason each earlier controller was skipped; otherwise return the report for completion. A `Fail` is repaired like a review finding, and the evidence it invalidates is rerun.
+7. Rerun the full-project gates, then dispatch a fresh read-only Product Validator under the `product-validation` contract to exercise the representative journey defined by the specification through the real product interface. Accept its verdict only when the report meets that skill's [verdict contract](../product-validation/SKILL.md#return-the-verdict); otherwise return it for completion. A `Fail` is repaired like a review finding, and the evidence it invalidates is rerun.
 
 Close each agent once you accept its result. If a dispatch fails on an agent limit, close idle agents and retry; if the parallel partition still cannot be created, run the areas sequentially. Technical gates do not replace product validation, and product validation does not waive technical failures.
 
@@ -64,7 +64,7 @@ The close report contains:
 - checks and coding standards added, each with the defects it generalizes, and recommended checks not installed;
 - product evidence;
 - pre-existing defects observed but not repaired, including intermittent tests;
-- omissions, unresolved findings, and residual risk, each naming who accepted it: a cut in the specification, a human decision, or your own choice during delivery.
+- omissions, unresolved findings, and residual risk, each with its evidence and who accepted it: a cut in the specification, a human decision, or your own choice during delivery.
 
 ## Boundaries
 
@@ -73,7 +73,6 @@ The close report contains:
 - Add only work that accepted slices, repairs of supported findings, or recurrence prevention require.
 - Never stage or commit unrelated changes. If active work cannot be separated safely from unrelated changes in the same file, stop and ask rather than committing mixed work.
 - Do not push, publish a pull request, deploy, mutate production, spend money, or perform another external effect without separate authority.
-- Keep reviewers and the Product Validator read-only on the delivery worktree. A code change invalidates the evidence it affects.
 
 ## Completion criteria
 

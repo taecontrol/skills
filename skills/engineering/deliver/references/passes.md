@@ -6,29 +6,25 @@ Contracts for the delivering agent's slice work and repairs. The fresh reviewers
 
 - Work only in the current worktree and the active assignment: one accepted slice, or a repair of a supported integrated finding. Preserve unrelated changes and the integrated results outside that boundary.
 - Keep the accepted inputs in view. Before editing, read the specification's active slice and every brief, design, or contract section it cites, and read them again after context compaction. The cited source, not a paraphrase of it, defines the required and forbidden results.
-- Read applicable project instructions, coding standards, and executable gate configuration. Inspect the actual affected flow; a summary, including your own earlier one, is not repository evidence.
+- A summary of the repository, including your own earlier one, is not evidence; inspect the actual affected flow.
 - For work with UI, open its authoritative visual references before editing or judging. Follow [method selection](../../product-validation/SKILL.md#choose-a-faithful-method) to exercise the running product.
 - Load the [`strategic-programming`](../../strategic-programming/SKILL.md) skill before the first slice and apply it to every slice and repair; reread it after context compaction. Its lenses are part of this contract.
-- Resolve reversible implementation details locally. Return evidence that invalidates accepted behavior, a public contract, sensitive policy, or costly-to-reverse architecture instead of changing it silently.
 - Name every new file, test, fixture, script key, and document in a versioned location for what it is. Journey labels, slice numbers, and other temporary-document identifiers stay in temporary documents.
 - If a failing gate or observed defect remains causally uncertain after direct inspection, establish a diagnosis under `diagnosing-bugs` before changing production code. A gate that passes only on an unchanged retry is an undiagnosed intermittent failure, not green.
-- Run gates after the final edit. For CRAP, follow the specification's command, analysis scope, coverage prerequisites, and per-slice disposition under [Validation](../../implementation-spec/SKILL.md#validation). A full-project calculator does not establish that a changed-code check exists. Report an unavailable check without inventing tooling or waiving a required project gate.
+- Undo a temporary edit by reversing it; restoring the file from Git also discards its uncommitted work.
+- Run CRAP under the specification's disposition in [Validation](../../implementation-spec/SKILL.md#validation).
 
 ## Slice
 
 Produce the complete vertical behavior of the active slice.
 
-Trace the real flow and callers before editing. For each protected behavior at risk in the slice, run its characterization proof against the unmodified code first, writing it when the specification names one that does not exist yet, and watch it pass; it stays green through the change unless an accepted obligation changes that behavior.
+For each protected behavior at risk in the slice, run its characterization proof against the unmodified code first, writing it when the specification names one that does not exist yet, and watch it pass; it stays green through the change unless an accepted obligation changes that behavior.
 
 Reach beyond the diff in both directions. Where the slice adds behavior next to comparable existing behavior, find the policy the code already applies to those peers, such as guards, validation, authorization, waits, and special-case branches, and decide whether the new behavior inherits each one. Where the slice makes a **semantic change**, meaning an existing name, state, value, or seam now holds or does something different, changes at different times, or comes from a different source, trace every consumer of it, including code the slice did not touch, and judge each one against the new meaning. The specification's touchpoints are the starting point, not the limit; a question no accepted source answers is a resynchronization point.
 
-Where correctness depends on interacting state, such as concurrent reads and writes against a cache, retries, or form fields that reshape other fields, enumerate the **state space** before implementing: each operation outcome, ordering, or field change against each state it can meet, with the accepted result. The specification's complete outcome sets are the starting point; add the ones the dependency's actual behavior reveals. Derive the tests from that enumeration, so review confirms the state space instead of discovering it path by path.
+Implement the accepted outcome, tests, migrations, interface changes, and supporting documentation that belong to the slice. Exercise the behavior through the narrowest faithful seam and cover material failure, authorization, malformed-input, migration, restart, or state-preservation behavior when applicable, with inputs built from what was actually observed.
 
-Implement the accepted outcome, tests, migrations, interface changes, and supporting documentation that belong to the slice. Exercise the behavior through the narrowest faithful seam and cover material failure, authorization, malformed-input, migration, restart, or state-preservation behavior when applicable. Build failure fixtures from the dependency behavior actually observed in spikes, research, or real responses.
-
-Prove the proof: for each new guard, policy branch, or failure path, neutralize it temporarily and confirm that a test goes red, then restore it. A test that stays green is decoration; strengthen it before handoff.
-
-Then finish strategically: inspect change amplification, leaked implementation detail, duplicated policy, avoidable custom machinery, dishonest names or types, and failure behavior without a clear owner. Repair what the slice supports, then run the applicable gates against the final state.
+Prove the proof: for each new guard, policy branch, or failure path, temporarily apply the credible regression it guards against and confirm that a test goes red. A test that stays green is decoration; strengthen it before handoff.
 
 ### UI acceptance within a slice
 

@@ -18,7 +18,7 @@ Write the report and response in the user's active language.
 
 ## Review
 
-Read `references/review.md` in the installed `deliver` skill ([review contract](../../engineering/deliver/references/review.md)) and review under it; when `deliver` is not installed, stop and say so. Take the area with the highest-ranked risk yourself, usually the data or domain boundary; when this session delivered the change, you are not independent, so dispatch that area too. Dispatch fresh reviewers in parallel for the other areas and for the separate test reviewer, each with the inputs the contract lists plus the verified test invocation. When parallel dispatch is unavailable, review the areas in sequence; the test review still executes its mutations.
+Read `references/review.md` in the installed `deliver` skill ([review contract](../../engineering/deliver/references/review.md)) and review under it; when `deliver` is not installed, stop and say so. Take the area with the highest-ranked risk yourself, usually the data or domain boundary; when this session authored the change or an accepted input it is judged against, you are not independent, so dispatch that area too. Dispatch fresh reviewers in parallel for the other areas and for the separate test reviewer, each with the inputs the contract lists plus the verified test invocation. When parallel dispatch is unavailable, review the areas in sequence; the test review still executes its mutations.
 
 ## Confirm and rank
 
@@ -42,7 +42,7 @@ Lead with the verdict: how many findings block merging (ranks 1–2), and whethe
 - tests to fix, delete, or add;
 - ambiguities for the human to settle, with both readings;
 - uncertain findings and pre-existing defects, separately;
-- an escape summary for `deliver`: findings grouped by escape class and lens, and the smallest change to `deliver` or its review contract each group suggests;
+- an escape summary for `deliver`: findings grouped by escape class and lens, the cause each group shares, and the existing rule that should have caught it, or the rule to add when none covers it;
 - what was not reviewed or executed, and why.
 
 When the human asks about a finding, answer that question first, in your next message, before any further tool call.
@@ -53,7 +53,7 @@ The human starts repair by selecting findings. Load `deliver` and run steps 4–
 
 ## Boundaries
 
-- During the review, keep the reviewed worktree read-only: no edits, commits, stashes, resets, pull request comments, or specification changes. Disposable checkouts are the only mutation, and each is removed before the review closes.
+- During the review, change nothing outside disposable checkouts, including pull request comments and the specification, and remove each checkout before the review closes.
 - The report is evidence. It changes no skill, instruction, or standard; the escape summary feeds `retro` and a separately authorized change to `deliver`.
 - The review closes with the report. Repair is a separate task under [Repair selected findings](#repair-selected-findings).
 

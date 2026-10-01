@@ -6,7 +6,7 @@ Use this protocol for every costly-to-reverse architecture decision, whether it 
 
 Give every candidate the same neutral brief: the question and bound, evidence and its limits, accepted constraints, protected behavior, resolved domain meaning and explicit assumptions, and the applicable validation paths. Do not disclose a preferred answer or the judge's scoring notes.
 
-Dispatch at least two fresh candidates concurrently. Prefer different model families when the environment supports them. Each candidate must produce:
+Dispatch at least two fresh candidates concurrently and require structurally distinct shapes, not cosmetic variations. Prefer different model families when the environment supports them. Each candidate must produce:
 
 - realistic caller-first usage, including a meaningful failure;
 - the proposed owners, public interfaces, data and control flow, and invariant placement;

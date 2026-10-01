@@ -44,4 +44,4 @@ Keep the brief through implementation and independent verification. At closeout,
 
 Name an `ADR candidate` only when that rationale is likely to disappear with the brief. Do not create the ADR from this skill or make one a routine requirement for every accepted design.
 
-Once implementation and verification are complete and every still-relevant item has a maintained owner, a standalone brief may be deleted. This skill never performs that deletion because it stops before implementation. No lasting artifact should rely exclusively on a brief intended for retirement. When the repository deliberately maintains architecture documentation, reconcile the implemented result into that canonical artifact instead.
+Once implementation and verification are complete and every still-relevant item has a maintained owner, a standalone brief may be deleted. This skill never performs that deletion because it stops before implementation. No lasting artifact should rely exclusively on a brief intended for retirement.

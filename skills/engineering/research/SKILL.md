@@ -13,7 +13,7 @@ Investigate one bounded question through independent source work and publish one
 2. **Investigate independently.** Dispatch two fresh background agents concurrently with the same neutral brief, bound, and output requirements. Neither researcher sees the other's work. Each follows material claims to primary sources, checks contrary evidence and relevant exceptions, and returns a draft with claim-level citations, inferences, limitations, and unresolved questions. Do not let researchers create their own research teams.
 3. **Judge the evidence.** After both drafts are complete, dispatch a fresh agent that authored neither draft. Give the judge the question, both complete drafts, and access to their cited sources. The judge checks the sources behind decisive or disputed claims, distinguishes independent corroboration from repeated use of one source, resolves disagreements when the evidence permits, and writes a new synthesis from the strongest supported findings. It may reject both conclusions or preserve an unresolved disagreement; it must not decide by vote or prose quality.
 4. **Handle an incomplete run.** If a researcher fails or returns unusable work, replace it once within the original bound. If two substantive drafts or a fresh judge remain unavailable, do not present the result as independently synthesized. Preserve usable material only in a report clearly marked `Incomplete`, naming the missing role and unresolved validation.
-5. **Publish.** Have the judge write the final report to the chosen path. Keep researcher drafts temporary unless the user asks to retain them. Verify that the report answers the framed question, cites every material factual claim, describes material uncertainty honestly, and records any curtailed work. The report stands alone: it cites the sources themselves, so it stays valid after the drafts and other temporary files are removed. Return the report path and a one-sentence answer to the user.
+5. **Publish.** Have the judge write the final report to the chosen path. Keep researcher drafts temporary unless the user asks to retain them. Verify that the report answers the framed question, cites every material factual claim, describes material uncertainty honestly, and records any curtailed work. The report stands alone, citing sources rather than drafts. Return the report path and a one-sentence answer to the user.
 
 ## Evidence rules
 
@@ -36,4 +36,4 @@ The report contains:
 - a short method note covering completed roles, shared-source dependence, replacements, and curtailed work;
 - a source list.
 
-The final report is the only durable deliverable by default. Do not modify product code or other repository files during the investigation.
+Do not modify product code or other repository files during the investigation.

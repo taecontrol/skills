@@ -36,7 +36,7 @@ When the question spans both, settle the model first in Logic mode, then the int
 
 ## Production boundary
 
-Selection accepts a direction, not its prototype code. Reusing, copying, or adapting a candidate is separate production work that must be explicitly undertaken through the project's normal design, implementation, review, and verification practices. It inherits no production status or quality claim from the prototype.
+Selection accepts a direction, not its prototype code. Reusing any part of a candidate is new production work under the project's normal practices, with no quality claim inherited from the prototype.
 
 ## Completion criteria
 
