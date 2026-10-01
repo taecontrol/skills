@@ -12,3 +12,4 @@ npx skills@latest add taecontrol/skills --skill=<name>
 
 - **[`delivery-review`](./delivery-review/SKILL.md)** — Review a finished delivery against its accepted design, rank what to repair, and record what `deliver`'s own review missed.
 - **[`feature-brief`](./feature-brief/SKILL.md)** — Shape a problem into an accepted, temporary bet: evidence of need, triage, measurement, critical journeys, representative budgets, and rollout.
+- **[`prune`](./prune/SKILL.md)** — User-invoked. Retire the tests and checks in one area that no longer earn their cost, with the test-only production code they keep alive, and prove every contract keeps a test that goes red. Run it when suites slow down, turn intermittent, or grow faster than the code they cover.

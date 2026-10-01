@@ -1,0 +1,6 @@
+interface:
+  display_name: "Prune"
+  short_description: "Retire tests and checks that no longer earn their cost"
+
+policy:
+  allow_implicit_invocation: false
