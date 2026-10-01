@@ -46,7 +46,7 @@ When shared mutable state, concurrency, ordering, retries, ownership transfer, r
 
 Map each material obligation to its narrowest faithful seam. Keep a test or reproduction capable of failing on the previous behavior or a plausible defect, and derive expected results from an accepted contract, worked example, known-good fixture, external oracle, or another source that can disagree with the implementation.
 
-Reject tautological proof that copies the production algorithm, asserts a value against itself, or accepts current output merely because it is current. Add tests for distinct behavior and failure modes, not to meet a quota, and avoid repeating the same proof at multiple layers without a separate risk.
+Before writing or keeping a test, apply [test value](references/test-value.md): its four questions, junk patterns, and retention bar.
 
 Every pass that claims code is ready owns validation of the state it hands off. After its final edit—or after review when no edit was needed—run the applicable focused tests and affected project gates, including any changed-code complexity check defined by the accepted specification or executable project configuration. Do not substitute another actor's earlier green evidence or defer a known failure to a later review. Do not invent a missing project tool or threshold.
 

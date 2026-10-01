@@ -62,6 +62,19 @@ Adapted substantially:
 
 Copyright (c) 2026 DietrichGebert
 
+## OpenClaw
+
+Source: https://github.com/openclaw/openclaw/tree/main/.agents/skills/test-audit
+
+Revision: `80930af448ebabc84174146b56bc106d37fab3b4`
+
+Adapted substantially:
+
+- `skills/in-progress/prune/SKILL.md` — campaign ledger, keepers, layer pass, and preservation review, extended to checks and generalized beyond the source repository's tooling.
+- `skills/engineering/strategic-programming/references/test-value.md` — authoring gate, junk patterns, and retention bar.
+
+Copyright (c) 2026 OpenClaw Foundation
+
 ## MIT license
 
 MIT License
