@@ -42,7 +42,7 @@ Lead with the verdict: how many findings block merging (ranks 1–2), and whethe
 - tests to fix, delete, or add;
 - ambiguities for the human to settle, with both readings;
 - uncertain findings and pre-existing defects, separately;
-- an escape summary for `deliver`: findings grouped by escape class and lens, and the smallest change to `deliver` or its review contract each group suggests;
+- an escape summary for `deliver`: findings grouped by escape class and lens, the cause each group shares, and the existing rule that should have caught it, or the rule to add when none covers it;
 - what was not reviewed or executed, and why.
 
 When the human asks about a finding, answer that question first, in your next message, before any further tool call.

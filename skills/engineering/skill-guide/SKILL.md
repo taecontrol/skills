@@ -35,7 +35,7 @@ Adapt to the request:
 - **Recommend what to do next:** use the current objective, accepted decisions, evidence, and blocker to recommend the smallest useful next move. A recommendation may be one skill, a short sequence when dependencies are real, or no skill when direct work is simpler.
 - **Show the catalog:** organize only the available skills by the human intent they serve. Keep the map concise and distinguish manual-only skills when that information is available.
 
-Do not turn Factory phases into a mandatory pipeline or recommend a skill merely because one exists. When several skills could apply, select the best fit and mention an alternative only when the unresolved distinction could change the choice.
+Do not turn the skills into a mandatory pipeline or recommend a skill merely because one exists. When several skills could apply, select the best fit and mention an alternative only when the unresolved distinction could change the choice.
 
 ## Make the recommendation actionable
 
@@ -49,7 +49,7 @@ Include the verified input paths and any unmet prerequisites needed for the hand
 
 ## Preserve the manual boundary
 
-While the request is advisory, provide guidance without invoking another skill, starting recommended work, dispatching agents, or modifying files. A recommendation alone is not authorization to act. A later explicit instruction to perform work ends the advisory task: follow that instruction under the applicable workflow. In particular, an explicit acceptance of a prepared specification authorizes recording its accepted status; this guide is not a reason to leave it as Draft or require another session.
+While the request is advisory, provide guidance without invoking another skill, starting recommended work, dispatching agents, or modifying files. A recommendation alone is not authorization to act. A later explicit instruction to perform work ends the advisory task: follow that instruction under the applicable workflow.
 
 ## Completion criteria
 

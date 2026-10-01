@@ -22,8 +22,7 @@ Maintain one concise project source for rules an independent reviewer must judge
 
 ## Boundaries
 
-- Do not copy package scripts, development commands, validation gates, tool settings, directory inventories, or framework facts into the standards file.
-- Do not install or configure tooling, edit agent instructions, review an implementation, or repair code. Report a better owner without modifying it unless the user separately authorizes that work.
+- Do not install or configure tooling, edit agent instructions, review an implementation, or repair code unless the user separately authorizes that work.
 - Do not import a generic style guide or turn current code frequency into desired direction.
 - Keep exceptions narrow. Preserve rationale here only when it is needed to apply the exception and no durable decision source owns it better.
 - Do not add per-rule owners, status, timestamps, history, or boilerplate sections. Git preserves document history; omit empty sections.

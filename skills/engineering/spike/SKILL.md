@@ -20,7 +20,7 @@ An invalidated hypothesis is a successful spike when the evidence removes uncert
 
 ## Production boundary
 
-The experiment does not become production code because it worked or was retained. Reusing, copying, or adapting any part of it is separate implementation work that must be explicitly undertaken through the project's normal design, implementation, review, and verification practices. It inherits no production status or quality claim from the spike.
+The experiment does not become production code because it worked or was retained. Reusing any part of it is new production work under the project's normal practices, with no quality claim inherited from the spike.
 
 ## Completion criteria
 
