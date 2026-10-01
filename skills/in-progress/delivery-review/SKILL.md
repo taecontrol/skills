@@ -18,7 +18,7 @@ Write the report and response in the user's active language.
 
 ## Review
 
-Read `references/review.md` in the installed `deliver` skill ([review contract](../../engineering/deliver/references/review.md)) and review under it; when `deliver` is not installed, stop and say so. Take the area with the highest-ranked risk yourself, usually the data or domain boundary; when this session delivered the change, you are not independent, so dispatch that area too. Dispatch fresh reviewers in parallel for the other areas and for the separate test reviewer, each with the inputs the contract lists plus the verified test invocation. When parallel dispatch is unavailable, review the areas in sequence; the test review still executes its mutations.
+Read `references/review.md` in the installed `deliver` skill ([review contract](../../engineering/deliver/references/review.md)) and review under it; when `deliver` is not installed, stop and say so. Take the area with the highest-ranked risk yourself, usually the data or domain boundary; when this session delivered the change or wrote its specification or brief, you are not independent, so dispatch that area too. Dispatch fresh reviewers in parallel for the other areas and for the separate test reviewer, each with the inputs the contract lists plus the verified test invocation. When parallel dispatch is unavailable, review the areas in sequence; the test review still executes its mutations.
 
 ## Confirm and rank
 

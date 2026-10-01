@@ -12,6 +12,7 @@ Contracts for the delivering agent's slice work and repairs. The fresh reviewers
 - Resolve reversible implementation details locally. Return evidence that invalidates accepted behavior, a public contract, sensitive policy, or costly-to-reverse architecture instead of changing it silently.
 - Name every new file, test, fixture, script key, and document in a versioned location for what it is. Journey labels, slice numbers, and other temporary-document identifiers stay in temporary documents.
 - If a failing gate or observed defect remains causally uncertain after direct inspection, establish a diagnosis under `diagnosing-bugs` before changing production code. A gate that passes only on an unchanged retry is an undiagnosed intermittent failure, not green.
+- Undo a temporary neutralization by reversing that exact edit, or make it in a disposable checkout. Restoring a file from Git, such as with `git checkout -- <file>`, also discards uncommitted work in it.
 - Run gates after the final edit. For CRAP, follow the specification's command, analysis scope, coverage prerequisites, and per-slice disposition under [Validation](../../implementation-spec/SKILL.md#validation). A full-project calculator does not establish that a changed-code check exists. Report an unavailable check without inventing tooling or waiving a required project gate.
 
 ## Slice

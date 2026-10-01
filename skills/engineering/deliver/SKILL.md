@@ -64,7 +64,7 @@ The close report contains:
 - checks and coding standards added, each with the defects it generalizes, and recommended checks not installed;
 - product evidence;
 - pre-existing defects observed but not repaired, including intermittent tests;
-- omissions, unresolved findings, and residual risk, each naming who accepted it: a cut in the specification, a human decision, or your own choice during delivery.
+- omissions, unresolved findings, and residual risk, each naming who accepted it: a cut in the specification, a human decision, or your own choice during delivery. A green mutation accepted as unreachable carries the attempts to reach it from authored input.
 
 ## Boundaries
 
