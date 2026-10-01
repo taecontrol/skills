@@ -40,7 +40,7 @@ Give each policy one clear home. Prefer deep modules: small, honest interfaces t
 
 Use names and types that preserve distinctions the system depends on. Parse and validate unknown external or persisted data at the boundary, then operate on safe application types. Keep authoritative facts instead of reconstructing them from incidental signals.
 
-When shared mutable state, concurrency, ordering, retries, ownership transfer, rollback, migration, or recovery can change correctness, make the owner and atomic boundary explicit and cover late, repeated, partial, or failed behavior. Do not add machinery for interaction dimensions the change does not have.
+When shared mutable state, concurrency, ordering, retries, ownership transfer, rollback, migration, recovery, or fields that reshape other fields can change correctness, enumerate the **state space** before implementing: each operation outcome, ordering, or change against each state it can meet, including late, repeated, partial, and failed behavior, with its accepted result. Derive the tests from it, and make the owner and atomic boundary explicit. Do not add machinery for interaction dimensions the change does not have.
 
 ## Prove the behavior
 

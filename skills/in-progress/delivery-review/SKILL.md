@@ -53,7 +53,7 @@ The human starts repair by selecting findings. Load `deliver` and run steps 4–
 
 ## Boundaries
 
-- During the review, keep the reviewed worktree read-only: no edits, commits, stashes, resets, pull request comments, or specification changes. Disposable checkouts are the only mutation, and each is removed before the review closes.
+- During the review, change nothing outside disposable checkouts, including pull request comments and the specification, and remove each checkout before the review closes.
 - The report is evidence. It changes no skill, instruction, or standard; the escape summary feeds `retro` and a separately authorized change to `deliver`.
 - The review closes with the report. Repair is a separate task under [Repair selected findings](#repair-selected-findings).
 
