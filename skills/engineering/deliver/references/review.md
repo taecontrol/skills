@@ -2,7 +2,7 @@
 
 The contract for judging a delivered change against its accepted inputs. `deliver` dispatches it on its own integrated result; `delivery-review` runs it on a finished delivery or pull request. Both rank findings under [Rank](#rank).
 
-The dispatcher gives each reviewer the specification path, the paths of every accepted input, the diff range from the revision where delivery began, its assigned area, every scope change and human decision made during delivery, the commands that run the project's gates in this environment, and any material current-state fact it cannot discover locally, such as a control-tool limitation already observed. A dispatched reviewer is a new agent, not a fork of the dispatcher's conversation. After the test reviewer returns, confirm with `git worktree list` that its checkout is gone, and remove it if not.
+The dispatcher gives each reviewer the specification path, the paths of every accepted input, the diff range from the revision where delivery began, its assigned area, every scope change and human decision made during delivery, the commands that run the project's gates in this environment, and any material current-state fact it cannot discover locally, such as a control-tool limitation already observed. A dispatched reviewer is a new agent, not a fork of the dispatcher's conversation. After the test reviewer returns, confirm with `git worktree list` that its checkout is gone, and remove it by path if not.
 
 ## Partition
 
@@ -33,7 +33,7 @@ Create a disposable checkout of the reviewed revision outside the reviewed workt
 - each guard, policy branch, and failure path the delivery added or changed;
 - each assertion or production value that realizes an accepted obligation: a journey's required or forbidden result, a guarantee, an error code, a success-metric field or label.
 
-For each mutation, run the narrowest suite that claims to cover it under a time limit of a few times its unmutated duration, record whether a test goes red, then restore the mutation before the next one. A run that hits the limit counts as red; record it as a timeout. A mutation that stays green is a finding: the claiming test is vacuous, or the obligation has no test. Name the suites you could not run and why. Return every mutation with its target and result alongside the findings. Remove the checkout before returning.
+For each mutation, run the narrowest suite that claims to cover it under a time limit of a few times its unmutated duration, record whether a test goes red, then restore the mutation before the next one. A run that hits the limit counts as red; record it as a timeout. A mutation that stays green is a finding: the claiming test is vacuous, or the obligation has no test. Name the suites you could not run and why. Return every mutation with its target and result alongside the findings. Remove the checkout by path with `git worktree remove --force <path>` before returning, never with `git worktree prune`, which also drops other sessions' worktree registrations.
 
 ## Findings
 
