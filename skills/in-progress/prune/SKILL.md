@@ -12,7 +12,7 @@ Write the report and response in the user's active language.
 
 ## Value bar
 
-Read `references/test-value.md` in the installed `strategic-programming` skill ([test value](../../engineering/strategic-programming/references/test-value.md)); when it is not installed, stop and say so. Its keeper, junk patterns, and retention bar judge every test in scope.
+Read the test value reference, `references/test-value.md`, in the installed `strategic-programming` skill; when it is not installed, stop and say so. Its keeper, junk patterns, and retention bar judge every test in scope.
 
 A **check** is a lint or type rule, an architectural test, or a script or step in the verification or CI command. It earns its cost when the mechanism it guards still exists, it goes red on a planted violation, and no other check catches the same violation. A gate that runs the same suite twice, or a step that cannot fail, is a check without value.
 
@@ -53,7 +53,7 @@ After each lane, run its keepers and sibling suites; after the last, run the aff
 
 Dispatch fresh read-only reviewers, one per group of lanes, with the ledgers and the diff. They compare removed coverage against the keepers and report contracts that lost their only proof and new or moved assertions that cannot fail.
 
-Prove each claimed keeper by mutation, with the disposable checkout, time limit, and cleanup of [mutations](../refine/SKILL.md#mutations) in the installed `refine` skill. For every contract whose test was consolidated or deleted with a named remaining proof, mutate the production behavior once and confirm the keeper goes red; for every retired check claimed covered by another, plant the violation and confirm the other check goes red. A mutation that stays green is a gap: restore the coverage and rerun it.
+Prove each claimed keeper by mutation, with the disposable checkout, time limit, and cleanup of [mutations](../refine/references/mutations.md) in the installed `refine` skill. For every contract whose test was consolidated or deleted with a named remaining proof, mutate the production behavior once and confirm the keeper goes red; for every retired check claimed covered by another, plant the violation and confirm the other check goes red. A mutation that stays green is a gap: restore the coverage and rerun it.
 
 Done when every reported gap is restored or rejected with source evidence, and every claimed keeper and covering check went red on its mutation.
 
@@ -77,9 +77,7 @@ A junk pattern that recurs across the scope is evidence for `refine`'s tests len
 
 - Commits stay local. Pushing, opening a pull request, or merging needs separate authority.
 - Edit only the scope's tests, checks, test support, and the production code they unlock, plus the defect repairs above.
-- Report stale coding standards and agent instructions; their skills own the change.
-- Remove each mutation and disposable checkout before closing.
 
-## Completion criteria
+## Done
 
-Every test and check in scope has a mark backed by evidence; every removed contract's keeper went red on a mutation; the affected gates pass on the final state; every baseline failure is repaired with a control or reported; and the report separates production from test changes.
+Every section's criterion holds, the affected gates pass on the final state, every baseline failure is repaired with a control or reported, and the report separates production from test changes.

@@ -54,6 +54,8 @@ Every pass that claims code is ready owns validation of the state it hands off. 
 
 Once focused proof is green, inspect the result for change amplification, caller knowledge of hidden detail, duplicated policy, dishonest names or types, avoidable custom machinery, and failure behavior without an obvious home. Repair supported defects within the accepted scope, then rerun affected evidence.
 
+When several defects share a cause, fix the cause with the strongest structural fix: a type that makes the bad state unrepresentable, then a lint or architecture rule, then a shared component that owns the mechanism, then a coding standard for what needs judgment. Prefer sharpening an existing check over adding one. Fix or name the existing violations a new check reports, and prove it goes red on a planted violation.
+
 Reconcile the final result against the obligation mapping from grounding. Account for each obligation with observed evidence or an explicit limitation, including those outside automated gate coverage. Resolve known in-scope omissions before claiming completion.
 
 Report an unresolved risk only when fixing it would cross the accepted boundary. Name the evidence, consequence, and decision needed; do not create a speculative follow-up ledger.

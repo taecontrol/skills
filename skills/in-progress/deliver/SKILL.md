@@ -1,6 +1,6 @@
 ---
 name: deliver
-description: "Deliver an accepted spec autonomously, from failing acceptance tests to a pull request with green checks: write the tests, make them pass, refine, and ship. Use when a spec from `shape` is accepted, or for a bug fix whose reproduction and expected behavior are agreed."
+description: "Deliver an accepted spec autonomously, from failing acceptance tests to a pull request with green checks. Use when a spec from `shape` is accepted, or for a bug fix whose reproduction and expected behavior are agreed."
 ---
 
 # Deliver
@@ -19,7 +19,7 @@ These assertions are the contract. Glue around them, such as setup, selectors, a
 
 ## 2. Make it work
 
-Make the tests pass, then capture each `evidence` example in the running product. Commit as you go. Done when every acceptance test is green, the project's gates pass, and the evidence is captured.
+Make the tests pass, then capture each `capture` example from the running product. Commit as you go. Done when every acceptance test is green, the project's gates pass, and the evidence is captured.
 
 What must outlive the spec goes into the change: behavior is already in tests; draft rationale, vocabulary, and project-wide rules where `adr`, `domain-language`, and `agents-md` keep them, for the human to accept with the pull request.
 
@@ -37,4 +37,4 @@ Decide reversible choices yourself and record the ones the human would want to k
 
 ## Done
 
-The pull request is open, its checks are green, every example is proven by a test or captured evidence, and every deviation from the spec is named in its description. The human merges.
+The pull request is open, its checks are green, every example is proven by a test or a capture, and every deviation from the spec is named in its description. The human merges.

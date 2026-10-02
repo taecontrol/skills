@@ -1,0 +1,3 @@
+# Mutations
+
+In a disposable checkout of the reviewed revision outside the worktree, such as `git worktree add --detach` under the system temporary directory, break each guard and failure path the change added, and each value that realizes an example, with the credible regression it protects against. Run the narrowest suite that claims it, limited to a few times its normal duration; a timeout counts as red. A mutation that stays green is a finding: the test is vacuous or the example has no test. Call it unreachable only after trying to reach it from real input. Remove the checkout by path with `git worktree remove --force <path>`; `git worktree prune` also drops other sessions' worktrees.

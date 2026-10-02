@@ -21,9 +21,9 @@ The definition of success. Each one is concrete: starting state, action, and res
 
 - **E1** `test` — Given …, when …, then …
 - **E2** `test` — Given …, when …, then … must never happen.
-- **E3** `evidence` — The screen matches the chosen prototype at <sizes/states>.
+- **E3** `capture` — The screen matches the chosen prototype at <sizes/states>.
 
-When state interacts, add the table the edge cases come from:
+When state interacts, add the state space the edge cases come from:
 
 | State \ Operation | … | … |
 |---|---|---|
