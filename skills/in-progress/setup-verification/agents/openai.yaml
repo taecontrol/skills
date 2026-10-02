@@ -1,0 +1,6 @@
+interface:
+  display_name: "Setup Verification"
+  short_description: "Let agents run, drive, and prove the real product"
+
+policy:
+  allow_implicit_invocation: true

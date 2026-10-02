@@ -1,0 +1,6 @@
+interface:
+  display_name: "Garden"
+  short_description: "Find drift by cause and fix it at the root"
+
+policy:
+  allow_implicit_invocation: true

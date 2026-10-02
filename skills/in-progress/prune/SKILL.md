@@ -53,7 +53,7 @@ After each lane, run its keepers and sibling suites; after the last, run the aff
 
 Dispatch fresh read-only reviewers, one per group of lanes, with the ledgers and the diff. They compare removed coverage against the keepers and report contracts that lost their only proof and new or moved assertions that cannot fail.
 
-Prove each claimed keeper by mutation, with the disposable checkout, time limit, and cleanup of the executed test review in the installed `deliver` skill ([review contract](../../engineering/deliver/references/review.md#executed-test-review)). For every contract whose test was consolidated or deleted with a named remaining proof, mutate the production behavior once and confirm the keeper goes red; for every retired check claimed covered by another, plant the violation and confirm the other check goes red. A mutation that stays green is a gap: restore the coverage and rerun it.
+Prove each claimed keeper by mutation, with the disposable checkout, time limit, and cleanup of [mutations](../refine/SKILL.md#mutations) in the installed `refine` skill. For every contract whose test was consolidated or deleted with a named remaining proof, mutate the production behavior once and confirm the keeper goes red; for every retired check claimed covered by another, plant the violation and confirm the other check goes red. A mutation that stays green is a gap: restore the coverage and rerun it.
 
 Done when every reported gap is restored or rejected with source evidence, and every claimed keeper and covering check went red on its mutation.
 
@@ -71,7 +71,7 @@ Report:
 - stale coding standards or agent instructions found, as candidates for `coding-standards` or `agents-md`;
 - what was not run, and why.
 
-A junk pattern that recurs across the scope is evidence for `deliver`'s test review: name it, so `retro` or a separately authorized change can act on it.
+A junk pattern that recurs across the scope is evidence for `refine`'s tests lens: name it, so `retro` or a separately authorized change can act on it.
 
 ## Boundaries
 

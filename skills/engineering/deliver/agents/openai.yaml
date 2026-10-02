@@ -1,6 +1,0 @@
-interface:
-  display_name: "Deliver"
-  short_description: "Implement accepted slices, then review, repair, and validate"
-
-policy:
-  allow_implicit_invocation: true

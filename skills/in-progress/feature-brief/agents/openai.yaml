@@ -1,6 +1,0 @@
-interface:
-  display_name: "Feature Brief"
-  short_description: "Shape a problem into an accepted bet before building"
-
-policy:
-  allow_implicit_invocation: true

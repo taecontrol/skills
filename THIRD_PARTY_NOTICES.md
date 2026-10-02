@@ -31,6 +31,8 @@ Adapted substantially:
 - `skills/engineering/retro/SKILL.md` — evidence-backed portable retrospectives with temporary artifacts and no automatic workflow mutations.
 - `skills/engineering/prototype/references/logic.md` — logic-mode shareable HTML demo, adapted from `skills/engineering/prototype/LOGIC.md` at revision `c55ee46073ed923f86ce59a5eb3b6d895095d1b7`, with a single default direction, grounding, self-run check, and the local production boundary.
 
+Informs, without reusing text: `skills/in-progress/garden/SKILL.md` (architecture lens after `improve-codebase-architecture`) and `skills/in-progress/ship/SKILL.md` (description as evidence, after `pr`).
+
 Copyright (c) 2026 Matt Pocock
 
 ## pstack
@@ -46,7 +48,8 @@ Adapted only in the frontmatter description:
 Adapted substantially:
 
 - `skills/engineering/diagnosing-bugs/SKILL.md` — matching-surface reproduction and live or fixed runtime-evidence paths.
-- `skills/engineering/product-validation/SKILL.md` — direct real-product proof, project-local driver boundary, and independent verdict.
+
+Informs, without reusing text: `skills/in-progress/setup-verification/SKILL.md` (a project-local verification capability, after `create-verification-skill`), `skills/in-progress/garden/SKILL.md` (structural fixes ranked from unrepresentable state to standards, after `principle-encode-lessons-in-structure`), and `skills/in-progress/ship/SKILL.md` (description as a briefing, after `opening-a-pr`).
 
 Copyright (c) 2026 Lauren Tan
 

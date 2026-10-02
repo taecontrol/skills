@@ -1,6 +1,6 @@
 ---
 name: retro
-description: "Analyze a completed or paused agent run and preserve an evidence-backed retrospective for improving future work. User-invoked only; produce a temporary Markdown report without changing skills, project instructions, tooling, or code."
+description: "Analyze one or more completed or paused agent runs and preserve an evidence-backed retrospective for improving future work. User-invoked only; produce a temporary Markdown report without changing skills, project instructions, tooling, or code."
 disable-model-invocation: true
 ---
 
@@ -12,7 +12,7 @@ Write the report and response in the user's active language.
 
 ## Establish the run
 
-Analyze the run the user identifies, or the current run when none is named. Prefer primary evidence you can access directly: conversation and tool history, session logs, commits and diffs, test or validation output, produced artifacts, and the exact installed instructions or skills involved.
+Analyze the runs the user identifies, or the current run when none is named. Across several runs, look for what recurs. Prefer primary evidence you can access directly: conversation and tool history, session logs, commits and diffs, test or validation output, produced artifacts, and the exact installed instructions or skills involved.
 
 Do not ask the user to retell evidence that is already accessible. When history was compacted, logs are unavailable, or a claim cannot be checked, name the gap and reduce confidence instead of reconstructing missing events from plausibility. Record the repository revision, worktree, session identifier, or artifact provenance only when available and useful.
 
@@ -20,7 +20,7 @@ Keep secrets, credentials, personal data, and unrelated source content out of th
 
 ## Reconstruct the useful story
 
-Describe the original objective, actual outcome, and only the turning points that changed cost, quality, direction, or confidence. Capture both friction and behavior that should be preserved. Do not produce a turn-by-turn transcript or judge success only by whether the final code passed.
+Describe the original objective, actual outcome, and only the turning points that changed cost, quality, direction, or confidence. Capture both friction and behavior that should be preserved. Every point where the human had to step in, correct, or repeat a request is a primary signal: the environment should have made it unnecessary. Do not produce a turn-by-turn transcript or judge success only by whether the final code passed.
 
 For each material friction, separate:
 
@@ -31,14 +31,16 @@ For each material friction, separate:
 
 ## Find improvement candidates
 
-Use these as lenses, not a checklist:
+Use these as lenses, not a checklist, in order of preference as destinations:
 
-- navigation or missing project knowledge;
-- automated tests, checks, or observability;
-- project-specific agent instructions or coding standards;
-- reusable skill behavior, activation, boundaries, or handoffs;
-- tool access, reliability, or economy; and
-- unnecessary instructions, artifacts, roles, or repeated work.
+- a type, lint or architecture rule, script, or shared component in the project that makes the mistake hard to repeat;
+- the project's verification: launching, driving, and observing the product, and parity with CI;
+- navigation or missing project knowledge in its agent instructions or coding standards;
+- tool access, reliability, or economy;
+- unnecessary instructions, artifacts, roles, or repeated work; and
+- reusable skill behavior, activation, boundaries, or handoffs.
+
+A rule in the environment stops the agent when it matters without costing attention on every run; a rule in a skill costs attention everywhere. Recommend a skill change only when the cause is the skill itself, and then generalize an existing instruction or remove one rather than adding a rule for the incident.
 
 Inspect the actual applicable instruction or skill before attributing a failure to it. When skill use is under review, include a compact assessment for each relevant skill: version or content available during the run, whether it was loaded, the specific instruction, observed behavior, and diagnosis. Mark unavailable evidence explicitly; current skill text does not establish what the agent had during the run. Distinguish a skill that was not selected or loaded from one that was loaded but not followed and one whose instructions induced the behavior. Also distinguish a missing rule, conflicting instructions, unavailable information, insufficient authority, an actual product defect, and ordinary one-off model variation. Do not recommend adding prose for behavior an executable check can enforce or for guidance that already exists.
 
