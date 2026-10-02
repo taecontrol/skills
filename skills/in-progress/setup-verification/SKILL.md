@@ -5,7 +5,7 @@ description: "Give agents hands and eyes on a project: one way to launch, drive,
 
 # Setup verification
 
-An agent can only prove what it can run and see. Verification is the project's most important capability: a faithful, fast, repeatable way to exercise the real product, written down once so every agent uses it instead of rebuilding it.
+An agent can only prove what it can run and see. Verification is a faithful, fast, repeatable way to exercise the real product, written down once so every agent uses it instead of rebuilding it.
 
 Make the mechanical parts deterministic, as scripts and commands in the repository; prose keeps only the judgment.
 
