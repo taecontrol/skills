@@ -1,6 +1,0 @@
-interface:
-  display_name: "Implementation Spec"
-  short_description: "Turn accepted design into sequential slices"
-
-policy:
-  allow_implicit_invocation: true

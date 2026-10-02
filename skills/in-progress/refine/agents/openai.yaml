@@ -1,0 +1,6 @@
+interface:
+  display_name: "Refine"
+  short_description: "Review fresh, then make it right and fast"
+
+policy:
+  allow_implicit_invocation: true

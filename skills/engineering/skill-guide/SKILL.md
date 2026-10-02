@@ -19,7 +19,7 @@ Do not maintain or rely on a duplicated static inventory in this skill. Do not i
 
 Before recommending a skill or writing a handoff prompt:
 
-1. Identify the requested outcome and current state from the conversation and relevant artifacts. Distinguish accepted design from an executable implementation contract.
+1. Identify the requested outcome and current state from the conversation and relevant artifacts. Distinguish an open problem from an accepted spec.
 2. Find candidates by the outcome they own. Read the selected candidate and plausible alternatives, including their entry requirements, completion criteria, and references that determine the choice. Reading only an initially favored skill does not establish fit.
 3. Select the skill that owns the requested result. A workflow may apply a programming standard internally; recommending that standard alone would omit the workflow's sequencing, independent passes, and completion obligations.
 4. Check the selected skill's required inputs against the actual artifacts. If a prerequisite is missing, recommend the preparation needed first and label any later execution prompt as conditional. Do not describe an unchecked handoff as ready.

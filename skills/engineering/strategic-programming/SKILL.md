@@ -11,9 +11,9 @@ Apply the following lenses proportionally. They are quality criteria, not a fixe
 
 ## Ground the change
 
-Read the accepted implementation input—the user's bounded request or an accepted implementation specification—plus applicable project instructions, coding standards, and executable gate configuration. Trace the real caller, state, and data flow through the affected seam rather than reasoning from the named file alone.
+Read the accepted implementation input—the user's bounded request or an accepted spec—plus applicable project instructions, coding standards, and executable gate configuration. Trace the real caller, state, and data flow through the affected seam rather than reasoning from the named file alone.
 
-Before editing, make each accepted requirement and protected behavior explicit and map it to planned verification evidence, including obligations that automated gates cannot establish. Reuse an existing specification's coverage; for bounded work, a short outline in the conversation is sufficient. Update the mapping as discovery reveals affected obligations.
+Before editing, make each accepted requirement and protected behavior explicit and map it to planned verification evidence, including obligations that automated gates cannot establish. Reuse an accepted spec's examples; for bounded work, a short outline in the conversation is sufficient. Update the mapping as discovery reveals affected obligations.
 
 Identify the governing invariant or policy, its authoritative source, its owner, and the callers that should not carry its hard detail. Fix a defect at the shared cause when that is the narrowest correct seam; inspect sibling callers before assuming the reported path is the whole problem.
 
@@ -48,7 +48,7 @@ Map each material obligation to its narrowest faithful seam. Keep a test or repr
 
 Before writing or keeping a test, apply [test value](references/test-value.md): its four questions, junk patterns, and retention bar.
 
-Every pass that claims code is ready owns validation of the state it hands off. After its final edit—or after review when no edit was needed—run the applicable focused tests and affected project gates, including any changed-code complexity check defined by the accepted specification or executable project configuration. Do not substitute another actor's earlier green evidence or defer a known failure to a later review. Do not invent a missing project tool or threshold.
+Every pass that claims code is ready owns validation of the state it hands off. After its final edit—or after review when no edit was needed—run the applicable focused tests and affected project gates, including any changed-code complexity check the executable project configuration defines. Do not substitute another actor's earlier green evidence or defer a known failure to a later review. Do not invent a missing project tool or threshold.
 
 ## Finish strategically
 
@@ -60,8 +60,8 @@ Report an unresolved risk only when fixing it would cross the accepted boundary.
 
 ## Boundaries
 
-- This skill defines programming quality, not slice order, roles, commits, or delivery state.
-- It does not replace project coding standards, executable gates, an accepted implementation specification, or final product validation.
+- This skill defines programming quality, not delivery order, roles, commits, or delivery state.
+- It does not replace project coding standards, executable gates, an accepted spec, or its acceptance tests.
 - It does not create or update an ADR, glossary, standards file, or agent instructions as a side effect.
 - Line count, file count, abstraction count, and test count are diagnostic signals, never standalone gates.
 
