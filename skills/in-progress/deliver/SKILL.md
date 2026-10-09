@@ -33,7 +33,7 @@ Run `ship`. When `refine` stopped on blockers, stop with its report instead.
 
 ## Decisions along the way
 
-Decide reversible choices yourself and record the ones the human would want to know about for the pull request. Stop and ask only when evidence shows that an example, a decision in the spec, or a costly-to-reverse boundary is wrong; name the exact question, and continue with work that does not depend on it.
+Decide reversible choices yourself and record the ones the human would want to know about for the pull request. Stop and ask only when evidence shows that an example, a decision in the spec, or a costly-to-reverse boundary is wrong, and continue with work that does not depend on it. Put anything to the human, a question or a stop such as `refine`'s blockers, so they can answer it without opening the spec: the behavior at stake in plain words, the options, and your recommendation.
 
 ## Done
 
