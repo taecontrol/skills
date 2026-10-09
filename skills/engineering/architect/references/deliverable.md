@@ -10,7 +10,7 @@ Choose the destination in this order:
 2. An established design-work location in the repository. When the repository intentionally maintains a canonical architecture artifact after implementation, update its architecture section and return `path#heading` when the file owns more than this decision.
 3. `docs/design/<decision-slug>.md`.
 
-Avoid creating a standalone file when an existing artifact already owns the implementation contract. Otherwise, treat the standalone brief as eligible for retirement after implementation and verification. Record `Status: Accepted`, the acceptance date, and the relevant repository revision or product version so later work can detect stale grounding. Never mark a proposal accepted without explicit human agreement.
+When the brief constrains later issues, choose a destination that outlives this worktree and link it from each of those issues. Avoid creating a standalone file when an existing artifact already owns the implementation contract. Otherwise, treat the standalone brief as eligible for retirement after implementation and verification. Record `Status: Accepted`, the acceptance date, and the relevant repository revision or product version so later work can detect stale grounding. Never mark a proposal accepted without explicit human agreement.
 
 ## Required content
 

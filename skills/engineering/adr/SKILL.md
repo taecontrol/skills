@@ -31,7 +31,7 @@ Completion criterion: classify the gap as ADR, another durable home, or no recor
 
 ## 2. Reconcile repository conventions
 
-Inspect existing ADR location, naming, template, language, status vocabulary, and history. Follow a sound local convention without migrating or expanding it. When none exists, use `docs/adr/`, a monotonic four-digit identifier with a decision-focused title, the project's documentation language, and the statuses `Proposed`, `Accepted`, `Rejected`, and `Superseded`.
+Inspect existing ADR location, naming, template, language, status vocabulary, and history. Follow a sound local convention without migrating or expanding it. When none exists, use `docs/adr/`, a monotonic four-digit identifier with a decision-focused title, the project's documentation language, and the statuses `Proposed`, `Accepted`, `Rejected`, and `Superseded`. Write a new record as `Accepted`: the human accepts it by merging the change that carries it.
 
 Do not create an index, bootstrap record, directory hierarchy, or tooling unless the user separately requests it. Never reuse an identifier.
 

@@ -37,7 +37,7 @@ When state interacts, add the state space the edge cases come from:
 
 ## Decisions
 
-Each settled decision with a pointer to its evidence: the chosen prototype, the architecture result, a spike verdict, a data shape or contract, a budget with the check that enforces it.
+Each settled decision with a pointer to its evidence: the chosen prototype, the architecture result, a spike verdict, a data shape or contract, a budget with the check that enforces it. Every one-way door is here with its `architect` result.
 
 ## Rabbit holes
 

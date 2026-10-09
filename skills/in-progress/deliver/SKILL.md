@@ -21,7 +21,7 @@ These assertions are the contract. Glue around them, such as setup, selectors, a
 
 Make the tests pass, then capture each `capture` example from the running product. Commit as you go. Done when every acceptance test is green, the project's gates pass, and the evidence is captured.
 
-What must outlive the spec goes into the change: behavior is already in tests; draft rationale, vocabulary, and project-wide rules where `adr`, `domain-language`, and `agents-md` keep them, for the human to accept with the pull request.
+What must outlive the spec goes into the change: behavior is already in tests; rationale goes into an ADR through `adr`, and vocabulary and project-wide rules are drafted where `domain-language` and `agents-md` keep them, for the human to accept with the pull request.
 
 ## 3. Refine
 
@@ -33,7 +33,7 @@ Run `ship`. When `refine` stopped on blockers, stop with its report instead.
 
 ## Decisions along the way
 
-Decide reversible choices yourself and record the ones the human would want to know about for the pull request. Stop and ask only when evidence shows that an example, a decision in the spec, or a costly-to-reverse boundary is wrong, and continue with work that does not depend on it. Put anything to the human, a question or a stop such as `refine`'s blockers, so they can answer it without opening the spec: the behavior at stake in plain words, the options, and your recommendation.
+Decide reversible choices yourself and record the ones the human would want to know about for the pull request. A one-way door the spec does not settle, such as a migration, a new contract that writes, or a change to a seam an accepted ADR governs, is not one of them. Stop and ask when the change needs one, or when evidence shows that an example, a decision in the spec, or an accepted one-way door is wrong, and continue with work that does not depend on it. Put anything to the human, a question or a stop such as `refine`'s blockers, so they can answer it without opening the spec: the behavior at stake in plain words, the options, and your recommendation.
 
 ## Done
 
