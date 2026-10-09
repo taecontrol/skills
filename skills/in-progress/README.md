@@ -10,4 +10,4 @@ npx skills@latest add taecontrol/skills --skill=<name>
 
 ## Candidates
 
-- **[`bug-hunt`](./bug-hunt/SKILL.md)** — User-invoked. Hunt one area for bugs nobody has reported, keep only those a reproduction turns red, fix the easy ones as draft pull requests, and file the rest as issues an agent could pick up. Runs to the end on its own, so it suits a scheduled task.
+- **[`bug-hunt`](./bug-hunt/SKILL.md)** — User-invoked. Hunt the project, or the area named, for bugs nobody has reported, keep only those a reproduction turns red, fix the easy ones in one draft pull request, and file the rest as issues an agent could pick up. Runs to the end on its own, so it suits a scheduled task.
