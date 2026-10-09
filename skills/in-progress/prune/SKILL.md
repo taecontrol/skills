@@ -1,14 +1,13 @@
 ---
 name: prune
-description: "Prune one area's verification surface: delete, consolidate, or repair the tests and checks that no longer earn their cost, remove the test-only production code they keep alive, and prove every contract still has a test that goes red."
-disable-model-invocation: true
+description: "Prune one area's verification surface: delete, consolidate, or repair the tests and checks that no longer earn their cost, remove the test-only production code they keep alive, and prove every contract still has a test that goes red. Use when suites slow down, turn intermittent, or grow faster than the code they cover, or when `garden`'s tests lens leads."
 ---
 
 # Prune
 
 Verification accretes. Each delivery adds tests, checks, and the seams they need, and nothing retires them. Prune one **scope** of that surface so what remains is cheaper to run and maintain and still proves every contract. Optimize for confidence, not deletion count.
 
-Write the report and response in the user's active language.
+Run to the end on your own, and write the report and response in the user's active language.
 
 ## Value bar
 
@@ -75,9 +74,9 @@ A junk pattern that recurs across the scope is evidence for `refine`'s tests len
 
 ## Boundaries
 
-- Commits stay local. Pushing, opening a pull request, or merging needs separate authority.
+- Run inside another skill, such as `garden`, the commits go to that skill's branch. Run alone, finish with `ship`. Merging belongs to the human.
 - Edit only the scope's tests, checks, test support, and the production code they unlock, plus the defect repairs above.
 
 ## Done
 
-Every section's criterion holds, the affected gates pass on the final state, every baseline failure is repaired with a control or reported, and the report separates production from test changes.
+Every section's criterion holds, the affected gates pass on the final state, a lone run's pull request has green checks, every baseline failure is repaired with a control or reported, and the report separates production from test changes.
