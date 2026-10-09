@@ -23,8 +23,8 @@ Read the spec and its sources yourself; the spec, not the diff, is your oracle. 
 
 A finding needs a concrete scenario reachable from input the product accepts, or a mutation that stayed green. Drop the rest. Sort what survives:
 
-- **Blocker:** breaks an example or something that must never happen, loses data, exposes security, or turns a gate or CI check red.
-- **Fix:** a real defect, or a quality problem the change introduced.
+- **Blocker:** the change breaks an example or something that must never happen, loses data, exposes security, or turns a gate or CI check red. Missing or flawed evidence does not break an example unless it hides a defect.
+- **Fix:** a real defect, a quality problem the change introduced, or a gap in the evidence, such as a missing or mistimed capture.
 - **Follow-up:** real, but outside the change's scope.
 
 On a large change, when the harness allows, split the review by area across fresh reviewers and give the tests and mutations their own reviewer.
