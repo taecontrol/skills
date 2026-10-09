@@ -31,7 +31,7 @@ Adapted substantially:
 - `skills/engineering/retro/SKILL.md` — evidence-backed portable retrospectives with temporary artifacts and no automatic workflow mutations.
 - `skills/engineering/prototype/references/logic.md` — logic-mode shareable HTML demo, adapted from `skills/engineering/prototype/LOGIC.md` at revision `c55ee46073ed923f86ce59a5eb3b6d895095d1b7`, with a single default direction, grounding, self-run check, and the local production boundary.
 
-Informs, without reusing text: `skills/in-progress/garden/SKILL.md` (architecture lens after `improve-codebase-architecture`) `skills/in-progress/ship/SKILL.md` (description as evidence, after `pr`), and `skills/in-progress/bug-hunt/SKILL.md` (issues written for an agent to pick up, after `triage/AGENT-BRIEF.md` at revision `49dd158d1076134a641b33efb035946536778336`).
+Informs, without reusing text: `skills/engineering/garden/SKILL.md` (architecture lens after `improve-codebase-architecture`) `skills/engineering/ship/SKILL.md` (description as evidence, after `pr`), and `skills/in-progress/bug-hunt/SKILL.md` (issues written for an agent to pick up, after `triage/AGENT-BRIEF.md` at revision `49dd158d1076134a641b33efb035946536778336`).
 
 Copyright (c) 2026 Matt Pocock
 
@@ -49,7 +49,7 @@ Adapted substantially:
 
 - `skills/engineering/diagnosing-bugs/SKILL.md` — matching-surface reproduction and live or fixed runtime-evidence paths.
 
-Informs, without reusing text: `skills/in-progress/setup-verification/SKILL.md` (a project-local verification capability, after `create-verification-skill`), `skills/in-progress/garden/SKILL.md` (structural fixes ranked from unrepresentable state to standards, after `principle-encode-lessons-in-structure`), `skills/in-progress/ship/SKILL.md` (description as a briefing, after `opening-a-pr`), and `skills/in-progress/bug-hunt/SKILL.md` (no fix without a confirmed reproduction, deference to an existing fix or owner, regression leads, and unguessed issue titles, after the Benny automation's `reproduce-and-fix-issues` and `triage-issue-reports` at revision `ccb5507cec1546dc88135c1139c811e6c59115ba`).
+Informs, without reusing text: `skills/engineering/setup-verification/SKILL.md` (a project-local verification capability, after `create-verification-skill`), `skills/engineering/garden/SKILL.md` (structural fixes ranked from unrepresentable state to standards, after `principle-encode-lessons-in-structure`), `skills/engineering/ship/SKILL.md` (description as a briefing, after `opening-a-pr`), and `skills/in-progress/bug-hunt/SKILL.md` (no fix without a confirmed reproduction, deference to an existing fix or owner, regression leads, and unguessed issue titles, after the Benny automation's `reproduce-and-fix-issues` and `triage-issue-reports` at revision `ccb5507cec1546dc88135c1139c811e6c59115ba`).
 
 Copyright (c) 2026 Lauren Tan
 
@@ -73,7 +73,7 @@ Revision: `80930af448ebabc84174146b56bc106d37fab3b4`
 
 Adapted substantially:
 
-- `skills/in-progress/prune/SKILL.md` — campaign ledger, keepers, layer pass, and preservation review, extended to checks and generalized beyond the source repository's tooling.
+- `skills/engineering/prune/SKILL.md` — campaign ledger, keepers, layer pass, and preservation review, extended to checks and generalized beyond the source repository's tooling.
 - `skills/engineering/strategic-programming/references/test-value.md` — authoring gate, junk patterns, and retention bar.
 
 Copyright (c) 2026 OpenClaw Foundation
