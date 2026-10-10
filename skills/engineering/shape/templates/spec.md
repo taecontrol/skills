@@ -41,7 +41,7 @@ Each settled decision with a pointer to its evidence: the chosen prototype, the 
 
 ## Rabbit holes
 
-Known traps and how to avoid them.
+Known traps and how to avoid them within the decisions above. A trap that could reopen a decision is an open question.
 
 ## Context
 
