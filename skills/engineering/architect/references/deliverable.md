@@ -25,7 +25,7 @@ Keep the document compact, but include every item that changes implementation:
 7. **Alternatives and tradeoffs.** The real alternatives considered, why they lost, and costs accepted by the chosen shape.
 8. **Synthesis provenance.** Candidate base, compatible grafts, rejections, cross-judge verdict, and any unresolved disagreement.
 9. **Implementation contract.** Material decisions implementation must preserve, reversible choices it may make, validation obligations, and evidence that requires design re-entry.
-10. **Open risks.** Remaining non-blocking uncertainty and how later work will observe or contain it.
+10. **Open risks.** Uncertainty that no observation within the bound can settle and no answer would reopen, and how later work will observe or contain it.
 
 ## Handoff discipline
 
