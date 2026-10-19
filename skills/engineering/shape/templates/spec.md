@@ -9,7 +9,7 @@ Who has it, what it costs them, and how they cope today. Label each piece of evi
 
 ## Outcome
 
-What is true for the user when this is done, in one short paragraph.
+What is true for whoever has the problem when this is done, as agreed with the human, in one short paragraph.
 
 ## Out of scope
 
@@ -37,7 +37,7 @@ When state interacts, add the state space the edge cases come from:
 
 ## Decisions
 
-Each settled decision with a pointer to its evidence: the chosen prototype, the architecture result, a spike verdict, a data shape or contract, a budget with the check that enforces it. Every one-way door is here with its `architect` result.
+Each settled decision with a pointer to its evidence: the chosen prototype, the architecture result, a spike verdict, a data shape or contract. Each number a check imposes, such as a budget or a repetition count, names that check and carries the outcome it protects, its evidence, its measured cost per run locally and in CI, and the cost of getting it wrong. Every one-way door is here with its `architect` result.
 
 ## Rabbit holes
 

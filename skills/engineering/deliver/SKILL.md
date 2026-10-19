@@ -21,7 +21,7 @@ These assertions are the contract. Glue around them, such as setup, selectors, a
 
 Make the tests pass, then capture each `capture` example from the running product. Commit as you go. Done when every acceptance test is green, the project's gates pass, and the evidence is captured.
 
-What must outlive the spec goes into the change: behavior is already in tests; rationale goes into an ADR through `adr`, and vocabulary and project-wide rules are drafted where `domain-language` and `agents-md` keep them, for the human to accept with the pull request.
+What must outlive the spec goes into the change: behavior is already in tests; rationale goes into an ADR through `adr`, and vocabulary and project-wide rules are drafted where `domain-language` and `agents-md` keep them, for the human to accept with the pull request. What only a later issue needs goes into that issue.
 
 ## 3. Refine
 
@@ -29,11 +29,11 @@ Run `refine` in a fresh context, such as a subagent, with the spec, the diff ran
 
 ## 4. Ship
 
-Run `ship`. When `refine` stopped on blockers, stop with its report instead.
+Run `ship` once `refine` finishes. When `refine` stopped on blockers, stop with its report instead. A production change made after `refine` finishes, such as a fix for a CI check or one the human asks for, gets a fresh review of that change and its callers, as `refine`'s later rounds do, before the pull request is ready.
 
 ## Decisions along the way
 
-Decide reversible choices yourself and record the ones the human would want to know about for the pull request. A one-way door the spec does not settle, such as a migration, a new contract that writes, or a change to a seam an accepted ADR governs, is not one of them. Stop and ask when the change needs one, or when evidence shows that an example, a decision in the spec, or an accepted one-way door is wrong, and continue with work that does not depend on it. Put anything to the human, a question or a stop such as `refine`'s blockers, so they can answer it without opening the spec: the behavior at stake in plain words, the options, and your recommendation.
+Decide reversible choices yourself and record the ones the human would want to know about for the pull request. A one-way door the spec does not settle, such as a migration, a new contract that writes, or a change to a seam an accepted ADR governs, is not one of them. Stop and ask when the change needs one, or when evidence shows that an example, a decision in the spec, or an accepted one-way door is wrong, and continue with work that does not depend on it. The examples are the contract, but a number that sets how much to verify, such as a repetition count, a sample size, or a margin, is a decision like any other: before a verification that runs long or repeats, time one run, and when the whole would cost out of proportion to what it adds, that is evidence its decision is wrong. Put anything to the human, a question or a stop such as `refine`'s blockers, so they can answer it without opening the spec: the behavior at stake in plain words, the options, and your recommendation.
 
 ## Done
 

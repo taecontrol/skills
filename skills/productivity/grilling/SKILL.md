@@ -7,18 +7,20 @@ Interview the user relentlessly until you reach a shared understanding. Map this
 
 Work the tree in **rounds**. The **frontier** is every decision whose prerequisites are already settled: the questions you can ask _now_ without guessing at answers you haven't heard yet. Ask the whole frontier in one round: number each question and give your recommended answer. Then wait for the user's answers before the next round.
 
+Write each question in plain words, so the user can decide it without asking what it means: a term the user has not used gets replaced or defined in a few words.
+
 Format a round like so:
 
 ```
-❓ **Q1** - **<question title>**: <question body, might be multiple paragraphs, including multiple choices>
+❓ **Q1** - **<question title>**: <question body, might be multiple paragraphs: what is at stake, and each option with what it buys and costs>
 
-➡️ <your recommended answer>
+➡️ <your recommended answer and why>
 
 ---
 
-❓ **Q2** - **<question title>**: <question body, might be multiple paragraphs, including multiple choices>
+❓ **Q2** - **<question title>**: <question body, might be multiple paragraphs: what is at stake, and each option with what it buys and costs>
 
-➡️ <your recommended answer>
+➡️ <your recommended answer and why>
 ```
 
 Each round the user answers reshapes the tree: settled decisions push the frontier outward and unblock questions that depended on them. Recompute the frontier and ask the next round. A question whose answer depends on another question still open in this round belongs to a _later_ round, not this one.
