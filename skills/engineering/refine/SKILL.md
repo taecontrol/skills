@@ -18,7 +18,7 @@ Read the spec and its sources yourself; the spec, not the diff, is your oracle. 
 - **Behavior:** each example and what must never happen; each `capture` example against what the delivery captured, such as the screen against the chosen prototype; the spec's state space when it has one; each dependency's failures, restarts, retries, and duplicates; every consumer of a name, value, or seam whose meaning changed; the policy existing peers apply, such as validation, authorization, and guards, that the new behavior should inherit.
 - **Tests:** each test against `strategic-programming`'s test value reference; stand-ins that differ from the real target; assertion changes that weakened an example; sleeps, wall-clock dependence, and flakiness; tests that CI will not run.
 - **Mutations:** prove the tests by breaking the code, as [mutations](references/mutations.md) describes: in the first round, every target; later, only what the previous round added.
-- **Right:** the `strategic-programming` lenses, the project's coding standards, duplicated policy, dead code, scaffolding left from making it work, and temporary labels in durable files.
+- **Right:** the `strategic-programming` lenses, the accepted program design when the spec points to one (the diff follows it, or the delivery names each departure), the project's coding standards, duplicated policy, dead code, scaffolding left from making it work, and temporary labels in durable files.
 - **Fast:** the spec's budgets, and work the change made needlessly slow, such as extra round trips, queries, renders, or suite time.
 
 A finding needs a concrete scenario reachable from input the product accepts, or a mutation that stayed green. Drop the rest. Sort what survives:
