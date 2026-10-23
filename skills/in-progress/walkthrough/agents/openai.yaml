@@ -1,0 +1,6 @@
+interface:
+  display_name: "Walkthrough"
+  short_description: "Render a design as a visual page a human can read and share"
+
+policy:
+  allow_implicit_invocation: true

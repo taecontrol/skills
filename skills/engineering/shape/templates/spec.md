@@ -37,7 +37,7 @@ When state interacts, add the state space the edge cases come from:
 
 ## Decisions
 
-Each settled decision with a pointer to its evidence: the chosen prototype, the architecture result, a spike verdict, a data shape or contract. Each number a check imposes, such as a budget or a repetition count, names that check and carries the outcome it protects, its evidence, its measured cost per run locally and in CI, and the cost of getting it wrong. Every one-way door is here with its `architect` result.
+Each settled decision with a pointer to its evidence: the chosen prototype, the architecture result, a spike verdict, a data shape or contract. Each number a check imposes, such as a budget or a repetition count, names that check and carries the outcome it protects, its evidence, its measured cost per run locally and in CI, and the cost of getting it wrong. Every one-way door is here with its `architect` result, and the program design with its status when there is one.
 
 ## Rabbit holes
 

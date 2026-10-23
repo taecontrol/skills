@@ -11,3 +11,5 @@ npx skills@latest add taecontrol/skills --skill=<name>
 ## Candidates
 
 - **[`bug-hunt`](./bug-hunt/SKILL.md)** — User-invoked. Hunt the project, or the area named, for bugs nobody has reported, keep only those a reproduction turns red, fix the easy ones in one draft pull request, and file the rest as issues an agent could pick up. Runs to the end on its own, so it suits a scheduled task.
+- **[`program-design`](./program-design/SKILL.md)** — Model-invoked. Agree the shape of the code inside the components before agents write it: where each thing lives, the key types and signatures, the important call paths in production and tests, what each module hides, and how errors travel. `shape` runs it when a change creates modules or types or spans several.
+- **[`walkthrough`](./walkthrough/SKILL.md)** — Model-invoked. Render a design (a spec, an architecture brief, a program design, or a comparison of options) as a self-contained visual page built from its Markdown sources, so a human understands it before accepting it and can talk it through with others. Agents keep reading the Markdown.

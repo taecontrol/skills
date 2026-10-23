@@ -1,0 +1,6 @@
+interface:
+  display_name: "Program design"
+  short_description: "Agree the shape of the code before agents write it"
+
+policy:
+  allow_implicit_invocation: true
