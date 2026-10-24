@@ -1,0 +1,6 @@
+interface:
+  display_name: "Editor"
+  short_description: "Edit the user's own essay with reader agents, without writing it"
+
+policy:
+  allow_implicit_invocation: true
