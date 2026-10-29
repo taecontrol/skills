@@ -13,16 +13,15 @@ The branch holds only durable work: temporary artifacts such as specs, prototype
 
 ## Open
 
-Push the branch and open the pull request against its base, following the project's conventions for titles and descriptions. Write the description as a briefing, not a lab notebook:
+Push the branch and open the pull request against its base, following the project's conventions for titles and descriptions, in the language its team reads. Write the description for the **reviewer**: someone who knows the codebase but not how this change was made, and who wants to understand it and review it quickly.
 
-- **Why:** the problem and the issue it closes.
-- **What changed:** the behavior and the scope, including what was left out.
-- **Evidence:** the acceptance tests that prove each example, and screenshots or recordings for the `capture` examples, attached where the platform allows or otherwise located.
-- **Deviations:** every difference from the spec, every changed acceptance assertion, and decisions the delivery made on its own.
-- **Review:** `refine`'s report.
-- **Follow-ups:** what is real but was left out.
+- **What and why:** the problem in a few sentences, the issue it closes, and the plan when there is one.
+- **How to review:** where to start, the order to read the change in, where the risk sits, and what can be skimmed, such as generated code, mechanical moves, or fixtures.
+- **How to try it:** the steps to see it work, with screenshots or recordings where a person must look, attached where the platform allows.
+- **Decisions worth knowing:** choices made while building it that a reviewer would otherwise question, in the product's terms.
+- **Not included:** what is real but was left out, with its follow-up.
 
-Leave out empty sections.
+Leave out empty sections. Describe the change, not how it was made, and cite only what the reviewer can open: the spec's example IDs, review rounds, deviations from the spec, and working files belong in the delivery's report to the human. Run `unslop` on the description before publishing it.
 
 ## Drive checks to green
 

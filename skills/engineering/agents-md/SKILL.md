@@ -29,6 +29,7 @@ Useful content can include:
 - a compact explanation of what the project exists to accomplish, for whom, and why that should affect implementation choices;
 - product qualities and tensions the agent must preserve when several solutions appear valid;
 - the author's durable decision heuristics and expectations for collaboration;
+- how the team shares work, which `shape` and `ship` follow: the tracker for its issues, where it keeps plans for people, and the language its shared work is written in;
 - recurring hazards with the condition that activates them and a concrete safe path;
 - cross-surface obligations or vocabulary needed on nearly every relevant task;
 - conditional pointers that name both the maintained source and when to read it.
