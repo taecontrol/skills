@@ -1,5 +1,5 @@
 interface:
   display_name: "Wait What"
-  short_description: "Re-pitch simply in English or Spanish"
+  short_description: "Re-pitch a message so the user can follow it"
 policy:
   allow_implicit_invocation: true

@@ -21,7 +21,7 @@ These assertions are the contract. Glue around them, such as setup, selectors, a
 
 Make the tests pass, then capture each `capture` example from the running product. Commit as you go. Done when every acceptance test is green, the project's gates pass, and the evidence is captured.
 
-What must outlive the spec goes into the change: behavior is already in tests; rationale goes into an ADR through `adr`, and vocabulary and project-wide rules are drafted where `domain-language` and `agents-md` keep them, for the human to accept with the pull request. What only a later issue needs goes into that issue.
+What must outlive the spec goes into the change: behavior is already in tests; rationale goes into an ADR through `adr`; project-wide rules are drafted where `agents-md` keeps them; and a new or changed domain term goes into the project's glossary, in its existing format, when the project keeps one. The human accepts all of it with the pull request; a project without a glossary gets one only when the human agrees. What only a later issue needs goes into that issue.
 
 ## 3. Refine
 
@@ -33,11 +33,11 @@ Run `ship` once `refine` finishes. When `refine` stopped on blockers, stop with 
 
 ## Decisions along the way
 
-Decide reversible choices yourself and record the ones the human would want to know about for the report. A one-way door the spec does not settle, such as a migration, a new contract that writes, or a change to a seam an accepted ADR governs, is not one of them. An accepted program design constrains them: follow it where the code agrees, and name each departure from it in the report with its reason. Stop and ask when the change needs one, or when evidence shows that an example, a decision in the spec, or an accepted one-way door is wrong, and continue with work that does not depend on it. The examples are the contract, but a number that sets how much to verify, such as a repetition count, a sample size, or a margin, is a decision like any other: before a verification that runs long or repeats, time one run, and when the whole would cost out of proportion to what it adds, that is evidence its decision is wrong. Put anything to the human, a question or a stop such as `refine`'s blockers, so they can answer it without opening the spec: the behavior at stake in plain words, the options, and your recommendation.
+Decide reversible choices yourself and record the ones the human would want to know about for the report. A one-way door the spec does not settle, such as a migration, a new contract that writes, or a change to a seam an accepted ADR governs, is not one of them. An accepted program design constrains them: follow it where the code agrees, and name each departure from it in the report with its reason. Stop and ask when the change needs one, or when evidence shows that an example, a decision in the spec, or an accepted one-way door is wrong, and continue with work that does not depend on it. The examples are the contract, but a number that sets how much to verify, such as a repetition count, a sample size, or a margin, is a decision like any other: before a verification that runs long or repeats, time one run, and when the whole would cost out of proportion to what it adds, that is evidence its decision is wrong. Put anything to the human, a question or a stop such as `refine`'s blockers, so they can answer it without opening the spec: the behavior at stake in plain words, the options, and your recommendation, written the way `wait-what` writes a re-pitch.
 
 ## Report
 
-End with a report to the human, in their language, in your final message rather than the pull request. It carries what the pull request leaves out because only someone who knows the spec can use it: the pull request and its check state, how each example is proven, every deviation from the spec and from the program design with its reason, each changed acceptance assertion, the decisions you made on your own, and `refine`'s report.
+End with a report to the human, in their language, in your final message rather than the pull request, written the way `wait-what` writes a re-pitch. It carries what the pull request leaves out because only someone who knows the spec can use it: the pull request and its check state, how each example is proven, every deviation from the spec and from the program design with its reason, each changed acceptance assertion, the decisions you made on your own, and `refine`'s report.
 
 ## Done
 

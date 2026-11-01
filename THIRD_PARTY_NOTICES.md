@@ -8,7 +8,6 @@ Revision: `3cca18b368ae95cdbdebbff572ccafa662551015`
 
 Included unchanged:
 
-- `skills/productivity/grilling/SKILL.md`
 - `skills/productivity/grilling/agents/openai.yaml`
 - `skills/productivity/writing-for-agents/SKILL-MECHANICS.md`
 - `skills/productivity/writing-for-agents/agents/openai.yaml`
@@ -18,7 +17,11 @@ Adapted only in the frontmatter description:
 
 - `skills/productivity/writing-for-agents/SKILL.md`
 
-Adapted to remove source-specific context conventions and add Spanish-language output:
+Adapted to ask each question in plain words, the way `wait-what` writes a re-pitch:
+
+- `skills/productivity/grilling/SKILL.md`
+
+Adapted to remove source-specific context conventions, add Spanish-language output, lead with what the user must decide, define unfamiliar labels, and re-pitch other agents' reports before they reach the user:
 
 - `skills/productivity/wait-what/SKILL.md`
 - `skills/productivity/wait-what/agents/openai.yaml`
