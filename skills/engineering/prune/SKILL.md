@@ -27,7 +27,7 @@ Done when every test file and check in scope has a recorded baseline.
 
 When the scope is larger than one reader can hold, split it into **lanes** along production owner boundaries, not file prefixes, and give each lane to a fresh read-only agent. Every test file and check in scope belongs to exactly one lane.
 
-The reader reads every assigned test in full, including parameter tables, and its production owner, entry point, callers, overlapping tests, CI routing, and history; use `why` when the reason a test, seam, or check exists is not evident. It gives every test declaration and check one mark with an evidence line:
+The reader reads every assigned test in full, including parameter tables, and its production owner, entry point, callers, overlapping tests, CI routing, and history; when the reason a test, seam, or check exists is not evident, trace it through the commits, pull requests, and issues that introduced it, and treat any reason no source from that time records as a guess. It gives every test declaration and check one mark with an evidence line:
 
 - `R` retain: the contract and the regression it catches;
 - `F` fix: retain the contract and repair the assertion, such as a negative control that passes when only one of several items is missing;

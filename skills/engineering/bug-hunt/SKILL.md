@@ -16,7 +16,7 @@ Hunt the area the user names; otherwise, the whole project. Split a scope larger
 
 ## 2. Hunt
 
-Read the code in scope, its callers, its tests, and its history; use `why` when defensive code or a strange shape needs its reason. Ask what breaks it: which inputs, states, orderings, retries, and failures; which errors are swallowed; what the code assumes and never checks; where a test asserts less than its name claims. Where state interacts, enumerate the **state space** as `strategic-programming` defines it.
+Read the code in scope, its callers, its tests, and its history; when defensive code or a strange shape needs its reason, trace it through the commits, pull requests, and issues that introduced it, and treat any reason no source from that time records as a guess. Ask what breaks it: which inputs, states, orderings, retries, and failures; which errors are swallowed; what the code assumes and never checks; where a test asserts less than its name claims. Where state interacts, enumerate the **state space** as `strategic-programming` defines it.
 
 Record each **suspect** in a queue with the observed evidence, and change nothing yet.
 

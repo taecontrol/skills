@@ -8,7 +8,6 @@ Revision: `3cca18b368ae95cdbdebbff572ccafa662551015`
 
 Included unchanged:
 
-- `skills/productivity/grilling/SKILL.md`
 - `skills/productivity/grilling/agents/openai.yaml`
 - `skills/productivity/writing-for-agents/SKILL-MECHANICS.md`
 - `skills/productivity/writing-for-agents/agents/openai.yaml`
@@ -18,7 +17,11 @@ Adapted only in the frontmatter description:
 
 - `skills/productivity/writing-for-agents/SKILL.md`
 
-Adapted to remove source-specific context conventions and add Spanish-language output:
+Adapted to ask each question in plain words, the way `wait-what` writes a re-pitch:
+
+- `skills/productivity/grilling/SKILL.md`
+
+Adapted to remove source-specific context conventions, add Spanish-language output, lead with what the user must decide, define unfamiliar labels, and re-pitch other agents' reports before they reach the user:
 
 - `skills/productivity/wait-what/SKILL.md`
 - `skills/productivity/wait-what/agents/openai.yaml`
@@ -31,7 +34,7 @@ Adapted substantially:
 - `skills/engineering/retro/SKILL.md` — evidence-backed portable retrospectives with temporary artifacts and no automatic workflow mutations.
 - `skills/engineering/prototype/references/logic.md` — logic-mode shareable HTML demo, adapted from `skills/engineering/prototype/LOGIC.md` at revision `c55ee46073ed923f86ce59a5eb3b6d895095d1b7`, with a single default direction, grounding, self-run check, and the local production boundary.
 
-Informs, without reusing text: `skills/engineering/garden/SKILL.md` (architecture lens after `improve-codebase-architecture`) `skills/engineering/ship/SKILL.md` (description as evidence, after `pr`), and `skills/in-progress/bug-hunt/SKILL.md` (issues written for an agent to pick up, after `triage/AGENT-BRIEF.md` at revision `49dd158d1076134a641b33efb035946536778336`).
+Informs, without reusing text: `skills/engineering/garden/SKILL.md` (architecture lens after `improve-codebase-architecture`) `skills/engineering/ship/SKILL.md` (description as evidence, after `pr`), and `skills/engineering/bug-hunt/SKILL.md` (issues written for an agent to pick up, after `triage/AGENT-BRIEF.md` at revision `49dd158d1076134a641b33efb035946536778336`).
 
 Copyright (c) 2026 Matt Pocock
 
@@ -49,7 +52,7 @@ Adapted substantially:
 
 - `skills/engineering/diagnosing-bugs/SKILL.md` — matching-surface reproduction and live or fixed runtime-evidence paths.
 
-Informs, without reusing text: `skills/engineering/setup-verification/SKILL.md` (a project-local verification capability, after `create-verification-skill`), `skills/engineering/garden/SKILL.md` (structural fixes ranked from unrepresentable state to standards, after `principle-encode-lessons-in-structure`), `skills/engineering/ship/SKILL.md` (description as a briefing, after `opening-a-pr`), and `skills/in-progress/bug-hunt/SKILL.md` (no fix without a confirmed reproduction, deference to an existing fix or owner, regression leads, and unguessed issue titles, after the Benny automation's `reproduce-and-fix-issues` and `triage-issue-reports` at revision `ccb5507cec1546dc88135c1139c811e6c59115ba`).
+Informs, without reusing text: `skills/engineering/setup-verification/SKILL.md` (a project-local verification capability, after `create-verification-skill`), `skills/engineering/garden/SKILL.md` (structural fixes ranked from unrepresentable state to standards, after `principle-encode-lessons-in-structure`), `skills/engineering/ship/SKILL.md` (description as a briefing, after `opening-a-pr`), and `skills/engineering/bug-hunt/SKILL.md` (no fix without a confirmed reproduction, deference to an existing fix or owner, regression leads, and unguessed issue titles, after the Benny automation's `reproduce-and-fix-issues` and `triage-issue-reports` at revision `ccb5507cec1546dc88135c1139c811e6c59115ba`).
 
 Copyright (c) 2026 Lauren Tan
 
