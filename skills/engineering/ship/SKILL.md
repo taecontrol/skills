@@ -17,10 +17,10 @@ Push the branch and open the pull request against its base, with the title and d
 
 ## Drive checks to green
 
-Watch every CI check until it finishes. For each failure, find why it fails in CI when it passed locally, such as a different platform, browser, path, timeout, or concurrency, fix the cause, and push again. A check that passes only on a retry is flaky, not green: diagnose it with `diagnosing-bugs`. Make checks pass by fixing code, tests, or configuration; disabling a check or weakening a test to get green does not count. When a failure is outside the change, show that it fails on the base too, say so in the pull request, and find or open its issue so the next delivery inherits the diagnosis.
+Watch every CI check until it finishes. For each failure, find why it fails in CI when it passed locally, such as a different platform, browser, path, timeout, or concurrency, fix the cause, and push again. A check that passes only on a retry is flaky, not green: diagnose it with `diagnosing-bugs`. Make checks pass by fixing code, tests, or configuration; disabling a check or weakening a test to get green does not count. When a failure is outside the change, show that it fails on the base too, say so in the pull request, and find or open its issue so the next delivery inherits the diagnosis. When a fix changes what the description says, update the description with `pr-description`.
 
 When a failure needs something you cannot get, such as a secret, infrastructure access, or a human decision, stop and name it.
 
 ## Done
 
-Every CI check is green, the description matches the final state after any fix CI needed, and the pull request is ready to merge. The human merges.
+Every CI check is green, the description matches the final state, and the pull request is ready to merge. The human merges.
