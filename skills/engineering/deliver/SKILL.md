@@ -37,7 +37,7 @@ Decide reversible choices yourself and record the ones the human would want to k
 
 ## Report
 
-End with a report to the human, in their language. It carries what the pull request leaves out because only someone who knows the spec can use it: the pull request and its check state, how each example is proven, every deviation from the spec and from the program design with its reason, each changed acceptance assertion, the decisions you made on your own, and `refine`'s report.
+End with a report to the human, in their language, in your final message rather than the pull request. It carries what the pull request leaves out because only someone who knows the spec can use it: the pull request and its check state, how each example is proven, every deviation from the spec and from the program design with its reason, each changed acceptance assertion, the decisions you made on your own, and `refine`'s report.
 
 ## Done
 
