@@ -1,17 +1,27 @@
 ---
 name: pr-description
-description: "Write or rewrite a pull request's title and description for a reviewer who knows the codebase but not how the change was made. Use when opening a pull request, or when asked to write, review, or improve a PR description."
+description: "Write or rewrite a pull request's title and description for a reviewer who knows the codebase but not how the change was made, and verify every claim with a fresh agent before publishing. Use when opening a pull request, or when asked to write, review, or improve a PR description."
 ---
 
 # PR description
 
-The reader is the **reviewer**: someone who knows the codebase, not how this change was made, and has no reason to care how it was made. They read the description to decide whether the change should exist, where to look, and whether they can trust that it works. Every sentence answers one of those questions.
+The reader is the **reviewer**: someone who knows the codebase, not how this change was made, and has no reason to care how it was made. They read the description to decide whether the change should exist, where to look, and whether they can trust that it works. Every sentence answers one of those questions, and every claim is one the reviewer could check. The job ends when a fresh agent that saw none of the work has verified it.
 
 ## 1. Gather
 
 Work from what outlives the work: the final diff against the base, the commits, the issue the change closes, the documentation and ADRs it adds, and verification you ran on the final state. Read the whole diff. Notes from how the change was made, such as a spec, a plan, a review, a spike, or a report to whoever asked for the work, supply facts only. They never supply the structure or the words.
 
-Done when you can say in one sentence why the change exists, and every claim you mean to make points to a line in the diff or a run you saw.
+Keep a **claims list**: each fact you may state, with its source.
+
+- **Diff:** the file and lines that show it.
+- **Run:** a command or action you ran on the final state, with its output.
+- **Said:** a person told you, such as the owner's decision or report. The description attributes it to them.
+- **Document:** a page or file you read, with where it lives.
+- **Inference:** your own conclusion. The description states it as one, or leaves it out.
+
+A claim from an earlier run, from the change's own documents such as an ADR, or from an agent's report is a lead until the diff or a new run backs it.
+
+Done when you can say in one sentence why the change exists, and every claim you mean to make is on the list with its source.
 
 ## 2. Write
 
@@ -25,6 +35,8 @@ Then the sections below, in this order. Each one answers a question the reviewer
 4. **How to review:** when the change spans several areas or many files. Name where to start, the reading order, where the risk sits, what to skim (generated code, lockfiles, fixtures, mechanical moves), and the question you want the reviewer's judgment on. When a change this large could have been split, say why it was not.
 5. **Try it and what was tested:** the shortest way for the reviewer to see it work, then one line per check: the command or action and its result. Use before-and-after screenshots for UI and numbers for performance. Name what was not verified and why. Put long output and extra screenshots in a collapsed `<details>` block, with the decisive lines outside it. The pull request's own CI checks already show their results.
 6. **Not included:** what is real but left out, each with its follow-up issue.
+
+Write in the language the project's team reads. When the project has a pull request template or conventions, fit these sections into them instead of adding a second structure. Then run `unslop` on the prose.
 
 ## 3. Translate the process
 
@@ -43,14 +55,20 @@ Material from how the change was made is what most often turns a description int
 
 What the person who ran the work needs, such as deviations from a spec, review rounds, and changed assertions, goes in your report to them.
 
-## 4. Check
+**Visibility.** The description is exactly as visible as its repository. When the repository is public, or reaches more people than a source does, describe what came from that source in general terms, whether it is a private repository, an internal system, a customer, a colleague, a host, an address, or data, and leave out its names, links, and details. Check the visibility of the repository and of each source you cite, such as with `gh repo view --json visibility`.
 
-1. **Against the diff.** Every claim is true of the final diff, above all claims about tests, scope, and behavior, and claims carried over from the change's own documents, such as an ADR, get the same check. A description that claims changes or tests the diff lacks costs the reviewer's trust in everything else.
-2. **Cold read.** Give a fresh agent only the title, the description, and the diff, with no conversation, spec, or notes. It plays the reviewer and returns the questions it would ask the author before reviewing, each term or reference it cannot resolve from the pull request alone, and each claim it cannot find in the diff. Fix what it finds and repeat once if the fixes were large. When the harness offers no fresh context, do the cold read yourself and say so.
-3. **`unslop`** the prose.
+## 4. Verify
 
-Done when the cold reader can say why the change exists, where to start reading, and how it was verified, and has no question the description could have answered.
+Give a fresh agent only the title, the description, the diff, the claims list with its sources, and the visibility of the repository and of each source. It saw nothing of the work and has nothing to defend. It returns:
+
+1. **Each claim, traced.** Every factual statement in the description, with its source checked by opening it, or by rerunning the check when that is cheap. It marks each claim **supported**, **attributed** to the person who said it, **inference** stated as one, or **unsupported**. A claim is unsupported when its source does not show it, when the diff contradicts it, when it states an inference as fact, or when it generalizes from one case.
+2. **Exposure.** Every name, link, path, address, or detail that reveals more than the repository's visibility allows.
+3. **Cold read.** The questions it would ask the author before reviewing, and each term or reference it cannot resolve from the pull request alone.
+
+For each unsupported claim, remove it, attribute it, mark it as not verified, or back it with a new run. Fix everything else it reports. When the fixes add or change claims, verify those again with a fresh agent. When the harness offers no fresh context, verify it yourself and say so in your report, not in the pull request.
+
+Done when the latest verification finds no unsupported claim and no exposure, and the verifier can say why the change exists, where to start reading, and how it was verified.
 
 ## 5. Publish
 
-Write in the language the project's team reads. When the project has a pull request template or conventions, fit these sections into them instead of adding a second structure. Add an AI attribution line only when the project or the harness asks for one. Images and links must open for the reviewer: upload screenshots where the platform allows, and never point to a local path. Create the pull request with the description, or replace the description of an existing one, from a file, such as `gh pr create --body-file`, so the formatting survives.
+Add an AI attribution line only when the project or the harness asks for one. Images and links must open for the reviewer: upload screenshots where the platform allows, and never point to a local path. Create the pull request with the description, or replace the description of an existing one, from a file, such as `gh pr create --body-file`, so the formatting survives. A published description keeps its earlier versions in its edit history, so an exposure caught after publishing needs that revision deleted, not only the text edited.
