@@ -23,7 +23,7 @@ Stable skills used regularly for code work.
 - **[`research`](./research/SKILL.md)** — Investigate a bounded question through parallel independent research and publish one cross-checked Markdown report.
 - **[`setup-verification`](./setup-verification/SKILL.md)** — Give agents one way to launch, drive, and observe the real product, with acceptance tests that run fast and the same locally and in CI.
 - **[`shape`](./shape/SKILL.md)** — Agree with the human on one spec: what to build, what success means, and how to prove it. Work too big for one pull request becomes slices, with a plan the team can follow.
-- **[`ship`](./ship/SKILL.md)** — Open a pull request a reviewer can trust and drive its checks to green.
+- **[`ship`](./ship/SKILL.md)** — Open a pull request described for its reviewer by [`pr-description`](../in-progress/pr-description/SKILL.md) (beta) and drive its checks to green.
 - **[`skill-guide`](./skill-guide/SKILL.md)** — Explain the available skills and recommend what the user should invoke next.
 - **[`spike`](./spike/SKILL.md)** — Settle one empirical technical uncertainty through a bounded disposable experiment.
 - **[`strategic-programming`](./strategic-programming/SKILL.md)** — Build maintainable code through grounded design, independent proof, and minimal custom machinery.
