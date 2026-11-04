@@ -13,7 +13,7 @@ The branch holds only durable work: temporary artifacts such as specs, prototype
 
 ## Open
 
-Push the branch and open the pull request against its base, with the title and description written by `pr-description`.
+Push the branch and open the pull request as a draft against its base, with the title and description written by `pr-description`. It stays a draft: the human marks it ready for review once they have looked at it.
 
 ## Drive checks to green
 
@@ -23,4 +23,4 @@ When a failure needs something you cannot get, such as a secret, infrastructure 
 
 ## Done
 
-Every CI check is green, the description matches the final state, and the pull request is ready to merge. The human merges.
+Every CI check is green, the description matches the final state, and the draft pull request is ready to merge once the human marks it ready for review. The human marks it ready and merges.

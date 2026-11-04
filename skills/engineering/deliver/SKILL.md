@@ -41,4 +41,4 @@ End with a report to the human, in their language, in your final message rather 
 
 ## Done
 
-The pull request is open, its checks are green, every example is proven by a test or a capture, and every deviation from the spec is named in the report. The human merges.
+The draft pull request is open, its checks are green, every example is proven by a test or a capture, and every deviation from the spec is named in the report. The human marks it ready for review and merges.
