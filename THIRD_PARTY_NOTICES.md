@@ -17,11 +17,11 @@ Adapted only in the frontmatter description:
 
 - `skills/productivity/writing-for-agents/SKILL.md`
 
-Adapted to ask each question in plain words, the way `wait-what` writes a re-pitch:
+Adapted to ask each question in plain words, with `writing-for-people`:
 
 - `skills/productivity/grilling/SKILL.md`
 
-Adapted to remove source-specific context conventions, add Spanish-language output, lead with what the user must decide, define unfamiliar labels, and re-pitch other agents' reports before they reach the user:
+Adapted to remove source-specific context conventions, re-pitch other agents' reports before they reach the user, and rewrite through `writing-for-people`:
 
 - `skills/productivity/wait-what/SKILL.md`
 - `skills/productivity/wait-what/agents/openai.yaml`
@@ -44,7 +44,7 @@ Source: https://github.com/cursor/plugins/tree/main/pstack
 
 Revision: `889ec4b68fa5aab0e867dad71ec3fdf386ae48f3`
 
-Adapted only in the frontmatter description:
+Adapted in the frontmatter description, a line that leaves what a text says to `writing-for-people`, and rule 16, which also catches one label repeated on every item:
 
 - `skills/productivity/unslop/SKILL.md`
 

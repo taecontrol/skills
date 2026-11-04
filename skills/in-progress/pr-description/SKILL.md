@@ -36,9 +36,9 @@ Then the sections below, in this order. Each one answers a question the reviewer
 5. **Try it and what was tested:** the shortest way for the reviewer to see it work, then one line per check: the command or action and its result. Use before-and-after screenshots for UI, uploaded where the platform allows, and numbers for performance. Name what was not verified and why. Put long output and extra screenshots in a collapsed `<details>` block, with the decisive lines outside it. The pull request's own CI checks already show their results.
 6. **Not included:** what is real but left out, each with its follow-up issue.
 
-Turn material from the work into the reviewer's terms through [Process material](#process-material), and keep within the repository's [Visibility](#visibility). Write in the language the project's team reads. When the project has a pull request template or conventions, fit these sections into them instead of adding a second structure.
+Turn material from the work into the reviewer's terms through `writing-for-people`'s process material, putting each statement under the section whose question it answers, and keep within the repository's [Visibility](#visibility). Write in the language the project's team reads. When the project has a pull request template or conventions, fit these sections into them instead of adding a second structure.
 
-Done when every section with something to say is written and `unslop` has run on the prose.
+Done when every section with something to say is written with `writing-for-people`.
 
 ## 3. Verify
 
@@ -57,23 +57,6 @@ Done when the latest verification finds no unsupported claim and no exposure, an
 Create the pull request with the verified description, or replace the description of an existing one, from a file, such as `gh pr create --body-file`, so the formatting survives. Add an AI attribution line only when the project or the harness asks for one. A published description keeps its earlier versions in the platform's edit history, so an exposure caught after publishing needs that revision deleted, not only the text edited.
 
 Done when the pull request shows the verified description.
-
-## Process material
-
-Material from how the change was made is what most often turns a description into something only its author can read. Each kind either becomes a statement about the code, its risk, or its verification, or goes to its own home:
-
-| From the work | In the description |
-|---|---|
-| Spec examples, acceptance criteria, and their IDs | The behavior itself, in plain words |
-| Review rounds and the fixes they produced | A risk they exposed, under Decisions or How to review |
-| Departures from a spec or design the reviewer cannot open | The decision and its reason, under Decisions |
-| Spike or experiment results | The conclusion, where it backs a decision |
-| Findings only a later change needs | That change's issue, linked from Not included |
-| Workflow phases, and skill, agent, tool, or model names | Nothing |
-| Terms coined during the work | The words the code and the team already use |
-| Local paths, unmerged branches, links the reviewer cannot open | The durable thing they point to, or nothing |
-
-What the person who ran the work needs, such as deviations from a spec, review rounds, and changed assertions, goes in your report to them.
 
 ## Visibility
 

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Writing for people"
+  short_description: "Write text a person understands on the first read"
+
+policy:
+  allow_implicit_invocation: true
