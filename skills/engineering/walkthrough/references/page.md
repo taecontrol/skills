@@ -16,7 +16,7 @@ What the page holds and how it reads. [The template](../templates/page.html) alr
 - **Open stays open.** Draft status, open questions, pending decisions, and unproven risks look open wherever they appear.
 - **Program design:** labelled a draft until accepted, once. Show it as pictures of the code's shape: a module map whose folders carry their role and open to their files on click, one walk of an important call through it in production with the test fakes named at each step, how errors travel, and each type guarantee as the concrete mistake it refuses ("the instance name is passed where an id is expected: refused before it runs"). Exact types and signatures, when kept, sit behind one disclosure.
 - **UI:** link each example to its scenario in the chosen prototype, such as `prototype.html#scenario`; never redraw product screens. A small screenshot beside the link is fine.
-- **Copy:** load `writing-for-people`. Plain sentences, the important word first, one term per concept.
+- **Copy:** load `writing-for-people`. Plain sentences, the important word first, one term per concept, no meta-text about the page or its readers, no paths the reader can't open.
 
 ## Visuals
 

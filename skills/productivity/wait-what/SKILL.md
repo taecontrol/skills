@@ -5,4 +5,4 @@ description: "Re-pitch a message so it stands on its own. Use when the user does
 
 Re-pitch the message so it stands on its own for someone who has not seen the work behind it: your last message when it did not land, or another agent's report before you pass it on.
 
-First find what made it fail for this reader, such as a term, ID, or reference it never explained, a reason it left out, or an ask buried under the report. Then rewrite the whole message with `writing-for-people`, in the language the user asked for.
+First find what made it fail for this reader, such as a term, ID, or reference it never explained, a reason it left out, or an ask buried under the report. Then rewrite the whole message with `writing-for-people`, leading with what the user must decide or do, in the user's language or the one they asked for.

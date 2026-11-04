@@ -34,7 +34,7 @@ The spec dies with the worktree. What another issue, pull request, or worktree n
 
 The plan is where the team follows work that spans several slices, and where its context lives for people. Write one when the project's agent instructions name where the team keeps plans; a project that names none works from its issues alone. Open it there as a draft once the human agrees on the split, in the language the team reads, and keep it current until the last slice merges.
 
-It holds what a teammate needs to follow the work and question it: the problem and the outcome, the behavior in plain words, each decision with why it was made, the diagrams, the slices with their issues and pull requests, and what is still open. A research report, spike, or prototype is a short section with its conclusion, or an attachment, and gets its own issue only when someone else does it. Attach the walkthrough page where the place allows. Write it with `writing-for-people`. When a decision changes, change it in the plan; each slice's issue points to the plan instead of copying it. Agents keep working from each slice's spec.
+It holds what a teammate needs to follow the work and question it: the problem and the outcome, the behavior in plain words, each decision with why it was made, the diagrams, the slices with their issues and pull requests, and what is still open. A research report, spike, or prototype is a short section with its conclusion, or an attachment, and gets its own issue only when someone else does it. Attach the walkthrough page where the place allows. Write it for people, with `writing-for-people`. When a decision changes, change it in the plan; each slice's issue points to the plan instead of copying it. Agents keep working from each slice's spec.
 
 ## Done
 
