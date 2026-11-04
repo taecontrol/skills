@@ -1,11 +1,11 @@
 ---
 name: unslop
-description: Revise prose to remove AI writing patterns while preserving meaning and intended tone. Use primarily for human-facing text; on agent instructions, apply only as a final wording pass after writing-for-agents.
+description: Revise prose to remove AI writing patterns while preserving meaning and intended tone. Use as the final wording pass on human-facing text, after writing-for-people, and on agent instructions, after writing-for-agents.
 ---
 
 # Unslop
 
-Edit text to remove AI patterns.
+Edit text to remove AI patterns. Unslop fixes the wording; what a text for people says and leaves out is `writing-for-people`'s job.
 
 ## Process
 
@@ -36,7 +36,7 @@ Rule numbers are stable ids that other skills cite. A removed rule leaves a gap.
 13. **Em dash overuse.** Avoid em dashes entirely. Use periods or commas only (no parentheses, no en dashes, no hyphen-as-dash substitutes). If a thought needs separation, end the sentence or use a comma.
 14. **Colon overuse.** Colons are fine before a list or example. Not as mid-sentence connectors. "If you're coming from traditional automation: instead of registering event handlers, you describe conditions" adds nothing with the colon. Rewrite to let the point stand on its own without comparison framing. "Describing when the scheduler should fire works best as plain English." Same meaning, no crutch punctuation.
 15. **Boldface overuse.** Don't bold every proper noun or acronym.
-16. **Inline-header lists.** The tell is a bold label and colon that restates the line: "**Performance:** Performance improved...". Convert those to prose. A bold lead-in that ends in a period, names the item, and is followed by genuinely new detail ("**Schema in TypeScript.** Tables live in one file.") is fine, not a tell.
+16. **Inline-header lists.** The tell is a bold label and colon that restates the line: "**Performance:** Performance improved...". Convert those to prose. A bold lead-in that ends in a period, names the item, and is followed by genuinely new detail ("**Schema in TypeScript.** Tables live in one file.") is fine, not a tell. The same label repeated on every item of a section ("What happens:", "Why this example:") is the tell too: write each item as sentences.
 17. **Title case headings.** Use sentence case.
 18. **Decorative emojis.** Remove from headings and bullets.
 19. **Curly quotes.** Replace with straight quotes.
