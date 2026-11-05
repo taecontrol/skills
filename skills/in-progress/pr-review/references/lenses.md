@@ -1,13 +1,14 @@
 # Lenses
 
-Each lens is a set of questions to ask of the whole change, its callers, and its siblings. A suspect needs a scenario: the input or event, the path through `file:line`, and the consequence.
+Each lens is a set of questions to ask of the whole change, its callers, and its siblings. The lenses fall into three areas, one reviewer each, and every area also asks the [test questions](#tests-in-every-area) of its own guards. A suspect needs a scenario: the input or event, the path through `file:line`, and the consequence.
 
-## Failure and lifecycle
+## Failure and concurrency
 
 - **Ordering around side effects.** For each pair of side effects, such as write and commit, delete and audit, take and decrypt, send and record: what state is left when the second throws, the process dies between them, or the response is lost after the commit? Does the protective step run before the step that can fail? Can a throw inside `finally` or a cleanup replace the result the code was about to return?
 - **Every way a resource ends.** List how each resource the change creates can end: success, error, timeout, idle, abandoned midway, `SIGTERM`, deploy. Which of those paths release it? Resources include connections, locks, temporary users and roles, tokens and credentials, sessions, timers, and background tasks. A fire-and-forget task needs a stop handle and a handled rejection; a sweep needs to page through everything it owns.
 - **Shared fate.** What does one hung dependency, one dropped connection, one hostile input, or one noisy tenant do to the whole process and to other tenants? Every network call needs a timeout. An `error` listener must be attached before the first await on the resource. Work sized by input, such as regex backtracking, parsing, and unbounded reads, needs a bound. Ask which pools, slots, and locks a stall pins.
 - **Concurrency.** For each pair of transactions on the same rows, find the order each locks them in and what handles a deadlock or serialization failure. Check races between people's actions, such as cancel against complete and a double click. Check retries, duplicates, and idempotency, and the previous release running beside this one through a rollout and its migrations.
+- **Check, then act.** For each check an action relies on, such as who is signed in, a row's state, or a balance, list every `await`, query, or callback between the check and the act, and what another tab, request, or worker can change there. The act must re-check, or check and act must be one step. Settle an interleaving by running it in the checkout; reasoning that it holds leaves it a suspect.
 
 ## Trust and record
 
@@ -19,10 +20,13 @@ Each lens is a set of questions to ask of the whole change, its callers, and its
 
 - **Consumers.** For every new or changed name, error code, field, route, or event, find who reads it, in this repository and across the stack. Look for a code nothing handles, a field the client ignores, documentation tables, error catalogs, or API references the project requires to change with the code, and merge and deploy order across the stack.
 - **Client state.** Data the server gives only once, such as a token, a secret, or a one-time link: what loses it? Check a remount, navigation, a failed refetch that replaces loaded data, a failed promise such as a clipboard write, and a lost response. Give each query a loading, error, and empty state. Read the library's semantics for the version in use from its documentation.
+- **Readable by a stranger.** Read every name, test title, comment, log message, document, and commit message the change adds as someone who has the repository and the product and nothing else. Flag what makes sense only inside the work that produced it: a spec's or plan's identifiers, such as example and question numbers (`E12`, `R3b`, `Q18`); its phases and roles, such as a spike, a slice, the acceptance group, part 2 of 4, the owner, or the review that found it; and paths outside the repository. A test title states the behavior it proves, and a comment states what is true of the code. One finding lists every site.
 - **Architecture.** Apply coding principles and SOLID in the language of the diff. Check co-location: files that change together live together. Check that names and structure tell the code's story without comments doing the work. Check how layers connect, where the seams sit, which component owns what, abstractions that are wrong, contracts that will be painful to evolve, and layers that blur. Judge the architecture as a whole, with line-level wording left out.
 - **Standards.** Check the project's rules from step 2, such as type safety in new code, file length, a clean lint and type check, and the project's naming and error conventions.
 
-## Tests
+## Tests, in every area
+
+Each reviewer asks these of the guards and behaviors in its own area: the failure reviewer of cleanup paths, timeouts, and races; the trust reviewer of security, tenant, and privilege boundaries and of what gets recorded; the contracts reviewer of consumers and fixtures.
 
 - **Mutations.** For each guard the change adds on a security, tenant, or privilege boundary, or on a cleanup path such as a `finally`, delete or invert it in the checkout and run only the test files that should cover it. Give each mutation a time limit and restore it afterwards. A guard whose removal leaves those tests green is a finding. Judge the other guards by reading which test asserts them.
 - **Vacuous fixtures.** Look for fixtures that make a guard vacuous: one tenant, one user, one role, empty lists, a fake that accepts any request, a stub that always resolves. Look for fakes that behave differently from the real dependency they stand in for.

@@ -38,13 +38,17 @@ Done when every gate has a recorded result, every claim is in the ledger, and th
 
 The scope is the diff, the code it newly reaches, every caller and consumer of a name, value, or seam whose meaning changed, and the change's **siblings**: existing code in the repository that does the same job, such as another worker, client, or route. A sibling is the reference for what the new code should do; where they differ, one of them is wrong.
 
-Review it yourself through every group in the [lenses](references/lenses.md), one group at a time, each over the whole change: failure and lifecycle, trust and record, contracts and design, then tests. Holding the whole flow in one reader is what catches a defect that crosses groups. Record each **suspect** with a scenario: the input or event, the path through `file:line`, and the consequence. Split the groups across fresh reviewers only when the user asks for it.
+Dispatch one fresh reviewer per **area** of the [lenses](references/lenses.md), at most three, in parallel: failure and concurrency, trust and record, and contracts and design. One reader holding every lens drifts to the area that interests it and leaves the others thin; a reviewer with one area takes each of its questions over the whole change. Each area also owns the [tests](references/lenses.md#tests-in-every-area) for its guards. Skip an area only when nothing in the change can reach it, such as failure and concurrency for a change to documentation alone, and give each area its own reviewer.
 
-Done when every lens group has covered the whole change, and every claim in the ledger is kept, broken (a suspect), or unverifiable.
+Brief each reviewer with the head SHA, the checkout, the map, the rules and gate results, the scope above, and its area's section of the lenses; the failure and trust reviewers also get the claims ledger. The contracts and design reviewer reads as the **stranger**: brief it without the spec, plan, or delivery notes, so vocabulary from the work that made the change stands out instead of reading as normal. Each reviewer is read-only, runs code only in the checkout, and returns each **suspect** with a scenario (the input or event, the path through `file:line`, and the consequence) and what it checked and found fine.
+
+When they return, read the suspects side by side and follow the ones that cross areas, such as a retry that writes a second audit record or a fixture that hides a race. Give each claim in the ledger its verdict from what came back.
+
+Done when every dispatched area has covered the whole change, and every claim in the ledger is kept, broken (a suspect), or unverifiable.
 
 ## 4. Confirm
 
-Hand every suspect, with the map and the checkout, to one fresh agent that found none of them. It is the review's only other agent, there to check your reading rather than repeat it. Each suspect becomes:
+Confirm every suspect yourself: you found none of them, so you check the reviewers' reading rather than repeat it. Each suspect becomes:
 
 - **confirmed** when the scenario follows from the code and configuration, or from a run;
 - **plausible** when the risk is real but the evidence cannot show it, naming the evidence that would settle it;
@@ -61,7 +65,7 @@ Done when every suspect is confirmed, plausible with its missing evidence named,
 ## 5. Rank
 
 - **Blocking:** a confirmed defect in scope that breaks a safety, security, or tenant invariant or a claim the change makes about one; loses or corrupts data or a secret that cannot be recovered; lets one input, dependency, or tenant stall or crash the shared process; records the wrong outcome in an audit, or shows an approver something other than what runs; breaks a contract a consumer in the repository or the stack depends on; breaks a rule the project's instructions make mandatory, such as a documentation table updated in the same change; fails a gate; or a guard on a security, tenant, or privilege boundary whose removal leaves every test green. A merge-order condition is blocking when the stack can merge or deploy out of order. Rank by the consequence: certainty about the mechanism is what step 4 settled.
-- **Should fix:** a plausible risk with the evidence that would settle it; a real defect whose worst case is bounded or corrects itself; an item already tracked elsewhere, naming the ticket; cost, conformance, and consistency with siblings; a design problem the change introduces; a defect that predates the change, marked pre-existing.
+- **Should fix:** a plausible risk with the evidence that would settle it; a real defect whose worst case is bounded or corrects itself; an item already tracked elsewhere, naming the ticket; cost, conformance, and consistency with siblings; text in the change only its makers can read, listing every site; a design problem the change introduces; a defect that predates the change, marked pre-existing.
 - **Tests to fix or add:** each named by the scenario that goes unasserted or fails today, with the assertion that would catch it.
 - **Considered:** what you checked and decided is fine, one line each with the reason, including claims you verified that a reader would doubt.
 
@@ -73,11 +77,11 @@ Each finding is one bullet:
 
 - **The defect, stated as its consequence.** [`short/path.ts:69`](repo/relative/path.ts#L69) — the mechanism, with identifiers in backticks; what triggers it; its blast radius; the sibling sites with the same gap; the claim it contradicts; the test that is missing.
 
-Mark a plausible finding `(plausible)` and name the evidence that would settle it. Keep prose tight: state findings and evidence, and name a name only when it misleads.
+Mark a plausible finding `(plausible)` and name the evidence that would settle it. Keep prose tight: state findings and evidence, and name a name only when it misleads. Write for the author's teammates, who have the repository and not the spec: state each behavior in plain words rather than by the spec's example or question number.
 
 ## Re-review
 
-When the pull request was reviewed before, by this skill or a person, review the whole head again through every step. For each earlier Blocking and Should fix item, report it as closed at every site, closed at some (naming the sites left), or open, and repeat open Should fix items. Look hardest at the fix code: a fix is new code no review has seen, and siblings of a fixed blocker are where the next round's blockers come from.
+When the pull request was reviewed before, by this skill or a person, review the whole head again through every step. For each earlier Blocking and Should fix item, report it as closed at every site, closed at some (naming the sites left), or open, and repeat open Should fix items. Brief each earlier finding and its fix commits to the area reviewer that owns it. Look hardest at the fix code: a fix is new code no review has seen, and siblings of a fixed blocker are where the next round's blockers come from.
 
 When a human review arrives after this one, compare them: each blocker it found that this report missed is an **escape**. Name the lens that should have caught it, or the lens that is missing, and take the escapes to `retro`.
 
@@ -89,4 +93,4 @@ When a human review arrives after this one, compare them: each blocker it found 
 
 ## Done
 
-Every lens group covered the whole change, every claim has a verdict, every suspect is confirmed, plausible, or refuted, every confirmed finding lists its sibling sites, the report is delivered, and the checkout is removed.
+Every dispatched area covered the whole change, every claim has a verdict, every suspect is confirmed, plausible, or refuted, every confirmed finding lists its sibling sites, the report is delivered, and the checkout is removed.
