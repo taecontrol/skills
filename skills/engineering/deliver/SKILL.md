@@ -13,7 +13,7 @@ Read the spec at the path you were given, every source its Context and Decisions
 
 ## 1. Acceptance tests
 
-Turn each `test` example into an executable test at the spec's test boundary, with the project's verification method, under the spec's real target conditions. Name each test for the behavior it proves. Run them and watch each go **red** for the right reason: the behavior is missing, not the setup broken. A test for something that must never happen must be able to fail. Commit the tests on their own; when the project's hooks reject failing tests, mark them as expected failures until the code makes them pass.
+Turn each `test` example into an executable test at the spec's test boundary, with the project's verification method, under the spec's real target conditions. Name each test for the behavior it proves, in words a reader without the spec follows, without the example's ID. Run them and watch each go **red** for the right reason: the behavior is missing, not the setup broken. A test for something that must never happen must be able to fail. Commit the tests on their own; when the project's hooks reject failing tests, mark them as expected failures until the code makes them pass.
 
 These assertions are the contract. Glue around them, such as setup, selectors, and helpers, may change as the code takes shape. An assertion changes only when it misstates its example; list each such change for the [report](#report).
 
