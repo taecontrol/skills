@@ -15,7 +15,7 @@ Read the accepted implementation input—the user's bounded request or an accept
 
 Before editing, make each accepted requirement and protected behavior explicit and map it to planned verification evidence, including obligations that automated gates cannot establish. Reuse an accepted spec's examples; for bounded work, a short outline in the conversation is sufficient. Update the mapping as discovery reveals affected obligations.
 
-Identify the governing invariant or policy, its authoritative source, its owner, and the callers that should not carry its hard detail. Fix a defect at the shared cause when that is the narrowest correct seam; inspect sibling callers before assuming the reported path is the whole problem.
+Identify the governing invariant or policy, its authoritative source, its owner, and the callers that should not carry its hard detail. Fix a defect at its root cause. Find why the failure can occur, then change the design so it cannot. Handle a failure only when its cause lies outside the system. Inspect sibling callers before assuming the reported path is the whole problem.
 
 Resolve reversible implementation choices locally. If evidence invalidates accepted behavior, a public contract, sensitive policy, or costly-to-reverse architecture, return that exact gap instead of silently redesigning the work.
 
