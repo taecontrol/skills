@@ -23,6 +23,15 @@ The definition of success. Each one is concrete: starting state, action, and res
 - **E2** `test` — Given …, when …, then … must never happen.
 - **E3** `capture` — The screen matches the chosen prototype at <sizes/states>.
 
+For each guarantee the outcome makes, write its path as a table: one row per link, one column per way the link can fail. Each cell holds the example that covers that failure, or the reason it cannot happen.
+
+**G1** <what whoever depends on the change can rely on, stated where they act on it>
+
+| Link | Missing | Wrong | Forged | Stale |
+|---|---|---|---|---|
+| built at … | E… | E… | E… | E… |
+| shown at … | E… | E… | E… | E… |
+
 When state interacts, add the state space the edge cases come from:
 
 | State \ Operation | … | … |
