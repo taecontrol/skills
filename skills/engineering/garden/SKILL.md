@@ -11,9 +11,9 @@ Scan first and fix later: a queue of findings shows the causes that fixing them 
 
 ## Lenses
 
-Pick the lens the user names, or the one with the strongest signal:
+Pick the lens the user names, or the one with the strongest signal. A question the user asks of the code, such as "find all of the implicit state machines in my app", is a lens too, and its scope is wherever its answers lie unless the user names an area.
 
-- **Architecture:** concepts owned in several places, shallow modules that only pass calls through, files that always change together, boundaries the code crosses against its design. Use the deletion test from `strategic-programming`.
+- **Architecture:** concepts owned in several places, such as an implicit state machine whose states live in flags, nullable columns, and conditions spread across files; shallow modules that only pass calls through, files that always change together, boundaries the code crosses against its design. Use the deletion test from `strategic-programming`.
 - **Consistency:** deviations from the project's agent instructions and coding standards, the same mechanism implemented several ways, the same defect fixed in more than one feature, dead code and leftovers.
 - **Performance:** product budgets and the work behind them, such as round trips, queries, bundle size, and renders, measured before and after.
 - **Tests:** run `prune`.
@@ -26,7 +26,7 @@ Pick the lens the user names, or the one with the strongest signal:
 3. **Group by cause.** Many findings usually share one. For each cause choose the strongest structural fix in the order `strategic-programming` gives.
 4. **Pick.** Rank the causes by leverage and fix the ones worth their cost, unless the user picks. A cause whose fix would change behavior, a contract, or a decision an ADR records is not gardening: it goes to step 6.
 5. **Fix the picked causes on one branch off the base, in one pull request,** each cause in its own commits. Behavior stays the same: when the affected code lacks tests that would catch a change, add characterization tests first. When the run also prunes, because the user asks or the tests lens leads, run `prune` in a fresh agent on its own worktree off the same base and bring its commits onto the branch. Then run `refine` and `ship`.
-6. **File the rest.** Search open issues first, then file each unpicked cause as one issue with its instances, its fix, and its cost. A finding that looks like a defect, such as a swallowed error or a contract the code breaks, is filed as a suspected bug for `bug-hunt` to confirm.
+6. **File the rest.** Search open issues first, then file each unpicked cause as one issue with its instances, its fix, and its cost. A finding that looks like a defect, such as a swallowed error, a contract the code breaks, or a combination of states the code reaches that nothing should, is filed as a suspected bug for `bug-hunt` to confirm.
 
 ## Report
 
