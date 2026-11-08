@@ -7,7 +7,7 @@ description: "Shape a problem with the human into one accepted spec: what to bui
 
 Shaping decides **what**, **how we will know**, the **one-way doors**, and, when the change warrants it, the shape of the code; the rest of how to build it belongs to delivery. The result is one short spec, accepted by the human, that holds or points to everything an agent needs to deliver it without asking again.
 
-Write in the user's language, and write every message the human must answer or act on with `writing-for-people`.
+Write in the user's language, and write every text a person reads with `writing-for-people`: each message to the human, and each issue, comment, and plan you publish.
 
 ## Roles
 
