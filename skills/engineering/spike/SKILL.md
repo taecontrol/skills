@@ -14,7 +14,7 @@ Answer one empirical technical question with the smallest runnable experiment th
 3. **Choose the artifact's disposition.** Before building, decide whether to delete the experiment after preserving its evidence or retain it in an isolated discovery location that cannot be mistaken for production code.
 4. **Build only what the observation requires.** Create the smallest runnable setup that exposes the behavior directly under representative conditions. Include important failure or edge cases. Avoid production hardening, reusable abstractions, unrelated cleanup, and scaffolding that does not improve the evidence.
 5. **Run and capture.** Record the actual commands, inputs, conditions, outputs, measurements, and failures needed to assess the question. Separate observations from interpretation. Investigate surprises only while they fit within the original bound.
-6. **Conclude.** Return one verdict—`Validated`, `Partial`, or `Invalidated`—with the supporting evidence, material surprises, remaining uncertainty, production constraints, and a recommendation for the decision that motivated the spike.
+6. **Conclude.** Return one verdict—`Validated`, `Partial`, or `Invalidated`—with the supporting evidence, material surprises, remaining uncertainty, production constraints, and a recommendation for the decision that motivated the spike. Write the conclusion, and any issue comment or document that records it, with `writing-for-people`.
 
 An invalidated hypothesis is a successful spike when the evidence removes uncertainty. If the bound expires before the question is settled, report `Partial`; do not silently extend the experiment or overstate the result.
 

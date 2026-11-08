@@ -9,7 +9,7 @@ Review the pull request as a **stranger** would: the author is unknown, the work
 
 The bar is the human reviewer. Their blockers come from knowing what the change guarantees and tracing, through the whole flow, a mechanism that breaks a guarantee: a step that throws after another has committed, a resource no exit path releases, one hung dependency that stalls the shared process, a claim in the description the code does not keep, a test that stays green with its guard deleted. Review the whole flow on every run, settle each finding by evidence, and rank it by its consequence.
 
-Write the report in the user's active language; code identifiers, paths, and the opening line stay as they are.
+Write the report in the user's active language; code identifiers, paths, and the opening line stay as they are. Write the report and any comment you post with `writing-for-people`.
 
 ## Inputs
 

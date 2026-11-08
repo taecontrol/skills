@@ -13,7 +13,7 @@ The branch holds only durable work: temporary artifacts such as specs, prototype
 
 ## Open
 
-Push the branch and open the pull request as a draft against its base, with the title and description written by `pr-description`. It stays a draft: the human marks it ready for review once they have looked at it.
+Push the branch and open the pull request as a draft against its base, with the title and description written by `pr-description`, whatever the size of the change. It stays a draft: the human marks it ready for review once they have looked at it.
 
 ## Drive checks to green
 

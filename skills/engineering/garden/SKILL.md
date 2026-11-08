@@ -7,7 +7,7 @@ description: "Tend a codebase between features: find drift in one area, group it
 
 Agents copy whatever the codebase already does, good or bad, so drift compounds. Gardening runs alongside feature work to keep the codebase a place where the right change is the easy one.
 
-Scan first and fix later: a queue of findings shows the causes that fixing them one by one would hide. Run to the end on your own; anything for the human goes in the report, written in the user's active language.
+Scan first and fix later: a queue of findings shows the causes that fixing them one by one would hide. Run to the end on your own; anything for the human goes in the report, written in the user's active language. Write it and every issue you file with `writing-for-people`.
 
 ## Lenses
 

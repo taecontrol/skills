@@ -1,11 +1,13 @@
 ---
 name: writing-for-people
-description: "Decide what a person needs from a text before you write it, then write it so they understand it on the first read. Use before you write a message where the user must decide or act, or text other people read: an issue, ticket, pull request, wiki page, README, slide, UI copy, or a message to a colleague."
+description: "Decide what a person needs from a text before you write it, then write it so they understand it on the first read, and finish it with `unslop`. Use before you write any text a person reads: a message or report to the user, an issue, comment, ticket, pull request, document, README, slide, UI copy, or a message to a colleague."
 ---
 
 # Writing for people
 
 The reader is smart and was not in the room. They know their own work, not this one: not its IDs, its files, the earlier messages, or the process that produced it. You know what you meant, so you cannot see what they lack. Write from what they know, and let a cold reader find what you missed.
+
+Once loaded, this skill stays in force for the rest of the conversation. Steps 1 to 3 apply to each text; step 4 applies to each text that leaves the conversation. When another agent writes the text for you, name this skill and `unslop` in its prompt.
 
 ## 1. Frame
 
@@ -30,21 +32,21 @@ Done when every item above holds for every part of the text.
 
 - Explanations and stories are prose. A numbered list is for steps the reader performs in order. A table is for data compared across the same columns.
 - Use common words and short sentences, one idea each. In English, follow ASD-STE100 Simplified Technical English. In Spanish, follow UNE-ISO 24495-1:2024 plain language: familiar words, short direct sentences, natural Spanish instead of translated English idioms, and the reader's register, tú or usted.
-- Run `unslop` on the result.
+- Run `unslop` on the result, and again on every later edit, including fixes from the cold read. Load the `unslop` skill when it is not already in this conversation; its rules applied from memory are not a pass.
 
-Done when `unslop` finds nothing left.
+Done when an `unslop` pass on the current text finds nothing left.
 
 ## 4. Cold read
 
-For text that leaves the conversation, such as an issue, ticket, pull request, wiki page, README, slide, or message to a colleague:
+For text that leaves the conversation, such as an issue, ticket, pull request, wiki page, README, slide, or message to a colleague, read it cold once steps 1 to 3 are done. A cold read or a check of the text's claims adds to those steps and replaces none of them.
 
 1. Give a fresh agent only the text and one line on who reads it. It saw none of the work. It returns every term or reference it cannot resolve from the text alone, every question it would ask before acting, and in one sentence what it understood the text asks of its reader.
 2. Fix what it finds. When the fixes change much of the text, run a new cold read. When the harness offers no fresh context, do the read yourself and tell the user.
-3. Show the user the draft before you publish or send it.
+3. Show the user the draft before you publish or send it, and again after any later edit.
 
 `pr-description`'s verification includes this read.
 
-Done when the latest cold read resolves every term and reference, asks nothing the text should answer, and its sentence matches what step 1 named.
+Done when the latest cold read ran on the text as it will go out, an `unslop` pass followed its last edit, the read resolves every term and reference, asks nothing the text should answer, and its sentence matches what step 1 named.
 
 ## Process material
 
