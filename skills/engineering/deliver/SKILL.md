@@ -29,7 +29,7 @@ Run `refine` in a fresh context, such as a subagent, with the spec, the diff ran
 
 ## 4. Ship
 
-Run `ship` once `refine` finishes. When `refine` stopped on blockers, stop with its report instead. A production change made after `refine` finishes, such as a fix for a CI check or one the human asks for, gets a fresh review of that change and its callers before the pull request is ready.
+Run `ship` once `refine` finishes. When `refine` stopped on blockers, stop with its report instead. A production change made after `refine` finishes, such as a fix for a CI check or one the human asks for, is chosen with `strategic-programming`'s second opinion when it has more than one form, and gets a fresh review of that change and its callers before the pull request is ready.
 
 ## Decisions along the way
 

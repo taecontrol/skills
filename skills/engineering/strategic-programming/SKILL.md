@@ -30,6 +30,8 @@ After understanding the flow, stop at the first option that fully satisfies the 
 5. Use an already-installed dependency.
 6. Add the minimum custom implementation the behavior actually requires.
 
+Check the option you stop at, and the design within it, with a [second opinion](references/second-opinion.md); its first paragraph says when to skip it.
+
 Prefer boring code and demonstrated variation. Do not add speculative abstractions, configuration, extensibility, scaffolding, or dependencies for hypothetical future work.
 
 The shortest diff is not automatically the best design. More internal implementation can be justified when it creates a substantially smaller, safer caller-facing interface. Never minimize away accepted behavior, discriminating evidence, trust-boundary validation, security, data-loss protection, accessibility, or necessary operational controls.
