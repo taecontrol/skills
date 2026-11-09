@@ -30,7 +30,7 @@ After understanding the flow, stop at the first option that fully satisfies the 
 5. Use an already-installed dependency.
 6. Add the minimum custom implementation the behavior actually requires.
 
-Check the option you stop at, and the design within it, with a [blind design](references/blind-design.md); its first paragraph says when to skip it.
+Check the option you stop at, and the design within it, with a [second opinion](references/second-opinion.md); its first paragraph says when to skip it.
 
 Prefer boring code and demonstrated variation. Do not add speculative abstractions, configuration, extensibility, scaffolding, or dependencies for hypothetical future work.
 
