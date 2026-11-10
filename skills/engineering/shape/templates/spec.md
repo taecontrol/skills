@@ -15,6 +15,10 @@ What is true for whoever has the problem when this is done, as agreed with the h
 
 What we are deliberately not doing, and why when it is not obvious.
 
+## Beyond the ask
+
+What the human can cut: each thing the spec adds that they did not ask for, such as a state, a guard, a retry, or a setting, and each thing the gap review found the outcome holds without. Write one line each, with what happens without it. The human keeps or cuts each one at acceptance.
+
 ## Examples
 
 The definition of success. Each one is concrete: starting state, action, and result.
