@@ -38,7 +38,7 @@ Fix blockers first, then fixes. A behavior fix comes with a test that fails with
 
 When several findings share a cause, fix the cause as `strategic-programming` orders it.
 
-A fix closes its finding inside the change's design. When closing it needs a new mechanism the spec did not ask for, such as a limiter, a lock, a cache, or a table, it is a scope decision: put it to the human with the options and your recommendation, and fix the rest meanwhile. Choose each fix with `strategic-programming`'s second opinion before you make it or recommend it to the human.
+A fix closes its finding inside the change's design. When closing it needs a new mechanism the spec did not ask for, such as a limiter, a lock, a cache, or a table, it is a scope decision: put it to the human with the options and your recommendation, and fix the rest meanwhile. Choose each fix with `strategic-programming`'s second opinion before you make it or recommend it to the human. When a finding is in code an earlier fix added, the second opinion's options include undoing that fix for a plainer one and removing the piece the fix guards. Choose among those before you patch the fix again.
 
 ### Next round
 

@@ -7,7 +7,7 @@ description: "Review a pull request as untrusted work before its human reviewer 
 
 Review the pull request as a **stranger** would: the author is unknown, the work is untrusted, the description is a set of claims to check, and the job is to find what is wrong before the human reviewer does. The review is **preliminary**: it flags findings for a person to judge. Approving or requesting changes stays with that person.
 
-The bar is the human reviewer. Their blockers come from knowing what the change guarantees and tracing, through the whole flow, a mechanism that breaks a guarantee: a step that throws after another has committed, a resource no exit path releases, one hung dependency that stalls the shared process, a claim in the description the code does not keep, a test that stays green with its guard deleted. Review the whole flow on every run, settle each finding by evidence, and rank it by its consequence.
+The bar is the strictest reviewer the change will meet. Their blockers come from knowing what the change guarantees and tracing, through the whole flow, a mechanism that breaks a guarantee: a step that throws after another has committed, a resource no exit path releases, one hung dependency that stalls the shared process, a claim in the description the code does not keep, a test that stays green with its guard deleted. Review the whole flow on every run, settle each finding by evidence, and rank it by its consequence.
 
 Write the report in the user's active language; code identifiers, paths, and the opening line stay as they are. Write the report and any comment you post with `writing-for-people`.
 
@@ -26,7 +26,7 @@ Done when the head SHA, the base, and the stack are recorded.
 
 ## 2. Rules, guarantees, claims, and map
 
-**Rules.** Read the project's conventions: its agent instructions and the files they point to, the READMEs of the packages the change touches, its coding standards and contributing guide, the ADRs the change touches, and its linter and type-checker configuration. When the instructions say which files are authoritative and which are only context, follow them. Run the project's gates for the touched packages on the head (lint, format check, type check, tests) and record each command and its result.
+**Rules.** Read the project's conventions: its agent instructions and the files they point to, the review guidance its reviewers work from when the instructions point to one, whose facts and blocking rules add to the ones below, the READMEs of the packages the change touches, its coding standards and contributing guide, the ADRs the change touches, and its linter and type-checker configuration. When the instructions say which files are authoritative and which are only context, follow them. Run the project's gates for the touched packages on the head (lint, format check, type check, tests) and record each command and its result.
 
 **Guarantees.** Before you read the description, issue, or spec, derive the change's guarantees from the diff and the code it reaches, as a stranger would. A guarantee is what a person or system that depends on the change can rely on, stated where they act on it, such as an approver who approves only what they saw and understood, or a caller that gets an error rather than a silent default. For each guarantee, write its **path**: the links from where its data is produced to where someone acts on it, such as built, stored, sent, loaded, shown, explained, and acted on, across every layer the change touches. Step 3 attacks every link.
 
