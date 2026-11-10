@@ -13,7 +13,7 @@ A failing test is the most exact form of a contract line. Where a wrong guess wo
 
 ## Findings
 
-Verify as the skill's step 4 says, and read the change for a nearby pattern it copied that the brief did not name. Name each finding's cause, and quote the brief's line for Ignored and Misled:
+Verify as the skill's step 5 says, and read the change for a nearby pattern it copied that the brief did not name. Name each finding's cause, and quote the brief's line for Ignored and Misled:
 
 - **Guessed.** The brief was silent and the implementer chose wrong.
 - **Ignored.** The brief said it and the result differs.
