@@ -20,13 +20,15 @@ Read the request, the code it touches, its history, and where the product runs.
 
 The request is a hypothesis about a problem. Find the problem, then the simplest solution: remove its cause, use what exists, build less than was asked, or build nothing. Be brave in what you question and cut. Build only what the problem needs; an addition you believe in is a one-line proposal to the human, in the message you stop on or in the report.
 
-When the request reports something the human saw, establish how they met it: what ran, where, and what it showed. Reproduce it that way when you can. A reproduction in a different setup is an assumption about theirs, and what you cannot establish is a fact only they hold.
+When the request reports something the human saw, establish how they met it: what ran, where, and what it showed. Reproduce it that way when you can. A reproduction in a different setup checks your setup, not theirs, and what you cannot establish is a fact only they hold.
 
 The code that exists is a hypothesis too. Before you repeat a pattern or build around what the code holds, judge it as `strategic-programming`'s "Minimize owned machinery" says.
 
+Every fact the problem or the solution rests on is a **premise**: how a client, a library, a runtime, or a service behaves, what a setting does, what the code allows. Check each premise before you rely on it, recommend from it, or give it to the human as what an option changes. A premise is checked when you read it in the code or system it is about, or observed it, and the check would have come out differently if the premise were false. A test that sidesteps the premise checks a neighbor of it. Documentation, issues, and reports are claims: run the thing to see whether they hold, and cite them as claims where you cannot. A feature the documentation leaves out is unknown, so observe it. Seek evidence against each premise, and give the human what you find, including what you already read. An observation holds for the setup it ran in: its client, server runtime, network path, mode, version, configuration, and the instructions the model ran with. It holds for another setup only once you run it there. A conclusion you draw from premises is reasoning: give it as reasoning, beside the premises it stands on. Each premise ends checked or asked: when checking it needs access, an account, or a fact only the human has, or costs more than the stakes justify, it is a question for step 2.
+
 Weigh the **stakes**: what the change makes hard to undo, such as persisted data, a contract others call, a security boundary, or production itself; who a mistake hurts; and who reviews the result, by what bar. The stakes set how much process the task gets. Its size does not. A typo in a billing email can need a second reader, and a large rename can need none.
 
-Done when you can state, each from something you read or ran: the problem as far as it is known, what the task should produce (a change, a diagnosis, a decision, or nothing), and the stakes. You can also name what about the problem you still assume.
+Done when you can state, each from something you read or ran: the problem as far as it is known, what the task should produce (a change, a diagnosis, a decision, or nothing), and the stakes. Your notes list each premise the problem and the solution rest on, with how you checked it or the question it became.
 
 ## 2. Stop for what is theirs
 
@@ -35,17 +37,20 @@ A decision is the human's when:
 - more than one solution would solve the problem, and they differ in what someone uses or sees, or in the mechanisms the project owns afterwards;
 - the solution changes something the human decided and recorded, such as an ADR, an accepted spec, or an instruction;
 - the problem or the solution rests on a fact only they hold, so that if it is false the problem or the solution is another;
+- a premise could not be checked, as step 1 says;
 - the scope differs from what they asked;
 - something is hard to undo, or reaches other people unasked.
 
-When one applies, stop before you build. After one read of the message, the human can explain the problem and the solution to someone else, and can tell what you checked from what you assumed. After its opening line, it holds, in this order:
+When one applies, check the premises its options rest on, then stop before you build. A human who chooses between options built on unchecked premises chooses blind. After one read of the message, the human can explain the problem and the solution to someone else, and can tell what you observed from what a source only claims. After its opening line, it holds, in this order:
 
-- **The decisions.** Each with its options, what each one changes for them, and your recommendation, so one word answers it. A fact only they hold is one question.
-- **The problem.** What is wrong or missing, and its cause. Beside it, what you read or ran that shows it, and what about it you still assume.
+- **The decisions.** Each with its options, what each one changes for them, and your recommendation, so one word answers it. A premise you could not check is one question: the fact only they hold, the access you need from them, or whether to go on without the check.
+- **The problem.** What is wrong or missing, and its cause. Beside it, what you read or ran that shows it.
 - **The solution.** What the task will produce if they take your recommendation. For a change, say what exists today, what changes, and why this is the simplest form. Draw it when it has parts, a flow, or a before and after. Then give the other solutions you weighed, one line each with why it loses.
 - **Where it lands.** One line: what they will receive, such as a commit, a pull request, or an issue, and what will be left for them to do.
 
 Until they answer, the question is the work that is owed, and this holds over any general instruction to keep working. Only an answer to the question settles it. When they reply about something else, answer that and ask again in the same message.
+
+An answer holds while the premises its options rested on hold. When a check contradicts one, the decision is open again: give what you found and ask again.
 
 When none applies, one solution fits the problem and everything you chose is a detail. Go on to step 3 without a message. When you doubt which case this is, stop. A stop that was not needed costs the human one word. Work built on a decision they did not make costs them a review of all of it.
 
@@ -57,11 +62,11 @@ Write them as notes, as short as the stakes allow.
 
 - **Contract.** What will be true when the task is done, and what the stakes say must stay true, as lines you can check. Each line names its proof, an observation that fails when the line is false, such as a test, a command's output, or a screen.
 - **Route.** The steps you will take, through to where this project's work lands for review, such as a commit, a pull request, or an issue, each with the reason this task needs it.
-- **Decided for them.** Each detail you assumed or chose that the solution depends on, one line each, with what changes if it is false: a value you chose, where it departs from the code's pattern, and the stakes as you weighed them. The human first sees these in the report, so each must be cheap to reverse there. One that is not is a decision of theirs, and step 2 applies.
+- **Decided for them.** Each detail you chose that the solution depends on, one line each, with what changes if it is wrong: a value you chose, where it departs from the code's pattern, and the stakes as you weighed them. A premise is never one of these; it is checked or asked as step 1 says. The human first sees these in the report, so each must be cheap to reverse there. One that is not is a decision of theirs, and step 2 applies.
 
 The catalog's other skills are tools for a step. Take one when the step's reason calls for what it does, and give it the contract where it asks for a spec. `shape` and `deliver` are a whole fixed route, so they stay out of this one.
 
-When evidence changes the route, the contract, or something you decided for them, note the change and its reason for the report. When it raises a decision that is theirs, stop as step 2 says, before any work that depends on the answer.
+When evidence changes the route, the contract, or something you decided for them, note the change and its reason for the report. A premise that surfaces later in the work is checked or asked as step 1 says, before anything relies on it. When evidence raises a decision that is theirs, stop as step 2 says, before any work that depends on the answer.
 
 When the stakes are high, a fresh reviewer that gets the request and the contract, never your reasoning, reads the contract before the work starts.
 
@@ -87,4 +92,4 @@ Done when every contract line's proof passes in your own run on the final state,
 
 The report is the last stop. When step 2 needed none, the human has seen no plan, so the report carries the whole picture in one read.
 
-Lead with what is true now and how it works, drawn when it has parts, a flow, or a before and after, and with what they still have to do. Then give the problem with what you checked and what you assumed, why this solution over the others you weighed, each contract line with its proof, what you could not prove and why, and what you decided for them, each with what changes if it is false.
+Lead with what is true now and how it works, drawn when it has parts, a flow, or a before and after, and with what they still have to do. Then give the problem, each premise the problem and the solution rest on with how you checked it, why this solution over the others you weighed, each contract line with its proof, what you could not prove and why, and what you decided for them, each with what changes if it is wrong.
