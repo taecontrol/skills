@@ -17,12 +17,13 @@ Done when you can say in one sentence who reads it and what they do next.
 
 ## 2. Choose the content
 
-- **Lead with what they came for.** When they asked a question, the first lines answer it. Otherwise lead with the decision, the ask, or the conclusion.
+- **Lead with what they came for.** When they asked a question, the first lines answer it. Otherwise lead with the decision, the ask, or the conclusion. A reader who comes to the message from other work, such as a user running several agents, gets the task and where it stands in the opening line.
 - **Self-contained.** Everything the reader needs to act is in the text: the URL, the exact command or line, where to run or click it, which permissions it needs, where a value comes from, the questions themselves. Show a design, a list of questions, or a thread before you ask the reader to accept or answer it.
 - **Context at each point.** Explain each ID, code, number, acronym, and project term in a few words where it appears, or replace it with what it means. A glossary, a context tab, or a section elsewhere adds to this; it does not replace it.
+- **Evidence.** Put the proof beside each claim the reader will act on: the test, the command's output, or the exact line. A longer explanation raises their trust without making the claim more true. Say in the first person what you verified and how, what you assumed, and what you did not check.
 - **The why.** Give each decision, recommendation, deferral, new piece, and request its reason, and what it changes for the reader.
 - **Concrete.** Explain an idea with one example, built from the reader's own data when it exists.
-- **Decisions.** Give two or three options, each with its consequence in plain words, then your recommendation.
+- **Decisions.** Give two or three options, each with its consequence in plain words, then your recommendation, marked as yours, with what would make it wrong.
 - **Durable.** Text that other people read states what is true of the product, the code, or the decision. Material from how the work was made becomes one of those through [process material](#process-material), or stays out.
 - **Lean.** Every sentence tells the reader something they need and do not already have. A line that repeats what a chart, table, or screen already shows, an obvious point, a note about the text itself or about who reads it, and words carried over from your own instructions all fail that test. A document states; questions for its readers go in the message that shares it.
 
@@ -30,7 +31,7 @@ Done when every item above holds for every part of the text.
 
 ## 3. Write
 
-- Explanations and stories are prose. A numbered list is for steps the reader performs in order. A table is for data compared across the same columns.
+- Explanations and stories are prose. A numbered list is for steps the reader performs in order. A table is for data compared across the same columns. A diagram is for a structure the reader does not already know: parts and how they relate, a flow with branches, states, or a before and after. Put its labels inside it, use a notation the reader knows, keep it readable at phone width, and cut the prose it replaces.
 - Use common words and short sentences, one idea each. In English, follow ASD-STE100 Simplified Technical English. In Spanish, follow UNE-ISO 24495-1:2024 plain language: familiar words, short direct sentences, natural Spanish instead of translated English idioms, and the reader's register, tú or usted.
 - Run `unslop` on the result, and again on every later edit, including fixes from the cold read. Load the `unslop` skill when it is not already in this conversation; its rules applied from memory are not a pass.
 

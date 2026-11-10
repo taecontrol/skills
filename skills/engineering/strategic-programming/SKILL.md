@@ -24,13 +24,15 @@ Resolve reversible implementation choices locally. If evidence invalidates accep
 After understanding the flow, stop at the first option that fully satisfies the accepted behavior:
 
 1. Avoid a new mechanism through deletion, direct composition, or an existing capability.
-2. Reuse the repository's established implementation or pattern.
+2. Reuse an implementation the repository already has, by calling or extending it.
 3. Use the standard library.
 4. Use a native platform capability.
 5. Use an already-installed dependency.
 6. Add the minimum custom implementation the behavior actually requires.
 
 Check the option you stop at, and the design within it, with a [second opinion](references/second-opinion.md); its first paragraph says when to skip it.
+
+A pattern the repository repeats is an option to judge like any other, and existing code is no proof that its design is right. Before you repeat a pattern or build around what the code holds, such as a column's type or a wrapper every caller goes through, ask the second opinion's question 4 of it: why each piece exists. A reason is a recorded decision, such as a coding standard or an ADR, or the behavior lost without the piece. Follow a pattern that has one, or return the gap when the change shows its reason wrong. A pattern with no reason competes with the simplest form that does the job. The comparison counts the old sites, because a better form beside them is a second mechanism, as question 3 says. Take the better form when it wins with the old sites left as they are. When it wins only if they change, or it crosses a one-way door, follow the pattern and return the gap.
 
 Prefer boring code and demonstrated variation. Do not add speculative abstractions, configuration, extensibility, scaffolding, or dependencies for hypothetical future work.
 
@@ -54,7 +56,7 @@ Every pass that claims code is ready owns validation of the state it hands off. 
 
 ## Finish strategically
 
-Once focused proof is green, inspect the result for change amplification, caller knowledge of hidden detail, duplicated policy, dishonest names or types, avoidable custom machinery, and failure behavior without an obvious home. Repair supported defects within the accepted scope, then rerun affected evidence.
+Once focused proof is green, inspect the result for change amplification, caller knowledge of hidden detail, duplicated policy, dishonest names or types, avoidable custom machinery, a pattern repeated unexamined, and failure behavior without an obvious home. Repair supported defects within the accepted scope, then rerun affected evidence.
 
 When several defects share a cause, fix the cause with the strongest structural fix: a type that makes the bad state unrepresentable, then a lint or architecture rule, then a shared component that owns the mechanism, then a coding standard for what needs judgment. Prefer sharpening an existing check over adding one. Fix or name the existing violations a new check reports, and prove it goes red on a planted violation.
 
