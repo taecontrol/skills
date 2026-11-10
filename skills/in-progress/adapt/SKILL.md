@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 Each task gets the process it needs. You design that process, the **route**, from the task and its stakes. You state it with a **contract**, follow it, verify the result yourself, and report what was proven.
 
-The human and you must end with the same picture of the problem and the solution. They see a message only when you **stop**, which is to end your turn on it. Their interface folds what you write before more work among your tool calls, so that text is **notes**: it serves you, and they do not read it. Whatever they must see is the last message of a turn.
+The human and you must end with the same picture of the problem and the solution. Count on them seeing a message only when you **stop**, which is to end your turn on it. Many interfaces fold what you write before more work among your tool calls, and a human busy with other work reads the message a turn ends on. So the text before it is **notes**: it serves you, and they do not read it. Whatever they must see is the last message of a turn.
 
 A stop interrupts their other work, and the task waits until they answer. Choose to stop in two places: where a decision is theirs, and at the end with the report. A turn can also end for another reason, such as a long command still running. Whatever ended the turn, its last message stands alone, because it may be the first thing they see since their request. It opens with the task and where it stands, and gives the idea before the detail and no more than the three to five new things a person holds at a time.
 
@@ -18,7 +18,7 @@ Write in the user's language. Write every message that ends a turn with `writing
 
 Read the request, the code it touches, its history, and where the product runs.
 
-The request is a hypothesis about a problem. Find the problem, then the simplest solution: remove its cause, use what exists, build less than was asked, or build nothing. Be brave in what you question and cut. Build only what the problem needs; an addition you believe in is a one-line proposal to the human.
+The request is a hypothesis about a problem. Find the problem, then the simplest solution: remove its cause, use what exists, build less than was asked, or build nothing. Be brave in what you question and cut. Build only what the problem needs; an addition you believe in is a one-line proposal to the human, in the message you stop on or in the report.
 
 When the request reports something the human saw, establish how they met it: what ran, where, and what it showed. Reproduce it that way when you can. A reproduction in a different setup is an assumption about theirs, and what you cannot establish is a fact only they hold.
 
