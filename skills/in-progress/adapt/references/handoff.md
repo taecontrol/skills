@@ -20,7 +20,7 @@ Verify as the skill's step 5 says, and read the change for a nearby pattern it c
 - **Ignored.** The brief said it and the result differs.
 - **Misled.** The brief or the contract said it, and it was wrong.
 
-Send the findings to the same implementer, then run every proof again. When a contract line is still broken after that, fix it yourself or stop, and tell the human which cause kept failing.
+Send the findings to the same implementer, then run every proof again. When a contract line is still broken after that, stop and tell the human which cause kept failing, and ask whether you fix it yourself or the brief changes.
 
 ## Report
 
