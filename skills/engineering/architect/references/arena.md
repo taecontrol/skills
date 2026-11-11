@@ -18,7 +18,7 @@ For a narrow boundary, candidates still show its callers and neighboring obligat
 
 ## Cross-judge
 
-After the candidates finish, dispatch a fresh read-only judge that authored none of them. Give it every complete candidate, the shared grounding, and [design-quality.md](design-quality.md). The judge checks factual grounding, constraint coverage, caller usability, invariant ownership, depth, locality of likely changes, failure behavior, reversibility assumptions, and validation. It recommends a base and names useful grafts, rejections, contradictions, and unresolved ties. It does not decide by majority or prose quality.
+After the candidates finish, dispatch a fresh read-only judge that authored none of them. Give it every complete candidate, the shared grounding, and [design-quality.md](design-quality.md). The judge checks factual grounding, constraint coverage, caller usability, invariant ownership, depth, locality of the changes this work makes, failure behavior, reversibility assumptions, and validation. It recommends a base and names useful grafts, rejections, contradictions, and unresolved ties. It does not decide by majority or prose quality.
 
 ## Synthesis
 

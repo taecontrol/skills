@@ -81,7 +81,7 @@ Each finding is one bullet:
 
 - **The defect, stated as its consequence.** [`short/path.ts:69`](repo/relative/path.ts#L69) — the mechanism, with identifiers in backticks; what triggers it; its blast radius; the sibling sites with the same gap; the claim it contradicts; the test that is missing.
 
-Mark a plausible finding `(plausible)` and name the evidence that would settle it. Keep prose tight: state findings and evidence, and name a name only when it misleads. Write for the author's teammates, who have the repository and not the spec. State each behavior in plain words rather than by the spec's example or question number.
+Mark a plausible finding `(plausible)` and name the evidence that would settle it. Mark a finding `(improbable)` when its case is, as `strategic-programming` defines it; it keeps its rank. Keep prose tight: state findings and evidence, and name a name only when it misleads. Write for the author's teammates, who have the repository and not the spec. State each behavior in plain words rather than by the spec's example or question number.
 
 ## Re-review
 

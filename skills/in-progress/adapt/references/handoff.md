@@ -3,8 +3,9 @@
 The implementer knows only the repository and your **brief**. The brief holds what you will verify and what the implementer cannot find in the repository. Leave everything else to it.
 
 - The contract, in the same lines you will check, each with its proof.
-- Each decision where two competent implementers would diverge and someone would feel the difference: an interface other code calls, a data shape, a text a person reads, where a rule lives.
+- Each decision where two competent implementers would diverge and someone would feel the difference: an interface other code calls, a data shape, a text a person reads, where a rule lives. The brief carries decisions and makes none: each was settled by the human's answer, an agreed design, or the contract. One that first appears while you write the brief goes back to the skill's steps 2 and 3.
 - Pointers to the files to read, and to the existing code you judged worth following. An implementer copies what it finds nearby, so where the new code departs from a nearby pattern, name the pattern and give the form to use.
+- That it loads `strategic-programming` before it writes code.
 - The scope, which is what the contract needs. Anything else worth doing goes in its report as a suggestion.
 - What to send back: what it ran, with the output; each departure from the brief, with its reason; and each **guess**, a choice the brief left open that someone could feel.
 - When something the brief says about the code is false, it stops and reports it.

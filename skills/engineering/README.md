@@ -17,7 +17,7 @@ Stable skills used regularly for code work.
 - **[`diagnosing-bugs`](./diagnosing-bugs/SKILL.md)** — Establish root causes from faithful reproductions or distinguishing runtime evidence.
 - **[`garden`](./garden/SKILL.md)** — Between features, find drift in architecture, consistency, or performance, group it by cause, fix the causes worth their cost in one behavior-preserving pull request, and file the rest. Runs to the end on its own.
 - **[`how`](./how/SKILL.md)** — Build an evidence-grounded mental model of how a system, problem, or solution works.
-- **[`program-design`](./program-design/SKILL.md)** — Agree the shape of the code inside the components before agents write it: where each thing lives, the key types and signatures, the important call paths, what each module hides, and how errors travel. `shape` runs it when a change creates modules or types or spans several.
+- **[`program-design`](./program-design/SKILL.md)** — Agree the shape of the code inside the components before agents write it: where each thing lives, the key types and signatures, the important call paths, what each module hides, and how errors travel. `shape` runs it when a change creates modules or types or spans several, and `adapt` (beta) when the stakes are high.
 - **[`prototype`](./prototype/SKILL.md)** — Compare production-representative UI directions, or drive a logic model through a shareable HTML demo, before committing to a design.
 - **[`prune`](./prune/SKILL.md)** — Retire the tests and checks in one area that no longer earn their cost, with the test-only production code they keep alive, and prove every contract keeps a test that goes red. Run it when suites slow down, turn intermittent, or grow faster than the code they cover; alone it ships its own pull request, inside `garden` its commits join garden's.
 - **[`refine`](./refine/SKILL.md)** — Review a working change with fresh eyes against its spec, then make it right and make it fast without changing its behavior, in at most three rounds.
@@ -27,6 +27,6 @@ Stable skills used regularly for code work.
 - **[`ship`](./ship/SKILL.md)** — Open a pull request described for its reviewer by [`pr-description`](../in-progress/pr-description/SKILL.md) (beta), drive its checks to green, and answer its review with the smallest fix.
 - **[`skill-guide`](./skill-guide/SKILL.md)** — Explain the available skills and recommend what the user should invoke next.
 - **[`spike`](./spike/SKILL.md)** — Settle one empirical technical uncertainty through a bounded disposable experiment.
-- **[`strategic-programming`](./strategic-programming/SKILL.md)** — Build maintainable code through grounded design, independent proof, and minimal custom machinery.
+- **[`strategic-programming`](./strategic-programming/SKILL.md)** — Build maintainable code through grounded design, independent proof, and minimal custom machinery. It holds the test every piece must pass before it is built.
 - **[`walkthrough`](./walkthrough/SKILL.md)** — Render a design as a self-contained visual page built from its Markdown sources, so a human understands it before accepting it and can talk it through with others.
 - **[`why`](./why/SKILL.md)** — Recover why existing code, systems, or technical decisions acquired their current shape.
