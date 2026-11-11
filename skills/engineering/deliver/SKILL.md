@@ -9,7 +9,7 @@ Take one accepted spec to a pull request the human only has to merge. The spec's
 
 ## Start
 
-Read the spec at the path you were given, every source its Context and Decisions point to, the project's coding standards, and its gate configuration. Require `Status: Accepted`. For a bug fix, the agreed reproduction and expected behavior are the spec. Work on the current branch in the current worktree. Write every text a person reads with `writing-for-people`: the documentation, ADRs, and issue comments the change carries, each question to the human, and the report.
+Read the spec at the path you were given, every source its Context and Decisions point to, the project's coding standards, and its gate configuration. Require `Status: Accepted`. For a bug fix, the agreed reproduction and expected behavior are the spec. Work on the current branch in the current worktree, with `strategic-programming` loaded. Write every text a person reads with `writing-for-people`: the documentation, ADRs, and issue comments the change carries, each question to the human, and the report.
 
 ## 1. Acceptance tests
 
@@ -33,7 +33,7 @@ Run `ship` once `refine` finishes. When `refine` stopped on blockers, stop with 
 
 ## Decisions along the way
 
-Decide reversible choices yourself and record the ones the human would want to know about for the report. A one-way door the spec does not settle, such as a migration, a new contract that writes, or a change to a seam an accepted ADR governs, is not one of them. An accepted program design constrains them: follow it where the code agrees, and name each departure from it in the report with its reason. Stop and ask when the change needs one, or when evidence shows that an example, a decision in the spec, or an accepted one-way door is wrong, and continue with work that does not depend on it. The examples are the contract, but a number that sets how much to verify, such as a repetition count, a sample size, or a margin, is a decision like any other: before a verification that runs long or repeats, time one run, and when the whole would cost out of proportion to what it adds, that is evidence its decision is wrong. Put anything to the human, a question or a stop such as `refine`'s blockers, so they can answer it without opening the spec: the behavior at stake in plain words, the options, and your recommendation.
+Decide reversible choices yourself and record the ones the human would want to know about for the report. A one-way door the spec does not settle, such as a migration, a new contract that writes, or a change to a seam an accepted ADR governs, is not one of them. An accepted program design constrains them: follow it where the code agrees, and name each departure from it in the report with its reason. Stop and ask when the change needs one, or when evidence shows that an example, a decision in the spec, or an accepted one-way door is wrong or has a simpler form, and continue with work that does not depend on it. The examples are the contract, but a number that sets how much to verify, such as a repetition count, a sample size, or a margin, is a decision like any other: before a verification that runs long or repeats, time one run, and when the whole would cost out of proportion to what it adds, that is evidence its decision is wrong. Put anything to the human, a question or a stop such as `refine`'s blockers, so they can answer it without opening the spec: the behavior at stake in plain words, the options, and your recommendation.
 
 ## Report
 

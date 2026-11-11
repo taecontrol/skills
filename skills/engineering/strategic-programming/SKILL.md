@@ -1,6 +1,6 @@
 ---
 name: strategic-programming
-description: "Apply strategic programming to non-trivial implementation and repair work when green tests alone cannot establish a maintainable design. Use for changes involving invariants, boundaries, persistence, APIs, concurrency, security, shared policy, or consequential interfaces; skip routine mechanical edits."
+description: "Apply strategic programming to non-trivial design, implementation, and repair work when green tests alone cannot establish a maintainable design. Use for changes involving invariants, boundaries, persistence, APIs, concurrency, security, shared policy, or consequential interfaces; skip routine mechanical edits."
 ---
 
 # Strategic programming
@@ -34,9 +34,11 @@ Check the option you stop at, and the design within it, with a [second opinion](
 
 A pattern the repository repeats is an option to judge like any other, and existing code is no proof that its design is right. Before you repeat a pattern or build around what the code holds, such as a column's type or a wrapper every caller goes through, ask the second opinion's question 4 of it: why each piece exists. A reason is a recorded decision, such as a coding standard or an ADR, or the behavior lost without the piece. Follow a pattern that has one, or return the gap when the change shows its reason wrong. A pattern with no reason competes with the simplest form that does the job. The comparison counts the old sites, because a better form beside them is a second mechanism, as question 3 says. Take the better form when it wins with the old sites left as they are. When it wins only if they change, or it crosses a one-way door, follow the pattern and return the gap.
 
-Prefer boring code and demonstrated variation. Do not add speculative abstractions, configuration, extensibility, scaffolding, or dependencies for hypothetical future work.
+Every **piece** earns its place. A piece is anything someone builds, tests, and keeps: a state, a column, a guard, a rule, a limit, a setting, an abstraction, a test. A case is **live** when ordinary use of the product meets it, or when someone the product does not trust can cause it, to their gain or another's harm. Ordinary use includes what a network does to a request: a duplicate, a retry, a slow or lost response. Any other case is **improbable**: it needs unrelated deliberate acts to coincide, only a trusted person acting against themselves can cause it, it belongs to a later issue, or nobody has it. A live case gets the smallest piece that handles it. An improbable case gets no piece. It gets **its line** where this work reports to the human: the case, what happens when it occurs, and what a piece for it would cost. The human can ask for that piece, and nobody adds it for them. A behavior that an earlier issue or design handed down is a piece too: when a simpler form does the job, or its reason is gone, return that gap before you build on it. This holds wherever pieces enter: a design, a fix for a review finding, and the code.
 
-The shortest diff is not automatically the best design. More internal implementation can be justified when it creates a substantially smaller, safer caller-facing interface. Never minimize away accepted behavior, discriminating evidence, trust-boundary validation, security, data-loss protection, accessibility, or necessary operational controls.
+Prefer boring code and demonstrated variation.
+
+The shortest diff is not automatically the best design. More internal implementation can be justified when it creates a substantially smaller, safer caller-facing interface. Never minimize away accepted behavior, discriminating evidence, trust-boundary validation, security, data-loss protection, accessibility, or necessary operational controls. They protect live cases, and none of them makes an improbable case live.
 
 ## Hide complexity
 
@@ -62,7 +64,7 @@ When several defects share a cause, fix the cause with the strongest structural 
 
 Reconcile the final result against the obligation mapping from grounding. Account for each obligation with observed evidence or an explicit limitation, including those outside automated gate coverage. Resolve known in-scope omissions before claiming completion.
 
-Report an unresolved risk only when fixing it would cross the accepted boundary. Name the evidence, consequence, and decision needed; do not create a speculative follow-up ledger.
+Report an unresolved risk only when fixing it would cross the accepted boundary, naming the evidence, consequence, and decision needed. An improbable case is reported in its line.
 
 ## Boundaries
 

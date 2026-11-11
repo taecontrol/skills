@@ -1,6 +1,6 @@
 ---
 name: program-design
-description: "Settle the shape of the code inside the components before agents write it: where each thing lives, the key types and signatures, the important call paths in production and tests, what each module hides, and how errors travel. Use when shaping a change that creates modules or types or spans several modules, or when the human asks for a program design."
+description: "Settle the shape of the code inside the components before anyone writes it: where each thing lives, the key types and signatures, the important call paths in production and tests, what each module hides, and how errors travel. Use on any route when a change creates modules or types or spans several modules, before you write it or brief an implementer, or when the human asks for a program design."
 ---
 
 # Program design

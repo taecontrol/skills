@@ -1,6 +1,6 @@
 ---
 name: architect
-description: "Settle a one-way door before code locks it: a change to persisted data or its schema, a contract that writes, a security boundary, an ownership model, or a seam an accepted ADR governs. Invoke when shaping or delivering meets one, or when the user opens an architecture phase, before dispatching any agent to design one. Leave routine, local, and safely reversible choices to implementation."
+description: "Settle a one-way door before code or a brief locks it: a change to persisted data or its schema, a contract that writes, a security boundary, an ownership model, or a seam an accepted ADR governs. Invoke on any route as soon as the work meets one, before anyone designs it or builds on it, or when the user opens an architecture phase. Leave routine, local, and safely reversible choices to implementation."
 ---
 
 # Architect
