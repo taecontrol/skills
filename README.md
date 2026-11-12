@@ -1,25 +1,22 @@
 # taecontrol/skills
 
-A deliberately small catalog of reusable agent skills maintained by Taecontrol.
-
-The previous set was retired so each skill can be reintroduced only after it proves useful. The catalog contains two stable buckets:
-
-- [`skills/productivity`](./skills/productivity/README.md) — general workflow skills: [`grilling`](./skills/productivity/grilling/SKILL.md), [`wait-what`](./skills/productivity/wait-what/SKILL.md), [`writing-for-agents`](./skills/productivity/writing-for-agents/SKILL.md), and [`unslop`](./skills/productivity/unslop/SKILL.md).
-- [`skills/engineering`](./skills/engineering/README.md) — the engineering workflow skills, promoted from public beta: [`adr`](./skills/engineering/adr/SKILL.md), [`agents-md`](./skills/engineering/agents-md/SKILL.md), [`architect`](./skills/engineering/architect/SKILL.md), [`bug-hunt`](./skills/engineering/bug-hunt/SKILL.md), [`coding-standards`](./skills/engineering/coding-standards/SKILL.md), [`deliver`](./skills/engineering/deliver/SKILL.md), [`diagnosing-bugs`](./skills/engineering/diagnosing-bugs/SKILL.md), [`garden`](./skills/engineering/garden/SKILL.md), [`how`](./skills/engineering/how/SKILL.md), [`program-design`](./skills/engineering/program-design/SKILL.md), [`prototype`](./skills/engineering/prototype/SKILL.md), [`prune`](./skills/engineering/prune/SKILL.md), [`refine`](./skills/engineering/refine/SKILL.md), [`research`](./skills/engineering/research/SKILL.md), [`retro`](./skills/engineering/retro/SKILL.md), [`setup-verification`](./skills/engineering/setup-verification/SKILL.md), [`shape`](./skills/engineering/shape/SKILL.md), [`ship`](./skills/engineering/ship/SKILL.md), [`skill-guide`](./skills/engineering/skill-guide/SKILL.md), [`spike`](./skills/engineering/spike/SKILL.md), [`strategic-programming`](./skills/engineering/strategic-programming/SKILL.md), [`walkthrough`](./skills/engineering/walkthrough/SKILL.md), and [`why`](./skills/engineering/why/SKILL.md).
+A small catalog of reusable agent skills maintained by Taecontrol. New skills start in beta and become stable after regular use.
 
 ## Workflow
 
-The delivery workflow, in [`skills/engineering`](./skills/engineering/README.md):
+The delivery workflow lives in [`skills/engineering`](./skills/engineering/README.md):
 
-1. **[`shape`](./skills/engineering/shape/SKILL.md)**, with the human: agree on one spec that says what to build, what success means, and how to prove it. `prototype`, `spike`, `research`, and `architect` settle what it needs, [`program-design`](./skills/engineering/program-design/SKILL.md) settles the shape of the code when the change warrants it, and the human accepts it on a [`walkthrough`](./skills/engineering/walkthrough/SKILL.md) page.
-2. **[`deliver`](./skills/engineering/deliver/SKILL.md)**, on its own: write the acceptance tests and watch them go red, make it work, then run **[`refine`](./skills/engineering/refine/SKILL.md)** (make it right, make it fast, with fresh eyes) and **[`ship`](./skills/engineering/ship/SKILL.md)** (a draft pull request with green checks, described for its reviewer by [`pr-description`](./skills/in-progress/pr-description/SKILL.md) (beta), which also works on its own). The human marks it ready for review and merges.
-3. **[`garden`](./skills/engineering/garden/SKILL.md)**, alongside feature work: fix drift at its cause and turn repeated mistakes into checks. [`prune`](./skills/engineering/prune/SKILL.md) tends the tests, [`bug-hunt`](./skills/engineering/bug-hunt/SKILL.md) finds the bugs nobody reported, and [`setup-verification`](./skills/engineering/setup-verification/SKILL.md) the project's ability to run and prove the real product.
+1. **[`shape`](./skills/engineering/shape/SKILL.md)**, with the human: agree on one spec that says what to build, what success means, and how to prove it. The human accepts it on a [`walkthrough`](./skills/engineering/walkthrough/SKILL.md) page.
+2. **[`deliver`](./skills/engineering/deliver/SKILL.md)**, on its own: write the acceptance tests and watch them fail, make them pass, then run [`refine`](./skills/engineering/refine/SKILL.md) and [`ship`](./skills/engineering/ship/SKILL.md). The result is a draft pull request with green checks. The human marks it ready for review and merges.
+3. **[`garden`](./skills/engineering/garden/SKILL.md)**, between features: fix drift at its cause. [`prune`](./skills/engineering/prune/SKILL.md) tends the tests, and [`bug-hunt`](./skills/engineering/bug-hunt/SKILL.md) finds bugs nobody reported.
 
-Lessons from a run go into the project's environment first, as types, checks, scripts, and shared components, and into skills last.
+[`adapt`](./skills/in-progress/adapt/SKILL.md) (beta) is an alternative to `shape` and `deliver` that designs a process for each task.
+
+When a run goes wrong, fix the project first, with types, checks, scripts, or shared components, and change a skill last.
 
 ## Catalog
 
-Skills are grouped by maturity and purpose, following the conventions used by [mattpocock/skills](https://github.com/mattpocock/skills):
+Skills are grouped by maturity and purpose:
 
 - [`skills/engineering`](./skills/engineering/README.md) — stable skills used regularly for code work.
 - [`skills/productivity`](./skills/productivity/README.md) — stable, general workflow skills.
@@ -27,7 +24,7 @@ Skills are grouped by maturity and purpose, following the conventions used by [m
 - [`skills/misc`](./skills/misc/README.md) — useful but rarely used skills that are not promoted.
 - [`skills/deprecated`](./skills/deprecated/README.md) — an intentionally empty retirement marker.
 
-Within each stable bucket, its README separates user-invoked skills from model-invoked skills. Each skill remains independently installable and owns its references, scripts, templates, and agent metadata.
+Each bucket's README separates skills you invoke by name from skills the agent loads when a task calls for them. Each skill installs on its own.
 
 ## Lifecycle
 
@@ -37,7 +34,7 @@ Within each stable bucket, its README separates user-invoked skills from model-i
 4. Put a low-use but still useful skill in `skills/misc/`.
 5. Retire a skill by deleting it. Do not keep an alias or a stale `SKILL.md` in `deprecated/`; name its replacement, or state that none exists, in the commit or release notes. Git preserves the retired implementation.
 
-Update this README and the destination bucket README whenever a skill is promoted, moved, renamed, or retired.
+Update the destination bucket's README whenever a skill is promoted, moved, renamed, or retired.
 
 ## Versioning
 
@@ -56,11 +53,11 @@ git push --follow-tags
 
 `npm version` updates `package.json` and `package-lock.json`, creates a version commit, and tags it.
 
-Each release and the reasons behind it are in [`CHANGELOG.md`](./CHANGELOG.md).
+What changed in each release is in [`CHANGELOG.md`](./CHANGELOG.md).
 
 ## Install
 
-Once the catalog contains a skill, list or select individual skills with:
+List or select individual skills with:
 
 ```bash
 npx skills@latest add taecontrol/skills

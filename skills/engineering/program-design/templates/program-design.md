@@ -1,6 +1,6 @@
 # <Title>: program design
 
-Status: Draft | Accepted
+Status: Draft | Accepted (on its `walkthrough` page; an edit to a decision returns it to Draft)
 Spec: <path or issue>. Brief: <path, when there is one>. Grounded on: <revision>.
 
 ## Where things live

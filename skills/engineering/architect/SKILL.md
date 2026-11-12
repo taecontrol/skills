@@ -32,4 +32,4 @@ Own one costly-to-reverse design question from grounding through human agreement
 
 ## Completion criteria
 
-The user can accept or reject one grounded shape from the caller's point of view; every material invariant has an owner, every consequential boundary hides identifiable complexity, alternatives received independent comparison, uncertainty remains explicit, and no implementation began. An `Agreed` outcome also has one accepted implementation brief whose exact location, obligations, and expected retirement point are recoverable without conversation history.
+The user can accept or reject one grounded shape from the caller's point of view, on its `walkthrough` page; every material invariant has an owner, every consequential boundary hides identifiable complexity, alternatives received independent comparison, uncertainty remains explicit, and no implementation began. An `Agreed` outcome also has one accepted implementation brief whose exact location, obligations, and expected retirement point are recoverable without conversation history.

@@ -1,6 +1,6 @@
 # <Title>
 
-Status: Draft | Accepted
+Status: Draft | Accepted (on its `walkthrough` page; an edit to a decision returns it to Draft)
 Issue: <link, when there is one>
 
 ## Problem
