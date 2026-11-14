@@ -2,6 +2,11 @@
 
 Newest first. "Beta" means the skill is in `skills/in-progress`.
 
+- `3.15.0`:
+  - An improbable finding is no longer a blocker in `pr-review` or `refine`; it goes in the report as its line, and reviewers also list the pieces a change can lose. `strategic-programming` counts a case an untrusted party causes as live only when it gains them more than their access, or harms someone else.
+  - Re-reviews cover what changed since the last review, and `refine` stops after three rounds even when told to keep going. `prototype` starts with two designers, and `writing-for-people` (beta) runs one cold read that also lists what to cut.
+  - `adapt` (beta) is half as long and gives fresh reviews only to the parts that cross a one-way door or a guarded boundary. `shape` writes issues that say what must be true, not how.
+  - `AGENTS.md` sets how a skill changes.
 - `3.14.0`:
   - `adapt` (beta) runs the checks it can run with the access it already has. It asks the human once, and only when a check changes something, shows private data, or goes around a permission, approval, or audit log of the product.
   - `adapt` never skips a step of another skill on its own, and runs a command that waits for the human in the background.

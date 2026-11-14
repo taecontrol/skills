@@ -21,12 +21,12 @@ Read the spec and its sources yourself, and the project's review guidance when i
 - **Docs:** every sentence the change adds or edits in documentation, docblocks, and API references, read against the code. A false sentence is a defect.
 - **Tests:** each test against `strategic-programming`'s test value reference; stand-ins that differ from the real target; assertion changes that weakened an example; sleeps, wall-clock dependence, and flakiness; tests that CI will not run.
 - **Mutations:** prove the tests by breaking the code, as [mutations](references/mutations.md) describes: in the first round, every target; later, only what the previous round added.
-- **Right:** the `strategic-programming` lenses, the accepted program design when the spec points to one (the diff follows it, or the delivery names each departure), the project's coding standards, duplicated policy, dead code, scaffolding left from making it work, and temporary labels in durable files.
+- **Right:** the `strategic-programming` lenses, the accepted program design when the spec points to one (the diff follows it, or the delivery names each departure), the project's coding standards, duplicated policy, dead code, pieces whose case is improbable, scaffolding left from making it work, and temporary labels in durable files.
 - **Fast:** the spec's budgets, and work the change made needlessly slow, such as extra round trips, queries, renders, or suite time.
 
 A finding needs a concrete scenario reachable from input the product accepts or from how it runs, or a mutation that stayed green. Hand every finding to a fresh agent that found none of them, to check each against the code and the configuration: **confirmed** when the scenario follows from them or from a run, and reading is enough; **plausible** when the risk is real but the evidence cannot show it, naming the evidence that would; **refuted** when a guard elsewhere stops it or nothing reaches it, and you read or ran that guard or path rather than assumed it. Drop the refuted. The change's **scope** is the code the diff modifies or newly reaches, such as an old function a new caller now exposes. Sort the rest:
 
-- **Blocker:** a confirmed defect in scope that breaks a guarantee, an example, or something that must never happen, loses or corrupts data, crosses a security or tenant boundary, fails under how the product runs, or turns a gate or CI check red; or a mutation that stays green on a link of a guarantee's path or on a security, privilege, or isolation guard. Neither the spec's silence about it nor how unlikely its trigger looks lowers it. Mark it `improbable` when its case is, as `strategic-programming` defines it: it keeps its rank in the report, with its line, and does not count as a blocker in the rules below. A defect in these classes that breaks no guarantee and whose worst case is cosmetic or corrects itself is a fix.
+- **Blocker:** a confirmed defect in scope that breaks a guarantee, an example, or something that must never happen, loses or corrupts data, crosses a security or tenant boundary, fails under how the product runs, or turns a gate or CI check red; or a mutation that stays green on a link of a guarantee's path or on a security, privilege, or isolation guard. The spec's silence about it does not lower it. A finding whose case is improbable, as `strategic-programming` defines it, is no blocker: it goes in the report as its line. A defect in these classes that breaks no guarantee and whose worst case is cosmetic or corrects itself is a fix.
 - **Fix:** any other real defect in scope, a quality problem the change introduced, a plausible risk with cheap evidence to settle it, or a gap in the evidence, such as a missing test or a missing or mistimed capture.
 - **Follow-up:** real, but out of scope.
 
@@ -42,9 +42,9 @@ A fix closes its finding inside the change's design. When closing it needs a new
 
 ### Next round
 
-Only blockers start another round, up to three in all. Its review, with fresh eyes when the harness allows, covers the whole change in its final state and looks hardest at what the previous round's fixes added: a fix is new code no review has seen. When a review finds no blocker, make its fixes, run the gates, and finish.
+Only blockers start another round, up to three in all. Its review, with fresh eyes when the harness allows, covers what the previous round's fixes changed and the code they reach: a fix is new code no review has seen. When a review finds no blocker, make its fixes, run the gates, and finish.
 
-A sound spec and a sound delivery converge within three rounds. If the third review still finds a blocker, stop: the flow failed, not just the code. Report the blockers and what let them through, such as a guarantee never written, a link missing from its path, a missing example, a wrong decision, or a gap in the environment.
+A sound spec and a sound delivery converge within three rounds. If the third review still finds a blocker, stop, even when the human said to go on without stopping: the flow failed, not just the code. Report the blockers and what let them through, such as a guarantee never written, a link missing from its path, a missing example, a wrong decision, or a gap in the environment.
 
 ## Report
 

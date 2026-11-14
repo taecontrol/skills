@@ -25,7 +25,7 @@ When a failure needs something you cannot get, such as a secret, infrastructure 
 
 ## Answer a review
 
-A review round adds only what closes its blocking items, whether a person or a review bot raised them. Give each one in a live case the smallest fix that closes it at every site of the same mechanism, and answer an improbable one with its line, as `strategic-programming` defines both. Choose the fix as `refine`'s Improve section chooses one, with each option the reviewer proposed among the options the second opinion compares. A note the reviewer marked as not blocking, or a change the review did not ask for, stays out unless the human asks for it. Tell the human which notes you left out. Before the human asks for another review, run `pr-review` again on the new head, where its re-review looks hardest at the fix code, close its blocking findings the same way, drive the checks to green again, and bring the description up to date.
+A review round adds only what closes its blocking items, whether a person or a review bot raised them. Give each one in a live case the smallest fix that closes it at every site of the same mechanism, and answer an improbable one with its line, as `strategic-programming` defines both. Choose the fix as `refine`'s Improve section chooses one, with each option the reviewer proposed among the options the second opinion compares. A note the reviewer marked as not blocking, or a change the review did not ask for, stays out unless the human asks for it. Tell the human which notes you left out. Before the human asks for another review, run `pr-review` again on the new head, close its blocking findings the same way, drive the checks to green again, and bring the description up to date.
 
 ## Done
 
