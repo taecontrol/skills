@@ -51,7 +51,7 @@ Give a fresh agent only the title, the description, the diff, the claims list wi
 3. **Cold read.** The questions it would ask the author before reviewing, and each term or reference it cannot resolve from the pull request alone.
 4. **Cut.** Every sentence the reviewer could lose without deciding, looking, or trusting differently, every sentence that repeats the diff or a document the change updates, and the description's word count.
 
-For each unsupported claim, remove it, attribute it, mark it as not verified, or back it with a new run. Cut what it lists under Cut. Answer each cold-read question in the fewest words, or with a link to where the answer lives. Fix everything else it reports. When the fixes add or change claims, verify those again with a fresh agent. When the harness offers no fresh context, verify it yourself and say so in your report, not in the pull request.
+For each unsupported claim, remove it, attribute it, mark it as not verified, or back it with a new run. Cut what it lists under Cut. Answer each cold-read question in the fewest words, or with a link to where the answer lives. Fix everything else it reports. When the fixes add or change claims, trace each one to its source yourself. When the harness offers no fresh context, verify it yourself and say so in your report, not in the pull request.
 
 Done when the latest verification finds no unsupported claim, no exposure, and nothing to cut, and the verifier can say why the change exists, where to start reading, and how it was verified.
 

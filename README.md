@@ -29,7 +29,7 @@ Each bucket's README separates skills you invoke by name from skills the agent l
 ## Lifecycle
 
 1. Add a new candidate under `skills/in-progress/<skill-name>/`.
-2. Evaluate it through real use. Revise it from observed failures by sharpening or generalizing the rule that should have caught them; add a rule only when none covers the cause, and remove what the change makes redundant.
+2. Evaluate it through real use, and revise it from observed failures as [`AGENTS.md`](./AGENTS.md) says.
 3. Promote it to `skills/engineering/` or `skills/productivity/` when it is stable and regularly useful.
 4. Put a low-use but still useful skill in `skills/misc/`.
 5. Retire a skill by deleting it. Do not keep an alias or a stale `SKILL.md` in `deprecated/`; name its replacement, or state that none exists, in the commit or release notes. Git preserves the retired implementation.
