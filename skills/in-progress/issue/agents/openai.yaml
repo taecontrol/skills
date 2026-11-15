@@ -1,0 +1,6 @@
+interface:
+  display_name: "Issue"
+  short_description: "Write an issue that leaves the solution to whoever implements it"
+
+policy:
+  allow_implicit_invocation: true

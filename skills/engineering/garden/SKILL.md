@@ -26,7 +26,7 @@ Pick the lens the user names, or the one with the strongest signal:
 3. **Group by cause.** Many findings usually share one. For each cause choose the strongest structural fix in the order `strategic-programming` gives.
 4. **Pick.** Rank the causes by leverage and fix the ones worth their cost, unless the user picks. A cause whose fix would change behavior, a contract, or a decision an ADR records is not gardening: it goes to step 6.
 5. **Fix the picked causes on one branch off the base, in one pull request,** each cause in its own commits. Behavior stays the same: when the affected code lacks tests that would catch a change, add characterization tests first. When the run also prunes, because the user asks or the tests lens leads, run `prune` in a fresh agent on its own worktree off the same base and bring its commits onto the branch. Then run `refine` and `ship`.
-6. **File the rest.** Search open issues first, then file each unpicked cause as one issue with its instances, its fix, and its cost. A finding that looks like a defect, such as a swallowed error or a contract the code breaks, is filed as a suspected bug for `bug-hunt` to confirm.
+6. **File the rest.** Search open issues first, then file each unpicked cause as one issue, written with `issue`, with its instances and what it costs. A finding that looks like a defect, such as a swallowed error or a contract the code breaks, is filed as a suspected bug for `bug-hunt` to confirm.
 
 ## Report
 

@@ -64,15 +64,7 @@ When a fix stops being easy partway through, because it reaches another owner, m
 
 ## 6. File
 
-File each remaining cause as one issue with the project's bug label, written so an agent could pick it up without asking:
-
-- **Title:** the area and the symptom; a guessed cause stays out of it.
-- **Current and expected behavior**, and where the expected one comes from.
-- **Reproduction:** the test or the steps, with their red output.
-- **Cause:** the mechanism when diagnosed; otherwise hypotheses, labeled as hypotheses.
-- **Code:** permalinks pinned to the hunted revision.
-- **Acceptance criteria** a reviewer can check, and what is **out of scope**.
-- **Why not fixed here:** the easy condition it failed, or the user's limit.
+File each remaining cause as one issue with the project's bug label, written with `issue`. Its title names the area and the symptom. What it knows: the current and expected behavior and where the expected one comes from, the reproduction with its red output, the mechanism when diagnosed, permalinks pinned to the hunted revision, and why it was not fixed here: the easy condition it failed, or the user's limit.
 
 ## Report
 
