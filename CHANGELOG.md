@@ -2,6 +2,7 @@
 
 Newest first. "Beta" means the skill is in `skills/in-progress`.
 
+- `3.16.0`: `pr-description` (beta) writes for whoever decides on the change, who knows the product but not the code: the goal as understood, the solution and the alternatives it beat, and evidence that it works, without fixed sections.
 - `3.15.0`:
   - An improbable finding is no longer a blocker in `pr-review` or `refine`; it goes in the report as its line, and reviewers also list the pieces a change can lose. `strategic-programming` counts a case an untrusted party causes as live only when it gains them more than their access, or harms someone else.
   - Re-reviews cover what changed since the last review, and `refine` stops after three rounds even when told to keep going. `prototype` starts with two designers, and `writing-for-people` (beta) runs one cold read that also lists what to cut.
