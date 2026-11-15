@@ -45,7 +45,7 @@ For text that leaves the conversation, such as an issue, ticket, pull request, w
 2. Resolve each term it could not, answer each question in the fewest words, and cut what it could lose. When the harness offers no fresh context, do the read yourself and tell the user.
 3. Show the user the draft before you publish or send it, and again after any later edit.
 
-`pr-description`'s verification includes this read.
+The verifications of `pr-description` and `issue` include this read.
 
 Done when every cold-read finding is resolved, answered, or cut, an `unslop` pass followed the last edit, and its sentence matches what step 1 named.
 

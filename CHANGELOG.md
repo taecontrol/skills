@@ -2,6 +2,7 @@
 
 Newest first. "Beta" means the skill is in `skills/in-progress`.
 
+- `3.17.0`: adds `issue` (beta), which writes an issue with the problem, the expected outcome, and what is known, and leaves the solution, rules, and limits to whoever implements it. `shape`, `adapt` (beta), `garden`, and `bug-hunt` write their issues with it, and `garden` no longer puts its fix in the issue.
 - `3.16.0`: `pr-description` (beta) writes for whoever decides on the change, who knows the product but not the code: the goal as understood, the solution and the alternatives it beat, and evidence that it works, without fixed sections.
 - `3.15.0`:
   - An improbable finding is no longer a blocker in `pr-review` or `refine`; it goes in the report as its line, and reviewers also list the pieces a change can lose. `strategic-programming` counts a case an untrusted party causes as live only when it gains them more than their access, or harms someone else.
