@@ -5,55 +5,62 @@ description: "Write or rewrite a pull request's title and description, then have
 
 # PR description
 
-The reader is the **reviewer**: someone who knows the codebase, not how this change was made, and has no reason to care how it was made. They read the description to decide whether the change should exist, where to look, and whether they can trust that it works, and then they read the diff. So the description is a **map** of the diff. It gives what the diff cannot show and points to the rest. Every sentence answers one of those questions with something the diff and the documents the change updates do not already say, and every claim is one the reviewer could check. The job ends when a fresh agent that saw none of the work has verified it.
+The reader is the **decider**, the teammate who decides whether the change merges. They know the product and the architecture, not the code, and took no part in the work or the request behind it. The diff and code review carry the code. The description gives what you understood the goal to be, the solution and why it beat the alternatives, and **evidence** that it works. They read it first to check that you are **in sync** on the goal; when you are not, nothing else in it matters. Every claim in it is one the decider could check. The job ends when a fresh agent that saw none of the work has verified it.
 
 ## 1. Gather
 
-Work from what outlives the work: the final diff against the base, the commits, the issue the change closes, the documentation and ADRs it adds, and verification you ran on the final state. Read the whole diff. Notes from how the change was made, such as a spec, a plan, a review, a spike, or a report to whoever asked for the work, supply facts; the structure and the words come from the reviewer's questions.
+Work from what outlives the work: the final diff against the base, the commits, the issue the change closes, the design it follows, and verification you ran on the final state. Read the whole diff. Notes from the work supply facts; the structure and the words come from step 2.
+
+Collect what the diff cannot show:
+
+- **Alternatives.** The options considered, and why each was set aside. When the work left no record of them, weigh them now and list them as inferences.
+- **Cause**, for a fix: what made the failure happen, which change introduced it (`git log -S`, `git blame`), and whether the fix closes the cause or only this instance.
+- **Evidence.** Whatever shows the change working on its final state: before-and-after screenshots or a video, a real run's output, performance numbers, or the strategy that proves a refactor kept its behavior.
 
 Keep a **claims list**: each fact you may state, with its source.
 
 - **Diff:** the file and lines that show it.
 - **Run:** a command or action you ran on the final state, with its output.
-- **Said:** a person told you, such as the owner's decision or report. The description attributes it to them.
+- **Said:** a person told you, such as a decision or a bug report. The description attributes it to them by role, such as "the maintainer" or "a user".
 - **Document:** a page or file you read, with where it lives and its [visibility](#visibility).
 - **Inference:** your own conclusion. The description states it as one, or leaves it out.
 
-A claim from an earlier run, from the change's own documents such as an ADR, or from an agent's report is a **lead** until the diff or a new run backs it. When the change moved after its description was written, such as after a review round, the old description is a lead too, so gather again from the final diff and write the description whole.
+A claim from an earlier run, from the change's own documents such as an ADR, or from an agent's report is a **lead** until the diff or a new run backs it. A description written before the change last moved is a lead too: gather again from the final diff and rewrite it whole.
 
-Done when you can say in one sentence why the change exists, and every claim you mean to make is on the list with its source.
+Done when you can say in one sentence, in the product's terms, what the change is for and why this solution beats each alternative you name, and every claim you mean to make is on the list with its source.
 
 ## 2. Write
 
 Title: imperative, specific, and readable on its own, in the project's convention.
 
-Choose what goes in before you write. A claim from the list enters the description only when, without it, the reviewer would decide, look, or trust differently. The rest stays where it already lives. A detail the diff shows, such as a limit's value, a lock clause, or the error each endpoint returns, stays in the diff. A detail that a document the change updates already states gets a link to that section. An edge case lives in the test that names it.
+The description answers the decider's questions, in the order they ask them. They are questions, not a template: give each the heading and space this change needs, merge them, or leave one out. A small fix can answer all of them in three short paragraphs.
 
-Then the sections below, in this order. Each one answers a question the reviewer brings. Length follows what the reviewer must take in before the diff, not the diff's size. A one-line fix gets a title and a sentence of why. A large change reads in about three minutes, about 500 to 700 words. A section with nothing to say is left out.
+1. **What you understood.** The problem or goal as you understood it, who it affects, and the issue it closes, summarized so the decider need not open it. State the goal, not the work done for it.
+2. **The solution.** What changes for users, operators, or the rest of the system, in a few lines, with before and after. Add anything someone must do, such as a migration, and what merging sets off, such as a deploy. Link to where the full design lives instead of restating it.
+3. **Why this solution.** The alternatives and why each was set aside, the known costs and limits with numbers where they exist, and for a fix, the cause and where it came from. This is what shows the decider that you looked for the best solution.
+4. **Evidence it works.** Show the change working the way the decider would see it. Upload images and video where the platform allows, and tell a strategy in a sentence or two. Name what was not verified and why. Checks that passed get one line after that evidence; CI shows each one's result. A failing check outside the change gets one line that says where else it fails. Long output goes in a collapsed `<details>` block, with the decisive lines outside it.
+5. **Left out and why.** What the decider would expect this change to cover and it does not, each with its reason and its follow-up issue.
 
-1. **Why**, without a heading: one to three sentences on the problem or goal, who it affects, and the issue it closes, with that issue's point summarized so the reviewer need not open it. Name the problem as a whole. Its cases belong to What changes or to the tests.
-2. **What changes:** one bullet per behavior that users, operators, or other code notice, each in one or two sentences with before and after. Add anything someone must do, such as a migration, a config change, or a flag, and what merging sets off, such as a deploy. The mechanism behind a behavior goes under Decisions when it was a choice, or under How to review when the risk sits in it.
-3. **Decisions:** the choices a reviewer would otherwise question: the approach, the alternatives set aside and why, and known costs and limits, with numbers where they exist. When an ADR carries the reasoning, give its conclusion here and link it.
-4. **How to review:** when the change spans several areas or many files. Name where to start, the reading order, where the risk sits, what to skim (generated code, lockfiles, fixtures, mechanical moves), and the question you want the reviewer's judgment on. When a change this large could have been split, say why it was not.
-5. **Try it and what was tested:** the shortest way for the reviewer to see it work, then one line per kind of check with its result, such as a suite's test count, or a mutation score and what its survivors are. Use before-and-after screenshots for UI, uploaded where the platform allows, and numbers for performance. Name what was not verified and why. A failing check outside the change gets one line that says where else it fails. How the tests came to be, such as which ones failed first, the review rounds, and the score of each run, goes in your report to whoever asked for the work. Put long output and extra screenshots in a collapsed `<details>` block, with the decisive lines outside it. The pull request's own CI checks already show their results.
-6. **Not included:** what a reviewer would expect this change to cover and it leaves out, each with its follow-up issue, or the reason it has none.
+Name things the way the product and the architecture name them: screens, commands, tools, components, and data. A function, file, or type name enters only when the decider needs it to decide, and then with what it does.
 
-Turn material from the work into the reviewer's terms through `writing-for-people`'s process material, putting each statement under the section whose question it answers, and keep within the repository's [Visibility](#visibility). Write in the language the project's team reads. When the project has a pull request template or conventions, fit these sections into them instead of adding a second structure.
+A claim enters the description only when, without it, the decider would decide or trust differently. A detail the diff shows stays in the diff. A detail a document already states gets a link. How the change came to be, such as the review rounds, goes in your report to whoever asked for the work. A large change reads in about three minutes, 500 to 700 words.
 
-Done when every claim in the description passes the test above, the description fits its length, and every section with something to say is written with `writing-for-people`.
+Write each part with `writing-for-people`, and keep within the repository's [Visibility](#visibility). Write in the language the project's team reads. When the project has a pull request template or written conventions, answer these questions inside them. Earlier descriptions show what the project discusses, not a structure to follow.
+
+Done when every claim passes the test above, the description fits its length, and it answers each question the change has an answer to.
 
 ## 3. Verify
 
-Give a fresh agent only the title, the description, the diff, the claims list with its sources, and the visibility of the repository and of each source. It saw nothing of the work and has nothing to defend. It returns:
+Give a fresh agent only the title, the description, the diff, the claims list with its sources, the visibility of the repository and of each source, and this skill's first two sentences, on the decider. It returns:
 
 1. **Each claim, traced.** Every factual statement in the description, with its source checked by opening it, or by rerunning the check when that is cheap. It marks each claim **supported**, **attributed** to the person who said it, **inference** stated as one, or **unsupported**. A claim is unsupported when its source does not show it, when the diff contradicts it, when it states an inference as fact, when it rests on a lead, or when it generalizes from one case.
 2. **Exposure.** Every name, link, path, address, or detail that reveals more than the repository's visibility allows.
-3. **Cold read.** The questions it would ask the author before reviewing, and each term or reference it cannot resolve from the pull request alone.
-4. **Cut.** Every sentence the reviewer could lose without deciding, looking, or trusting differently, every sentence that repeats the diff or a document the change updates, and the description's word count.
+3. **Cold read.** In one sentence each, what it understood the change is for and why this solution beat each alternative the description names. Then the questions the decider would ask before deciding, and each term, code name, or reference the decider could not resolve from the pull request alone.
+4. **Cut.** Every sentence the decider could lose without deciding or trusting differently, every sentence that repeats the diff or a document the change updates, and the description's word count.
 
-For each unsupported claim, remove it, attribute it, mark it as not verified, or back it with a new run. Cut what it lists under Cut. Answer each cold-read question in the fewest words, or with a link to where the answer lives. Fix everything else it reports. When the fixes add or change claims, trace each one to its source yourself. When the harness offers no fresh context, verify it yourself and say so in your report, not in the pull request.
+For each unsupported claim, remove it, attribute it, mark it as not verified, or back it with a new run. When its two sentences differ from yours, rewrite the parts that misled it. Answer each cold-read question in the fewest words, or with a link to where the answer lives. Cut what it lists under Cut. Fix everything else it reports. When the fixes add or change claims, trace each one to its source yourself. When the harness offers no fresh context, verify it yourself and say so in your report, not in the pull request.
 
-Done when the latest verification finds no unsupported claim, no exposure, and nothing to cut, and the verifier can say why the change exists, where to start reading, and how it was verified.
+Done when the latest verification finds no unsupported claim, no exposure, and nothing to cut, and its two sentences match yours.
 
 ## 4. Publish
 
