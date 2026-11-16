@@ -5,7 +5,7 @@ description: "Write an issue or ticket that leaves the solution to whoever picks
 
 # Issue
 
-The reader is the **implementer**, the person or agent who picks the issue up later, and the teammates who follow the work. They know the product, not the conversation that produced the issue. The implementer investigates and chooses the solution, so the issue gives them the whole problem: what we want and why, what we expect once it is done, and what is already known. Whatever the issue states, they take as settled and build on without questioning it, so it states only what is settled: facts with their source, and decisions a person made.
+The reader is the **implementer**, the person or agent who picks the issue up later, and the teammates who follow the work. They know the product, not the conversation that produced the issue. The implementer investigates and chooses the solution, so the issue gives them the whole problem: what we want and why, what we expect once it is done, and what is already known. Whatever the issue states, they take as settled and build on without questioning it, and nobody updates it before they read it. So it states only what will still hold when they pick it up: facts with their source, and decisions a person made. Work still in flight, such as a pull request or a deployment, appears by its ticket, without its current state.
 
 ## 1. Gather
 
@@ -44,11 +44,11 @@ Give a fresh agent only the title, the issue, the items from step 1 with their s
 
 1. **What it understood.** In one sentence each, what we want and what we expect once it is done.
 2. **Decisions nobody made.** Every sentence that settles something no person decided and no source shows: a solution, a rule, a limit, a number, a behavior, an example, a design.
-3. **Each fact, traced** to its source by opening it.
+3. **Each fact, traced** to its source by opening it, and whether it will still hold when the implementer picks the issue up.
 
-Cut each sentence under 2, and each fact its source does not show. When its sentences differ from yours, rewrite the parts that misled it. When the harness offers no fresh context, do the review yourself and say so in your report.
+Cut each sentence under 2, and each fact its source does not show or that will not hold then. When its sentences differ from yours, rewrite the parts that misled it. When the harness offers no fresh context, do the review yourself and say so in your report.
 
-Done when the latest review finds no decision nobody made, no unsupported fact, and its sentences match yours.
+Done when the latest review finds no decision nobody made, no fact that is unsupported or will not hold then, and its sentences match yours.
 
 ## 4. Publish
 
