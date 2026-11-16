@@ -46,7 +46,7 @@ Give a fresh agent only the title, the issue, the items from step 1 with their s
 2. **Decisions nobody made.** Every sentence that settles something no person decided and no source shows: a solution, a rule, a limit, a number, a behavior, an example, a design.
 3. **Each fact, traced** to its source by opening it.
 
-Cut each sentence under 2, and each fact its source does not show. A cold-read question whose answer would be a decision stays open for the implementer to settle; it is not a gap to fill. When its sentences differ from yours, rewrite the parts that misled it. When the harness offers no fresh context, do the review yourself and say so in your report.
+Cut each sentence under 2, and each fact its source does not show. When its sentences differ from yours, rewrite the parts that misled it. When the harness offers no fresh context, do the review yourself and say so in your report.
 
 Done when the latest review finds no decision nobody made, no unsupported fact, and its sentences match yours.
 

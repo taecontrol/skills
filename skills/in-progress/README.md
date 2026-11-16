@@ -14,5 +14,5 @@ npx skills@latest add taecontrol/skills --skill=<name>
 - **[`editor`](./editor/SKILL.md)**: be the user's editor for an article or essay they write themselves, in Spanish or English. It never writes the text for them.
 - **[`issue`](./issue/SKILL.md)**: write an issue that gives whoever implements it the problem and the outcome, and leaves the solution to them.
 - **[`pr-description`](./pr-description/SKILL.md)**: write a pull request's title and description for the teammate who decides on it, and check each claim before publishing.
-- **[`pr-review`](./pr-review/SKILL.md)**: review a pull request as untrusted work before its human reviewer does, and report Blocking, Should fix, and Considered findings with `file:line`.
+- **[`pr-review`](./pr-review/SKILL.md)**: review a pull request as untrusted work before its human reviewer does, and report what blocks, what to ask the author, and what no test catches, with proof and `file:line`.
 - **[`writing-for-people`](./writing-for-people/SKILL.md)**: decide what a reader needs before writing any text a person reads, and finish it with `unslop`.

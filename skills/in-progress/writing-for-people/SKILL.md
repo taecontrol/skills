@@ -23,7 +23,7 @@ Done when you can say in one sentence who reads it and what they do next.
 - **Evidence.** Put the proof beside each claim the reader will act on: the test, the command's output, or the exact line. A longer explanation raises their trust without making the claim more true. Say in the first person what you verified and how, what you assumed, and what you did not check.
 - **The why.** Give each decision, recommendation, deferral, new piece, and request its reason, and what it changes for the reader.
 - **Concrete.** Explain an idea with one example, built from the reader's own data when it exists.
-- **Decisions.** When the reader must decide, give two or three options, each with its consequence in plain words, then your recommendation, marked as yours, with what would make it wrong.
+- **Decisions.** When the reader must choose how you proceed, give two or three options, each with its consequence in plain words, then your recommendation, marked as yours, with what would make it wrong. When you report problems found in a piece of work, give each with its proof and ask what you cannot know; the fix belongs to whoever owns the work.
 - **Durable.** Text that other people read states what is true of the product, the code, or the decision. Material from how the work was made becomes one of those through [process material](#process-material), or stays out.
 - **Lean.** Every sentence tells the reader something they need and do not already have. A line that repeats what a chart, table, or screen already shows, an obvious point, a note about the text itself or about who reads it, and words carried over from your own instructions all fail that test. A document states; questions for its readers go in the message that shares it.
 
@@ -42,7 +42,7 @@ Done when an `unslop` pass on the current text finds nothing left.
 For text that leaves the conversation, such as an issue, ticket, pull request, wiki page, README, slide, or message to a colleague, read it cold once steps 1 to 3 are done. A cold read or a check of the text's claims adds to those steps and replaces none of them.
 
 1. Give a fresh agent only the text and one line on who reads it. It saw none of the work. It returns every term or reference it cannot resolve from the text alone, every question it would ask before acting, every sentence it could lose without acting differently, and in one sentence what it understood the text asks of its reader.
-2. Resolve each term it could not, answer each question in the fewest words, and cut what it could lose. When the harness offers no fresh context, do the read yourself and tell the user.
+2. Resolve each term it could not, answer each question in the fewest words, and cut what it could lose. A question whose answer is the reader's decision, such as a fix, stays open. When the harness offers no fresh context, do the read yourself and tell the user.
 3. Show the user the draft before you publish or send it, and again after any later edit.
 
 The verifications of `pr-description` and `issue` include this read.

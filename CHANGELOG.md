@@ -2,6 +2,7 @@
 
 Newest first. "Beta" means the skill is in `skills/in-progress`.
 
+- `3.18.0`: `pr-review` (beta) reports what it observed, each finding with proof a reader can repeat, and leaves fixes, options, and recommendations to the reader. It sorts findings into Blocking, Questions for what depends on the author's intent, Problems for what is wrong whatever the author meant, and Untested. A finding that shows only after editing the code proves a missing test, not a defect. `writing-for-people` (beta) recommends only when the reader chooses how you proceed; when it reports problems, the fix belongs to whoever owns the work. `AGENTS.md` asks each added sentence to fix a cause instead of capping the word count.
 - `3.17.0`: adds `issue` (beta), which writes an issue with the problem, the expected outcome, and what is known, and leaves the solution, rules, and limits to whoever implements it. `shape`, `adapt` (beta), `garden`, and `bug-hunt` write their issues with it, and `garden` no longer puts its fix in the issue.
 - `3.16.0`: `pr-description` (beta) writes for whoever decides on the change, who knows the product but not the code: the goal as understood, the solution and the alternatives it beat, and evidence that it works, without fixed sections.
 - `3.15.0`:
