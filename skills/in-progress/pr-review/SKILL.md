@@ -7,7 +7,7 @@ description: "Review a pull request as untrusted work before its human reviewer 
 
 Review the pull request as a **stranger** would: the author is unknown, the work is untrusted, the description is a set of claims to check, and the job is to find what breaks before the human reviewer does. A stranger sees what the code does, not why its author made it so, so the report states **observations**: each problem with its proof, and a question where the answer depends on that why. Its reader, a person or an agent, decides whether each is real and what to change.
 
-The bar is the strictest reviewer the change will meet. Their blockers come from knowing what the change guarantees and tracing, through the whole flow, a mechanism that breaks a guarantee: a step that throws after another has committed, a resource no exit path releases, one hung dependency that stalls the shared process, a claim in the description the code does not keep, a test that stays green with its guard deleted. Review the whole flow, settle each finding by evidence, and sort it by its consequence.
+The bar is the strictest reviewer the change will meet. Their blockers come from knowing what the change guarantees and tracing, through the whole flow, a mechanism that breaks a guarantee: a step that throws after another has committed, a resource no exit path releases, one hung dependency that stalls the shared process, a claim in the description the code does not keep. Review the whole flow, settle each finding by evidence, and sort it by its consequence.
 
 Write the report in the user's active language; code identifiers, paths, and the opening line stay as they are. Write the report and any comment you post with `writing-for-people`.
 
@@ -70,19 +70,18 @@ Done when every suspect is confirmed, plausible with its missing evidence named,
 
 ## 5. Sort
 
-Put each confirmed or plausible finding in the first section that fits, ordered by consequence within it. A plausible one is marked `(plausible)` with the evidence that would settle it, and one a ticket already tracks names the ticket.
+Put each confirmed or plausible finding in the first section that fits, ordered by its consequence for the people who use the product, worst first. A plausible one goes under Findings, marked `(plausible)` with the evidence that would settle it, and one a ticket already tracks names the ticket.
 
-- **Blocking:** a confirmed finding on the head, in scope, that breaks a guarantee; breaks a safety, security, or tenant invariant or a claim the change makes about one; loses or corrupts data or a secret that cannot be recovered; lets one input, dependency, or tenant stall or crash the shared process; records the wrong outcome in an audit, or shows an approver something other than what runs; breaks a contract a consumer in the repository or the stack depends on; breaks a rule the project's instructions make mandatory, such as a documentation table updated in the same change; or fails a gate. Also a link of a guarantee's path, or a guard on a security, tenant, or privilege boundary, whose removal leaves every test green. A merge-order condition is Blocking when the stack can merge or deploy out of order. A finding whose case is improbable, as `strategic-programming` defines it, goes under Considered with its line.
-- **Questions:** a finding on the head that would be fine had the author meant it: a behavior that differs from the base or a sibling, a choice a ticket or decision touches, a design that departs from the system's, or a piece nothing reads or that serves an improbable case.
-- **Problems:** a finding on the head that is wrong whatever the author meant, citing what it contradicts: a defect whose worst case is bounded or corrects itself; a sentence in a comment or document the code does not keep; text only the change's makers can read, listing every site; a departure from the project's written rules; a defect that predates the change, marked pre-existing.
+- **Blocking:** a confirmed finding on the head, in scope, that breaks a guarantee; breaks a safety, security, or tenant invariant or a claim the change makes about one; loses or corrupts data or a secret that cannot be recovered; lets one input, dependency, or tenant stall or crash the shared process; records the wrong outcome in an audit, or shows an approver something other than what runs; breaks a contract a consumer in the repository or the stack depends on; breaks a rule the project's instructions make mandatory, such as a documentation table updated in the same change; or fails a gate. A merge-order condition is Blocking when the stack can merge or deploy out of order. A finding whose case is improbable, as `strategic-programming` defines it, goes under Considered with its line.
+- **Findings:** every other finding on the head. One that would be fine had the author meant it is a question: a behavior that differs from the base or a sibling, a choice a ticket or decision touches, a design that departs from the system's, or a piece nothing reads or that serves an improbable case. One that is wrong whatever the author meant cites what it contradicts: a defect whose worst case is bounded or corrects itself; a sentence in a comment or document the code does not keep; text only the change's makers can read, listing every site; a departure from the project's written rules; a defect that predates the change, marked pre-existing.
 - **Untested:** a behavior no test asserts, or that an edit changes while every test stays green, stated as what can then happen in the product.
 - **Considered:** what you checked, how, and what it showed, one line each, including claims you verified that a reader would doubt.
 
-Done when every finding sits in one section and every Problem cites what it contradicts.
+Done when every finding sits in one section and every finding that is not a question cites what it contradicts.
 
 ## 6. Report
 
-Open with the literal line `This is a preliminary automated review.` Then one line with the pull request, the head SHA, and each gate with its result. Then the sections in this order, leaving out an empty one: `### Blocking`, `### Questions`, `### Problems`, `### Untested`, `### Considered`, and `### Not reviewed`, which names what you did not read or run and why.
+Open with the literal line `This is a preliminary automated review.` Then one line with the pull request, the head SHA, and each gate with its result. Then the sections in this order, leaving out an empty one: `### Blocking`, `### Findings`, `### Untested`, `### Considered`, and `### Not reviewed`, which names what you did not read or run and why.
 
 Each finding is one bullet:
 

@@ -42,12 +42,12 @@ Done when an `unslop` pass on the current text finds nothing left.
 For text that leaves the conversation, such as an issue, ticket, pull request, wiki page, README, slide, or message to a colleague, read it cold once steps 1 to 3 are done. A cold read or a check of the text's claims adds to those steps and replaces none of them.
 
 1. Give a fresh agent only the text and one line on who reads it. It saw none of the work. It returns every term or reference it cannot resolve from the text alone, every question it would ask before acting, every sentence it could lose without acting differently, and in one sentence what it understood the text asks of its reader.
-2. Resolve each term it could not, answer each question in the fewest words, and cut what it could lose. A question whose answer is the reader's decision, such as a fix, stays open. When the harness offers no fresh context, do the read yourself and tell the user.
+2. Judge each observation against step 2: change the text where the observation shows it fails an item there, and leave it otherwise. When its sentence differs from what step 1 named, rewrite what misled it and read cold one last time; what that read still finds goes in your report. When the harness offers no fresh context, do the read yourself and tell the user.
 3. Show the user the draft before you publish or send it, and again after any later edit.
 
 The verifications of `pr-description` and `issue` include this read.
 
-Done when every cold-read finding is resolved, answered, or cut, an `unslop` pass followed the last edit, and its sentence matches what step 1 named.
+Done when every observation is judged and an `unslop` pass followed the last edit.
 
 ## Process material
 

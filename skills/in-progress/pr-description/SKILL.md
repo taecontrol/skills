@@ -5,7 +5,7 @@ description: "Write or rewrite a pull request's title and description, then have
 
 # PR description
 
-The reader is the **decider**, the teammate who decides whether the change merges. They know the product and the architecture, not the code, and took no part in the work or the request behind it. The diff and code review carry the code. The description gives what you understood the goal to be, the solution and why it beat the alternatives, and **evidence** that it works. They read it first to check that you are **in sync** on the goal; when you are not, nothing else in it matters. Every claim in it is one the decider could check. The job ends when a fresh agent that saw none of the work has verified it.
+The reader is the **decider**, the teammate who decides whether the change merges. They know the product and the architecture, not the code, and took no part in the work or the request behind it. The diff and code review carry the code. The description gives what you understood the goal to be, the solution and why it beat the alternatives, and **evidence** that it works. They read it first to check that you are **in sync** on the goal; when you are not, nothing else in it matters. Every claim in it is one the decider could check. Before you publish it, a fresh agent that saw none of the work verifies it.
 
 ## 1. Gather
 
@@ -58,9 +58,9 @@ Give a fresh agent only the title, the description, the diff, the claims list wi
 3. **Cold read.** In one sentence each, what it understood the change is for and why this solution beat each alternative the description names. Then the questions the decider would ask before deciding, and each term, code name, or reference the decider could not resolve from the pull request alone.
 4. **Cut.** Every sentence the decider could lose without deciding or trusting differently, every sentence that repeats the diff or a document the change updates, and the description's word count.
 
-For each unsupported claim, remove it, attribute it, mark it as not verified, or back it with a new run. When its two sentences differ from yours, rewrite the parts that misled it. Answer each cold-read question in the fewest words, or with a link to where the answer lives. Cut what it lists under Cut. Fix everything else it reports. When the fixes add or change claims, trace each one to its source yourself. When the harness offers no fresh context, verify it yourself and say so in your report, not in the pull request.
+For each unsupported claim, remove it, attribute it, mark it as not verified, or back it with a new run. Remove each exposure. Judge the cold read, the cut, and its two sentences as `writing-for-people`'s cold read says. A claim you add or change afterwards goes on the claims list with a source that shows all of it. When the harness offers no fresh context, verify it yourself and say so in your report, not in the pull request.
 
-Done when the latest verification finds no unsupported claim, no exposure, and nothing to cut, and its two sentences match yours.
+Done when each unsupported claim and exposure is handled, each cold-read and cut observation is judged, and each claim added or changed since is on the claims list with its source.
 
 ## 4. Publish
 

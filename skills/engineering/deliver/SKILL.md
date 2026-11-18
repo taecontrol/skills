@@ -9,7 +9,7 @@ Take one accepted spec to a pull request the human only has to merge. The spec's
 
 ## Start
 
-Read the spec at the path you were given, every source its Context and Decisions point to, the project's coding standards, and its gate configuration. Require `Status: Accepted`. For a bug fix, the agreed reproduction and expected behavior are the spec. Work on the current branch in the current worktree, with `strategic-programming` loaded. Write every text a person reads with `writing-for-people`: the documentation, ADRs, and issue comments the change carries, each question to the human, and the report.
+Read the spec at the path you were given, every source its Context and Decisions point to, the project's coding standards, and its gate configuration. Require `Status: Accepted`. For a bug fix, the agreed reproduction and expected behavior are the spec. Load `strategic-programming`. Work on the current branch in the current worktree. Write every text a person reads with `writing-for-people`: the documentation, ADRs, and issue comments the change carries, each question to the human, and the report.
 
 ## 1. Acceptance tests
 

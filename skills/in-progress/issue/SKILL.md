@@ -12,8 +12,8 @@ The reader is the **implementer**, the person or agent who picks the issue up la
 Collect what the implementer cannot recover alone, each item with its source:
 
 - **Observed:** a reproduction, a run, a spike, or code you read, with where it shows the fact.
-- **Decided:** a choice a person made, with who made it by role, such as "the maintainer", when, and why.
-- **Reported:** what someone told you, such as a bug report, attributed by role.
+- **Decided:** a choice made by the person the decision belongs to, with who made it by role, such as "the maintainer", when, and why.
+- **Reported:** what someone told you, such as a bug report, attributed by role. A proposal, or agreement in a meeting without the person the decision belongs to, is reported.
 
 Everything else you think about the work is your **opinion**: the fix you would try, the cause you suspect, a rule, a limit, a number, the shape of the code. That is the implementer's to decide after they investigate, so it stays out of the issue. When the issue comes from a spec or a plan, take from it only the problem, the outcome, and the human's decisions; the rest is that design's, and the implementer makes their own.
 
@@ -46,9 +46,9 @@ Give a fresh agent only the title, the issue, the items from step 1 with their s
 2. **Decisions nobody made.** Every sentence that settles something no person decided and no source shows: a solution, a rule, a limit, a number, a behavior, an example, a design.
 3. **Each fact, traced** to its source by opening it, and whether it will still hold when the implementer picks the issue up.
 
-Cut each sentence under 2, and each fact its source does not show or that will not hold then. When its sentences differ from yours, rewrite the parts that misled it. When the harness offers no fresh context, do the review yourself and say so in your report.
+Cut each sentence under 2, and each fact its source does not show or that will not hold then. Judge its cold read and its sentences as `writing-for-people` says. When the harness offers no fresh context, do the review yourself and say so in your report.
 
-Done when the latest review finds no decision nobody made, no fact that is unsupported or will not hold then, and its sentences match yours.
+Done when what it listed under 2 and each fact it found unsupported or not holding then is cut, its cold read is judged, and each sentence added or changed since is a fact or a decision from step 1.
 
 ## 4. Publish
 
