@@ -22,7 +22,7 @@ Every fact the solution rests on is a **premise**: how a client, library, runtim
 
 When the task changes code, run `program-design`'s gate, and `architect`'s for each kind of one-way door `architect` names that the change touches, before your first stop, because what they keep changes what you ask.
 
-Weigh the **stakes** of each part of the change: what it makes hard to undo and who a mistake hurts. A part that crosses a one-way door or a boundary the product guards, such as a permission, an approval, or a message sent on someone's behalf, is high stakes and gets the fresh reviews in steps 3 and 5. Every other part gets the proof its contract lines name. A part is not high stakes because the product is.
+Weigh the **stakes** of each part of the change: what it makes hard to undo and who a mistake hurts. A part that crosses a one-way door or a boundary the product guards, such as a permission, an approval, or a message sent on someone's behalf, is high stakes, and the fresh reviews in steps 3 and 5 look hardest at it. A part is not high stakes because the product is.
 
 Done when you can state, each from something you read or ran: the problem, what the task should produce (a change, a diagnosis, a decision, or nothing), the mode, each premise with its check or its question, the high-stakes parts, and each gate's result, with `strategic-programming` loaded.
 
@@ -49,7 +49,7 @@ Write them as notes, as short as the stakes allow.
 - **Route.** The steps to where this project's work lands for review, each with the reason this task needs it.
 - **Decided for them.** Each detail you chose that the solution depends on, with what changes if it is wrong. A premise, a one-way door, and a step of an owner skill's process are never details. One that is costly to reverse is a decision for step 2.
 
-When `program-design`'s gate kept a part, run the rest of its process here with the contract as its spec; nothing is built until the human accepts the design. For a high-stakes part, a fresh reviewer reads the contract and each design before the human accepts them, briefed with what the work must do and what is under review, without your reasoning or what you prefer. It returns what is missing and what the work can lose; handle its findings as step 5 says.
+When `program-design`'s gate kept a part, run the rest of its process here with the contract as its spec; nothing is built until the human accepts the design. A fresh reviewer reads the contract and each design before the human accepts them, briefed with what the work must do and what is under review, without your reasoning or what you prefer. It returns what is missing and what the work can lose; handle its findings as step 5 says.
 
 A change to a route step the human saw in a stop goes back to them first.
 
@@ -65,7 +65,7 @@ Do it yourself, or hand it to the implementer the human named; when the harness 
 
 A report that the work is done is a claim, whoever wrote it. Run each contract line's proof yourself on the final state, and read each proof someone else wrote against its line: it must fail when the line is false. Read the whole change for what the contract did not ask for.
 
-When the change has a high-stakes part, a fresh agent runs `pr-review` on the committed change, given the branch, the request, and the high-stakes parts as its focus notes, and nothing of yours. When the harness cannot start a fresh agent, say so in the report.
+Before you report, a fresh agent reviews the result, given nothing of yours: `pr-review` on a committed change, with the branch, the request, and the high-stakes parts as its focus notes; any other result, such as a design or an asset, against the contract. When the harness cannot start a fresh agent, say so in the report.
 
 Fix each Blocking finding in a live case with the smallest piece that closes it. Judge every other finding by `strategic-programming`'s test: fix it when its case is live and the fix stays inside the contract, and put the rest in the report, each improbable one as its line. A review gets at most three rounds, as `refine`'s Next round says. A third finding of the same class means a premise is wrong. Stop fixing, check whether the case is live and whether a simpler form removes the whole class, and stop with what you found.
 
