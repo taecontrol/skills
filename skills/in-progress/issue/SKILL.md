@@ -12,8 +12,8 @@ The reader is the **implementer**, the person or agent who picks the issue up la
 Collect what the implementer cannot recover alone, each item with its source:
 
 - **Observed:** a reproduction, a run, a spike, or code you read, with where it shows the fact.
-- **Decided:** a choice made by the person the decision belongs to, with who made it by role, such as "the maintainer", when, and why.
-- **Reported:** what someone told you, such as a bug report, attributed by role. A proposal, or agreement in a meeting without the person the decision belongs to, is reported.
+- **Decided:** a choice a person made, with who made it by role, such as "the maintainer", when, and why.
+- **Reported:** what someone told you, such as a bug report, attributed by role.
 
 Everything else you think about the work is your **opinion**: the fix you would try, the cause you suspect, a rule, a limit, a number, the shape of the code. That is the implementer's to decide after they investigate, so it stays out of the issue. When the issue comes from a spec or a plan, take from it only the problem, the outcome, and the human's decisions; the rest is that design's, and the implementer makes their own.
 

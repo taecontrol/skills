@@ -24,7 +24,7 @@ When the task changes code, run `program-design`'s gate, and `architect`'s for e
 
 Weigh the **stakes** of each part of the change: what it makes hard to undo and who a mistake hurts. A part that crosses a one-way door or a boundary the product guards, such as a permission, an approval, or a message sent on someone's behalf, is high stakes and gets the fresh reviews in steps 3 and 5. Every other part gets the proof its contract lines name. A part is not high stakes because the product is.
 
-Done when you can state, each from something you read or ran: the problem, what the task should produce (a change, a diagnosis, a decision, or nothing), the mode, each premise with its check or its question, the high-stakes parts, and each gate's result.
+Done when you can state, each from something you read or ran: the problem, what the task should produce (a change, a diagnosis, a decision, or nothing), the mode, each premise with its check or its question, the high-stakes parts, and each gate's result, with `strategic-programming` loaded.
 
 ## 2. Stop for what is theirs
 
