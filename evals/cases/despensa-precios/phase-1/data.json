@@ -1,0 +1,2581 @@
+{
+ "kinds": [
+  {
+   "id": "knd_c74e2453-717c-442b-8abd-afec46e28fc7",
+   "name": "analgésico",
+   "products": 1
+  },
+  {
+   "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+   "name": "arroz",
+   "products": 5
+  },
+  {
+   "id": "knd_79226f42-b8e1-40e3-97f8-456c3696b61b",
+   "name": "desodorante",
+   "products": 1
+  },
+  {
+   "id": "knd_28553388-9462-4f43-b702-b7b59a0a4872",
+   "name": "jabón",
+   "products": 2
+  },
+  {
+   "id": "knd_4975f2c8-f75e-4bfe-a328-f3cff0f81db4",
+   "name": "leche",
+   "products": 2
+  },
+  {
+   "id": "knd_168c1e84-1c3a-4a5e-ac90-cc03ac40fe60",
+   "name": "yerba",
+   "products": 1
+  }
+ ],
+ "productsWithoutKind": [
+  {
+   "id": "prd_0bfe4b0a-9047-4217-8043-bc2924ed5230",
+   "name": "Queso cremoso La Paulina",
+   "brand": "La Paulina",
+   "size": null,
+   "kind": null,
+   "purchases": 2,
+   "lastPurchasedOn": "2026-10-24",
+   "merged": []
+  }
+ ],
+ "allProducts": [
+  {
+   "id": "prd_ec0c3a66-25bf-4bd3-9b5a-5d03e992509f",
+   "name": "Antitranspirante Nivea Women Invisible Power",
+   "brand": "Nivea",
+   "size": null,
+   "kind": {
+    "id": "knd_79226f42-b8e1-40e3-97f8-456c3696b61b",
+    "name": "desodorante"
+   },
+   "purchases": 2,
+   "lastPurchasedOn": "2026-11-01",
+   "merged": []
+  },
+  {
+   "id": "prd_c045dbc8-ebc5-43eb-93d0-57f5f53e6985",
+   "name": "Arroz doble carolina Molinos Ala 1 kg",
+   "brand": "Molinos Ala",
+   "size": {
+    "amount": 1000,
+    "unit": "g"
+   },
+   "kind": {
+    "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+    "name": "arroz"
+   },
+   "purchases": 2,
+   "lastPurchasedOn": "2026-10-30",
+   "merged": []
+  },
+  {
+   "id": "prd_f128249a-4ea4-4be2-971d-e5351abf50ec",
+   "name": "Arroz largo fino Gallo Oro 1 kg",
+   "brand": "Gallo",
+   "size": {
+    "amount": 1000,
+    "unit": "g"
+   },
+   "kind": {
+    "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+    "name": "arroz"
+   },
+   "purchases": 3,
+   "lastPurchasedOn": "2026-10-24",
+   "merged": []
+  },
+  {
+   "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+   "name": "Arroz largo fino Lucchetti 1 kg",
+   "brand": "Lucchetti",
+   "size": {
+    "amount": 1000,
+    "unit": "g"
+   },
+   "kind": {
+    "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+    "name": "arroz"
+   },
+   "purchases": 6,
+   "lastPurchasedOn": "2026-11-03",
+   "merged": []
+  },
+  {
+   "id": "prd_601296f2-b91c-4d89-b7bd-e85e005cd369",
+   "name": "Arroz largo fino Lucchetti 500 g",
+   "brand": "Lucchetti",
+   "size": {
+    "amount": 500,
+    "unit": "g"
+   },
+   "kind": {
+    "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+    "name": "arroz"
+   },
+   "purchases": 1,
+   "lastPurchasedOn": "2026-09-19",
+   "merged": []
+  },
+  {
+   "id": "prd_adc9d296-2248-474c-a6b2-12099bb63f79",
+   "name": "Arroz yamaní suelto",
+   "brand": null,
+   "size": null,
+   "kind": {
+    "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+    "name": "arroz"
+   },
+   "purchases": 1,
+   "lastPurchasedOn": "2026-09-19",
+   "merged": []
+  },
+  {
+   "id": "prd_3029801c-d1aa-422c-a459-867a453b9bc7",
+   "name": "Jabón en barra Dove 90 g",
+   "brand": "Dove",
+   "size": {
+    "amount": 90,
+    "unit": "g"
+   },
+   "kind": {
+    "id": "knd_28553388-9462-4f43-b702-b7b59a0a4872",
+    "name": "jabón"
+   },
+   "purchases": 1,
+   "lastPurchasedOn": "2026-09-19",
+   "merged": []
+  },
+  {
+   "id": "prd_4953cf2a-2a17-497c-9319-ab6acbf901f1",
+   "name": "Jabón líquido Citrus Splash Algabo 300 ml",
+   "brand": "Algabo",
+   "size": {
+    "amount": 300,
+    "unit": "ml"
+   },
+   "kind": {
+    "id": "knd_28553388-9462-4f43-b702-b7b59a0a4872",
+    "name": "jabón"
+   },
+   "purchases": 2,
+   "lastPurchasedOn": "2026-11-01",
+   "merged": []
+  },
+  {
+   "id": "prd_91b13f07-423a-4784-a983-925ea30446c4",
+   "name": "Leche entera La Serenísima 1 l",
+   "brand": "La Serenísima",
+   "size": {
+    "amount": 1000,
+    "unit": "ml"
+   },
+   "kind": {
+    "id": "knd_4975f2c8-f75e-4bfe-a328-f3cff0f81db4",
+    "name": "leche"
+   },
+   "purchases": 3,
+   "lastPurchasedOn": "2026-11-03",
+   "merged": []
+  },
+  {
+   "id": "prd_31c8c2f6-b193-42e0-a23a-55747e730fcd",
+   "name": "Leche entera Tregar 1 l",
+   "brand": "Tregar",
+   "size": {
+    "amount": 1000,
+    "unit": "ml"
+   },
+   "kind": {
+    "id": "knd_4975f2c8-f75e-4bfe-a328-f3cff0f81db4",
+    "name": "leche"
+   },
+   "purchases": 2,
+   "lastPurchasedOn": "2026-10-17",
+   "merged": []
+  },
+  {
+   "id": "prd_f6c8695f-5ad5-4f9e-8295-b75528761cc5",
+   "name": "Next rápida acción 20 comprimidos",
+   "brand": "Next",
+   "size": {
+    "amount": 20,
+    "unit": "unit"
+   },
+   "kind": {
+    "id": "knd_c74e2453-717c-442b-8abd-afec46e28fc7",
+    "name": "analgésico"
+   },
+   "purchases": 1,
+   "lastPurchasedOn": "2026-10-30",
+   "merged": []
+  },
+  {
+   "id": "prd_0bfe4b0a-9047-4217-8043-bc2924ed5230",
+   "name": "Queso cremoso La Paulina",
+   "brand": "La Paulina",
+   "size": null,
+   "kind": null,
+   "purchases": 2,
+   "lastPurchasedOn": "2026-10-24",
+   "merged": []
+  },
+  {
+   "id": "prd_ee0646fa-d7c5-4774-9803-79a191f94390",
+   "name": "Yerba mate Playadito 1 kg",
+   "brand": "Playadito",
+   "size": {
+    "amount": 1000,
+    "unit": "g"
+   },
+   "kind": {
+    "id": "knd_168c1e84-1c3a-4a5e-ac90-cc03ac40fe60",
+    "name": "yerba"
+   },
+   "purchases": 2,
+   "lastPurchasedOn": "2026-10-03",
+   "merged": []
+  }
+ ],
+ "scenarios": {
+  "arroz": {
+   "measures": [
+    {
+     "measure": "kg",
+     "purchases": [
+      {
+       "purchaseId": "pur_6b29c836-11f8-478d-8972-66a53e3c3ade",
+       "line": 1,
+       "date": "2026-11-03",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2200,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": null,
+       "price": {
+        "ars": 2200,
+        "usd": null
+       }
+      },
+      {
+       "purchaseId": "pur_bbb35268-c8a4-4461-9e93-e4388f1e51c3",
+       "line": 1,
+       "date": "2026-11-01",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 3197.38,
+       "measure": {
+        "amount": 2,
+        "unit": "kg"
+       },
+       "rate": 1565.4,
+       "price": {
+        "ars": 1598.69,
+        "usd": 1.02
+       }
+      },
+      {
+       "purchaseId": "pur_7d1c9072-0ef6-4409-b7e8-145589192299",
+       "line": 1,
+       "date": "2026-10-30",
+       "time": null,
+       "chain": "Día",
+       "branch": "Av. Corrientes 1500",
+       "product": {
+        "id": "prd_c045dbc8-ebc5-43eb-93d0-57f5f53e6985",
+        "name": "Arroz doble carolina Molinos Ala 1 kg",
+        "brand": "Molinos Ala",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2280,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1557.8,
+       "price": {
+        "ars": 2280,
+        "usd": 1.46
+       }
+      },
+      {
+       "purchaseId": "pur_f6db4e0f-6640-45a1-b7a0-18204527909b",
+       "line": 1,
+       "date": "2026-10-24",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_f128249a-4ea4-4be2-971d-e5351abf50ec",
+        "name": "Arroz largo fino Gallo Oro 1 kg",
+        "brand": "Gallo",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2360,
+       "measure": {
+        "amount": 2,
+        "unit": "kg"
+       },
+       "rate": 1557.4,
+       "price": {
+        "ars": 1180,
+        "usd": 0.76
+       }
+      },
+      {
+       "purchaseId": "pur_95a8c86a-a05b-4fa5-9600-bea546aa1350",
+       "line": 1,
+       "date": "2026-10-17",
+       "time": null,
+       "chain": "Jumbo",
+       "branch": "Av. Pueyrredón 1200",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2240,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1534.3,
+       "price": {
+        "ars": 2240,
+        "usd": 1.46
+       }
+      },
+      {
+       "purchaseId": "pur_fe2b6d71-2236-4fea-8bf4-d0836e431e80",
+       "line": 1,
+       "date": "2026-10-03",
+       "time": null,
+       "chain": "Carrefour",
+       "branch": "Av. Cabildo 2000",
+       "product": {
+        "id": "prd_f128249a-4ea4-4be2-971d-e5351abf50ec",
+        "name": "Arroz largo fino Gallo Oro 1 kg",
+        "brand": "Gallo",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2300,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1543.6,
+       "price": {
+        "ars": 2300,
+        "usd": 1.49
+       }
+      },
+      {
+       "purchaseId": "pur_ddd836ec-edee-4f56-9825-3502c1983824",
+       "line": 1,
+       "date": "2026-09-19",
+       "time": null,
+       "chain": "Día",
+       "branch": "Av. Corrientes 1500",
+       "product": {
+        "id": "prd_601296f2-b91c-4d89-b7bd-e85e005cd369",
+        "name": "Arroz largo fino Lucchetti 500 g",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 500,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 1100,
+       "measure": {
+        "amount": 0.5,
+        "unit": "kg"
+       },
+       "rate": 1530.2,
+       "price": {
+        "ars": 2200,
+        "usd": 1.44
+       }
+      },
+      {
+       "purchaseId": "pur_3ca1992e-d9f8-44d9-9f44-8c2e96dd497b",
+       "line": 1,
+       "date": "2026-09-05",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2090,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1516.9,
+       "price": {
+        "ars": 2090,
+        "usd": 1.38
+       }
+      },
+      {
+       "purchaseId": "pur_30e1816b-f8fc-4c3e-bf73-f938f7418a6d",
+       "line": 1,
+       "date": "2026-08-22",
+       "time": null,
+       "chain": "Jumbo",
+       "branch": "Av. Pueyrredón 1200",
+       "product": {
+        "id": "prd_c045dbc8-ebc5-43eb-93d0-57f5f53e6985",
+        "name": "Arroz doble carolina Molinos Ala 1 kg",
+        "brand": "Molinos Ala",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2150,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1531.7,
+       "price": {
+        "ars": 2150,
+        "usd": 1.4
+       }
+      },
+      {
+       "purchaseId": "pur_2345a55d-0625-4279-ba8c-16018466131c",
+       "line": 1,
+       "date": "2026-08-08",
+       "time": null,
+       "chain": "Carrefour",
+       "branch": "Av. Cabildo 2000",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 3060,
+       "measure": {
+        "amount": 2,
+        "unit": "kg"
+       },
+       "rate": 1520.3,
+       "price": {
+        "ars": 1530,
+        "usd": 1.01
+       }
+      },
+      {
+       "purchaseId": "pur_7335489f-da05-4776-a3d2-f5dde261413d",
+       "line": 1,
+       "date": "2026-07-18",
+       "time": null,
+       "chain": "Día",
+       "branch": "Av. Corrientes 1500",
+       "product": {
+        "id": "prd_f128249a-4ea4-4be2-971d-e5351abf50ec",
+        "name": "Arroz largo fino Gallo Oro 1 kg",
+        "brand": "Gallo",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 1980,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1518.3,
+       "price": {
+        "ars": 1980,
+        "usd": 1.3
+       }
+      },
+      {
+       "purchaseId": "pur_375e91a4-ff70-46a8-8556-1dc0e435109a",
+       "line": 1,
+       "date": "2026-07-04",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 1890,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1522.9,
+       "price": {
+        "ars": 1890,
+        "usd": 1.24
+       }
+      }
+     ],
+     "median": {
+      "ars": 2120,
+      "usd": 1.38
+     },
+     "withoutRate": 1,
+     "chains": [
+      {
+       "chain": "Coto",
+       "purchases": 5,
+       "latest": {
+        "date": "2026-11-03",
+        "price": {
+         "ars": 2200,
+         "usd": null
+        }
+       },
+       "median": {
+        "ars": 1890,
+        "usd": 1.13
+       },
+       "lowest": {
+        "ars": 1180,
+        "usd": 0.76
+       }
+      },
+      {
+       "chain": "Carrefour",
+       "purchases": 2,
+       "latest": {
+        "date": "2026-10-03",
+        "price": {
+         "ars": 2300,
+         "usd": 1.49
+        }
+       },
+       "median": {
+        "ars": 1915,
+        "usd": 1.25
+       },
+       "lowest": {
+        "ars": 1530,
+        "usd": 1.01
+       }
+      },
+      {
+       "chain": "Jumbo",
+       "purchases": 2,
+       "latest": {
+        "date": "2026-10-17",
+        "price": {
+         "ars": 2240,
+         "usd": 1.46
+        }
+       },
+       "median": {
+        "ars": 2195,
+        "usd": 1.43
+       },
+       "lowest": {
+        "ars": 2150,
+        "usd": 1.4
+       }
+      },
+      {
+       "chain": "Día",
+       "purchases": 3,
+       "latest": {
+        "date": "2026-10-30",
+        "price": {
+         "ars": 2280,
+         "usd": 1.46
+        }
+       },
+       "median": {
+        "ars": 2200,
+        "usd": 1.44
+       },
+       "lowest": {
+        "ars": 1980,
+        "usd": 1.3
+       }
+      }
+     ],
+     "bestDeals": [
+      {
+       "purchaseId": "pur_f6db4e0f-6640-45a1-b7a0-18204527909b",
+       "line": 1,
+       "date": "2026-10-24",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_f128249a-4ea4-4be2-971d-e5351abf50ec",
+        "name": "Arroz largo fino Gallo Oro 1 kg",
+        "brand": "Gallo",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2360,
+       "measure": {
+        "amount": 2,
+        "unit": "kg"
+       },
+       "rate": 1557.4,
+       "price": {
+        "ars": 1180,
+        "usd": 0.76
+       },
+       "belowMedianPercent": 45
+      },
+      {
+       "purchaseId": "pur_2345a55d-0625-4279-ba8c-16018466131c",
+       "line": 1,
+       "date": "2026-08-08",
+       "time": null,
+       "chain": "Carrefour",
+       "branch": "Av. Cabildo 2000",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 3060,
+       "measure": {
+        "amount": 2,
+        "unit": "kg"
+       },
+       "rate": 1520.3,
+       "price": {
+        "ars": 1530,
+        "usd": 1.01
+       },
+       "belowMedianPercent": 27
+      },
+      {
+       "purchaseId": "pur_bbb35268-c8a4-4461-9e93-e4388f1e51c3",
+       "line": 1,
+       "date": "2026-11-01",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 3197.38,
+       "measure": {
+        "amount": 2,
+        "unit": "kg"
+       },
+       "rate": 1565.4,
+       "price": {
+        "ars": 1598.69,
+        "usd": 1.02
+       },
+       "belowMedianPercent": 26
+      },
+      {
+       "purchaseId": "pur_375e91a4-ff70-46a8-8556-1dc0e435109a",
+       "line": 1,
+       "date": "2026-07-04",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 1890,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1522.9,
+       "price": {
+        "ars": 1890,
+        "usd": 1.24
+       },
+       "belowMedianPercent": 10
+      },
+      {
+       "purchaseId": "pur_7335489f-da05-4776-a3d2-f5dde261413d",
+       "line": 1,
+       "date": "2026-07-18",
+       "time": null,
+       "chain": "Día",
+       "branch": "Av. Corrientes 1500",
+       "product": {
+        "id": "prd_f128249a-4ea4-4be2-971d-e5351abf50ec",
+        "name": "Arroz largo fino Gallo Oro 1 kg",
+        "brand": "Gallo",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 1980,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1518.3,
+       "price": {
+        "ars": 1980,
+        "usd": 1.3
+       },
+       "belowMedianPercent": 5
+      }
+     ]
+    }
+   ],
+   "withoutSize": [
+    {
+     "purchaseId": "pur_ddd836ec-edee-4f56-9825-3502c1983824",
+     "line": 2,
+     "date": "2026-09-19",
+     "time": null,
+     "chain": "Día",
+     "branch": "Av. Corrientes 1500",
+     "product": {
+      "id": "prd_adc9d296-2248-474c-a6b2-12099bb63f79",
+      "name": "Arroz yamaní suelto",
+      "brand": null,
+      "size": null,
+      "kind": {
+       "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+       "name": "arroz"
+      }
+     },
+     "paid": 1800
+    }
+   ]
+  },
+  "arrozCoto": {
+   "measures": [
+    {
+     "measure": "kg",
+     "purchases": [
+      {
+       "purchaseId": "pur_6b29c836-11f8-478d-8972-66a53e3c3ade",
+       "line": 1,
+       "date": "2026-11-03",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2200,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": null,
+       "price": {
+        "ars": 2200,
+        "usd": null
+       }
+      },
+      {
+       "purchaseId": "pur_bbb35268-c8a4-4461-9e93-e4388f1e51c3",
+       "line": 1,
+       "date": "2026-11-01",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 3197.38,
+       "measure": {
+        "amount": 2,
+        "unit": "kg"
+       },
+       "rate": 1565.4,
+       "price": {
+        "ars": 1598.69,
+        "usd": 1.02
+       }
+      },
+      {
+       "purchaseId": "pur_f6db4e0f-6640-45a1-b7a0-18204527909b",
+       "line": 1,
+       "date": "2026-10-24",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_f128249a-4ea4-4be2-971d-e5351abf50ec",
+        "name": "Arroz largo fino Gallo Oro 1 kg",
+        "brand": "Gallo",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2360,
+       "measure": {
+        "amount": 2,
+        "unit": "kg"
+       },
+       "rate": 1557.4,
+       "price": {
+        "ars": 1180,
+        "usd": 0.76
+       }
+      },
+      {
+       "purchaseId": "pur_3ca1992e-d9f8-44d9-9f44-8c2e96dd497b",
+       "line": 1,
+       "date": "2026-09-05",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2090,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1516.9,
+       "price": {
+        "ars": 2090,
+        "usd": 1.38
+       }
+      },
+      {
+       "purchaseId": "pur_375e91a4-ff70-46a8-8556-1dc0e435109a",
+       "line": 1,
+       "date": "2026-07-04",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 1890,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1522.9,
+       "price": {
+        "ars": 1890,
+        "usd": 1.24
+       }
+      }
+     ],
+     "median": {
+      "ars": 1890,
+      "usd": 1.13
+     },
+     "withoutRate": 1,
+     "chains": [
+      {
+       "chain": "Coto",
+       "purchases": 5,
+       "latest": {
+        "date": "2026-11-03",
+        "price": {
+         "ars": 2200,
+         "usd": null
+        }
+       },
+       "median": {
+        "ars": 1890,
+        "usd": 1.13
+       },
+       "lowest": {
+        "ars": 1180,
+        "usd": 0.76
+       }
+      }
+     ],
+     "bestDeals": [
+      {
+       "purchaseId": "pur_f6db4e0f-6640-45a1-b7a0-18204527909b",
+       "line": 1,
+       "date": "2026-10-24",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_f128249a-4ea4-4be2-971d-e5351abf50ec",
+        "name": "Arroz largo fino Gallo Oro 1 kg",
+        "brand": "Gallo",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2360,
+       "measure": {
+        "amount": 2,
+        "unit": "kg"
+       },
+       "rate": 1557.4,
+       "price": {
+        "ars": 1180,
+        "usd": 0.76
+       },
+       "belowMedianPercent": 33
+      },
+      {
+       "purchaseId": "pur_bbb35268-c8a4-4461-9e93-e4388f1e51c3",
+       "line": 1,
+       "date": "2026-11-01",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 3197.38,
+       "measure": {
+        "amount": 2,
+        "unit": "kg"
+       },
+       "rate": 1565.4,
+       "price": {
+        "ars": 1598.69,
+        "usd": 1.02
+       },
+       "belowMedianPercent": 10
+      },
+      {
+       "purchaseId": "pur_375e91a4-ff70-46a8-8556-1dc0e435109a",
+       "line": 1,
+       "date": "2026-07-04",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 1890,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1522.9,
+       "price": {
+        "ars": 1890,
+        "usd": 1.24
+       },
+       "belowMedianPercent": -10
+      },
+      {
+       "purchaseId": "pur_3ca1992e-d9f8-44d9-9f44-8c2e96dd497b",
+       "line": 1,
+       "date": "2026-09-05",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2090,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1516.9,
+       "price": {
+        "ars": 2090,
+        "usd": 1.38
+       },
+       "belowMedianPercent": -22
+      }
+     ]
+    }
+   ],
+   "withoutSize": []
+  },
+  "lucchetti1kg": {
+   "measures": [
+    {
+     "measure": "kg",
+     "purchases": [
+      {
+       "purchaseId": "pur_6b29c836-11f8-478d-8972-66a53e3c3ade",
+       "line": 1,
+       "date": "2026-11-03",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2200,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": null,
+       "price": {
+        "ars": 2200,
+        "usd": null
+       }
+      },
+      {
+       "purchaseId": "pur_bbb35268-c8a4-4461-9e93-e4388f1e51c3",
+       "line": 1,
+       "date": "2026-11-01",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 3197.38,
+       "measure": {
+        "amount": 2,
+        "unit": "kg"
+       },
+       "rate": 1565.4,
+       "price": {
+        "ars": 1598.69,
+        "usd": 1.02
+       }
+      },
+      {
+       "purchaseId": "pur_95a8c86a-a05b-4fa5-9600-bea546aa1350",
+       "line": 1,
+       "date": "2026-10-17",
+       "time": null,
+       "chain": "Jumbo",
+       "branch": "Av. Pueyrredón 1200",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2240,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1534.3,
+       "price": {
+        "ars": 2240,
+        "usd": 1.46
+       }
+      },
+      {
+       "purchaseId": "pur_3ca1992e-d9f8-44d9-9f44-8c2e96dd497b",
+       "line": 1,
+       "date": "2026-09-05",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2090,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1516.9,
+       "price": {
+        "ars": 2090,
+        "usd": 1.38
+       }
+      },
+      {
+       "purchaseId": "pur_2345a55d-0625-4279-ba8c-16018466131c",
+       "line": 1,
+       "date": "2026-08-08",
+       "time": null,
+       "chain": "Carrefour",
+       "branch": "Av. Cabildo 2000",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 3060,
+       "measure": {
+        "amount": 2,
+        "unit": "kg"
+       },
+       "rate": 1520.3,
+       "price": {
+        "ars": 1530,
+        "usd": 1.01
+       }
+      },
+      {
+       "purchaseId": "pur_375e91a4-ff70-46a8-8556-1dc0e435109a",
+       "line": 1,
+       "date": "2026-07-04",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 1890,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1522.9,
+       "price": {
+        "ars": 1890,
+        "usd": 1.24
+       }
+      }
+     ],
+     "median": {
+      "ars": 1990,
+      "usd": 1.24
+     },
+     "withoutRate": 1,
+     "chains": [
+      {
+       "chain": "Carrefour",
+       "purchases": 1,
+       "latest": {
+        "date": "2026-08-08",
+        "price": {
+         "ars": 1530,
+         "usd": 1.01
+        }
+       },
+       "median": {
+        "ars": 1530,
+        "usd": 1.01
+       },
+       "lowest": {
+        "ars": 1530,
+        "usd": 1.01
+       }
+      },
+      {
+       "chain": "Coto",
+       "purchases": 4,
+       "latest": {
+        "date": "2026-11-03",
+        "price": {
+         "ars": 2200,
+         "usd": null
+        }
+       },
+       "median": {
+        "ars": 1990,
+        "usd": 1.24
+       },
+       "lowest": {
+        "ars": 1598.69,
+        "usd": 1.02
+       }
+      },
+      {
+       "chain": "Jumbo",
+       "purchases": 1,
+       "latest": {
+        "date": "2026-10-17",
+        "price": {
+         "ars": 2240,
+         "usd": 1.46
+        }
+       },
+       "median": {
+        "ars": 2240,
+        "usd": 1.46
+       },
+       "lowest": {
+        "ars": 2240,
+        "usd": 1.46
+       }
+      }
+     ],
+     "bestDeals": [
+      {
+       "purchaseId": "pur_2345a55d-0625-4279-ba8c-16018466131c",
+       "line": 1,
+       "date": "2026-08-08",
+       "time": null,
+       "chain": "Carrefour",
+       "branch": "Av. Cabildo 2000",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 3060,
+       "measure": {
+        "amount": 2,
+        "unit": "kg"
+       },
+       "rate": 1520.3,
+       "price": {
+        "ars": 1530,
+        "usd": 1.01
+       },
+       "belowMedianPercent": 19
+      },
+      {
+       "purchaseId": "pur_bbb35268-c8a4-4461-9e93-e4388f1e51c3",
+       "line": 1,
+       "date": "2026-11-01",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 3197.38,
+       "measure": {
+        "amount": 2,
+        "unit": "kg"
+       },
+       "rate": 1565.4,
+       "price": {
+        "ars": 1598.69,
+        "usd": 1.02
+       },
+       "belowMedianPercent": 18
+      },
+      {
+       "purchaseId": "pur_375e91a4-ff70-46a8-8556-1dc0e435109a",
+       "line": 1,
+       "date": "2026-07-04",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 1890,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1522.9,
+       "price": {
+        "ars": 1890,
+        "usd": 1.24
+       },
+       "belowMedianPercent": 0
+      },
+      {
+       "purchaseId": "pur_3ca1992e-d9f8-44d9-9f44-8c2e96dd497b",
+       "line": 1,
+       "date": "2026-09-05",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2090,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1516.9,
+       "price": {
+        "ars": 2090,
+        "usd": 1.38
+       },
+       "belowMedianPercent": -11
+      },
+      {
+       "purchaseId": "pur_95a8c86a-a05b-4fa5-9600-bea546aa1350",
+       "line": 1,
+       "date": "2026-10-17",
+       "time": null,
+       "chain": "Jumbo",
+       "branch": "Av. Pueyrredón 1200",
+       "product": {
+        "id": "prd_3586a942-322a-4e23-98c7-44fe377e7a0d",
+        "name": "Arroz largo fino Lucchetti 1 kg",
+        "brand": "Lucchetti",
+        "size": {
+         "amount": 1000,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_1acd4d43-de79-4423-8f71-c854f3e650b7",
+         "name": "arroz"
+        }
+       },
+       "paid": 2240,
+       "measure": {
+        "amount": 1,
+        "unit": "kg"
+       },
+       "rate": 1534.3,
+       "price": {
+        "ars": 2240,
+        "usd": 1.46
+       },
+       "belowMedianPercent": -18
+      }
+     ]
+    }
+   ],
+   "withoutSize": []
+  },
+  "jabon": {
+   "measures": [
+    {
+     "measure": "kg",
+     "purchases": [
+      {
+       "purchaseId": "pur_ddd836ec-edee-4f56-9825-3502c1983824",
+       "line": 3,
+       "date": "2026-09-19",
+       "time": null,
+       "chain": "Día",
+       "branch": "Av. Corrientes 1500",
+       "product": {
+        "id": "prd_3029801c-d1aa-422c-a459-867a453b9bc7",
+        "name": "Jabón en barra Dove 90 g",
+        "brand": "Dove",
+        "size": {
+         "amount": 90,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_28553388-9462-4f43-b702-b7b59a0a4872",
+         "name": "jabón"
+        }
+       },
+       "paid": 3600,
+       "measure": {
+        "amount": 0.27,
+        "unit": "kg"
+       },
+       "rate": 1530.2,
+       "price": {
+        "ars": 13333.33,
+        "usd": 8.71
+       }
+      }
+     ],
+     "median": {
+      "ars": 13333.33,
+      "usd": 8.71
+     },
+     "withoutRate": 0,
+     "chains": [
+      {
+       "chain": "Día",
+       "purchases": 1,
+       "latest": {
+        "date": "2026-09-19",
+        "price": {
+         "ars": 13333.33,
+         "usd": 8.71
+        }
+       },
+       "median": {
+        "ars": 13333.33,
+        "usd": 8.71
+       },
+       "lowest": {
+        "ars": 13333.33,
+        "usd": 8.71
+       }
+      }
+     ],
+     "bestDeals": [
+      {
+       "purchaseId": "pur_ddd836ec-edee-4f56-9825-3502c1983824",
+       "line": 3,
+       "date": "2026-09-19",
+       "time": null,
+       "chain": "Día",
+       "branch": "Av. Corrientes 1500",
+       "product": {
+        "id": "prd_3029801c-d1aa-422c-a459-867a453b9bc7",
+        "name": "Jabón en barra Dove 90 g",
+        "brand": "Dove",
+        "size": {
+         "amount": 90,
+         "unit": "g"
+        },
+        "kind": {
+         "id": "knd_28553388-9462-4f43-b702-b7b59a0a4872",
+         "name": "jabón"
+        }
+       },
+       "paid": 3600,
+       "measure": {
+        "amount": 0.27,
+        "unit": "kg"
+       },
+       "rate": 1530.2,
+       "price": {
+        "ars": 13333.33,
+        "usd": 8.71
+       },
+       "belowMedianPercent": 0
+      }
+     ]
+    },
+    {
+     "measure": "l",
+     "purchases": [
+      {
+       "purchaseId": "pur_bbb35268-c8a4-4461-9e93-e4388f1e51c3",
+       "line": 2,
+       "date": "2026-11-01",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_4953cf2a-2a17-497c-9319-ab6acbf901f1",
+        "name": "Jabón líquido Citrus Splash Algabo 300 ml",
+        "brand": "Algabo",
+        "size": {
+         "amount": 300,
+         "unit": "ml"
+        },
+        "kind": {
+         "id": "knd_28553388-9462-4f43-b702-b7b59a0a4872",
+         "name": "jabón"
+        }
+       },
+       "paid": 3310.99,
+       "measure": {
+        "amount": 0.3,
+        "unit": "l"
+       },
+       "rate": 1565.4,
+       "price": {
+        "ars": 11036.63,
+        "usd": 7.05
+       }
+      },
+      {
+       "purchaseId": "pur_fe2b6d71-2236-4fea-8bf4-d0836e431e80",
+       "line": 2,
+       "date": "2026-10-03",
+       "time": null,
+       "chain": "Carrefour",
+       "branch": "Av. Cabildo 2000",
+       "product": {
+        "id": "prd_4953cf2a-2a17-497c-9319-ab6acbf901f1",
+        "name": "Jabón líquido Citrus Splash Algabo 300 ml",
+        "brand": "Algabo",
+        "size": {
+         "amount": 300,
+         "unit": "ml"
+        },
+        "kind": {
+         "id": "knd_28553388-9462-4f43-b702-b7b59a0a4872",
+         "name": "jabón"
+        }
+       },
+       "paid": 3150,
+       "measure": {
+        "amount": 0.3,
+        "unit": "l"
+       },
+       "rate": 1543.6,
+       "price": {
+        "ars": 10500,
+        "usd": 6.8
+       }
+      }
+     ],
+     "median": {
+      "ars": 10768.32,
+      "usd": 6.93
+     },
+     "withoutRate": 0,
+     "chains": [
+      {
+       "chain": "Carrefour",
+       "purchases": 1,
+       "latest": {
+        "date": "2026-10-03",
+        "price": {
+         "ars": 10500,
+         "usd": 6.8
+        }
+       },
+       "median": {
+        "ars": 10500,
+        "usd": 6.8
+       },
+       "lowest": {
+        "ars": 10500,
+        "usd": 6.8
+       }
+      },
+      {
+       "chain": "Coto",
+       "purchases": 1,
+       "latest": {
+        "date": "2026-11-01",
+        "price": {
+         "ars": 11036.63,
+         "usd": 7.05
+        }
+       },
+       "median": {
+        "ars": 11036.63,
+        "usd": 7.05
+       },
+       "lowest": {
+        "ars": 11036.63,
+        "usd": 7.05
+       }
+      }
+     ],
+     "bestDeals": [
+      {
+       "purchaseId": "pur_fe2b6d71-2236-4fea-8bf4-d0836e431e80",
+       "line": 2,
+       "date": "2026-10-03",
+       "time": null,
+       "chain": "Carrefour",
+       "branch": "Av. Cabildo 2000",
+       "product": {
+        "id": "prd_4953cf2a-2a17-497c-9319-ab6acbf901f1",
+        "name": "Jabón líquido Citrus Splash Algabo 300 ml",
+        "brand": "Algabo",
+        "size": {
+         "amount": 300,
+         "unit": "ml"
+        },
+        "kind": {
+         "id": "knd_28553388-9462-4f43-b702-b7b59a0a4872",
+         "name": "jabón"
+        }
+       },
+       "paid": 3150,
+       "measure": {
+        "amount": 0.3,
+        "unit": "l"
+       },
+       "rate": 1543.6,
+       "price": {
+        "ars": 10500,
+        "usd": 6.8
+       },
+       "belowMedianPercent": 2
+      },
+      {
+       "purchaseId": "pur_bbb35268-c8a4-4461-9e93-e4388f1e51c3",
+       "line": 2,
+       "date": "2026-11-01",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_4953cf2a-2a17-497c-9319-ab6acbf901f1",
+        "name": "Jabón líquido Citrus Splash Algabo 300 ml",
+        "brand": "Algabo",
+        "size": {
+         "amount": 300,
+         "unit": "ml"
+        },
+        "kind": {
+         "id": "knd_28553388-9462-4f43-b702-b7b59a0a4872",
+         "name": "jabón"
+        }
+       },
+       "paid": 3310.99,
+       "measure": {
+        "amount": 0.3,
+        "unit": "l"
+       },
+       "rate": 1565.4,
+       "price": {
+        "ars": 11036.63,
+        "usd": 7.05
+       },
+       "belowMedianPercent": -2
+      }
+     ]
+    }
+   ],
+   "withoutSize": []
+  },
+  "leche": {
+   "measures": [
+    {
+     "measure": "l",
+     "purchases": [
+      {
+       "purchaseId": "pur_6b29c836-11f8-478d-8972-66a53e3c3ade",
+       "line": 2,
+       "date": "2026-11-03",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_91b13f07-423a-4784-a983-925ea30446c4",
+        "name": "Leche entera La Serenísima 1 l",
+        "brand": "La Serenísima",
+        "size": {
+         "amount": 1000,
+         "unit": "ml"
+        },
+        "kind": {
+         "id": "knd_4975f2c8-f75e-4bfe-a328-f3cff0f81db4",
+         "name": "leche"
+        }
+       },
+       "paid": 1620,
+       "measure": {
+        "amount": 1,
+        "unit": "l"
+       },
+       "rate": null,
+       "price": {
+        "ars": 1620,
+        "usd": null
+       }
+      },
+      {
+       "purchaseId": "pur_95a8c86a-a05b-4fa5-9600-bea546aa1350",
+       "line": 2,
+       "date": "2026-10-17",
+       "time": null,
+       "chain": "Jumbo",
+       "branch": "Av. Pueyrredón 1200",
+       "product": {
+        "id": "prd_31c8c2f6-b193-42e0-a23a-55747e730fcd",
+        "name": "Leche entera Tregar 1 l",
+        "brand": "Tregar",
+        "size": {
+         "amount": 1000,
+         "unit": "ml"
+        },
+        "kind": {
+         "id": "knd_4975f2c8-f75e-4bfe-a328-f3cff0f81db4",
+         "name": "leche"
+        }
+       },
+       "paid": 1360,
+       "measure": {
+        "amount": 1,
+        "unit": "l"
+       },
+       "rate": 1534.3,
+       "price": {
+        "ars": 1360,
+        "usd": 0.89
+       }
+      },
+      {
+       "purchaseId": "pur_3ca1992e-d9f8-44d9-9f44-8c2e96dd497b",
+       "line": 3,
+       "date": "2026-09-05",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_91b13f07-423a-4784-a983-925ea30446c4",
+        "name": "Leche entera La Serenísima 1 l",
+        "brand": "La Serenísima",
+        "size": {
+         "amount": 1000,
+         "unit": "ml"
+        },
+        "kind": {
+         "id": "knd_4975f2c8-f75e-4bfe-a328-f3cff0f81db4",
+         "name": "leche"
+        }
+       },
+       "paid": 3080,
+       "measure": {
+        "amount": 2,
+        "unit": "l"
+       },
+       "rate": 1516.9,
+       "price": {
+        "ars": 1540,
+        "usd": 1.02
+       }
+      },
+      {
+       "purchaseId": "pur_7335489f-da05-4776-a3d2-f5dde261413d",
+       "line": 2,
+       "date": "2026-07-18",
+       "time": null,
+       "chain": "Día",
+       "branch": "Av. Corrientes 1500",
+       "product": {
+        "id": "prd_31c8c2f6-b193-42e0-a23a-55747e730fcd",
+        "name": "Leche entera Tregar 1 l",
+        "brand": "Tregar",
+        "size": {
+         "amount": 1000,
+         "unit": "ml"
+        },
+        "kind": {
+         "id": "knd_4975f2c8-f75e-4bfe-a328-f3cff0f81db4",
+         "name": "leche"
+        }
+       },
+       "paid": 2560,
+       "measure": {
+        "amount": 2,
+        "unit": "l"
+       },
+       "rate": 1518.3,
+       "price": {
+        "ars": 1280,
+        "usd": 0.84
+       }
+      },
+      {
+       "purchaseId": "pur_375e91a4-ff70-46a8-8556-1dc0e435109a",
+       "line": 2,
+       "date": "2026-07-04",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_91b13f07-423a-4784-a983-925ea30446c4",
+        "name": "Leche entera La Serenísima 1 l",
+        "brand": "La Serenísima",
+        "size": {
+         "amount": 1000,
+         "unit": "ml"
+        },
+        "kind": {
+         "id": "knd_4975f2c8-f75e-4bfe-a328-f3cff0f81db4",
+         "name": "leche"
+        }
+       },
+       "paid": 1450,
+       "measure": {
+        "amount": 2,
+        "unit": "l"
+       },
+       "rate": 1522.9,
+       "price": {
+        "ars": 725,
+        "usd": 0.48
+       }
+      }
+     ],
+     "median": {
+      "ars": 1360,
+      "usd": 0.86
+     },
+     "withoutRate": 1,
+     "chains": [
+      {
+       "chain": "Coto",
+       "purchases": 3,
+       "latest": {
+        "date": "2026-11-03",
+        "price": {
+         "ars": 1620,
+         "usd": null
+        }
+       },
+       "median": {
+        "ars": 1540,
+        "usd": 0.75
+       },
+       "lowest": {
+        "ars": 725,
+        "usd": 0.48
+       }
+      },
+      {
+       "chain": "Día",
+       "purchases": 1,
+       "latest": {
+        "date": "2026-07-18",
+        "price": {
+         "ars": 1280,
+         "usd": 0.84
+        }
+       },
+       "median": {
+        "ars": 1280,
+        "usd": 0.84
+       },
+       "lowest": {
+        "ars": 1280,
+        "usd": 0.84
+       }
+      },
+      {
+       "chain": "Jumbo",
+       "purchases": 1,
+       "latest": {
+        "date": "2026-10-17",
+        "price": {
+         "ars": 1360,
+         "usd": 0.89
+        }
+       },
+       "median": {
+        "ars": 1360,
+        "usd": 0.89
+       },
+       "lowest": {
+        "ars": 1360,
+        "usd": 0.89
+       }
+      }
+     ],
+     "bestDeals": [
+      {
+       "purchaseId": "pur_375e91a4-ff70-46a8-8556-1dc0e435109a",
+       "line": 2,
+       "date": "2026-07-04",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_91b13f07-423a-4784-a983-925ea30446c4",
+        "name": "Leche entera La Serenísima 1 l",
+        "brand": "La Serenísima",
+        "size": {
+         "amount": 1000,
+         "unit": "ml"
+        },
+        "kind": {
+         "id": "knd_4975f2c8-f75e-4bfe-a328-f3cff0f81db4",
+         "name": "leche"
+        }
+       },
+       "paid": 1450,
+       "measure": {
+        "amount": 2,
+        "unit": "l"
+       },
+       "rate": 1522.9,
+       "price": {
+        "ars": 725,
+        "usd": 0.48
+       },
+       "belowMedianPercent": 45
+      },
+      {
+       "purchaseId": "pur_7335489f-da05-4776-a3d2-f5dde261413d",
+       "line": 2,
+       "date": "2026-07-18",
+       "time": null,
+       "chain": "Día",
+       "branch": "Av. Corrientes 1500",
+       "product": {
+        "id": "prd_31c8c2f6-b193-42e0-a23a-55747e730fcd",
+        "name": "Leche entera Tregar 1 l",
+        "brand": "Tregar",
+        "size": {
+         "amount": 1000,
+         "unit": "ml"
+        },
+        "kind": {
+         "id": "knd_4975f2c8-f75e-4bfe-a328-f3cff0f81db4",
+         "name": "leche"
+        }
+       },
+       "paid": 2560,
+       "measure": {
+        "amount": 2,
+        "unit": "l"
+       },
+       "rate": 1518.3,
+       "price": {
+        "ars": 1280,
+        "usd": 0.84
+       },
+       "belowMedianPercent": 3
+      },
+      {
+       "purchaseId": "pur_95a8c86a-a05b-4fa5-9600-bea546aa1350",
+       "line": 2,
+       "date": "2026-10-17",
+       "time": null,
+       "chain": "Jumbo",
+       "branch": "Av. Pueyrredón 1200",
+       "product": {
+        "id": "prd_31c8c2f6-b193-42e0-a23a-55747e730fcd",
+        "name": "Leche entera Tregar 1 l",
+        "brand": "Tregar",
+        "size": {
+         "amount": 1000,
+         "unit": "ml"
+        },
+        "kind": {
+         "id": "knd_4975f2c8-f75e-4bfe-a328-f3cff0f81db4",
+         "name": "leche"
+        }
+       },
+       "paid": 1360,
+       "measure": {
+        "amount": 1,
+        "unit": "l"
+       },
+       "rate": 1534.3,
+       "price": {
+        "ars": 1360,
+        "usd": 0.89
+       },
+       "belowMedianPercent": -3
+      },
+      {
+       "purchaseId": "pur_3ca1992e-d9f8-44d9-9f44-8c2e96dd497b",
+       "line": 3,
+       "date": "2026-09-05",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_91b13f07-423a-4784-a983-925ea30446c4",
+        "name": "Leche entera La Serenísima 1 l",
+        "brand": "La Serenísima",
+        "size": {
+         "amount": 1000,
+         "unit": "ml"
+        },
+        "kind": {
+         "id": "knd_4975f2c8-f75e-4bfe-a328-f3cff0f81db4",
+         "name": "leche"
+        }
+       },
+       "paid": 3080,
+       "measure": {
+        "amount": 2,
+        "unit": "l"
+       },
+       "rate": 1516.9,
+       "price": {
+        "ars": 1540,
+        "usd": 1.02
+       },
+       "belowMedianPercent": -17
+      }
+     ]
+    }
+   ],
+   "withoutSize": []
+  },
+  "desodorante": {
+   "measures": [],
+   "withoutSize": [
+    {
+     "purchaseId": "pur_bbb35268-c8a4-4461-9e93-e4388f1e51c3",
+     "line": 3,
+     "date": "2026-11-01",
+     "time": null,
+     "chain": "Coto",
+     "branch": "Av. Santa Fe 3760",
+     "product": {
+      "id": "prd_ec0c3a66-25bf-4bd3-9b5a-5d03e992509f",
+      "name": "Antitranspirante Nivea Women Invisible Power",
+      "brand": "Nivea",
+      "size": null,
+      "kind": {
+       "id": "knd_79226f42-b8e1-40e3-97f8-456c3696b61b",
+       "name": "desodorante"
+      }
+     },
+     "paid": 2506.49
+    },
+    {
+     "purchaseId": "pur_3ca1992e-d9f8-44d9-9f44-8c2e96dd497b",
+     "line": 2,
+     "date": "2026-09-05",
+     "time": null,
+     "chain": "Coto",
+     "branch": "Av. Santa Fe 3760",
+     "product": {
+      "id": "prd_ec0c3a66-25bf-4bd3-9b5a-5d03e992509f",
+      "name": "Antitranspirante Nivea Women Invisible Power",
+      "brand": "Nivea",
+      "size": null,
+      "kind": {
+       "id": "knd_79226f42-b8e1-40e3-97f8-456c3696b61b",
+       "name": "desodorante"
+      }
+     },
+     "paid": 3190
+    }
+   ]
+  },
+  "queso": {
+   "measures": [
+    {
+     "measure": "kg",
+     "purchases": [
+      {
+       "purchaseId": "pur_f6db4e0f-6640-45a1-b7a0-18204527909b",
+       "line": 2,
+       "date": "2026-10-24",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_0bfe4b0a-9047-4217-8043-bc2924ed5230",
+        "name": "Queso cremoso La Paulina",
+        "brand": "La Paulina",
+        "size": null,
+        "kind": null
+       },
+       "paid": 6990,
+       "measure": {
+        "amount": 0.488,
+        "unit": "kg"
+       },
+       "rate": 1557.4,
+       "price": {
+        "ars": 14323.77,
+        "usd": 9.2
+       }
+      },
+      {
+       "purchaseId": "pur_30e1816b-f8fc-4c3e-bf73-f938f7418a6d",
+       "line": 2,
+       "date": "2026-08-22",
+       "time": null,
+       "chain": "Jumbo",
+       "branch": "Av. Pueyrredón 1200",
+       "product": {
+        "id": "prd_0bfe4b0a-9047-4217-8043-bc2924ed5230",
+        "name": "Queso cremoso La Paulina",
+        "brand": "La Paulina",
+        "size": null,
+        "kind": null
+       },
+       "paid": 6210,
+       "measure": {
+        "amount": 0.46,
+        "unit": "kg"
+       },
+       "rate": 1531.7,
+       "price": {
+        "ars": 13500,
+        "usd": 8.81
+       }
+      }
+     ],
+     "median": {
+      "ars": 13911.89,
+      "usd": 9.01
+     },
+     "withoutRate": 0,
+     "chains": [
+      {
+       "chain": "Jumbo",
+       "purchases": 1,
+       "latest": {
+        "date": "2026-08-22",
+        "price": {
+         "ars": 13500,
+         "usd": 8.81
+        }
+       },
+       "median": {
+        "ars": 13500,
+        "usd": 8.81
+       },
+       "lowest": {
+        "ars": 13500,
+        "usd": 8.81
+       }
+      },
+      {
+       "chain": "Coto",
+       "purchases": 1,
+       "latest": {
+        "date": "2026-10-24",
+        "price": {
+         "ars": 14323.77,
+         "usd": 9.2
+        }
+       },
+       "median": {
+        "ars": 14323.77,
+        "usd": 9.2
+       },
+       "lowest": {
+        "ars": 14323.77,
+        "usd": 9.2
+       }
+      }
+     ],
+     "bestDeals": [
+      {
+       "purchaseId": "pur_30e1816b-f8fc-4c3e-bf73-f938f7418a6d",
+       "line": 2,
+       "date": "2026-08-22",
+       "time": null,
+       "chain": "Jumbo",
+       "branch": "Av. Pueyrredón 1200",
+       "product": {
+        "id": "prd_0bfe4b0a-9047-4217-8043-bc2924ed5230",
+        "name": "Queso cremoso La Paulina",
+        "brand": "La Paulina",
+        "size": null,
+        "kind": null
+       },
+       "paid": 6210,
+       "measure": {
+        "amount": 0.46,
+        "unit": "kg"
+       },
+       "rate": 1531.7,
+       "price": {
+        "ars": 13500,
+        "usd": 8.81
+       },
+       "belowMedianPercent": 2
+      },
+      {
+       "purchaseId": "pur_f6db4e0f-6640-45a1-b7a0-18204527909b",
+       "line": 2,
+       "date": "2026-10-24",
+       "time": null,
+       "chain": "Coto",
+       "branch": "Av. Santa Fe 3760",
+       "product": {
+        "id": "prd_0bfe4b0a-9047-4217-8043-bc2924ed5230",
+        "name": "Queso cremoso La Paulina",
+        "brand": "La Paulina",
+        "size": null,
+        "kind": null
+       },
+       "paid": 6990,
+       "measure": {
+        "amount": 0.488,
+        "unit": "kg"
+       },
+       "rate": 1557.4,
+       "price": {
+        "ars": 14323.77,
+        "usd": 9.2
+       },
+       "belowMedianPercent": -2
+      }
+     ]
+    }
+   ],
+   "withoutSize": []
+  },
+  "analgesico": {
+   "measures": [
+    {
+     "measure": "unit",
+     "purchases": [
+      {
+       "purchaseId": "pur_7d1c9072-0ef6-4409-b7e8-145589192299",
+       "line": 2,
+       "date": "2026-10-30",
+       "time": null,
+       "chain": "Día",
+       "branch": "Av. Corrientes 1500",
+       "product": {
+        "id": "prd_f6c8695f-5ad5-4f9e-8295-b75528761cc5",
+        "name": "Next rápida acción 20 comprimidos",
+        "brand": "Next",
+        "size": {
+         "amount": 20,
+         "unit": "unit"
+        },
+        "kind": {
+         "id": "knd_c74e2453-717c-442b-8abd-afec46e28fc7",
+         "name": "analgésico"
+        }
+       },
+       "paid": 11758.75,
+       "measure": {
+        "amount": 20,
+        "unit": "unit"
+       },
+       "rate": 1557.8,
+       "price": {
+        "ars": 587.94,
+        "usd": 0.38
+       }
+      }
+     ],
+     "median": {
+      "ars": 587.94,
+      "usd": 0.38
+     },
+     "withoutRate": 0,
+     "chains": [
+      {
+       "chain": "Día",
+       "purchases": 1,
+       "latest": {
+        "date": "2026-10-30",
+        "price": {
+         "ars": 587.94,
+         "usd": 0.38
+        }
+       },
+       "median": {
+        "ars": 587.94,
+        "usd": 0.38
+       },
+       "lowest": {
+        "ars": 587.94,
+        "usd": 0.38
+       }
+      }
+     ],
+     "bestDeals": [
+      {
+       "purchaseId": "pur_7d1c9072-0ef6-4409-b7e8-145589192299",
+       "line": 2,
+       "date": "2026-10-30",
+       "time": null,
+       "chain": "Día",
+       "branch": "Av. Corrientes 1500",
+       "product": {
+        "id": "prd_f6c8695f-5ad5-4f9e-8295-b75528761cc5",
+        "name": "Next rápida acción 20 comprimidos",
+        "brand": "Next",
+        "size": {
+         "amount": 20,
+         "unit": "unit"
+        },
+        "kind": {
+         "id": "knd_c74e2453-717c-442b-8abd-afec46e28fc7",
+         "name": "analgésico"
+        }
+       },
+       "paid": 11758.75,
+       "measure": {
+        "amount": 20,
+        "unit": "unit"
+       },
+       "rate": 1557.8,
+       "price": {
+        "ars": 587.94,
+        "usd": 0.38
+       },
+       "belowMedianPercent": 0
+      }
+     ]
+    }
+   ],
+   "withoutSize": []
+  },
+  "yerbaNoPurchasesInPeriod": {
+   "measures": [],
+   "withoutSize": []
+  }
+ }
+}

@@ -1,0 +1,5 @@
+@import "../src/web/index.css";
+
+/* The prototype root is proto/; scan the app's components too. */
+@source "../src/web";
+@source "./";

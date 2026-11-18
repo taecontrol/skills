@@ -1,0 +1,42 @@
+commit ad49f9f48d3892a410334c0ccf7b4dc53d0bbb66
+Author: Luis Güette
+Date:   Tue Nov 3 15:10:42 2026 -0300
+
+    Open Catálogo after Precios without crashing (#40)
+    
+    * Open Catálogo after Precios without crashing
+    
+    The catalog's paged product list and the Precios picker's single-page list
+    cached under the same key, so whichever screen opened second read the other's
+    data: Catálogo crashed after Precios, and Precios showed no products after
+    Catálogo. The paged list now has its own key.
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+    
+    * Add temporary PR evidence
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+    
+    * Remove temporary PR evidence
+    
+    Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+    
+    ---------
+    
+    Co-authored-by: Claude Opus 5.5 <noreply@anthropic.com>
+
+diff --git a/src/web/catalog/queries.ts b/src/web/catalog/queries.ts
+index 34c5915..5e0d38b 100644
+--- a/src/web/catalog/queries.ts
++++ b/src/web/catalog/queries.ts
+@@ -13,7 +13,9 @@ export type SessionWriteState = {
+ 
+ export const catalogListQuery = (input: Omit<ListProductsInput, "cursor" | "limit">) =>
+   infiniteQueryOptions({
+-    queryKey: ["list_products", { ...input, limit: 20 }],
++    // A paged list caches `{ pages, pageParams }`, so its key must differ from
++    // the single-page `readQuery("list_products", …)` other screens cache.
++    queryKey: ["list_products", { ...input, limit: 20 }, "pages"],
+     initialPageParam: undefined as typeof CatalogCursor.Type | undefined,
+     queryFn: (context) => {
+       const options = readQuery("list_products", {
