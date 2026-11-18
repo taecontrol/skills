@@ -1,7 +1,8 @@
 # Hidden checks
 
-You check one build of Despensa against a fixed list. The worktree path is named at the end of this brief. Leave the worktree as you found it: notes, scripts and captures go outside it.
+You check one build of Despensa against a fixed list. The worktree path is named at the end of this brief.
 
+- **Work in your own copy.** Others use the same worktree at the same time, and the product keeps its database inside the checkout. Make a copy with `git -C <worktree> worktree add --detach <a new directory outside it> HEAD`, copy the worktree's `.work/` into it, work there, and remove it with `git worktree remove --force` when you finish.
 - **Launch** the product with `vp dev` on a port nobody else is using, and seed it the way the worktree's `.work/<phase>/proof.md` says. When that seeding does not give the spec's data, mark every check marked `data` as `blocked`.
 - **Drive it** in Chromium at 390×844 and at 1440×900. A check passes only when it passes at both sizes.
 - **Make a failure happen** by blocking or delaying a request in the browser, such as `/api/list_kinds`. Play a second household member by calling the HTTP API yourself.
@@ -23,7 +24,7 @@ Run these after phase 1, and again after phase 2.
 - **H4, Calendar draft.** Open yerba with the period 15 Oct to 3 Nov 2026, which is empty. Open the calendar from the empty state, change the end date, close it without applying, then reopen it the same way. Expected: the calendar shows the URL's period, 15 Oct to 3 Nov.
 - **H5, `data` Filtered empty.** Open arroz with only `desde=2026-11-04`. Expected: the message describes the period filter. It never says arroz was never bought, because it has 12 earlier purchases.
 - **H6, Phone period label.** At 390 px with the yerba period above, the period control's label reads in full ("15 oct a 3 nov"), and the period, chain and currency controls stay on one row.
-- **H7, Header failure.** Open a kind and make `list_kinds` fail while `compare_prices` succeeds. Expected: no prices are shown with the currency toggle still enabled, "Cambiar" stays reachable, and "Reintentar" reads again.
+- **H7, Header failure.** Open a kind and make `list_kinds` fail while `compare_prices` succeeds. Expected: the currency toggle is enabled only while prices are on screen (keeping the prices visible is fine; hiding them behind the failure with the toggle still enabled fails), "Cambiar" stays reachable, and "Reintentar" reads again.
 - **H8, `data` No made-up dollars.** In USD mode, the arroz purchase of 3 Nov 2026 shows its ARS figure marked "sin cotización", never a dollar number or zero. In ARS mode it keeps the marker.
 - **H9, Figures equal the operation.** For arroz, call `compare_prices { kindId }` over HTTP and compare it with the screen: every chain's figure, the chain order, and the median line in USD and in ARS. Expected: they are equal, and no figure has been rounded or re-sorted.
 - **H10, Paid is never converted.** In USD mode, each purchase row's paid amount is the ARS amount the operation returned, or it is absent. A dollar figure for paid would have to be computed on the screen, and the spec forbids that.

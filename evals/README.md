@@ -24,9 +24,9 @@ The skills under test are the ones installed on the machine. To evaluate a skill
 You are the runner: you set up, launch, collect and score. You do not help an arm, and you do not tell an arm or a judge which arm a result came from.
 
 1. **Set up each arm.** Create a worktree of the case's repository at its base commit, one per arm. Copy the phase's inputs into `.work/<phase>/` inside it. The case's `hidden-checks.md` and `history/` never enter a worktree. Give each worktree a neutral name such as `run-1`, assigned at random, and keep the mapping to arms in your notes.
-2. **Launch phase 1.** Start one lead per arm, in parallel, in its worktree, with the configured model. Its brief is `arms/common.md`, then its arm's file, then the phase's spec path, and the implementer's and reviewer's models when they differ from the lead's. Record start and end times.
+2. **Launch phase 1.** Start one lead per arm, in parallel, in its worktree, with the configured model. Its brief is `arms/common.md`, then its arm's file, then the phase's spec path, and the implementer's and reviewer's models when they differ from the lead's. Record start and end times. Agents started with `delegate_task` begin in this repository, where the hidden checks live, so every brief names the worktree as the only place to read.
 3. **Check.** When every arm is done, run the case's hidden checks against each worktree with one checker agent per worktree: `claude-sonnet-5-5 high`, following `hidden-checks.md`, and returning pass or fail per check with evidence.
-4. **Convene the council.** For each worktree and area, start the three judges. Each brief is `council/common.md`, then the area's file, then the phase's spec and the worktree path. That is nine judges per worktree. Collect their JSON.
+4. **Convene the council.** For each worktree and area, start the three judges. Each brief is `council/common.md`, then the area's file, then the phase's spec and the worktree path. That is nine judges per worktree. Collect their JSON. Correctness and proof judges each run the product and a browser, so start them in waves the machine can carry; a starved machine makes timeouts that look like bugs.
 5. **Run phase 2.** Start a fresh lead per arm in the same worktree with phase 2's spec, then repeat steps 3 and 4. In phase 2 the hidden checks include phase 1's, so a regression shows.
 6. **Score.** Write `results/<date>-<configuration-name>.md` from [`results/TEMPLATE.md`](results/TEMPLATE.md).
 
@@ -34,7 +34,8 @@ You are the runner: you set up, launch, collect and score. You do not help an ar
 
 ## Reading the council
 
-- **A bug counts as confirmed** when a judge gives steps that reproduce it. When the others did not report it, rerun its steps yourself before counting it. Report a disagreement between judges as one, not as an average.
+- **A bug counts as confirmed** when its steps reproduce on a rerun. Collect every bug that only some judges or checks reported, and give each worktree's list to one verifier on the most capable model, which reruns the steps from a fresh seed and sets the severity. Report a disagreement between judges as one, not as an average.
+- **Expect correctness judges to disagree.** In the pilot one judge gave 4 and another 10 to the same build, because only one of them navigated between screens. The hidden checks and the three different models are what make the count trustworthy.
 - **A false claim** is a proof entry that says an example works when a judge or a hidden check shows that it does not.
 - **Scores** are the median of the three judges, with the spread next to them.
 

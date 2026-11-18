@@ -17,7 +17,7 @@ Write `.work/<phase>/proof.md` with one entry per example in the spec. Each entr
 - **how you showed it**: the steps or command you ran against the product;
 - **what you observed**: an output excerpt, or the path of a capture under `.work/<phase>/evidence/`.
 
-Every claim comes from the running product at your final commit. Someone else will check each claim against the product, so state only what you saw.
+Every claim comes from the running product at your final commit. Someone else will check each claim against the product, so state only what you saw. Say in the proof how to start the product and seed it with the spec's data, so someone else can repeat it.
 
 ## Finish
 
