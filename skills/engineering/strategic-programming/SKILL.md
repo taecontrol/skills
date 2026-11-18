@@ -1,6 +1,6 @@
 ---
 name: strategic-programming
-description: "Apply strategic programming to non-trivial design, implementation, and repair work when green tests alone cannot establish a maintainable design. Use for changes involving invariants, boundaries, persistence, APIs, concurrency, security, shared policy, or consequential interfaces; skip routine mechanical edits."
+description: "Design and write code that stays easy to change. Fix each defect at its cause, and build a piece only for a live case. Load it before you write, change, plan, or review code, and before you decide whether to add a piece such as a state, guard, option, table, or abstraction."
 ---
 
 # Strategic programming

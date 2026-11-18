@@ -16,15 +16,15 @@ The human sees a message only when you **stop**, which is to end your turn on it
 
 ## 1. Understand
 
-Read the request, the code it touches, its history, and where the product runs. Treat the request as a hypothesis about a problem. Find the problem, then the simplest solution, which can be removing its cause, using what exists, building less than was asked, or building nothing. Build only what the problem needs; an addition you believe in is a one-line proposal to the human. When the task plans, designs, or changes code beyond a mechanical edit, load `strategic-programming`: its test for a piece decides what gets built, in every step and for every finding.
+Load `strategic-programming`: its test for a piece decides what gets built, in every step and for every finding. Read the request, the code it touches, its history, and where the product runs. Treat the request as a hypothesis about a problem. Find the problem, then the simplest solution, which can be removing its cause, using what exists, building less than was asked, or building nothing. Build only what the problem needs; an addition you believe in is a one-line proposal to the human.
 
 Every fact the solution rests on is a **premise**: how a client, library, runtime, or service behaves, what a setting does, what the code allows. Check each one in the code or system it is about before you rely on it or offer it to the human; documentation and issues are claims until you observe them. A check counts when it would have come out differently were the premise false, and it holds only for the setup it ran in: its client, runtime, mode, and version. The check is yours, with the access you hold, such as the project's secret store, its CLIs, and the deploy. A check that changes or sends something, shows data the product keeps private, or goes around one of its controls needs the human's word: ask once, saying how you will run it. A premise you cannot check becomes a question for step 2.
 
-When the task changes code beyond a mechanical edit, run `program-design`'s gate, and `architect`'s for each kind of one-way door `architect` names that the change touches, before your first stop, because what they keep changes what you ask.
+When the task changes code, run `program-design`'s gate, and `architect`'s for each kind of one-way door `architect` names that the change touches, before your first stop, because what they keep changes what you ask.
 
-Weigh the **stakes** of each part of the change: what it makes hard to undo and who a mistake hurts. A part that crosses a one-way door or a boundary the product guards, such as a permission, an approval, or a message sent on someone's behalf, is high stakes and gets the fresh reviews in steps 3 and 5. Every other part gets the proof its contract lines name. A part is not high stakes because the product is.
+Weigh the **stakes** of each part of the change: what it makes hard to undo and who a mistake hurts. A part that crosses a one-way door or a boundary the product guards, such as a permission, an approval, or a message sent on someone's behalf, is high stakes, and the fresh reviews in steps 3 and 5 look hardest at it. A part is not high stakes because the product is.
 
-Done when you can state, each from something you read or ran: the problem, what the task should produce (a change, a diagnosis, a decision, or nothing), the mode, each premise with its check or its question, the high-stakes parts, and each gate's result.
+Done when you can state, each from something you read or ran: the problem, what the task should produce (a change, a diagnosis, a decision, or nothing), the mode, each premise with its check or its question, the high-stakes parts, and each gate's result, with `strategic-programming` loaded.
 
 ## 2. Stop for what is theirs
 
@@ -49,7 +49,7 @@ Write them as notes, as short as the stakes allow.
 - **Route.** The steps to where this project's work lands for review, each with the reason this task needs it.
 - **Decided for them.** Each detail you chose that the solution depends on, with what changes if it is wrong. A premise, a one-way door, and a step of an owner skill's process are never details. One that is costly to reverse is a decision for step 2.
 
-When `program-design`'s gate kept a part, run the rest of its process here with the contract as its spec; nothing is built until the human accepts the design. For a high-stakes part, a fresh reviewer reads the contract and each design before the human accepts them, briefed with what the work must do and what is under review, without your reasoning or what you prefer. It returns what is missing and what the work can lose; handle its findings as step 5 says.
+When `program-design`'s gate kept a part, run the rest of its process here with the contract as its spec; nothing is built until the human accepts the design. A fresh reviewer reads the contract and each design before the human accepts them, briefed with what the work must do and what is under review, without your reasoning or what you prefer. It returns what is missing and what the work can lose; handle its findings as step 5 says.
 
 A change to a route step the human saw in a stop goes back to them first.
 
@@ -65,9 +65,9 @@ Do it yourself, or hand it to the implementer the human named; when the harness 
 
 A report that the work is done is a claim, whoever wrote it. Run each contract line's proof yourself on the final state, and read each proof someone else wrote against its line: it must fail when the line is false. Read the whole change for what the contract did not ask for.
 
-When the change has a high-stakes part, a fresh agent runs `pr-review` on the committed change, given the branch, the request, and the high-stakes parts as its focus notes, and nothing of yours. When the harness cannot start a fresh agent, say so in the report.
+Before you report, a fresh agent reviews the result, given nothing of yours: `pr-review` on a committed change, with the branch, the request, and the high-stakes parts as its focus notes; any other result, such as a design or an asset, against the contract. When the harness cannot start a fresh agent, say so in the report.
 
-Fix each finding in a live case that the reviewer ranks blocking, or does not rank, with the smallest piece that closes it, and put the others in the report, each improbable one as its line. Adopt each simpler form the reviewer gives, or answer it with evidence. A review gets at most three rounds, as `refine`'s Next round says. A third finding of the same class means a premise is wrong. Stop fixing, check whether the case is live and whether a simpler form removes the whole class, and stop with what you found.
+Fix each Blocking finding in a live case with the smallest piece that closes it. Judge every other finding by `strategic-programming`'s test: fix it when its case is live and the fix stays inside the contract, and put the rest in the report, each improbable one as its line. A review gets at most three rounds, as `refine`'s Next round says. A third finding of the same class means a premise is wrong. Stop fixing, check whether the case is live and whether a simpler form removes the whole class, and stop with what you found.
 
 Done when every contract line's proof passes in your own run on the final state, and every finding is fixed or in the report.
 
