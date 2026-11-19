@@ -12,7 +12,7 @@ Build the feature in the spec named at the end of this brief, in the current wor
 
 ## Proof of work
 
-Write `.work/<phase>/proof.md` with one entry per example in the spec, and one per sequence the review drove. Each entry holds:
+Write `.work/<phase>/proof.md` with one entry per example in the spec, and one per session the review drove. Each entry holds:
 - the **claim**: works, does not work, or not verified;
 - **how you showed it**: the steps or command you ran against the product;
 - **what you observed**: an output excerpt, or the path of a capture under `.work/<phase>/evidence/`.

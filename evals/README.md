@@ -7,15 +7,16 @@ An eval run builds one **case** with each **arm**, under one **configuration** o
 - **Case**: a real feature, replayed from the commit before it was built. Two phases: the feature, then the feature that came after it, built on top by a fresh agent. Phase 2 shows how easy the code was to change and what broke. Cases live in `cases/`.
 - **Arm**: a way of verifying the work. The arms share [`arms/common.md`](arms/common.md) and differ only in tests:
   - [A, no tests](arms/a-no-tests.md);
-  - [B, expect tests](arms/b-expect-tests.md);
   - [C, current flow](arms/c-current-flow.md), meaning `deliver` with acceptance tests first.
+
+  An arm B with expect tests ran twice and was dropped: it found no more than A or C, protected no more than C, and was the slowest.
 - **Configuration**: which model plays each role in an arm.
   - **Lead** receives the brief and owns the result.
   - **Implementer** writes the code; when it is the lead's model, the lead implements itself.
-  - **Reviewer** runs `refine` in arm C.
+  - **Reviewer** runs `refine` in every arm.
 
-  Write each model with its options, such as `gpt-6.2-sol max ultrafast` or `claude-opus-5-5 high`.
-- **Council**: three judges per area, each working alone. The areas are [correctness](council/correctness.md), [design](council/design.md) and [proof](council/proof.md). The judges stay the same across runs, so scores compare: `claude-opus-5-5 high`, `claude-fable-5-2 high`, `gpt-6.2-astra high`.
+  Write each model with its options, such as `gpt-6.2-sol max ultrafast` or `claude-opus-5-5 high`. `claude-fable-5-2` judges, verifies and reviews, and never builds: its output costs too much for a build.
+- **Council**: three judges per area, each working alone. The areas are [correctness](council/correctness.md), [design](council/design.md) and [proof](council/proof.md). The judges stay the same across runs, so scores compare. Design and proof: `claude-opus-5-5 high`, `claude-fable-5-2 high`, `gpt-6.2-astra high`. Correctness: `claude-fable-5-2 high` and two `gpt-6.2-astra high`, since Astra is the judge that attacks state and Opus missed the same crash in five of five builds.
 
 The skills under test are the ones installed on the machine. To evaluate a skills change, install that version first and record its commit in the results.
 
@@ -35,7 +36,7 @@ You are the runner: you set up, launch, collect and score. You do not help an ar
 ## Reading the council
 
 - **A bug counts as confirmed** when its steps reproduce on a rerun. Collect every bug that only some judges or checks reported, and give each worktree's list to one verifier on the most capable model, which reruns the steps from a fresh seed and sets the severity. Report a disagreement between judges as one, not as an average.
-- **Expect correctness judges to disagree.** In the pilot one judge gave 4 and another 10 to the same build, because only one of them navigated between screens. The hidden checks and the three different models are what make the count trustworthy.
+- **Expect correctness judges to disagree.** In the pilot one judge gave 4 and another 10 to the same build, because only one of them navigated between screens. The hidden checks and the verifier are what make the count trustworthy.
 - **A false claim** is a proof entry that says an example works when a judge or a hidden check shows that it does not.
 - **Scores** are the median of the three judges, with the spread next to them.
 
