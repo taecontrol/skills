@@ -99,7 +99,7 @@ Bug counts are given as presence, not severity: three verifiers on the same mode
 | After "Descartar", Guardar overwrites the partner's rename | — | yes | — | — |
 | `KindNotFound` with a failed kinds read keeps the filter | yes | — | yes | yes |
 | The other kind's disappearance is blamed on the open one | yes | — | yes | yes |
-| Smaller ones: the notice loses the kind's name after a reload, a long name pushes the merge button off the ficha, a pending retry lost on a trip to a product, a retry that loops, Enter clearing the filter, a renamed kind out of order, a late reply taking over a reopened ficha | 4 | 5 | 5 | 5 |
+| Smaller ones: the notice loses the kind's name after a reload, a long name pushes the merge button off the ficha, a pending retry lost on a trip to a product, a retry that loops, Enter clearing the filter, a renamed kind out of order, a late reply taking over a reopened ficha | 3 | 4 | 4 | 4 |
 
 ## What phase 2 says
 
