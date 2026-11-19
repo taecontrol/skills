@@ -1,6 +1,6 @@
 # Area: proof
 
-Judge whether the agent's evidence can be trusted. The agent wrote `.work/<phase>/proof.md`, with one claim per example of the spec.
+Judge whether the agent's evidence can be trusted. The agent wrote `.work/<phase>/proof.md`, with one claim per example of the spec and one per session its review drove.
 
 - **Check every claim against the running product:** repeat its steps and compare what you see with what it says it observed. A claim is **false** when the product does not do what it says.
 - **Judge the evidence itself:** a capture or output that would look the same if the example were broken proves nothing, even when the claim happens to be true.
