@@ -4,7 +4,8 @@
 - **Change under test:** `refine` at `90cbcd2`. Its Sequences lens, which listed the pilot's three cases, became a Sessions lens that names none: each example was verified once from a fresh start, so drive the product through the sessions people have and keep the state every step leaves behind.
 - **Arms:** A (no tests) and C (current flow), two runs each. Arm B was dropped after two runs. Run-8 and run-10 were C, run-9 and run-11 were A. Judges did not know.
 - **Council:** design and proof `claude-opus-5-5 high`, `claude-fable-5-2 high`, `gpt-6.2-astra high`. Correctness `claude-fable-5-2 high` and two `gpt-6.2-astra high`, in place of Opus. Hidden checks by `claude-sonnet-5-5 high`. Bugs rerun by `claude-fable-5-2 high`, each build against the same list of 15.
-- **Case:** `despensa-precios` at base `7c53585`, with the accepted program design. Phase 1 below; phase 2 to follow.
+- **Case:** `despensa-precios` at base `7c53585`, with the accepted program design. Phase 2 (tidy kinds, issue #32) was built on each phase 1 result by a fresh lead, with no accepted program design.
+- **Phase 2 council changes:** proof judges were skipped by the owner's decision. To save Fable quota, the third correctness judge on the C builds and the four phase 2 verifiers ran on `claude-opus-5-5 xhigh`; the A builds' third correctness judge was Fable.
 
 ## Phase 1 scores
 
@@ -67,3 +68,61 @@ Three hidden-check runs failed H3 because "Mejores compras" is hidden when no pu
 - **H3 needs one reading.** Checkers disagreed on whether hiding "Mejores compras" with an explanation elsewhere passes. Either reword H3 to name where the explanation goes, or accept any explanation on screen.
 - **Write the half-open period into the case's notes for design judges, or into the spec's decisions,** so a design judge can tell it is required.
 - **Cost of phase 1:** 4 builds, 4 hidden-check runs, 36 judges and 4 verifiers, about 1 h 30 min from launch to the last verification.
+
+## Phase 2 scores
+
+| | A, run-9 | A, run-11 | C, run-8 | C, run-10 |
+|---|---|---|---|---|
+| How the build ended | finished, last review clean | finished, last review clean | **stopped**, 2 blockers after round 3 | **stopped**, 1 blocker after round 3 |
+| Hidden checks, phases 1 and 2 | 20 / 21 | 19 / 21 | 19 / 21 | 21 / 21 |
+| Reported bugs that reproduced, of a common list of 21 | 10 | 11 | 14 | 14 |
+| Correctness score | 7 (6–9) | 7 (6–10) | 6 (6–8) | 6 (6–8) |
+| Design score, phase 2 | 6 (5–7) | 6 (6–7) | 5 (5–6) | 6 (6–6) |
+| Design score, phase 1 | 8 | 7 | 7 | 8 |
+| Phase 1 code rewritten | none | none | none | none |
+| Diff over phase 1 | 16 files, +1969 −512 | 19 files, +2041 −537 | 19 files, +2141 −527 | 17 files, +2065 −527 |
+
+H3 counts as a pass by the precedent above. The other misses are H17 and H18 in run-8, run-9 and run-11: those builds open "¿Cuál queda?" at once from the name-taken reply, so there is no pending read to discard or leave. The checks assume the real delivery's pending window; the comparison never opens late, which is what they protect. Every build still passes phase 1's checks, and every build handles the two bugs the real delivery shipped: closing the ficha during a merge (H13) and fresh names in the comparison (H15).
+
+Bug counts are given as presence, not severity: three verifiers on the same model rated the same stale count critical, major or minor.
+
+## Phase 2 confirmed bugs
+
+| Bug | run-9 A | run-11 A | run-8 C | run-10 C |
+|---|---|---|---|---|
+| A count read earlier is shown as current after a partner's change: the merge card, the kind ficha header, or the Tipos tab, which is not re-read on switch | ficha, Tipos | card | card, ficha, Tipos | card, ficha, Tipos, after a merge |
+| A rejected delete followed by a failed read shows "Sin productos" and offers "Borrar" again | yes | yes | yes | yes |
+| A merge confirmed under a stale label or sample; the merge goes by id, as the spec allows | — | yes | yes | yes |
+| A kind name reused by the partner hides products under the filter | — | yes | yes | — |
+| Reload after a merge, then Back, loses the filter | yes | yes | — | — |
+| A partner's rename cancels a confirmed merge, against the spec's state table | yes | — | — | — |
+| After "Descartar", Guardar overwrites the partner's rename | — | yes | — | — |
+| `KindNotFound` with a failed kinds read keeps the filter | yes | — | yes | yes |
+| The other kind's disappearance is blamed on the open one | yes | — | yes | yes |
+| Smaller ones: the notice loses the kind's name after a reload, a long name pushes the merge button off the ficha, a pending retry lost on a trip to a product, a retry that loops, Enter clearing the filter, a renamed kind out of order, a late reply taking over a reopened ficha | 4 | 5 | 5 | 5 |
+
+## What phase 2 says
+
+**Sessions generalizes for finding bugs.** Every review found stale-state cases the text does not name: a reused kind name, a merge on cached data, a reply after the ficha closed. The real delivery's two shipped bugs (H13, H15) are handled in all four builds.
+
+**Every fix was a patch, and the code got worse in every build.** Design fell from 7–8 to 5–6. The judges found the same shape in all four: each stale-state finding was closed with a new guard (client identity checks that fabricate `KindNotFound`, module maps of removed kinds in sessionStorage, a root context for filter history, mutation-cache searches by key string, timestamps agreed between modules). The root cause is one design choice: the URL keeps the filter as a kind id while `list_products` filters by name. All four leads wrote it in a code comment and compensated in the client; none raised the operation change as a scope decision. None reused `useCatalogWrite`. In run-9 a guard contradicts the spec.
+
+**The stops in arm C are not worse products.** C's reviews kept finding cases in the patches of earlier rounds and hit the three-round limit; A's reached a clean round with the same kind of code. Arm A's builds have slightly fewer confirmed bugs (10 and 11 against 14 and 14).
+
+## Why the reviews produced patches
+
+An analysis of the four lead transcripts and the twelve reviewer sessions:
+
+1. **No reviewer applied the improbable-case rule,** which all twelve had in context. Cases such as "the partner renames a kind and reuses its old name during the member's session" arrived as blockers, and they produced every blocker left after round 3. The leads' own briefs asked the reviewers to hunt partner races.
+2. **The reviewer named the remedy, and the lead built it.** Reports said what the code must do, often with a correction column. Leads adopted it nearly word for word. No lead ran a second opinion. Eight blockers sat in code an earlier fix had added, and none was undone.
+3. **The scope rule never fired.** Each guard looked required by a spec example, and the brief and `deliver` tell the agent to make reversible choices alone. A client guard is reversible, so leads recorded the guards as their own choices.
+4. **Re-reading the rules did not change the decision.** Two leads reloaded strategic-programming, including its paragraph on new pieces and improbable cases, and added a piece right after.
+
+The rules that failed all ask the agent to hold back at a decision point. Text that asks for an action, such as the Sessions lens, changed behavior; text that asks for restraint did not, even fresh in context.
+
+## Eval findings, phase 2
+
+- **H17 and H18 test one implementation.** Reword them to the intent: the comparison never opens after the member left the edit form or opened a product.
+- **Verifier severity is not stable across verifiers,** even on one model. Compare presence of bugs, or give the verifier worked examples of each severity.
+- **Opus xhigh attacked state as a correctness judge** where Opus high had not, and found a post-merge stale count with a throttled network. It can take Fable's seat.
+- **Cost of phase 2:** 4 builds, 4 hidden-check runs, 24 judges and 4 verifiers, plus the transcript analysis.
