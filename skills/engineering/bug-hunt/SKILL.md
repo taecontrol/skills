@@ -57,7 +57,7 @@ Fix every easy cause on one branch off the base, in one draft pull request, each
 
 1. For each cause, commit the red reproduction as a regression test on its own, before the fix, the way `deliver` commits its acceptance tests. Then repair the cause at its owner under `strategic-programming`, including the instances of the same cause the hunt found.
 2. Run the project's full gates on the branch once every cause is in.
-3. Run `refine` in a fresh context with the diff and the reproductions.
+3. Run `refine` with the diff and the reproductions.
 4. Run `ship`, opening the pull request as a draft. For each cause, its description carries the reproduction, the root cause, the test's red-then-green output, and a closing keyword for any issue it fixes.
 
 When a fix stops being easy partway through, because it reaches another owner, meets a one-way door, or breaks a test that encodes behavior someone relies on, drop that cause's commits and file it with what the attempt taught.

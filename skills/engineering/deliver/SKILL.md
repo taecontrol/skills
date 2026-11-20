@@ -1,44 +1,38 @@
 ---
 name: deliver
-description: "Deliver an accepted spec autonomously, from failing acceptance tests to a pull request with green checks. Use when a spec from `shape` is accepted, or for a bug fix whose reproduction and expected behavior are agreed."
+description: "Deliver an accepted spec to a pull request with green checks by orchestrating fresh agents: a builder that makes failing acceptance tests pass, then `refine`'s review rounds and `ship`. Use when a spec from `shape` is accepted, or for a bug fix whose reproduction and expected behavior are agreed."
 ---
 
 # Deliver
 
-Take one accepted spec to a pull request the human only has to merge. The spec's examples define success; the acceptance tests make them executable before any production code exists; the rest of the work makes them pass and leaves the code in good shape. Run to the end on your own.
+You **orchestrate**: take one accepted spec to a pull request the human only has to merge, by giving each part of the work to a fresh agent and carrying results between them. You write no production code yourself. Each agent's brief is a template in `references/` with its `<placeholders>` filled in. That brief is all the agent knows, so pass it paths and the other agents' output as written, without your summary of it.
 
 ## Start
 
-Read the spec at the path you were given, every source its Context and Decisions point to, the project's coding standards, and its gate configuration. Require `Status: Accepted`. For a bug fix, the agreed reproduction and expected behavior are the spec. Work on the current branch in the current worktree, with `strategic-programming` loaded. Write every text a person reads with `writing-for-people`: the documentation, ADRs, and issue comments the change carries, each question to the human, and the report.
+Read the spec and require `Status: Accepted`. For a bug fix, the agreed reproduction and expected behavior are the spec. Work in the current worktree and branch, and note the commit you start from, where the change's range begins. The builder runs on the model the human's instructions name for building; every reviewer and analyst runs on another model, as those instructions say.
 
-## 1. Acceptance tests
+## 1. Build
 
-Turn each `test` example into an executable test at the spec's test boundary, with the project's verification method, under the spec's real target conditions. Name each test for the behavior it proves, in words a reader without the spec follows, without the example's ID. Run them and watch each go **red** for the right reason: the behavior is missing, not the setup broken. A test for something that must never happen must be able to fail. Commit the tests on their own; when the project's hooks reject failing tests, mark them as expected failures until the code makes them pass.
+Start the builder with [builder.md](references/builder.md). It writes the acceptance tests and watches them fail, makes them pass, captures the evidence, and reports. Done when it reports every acceptance test green and the gates passing.
 
-These assertions are the contract. Glue around them, such as setup, selectors, and helpers, may change as the code takes shape. An assertion changes only when it misstates its example; list each such change for the [report](#report).
+When it reports a stop instead, put the stop's question to the human as [Questions](#questions) says, and send the answer to the same builder. Put the decisions it left for the human to them the same way, while `refine` runs, and add what it reports for a later issue to that issue.
 
-## 2. Make it work
+## 2. Refine
 
-Make the tests pass, then capture each `capture` example from the running product. Commit as you go. Done when every acceptance test is green, the project's gates pass, and the evidence is captured.
+Run `refine` yourself on the range, with the spec and the builder's report. Its rounds start their own agents.
 
-What must outlive the spec goes into the change: behavior is already in tests; rationale goes into an ADR through `adr`; project-wide rules are drafted where `agents-md` keeps them; and a new or changed domain term goes into the project's glossary, in its existing format, when the project keeps one. The human accepts all of it with the pull request; a project without a glossary gets one only when the human agrees. What only a later issue needs goes into that issue.
+## 3. Ship
 
-## 3. Refine
+Run `ship` once `refine` finishes. When `refine` stopped on blockers, stop with its report instead. When a production change is needed after `refine` finishes, such as a fix for a CI check or one the human asks for, treat the failure or the request as a finding: it goes through `refine`'s Causes, Decide, and Fix steps, and the fix gets a review of its own before the pull request is ready.
 
-Run `refine` in a fresh context, such as a subagent, with the spec, the diff range from where delivery began, and the assertion changes. When the harness offers no fresh context, run it yourself and say so in the report.
+## Questions
 
-## 4. Ship
-
-Run `ship` once `refine` finishes. When `refine` stopped on blockers, stop with its report instead. A production change made after `refine` finishes, such as a fix for a CI check or one the human asks for, is chosen with `strategic-programming`'s second opinion when it has more than one form, and gets a fresh review of that change and its callers before the pull request is ready.
-
-## Decisions along the way
-
-Decide reversible choices yourself and record the ones the human would want to know about for the report. A one-way door the spec does not settle, such as a migration, a new contract that writes, or a change to a seam an accepted ADR governs, is not one of them, and neither is a new piece the spec did not ask for, however easy to undo: that is `refine`'s scope decision. An accepted program design constrains them: follow it where the code agrees, and name each departure from it in the report with its reason. Stop and ask when the change needs one, or when evidence shows that an example, a decision in the spec, or an accepted one-way door is wrong, has a simpler form, or is a behavior `strategic-programming`'s test returns, and continue with work that does not depend on it. The examples are the contract, but a number that sets how much to verify, such as a repetition count, a sample size, or a margin, is a decision like any other: before a verification that runs long or repeats, time one run, and when the whole would cost out of proportion to what it adds, that is evidence its decision is wrong. Put anything to the human, a question or a stop such as `refine`'s blockers, so they can answer it without opening the spec: the behavior at stake in plain words, the options, and your recommendation.
+Questions reach the human from the builder's stops and from `refine`'s scope decisions. The human is usually in the conversation, so ask, and keep the work that does not depend on the answer going meanwhile. Put each question so they can answer it without opening the spec: the behavior at stake in plain words, the options, and the recommendation. When the human said to run unattended, each question becomes a decision left for them, which stays unbuilt and goes in the report. Write every text a person reads with `writing-for-people`.
 
 ## Report
 
-End with a report to the human, in their language, in your final message rather than the pull request. It carries what the pull request leaves out because only someone who knows the spec can use it: the pull request and its check state, how each example is proven, every deviation from the spec and from the program design with its reason, each changed acceptance assertion, the decisions you made on your own, and `refine`'s report.
+End with a report to the human, in their language, in your final message rather than the pull request: the pull request and its check state, how each example is proven, every deviation from the spec and from the program design with its reason, each changed acceptance assertion, the decisions the agents made on their own, each question with its answer or left open, and `refine`'s report.
 
 ## Done
 
-The draft pull request is open, its checks are green, every example is proven by a test or a capture, and every deviation from the spec is named in the report. The human marks it ready for review and merges.
+The draft pull request is open, its checks are green, every example is proven by a test or a capture, and the report names every deviation and every decision left open. The human marks it ready for review and merges.
