@@ -11,7 +11,7 @@
 
 | | S, run-12 | S, run-13 | N, run-14 | N, run-15 | O, run-16 |
 |---|---|---|---|---|---|
-| Ran the cause step | no | no | every round | every round | every round, plus each fix the fixer reported back |
+| Ran the cause step | no | no | rounds 1 and 2; round 3 approved | every round | every round, plus each fix the fixer reported back |
 | Hidden checks, phases 1 and 2 | 20 / 21 | 19 / 21 | 19 / 21 | 19 / 21 | 20 / 21 |
 | Real hidden-check failures | none | none | H18 | none | H18, as the owner decided |
 | Bugs from the list of 20 (critical / major / minor) | 0 / 5 / 6 | 0 / 2 / 8 | 1 / 6 / 7 | 0 / 3 / 6 | 0 / 2 / 5 |
@@ -28,9 +28,9 @@ Run-16's H18 failure is the typed kind name lost after opening a product. The ow
 
 ## What this run says
 
-**The steps ran when each agent's brief held them.** Every round had a cause agent, and so did the one fix the fixer reported back. Each scope decision reached the owner with options and a recommendation; there were four. A round 2 cause agent proposed undoing a round 1 fix once the owner's decision made it unnecessary, and the fixer undid it. In the 2026-11-19 runs the skill builds skipped the cause step.
+**The steps ran when each agent's brief held them.** Every round had a cause agent, and so did the one fix the fixer reported back. Four scope decisions reached the owner with options and a recommendation. A fifth, a minor one from round 3's cause agent, was left out of the final report when refine stopped. A round 2 cause agent proposed undoing a round 1 fix once the owner's decision made it unnecessary, and the fixer undid it. In the 2026-11-19 runs the skill builds skipped the cause step.
 
-**The bug family that survived all four earlier builds is gone.** V1 (after a merge, the kept kind keeps a stale count and offers "Borrar" when the next read fails) and V10 (a removed kind opens with live actions) do not reproduce. The rewritten reviewer brief has a line for exactly this family: "Make a read fail while the screen still shows what an earlier step left." V9 remains: pressing Back before the merge reply arrives clears the filter.
+**Two of the three bugs that survived all four earlier builds are gone.** V1 (after a merge, the kept kind keeps a stale count and offers "Borrar" when the next read fails) and V10 (a removed kind opens with live actions) do not reproduce. The rewritten reviewer brief has a line for exactly this family: "Make a read fail while the screen still shows what an earlier step left." V9 remains: pressing Back before the merge reply arrives clears the filter.
 
 **Refine still did not converge.** Each round fixed the cases its reviewers reproduced, and the next round found new variants of the same three families:
 - a removed kind's ficha stays editable;

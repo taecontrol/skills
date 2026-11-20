@@ -11,7 +11,7 @@
 
 | | S, run-12 | S, run-13 | N, run-14 | N, run-15 |
 |---|---|---|---|---|
-| Ran the cause step | no | no | every round | every round |
+| Ran the cause step | no | no | rounds 1 and 2; round 3's review approved the change | every round |
 | Hidden checks, phases 1 and 2 | 20 / 21 | 19 / 21 | 19 / 21 | 19 / 21 |
 | Real hidden-check failures | none | none | H18: the typed kind name is lost after opening a product | none |
 | Confirmed bugs (critical / major / minor) | 0 / 5 / 6 | 0 / 2 / 8 | 1 / 6 / 7 | 0 / 3 / 6 |
@@ -28,7 +28,7 @@ H17 and H18 fail by their letter in every build, because each opens "¿Cuál que
 
 **The skills added nothing measurable.** On hidden checks, design, correctness and confirmed bugs the two arms overlap. The N builds reached the same result from a 500-word prompt, with no skill loaded.
 
-**A step written in the prompt ran; the same step written in a skill did not.** Both S leads loaded `refine`, whose Improve section now begins with the cause step, and neither started the cause agent. Both N leads started it in every round. In run-12 the skipped step shows: a reload fix in history state failed review, and the lead replaced it with sessionStorage, the new piece the step exists to stop.
+**A step written in the prompt ran; the same step written in a skill did not.** Both S leads loaded `refine`, whose Improve section now begins with the cause step, and neither started the cause agent. Both N leads started it in every round that led to fixes: run-15 in all three, run-14 in its first two, before a third review that approved the change. In run-12 the skipped step shows: a reload fix in history state failed review, and the lead replaced it with sessionStorage, the new piece the step exists to stop.
 
 **The cause step reduced patches but did not remove them.** Run-14 built no new store and left three cases to the owner; its design scored 7 from all three judges. Run-15 ran the step every round and still patched its own round-1 guard in round 2. The step changes the decision more when its output is binding, as in the decision replay, than when the lead reads it and decides alone.
 
