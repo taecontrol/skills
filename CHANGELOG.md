@@ -2,6 +2,11 @@
 
 Newest first. "Beta" means the skill is in `skills/in-progress`.
 
+- `3.20.0`:
+  - `deliver` and `refine` are orchestration skills. The main conversation writes no code: it starts fresh agents from templates in `references/`, a builder for `deliver` and a reviewer, a cause agent, and a fixer for each `refine` round, carries their output between them as written, and puts scope decisions to the human. Each agent runs on the model the human names; the orchestrator asks once when they have not.
+  - `refine`'s findings state what breaks, how often, and their cause, without a remedy. One fresh agent groups each round's findings by cause into cause fixes, scope decisions, and local fixes, and counts a piece the change itself added as new. The Sessions lens replaces Sequences and asks to fail a read while the screen still shows what an earlier step left.
+  - `pr-review` (beta) trusts the author's decisions and verifies the behavior. It reads the decisions the change records, including issue comments, before it judges a choice, and reports concerns traced to their cause, questions for the author, and what no test catches, without a Blocking section and without fixes. Four reviewers and a confirming agent work from templates, and the lenses gain a Use area with the Sessions lens.
+  - `evals/` replays a real feature, Despensa's Precios and kinds, under different ways of verifying it, scored by a council of judges, with the results of each run.
 - `3.19.0`:
   - A text's verification ends after one fresh read. The author judges the cold read's observations against `writing-for-people` (beta) step 2; a second read happens only when the reader misunderstood the text, and it is the last. `pr-description` and `issue` (beta) no longer wait for a fresh agent to find nothing, and a claim changed after the verification needs a source for all of it.
   - `pr-review` (beta) keeps plausible findings and green mutations out of Blocking, and puts every other finding in one Findings list ordered by its consequence for the people who use the product. `refine` drops the green mutation from its blockers too.

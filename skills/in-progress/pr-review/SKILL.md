@@ -1,15 +1,15 @@
 ---
 name: pr-review
-description: "Review a pull request as untrusted work before its human reviewer does: attack what it guarantees through the whole flow it touches, prove each finding by reading or running, and report what blocks, what to ask the author, and what no test catches, with proof and file:line. Use when asked to review a PR, yours or someone else's, or to check one again after fixes."
+description: "Review a pull request before its human reviewer does, with fresh agents that start from its full context: use the product and read the whole flow it touches, prove each concern by running or reading, trace it to its cause, and report concerns, questions, and what no test catches, with proof and file:line and without fixes. Use when asked to review a PR, yours or someone else's, or to check one again after fixes."
 ---
 
 # PR review
 
-Review the pull request as a **stranger** would: the author is unknown, the work is untrusted, the description is a set of claims to check, and the job is to find what breaks before the human reviewer does. A stranger sees what the code does, not why its author made it so, so the report states **observations**: each problem with its proof, and a question where the answer depends on that why. Its reader, a person or an agent, decides whether each is real and what to change.
+Find what the change breaks before its human reviewer does, and report it so its author can check each point and decide what to do. You **orchestrate**: fresh agents review and confirm, and you carry their output between them as written, without your summary and without a remedy of your own. Each agent's brief is a template in `references/` with its `<placeholders>` filled in. That brief is all the agent knows.
 
-The bar is the strictest reviewer the change will meet. Their blockers come from knowing what the change guarantees and tracing, through the whole flow, a mechanism that breaks a guarantee: a step that throws after another has committed, a resource no exit path releases, one hung dependency that stalls the shared process, a claim in the description the code does not keep. Review the whole flow, settle each finding by evidence, and sort it by its consequence.
+**Trust the author's decisions, and verify the behavior.** The author knows what the reviewers do not: why a choice was made, what it traded away, what the owner decided. So every agent reads the record of those decisions before it judges a choice, and reports what it finds as **concerns**: each with proof a reader can repeat, traced to its cause, and without a fix. Whether a concern blocks the merge, and what to change, is for the author and the human reviewer.
 
-Write the report in the user's active language; code identifiers, paths, and the opening line stay as they are. Write the report and any comment you post with `writing-for-people`.
+Each agent runs on the model and effort the human names in the conversation. When they have not named one, ask at the start, once for all the agents, with a proposal in which the agents run on a model other than the one that wrote the change.
 
 ## Inputs
 
@@ -20,89 +20,49 @@ Write the report in the user's active language; code identifiers, paths, and the
 
 Resolve the pull request and its base, and pin the head SHA: every finding cites code at that head. Review in the current worktree when it is at the head with no uncommitted changes; otherwise in a disposable detached checkout of the head under the system temporary directory.
 
-Find the **stack**: the pull requests this one is based on and the ones based on it. Read enough of their descriptions and diffs to know what this change consumes from them, what they consume from it, and whether merge or deploy order matters.
+Find the **stack**: the pull requests this one is based on and the ones based on it, what this change consumes from them and they from it, and whether merge or deploy order matters.
 
-Done when the head SHA, the base, and the stack are recorded.
+Done when the head SHA, the base, the checkout, and the stack are recorded.
 
-## 2. Rules, guarantees, claims, and map
+## 2. Context
 
-**Rules.** Read the project's conventions: its agent instructions and the files they point to, the READMEs of the packages the change touches, its coding standards and contributing guide, the ADRs the change touches, and its linter and type-checker configuration. When the instructions point to the review guidance the project's reviewers work from, read it too: its blocking rules add to step 5's. When the instructions say which files are authoritative and which are only context, follow them. Run the project's gates for the touched packages on the head (lint, format check, type check, tests) and record each command and its result.
+Write the context every agent starts from to one file in a scratch directory:
 
-**Guarantees.** Before you read the description, issue, or spec, derive the change's guarantees from the diff and the code it reaches, as a stranger would. A guarantee is what a person or system that depends on the change can rely on, stated where they act on it, such as an approver who approves only what they saw and understood, or a caller that gets an error rather than a silent default. For each guarantee, write its **path**: the links from where its data is produced to where someone acts on it, such as built, stored, sent, loaded, shown, explained, and acted on, across every layer the change touches. Step 3 attacks every link.
+- **Decisions:** each choice the change records, and where: the pull request description, the linked issues with their comments, the spec, the ADRs it touches, commit messages, comments in the code, and review threads with the author's replies.
+- **Rules:** the project's agent instructions and the files they point to, its review guidance, coding standards, and the READMEs of the packages the change touches. Run the project's gates for those packages on the head (lint, format check, type check, tests), and record each command and its result.
+- **Guarantees:** what a person or system that depends on the change can rely on, stated where they act on it, each with its **path**: the links from where its data is produced to where someone acts on it, such as built, stored, sent, loaded, shown, and acted on. Take them from the spec and the description; when those state none, write them from the change's outcome. Write them in plain words.
+- **Claims:** every statement the change makes about its behavior: the description, commit messages, the docstrings, comments, and documentation it adds or edits, and test names.
+- **Map:** what the change does, the layers and seams it crosses, its entry points, the state it owns, the resources it shares with other work, the dependencies it calls, who controls each input, and how to run the product. Fold in the focus notes.
 
-**Claims ledger.** List every statement the change makes about its behavior: the pull request description, the linked issue and spec, commit messages, docstrings and comments it adds or edits, documentation it adds or edits, and test names. Step 3 gives each claim a verdict. Then add, with its path, each guarantee these sources state that your derivation missed, and keep every guarantee you derived. Write each guarantee in plain words, without the spec's identifiers, because the stranger reviewer gets them too.
-
-**Map.** Write the change in a few lines: what it does, the layers and seams it crosses, its entry points, the state it owns, the process and resources it shares with other work, the external dependencies it calls, and who controls each input. Fold in the user's focus notes. The map is what every reviewer starts from.
-
-Done when every gate has a recorded result, every guarantee has its path, every claim is in the ledger, and the map names entry points, state, shared resources, dependencies, and inputs.
+Done when the file holds every decision with its source, every gate result, every guarantee with its path, every claim, and the map.
 
 ## 3. Review
 
-The scope is the diff, the code it newly reaches, every caller and consumer of a name, value, or seam whose meaning changed, and the change's **siblings**: existing code in the repository that does the same job, such as another worker, client, or route. A sibling shows how the system already does the same job; where they differ, the difference is a finding.
+Start four fresh reviewers in parallel with [reviewer.md](references/reviewer.md), one per area of the [lenses](references/lenses.md): failure and concurrency, trust and record, use, and contracts and design. One reader holding every area spends its effort on the one that interests it. Skip an area only when nothing in the change reaches it, such as failure and concurrency for a change to documentation alone.
 
-Dispatch one fresh reviewer per **area** of the [lenses](references/lenses.md), at most three, in parallel: failure and concurrency, trust and record, and contracts and design. One reader holding every lens spends its effort on the area that interests it and covers the others less. A reviewer with one area asks each of its questions of the whole change. Each area also owns the [tests](references/lenses.md#tests-in-every-area) for its guards. Skip an area only when nothing in the change can reach it, such as failure and concurrency for a change to documentation alone.
-
-Brief each reviewer with the head SHA, the checkout, the guarantees and their paths, the map, the rules and gate results, the scope above, and its area's section of the lenses; the failure and trust reviewers also get the claims ledger. The contracts and design reviewer reads as the **stranger**. Brief it without the spec, plan, or delivery notes, so vocabulary from the work that made the change stands out instead of reading as normal. Each reviewer attacks every link of every guarantee: how the link can be missing, wrong, forged by an input someone else controls, or stale, and whether whoever acts then fails closed. Its area's lenses are ways to break a link, and a way no lens names counts as well.
-
-Each reviewer is read-only, runs code only in the checkout, and returns each **suspect** with a scenario (the input or event, the steps through `file:line`, and the consequence), each piece in its area whose case is improbable or that nothing needs, and for each link of each guarantee, what it tried and found fine.
-
-When they return, read the suspects side by side and follow the ones that cross areas, such as a retry that writes a second audit record or a fixture that hides a race. Give each claim in the ledger its verdict from what came back.
-
-Done when every dispatched area has reported what it tried on every link of every guarantee and covered the whole change, and every claim in the ledger is kept, broken (a suspect), or unverifiable.
+Done when every reviewer has written its report.
 
 ## 4. Confirm
 
-Confirm every suspect yourself. You found none of them, so you check the reviewers' reading rather than repeat it. Each suspect becomes:
+Give all the reviewers' reports together to one fresh agent with [confirm.md](references/confirm.md). It checks each suspect against its own reading and runs, groups what holds by cause, and writes the report.
 
-- **confirmed** when the scenario follows from the code and configuration, or from a run;
-- **plausible** when the risk is real but the evidence cannot show it, naming the evidence that would settle it;
-- **refuted** when a guard elsewhere stops it or nothing reaches it. Read or run the guard, or trace the path that shows nothing reaches it. A refutation needs evidence like any finding. Drop it, or list it under Considered when the reason is not obvious.
+Done when the report is written.
 
-Record where each confirmed finding shows: **on the head**, in the change as it stands, or **only after an edit** you made, such as a deleted guard, which proves that no test catches it rather than that it breaks.
+## 5. Deliver
 
-Run code when reading cannot settle a suspect: a regex's time on a long input, what a redaction returns for a secret under an ordinary key, a parser on a hostile value, a test with its guard removed. Run only in the checkout and the local test environment.
-
-Settle each condition where it is decided. A suspect that reads "if the load balancer admits other callers" is settled by reading the infrastructure configuration, the router, or the deployment manifest; a finding that still says "if" when the answer can be looked up is unfinished.
-
-For each confirmed finding, search the repository for every other instance of the same mechanism and list them in that finding. A fix that closes one site leaves the rest for the next round.
-
-Done when every suspect is confirmed, plausible with its missing evidence named, or refuted, and every confirmed finding says where it shows and lists its sibling sites.
-
-## 5. Sort
-
-Put each confirmed or plausible finding in the first section that fits, ordered by its consequence for the people who use the product, worst first. A plausible one goes under Findings, marked `(plausible)` with the evidence that would settle it, and one a ticket already tracks names the ticket.
-
-- **Blocking:** a confirmed finding on the head, in scope, that breaks a guarantee; breaks a safety, security, or tenant invariant or a claim the change makes about one; loses or corrupts data or a secret that cannot be recovered; lets one input, dependency, or tenant stall or crash the shared process; records the wrong outcome in an audit, or shows an approver something other than what runs; breaks a contract a consumer in the repository or the stack depends on; breaks a rule the project's instructions make mandatory, such as a documentation table updated in the same change; or fails a gate. A merge-order condition is Blocking when the stack can merge or deploy out of order. A finding whose case is improbable, as `strategic-programming` defines it, goes under Considered with its line.
-- **Findings:** every other finding on the head. One that would be fine had the author meant it is a question: a behavior that differs from the base or a sibling, a choice a ticket or decision touches, a design that departs from the system's, or a piece nothing reads or that serves an improbable case. One that is wrong whatever the author meant cites what it contradicts: a defect whose worst case is bounded or corrects itself; a sentence in a comment or document the code does not keep; text only the change's makers can read, listing every site; a departure from the project's written rules; a defect that predates the change, marked pre-existing.
-- **Untested:** a behavior no test asserts, or that an edit changes while every test stays green, stated as what can then happen in the product.
-- **Considered:** what you checked, how, and what it showed, one line each, including claims you verified that a reader would doubt.
-
-Done when every finding sits in one section and every finding that is not a question cites what it contradicts.
-
-## 6. Report
-
-Open with the literal line `This is a preliminary automated review.` Then one line with the pull request, the head SHA, and each gate with its result. Then the sections in this order, leaving out an empty one: `### Blocking`, `### Findings`, `### Untested`, `### Considered`, and `### Not reviewed`, which names what you did not read or run and why.
-
-Each finding is one bullet:
-
-- **What happens, stated as its consequence.** [`short/path.ts:69`](repo/relative/path.ts#L69) — how it happens, in the words of someone who uses the product or calls the code; what triggers it; the proof a reader can repeat, such as steps, a command and its output, or a screenshot or clip; the sibling sites; the claim or rule it contradicts.
-
-A question states what you saw and ends with the question. Every sentence is something you read, ran, or saw, or a question. The link finds the code; name an identifier only when the reader acts on that name.
-
-Done when every finding carries proof a reader can repeat and every sentence passes that test.
+Give the user the report as written, and remove the disposable checkout.
 
 ## Re-review
 
-When this skill reviewed the pull request before, pin the new head, rerun step 2, and review what changed since: the fix commits, the code they reach, and their siblings, with a fresh reviewer for each area the fixes touch. A fix is new code no review has seen, and siblings of a fixed blocker are where the next round's blockers come from. Review the whole head through every step again only when the fixes changed a guarantee or the map. For each earlier item, report it as closed at every site, closed at some (naming the sites left), open, or, for a question, answered, and repeat the open ones.
+When this skill reviewed the pull request before, pin the new head, update the context, and review what changed since: the fix commits, the code they reach, and their peers, with a fresh reviewer for each area the fixes touch. A fix is new code no review has seen. Review the whole head again only when the fixes changed a guarantee or the map. Give the confirming agent the earlier report too.
 
-When a human review arrives after this one, compare them: each blocker it found that this report missed or sorted below Blocking is an **escape**. Name the guarantee it breaks and the step that let it through: a guarantee never derived, a link missing from its path, a link no reviewer attacked, a link whose tests nobody mutated, or a suspect refuted or sorted on a reason nobody checked. Fix that step. A new lens question catches only the escape it was written for, and the next escape comes in another form. Take the escapes to `retro`.
+When a human review arrives after this one, compare them. A concern it raised that this report missed is an **escape**; a concern the author answered with a decision the context should have held is a **miss**. For each, name the step that let it through: a decision or guarantee missing from the context, a link no reviewer attacked, a flow nobody used, a link whose tests nobody mutated, or a suspect refuted on a reason nobody checked. Take them to `retro`.
 
 ## Boundaries
 
 - The review is read-only: the reviewed branch and its pull request stay as they are.
-- Post the report only when the user asks, as a comment review in the project's language, with the items the user picks; approval and change requests belong to a person.
-- Remove the disposable checkout before you report.
+- Post the report only when the user asks, as a comment review in the project's language, with the items the user picks. Approval and change requests belong to a person.
 
 ## Done
 
-Every dispatched area attacked every link of every guarantee and covered the whole change, or on a re-review what changed since, every claim has a verdict, every suspect is confirmed, plausible, or refuted, every finding is sorted with proof a reader can repeat, the report is delivered, and the checkout is removed.
+The context holds the decisions, gates, guarantees, claims, and map; every area that the change reaches was reviewed, or on a re-review what changed since; the confirming agent wrote the report; the user has it as written; and the checkout is removed.

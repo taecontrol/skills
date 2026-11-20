@@ -1,0 +1,8 @@
+@import "../../../src/web/index.css";
+@source "./";
+@source "../../../src/web";
+
+/* Prototype chrome: the scenario panel steps left of an open ficha sheet. */
+body:has([data-slot="sheet-content"]) .proto-panel {
+  right: calc(30rem + 1rem);
+}

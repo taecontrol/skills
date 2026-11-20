@@ -1,55 +1,31 @@
 ---
 name: refine
-description: "Review a working change with fresh eyes against its spec, then make it right and make it fast without changing the behavior its acceptance tests lock, in at most three rounds. Use after a change works and before it ships, or when asked to review or improve a branch."
+description: "Review a working change with fresh agents against its spec, group what they find by cause, and fix at the causes without changing the behavior its acceptance tests lock, in at most three rounds. Use after a change works and before it ships, or when asked to review or improve a branch."
 ---
 
 # Refine
 
-The change works; now **make it right, make it fast**. You are the fresh eyes the author could not be: find what breaks the spec or the contracts the change touches, then improve the code while the acceptance tests hold its behavior still.
+The change works; now **make it right, make it fast**. You **orchestrate** the rounds: fresh agents review the change, find the causes behind what the review found, and fix them, while you carry results between them and put decisions to the human. You fix nothing yourself. Each agent's brief is a template in `references/` with its `<placeholders>` filled in. That brief is all the agent knows, so pass it paths and the other agents' output as written, without your summary of it and without a remedy of your own.
 
-Your inputs are the spec, or the request when there is none, the diff range, and the assertion changes the delivery listed. Load `strategic-programming`.
+Your inputs are the worktree, the spec or the request when there is none, the diff range, and the delivery's report with its evidence and assertion changes, when there is one. Each agent runs on the model and effort the human names in the conversation. When they have not named one, ask at the start, once for all the agents, with a proposal in which the reviewers and the cause agent run on a model other than the one that wrote the code.
 
 ## Round
 
-### Review
+1. **Review.** Start a fresh reviewer with [reviewer.md](references/reviewer.md). On a large change, start several, each with one or two of its lenses across the whole change, and give the tests and mutations a reviewer of their own. Done when every reviewer has written its findings.
+2. **Causes.** Give all the round's findings, together, to one fresh agent with [causes.md](references/causes.md). It checks each finding against the code and groups them by the choice that produces them, into cause fixes, scope decisions for the human, and local fixes. Done when its grouping is written.
+3. **Decide.** Put each scope decision to the human as `deliver`'s Questions section says, with the cause agent's options and recommendation.
+4. **Fix.** Start a fresh fixer with [fixer.md](references/fixer.md), the review, and the grouping, without waiting for the human's answers; send it each answer as it arrives. The grouping is the fixer's plan. When the fixer reports a finding back because its fix needs something the grouping did not name, give that report and the grouping to a fresh cause agent, and take its answer to step 3. Done when every finding is fixed, a report line, or a decision with the human's answer or left open, and the gates pass.
 
-Read the spec and its sources yourself, and the project's review guidance when its agent instructions point to one; its facts and blocking rules add to the ones below. Your oracle is the spec, starting with its guarantees and their paths, plus every contract the change touches: what its documentation, types, and peers state, and how the product runs where it ships. When the spec lists no guarantees, write them and their paths from its outcome or the request, as `shape`'s "Write the guarantees" step defines them, before you review. Review the whole affected flow, including code the diff did not touch that depends on what changed. Look through these lenses:
+## Next round
 
-- **Guarantees:** each guarantee along its whole path, every link the spec lists and every link it misses. For each link, ask how it can be missing, wrong, forged by an input someone else controls, or stale, and whether whoever acts then fails closed.
-- **Behavior:** each example and what must never happen; each `capture` example against what the delivery captured, such as the screen against the chosen prototype; the spec's state space when it has one; each dependency's failures, restarts, retries, and duplicates; every consumer of a name, value, or seam whose meaning changed; the policy existing peers apply, such as validation, authorization, and guards, that the new behavior should inherit on every entry point that produces the same effect.
-- **Runtime:** how the product runs where it ships, read from its deployment configuration rather than assumed: state that must survive a request landing on another replica, entry points that bypass the intended one, and the previous release running beside this one through a rollout and its migrations.
-- **Docs:** every sentence the change adds or edits in documentation, docblocks, and API references, read against the code. A false sentence is a defect.
-- **Tests:** each test against `strategic-programming`'s test value reference; stand-ins that differ from the real target; assertion changes that weakened an example; sleeps, wall-clock dependence, and flakiness; tests that CI will not run.
-- **Mutations:** prove the tests by breaking the code, as [mutations](references/mutations.md) describes: in the first round, every target; later, only what the previous round added.
-- **Right:** the `strategic-programming` lenses, the accepted program design when the spec points to one (the diff follows it, or the delivery names each departure), the project's coding standards, duplicated policy, dead code, pieces whose case is improbable, scaffolding left from making it work, and temporary labels in durable files.
-- **Fast:** the spec's budgets, and work the change made needlessly slow, such as extra round trips, queries, renders, or suite time.
-
-A finding needs a concrete scenario reachable from input the product accepts or from how it runs, or a mutation that stayed green. Hand every finding to a fresh agent that found none of them, to check each against the code and the configuration: **confirmed** when the scenario follows from them or from a run, and reading is enough; **plausible** when the risk is real but the evidence cannot show it, naming the evidence that would; **refuted** when a guard elsewhere stops it or nothing reaches it, and you read or ran that guard or path rather than assumed it. Drop the refuted. The change's **scope** is the code the diff modifies or newly reaches, such as an old function a new caller now exposes. Sort the rest:
-
-- **Blocker:** a confirmed defect in scope that breaks a guarantee, an example, or something that must never happen, loses or corrupts data, crosses a security or tenant boundary, fails under how the product runs, or turns a gate or CI check red. The spec's silence about it does not lower it. A finding whose case is improbable, as `strategic-programming` defines it, is no blocker: it goes in the report as its line. A defect in these classes that breaks no guarantee and whose worst case is cosmetic or corrects itself is a fix.
-- **Fix:** any other real defect in scope, a quality problem the change introduced, a plausible risk with cheap evidence to settle it, or a gap in the evidence, such as a missing test or a missing or mistimed capture.
-- **Follow-up:** real, but out of scope.
-
-On a large change, when the harness allows, split the review by lens, not by area: each fresh reviewer takes one or two lenses across the whole change, so what crosses areas lands in front of someone, and the tests and mutations get their own reviewer.
-
-### Improve
-
-Fix blockers first, then fixes. A behavior fix comes with a test that fails without it. Keep structural changes in their own commits, separate from behavior changes, and run the tests before and after each. The acceptance tests' assertions stay as they are.
-
-When several findings share a cause, fix the cause as `strategic-programming` orders it.
-
-A fix closes its finding inside the change's design. When closing it needs a new piece the spec did not ask for, such as a state, a guard, a rule, or a table, it is a scope decision: put it to the human with the options and your recommendation, and fix the rest meanwhile. Choose each fix with `strategic-programming`'s second opinion before you make it or recommend it to the human. When a finding is in code an earlier fix added, give the second opinion two more options: undoing that fix for a plainer one, and removing the piece the fix guards, which is a scope decision for the human.
-
-### Next round
-
-Only blockers start another round, up to three in all. Its review, with fresh eyes when the harness allows, covers what the previous round's fixes changed and the code they reach: a fix is new code no review has seen. When a review finds no blocker, make its fixes, run the gates, and finish.
+Only blockers start another round, up to three in all. Its review covers the range of the previous round's fixes and the code they reach: a fix is new code no review has seen. Give its cause agent the earlier rounds' groupings too, so a blocker still waiting on the human stays open until it is fixed or the human decides it. When a review finds no blocker, have its fixes made, run the gates, and finish.
 
 A sound spec and a sound delivery converge within three rounds. If the third review still finds a blocker, stop, even when the human said to go on without stopping: the flow failed, not just the code. Report the blockers and what let them through, such as a guarantee never written, a link missing from its path, a missing example, a wrong decision, or a gap in the environment.
 
 ## Report
 
-Leave for the delivery's report: the rounds, each blocker and fix with how it was resolved, mutations and their results, checks added with the defects they generalize, and the follow-ups.
+Leave for the delivery's report, or for the human when nothing else will report: the rounds; each finding and how it ended, as a cause fix, a local fix, a report line, or a decision with its answer; the mutations and their results; the checks added with the defects they generalize; and the follow-ups.
 
 ## Done
 
-The last review found no blocker and its fixes are made, every example and every link of each guarantee's path has a test that goes red when it breaks, the project's gates pass on the final state, and its report is ready for the delivery's report to the human.
+The last review found no blocker and its fixes are made, every `test` example and every link of each guarantee's path has a test that goes red when it breaks, the project's gates pass on the final state, no blocker is waiting on a decision, and every other scope decision has the human's answer or is in the report as open.
