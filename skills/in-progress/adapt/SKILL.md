@@ -67,7 +67,7 @@ A report that the work is done is a claim, whoever wrote it. Run each contract l
 
 Before you report, a fresh agent reviews the result, given nothing of yours: `pr-review` on a committed change, with the branch, the request, and the high-stakes parts as its focus notes; any other result, such as a design or an asset, against the contract. When the harness cannot start a fresh agent, say so in the report.
 
-Fix each Blocking finding in a live case with the smallest piece that closes it. Judge every other finding by `strategic-programming`'s test: fix it when its case is live and the fix stays inside the contract, and put the rest in the report, each improbable one as its line. A review gets at most three rounds, as `refine`'s Next round says. A third finding of the same class means a premise is wrong. Stop fixing, check whether the case is live and whether a simpler form removes the whole class, and stop with what you found.
+Fix each concern in a live case with the smallest piece that closes it, and put each question to the human. Judge every other finding by `strategic-programming`'s test: fix it when its case is live and the fix stays inside the contract, and put the rest in the report, each improbable one as its line. A review gets at most three rounds, as `refine`'s Next round says. A third finding of the same class means a premise is wrong. Stop fixing, check whether the case is live and whether a simpler form removes the whole class, and stop with what you found.
 
 Done when every contract line's proof passes in your own run on the final state, and every finding is fixed or in the report.
 
