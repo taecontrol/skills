@@ -9,7 +9,7 @@ You **orchestrate**: take one accepted spec to a pull request the human only has
 
 ## Start
 
-Read the spec and require `Status: Accepted`. For a bug fix, the agreed reproduction and expected behavior are the spec. Work in the current worktree and branch, and note the commit you start from, where the change's range begins. The builder runs on the model the human's instructions name for building; every reviewer and analyst runs on another model, as those instructions say.
+Read the spec and require `Status: Accepted`. For a bug fix, the agreed reproduction and expected behavior are the spec. Work in the current worktree and branch, and note the commit you start from, where the change's range begins. Each agent runs on the model and effort the human names in the conversation, such as "sol max fast" for the builder and fixer and "opus high" for the reviewer and cause agent. When they have not named one, ask at the start, once for all the agents, with a proposal in which the reviewer and the cause agent run on a model other than the builder's.
 
 ## 1. Build
 

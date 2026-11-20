@@ -7,7 +7,7 @@ description: "Review a working change with fresh agents against its spec, group 
 
 The change works; now **make it right, make it fast**. You **orchestrate** the rounds: fresh agents review the change, find the causes behind what the review found, and fix them, while you carry results between them and put decisions to the human. You fix nothing yourself. Each agent's brief is a template in `references/` with its `<placeholders>` filled in. That brief is all the agent knows, so pass it paths and the other agents' output as written, without your summary of it and without a remedy of your own.
 
-Your inputs are the worktree, the spec or the request when there is none, the diff range, and the delivery's report with its evidence and assertion changes, when there is one. The reviewers and the cause agent run on a model other than the one that wrote the code, as the human's instructions say.
+Your inputs are the worktree, the spec or the request when there is none, the diff range, and the delivery's report with its evidence and assertion changes, when there is one. Each agent runs on the model and effort the human names in the conversation. When they have not named one, ask at the start, once for all the agents, with a proposal in which the reviewers and the cause agent run on a model other than the one that wrote the code.
 
 ## Round
 
