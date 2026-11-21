@@ -2,6 +2,9 @@
 
 Newest first. "Beta" means the skill is in `skills/in-progress`.
 
+- `3.20.1`:
+  - `shape`'s state space covers every existing operation that reads or writes the change's data, and its states include those a session of several operations leaves.
+  - `evals/` adds the `despensa-compras` case, Despensa's purchases and catalog, and its first run.
 - `3.20.0`:
   - `deliver` and `refine` are orchestration skills. The main conversation writes no code: it starts fresh agents from templates in `references/`, a builder for `deliver` and a reviewer, a cause agent, and a fixer for each `refine` round, carries their output between them as written, and puts scope decisions to the human. Each agent runs on the model the human names; the orchestrator asks once when they have not.
   - `refine`'s findings state what breaks, how often, and their cause, without a remedy. One fresh agent groups each round's findings by cause into cause fixes, scope decisions, and local fixes, and counts a piece the change itself added as new. The Sessions lens replaces Sequences and asks to fail a read while the screen still shows what an earlier step left.
