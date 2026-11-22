@@ -1,6 +1,6 @@
 ---
 name: walkthrough
-description: "Render a self-contained HTML page that lets a human understand a design in detail and talk it through with others: a spec, an architecture brief, a program design, or a comparison of options, built from their Markdown sources. Use before a human accepts a spec or design, or when they need something visual to share."
+description: "Render a self-contained HTML page that lets a human understand a design in detail and talk it through with others: a spec, an architecture brief, or a comparison of options, built from their Markdown sources. Use before a human accepts a spec or design, or when they need something visual to share."
 ---
 
 # Walkthrough

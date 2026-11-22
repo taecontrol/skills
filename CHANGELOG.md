@@ -2,6 +2,10 @@
 
 Newest first. "Beta" means the skill is in `skills/in-progress`.
 
+- `4.0.0`:
+  - Removes `program-design`. `shape` no longer has a step that shapes the code; `architect` settles the one-way doors and builders shape the rest with `strategic-programming`. `deliver`, `refine`, `walkthrough` and `strategic-programming` drop their references to it.
+  - Removes `adapt` (beta). `shape` and `deliver` are the way to work a task.
+  - `evals/` adds a way to run `despensa-compras` from `shape` with a simulated owner, and its first run, which compared building with and without a program design.
 - `3.20.1`:
   - `shape`'s state space covers every existing operation that reads or writes the change's data, and its states include those a session of several operations leaves.
   - `evals/` adds the `despensa-compras` case, Despensa's purchases and catalog, and its first run.

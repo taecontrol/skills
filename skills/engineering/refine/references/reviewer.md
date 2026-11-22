@@ -22,7 +22,7 @@ Read the spec and its sources yourself, and the project's review guidance when i
 - **Docs:** every sentence the change adds or edits in documentation, docblocks, and API references, read against the code. A false sentence is a defect.
 - **Tests:** each test against `strategic-programming`'s test value reference; stand-ins that differ from the real target; assertion changes that weakened an example; sleeps, wall-clock dependence, and flakiness; tests that CI will not run.
 - **Mutations:** prove the tests by breaking the code in the range, as `references/mutations.md` in the installed `refine` skill describes.
-- **Right:** the `strategic-programming` lenses, the accepted program design when the spec points to one (the diff follows it, or the delivery names each departure), the project's coding standards, duplicated policy, dead code, pieces whose case is improbable, scaffolding left from making it work, and temporary labels in durable files.
+- **Right:** the `strategic-programming` lenses, the project's coding standards, duplicated policy, dead code, pieces whose case is improbable, scaffolding left from making it work, and temporary labels in durable files.
 - **Fast:** the spec's budgets, and work the change made needlessly slow, such as extra round trips, queries, renders, or suite time.
 
 ## Each finding

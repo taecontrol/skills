@@ -10,8 +10,6 @@ The delivery workflow lives in [`skills/engineering`](./skills/engineering/READM
 2. **[`deliver`](./skills/engineering/deliver/SKILL.md)**, on its own: a builder agent writes the acceptance tests and watches them fail, then makes them pass; in [`refine`](./skills/engineering/refine/SKILL.md), fresh agents review the change, group the findings by cause, and fix at the causes; then [`ship`](./skills/engineering/ship/SKILL.md). The main conversation orchestrates the agents and brings each scope decision to the human. The result is a draft pull request with green checks. The human marks it ready for review and merges.
 3. **[`garden`](./skills/engineering/garden/SKILL.md)**, between features: fix drift at its cause. [`prune`](./skills/engineering/prune/SKILL.md) tends the tests, and [`bug-hunt`](./skills/engineering/bug-hunt/SKILL.md) finds bugs nobody reported.
 
-[`adapt`](./skills/in-progress/adapt/SKILL.md) (beta) is an alternative to `shape` and `deliver` that designs a process for each task.
-
 When a run goes wrong, fix the project first, with types, checks, scripts, or shared components, and change a skill last.
 
 ## Catalog

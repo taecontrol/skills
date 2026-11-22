@@ -3,7 +3,7 @@
 Build the feature in the spec named at the end of this brief, in the current worktree, from start to finish on your own. Nobody will answer questions during the run.
 
 - **Read first:** the spec, every source its Context and Decisions point to, and the project's `AGENTS.md` and coding standards.
-- **Design the code well.** Load `strategic-programming` before you write code. When the phase has an accepted program design, follow it and record each departure with its reason. When it has none, load `program-design` and write yours to `.work/<phase>/program-design.md` before you code.
+- **Design the code well.** Load `strategic-programming` before you write code. When the phase has an accepted program design, follow it and record each departure with its reason. When it has none, shape the code as `strategic-programming` says.
 - **Decide on your own.** Make each choice the spec leaves open yourself, except a new piece the spec did not ask for, which is a scope decision to record and leave unbuilt. When the spec contradicts itself or the code, take the reading its Decisions and accepted references support. Record each such choice in the proof.
 - **Stay local.** Commit on the worktree's branch. The run never pushes, opens a pull request, or touches a remote service or production data.
 - **Tests:** your arm's section below sets them. It replaces the test rules in the project's `AGENTS.md` and in the spec's test boundary. Existing tests stay, and they pass.

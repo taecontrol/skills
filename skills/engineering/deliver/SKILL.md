@@ -31,7 +31,7 @@ Questions reach the human from the builder's stops and from `refine`'s scope dec
 
 ## Report
 
-End with a report to the human, in their language, in your final message rather than the pull request: the pull request and its check state, how each example is proven, every deviation from the spec and from the program design with its reason, each changed acceptance assertion, the decisions the agents made on their own, each question with its answer or left open, and `refine`'s report.
+End with a report to the human, in their language, in your final message rather than the pull request: the pull request and its check state, how each example is proven, every deviation from the spec with its reason, each changed acceptance assertion, the decisions the agents made on their own, each question with its answer or left open, and `refine`'s report.
 
 ## Done
 

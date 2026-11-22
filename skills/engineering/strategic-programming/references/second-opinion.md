@@ -1,6 +1,6 @@
 # Second opinion
 
-Get one whenever the work chooses between designs: `shape`'s options for the problem, a program design's choices, or a fix with more than one way to make it, including a fix for a blocker a review found. A choice with one obvious form skips it; say so in one line.
+Get one whenever the work chooses between designs: `shape`'s options for the problem, a choice of structure while building, or a fix with more than one way to make it, including a fix for a blocker a review found. A choice with one obvious form skips it; say so in one line.
 
 The agent that wrote a proposal is anchored on it. It treats what it built, and what the code already holds, as fixed, and solves each new problem by adding a piece. A reviewer that gets the author's reasoning and recommendation anchors too. A reviewer asked to find holes closes each hole with another piece. A second opinion knows the case and the options on the table, and forms its own judgment of them. Ask an agent that did not write the proposal, such as a new subagent. When the harness offers none, add an option yourself, answer the questions and write the count for every option, and say so in your report.
 
