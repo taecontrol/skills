@@ -20,7 +20,7 @@ Your inputs are the worktree, the spec or the request when there is none, the di
 
 Only blockers start another round, up to three in all. Its review covers the range of the previous round's fixes and the code they reach: a fix is new code no review has seen. Give its cause agent the earlier rounds' groupings too, so a blocker still waiting on the human stays open until it is fixed or the human decides it. When a review finds no blocker, have its fixes made, run the gates, and protect the change.
 
-A sound spec and a sound delivery converge within three rounds. If the third review still finds a blocker, stop, even when the human said to go on without stopping: the flow failed, not just the code. Report the blockers and what let them through, such as a guarantee never written, a link missing from its path, a missing example, a wrong decision, or a gap in the environment.
+A sound spec and a sound delivery converge within three rounds. If the third review still finds a blocker, stop, even when the human said to go on without stopping: the flow failed, not just the code. The skill that ran `refine` stops with it and does not `ship`. Report the blockers and what let them through, such as a guarantee never written, a link missing from its path, a missing example, a wrong decision, or a gap in the environment.
 
 ## Protect
 

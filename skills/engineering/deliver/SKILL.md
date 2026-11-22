@@ -23,7 +23,7 @@ Run `refine` yourself on the range, with the spec and the builder's report. Its 
 
 ## 3. Ship
 
-Run `ship` once `refine` finishes. When `refine` stopped on blockers, stop with its report instead. When a production change is needed after `refine` finishes, such as a fix for a CI check or one the human asks for, treat the failure or the request as a finding: it goes through `refine`'s Causes, Decide, Fix, and Protect steps, and the fix gets a review of its own before the pull request is ready.
+Run `ship` once `refine` finishes. When a production change is needed after `refine` finishes, such as a fix for a CI check or one the human asks for, treat the failure or the request as a finding: it goes through `refine`'s Causes, Decide, Fix, and Protect steps, and the fix gets a review of its own before the pull request is ready.
 
 ## Questions
 
