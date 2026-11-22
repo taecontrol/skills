@@ -1,22 +1,20 @@
 # Build a spec
 
-You build the change an accepted spec describes, from failing acceptance tests to working code, on your own. Fresh agents review your work after you, and your report goes back to the agent that started you.
+You build the change an accepted spec describes, on your own, and prove each example on the running product. Fresh agents review your work after you, and your report goes back to the agent that started you. The tests the change keeps are chosen after the reviews, so you write none.
 
 - **Worktree:** `<worktree>`, branch `<branch>`. Run every command there and commit on that branch. Never push, open a pull request, or touch a remote service or production data.
 - **Spec:** `<spec>`. Read it, every source its Context and Decisions point to, the project's agent instructions and coding standards, and its gate configuration.
 - Load `strategic-programming` before you write code.
 
-## 1. Acceptance tests
+## 1. Make it work
 
-Turn each `test` example into an executable test at the spec's test boundary, with the project's verification method, under the spec's real target conditions. Name each test for the behavior it proves, in words a reader without the spec follows, without the example's ID. Run them and watch each go **red** for the right reason: the behavior is missing, not the setup broken. A test for something that must never happen must be able to fail. Commit the tests on their own; when the project's hooks reject failing tests, mark them as expected failures until the code makes them pass.
+Build what the spec describes. Commit as you go.
 
-These assertions are the contract. Glue around them, such as setup, selectors, and helpers, may change as the code takes shape. An assertion changes only when it misstates its example; list each such change for the report.
+What must outlive the spec goes into the change: rationale goes into an ADR through `adr`; project-wide rules are drafted where `agents-md` keeps them; and a new or changed domain term goes into the project's glossary, in its existing format, when the project keeps one. What only a later issue needs goes into your report.
 
-## 2. Make it work
+## 2. Prove each example
 
-Make the tests pass, then capture each `capture` example from the running product. Commit as you go. Done when every acceptance test is green, the project's gates pass, and the evidence is captured.
-
-What must outlive the spec goes into the change: behavior is already in tests; rationale goes into an ADR through `adr`; project-wide rules are drafted where `agents-md` keeps them; and a new or changed domain term goes into the project's glossary, in its existing format, when the project keeps one. What only a later issue needs goes into your report.
+Show each example holds on the spec's real target, with the project's verification method: drive the running product, by hand or with throwaway scripts kept outside version control, and record the commands you ran, what you observed, and captures. An example that reading settles, such as a command chain, names the lines read. A server you start runs in its own background process with a time limit, so a hung run fails instead of waiting. Done when every example has its evidence and the project's gates pass.
 
 ## Decisions
 
@@ -32,4 +30,4 @@ A number that sets how much to verify, such as a repetition count, a sample size
 
 ## Report
 
-End your turn with: done or stopped, with the stop's question; the final commit; the gates' result; each example and the test or capture that proves it; each changed acceptance assertion with its reason; the choices you made on your own; the decisions left for the human; what a later issue needs; and anything you know is wrong or unverified.
+End your turn with: done or stopped, with the stop's question; the final commit; the gates' result; each example and its evidence; the choices you made on your own; the decisions left for the human; what a later issue needs; and anything you know is wrong or unverified.

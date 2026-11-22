@@ -396,23 +396,23 @@ const PAGE = {
   sources: 'Spec: Draft, re-opened 21 Oct 2026 · Architecture brief: Accepted 18 Oct 2026',
   prototypeBase: 'reminders-prototype.html',
   notes: {
-    examples: 'Every example from the spec, in its order. <code>test</code> is proved by a test, <code>capture</code> by matching the prototype.',
+    examples: 'Every example from the spec, in its order.',
     decisions: 'Every decision in the spec, with its why.'
   },
   examples: [
-    {id:'E1', mark:'test', group:'Sending', title:'The first reminder goes out on day 3',
+    {id:'E1', group:'Sending', title:'The first reminder goes out on day 3',
      text:'Given an invoice due on 1 Oct and unpaid, when the daily run starts on 4 Oct, then the customer gets the first reminder with the amount, the due date and a pay link.',
      proto:[['first-reminder','1 · First reminder']]},
-    {id:'E2', mark:'test', group:'Sending', title:'A reminder inside the quiet period waits',
+    {id:'E2', group:'Sending', title:'A reminder inside the quiet period waits',
      text:'Given a manual email to the customer on 8 Oct, when the day-10 reminder comes due on 11 Oct, then it is held until 15 Oct and the log says why.'},
-    {id:'E3', mark:'capture', group:'Sending', title:'The final notice names the next step',
+    {id:'E3', group:'Sending', title:'The final notice names the next step',
      text:'The day-30 email says the account manager will call, and shows the amount, the due date and the pay link.',
      proto:[['final-notice','3 · Final notice']]},
-    {id:'E4', mark:'test', group:'Stopping', title:'Payment stops the next reminder',
+    {id:'E4', group:'Stopping', title:'Payment stops the next reminder',
      text:'Given a payment recorded on day 9, when the run starts on day 10, then no reminder is sent and the invoice has no reminders scheduled.'},
-    {id:'E5', mark:'test', group:'Stopping', title:'A dispute stops reminders and tells the account manager',
+    {id:'E5', group:'Stopping', title:'A dispute stops reminders and tells the account manager',
      text:'Given a customer opens a dispute, then reminders for that invoice stop and the account manager gets one notification.'},
-    {id:'E6', mark:'capture', group:'Stopping', title:'A customer pauses reminders for 14 days',
+    {id:'E6', group:'Stopping', title:'A customer pauses reminders for 14 days',
      text:'The link in any reminder pauses reminders for that invoice for 14 days. They resume on the next schedule day after that.',
      proto:[['pause','4 · Pause reminders']]}
   ],
@@ -486,7 +486,7 @@ const PAGE = {
        tests:'An in-memory log.'},
       {title:'The email goes out', path:['policy>mailer','mailer>customer'],
        text:'Only a send decision reaches the email service, which delivers the reminder with the pay link. <a class="ex" data-e="E1"></a>',
-       tests:'A recording mailer. Acceptance tests use a local mail catcher.'}
+       tests:'A recording mailer. Verification uses a local mail catcher.'}
     ]}
   }
 };
@@ -709,7 +709,7 @@ function prepare(){$$('.chap.on .canvas').forEach(c=>{const st=CVS.find(s=>s.div
 
 /* ---------- reference tabs ---------- */
 const protoHTML=e=>e.proto&&e.proto.length?`<p class="lbl">${L.proto}</p><ul>${e.proto.map(([h,t])=>`<li><a class="proto" target="_blank" rel="noopener" href="${P.prototypeBase||''}#${h}">${t}</a></li>`).join('')}</ul>`:'';
-const exHTML=e=>`<div class="hd"><span class="id">${e.id}</span><span class="mk">${e.mark||''}</span><span class="mk">${e.group||''}</span></div><h4>${e.title}</h4><p>${e.text}</p>${protoHTML(e)}${inStory(`a.ex[data-e="${e.id}"]`,e.chapter)}`;
+const exHTML=e=>`<div class="hd"><span class="id">${e.id}</span><span class="mk">${e.group||''}</span></div><h4>${e.title}</h4><p>${e.text}</p>${protoHTML(e)}${inStory(`a.ex[data-e="${e.id}"]`,e.chapter)}`;
 const list=a=>a&&a.length?`<ul>${a.map(x=>`<li>${Array.isArray(x)?`<b>${x[0]}.</b> ${x[1]}`:x}</li>`).join('')}</ul>`:'';
 const decHTML=d=>`<div class="hd"><h3>${d.title}</h3>${d.status?`<span class="st">${d.status==='pending'?L.pending:d.status}</span>`:''}</div><p class="meta">${d.source||''}</p><p class="lbl">${L.decision}</p>${list(d.decision)}<p class="lbl">${L.why}</p>${(d.why||[]).map(x=>`<p>${x}</p>`).join('')}${d.alternatives?`<p class="lbl">${L.alts}</p>${list(d.alternatives)}`:''}${d.costs?`<p class="lbl">${L.costs}</p>${list(d.costs)}`:''}${inStory(`a.dc[data-d="${d.id}"]`,d.chapter)}`;
 const termHTML=t=>`<h3>${t.term}</h3><p>${t.def}</p>${inStory(`a.t[data-t="${t.id}"]`,t.chapter)}`;
@@ -719,7 +719,7 @@ const has=(t,f)=>!f||strip(t).toLowerCase().includes(f.toLowerCase());
 function renderRef(v){
   const f=S.f[v],sec=$(`.view[data-view="${v}"]`),body=$('.body',sec);let h='',n=0,total;
   if(v==='examples'){total=EX.length;let g=null;const ss=P.stateSpace,ssMatch=ss&&has(ss.title+' '+ss.caption,f);let ssDone=!ssMatch;
-    EX.forEach(e=>{if(!has([e.id,e.mark,e.group,e.title,e.text].join(' '),f))return;
+    EX.forEach(e=>{if(!has([e.id,e.group,e.title,e.text].join(' '),f))return;
       if(e.group!==g){if(g!==null){h+='</div>';if(!ssDone&&g===ss.after){h+=ssHTML();ssDone=true;}}g=e.group;h+=`${g?`<p class="rgrp">${g}</p>`:''}<div class="cards2">`;}
       h+=`<article class="rc" id="ex-${e.id}">${exHTML(e)}</article>`;n++;});
     if(g!==null)h+='</div>';if(!ssDone)h+=ssHTML();}

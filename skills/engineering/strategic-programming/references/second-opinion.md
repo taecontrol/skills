@@ -22,7 +22,7 @@ Ask it to add at least one option of its own, and to answer the questions and wr
 3. **Existing mechanism.** Where does the system already model this concept? Extend that mechanism rather than add one beside it. Better still, let it absorb another mechanism that does the same job, and delete that one.
 4. **Why each piece exists.** For each piece the option adds or works around, such as a column type, a check, a list, or a library default, find why it exists: a recorded decision, or a default nobody chose. Look in the history with `why`, the ADRs, and the code that depends on it. A default is a candidate for deletion, not a constraint. A recorded decision says who chose it: count the option that drops it too.
 5. **Scope.** What code does the option touch that the problem does not need touched?
-6. **Tests.** Which tests become unnecessary, and which single test per contract goes red without the option's change?
+6. **Tests.** Which tests become unnecessary, and which test, if any, goes red without the option's change?
 
 ## The count
 

@@ -5,7 +5,7 @@ What the page holds and how it reads. [The template](../templates/page.html) alr
 ## Structure
 
 - **Header:** the title and one sources line, once: each source with its status and date, such as "Spec: Draft, re-opened 21 Oct".
-- **Tabs:** Story first, then one full-width tab per kind of reference the sources hold: Examples (every example with its `test` or `capture` mark and its prototype link, plus each guarantee's path and the state space), Decisions (each with its why), Terms (searchable). The story takes the full width; reference lives in its tabs, never in a side margin.
+- **Tabs:** Story first, then one full-width tab per kind of reference the sources hold: Examples (every example with its prototype link, plus each guarantee's path and the state space), Decisions (each with its why), Terms (searchable). The story takes the full width; reference lives in its tabs, never in a side margin.
 - **Story:** a chapter rail with progress, previous and next, and arrow keys. Each chapter opens with the question it answers. The ladder for a spec usually runs: in short (what, for whom, what success looks like), who decides and how, the main behaviours, the system, how it will be proven, and what is open, always last.
 - **Inline links:** an example id, a decision name, or a defined term in the text opens a popover that covers part of the page and moves nothing, with a button to open it in its tab.
 

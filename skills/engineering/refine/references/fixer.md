@@ -10,12 +10,14 @@ You fix one review round's findings on a working change. Another agent has group
 
 ## Fix
 
-Fix blockers first. A behavior fix comes with a test that fails without it. Keep structural changes in their own commits, separate from behavior changes, and run the tests before and after each. The acceptance tests' assertions stay as they are.
+Fix blockers first. Tests come only from the approved protection list at the end, so a fix adds none. For each fix, show on the running product that the finding's scenario no longer happens, and re-check every example whose code the fix touched. Keep structural changes in their own commits, separate from behavior changes, and run the gates before and after each.
+
+When the grouping is an approved protection list, each item is a test: write it at the boundary the list names, show it red on its regression, on the commit before its fix or with the regression made by hand, as [mutations](mutations.md) describes, and green on your final commit through the project's gates.
 
 A fix closes its finding the way the grouping describes. When the code shows that it needs more, such as a piece the grouping did not name or a different fix, leave that finding open, write what you found, and carry on with the rest: it goes back to the human as a scope decision.
 
-Done when every cause fix and local fix is made or reported back, and the project's gates pass on your final commit.
+Done when every cause fix and local fix is made or reported back, every example you re-checked holds, and the project's gates pass on your final commit.
 
 ## Report
 
-End your turn with: for each finding, fixed with its commit, left for the human, a report line, or reported back with what you found; the tests you added; the gates' result; and the final commit.
+End your turn with: for each finding, fixed with its commit and what you observed on the product, left for the human, a report line, or reported back with what you found; each example you re-checked, naming any a fix broke; each test you added with its red run; the gates' result; and the final commit.

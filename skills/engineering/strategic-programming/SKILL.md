@@ -69,7 +69,7 @@ Report an unresolved risk only when fixing it would cross the accepted boundary,
 ## Boundaries
 
 - This skill defines programming quality, not delivery order, roles, commits, or delivery state.
-- It does not replace project coding standards, executable gates, an accepted spec, or its acceptance tests.
+- It does not replace project coding standards, executable gates, or an accepted spec and its examples.
 - It does not create or update an ADR, glossary, standards file, or agent instructions as a side effect.
 - Line count, file count, abstraction count, and test count are diagnostic signals, never standalone gates.
 

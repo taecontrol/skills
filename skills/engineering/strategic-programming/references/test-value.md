@@ -1,6 +1,6 @@
 # Test value
 
-A test earns its maintenance cost by protecting observable behavior, a credible regression, or an independent contract. Each contract has one primary test, its **keeper**, at the strongest boundary where the contract can be observed; another layer keeps its own test only for a risk the keeper cannot reach, such as a transport or lifecycle failure.
+A test earns its maintenance cost by protecting observable behavior, a credible regression, or an independent contract. A contract that keeps a test has one primary test, its **keeper**, at the strongest boundary where the contract can be observed; another layer keeps its own test only for a risk the keeper cannot reach, such as a transport or lifecycle failure.
 
 ## Before adding a test
 

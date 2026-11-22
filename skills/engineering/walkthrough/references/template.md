@@ -8,7 +8,7 @@ Copy [page.html](../templates/page.html) next to the main source and replace the
 - `prototypeBase`: the prototype URL that example links append `#scenario` to.
 - `notes`: optional `examples` and `decisions` lines under those tab headings.
 - `lang`: the sources' language. `labels` overrides interface words, keyed as in `L` in the machinery.
-- `examples`: `{id, mark, group, title, text, proto}`. `mark` is `test` or `capture`; examples sharing a `group` sit under one heading; `proto` lists `['scenario', 'Label']`.
+- `examples`: `{id, group, title, text, proto}`. Examples sharing a `group` sit under one heading; `proto` lists `['scenario', 'Label']`.
 - `stateSpace`: `{after, title, caption, head, rows}`, shown after the examples group `after`. Each row starts with its event.
 - `decisions`: `{id, title, source, decision, why, alternatives, costs, status}`. `decision`, `why` and `costs` list sentences; `alternatives` lists `['Option', 'why not']`; `status: 'pending'` draws it open.
 - `terms`: `{id, term, def}`.
