@@ -20,7 +20,7 @@ What must outlive the spec goes into the change: behavior is already in tests; r
 
 ## Decisions
 
-Make each reversible choice the spec leaves open yourself, and list the ones the human would want to know about. An accepted program design constrains them: follow it where the code agrees, and name each departure with its reason. Three kinds of decision belong to the human:
+Make each reversible choice the spec leaves open yourself, and list the ones the human would want to know about. Three kinds of decision belong to the human:
 
 - **A new piece the spec did not ask for,** such as a state, a guard, a store, or a table, however easy to undo. Record it with the options and your recommendation, leave it unbuilt, and carry on.
 - **A one-way door the spec does not settle,** such as a migration, a new contract that writes, or a change to a seam an accepted ADR governs.

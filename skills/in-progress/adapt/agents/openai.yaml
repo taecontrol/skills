@@ -1,6 +1,0 @@
-interface:
-  display_name: "Adapt"
-  short_description: "Work a task through a process designed for it"
-
-policy:
-  allow_implicit_invocation: false

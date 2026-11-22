@@ -10,7 +10,6 @@ npx skills@latest add taecontrol/skills --skill=<name>
 
 ## Candidates
 
-- **[`adapt`](./adapt/SKILL.md)**: user-invoked. Work one task through a process designed for it, as an alternative to `shape` and `deliver`. The agent stops whenever a decision is the human's, and uses the skill that owns each kind of work.
 - **[`editor`](./editor/SKILL.md)**: be the user's editor for an article or essay they write themselves, in Spanish or English. It never writes the text for them.
 - **[`issue`](./issue/SKILL.md)**: write an issue that gives whoever implements it the problem and the outcome, and leaves the solution to them.
 - **[`pr-description`](./pr-description/SKILL.md)**: write a pull request's title and description for the teammate who decides on it, and check each claim before publishing.

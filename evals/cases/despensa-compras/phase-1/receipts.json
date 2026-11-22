@@ -1,0 +1,431 @@
+{
+  "coto": {
+    "store": {
+      "chain": "Coto",
+      "branch": "Av. Rivadavia 5108",
+      "branchCode": "184"
+    },
+    "date": "2026-11-01",
+    "time": "10:14:22",
+    "receipt": {
+      "taxId": "30-71188345-9",
+      "pointOfSale": "2184",
+      "number": "00731562"
+    },
+    "subtotal": 180644.74,
+    "discounts": -31313.66,
+    "total": 149331.08,
+    "lines": [
+      {
+        "rawText": "PAN D/MESA BLANCOFARGO BSA 390 GRM",
+        "barcode": "07793891160009",
+        "storeCode": "0000631152",
+        "quantity": 2.0,
+        "unit": "unit",
+        "unitPrice": 5517.0,
+        "amount": 11034.0,
+        "adjustments": [
+          {
+            "text": "1 *70% 2DA MARCAS",
+            "amount": -3861.9
+          }
+        ],
+        "newProduct": {
+          "name": "Pan de mesa blanco Fargo 390 g",
+          "brand": "Fargo",
+          "size": {
+            "amount": 390,
+            "unit": "g"
+          }
+        }
+      },
+      {
+        "rawText": "PECETO AL HORNOCOTO X KG",
+        "barcode": "02506531002646",
+        "storeCode": "0000006531",
+        "quantity": 0.264,
+        "unit": "kg",
+        "unitPrice": 38499.0,
+        "amount": 10163.74,
+        "adjustments": [
+          {
+            "text": "1 *25% ELABORADOS",
+            "amount": -2540.94
+          }
+        ],
+        "newProduct": {
+          "name": "Peceto al horno Coto"
+        }
+      },
+      {
+        "rawText": "=FILET DE MERLUZA DESPINADOFRESCO X KG (0,512 x 02517921005129; 0,576 x 02517921005761)",
+        "barcode": "0000000000000",
+        "storeCode": "0000017921",
+        "quantity": 1.088,
+        "unit": "kg",
+        "unitPrice": 12490.0,
+        "amount": 13589.12,
+        "newProduct": {
+          "name": "Filet de merluza fresco"
+        }
+      },
+      {
+        "rawText": "ZORRO",
+        "barcode": "07790993452278",
+        "storeCode": "0000585120",
+        "amount": 4890.99,
+        "adjustments": [
+          {
+            "text": "1 *45% ZORRO",
+            "amount": -2200.95
+          }
+        ],
+        "newProduct": {
+          "name": "Detergente Zorro"
+        }
+      },
+      {
+        "rawText": "JABON LIQUIDO LAVANDAALGABO BOM 300 ML",
+        "barcode": "07791278712902",
+        "storeCode": "0000509911",
+        "amount": 3120.99,
+        "newProduct": {
+          "name": "Jabón líquido lavanda Algabo 300 ml"
+        }
+      },
+      {
+        "rawText": "DESODORANTE REXONA MENXTRA COOL AER 150 ML",
+        "barcode": "07791795076174",
+        "storeCode": "0000224618",
+        "amount": 3455.99,
+        "adjustments": [
+          {
+            "text": "3 *25% MARCAS",
+            "amount": -864.0
+          }
+        ],
+        "newProduct": {
+          "name": "Desodorante Rexona Men Xtra Cool 150 ml"
+        }
+      },
+      {
+        "rawText": "PRE MEZCLA P/PIZZAMAMA COCINA PAQ 500 GRM",
+        "barcode": "07792180215321",
+        "storeCode": "0000572304",
+        "amount": 4980.0,
+        "newProduct": {
+          "name": "Premezcla para pizza Mamá Cocina 500 g"
+        }
+      },
+      {
+        "rawText": "CACAO E/POLVO DULCECOLACAO PAQ 400 GRN",
+        "barcode": "08410004502363",
+        "storeCode": "0000574390",
+        "amount": 6120.0,
+        "adjustments": [
+          {
+            "text": "3 *25% MARCAS",
+            "amount": -1530.0
+          }
+        ],
+        "newProduct": {
+          "name": "Cacao en polvo Colacao 400 g"
+        }
+      },
+      {
+        "rawText": "ARVEJASCOTO LAT 300 GRM",
+        "barcode": "02800004821155",
+        "storeCode": "0000482115",
+        "amount": 790.0,
+        "newProduct": {
+          "name": "Arvejas Coto 300 g"
+        }
+      },
+      {
+        "rawText": "FIDEOS TIRABUZONFEDERAL PAQ 400 GRM",
+        "barcode": "07840024537686",
+        "storeCode": "0000605013",
+        "quantity": 2.0,
+        "unit": "unit",
+        "unitPrice": 1650.0,
+        "amount": 3300.0,
+        "adjustments": [
+          {
+            "text": "2 *25% CLASES",
+            "amount": -825.0
+          }
+        ],
+        "newProduct": {
+          "name": "Fideos tirabuzón Federal 400 g"
+        }
+      },
+      {
+        "rawText": "ARROZ  LARGO FINO LUCCHETTI PAQ 1 KGM",
+        "barcode": "07790070907721",
+        "storeCode": "0000572036",
+        "quantity": 2.0,
+        "unit": "unit",
+        "unitPrice": 2290.0,
+        "amount": 4580.0,
+        "adjustments": [
+          {
+            "text": "2 *25% LUCCHETTI",
+            "amount": -1150.62
+          }
+        ],
+        "newProduct": {
+          "name": "Arroz largo fino Lucchetti 1 kg"
+        }
+      },
+      {
+        "rawText": "TOSTADAS LIGHTBIMBO PAQ 200 GRM",
+        "barcode": "07793895727710",
+        "storeCode": "0000542701",
+        "quantity": 2.0,
+        "unit": "unit",
+        "unitPrice": 4120.0,
+        "amount": 8240.0,
+        "adjustments": [
+          {
+            "text": "2 *50% PANADERIA",
+            "amount": -4120.0
+          }
+        ],
+        "newProduct": {
+          "name": "Tostadas light Bimbo 200 g"
+        }
+      },
+      {
+        "rawText": "=MILA.NALGA NOV. ESTANCIA X KG",
+        "barcode": "02529982007602",
+        "storeCode": "0000029982",
+        "quantity": 0.76,
+        "unit": "kg",
+        "unitPrice": 14299.0,
+        "amount": 10867.24,
+        "newProduct": {
+          "name": "Milanesa de nalga Estancia"
+        }
+      },
+      {
+        "rawText": "=CARNE PICADA ESPECIAL X KG",
+        "barcode": "02548207009153",
+        "storeCode": "0000048207",
+        "quantity": 0.915,
+        "unit": "kg",
+        "unitPrice": 15999.0,
+        "amount": 14639.09,
+        "newProduct": {
+          "name": "Carne picada especial"
+        }
+      },
+      {
+        "rawText": "=QUESO TYBO BARRAESTILO REAL X KGM",
+        "barcode": "02513311002864",
+        "storeCode": "0000013311",
+        "quantity": 0.286,
+        "unit": "kg",
+        "unitPrice": 13499.0,
+        "amount": 3860.71,
+        "newProduct": {
+          "name": "Queso tybo barra Estilo Real"
+        }
+      },
+      {
+        "rawText": "=QUESO CREMOSOMELINCUE XKG",
+        "barcode": "02515932003121",
+        "storeCode": "0000015932",
+        "quantity": 0.312,
+        "unit": "kg",
+        "unitPrice": 19299.0,
+        "amount": 6021.29,
+        "newProduct": {
+          "name": "Queso cremoso Melincué"
+        }
+      },
+      {
+        "rawText": "GARBAN RAMO400",
+        "barcode": "07790276287795",
+        "storeCode": "0000006702",
+        "quantity": 2.0,
+        "unit": "unit",
+        "unitPrice": 1940.0,
+        "amount": 3880.0,
+        "adjustments": [
+          {
+            "text": "2 *2X1 CLASES",
+            "amount": -1940.0
+          }
+        ],
+        "newProduct": {
+          "name": "Garbanzos Ramo 400 g"
+        }
+      },
+      {
+        "rawText": "=ACEITE GIRASOL .NATURA PET 1.5 LT",
+        "barcode": "07790270128292",
+        "storeCode": "0000163611",
+        "amount": 6215.0,
+        "newProduct": {
+          "name": "Aceite de girasol Natura 1,5 l"
+        }
+      },
+      {
+        "rawText": "ECUVITA",
+        "barcode": "07798127377237",
+        "storeCode": "0000515020",
+        "amount": 8240.99,
+        "adjustments": [
+          {
+            "text": "3 *25% MARCAS",
+            "amount": -2060.25
+          }
+        ],
+        "newProduct": {
+          "name": "Ecuvita"
+        }
+      },
+      {
+        "rawText": "LENTEJAS COTO PAQ 400 GRM",
+        "barcode": "02800001716881",
+        "storeCode": "0000171688",
+        "quantity": 2.0,
+        "unit": "unit",
+        "unitPrice": 2150.0,
+        "amount": 4300.0,
+        "adjustments": [
+          {
+            "text": "2 *2X1 CLASES",
+            "amount": -2150.0
+          }
+        ],
+        "newProduct": {
+          "name": "Lentejas Coto 400 g"
+        }
+      },
+      {
+        "rawText": "GALLO",
+        "barcode": "07790078024680",
+        "storeCode": "0000632410",
+        "amount": 7650.0,
+        "newProduct": {
+          "name": "Arroz Gallo Oro 1 kg"
+        }
+      },
+      {
+        "rawText": "EMPANADA CARNECOTO UNI",
+        "barcode": "02544781000029",
+        "storeCode": "0000044781",
+        "quantity": 2.0,
+        "unit": "unit",
+        "unitPrice": 2690.0,
+        "amount": 5380.0,
+        "adjustments": [
+          {
+            "text": "1 *6X3 EMPANADAS",
+            "amount": -2690.0
+          }
+        ],
+        "newProduct": {
+          "name": "Empanada de carne Coto"
+        }
+      },
+      {
+        "rawText": "EMPANADA JAMON Y QUESOCOTO UNI",
+        "barcode": "02544775000028",
+        "storeCode": "0000044775",
+        "quantity": 2.0,
+        "unit": "unit",
+        "unitPrice": 2690.0,
+        "amount": 5380.0,
+        "adjustments": [
+          {
+            "text": "1 *6X3 EMPANADAS",
+            "amount": -2690.0
+          }
+        ],
+        "newProduct": {
+          "name": "Empanada de jamón y queso Coto"
+        }
+      },
+      {
+        "rawText": "EMPANADA HUMITACOTO UNI",
+        "barcode": "02544769000027",
+        "storeCode": "0000044769",
+        "quantity": 2.0,
+        "unit": "unit",
+        "unitPrice": 2690.0,
+        "amount": 5380.0,
+        "adjustments": [
+          {
+            "text": "1 *6X3 EMPANADAS",
+            "amount": -2690.0
+          }
+        ],
+        "newProduct": {
+          "name": "Empanada de humita Coto"
+        }
+      },
+      {
+        "rawText": "LECHE E/POLVO ENTERALA SERENISIMA EST 400",
+        "barcode": "07790746501246",
+        "storeCode": "0000510702",
+        "amount": 9480.0,
+        "newProduct": {
+          "name": "Leche en polvo entera La Serenísima 400 g"
+        }
+      },
+      {
+        "rawText": "=ALMENDRAS PELADASX KG (0.197 x 02563702001978; 0.215 x 02563702002159)",
+        "barcode": "0000000000000",
+        "storeCode": "0000063702",
+        "quantity": 0.412,
+        "unit": "kg",
+        "unitPrice": 27999.0,
+        "amount": 11535.59,
+        "newProduct": {
+          "name": "Almendras peladas"
+        }
+      },
+      {
+        "rawText": "AVENA INSTANTANEAQUAKER PAQ 400 GRM",
+        "barcode": "07792174509450",
+        "storeCode": "0000621488",
+        "amount": 3550.0,
+        "newProduct": {
+          "name": "Avena instantánea Quaker 400 g"
+        }
+      }
+    ]
+  },
+  "farmcity": {
+    "store": {
+      "chain": "Farmcity",
+      "branch": "Av. Rivadavia 5320"
+    },
+    "date": "2026-11-01",
+    "time": "10:31:47",
+    "receipt": {
+      "taxId": "30-71422907-5",
+      "pointOfSale": "04217",
+      "number": "00051268"
+    },
+    "total": 7195.5,
+    "lines": [
+      {
+        "rawText": "PARACETAMOL 500MG X 20 COMP",
+        "amount": 4215.0,
+        "newProduct": {
+          "name": "Paracetamol 500 mg x 20"
+        }
+      },
+      {
+        "rawText": "ALCOHOL EN GEL 250 ML X 1",
+        "amount": 2980.5,
+        "newProduct": {
+          "name": "Alcohol en gel 250 ml"
+        }
+      }
+    ]
+  }
+}

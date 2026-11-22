@@ -17,7 +17,6 @@ Stable skills used regularly for code work.
 - **[`diagnosing-bugs`](./diagnosing-bugs/SKILL.md)**: find the root cause of a hard or intermittent failure from a reproduction or runtime evidence.
 - **[`garden`](./garden/SKILL.md)**: between features, fix what has drifted in one area, grouped by cause, in one pull request, and file the rest. It runs to the end on its own.
 - **[`how`](./how/SKILL.md)**: explain how a system works, from evidence.
-- **[`program-design`](./program-design/SKILL.md)**: agree on the shape of the code (modules, types, call paths, errors) before anyone writes it.
 - **[`prototype`](./prototype/SKILL.md)**: compare UI directions, or try a logic model in an HTML demo, before committing to a design.
 - **[`prune`](./prune/SKILL.md)**: remove the tests and checks in one area that cost more than they protect, and prove every contract still has a test that fails when it breaks.
 - **[`refine`](./refine/SKILL.md)**: have fresh agents review a working change, group the findings by cause, and fix at the causes without changing its behavior, in at most three rounds.

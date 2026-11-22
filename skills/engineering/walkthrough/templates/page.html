@@ -152,8 +152,6 @@ a.proto::after{content:" \2197";font-weight:400}
 .yn{font:700 11.5px var(--cond);letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:3px;white-space:nowrap;text-align:center;min-width:72px;display:inline-block}
 .yn.ok{background:var(--ok);color:var(--white);border:1.5px solid var(--ok)}
 .yn.no{border:1.5px dashed var(--no);color:var(--no)}
-.ra{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;align-items:center;margin:6px 0 8px;font-size:13.5px}
-.ra .x{background:var(--white);border:1px solid var(--rule);border-radius:3px;padding:4px 8px;min-width:0;line-height:1.35}
 
 /* Open items, code, the one disclosure */
 .open{border:2px dashed var(--open);background:var(--openbg);border-radius:4px;padding:10px 16px;margin:8px 0 14px}
@@ -365,45 +363,10 @@ table.ss tbody th{font:600 14px var(--cond);background:var(--tint)}
   </div>
 </section>
 
-<section data-chapter="design" data-title="The program design">
-  <p class="q">Where does the code live, and what mistakes can't it make?</p>
-  <h2>The program design</h2>
-  <div class="open line">
-    <h4>Draft, not reviewed</h4>
-    <p>Every module and type name is a proposal to accept, change or reject.</p>
-  </div>
-  <p class="lead">The policy is one pure function: it gets an invoice, its history and today's date, and answers send, hold or stop. Everything that talks to the outside world sits around it.</p>
-
-  <h3>Two mistakes the types refuse before anything runs</h3>
-  <div class="cards">
-    <div class="card"><h4>A reminder can't skip the policy</h4>
-      <div class="ra">
-        <span class="yn no">Refused</span><span class="x">The scheduler calls the mailer with an invoice directly. It doesn't compile.</span>
-        <span class="yn ok">Accepted</span><span class="x">The mailer takes only a <code>SendDecision</code>, which only the policy can make.</span>
-      </div>
-      <p>So no code path sends without the quiet period check. <a class="ex" data-e="E2"></a></p></div>
-    <div class="card"><h4>A hold can't lose its reason</h4>
-      <div class="ra">
-        <span class="yn no">Refused</span><span class="x">The policy returns <code>false</code>. The log would have to guess why.</span>
-        <span class="yn ok">Accepted</span><span class="x">The policy returns <code>hold</code> with the date the quiet period ends.</span>
-      </div>
-      <p>The log and the scheduler read the same answer, so they can't disagree. <a class="ex" data-e="E5"></a></p></div>
-  </div>
-
-  <details class="more"><summary>Exact types</summary><div>
-<pre class="code">type Decision =
-  | { kind: 'send'; reminder: 1 | 2 | 3 }      <span class="cm">// E1, E3</span>
-  | { kind: 'hold'; until: Day }               <span class="cm">// quiet period, E2 and E6</span>
-  | { kind: 'stop'; why: 'paid' | 'disputed' } <span class="cm">// E4, E5</span>
-
-function decide(invoice: Invoice, history: Email[], today: Day): Decision</pre>
-  </div></details>
-</section>
-
 <section data-chapter="open" data-title="What is open">
   <p class="q">What is open, and what changed?</p>
   <h2>Before you accept</h2>
-  <p class="lead">The spec is a draft. One decision is pending, and the program design has not been reviewed.</p>
+  <p class="lead">The spec is a draft, and one decision is pending.</p>
 
   <div class="tl">
     <div><b>14 Oct</b>The spec is written with a fixed schedule.</div>
@@ -430,7 +393,7 @@ function decide(invoice: Invoice, history: Email[], today: Day): Decision</pre>
 <script id="content">
 const PAGE = {
   title: 'Payment reminders for overdue invoices',
-  sources: 'Spec: Draft, re-opened 21 Oct 2026 · Architecture brief: Accepted 18 Oct 2026 · Program design: draft, not reviewed',
+  sources: 'Spec: Draft, re-opened 21 Oct 2026 · Architecture brief: Accepted 18 Oct 2026',
   prototypeBase: 'reminders-prototype.html',
   notes: {
     examples: 'Every example from the spec, in its order. <code>test</code> is proved by a test, <code>capture</code> by matching the prototype.',
