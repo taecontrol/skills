@@ -36,3 +36,14 @@ Every check seeds its own data by calling `record_purchase` with the receipts in
 ## Known history
 
 What the real delivery's reviews found, the bug it shipped (#29), and which hidden check each one became are in `history/findings.md`, with the pull request descriptions beside it. For the runner only.
+
+## From shape
+
+A second way to run the case starts each phase from the brief the real thread received instead of the accepted spec, so each arm shapes its own spec with a simulated owner. Its files are in `from-shape/`:
+
+- `opening-1.md` and `opening-2.md`: the adapted briefs, each with its changes in a comment at its top;
+- `tickets/`: the synthetic receipts as printed tickets, copied to `.work/tickets/`;
+- `owner.md`: the owner's brief, built from the November transcripts; the runner splits it per phase and serves it through a command each lead calls as `.work/ask-owner`;
+- `hidden-sessions.md`: the hidden checks as two sessions of use over MCP on one database, written so they apply to whatever tools a build designed.
+
+The arms for this way are in `arms/flow-common.md`, `arms/d-with-design.md` and `arms/n-without-design.md`. The first run is `results/2026-11-22-despensa-compras-from-shape.md`.
