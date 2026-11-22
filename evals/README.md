@@ -7,7 +7,7 @@ An eval run builds one **case** with each **arm**, under one **configuration** o
 - **Case**: a real feature, replayed from the commit before it was built. Two phases: the feature, then the feature that came after it, built on top by a fresh agent. Phase 2 shows how easy the code was to change and what broke. Cases live in `cases/`.
 - **Arm**: a way of verifying the work. The arms share [`arms/common.md`](arms/common.md) and differ only in tests:
   - [A, no tests](arms/a-no-tests.md);
-  - [C, current flow](arms/c-current-flow.md), meaning `deliver` with acceptance tests first.
+  - [C, current flow](arms/c-current-flow.md), meaning `deliver` with acceptance tests first, the flow before 5.0.0.
 
   An arm B with expect tests ran twice and was dropped: it found no more than A or C, protected no more than C, and was the slowest.
 - **Configuration**: which model plays each role in an arm.

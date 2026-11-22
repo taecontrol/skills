@@ -23,9 +23,9 @@ What the human can cut: each thing the spec adds that they did not ask for, such
 
 The definition of success. Each one is concrete: starting state, action, and result.
 
-- **E1** `test` — Given …, when …, then …
-- **E2** `test` — Given …, when …, then … must never happen.
-- **E3** `capture` — The screen matches the chosen prototype at <sizes/states>.
+- **E1** — Given …, when …, then …
+- **E2** — Given …, when …, then … must never happen.
+- **E3** — The screen matches the chosen prototype at <sizes/states>.
 
 For each guarantee the outcome makes, write its path as a table: one row per link, one column per way the link can fail. Each cell, here and in the state space below, holds the example that covers that failure, the reason it cannot happen, or `improbable`.
 
@@ -42,10 +42,10 @@ When state interacts, add the state space the edge cases come from:
 |---|---|---|
 | … | expected result | expected result |
 
-## Test boundary
+## Verification
 
-- **Where the tests run:** the interface (UI, API, CLI, or module seam) and the tool.
-- **Real target:** the app, runtime mode, data, and platforms the examples must hold under.
+- **Where the examples are observed:** the interface (UI, API, CLI, or module seam) and the tool that drives it.
+- **Real target:** the app, runtime mode, data, user settings, and platforms, with the oldest version of each, that the examples must hold under.
 - **Stand-ins:** each fake or fixture for an external system, and the observation that shows it behaves like the real one.
 
 ## Decisions

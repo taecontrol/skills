@@ -70,7 +70,7 @@ Report:
 - stale coding standards or agent instructions found, as candidates for `coding-standards` or `agents-md`;
 - what was not run, and why.
 
-A junk pattern that recurs across the scope is evidence for `refine`'s tests lens: name it, so `retro` or a separately authorized change can act on it.
+A junk pattern that recurs across the scope is evidence for `refine`'s Protect step: name it, so `retro` or a separately authorized change can act on it.
 
 ## Boundaries
 

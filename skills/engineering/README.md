@@ -19,9 +19,9 @@ Stable skills used regularly for code work.
 - **[`how`](./how/SKILL.md)**: explain how a system works, from evidence.
 - **[`prototype`](./prototype/SKILL.md)**: compare UI directions, or try a logic model in an HTML demo, before committing to a design.
 - **[`prune`](./prune/SKILL.md)**: remove the tests and checks in one area that cost more than they protect, and prove every contract still has a test that fails when it breaks.
-- **[`refine`](./refine/SKILL.md)**: have fresh agents review a working change, group the findings by cause, and fix at the causes without changing its behavior, in at most three rounds.
+- **[`refine`](./refine/SKILL.md)**: have fresh agents review a working change, group the findings by cause, and fix at the causes without changing its behavior, in at most three rounds, then choose the few tests that protect it.
 - **[`research`](./research/SKILL.md)**: answer a bounded question with a cross-checked report from primary sources.
-- **[`setup-verification`](./setup-verification/SKILL.md)**: give agents one way to run and observe the real product, with acceptance tests that run the same locally and in CI.
+- **[`setup-verification`](./setup-verification/SKILL.md)**: give agents one way to run and observe the real product, with tests that run the same locally and in CI.
 - **[`shape`](./shape/SKILL.md)**: agree with the human on one spec: what to build, what success means, and how to prove it.
 - **[`ship`](./ship/SKILL.md)**: open a draft pull request, drive its checks to green, and answer its review with the smallest fix.
 - **[`skill-guide`](./skill-guide/SKILL.md)**: explain the available skills and recommend what to invoke next.

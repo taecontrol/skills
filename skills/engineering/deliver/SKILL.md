@@ -1,6 +1,6 @@
 ---
 name: deliver
-description: "Deliver an accepted spec to a pull request with green checks by orchestrating fresh agents: a builder that makes failing acceptance tests pass, then `refine`'s review rounds and `ship`. Use when a spec from `shape` is accepted, or for a bug fix whose reproduction and expected behavior are agreed."
+description: "Deliver an accepted spec to a pull request with green checks by orchestrating fresh agents: a builder that proves each example on the running product, then `refine`'s reviews and protection tests, and `ship`. Use when a spec from `shape` is accepted, or for a bug fix whose reproduction and expected behavior are agreed."
 ---
 
 # Deliver
@@ -13,7 +13,7 @@ Read the spec and require `Status: Accepted`. For a bug fix, the agreed reproduc
 
 ## 1. Build
 
-Start the builder with [builder.md](references/builder.md). It writes the acceptance tests and watches them fail, makes them pass, captures the evidence, and reports. Done when it reports every acceptance test green and the gates passing.
+Start the builder with [builder.md](references/builder.md). It builds the change, proves each example on the running product, and reports. Done when it reports evidence for every example and the gates passing.
 
 When it reports a stop instead, put the stop's question to the human as [Questions](#questions) says, and send the answer to the same builder. Put the decisions it left for the human to them the same way, while `refine` runs, and add what it reports for a later issue to that issue.
 
@@ -23,7 +23,7 @@ Run `refine` yourself on the range, with the spec and the builder's report. Its 
 
 ## 3. Ship
 
-Run `ship` once `refine` finishes. When `refine` stopped on blockers, stop with its report instead. When a production change is needed after `refine` finishes, such as a fix for a CI check or one the human asks for, treat the failure or the request as a finding: it goes through `refine`'s Causes, Decide, and Fix steps, and the fix gets a review of its own before the pull request is ready.
+Run `ship` once `refine` finishes. When a production change is needed after `refine` finishes, such as a fix for a CI check or one the human asks for, treat the failure or the request as a finding: it goes through `refine`'s Causes, Decide, Fix, and Protect steps, and the fix gets a review of its own before the pull request is ready.
 
 ## Questions
 
@@ -31,8 +31,8 @@ Questions reach the human from the builder's stops and from `refine`'s scope dec
 
 ## Report
 
-End with a report to the human, in their language, in your final message rather than the pull request: the pull request and its check state, how each example is proven, every deviation from the spec with its reason, each changed acceptance assertion, the decisions the agents made on their own, each question with its answer or left open, and `refine`'s report.
+End with a report to the human, in their language, in your final message rather than the pull request: the pull request and its check state, how each example is proven, every deviation from the spec with its reason, the decisions the agents made on their own, each question with its answer or left open, and `refine`'s report.
 
 ## Done
 
-The draft pull request is open, its checks are green, every example is proven by a test or a capture, and the report names every deviation and every decision left open. The human marks it ready for review and merges.
+The draft pull request is open, its checks are green, every example has its evidence, every protection test went red on its regression, and the report names every deviation and every decision left open. The human marks it ready for review and merges.

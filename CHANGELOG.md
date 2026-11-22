@@ -2,6 +2,14 @@
 
 Newest first. "Beta" means the skill is in `skills/in-progress`.
 
+- `5.0.0`:
+  - `deliver`'s builder writes no tests. It proves each example on the running product with the project's verification method, and an example that reading settles names the lines read. `refine`'s reviewers lose the Tests and Mutations lenses and review the product, and its fixers show each fix on the product and re-check the examples it touched.
+  - `refine` ends with a Protect step: a fresh agent proposes the few tests worth keeping from what the rounds found, the human approves the list, and a fixer writes each test and shows it red on its regression. `refine` is done when every approved test went red, not when every link of a guarantee has a test.
+  - `shape` drops the `test` and `capture` marks. Its examples say where they are observed, and the real target names the oldest supported version of each platform and the settings users bring, such as browser zoom, observed rather than emulated.
+  - `refine`'s mutations reference keeps only how to show a test red: a timeout or a setup failure proves nothing. `setup-verification` asks for tests, not acceptance tests, and `strategic-programming`'s test value gives a keeper only to a contract that keeps a test.
+  - When `refine` stops on a blocker, the skill that ran it stops too and does not `ship`. `bug-hunt` and `garden` went on to `ship`; `deliver` already stopped.
+  - `evals/` adds the run that led to this release, test-first against build-first on a private browser game, without a case folder.
+  - `pr-review` (beta) asks each fix on a re-review for evidence that it works, before and after, instead of a permanent test, and its Gaps lens looks only at the tests the change adds or relies on.
 - `4.0.0`:
   - Removes `program-design`. `shape` no longer has a step that shapes the code; `architect` settles the one-way doors and builders shape the rest with `strategic-programming`. `deliver`, `refine`, `walkthrough` and `strategic-programming` drop their references to it.
   - Removes `adapt` (beta). `shape` and `deliver` are the way to work a task.
