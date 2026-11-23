@@ -2,6 +2,7 @@
 
 Newest first. "Beta" means the skill is in `skills/in-progress`.
 
+- `5.0.1`: `evals/` reports correctness as confirmed bugs and hidden checks, without a judge's score, which did not drop even for critical bugs that judge reported. A bug that only input beyond what the spec or a person using the product reaches can trigger is minor. Proof judges rate the evidence against anchors, and the verifier confirms false claims, including evidence that does not show what it says happened; a confirmed one caps proof at 4.
 - `5.0.0`:
   - `deliver`'s builder writes no tests. It proves each example on the running product with the project's verification method, and an example that reading settles names the lines read. `refine`'s reviewers lose the Tests and Mutations lenses and review the product, and its fixers show each fix on the product and re-check the examples it touched.
   - `refine` ends with a Protect step: a fresh agent proposes the few tests worth keeping from what the rounds found, the human approves the list, and a fixer writes each test and shows it red on its regression. `refine` is done when every approved test went red, not when every link of a guarantee has a test.

@@ -35,10 +35,10 @@ You are the runner: you set up, launch, collect and score. You do not help an ar
 
 ## Reading the council
 
-- **A bug counts as confirmed** when its steps reproduce on a rerun. Collect every bug that only some judges or checks reported, and give each worktree's list to one verifier on the most capable model, which reruns the steps from a fresh seed and sets the severity. Report a disagreement between judges as one, not as an average.
-- **Expect correctness judges to disagree.** In the pilot one judge gave 4 and another 10 to the same build, because only one of them navigated between screens. The hidden checks and the verifier are what make the count trustworthy.
-- **A false claim** is a proof entry that says an example works when a judge or a hidden check shows that it does not.
-- **Scores** are the median of the three judges, with the spread next to them.
+- **A bug counts as confirmed** when its steps reproduce on a rerun. Collect every bug that only some judges or checks reported, and every claim a proof judge marked false, and give each worktree's list to one verifier on the most capable model. The verifier reruns the steps from a fresh seed, sets each bug's severity as [`council/correctness.md`](council/correctness.md) defines it, and confirms each false claim as [`council/proof.md`](council/proof.md) defines it. Report a disagreement between judges as one, not as an average.
+- **Expect correctness judges to disagree.** In the pilot one of nine correctness judgments found the critical crash, because only that judge navigated between screens. The hidden checks and the verifier are what make the count trustworthy.
+- **Correctness has no score.** Its result is the confirmed bugs by severity and the hidden checks. A judge's score did not follow even the bugs that judge reported, such as an 8 beside two critical bugs, so it could not compare builds.
+- **Design and proof scores** are the median of the three judges, with the spread next to them. A confirmed false claim caps the proof score at 4.
 
 ## When the eval gets too easy
 
