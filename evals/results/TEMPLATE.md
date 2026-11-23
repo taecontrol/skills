@@ -15,7 +15,6 @@ One column per arm. Scores are the council's median, followed by the lowest and 
 | Confirmed bugs, phase 1 (critical / major / minor) | | | | |
 | Confirmed bugs, phase 2 | | | | |
 | False proof claims, phase 1 / phase 2 | | | | |
-| Correctness score | | | | |
 | Design score | | | | |
 | Proof score | | | | |
 | Tests added (files / cases) | | | | |
